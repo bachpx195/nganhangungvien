@@ -26,7 +26,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						{{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+
+						<input name="_token" type="hidden" value="{!! csrf_token() !!}" />
 
 						<div class="form-group">
 							<label class="col-md-3 control-label">@lang('messages.auth.form.email')</label>
