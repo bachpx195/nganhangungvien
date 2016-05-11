@@ -15,6 +15,10 @@ Route::match(['get', 'post'], '/', [
 	'as' => 'index', 'uses' => 'WelcomeController@index'
 ]);
 
+Route::match(['get', 'post'], '/admin', [
+	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
+]);
+
 /**
  * Authentication
  */

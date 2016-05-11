@@ -1,4 +1,4 @@
-@extends('global_admin')
+@extends('global')
 <title>@lang('messages.site.title')</title>
 
 @section('content')

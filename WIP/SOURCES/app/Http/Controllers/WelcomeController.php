@@ -34,4 +34,9 @@ class WelcomeController extends Controller {
 		return view('home/index');
 	}
 
+	public function indexAdmin(Request $request)
+	{
+		return view('home/index_admin');
+	}
+
 }
