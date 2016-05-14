@@ -1,9 +1,9 @@
-<p>
-	<a href="{{ route('index') }}">@lang('messages.site.name')</a>
-	<br/>
-	@lang('messages.site.copyright')
-</p>
-
-<a href="#" class="gototop">
-	<i class="fa fa-arrow-up"></i>
-</a>
+<div id="block_footer">
+    <div class="w_100 pl_24 pb_16 bg_grey2">
+        <div id="footer">
+            <div class="footer box_tab">
+                BLOOMGOO.VN
+            </div>
+        </div>
+    </div>
+</div>

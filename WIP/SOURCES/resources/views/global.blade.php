@@ -1,132 +1,82 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="content-language" content="vi" />
-	
-	<meta property="og:url" content="{{ URL::current() }}" />
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<!-- Apple devices fullscreen -->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<!-- Apple devices fullscreen -->
-	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	
-	<meta property="fb:admins" content="100001875340414"/>
-	<meta property="fb:app_id" content="1120749501272981"/>
-	
-	<title>@yield('title')</title>
-	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{ asset('/resources/js/bootstrap/bootstrap.min.css') }}">
-	<!-- jQuery UI -->
-	<link rel="stylesheet" href="{{ asset('/resources/js/jquery-ui/jquery-ui.min.css') }}">
-	<!-- select2 -->
-	<link rel="stylesheet" href="{{ asset('/resources/plugin/select2/select2.css') }}" />
-	
-	<!-- KendoUI CSS -->
-	<link rel="stylesheet" href="{{ asset('/resources/kendoui/styles/kendo.common-material.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('/resources/kendoui/styles/kendo.material.min.css') }}">
-	
-	<link rel="stylesheet" href="{{ asset('/resources/toastr/toastr.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('/resources/nprogress/nprogress.css') }}">
-	
-	<!-- Theme CSS -->
-	<link rel="stylesheet" href="{{ asset('/resources/css/style.css') }}">
-	<!-- Color CSS -->
-	<link rel="stylesheet" href="{{ asset('/resources/css/themes.css') }}">
-	
-	<link rel="stylesheet" href="{{ asset('/resources/css/font-awesome.min.css') }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>NGAN HANG UNG VIEN</title>
 
-	<!-- jQuery -->
-	<script src="{{ asset('/resources/js/jquery/jquery.min.js') }}"></script>
-	<!-- Nice Scroll -->
-	<script src="{{ asset('/resources/plugin/jquery/jquery.nicescroll.min.js') }}"></script>
-	<!-- jQuery UI -->
-	<script src="{{ asset('/resources/js/jquery-ui/jquery-ui.js') }}"></script>
-	<!-- slimScroll -->
-	<script src="{{ asset('/resources/plugin/jquery/jquery.slimscroll.min.js') }}"></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('/resources/js/bootstrap/bootstrap.min.js') }}"></script>
-	<!-- Form -->
-	<script src="{{ asset('/resources/plugin/jquery/jquery.form.min.js') }}"></script>
+    <!-- css all -->
+    <link rel="stylesheet" href="{{ asset('/assets/default/css/normalize.min.css') }}" property='stylesheet'
+          type='text/css' media='all'>
+    <link rel="stylesheet" href="{{ asset('/assets/default/css/ionicons.min.css') }}" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/fonts.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/bootstrap.min.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/select2.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/sliding_menu.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/checkbox/all.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/mfb.css') }}" rel="stylesheet" property='stylesheet' type='text/css'
+          media='all'>
+    <link href="{{ asset('/assets/default/css/style_menu.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/styles.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/default_ntd.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/main_ntd.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <script type="text/javascript">
+        function addListener(obj, eventName, listener) {
+            if (obj.addEventListener) {
+                obj.addEventListener(eventName, listener, false);
+            } else {
+                obj.attachEvent("on" + eventName, listener);
+            }
+        }
+    </script>
 
-	<!-- Theme framework -->
-	<script src="{{ asset('/resources/js/eakroko.min.js') }}"></script>
-	<!-- Theme scripts -->
-	<script src="{{ asset('/resources/js/application.min.js') }}"></script>
-	
-	<!-- Kendo UI -->
-	<script src="{{ asset('/resources/kendoui/js/kendo.all.min.js') }}"></script>
-	
-	<script src="{{ asset('/resources/toastr/toastr.min.js') }}"></script>
-	<script src="{{ asset('/resources/nprogress/nprogress.js') }}"></script>
-
-	<!--[if lte IE 9]>
-		<script src="{{ asset('/resources/plugin/jquery/jquery.placeholder.min.js') }}"></script>
-		<script>
-			$(document).ready(function() {
-				$('input, textarea').placeholder();
-			});
-		</script>
-	<![endif]-->
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico" />
-	
-	<!-- Validation -->
-	<script src="{{ asset('/resources/plugin/validation/jquery.validate.min.js') }}" ></script>
-	<script src="{{ asset('/resources/plugin/validation/additional-methods.min.js') }}" ></script>
-	
-	<script>
-	jQuery.extend(jQuery.validator.messages, {
-		required: '@lang('validation.required', ['attribute' => ''])',
-		remote: "Please fix this field.",
-		email: jQuery.validator.format("@lang('validation.email')"),
-		url: "Please enter a valid URL.",
-		date: "@lang('validation.date', ['format' => 'dd/mm/YYYY'])",
-		dateISO: "Please enter a valid date (ISO).",
-		number: jQuery.validator.format("@lang('validation.numeric')"),
-		digits: jQuery.validator.format("@lang('validation.digits')"),
-		creditcard: "Please enter a valid credit card number.",
-		equalTo: '@lang('validation.equal_password')',
-		accept: "Please enter a value with a valid extension.",
-		maxlength: jQuery.validator.format("@lang('validation.max.string', ['attribute' => '', 'max' => '{0}'])"),
-		minlength: jQuery.validator.format("@lang('validation.min.string', ['attribute' => '', 'min' => '{0}'])"),
-		rangelength: jQuery.validator.format("@lang('validation.between.string', ['min' => '{0}', 'max' => '{1}'])"),
-		range: jQuery.validator.format("Please enter a value between {0} and {1}."),
-		max: jQuery.validator.format("@lang('validation.max.numeric')"),
-		min: jQuery.validator.format("@lang('validation.min.numeric')")
-	});
-	</script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.mobile.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/mbExtruder.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.menu-aim.js') }}"></script>
+    <!-- menu aim -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/modernizr.js') }}"></script>
+    <!-- Modernizr -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/icheck.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/enscroll-0.6.1.min.js') }}"></script>
+    <!-- scroll bar -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/sliding_menu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/style_menu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
 </head>
 
-<body data-layout="fixed" no-sidebar="true">
-	
-	<div id="navigation">
-		@include('layout.header')
-	</div>
-	
-	<div id="container-page" class="container nav-hidden">
-		<div id="page-header" style="height: 30px;"></div>
-		<div id="main" style="margin-left: 0px;">
-			<div class="container-fluid">
-				@yield('header')
-				@yield('content')
-			</div>
-		</div>
-		<div id="page-footer">
-			@yield('footer')
-		</div>
-	</div>
-	
-	<div id="footer">
-		@include('layout.footer')
-	</div>
-	
-	<div id="modal"></div>
-	
+<body class="no_scroll page_on_load s21_home" id="s22_chi_tiet_ho_so">
+    <div class="container-fluid nopadding">
+        @include('layout.header')
+
+        <div class="show-content w_100 box_right">
+            <div id="cols-right" class="bg_grey">
+                <div class="content_cols-right pt_16 pl_24 pb_24">
+                    @yield('content')
+                </div>
+
+                @include('layout.footer')
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
