@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration {
+class CreateUserTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,23 +12,24 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table)
+		Schema::create('user', function(Blueprint $table)
 		{
 			$table->engine = 'MyISAM';
 
 			$table->increments('id');
 			$table->string('username', 50)->unique();
-			$table->string('full_name');
+			$table->string('full_name', 50);
 			$table->string('email')->unique();
-			$table->string('password', 60);
-			$table->string('phone', 20)->nullable();
-			$table->tinyInteger('role_id')->default(1);
-			$table->boolean('active')->default(1)->comment('0-not active, 1-active');
+			$table->string('password', 20);
+			$table->string('phone_number', 20)->nullable();
+			$table->string('image', 200)->nullable();
+			$table->string('user_type', 20)->default('employer');
+			$table->tinyInteger('status')->default(1);
 			$table->rememberToken();
 			$table->timestamps();
 		});
 
-		DB::statement('ALTER TABLE users ADD FULLTEXT user_name(username)');
+		DB::statement('ALTER TABLE user ADD FULLTEXT user_name(username)');
 	}
 
 	/**
@@ -38,11 +39,11 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('users', function($table) {
+		Schema::table('user', function($table) {
 			$table->dropIndex('user_name');
 		});
 
-		Schema::drop('users');
+		Schema::drop('user');
 	}
 
 }
