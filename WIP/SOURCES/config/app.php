@@ -144,6 +144,8 @@ return [
 		'Dimsav\Translatable\TranslatableServiceProvider',
 		'Barryvdh\Cors\CorsServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Pingpong\Modules\ModulesServiceProvider',
+		//'Pingpong\Trusty\TrustyServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -210,6 +212,11 @@ return [
 		'DateTimeHelper'    => 'App\Helpers\DateTimeHelper',
 		'ExcelHelper'     	=> 'App\Helpers\ExcelHelper',
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
+		
+		'Module' 			=> 'Pingpong\Modules\Facades\Module',
+		/* 'Trusty'      		=> 'Pingpong\Trusty\Facades\Trusty',
+		'Role'        		=> 'Pingpong\Trusty\Role',
+		'Permission'  		=> 'Pingpong\Trusty\Permission', */
 	],
 
 ];
