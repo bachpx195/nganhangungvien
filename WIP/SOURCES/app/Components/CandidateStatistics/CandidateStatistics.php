@@ -1,11 +1,11 @@
 <?php 
-namespace App\Components\SampleComponent;
+namespace App\Components\CandidateStatistics;
 
 use Teepluss\Component\BaseComponent;
 use Illuminate\Foundation\Application as Application;
 use Teepluss\Component\Contracts\BaseComponent as BaseComponentContract;
 
-class SampleComponent extends BaseComponent implements BaseComponentContract 
+class CandidateStatistics extends BaseComponent implements BaseComponentContract 
 {
     /**
      * Application.
@@ -19,7 +19,7 @@ class SampleComponent extends BaseComponent implements BaseComponentContract
      *
      * @var string
      */
-    protected $namespace = 'sampleComponent';
+    protected $namespace = 'candidateStatistics';
 
     /**
      * Component arguments.
