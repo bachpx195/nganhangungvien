@@ -52,12 +52,12 @@ class AuthController extends Controller {
 		$email = $request->input('email');  
 		$password = $request->input('password');  
         
-		if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1]))   {
+		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))   {
 			return redirect()->intended($this->redirectTo);
         }
         else {
         	
-			if (Auth::attempt(['username' => $email, 'password' => $password, 'active' => 1]))   {
+			if (Auth::attempt(['username' => $email, 'password' => $password, 'status' => 1]))   {
 				
 				return redirect()->intended($this->redirectTo);
         	}

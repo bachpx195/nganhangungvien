@@ -7,7 +7,7 @@ class UserSeeder extends Seeder {
 	
 	public function run() 
 	{
-		DB::table('users')->delete();
+		DB::table('user')->delete();
 		
 		// Manager
 		User::create([
@@ -15,7 +15,9 @@ class UserSeeder extends Seeder {
 				'full_name' => 'admin',
 				'email' => 'admin@mail.com',
 				'password' => Hash::make('123456'),
-				'role_id' => 1
+				'phone_number' => '0988888666',
+				'image' => '',
+				'user_type'	=> 'admin'
 		]);
 	}
 	

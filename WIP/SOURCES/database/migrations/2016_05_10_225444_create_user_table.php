@@ -24,7 +24,7 @@ class CreateUserTable extends Migration {
 			$table->string('phone_number', 20)->nullable();
 			$table->string('image', 200)->nullable();
 			$table->string('user_type', 20)->default('employer');
-			$table->tinyInteger('status')->default(1);
+			$table->tinyInteger('status')->default(1)->comment(': 1-enabled, 0-disabled, 2-blocked');
 			$table->rememberToken();
 			$table->timestamps();
 		});
