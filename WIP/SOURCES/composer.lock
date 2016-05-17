@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f14e0df378818b8a7a162e9d23906e7",
-    "content-hash": "7a68960b32dd2cfe3c9a0c32ebf12091",
+    "hash": "4e7a77f4153ed582eb22cfbbb34bf990",
+    "content-hash": "8cd41f1801f00c48342aea144fff0db8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3053,6 +3053,54 @@
             "time": "2015-07-01 10:03:42"
         },
         {
+            "name": "teepluss/component",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teepluss/laravel-component.git",
+                "reference": "c292f48afe800baa1faab73374a6ddbacb4fe7b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teepluss/laravel-component/zipball/c292f48afe800baa1faab73374a6ddbacb4fe7b3",
+                "reference": "c292f48afe800baa1faab73374a6ddbacb4fe7b3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0.1",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Teepluss\\Component\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Teepluss",
+                    "email": "teepluss@gmail.com"
+                }
+            ],
+            "description": "Component is used to separate small parts from the main view and still works perfectly.",
+            "homepage": "https://github.com/teepluss/laravel-component",
+            "keywords": [
+                "asset",
+                "component",
+                "laravel",
+                "layout",
+                "widget"
+            ],
+            "time": "2015-07-28 05:00:28"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "1.5.5",
             "source": {
@@ -4219,7 +4267,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "barryvdh/laravel-cors": 20
+        "barryvdh/laravel-cors": 20,
+        "teepluss/component": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

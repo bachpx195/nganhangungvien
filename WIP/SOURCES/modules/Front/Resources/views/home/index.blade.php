@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</div>
-
+	{!! component()->uses('SampleComponent', ['args' => '1'])->render() !!}
 	<div class="box_alert_content box_alert_content_dangkytuvan w_100 font14 " id="box_alert_message">
 		<div class="col_msg_left">
 			Hôm qua có <span class="text_orange font18 bold">4,431</span> hồ sơ mới và <span

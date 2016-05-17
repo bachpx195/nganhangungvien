@@ -146,6 +146,7 @@ return [
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		'Pingpong\Modules\ModulesServiceProvider',
 		//'Pingpong\Trusty\TrustyServiceProvider',
+		'Teepluss\Component\ComponentServiceProvider',
 
 		/*
 		 * Application Service Providers...
