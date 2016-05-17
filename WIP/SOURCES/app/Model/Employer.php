@@ -13,7 +13,7 @@ class Employer extends Model {
 
     public function user()
     {
-        return $this->hasOne('App\Model\User', 'user_id', 'id');
+        return $this->hasOne('App\User', 'user_id', 'id');
     }
 
     public function companySize()

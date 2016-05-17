@@ -2,9 +2,9 @@
 
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
-use App\Model\User;
-use App\Model\Role;
-use App\Model\UserRole;
+use App\User;
+use App\Role;
+use App\UserRole;
 use Validator;
 use Log;
 use Mail;

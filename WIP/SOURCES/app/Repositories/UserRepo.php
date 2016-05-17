@@ -1,6 +1,6 @@
 <?php namespace App\Repositories;
 
-use App\Model\User;
+use App\User;
 
 class UserRepo implements IUserRepo {
 	

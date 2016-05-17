@@ -1,6 +1,6 @@
 <?php namespace App\Repositories;
 
-use App\Model\Role;
+use App\Role;
 
 class RoleRepo implements IRoleRepo {
 	

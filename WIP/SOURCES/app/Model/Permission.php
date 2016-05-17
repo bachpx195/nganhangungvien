@@ -11,7 +11,7 @@ class Permission extends Model {
      */
     public function role()
     {
-        return $this->belongsTo('App\Model\Role', 'candidate_id', 'id');
+        return $this->belongsTo('App\Role', 'candidate_id', 'id');
     }
 
 }
