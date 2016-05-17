@@ -15,6 +15,13 @@ class DatabaseSeeder extends Seeder {
         Model::unguard();
 
         $this->call('UserSeeder');
+        $this->call('CompanySizeSeeder');
+        $this->call('ExperienceYearsSeeder');
+        $this->call('ForeignLanguageSeeder');
+        $this->call('JobSeeder');
+        $this->call('LevelSeeder');
+        $this->call('ProvinceSeeder');
+        $this->call('SalarySeeder');
     }
 
 }
