@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Registrar;
 
 use App\Repositories\IUserRepo;
 use App\Repositories\IRoleRepo;
-use App\User;
+use App\Model\User;
 
 class UserController extends Controller {
 	
