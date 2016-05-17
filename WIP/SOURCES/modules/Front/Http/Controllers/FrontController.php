@@ -3,10 +3,15 @@
 use Pingpong\Modules\Routing\Controller;
 
 class FrontController extends Controller {
-	
+
+	/**
+	 * Index page
+	 *
+	 * @return \Illuminate\View\View
+	 */
 	public function index()
 	{
-		return view('front::index');
+		return view('front::home/index');
 	}
 	
 }
