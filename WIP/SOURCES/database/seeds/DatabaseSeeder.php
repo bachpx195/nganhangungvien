@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('LevelSeeder');
         $this->call('ProvinceSeeder');
         $this->call('SalarySeeder');
+        $this->call('EmploymentStatusSeeder');
+        $this->call('RankSeeder');
     }
 
 }
