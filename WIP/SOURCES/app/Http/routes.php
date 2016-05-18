@@ -41,3 +41,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 		'as' => 'user.delete', 'uses' => 'UserController@delete'
 	]);
 });
+
+Route::match(['get', 'post'], '/candidate/form', [
+	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+]);

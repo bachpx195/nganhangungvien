@@ -28,6 +28,10 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 				'App\Repositories\IRoleRepo',
 				'App\Repositories\RoleRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateRepo',
+			'App\Repositories\CandidateRepo');
 	}
 
 }
