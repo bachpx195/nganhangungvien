@@ -1,4 +1,4 @@
-@extends('global')
+@extends('front/global')
 
 @section('content')
 <div class="">
@@ -41,7 +41,7 @@
 		<h1 class="title_title_box pl_8 pr_8 uppercase bold text_blue">Cổng dành cho nhà tuyển dụng (610,976)</h1>
 	</div>
 	
-	{!! component()->uses('HomeSearch', ['args' => '1'])->render() !!}
+	@include('front/home/search', ['dropdownData' => $dropdownData])
 
 	<!-- Phan loai ho theo -->
 	<h3 class="title_text_line mt24 fwb">
