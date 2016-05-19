@@ -15,7 +15,7 @@ use App\Repositories\ICandidateRepo;
 
 class SearchController extends Controller {
 
-	protected $request;
+	protected $candidateRepo;
 	
 	public function __construct(ICandidateRepo $candidateRepo)
 	{
@@ -29,7 +29,7 @@ class SearchController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$params = [];
+		/*$params = [];
 		$params['title'] = $request->get('title');
 		$params['occupation'] = $request->get('occupation');
 		$params['province'] = $request->get('province');
@@ -38,12 +38,11 @@ class SearchController extends Controller {
 		$params['yearOfexp'] = $request->get('yearOfexp');
 		$params['sex'] = $request->get('sex');
 		$params['language'] = $request->get('language');
-		$params['timeUpdate'] = $request->get('timeUpdate');
+		$params['timeUpdate'] = $request->get('timeUpdate');*/
 		
 		$params = $request->all();
 		
-		var_dump($params);
-		die();
+		$candidates = $this->candidateRepo->search($params, 0, 10);
 		
 		return view('front::search/index');
 	}
