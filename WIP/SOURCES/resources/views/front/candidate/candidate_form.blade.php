@@ -1,4 +1,4 @@
-@extends('global')
+@extends('front/global')
 
 <title>Tạo hồ sơ ứng viên</title>
 
