@@ -18,5 +18,5 @@ interface ICandidateRepo
      * @param $offset
      * @param $limit
      */
-    public function search($params, $offset, $limit);
+    public function search($params);
 }

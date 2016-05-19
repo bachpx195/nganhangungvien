@@ -29,22 +29,12 @@ class SearchController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		/*$params = [];
-		$params['title'] = $request->get('title');
-		$params['occupation'] = $request->get('occupation');
-		$params['province'] = $request->get('province');
-		$params['salaryGrade'] = $request->get('salaryGrade');
-		$params['degree'] = $request->get('degree');
-		$params['yearOfexp'] = $request->get('yearOfexp');
-		$params['sex'] = $request->get('sex');
-		$params['language'] = $request->get('language');
-		$params['timeUpdate'] = $request->get('timeUpdate');*/
-		
 		$params = $request->all();
 		
-		$candidates = $this->candidateRepo->search($params, 0, 10);
+		$candidates = $this->candidateRepo->search($params);
 		
-		return view('front::search/index');
+		return view('front/search/index')
+				->with('candidates', $candidates);
 	}
 	
 }

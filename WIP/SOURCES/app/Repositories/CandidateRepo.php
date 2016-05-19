@@ -20,43 +20,38 @@ class CandidateRepo implements ICandidateRepo {
      * @param $offset
      * @param $limit
      */
-    public function search($params, $offset, $limit) {
-        $query = Candidate::query();
+    public function search($params) {
+        $query = Candidate::select();
 
-        if($params['title']){
+        if(isset($params['title']) && $params['title']){
             $query = $query->where('cv_title', '=', $params['title']);
         }
 
-        if($params['occupation']){
+        if(isset($params['occupation']) && $params['occupation']){
             $query = $query->where('expect_job', '=', $params['occupation']);
         }
 
-        if($params['province']){
+        if(isset($params['province']) && $params['province']){
             $query = $query->where('province_id', '=', $params['province']);
         }
 
-        if($params['salaryGrade']){
+        if(isset($params['salaryGrade']) && $params['salaryGrade']){
             $query = $query->where('salary', '=', $params['salaryGrade']);
         }
 
-        if($params['degree']){
+        if(isset($params['degree']) && $params['degree']){
             $query = $query->where('level', '=', $params['degree']);
         }
 
-        if($params['yearOfExp']){
+        if(isset($params['yearOfExp']) && $params['yearOfExp']){
             $query = $query->where('experience_years', '=', $params['yearOfExp']);
         }
 
-        if($params['sex']){
+        if(isset($params['sex']) && $params['sex']){
             $query = $query->where('sex', '=', $params['sex']);
         }
 
-        /*if($params['sex']){
-            $query = $query->where('sex', '=', $params['sex']);
-        }*/
-
-        //$query = $query->take
-        return $query->get();
+        return $query->paginate();
 
     }
 }

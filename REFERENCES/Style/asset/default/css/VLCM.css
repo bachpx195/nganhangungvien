@@ -1,0 +1,1032 @@
+/** default css */
+.text_blue{color: #00999f}
+.text_blue a {color: #00999f}
+.text_pink{color: #ff6d00}
+a.text_blue:hover,a.text_blue:focus,a.text_blue:active{color: #027a81}
+a.text_pink:hover,a.text_pink:focus,a.text_pink:active,a.text_pink:visited{color: #de5b03}
+a.text_blue3 {color:#00999f}
+.bg_blue{background: #00999f !important;}
+.bg_pink{background: #ff6d00;}
+
+/** main css */
+.mfb-component__button--main {
+    background-color: #ff6d00;
+}
+.icon_16 {
+    background: url(../images/sprites_16_VLCM.png);
+}
+.icon_24 {
+    background: url(../images/sprites_24_VLCM.png);
+}
+.btn-nobg {
+    color: #00999f;
+}
+.btn-nobg:hover {
+    color: #00999f;
+}
+.location_head .select2-container .select2-choice {
+    border: 1px solid #00b0b6;
+}
+.location_head .select2-container .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -192px -48px;
+}
+.location_head .select2-dropdown-open .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -216px -48px;
+}
+.filter_box .select2-container .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -96px -48px;
+}
+.filter_box .select2-dropdown-open .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -240px -48px;
+}
+.select2-drop.location {
+    background-color: #00999f;
+    border: 1px solid #026268;
+}
+.icn-main-menu, .icn-main-home, .icn-main-star, .icn-main-search, .icn-main-alert, .icn-main-user {
+    background: url("../images/sprites_24_VLCM.png") no-repeat;
+}
+.line_head{
+    border-left: 1px solid #017c83;
+}
+.icon_number_alert{
+    background-color: #ff6d00;
+}
+.box_pink_content {
+    border: solid 2px #ff6d00;
+}
+.list-items.active{
+    border: 1px solid #58c5ca;
+	background: #efffff;
+}
+.box_right .nav-tabs>li.active>a, .box_right .nav-tabs>li.active>a:focus, .box_right .nav-tabs>li.active>a:hover{
+    background: url(../images/bg_tab_sprites_VLCM.png) repeat top transparent;
+    background-position: 0px -50px;
+	color: #00999f;
+}
+.box_right .nav-tabs>li.active>span.left_tab{
+    content: "";
+    background: url(../images/bg_tab_sprites_VLCM.png) no-repeat top left transparent;
+    background-position: 0px 0px;
+}
+.box_right .nav-tabs>li.active>span.right_tab{
+    content: "";
+    background: url(../images/bg_tab_sprites_VLCM.png) no-repeat top left transparent;
+    background-position: -70px 0px;
+}
+.box_right .nav-tabs>li>span.left_tab{
+    content: "";
+    background: url(../images/bg_tab_sprites_VLCM.png) no-repeat top left transparent;
+    background-position: 0px -100px;
+}
+.box_right .nav-tabs>li>span.right_tab{
+    content: "";
+    background: url(../images/bg_tab_sprites_VLCM.png) no-repeat top left transparent;
+    background-position: -70px -100px;
+}
+.box_right .nav-tabs>li>a, .box_right .nav-tabs>li>a:focus, .box_right .nav-tabs>li>a:hover{
+    background: url(../images/bg_tab_sprites_VLCM.png) repeat top transparent;
+    background-position: 0px -150px;
+}
+.title_text_line {
+    border-left: 5px solid #00999f;
+}
+.drop_filter::after{
+  content: '';
+  background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+  background-position: -288px -48px;
+}
+.drop_filter.jq-dropdown-open::after{
+  content: '';
+  background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+  background-position: -240px -48px;
+}
+.icheckbox_square-blue, .iradio_square-blue{
+  background: url(checkbox/square/blue_small2_VLCM.png) no-repeat;
+}
+.ion-dautrang::before{
+	background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+	background-position: -240px -48px;
+    	content: "";
+}
+.city_select .filter_box .select2-container .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -170px -46px;
+}
+.city_select .filter_box .select2-dropdown-open .select2-choice .select2-arrow b {
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -240px -45px;
+
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+    background: #ff6d00;
+}
+.btnBlue {
+    background-color: #00999f;
+}
+.btnBlue:hover,.btnBlue:focus {
+    background-color: #027a81;
+}
+.txt-hong {	color: #ff6d00;}
+.txt-hong:hover {	color: #de5b03;}
+.title_tuyen_dung_vip {
+    border-left: 5px solid #00999f;
+}
+.text-tim-nhat {
+    color: #00999f;
+}
+.txt-color-02 {
+    color: #ff6d00;
+}
+.box-mau-tim {
+    border: 2px solid #026268;
+}
+.see-all-link{
+    color: #00999f;
+}
+.text-scroll{
+    color:#ff6d00;
+}
+.drop_filter_top::after{
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -96px -48px;
+}
+.box_alert_content_dangkytuvan .btn-ntd-dky-tuvan {
+    background-color: #ff6d00;
+    border-color: #ff6d00;
+}
+.box_alert_content_dangkytuvan .btn-ntd-dky-tuvan:hover, .box_alert_content_dangkytuvan .btn-ntd-dky-tuvan:focus {
+    background-color: #de5b03;
+}
+.box_alert_content_dangkytuvan .btn-ntv-dky-tuvan {
+    background-color: #00999f;
+    border-color: #00999f;
+}
+.box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:hover, .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:focus {
+    background-color: #027a81;
+}
+.title_bangcap_chungchi {
+    border-left: 4px solid #00999f;
+}
+.select2-arrow-birthday{
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -96px -48px;
+}
+#frm-login-info .select_style2::after {
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -168px -49px;
+}
+#frm-login-info .select_style3::after {
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -168px -49px;
+}
+#frm-login-info .so_nam_kn::after {
+      content: '';
+      background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+      background-position: -168px -49px;
+}
+#frm-login-info .select_money::after {
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -168px -49px;
+}
+#frm-login-info .select_style_bccc::after {
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -168px -49px;
+}
+.btnSave {
+    background-color: #00999f;
+}
+.btnSave:hover,.btnSave:focus {
+    background-color: #027a81;
+}
+.error_reg_mess_icon {
+    background: url("../images/sprites_24_VLCM.png") -144px -144px no-repeat;
+    content: '';
+}
+.btnSavePass{
+    background-color: #ff6d00;
+}
+.error_reg_mess_icon_social {
+    background: url("../images/sprites_24_VLCM.png") -144px -144px no-repeat;
+    content: '';
+}
+.drop_filter_top_reg::after{
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -170px -48px;
+}
+.drop_filter_top_reg.jq-dropdown-open::after{
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -240px -48px;
+}
+.icon_search_nganhnghe::after{
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -290px -18px;
+}
+.txt_color_bccc{
+    color: #00999f;
+}
+.btnQLHS {
+    background-color: #00999f;
+}
+.btn-vlqly {
+    background-color: #00999f;
+    border-color: #00999f;
+}
+.btndang:focus,  .btndang:hover{
+    background-color: #ff6d00;
+}
+.job_detail a.job_value:hover {
+    color:#00999f;
+}
+.order_filter .btn-white.active {
+    color:#00999f;
+}
+.pagination li.active a, .pagination li.active:hover a {
+    background: #00999f!important;
+}
+.btn-blue {
+    background:#00999f;
+}
+.btn-blue:hover,.btn-blue:focus {
+    background:#027a81;
+}
+.btn-blue:active {
+    background:#026268;
+}
+
+.btn-pink {
+    background:#ff6d00;
+}
+.btn-pink:hover, .btn-pink:focus {
+    background:#de5b03;
+}
+.btn-pink:active {
+    background:#cd3e12;
+}
+
+.btn-default {
+    background:#f5f5f5;
+    color:#00999f;
+    border:none;
+}
+.btn-default:hover, .btn-default:focus {
+    background:#eeeeee;
+    color:#00999f;
+}
+.btn-default:active {
+    background:#e0e0e0;
+    color:#00999f;
+}
+.borderxanh {
+    border-left: 4px solid #00999f;
+}
+.text-xanh-nuocbien {
+    color: #00999f;
+    text-transform: uppercase;
+}
+.text-hong{
+    color:#ff6d00;
+}
+.hideshow .showbox{
+    background: url('../images/hide-box_VLCM.png') no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.btnluu {
+    background-color: #00999f;
+}
+
+.btndang {
+    background-color: #ff6d00;
+}
+.thembangcap{
+    color: #ff6d00;
+}
+.box-white .title-nb p{
+    color: #00999f;
+}
+.box-white-s11 .title-nb p{
+    color: #00999f;
+}
+.box-white .title-b p{
+    color: #00999f;
+}
+.block-pop-dangky .border-hong {
+    border: 2px solid #ff6d00;
+}
+#viec-lam-hom-nay .vl_company{
+    border-top:4px solid #ff6d00;
+}
+#viec-lam-hom-nay .list_item .item_title a{
+    color:#00999f
+}
+#viec-lam-hom-nay .list_item .item .deadline{
+    color:#ff6d00;
+}
+
+#viec-lam-hom-nay .title_accordion a{
+    color:#00999f;
+}
+.btnReadmore {
+  background-color: #ff6d00;
+}
+
+.icon_mucluong {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -28px -24px;
+}
+
+.icon_kinhnghiem {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -53px -24px;
+}
+
+.icon_bangcap {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -124px 0px;
+}
+
+.icon_soluong {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -101px -24px;
+}
+
+.icon_diadiem {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -27px -2px;
+}
+
+.icon_chucvu {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -53px -2px;
+}
+
+.icon_hinhthuclamviec {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -80px -2px;
+}
+
+.icon_gioitinh {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -101px -2px;
+}
+
+.icon_nganhnghe {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -80px -24px;
+}
+.icon_dotuoi {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: 0px -24px;
+}
+
+.icon_nophoso {
+  background: url(../images/sprites_24_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: -312px -144px;
+}
+
+.icon_hannop {
+  background: url(../images/sprites_16_VLCM.png);
+  background-repeat: no-repeat;
+  background-position: 0px -2px;
+}
+.buttom_magic{
+	background-color: #00999f;
+}
+.icon_number_magic{
+	background-color: #ff6d00;
+}
+.title_xem_truoc_ho_so {
+    border-left: 4px solid #00999f;
+}
+
+.text-xanh {
+    color: #00999f;
+}
+#xem_truoc_ho_so .txt-ghi {
+    color: #00999f;
+}
+.tieu_de_ho_so span{
+    color:#ff6d00;
+}
+.title_sub_item{
+    color:#00999f;
+}
+.item_hoso .icon_nophoso {
+    background: url(../images/icon-ngoai-ngu_VLCM.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.item_hoso .icon_dotuoi {
+    background: url(../images/icon-tin-hoc_VLCM.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.item_hoso .icon_hannop {
+    background: url(../images/icon-hon-nhan_VLCM.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.mfb-component__button--child {
+  background-color: #00999f;
+}
+.icon-call {
+    background-position: 0px -48px;
+}
+.icon_load_more{
+    background-position: -72px -48px;
+}
+.icon_location_head{
+    background-position: -24px -48px;
+}
+.icon_listbox{
+    background-position: -24px -0px;
+}
+.icon_locabox{
+    background-position: -48px -0px;
+}
+.icon_moneybox{
+    background-position: -144px -0px;
+}
+.icon_moneybox2{
+    background-position: -312px -0px;
+}
+.icon_local_list{
+    background-position: -336px -0px;
+}
+.icon_time_list{
+    background-position: -192px -0px;
+}
+.icon-star-line{
+    background-position: -240px -24px;
+}
+.icon-star-line.active{
+    background-position: -264px -24px;
+}
+.icon_capbox{
+    background-position: -168px -0px;
+}
+.icon_hinhthuc{
+    background-position: 0 -72px;
+}
+.icn-main-home {
+    background-position: 0px -24px;
+}
+.icn-main-home.active, .icn-main-home:hover {
+    background-position: -24px -24px;
+}
+.icn-main-star {
+    background-position: -48px -24px;
+}
+.icn-main-star.active, .icn-main-star:hover {
+    background-position: -72px -24px;
+}
+
+.icn-main-search {
+    background-position: -96px -24px;
+}
+.icon_tags{
+    background-position: -312px -24px;
+}
+.icn-main-search.active, .icn-main-search:hover {
+    background-position: -120px -24px;
+}
+.icn-main-alert {
+    background-position: -144px -24px;
+}
+.icn-main-alert.active, .icn-main-alert:hover {
+    background-position: -168px -24px;
+}
+.icn-main-user {
+    background-position: -192px -24px;
+}
+.icn-main-user.active, .icn-main-user:hover {
+    background-position: -216px -24px;
+}
+.select2-search input{
+    background-position: -170px -165px;
+}
+.icon_input_search{
+    background-position: -286px -24px;
+}
+.hot-icon {
+    background-position: -336px -54px;
+}
+.icon_search{
+    background-position: -118px -24px;
+}
+.icon_arrow_orange{
+    background-position: -264px -48px;
+}
+.iradio_square-blue{
+	background-position: -54px 0;
+}
+.icheckbox_square-blue.hover{
+    background-position: -18px 0;
+}
+.iradio_square-blue.hover {
+	background-position: -72px 0;
+}
+.icheckbox_square-blue.checked{
+    background-position: -36px 0;
+}
+.iradio_square-blue.checked {
+	background-position: -90px 0;
+}
+.icheckbox_square-blue.disabled, .iradio_square-blue.disabled {
+        background-position: -54px 0;
+}
+.icheckbox_square-blue.checked.disabled, .iradio_square-blue.checked.disabled {
+    background-position: -72px 0;
+}
+.iradio_square-green{
+    background-position: -54px 0;
+}
+.icheckbox_square-green.hover{
+    background-position: -18px 0;
+}
+.iradio_square-green.hover {
+    background-position: -72px 0;
+}
+.icheckbox_square-green.checked{
+    background-position: -36px 0;
+}
+.iradio_square-green.checked {
+    background-position: -90px 0;
+}
+.icheckbox_square-green.disabled, .iradio_square-green.disabled {
+    background-position: -54px 0;
+}
+.icheckbox_square-green.checked.disabled, .iradio_square-green.checked.disabled {
+    background-position: -72px 0;
+}
+.btn_social_fb{
+    background-position: -1px -1px;;
+}
+.btn_social_fb:hover, .btn_social_fb:active{
+    background-position: -1px -41px;
+}
+.btn_social_gg{
+    background-position: -1px -81px;
+}
+.btn_social_gg:hover, .btn_social_gg:active{
+    background-position: -1px -121px;
+}
+.icon-arrow {
+    background-position: -123px -45px;
+}
+.icon-quan-ly-tai-khoan {
+    background-position: -217px 3px;
+}
+.icon-quan-ly-ho-so {
+    background-position: -240px 3px;
+}
+.icon-taikhoan {
+    background-position: -214px 7px;
+    left: 16px;
+}
+.icon-quan-ly-tao-hso {
+    background-position: -266px 3px;
+}
+.icon-chuyen-cong {
+    background-position: -48px -45px;
+}
+.icon-vl-phu-hop {
+    background-position: 0px 3px;
+}
+.icon-vl-nganh-nghe {
+    background-position: -26px 3px;
+}
+.icon-tinh-thanh {
+    background-position: -51px 3px;
+}
+.icon-vl-da-luu {
+    background-position: -74px 3px;
+}
+.icon-vl-ung-tuyen {
+    background-position: -97px 3px;
+}
+.icon-ntd-xem-hso {
+    background-position: -120px 3px;
+}
+.icon-add{
+    background-position: -72px -48px;
+}
+.icon-scroll {
+    background-position: -168px -45px;
+}
+.icon-to-cao {
+    background-position: -129px -28px;
+}.icon_capbac{
+    background-position: -26px -72px;
+}
+.tinh_thanh_reg .select2-search input{
+	background-position: -45px -166px;
+}
+.icon-menu-dautrang {
+    background-position: 0px -95px;
+}
+.icon-menu-dangnhap {
+    background-position: -23px -95px;
+}
+.icon-menu-tin-da-xem {
+    background-position: -48px -95px;
+}
+.icon-menu-calendar{
+    background-position: -72px -95px;
+}
+.icon-menu-ion-key{
+    background-position: -95px -95px;
+}
+.icon-menu-plus {
+    background-position: -120px -95px;
+}
+.block-img-close {
+    background: url("../images/sprites_40.png") -220px 0px no-repeat;
+    background-position: -242px 0;
+    content: '';
+}
+.icon_search_ho_so {
+    background-position: -158px 0;
+}
+.icon_raw{
+    background-position: -115px -49px;
+}
+.icon-vieclamquanly_before {
+    background-position: 0px -43px;
+}
+.icon-vieclamcm_before {
+    background-position: -41px -4px;
+}
+.icon-ldpt_before {
+    background-position: -80px -4px;
+}
+.icon-svbtime_before {
+    background-position: -120px -4px;
+}
+.icon-countdown {
+    background-position: -6px -5px;
+}
+.icon-money {
+    background-position: -31px -28px;
+}
+.icon-exp {
+    background-position: -57px -28px;
+}
+.icon-edu {
+    background-position: -129px -5px;
+}
+.icon-quantity {
+    background-position: -106px -28px;
+}
+.icon-career {
+    background-position: -84px -28px;
+}
+.icon-address {
+    background-position: -31px -5px;
+}
+.icon-position {
+    background-position: -57px -5px;
+}
+.icon-job-type {
+    background-position: -84px -5px;
+}
+.icon-gender {
+    background-position: -106px -5px;
+}
+.icon-age {
+    background-position: -6px -28px;
+}
+.icon-language {
+    background-position: -288px -96px;
+}
+.icon-computer {
+    background-position: -312px -96px;
+}
+.icon-relationship {
+    background-position: -336px -96px;
+}
+.icon-position-job {
+    background-position: 0 -120px;
+}
+.icon-position-24 {
+    background-position: -24px -120px;
+}
+.icon-job-want {
+    background-position: -48px -120px;
+}
+.icon-expensive {
+    background-position: -72px -120px;
+}
+.icon-level {
+    background-position: -96px -120px;
+}
+.icon-job-time {
+    background-position: -120px -120px;
+}
+.icon-price {
+    background-position: -144px -120px;
+}
+.icon-gender-24 {
+    background-position: -168px -120px;
+}
+.pagination > li.active .arrow-back {
+    background-position: -96px -73px;
+}
+.pagination > li.active .arrow-next {
+    background-position: -72px -73px;
+}
+.arrow-back {
+    background-position: -120px -73px;
+}
+.arrow-next {
+    background-position: -120px -48px;
+}
+.icon-star {
+    background-position: -3px -4px;
+}
+.btn:hover .icon-star,.btn.active .icon-star {
+    background-position: -84px -5px !important
+}
+.icon-share {
+    background-position: -31px -4px;
+}
+.icon-print {
+    background-position: -58px -4px;
+}
+.icon-canhbao {
+    background-position: -280px 0;
+}
+.icon_tag {
+    background-position: -312px -24px;
+}
+.icon-next-blue {
+    background-position: -144px -74px;
+}
+.icon-eye {
+    background-position: -120px 0;
+    top:7px;
+}
+.icon-eye.viewed {
+    background-position: -168px 74px;
+}
+.icon-eye.khong-duyet {
+    background-position: -192px -74px;
+}
+.icon-eye-small {
+    background-position: -264px -74px;
+    top:9px;
+}
+.icon-eye-small.viewed {
+    background-position: -288px -74px;
+}
+.icon-eye-small.khong-duyet {
+    background-position: -312px -74px;
+}
+.icon-eye-small-black {
+    background-position: -96px -192px;
+}
+.icon-clock-small-black {
+    background-position: -120px -192px;
+}
+.icon-attachment {
+    background-position: -144px -192px;
+}
+.icon-clock {
+    background-position: -240px -74px;
+}
+.icon-deadline {
+    background-position: -192px 0;
+}
+.icon-deadline.out-of-date {
+    background-position: -216px -74px;
+}
+.icon-delete {
+    background-position: -144px -48px;
+}
+.icon-users {
+    background-position: -336px -74px;
+}
+.icon-location {
+    background-position: -144px -96px;
+}
+.icon-address-blue {
+    background-position: -168px -96px;
+}
+.icon-users-blue {
+    background-position: -192px -96px;
+}
+.icon-phone {
+    background-position: -216px -96px;
+}
+.icon-website {
+    background-position: -240px -96px;
+}
+.icon-pencil {
+    background-position: -264px -96px;
+    top:-2px;
+}
+.icon-refresh {
+    background-position: -192px -120px;
+    top:-2px;
+}
+.icon-pencil-hover {
+    background-position: -24px -192px;
+}
+.icon-pencil-hover:hover {
+    background-position: -264px -120px;
+}
+.icon-delete-hover {
+    background-position: -144px -48px;
+}
+.icon-delete-hover:hover {
+    background-position: -0px -192px;
+}
+.icon-pink-plus {
+    background-position: -216px -120px;
+}
+.icon-user {
+    background-position: -40px 0;
+}
+.icon-settings {
+    background-position: -80px 0;
+}
+.icon-study {
+    background-position: -120px 0;
+}
+.icon-arrow-blue {
+    background-position: 0 -144px;
+}
+.icon-arrow-blue2 {
+    background-position: -24px -144px;
+}
+.icon-arrow-green {
+    background-position: -48px -144px;
+}
+.icon-arrow-orange {
+    background-position: -72px -144px;
+}
+.icon-kinhlup {
+    background-position: -160px 0;
+}
+.icon-user-header {
+    background-position: -96px -144px;
+}
+.icon-add-user-header {
+    background-position: -120px -144px;
+}
+.icon-message {
+    background-position: -168px -144px;
+}
+.icon-arrow1 {
+    background-position: -192px -144px;
+}
+.icon-arrow2 {
+    background-position: -216px -144px;
+}
+.icon-arrow3 {
+    background-position: -240px -144px;
+}
+.icon-arrow4 {
+    background-position: -264px -144px;
+}
+.icon-arrow5 {
+    background-position: -288px -144px;
+}
+.icon-arrow-up {
+    background-position: -336px -144px;
+}
+.icon-pencil-white {
+    background-position: -72px -192px;
+}
+.icon-users-small {
+    background-position: 0 -40px;
+}
+.icon-user-small {
+    background-position: -40px -40px;
+}
+.icon-settings-small {
+    background-position: -80px -40px;
+}
+.icon-study-small {
+    background-position: -120px -40px;
+}
+.icon-search-small {
+    background-position: -160px -40px;
+}
+.icon-arrow-grey-small {
+    background-position: -168px -192px;
+}
+.icon-arrow-blue-small {
+    background-position: -192px -192px;
+}
+.icon-arrow-green-small {
+    background-position: -216px -192px;
+}
+.icon-arrow-orange-small {
+    background-position: -240px -192px;
+}
+.icon-arrow-pink-small {
+    background-position: -264px -192px;
+}
+.icon-menu-magic{
+	background-position: -318px 0px;
+}
+.icon_message_error{
+    background-position: 0px -213px;
+}
+.box_shadow_bottom {
+  background: none !important;
+}
+.user-info .drop_filter_top::after{
+	background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+	background-position: -96px -48px;
+}
+.icon-one {
+    background:url("../images/icon-round-one_VLCM.png");
+}
+.icon-two {
+    background:url("../images/icon-round-two_VLCM.png");
+}
+.icon-three {
+    background:url("../images/icon-round-three_VLCM.png");
+}
+.icon-four {
+    background: url("../images/icon-round-four_VLCM.png");
+}
+.form-control:focus, textarea:focus {
+  border: 1px solid #027a81!important;
+}
+.btnluu:focus, .btnluu:hover{
+	background-color: #027a81;
+}
+.btn-add-action .text_pink:hover{
+	color: #ff6d00;
+}
+.hideshow .hidebox, .hideshow .shownguoithamkhao {
+  background: url('../images/show-box_VLCM.png') no-repeat;
+}
+.btnSavePass:hover, .btnSavePass:focus {
+  background-color: #de5b03;
+  color: #FFFFFF;
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus{
+  border: 1px solid #ff6d00;
+}
+.line_search.active{
+	  border-bottom: 3px solid #00999f;
+}
+.btnQLHS:hover, .btnQLHS:focus {
+  background-color: #027a81;
+  color: #FFFFFF;
+}
+.btnVLPH {
+  background-color: #ff6d00;
+}
+.btnVLPH:hover, .btnVLPH:focus {
+  background-color: #de5b03;
+}
+.drop_filter_top.jq-dropdown-open::after{
+    content: '';
+    background: url(../images/sprites_24_VLCM.png) no-repeat scroll left center transparent;
+    background-position: -240px -48px;
+}
+.btn-blue2-cong:hover, .btn-blue-cong:focus {
+  background: #3949ab;
+  color: #FFFFFF;
+}
+.line_head2{
+    border-left: 1px solid #017c83;
+}
+.tabs-menu_cv li.current {
+    border-top: 2px solid #00acc1;
+}
+
+.tabs-menu_cv .current a {
+    color: #00acc1 !important;
+}
