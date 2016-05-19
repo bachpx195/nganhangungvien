@@ -36,6 +36,7 @@
 	<div class="clearfix"></div>
 </div>
 
+@include('front.candidate.candidate_form_js')
 <!-- select2 -->
 <script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
 
