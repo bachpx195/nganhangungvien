@@ -1,35 +1,40 @@
 @extends('global')
 
-<title>@lang('messages.candidate.form')</title>
+<title>Tạo hồ sơ ứng viên</title>
 
 @section('content')
-
-<h3 class="page-title">@lang('messages.candidate.form')</h3>
-
-@if (count($errors) > 0)
-	<div class="alert alert-danger">
-		@lang('messages.form.global.error')<br>
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
-
-<form id="candidate" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}">
-
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" name="_init" value="1">
-	<input type="hidden" name="full_name" value="AB" />
-	<input type="hidden" name="email" value="ab@a.com" />
-
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-9">
-			<input type="submit" id="btn-save" class="btn btn-primary" value="@lang('messages.form.global.save')">
+<div class="content_dangky" id="frm-login-info">
+	<div class="">
+		<div class="w_50 floatLeft">
+			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
+			<span class="uppercase bold fs16 text-xanh-nuocbien">Tạo hồ sơ tìm việc từng bước</span>
 		</div>
 	</div>
-</form>
+
+	<div class="clearfix"></div>
+	<div class="mt8"></div>
+
+	<div class="block-content div-frm-hoso" id="frm-login-info">
+		<div class="mb8">
+			<div class="center-p12p24 ">
+				@include('front.candidate.genarel_information')
+
+				@include('front.candidate.experience_skill')
+				<div class="clearfix"></div>
+
+				@include('front.candidate.certificate')
+			</div>
+		</div>
+		@include('front.candidate.foreign_language')
+		<div class="clearfix"></div>
+	</div>
+
+	@include('front.candidate.information_technology')
+	<div class="clearfix"></div>
+
+	@include('front.candidate.skill_forte')
+	<div class="clearfix"></div>
+</div>
 
 <!-- select2 -->
 <script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
