@@ -28,7 +28,7 @@ class Candidate extends Model {
 
     public function expectJob()
     {
-        return $this->belongsTo('App\Model\Job', 'expect_job', 'id');
+        return $this->belongsTo('App\Model\Job', 'job', 'id');
     }
 
     public function expectSalary()
