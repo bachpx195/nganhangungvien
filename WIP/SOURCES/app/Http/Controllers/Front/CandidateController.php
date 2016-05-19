@@ -19,6 +19,8 @@ use App\Model\Candidate;
 
 class CandidateController extends Controller {
 
+    const DEFAULT_STATUS = 1;
+
     protected $candidateRepo;
     protected $experienceYearsRepo;
     protected $rankRepo;
@@ -107,6 +109,32 @@ class CandidateController extends Controller {
             $input = $request->all();
 
             $candidate = new Candidate;
+            $candidate->full_name = $input['full_name'];
+            $candidate->email = $input['email'];
+            //$candidate->birthday
+            //$candidate->sex
+            $candidate->phone_number = $input['phone_number'];
+            //$candidate->image
+            $candidate->province_id = $input['province_id'];
+            //$candidate->address = $input['address'];
+            //$candidate->cv_title = $input['cv_title'];
+            $candidate->level = $input['level'];
+            $candidate->experience_years = $input['experience_years'];
+            $candidate->current_rank = $input['current_rank'];
+            $candidate->expect_rank = $input['expect_rank'];
+
+            //TODO: change field name from expect_job to job
+            //$candidate->expect_job = $input['expect_job'];
+            //$candidate->expect_salary = $input['expect_salary'];
+            //$candidate->expect_address = $input['expect_address'];
+            //$candidate->exigency = $input['exigency'];
+            $candidate->job_goal = $input['job_goal'];
+
+            //TODO: GET candidate_code and insert to DB after that
+            //$candidate->skill_forte = $input['skill_forte'];
+            //$candidate->attach_cv = $input['attach_cv'];
+            $candidate->view_total = 0;
+            $candidate->status = self::DEFAULT_STATUS;
 
             $candidate->save();
 

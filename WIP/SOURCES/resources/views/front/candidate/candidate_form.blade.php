@@ -34,6 +34,7 @@
 
 	@include('front.candidate.skill_forte')
 	<div class="clearfix"></div>
+	@include('front.candidate.contact_person')
 </div>
 
 @include('front.candidate.candidate_form_js')
