@@ -214,10 +214,10 @@ return [
 		'ExcelHelper'     	=> 'App\Helpers\ExcelHelper',
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 		
+		//Bussiness
+		'CandidateHelper'   => 'App\Helpers\CandidateHelper',
+		
 		'Module' 			=> 'Pingpong\Modules\Facades\Module',
-		/* 'Trusty'      		=> 'Pingpong\Trusty\Facades\Trusty',
-		'Role'        		=> 'Pingpong\Trusty\Role',
-		'Permission'  		=> 'Pingpong\Trusty\Permission', */
 	],
 
 ];

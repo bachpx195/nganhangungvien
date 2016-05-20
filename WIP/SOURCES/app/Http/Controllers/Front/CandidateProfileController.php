@@ -13,7 +13,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
 
-class SearchController extends BaseController {
+class CandidateProfileController extends BaseController {
 	
 	/**
 	 * Index page
@@ -22,15 +22,9 @@ class SearchController extends BaseController {
 	 */
 	public function index(Request $request)
 	{
-		$params = $request->all();
-		
-		$pageSize = config('front.pageSize');
-		$candidates = $this->candidateRepo->search($params, $pageSize);
-		
 		$dropdownData = $this->dropdownData();
 		
 		return view('front/search/search_result')
-				->with('candidates', $candidates)
 				->with('dropdownData', $dropdownData);
 	}
 	

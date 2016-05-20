@@ -50,7 +50,11 @@ Route::group(['prefix' => ''], function()
 	Route::get('/', 'Front\HomeController@index');
 
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
-		'uses' => 'Front\SearchController@index'
+		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
+	]);
+	
+	Route::match(['get', 'post'], '/ho-so', [
+		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
 	]);
 });
 

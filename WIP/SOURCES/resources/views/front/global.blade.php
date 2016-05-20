@@ -65,7 +65,7 @@
 
 <body class="no_scroll page_on_load s21_home" id="s22_chi_tiet_ho_so">
     <div class="container-fluid nopadding">
-        @include('layout.header')
+        @include('front.layout.header')
 
         <div class="show-content w_100 box_right">
             <div id="cols-right" class="bg_grey">
@@ -73,7 +73,7 @@
                     @yield('content')
                 </div>
 
-                @include('layout.footer')
+                @include('front.layout.footer')
             </div>
         </div>
     </div>

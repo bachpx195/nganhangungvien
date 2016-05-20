@@ -10,74 +10,9 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1" data-select-class="nganh_nghe">
 						<option value="">Tất cả Ngành nghề</option>
-						<option value="30">Kế toán-Kiểm toán</option>
-						<option value="38">Hành chính-Văn phòng</option>
-						<option value="63">Bán hàng</option>
-						<option value="41">Xây dựng</option>
-						<option value="8">Điện-Điện tử</option>
-						<option value="4">Cơ khí-Chế tạo</option>
-						<option value="48">Làm bán thời gian</option>
-						<option value="43">Y tế-Dược</option>
-						<option value="26">Lao động phổ thông</option>
-						<option value="49">Báo chí-Truyền hình</option>
-						<option value="1">Bảo hiểm</option>
-						<option value="94">Bảo vệ</option>
-						<option value="79">Biên-Phiên dịch</option>
-						<option value="2">Bưu chính</option>
-						<option value="101">Chứng khoán- Vàng</option>
-						<option value="88">Công nghệ cao</option>
-						<option value="90">Công nghiệp</option>
-						<option value="6">Dầu khí-Hóa chất</option>
-						<option value="80">Đầu tư</option>
-						<option value="50">Dệt may - Da giày</option>
-						<option value="7">Dịch vụ</option>
-						<option value="54">Điện tử viễn thông</option>
-						<option value="9">Du lịch</option>
-						<option value="76">Game</option>
-						<option value="10">Giáo dục-Đào tạo</option>
-						<option value="85">Hàng gia dụng</option>
-						<option value="57">Hàng hải</option>
-						<option value="55">Hàng không</option>
-						<option value="87">Hoá học-Sinh học</option>
-						<option value="93">Hoạch định-Dự án</option>
-						<option value="12">In ấn-Xuất bản</option>
-						<option value="5">IT phần cứng/mạng</option>
-						<option value="74">IT phần mềm</option>
-						<option value="81">KD bất động sản</option>
-						<option value="84">Khách sạn-Nhà hàng</option>
-						<option value="15">Kiến trúc-TK nội thất</option>
-						<option value="16">Kỹ thuật</option>
-						<option value="61">Kỹ thuật ứng dụng</option>
-						<option value="53">Marketing-PR</option>
-						<option value="20">Mỹ phẩm-Trang sức</option>
-						<option value="22">Ngân hàng</option>
-						<option value="44">Ngành nghề khác</option>
-						<option value="62">Nghệ thuật - Điện ảnh</option>
-						<option value="78">Người giúp việc</option>
-						<option value="59">Nhân sự</option>
-						<option value="96">Nhân viên kinh doanh</option>
-						<option value="17">Nông-Lâm-Ngư nghiệp</option>
-						<option value="65">NV trông quán Internet</option>
-						<option value="89">Ô tô - Xe máy</option>
-						<option value="18">Pháp lý</option>
-						<option value="92">Promotion Girl &#40;PG&#41;</option>
-						<option value="28">Quan hệ đối ngoại</option>
-						<option value="14">Quản trị kinh doanh</option>
-						<option value="46">Sinh viên làm thêm</option>
-						<option value="34">Thực phẩm-Đồ uống</option>
-						<option value="75">Thiết kế đồ hoạ web</option>
-						<option value="32">Thiết kế-Mỹ thuật</option>
-						<option value="86">Thời trang</option>
-						<option value="33">Thủ công mỹ nghệ</option>
-						<option value="91">Thư ký-Trợ lý</option>
-						<option value="52">Thực tập</option>
-						<option value="77">Thương mại điện tử</option>
-						<option value="36">Tiếp thị-Quảng cáo</option>
-						<option value="83">Tổ chức sự kiện-Quà tặng</option>
-						<option value="37">Tư vấn</option>
-						<option value="39">Vận tải</option>
-						<option value="40">Vật tư-Thiết bị</option>
-						<option value="42">Xuất, nhập khẩu</option>
+						@foreach($dropdownData['occupations'] as $item)
+							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
@@ -88,75 +23,9 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1">
 						<option value="">Tất cả tỉnh thành</option>
-						<option value="1">TP. HCM</option>
-						<option value="2">Hà Nội</option>
-						<option value="9">Bình Dương</option>
-						<option value="19">Đồng Nai</option>
-						<option value="32">Bắc Ninh</option>
-						<option value="23">Đà Nẵng</option>
-						<option value="53">Bà Rịa - Vũng Tàu</option>
-						<option value="26">Hưng Yên</option>
-						<option value="27">Hải Dương</option>
-						<option value="52">An Giang</option>
-						<option value="91">Bắc Giang</option>
-						<option value="92">Bắc Kạn</option>
-						<option value="93">Bạc Liêu</option>
-						<option value="90">Bến Tre</option>
-						<option value="89">Bình Định</option>
-						<option value="88">Bình Phước</option>
-						<option value="87">Bình Thuận</option>
-						<option value="86">Cà Mau</option>
-						<option value="21">Cần Thơ</option>
-						<option value="85">Cao Bằng</option>
-						<option value="84">Cửu Long</option>
-						<option value="83">Đắc Lắc</option>
-						<option value="82">Đắc Nông</option>
-						<option value="81">Điện Biên</option>
-						<option value="80">Đồng Tháp</option>
-						<option value="79">Gia Lai</option>
-						<option value="78">Hà Giang</option>
-						<option value="77">Hà Nam</option>
-						<option value="76">Hà Tĩnh</option>
-						<option value="22">Hải Phòng</option>
-						<option value="75">Hậu Giang</option>
-						<option value="74">Hòa Bình</option>
-						<option value="73">Khánh Hòa</option>
-						<option value="72">Kiên Giang</option>
-						<option value="71">Kon Tum</option>
-						<option value="70">Lai Châu</option>
-						<option value="67">Lâm Đồng</option>
-						<option value="69">Lạng Sơn</option>
-						<option value="68">Lào Cai</option>
-						<option value="66">Long An</option>
-						<option value="96">Miền Bắc</option>
-						<option value="98">Miền Nam</option>
-						<option value="97">Miền Trung</option>
-						<option value="65">Nam Định</option>
-						<option value="64">Nghệ An</option>
-						<option value="63">Ninh Bình</option>
-						<option value="62">Ninh Thuận</option>
-						<option value="99">Nước ngoài</option>
-						<option value="61">Phú Thọ</option>
-						<option value="60">Phú Yên</option>
-						<option value="59">Quảng Bình</option>
-						<option value="58">Quảng Nam</option>
-						<option value="30">Quảng Ngãi</option>
-						<option value="57">Quảng Ninh</option>
-						<option value="56">Quảng Trị</option>
-						<option value="55">Sóc Trăng</option>
-						<option value="54">Sơn La</option>
-						<option value="51">Tây Ninh</option>
-						<option value="50">Thái Bình</option>
-						<option value="49">Thái Nguyên</option>
-						<option value="48">Thanh Hóa</option>
-						<option value="94">Thừa Thiên Huế</option>
-						<option value="47">Tiền Giang</option>
-						<option value="95">Toàn quốc</option>
-						<option value="46">Trà Vinh</option>
-						<option value="45">Tuyên Quang</option>
-						<option value="44">Vĩnh Long</option>
-						<option value="43">Vĩnh Phúc</option>
-						<option value="42">Yên Bái</option>
+						@foreach($dropdownData['provinces'] as $item)
+							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
@@ -171,51 +40,12 @@
 							<ul class="box_drop_mucluong nomargin">
 								<li>
 									<div class="modal-drop-mucluong font14">
+										@foreach($dropdownData['salaryGrades'] as $item)
 										<div class="demo-list pb_6">
-											<input value="1" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_1"> <label for="mul_1">Thỏa
-												thuận</label>
+											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1">
+											<label for="mul_1" class="font14">{{ $item['name'] }}</label>
 										</div>
-										<div class="demo-list pb_6">
-											<input value="2" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_2"> <label for="mul_2">1 - 3
-												triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="3" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_3"> <label for="mul_3">3 - 5
-												triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="4" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_4"> <label for="mul_4">5 - 7
-												triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="5" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_5"> <label for="mul_5">7 – 10
-												triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="6" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_6"> <label for="mul_6">10 –
-												15 triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="7" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_7"> <label for="mul_7">15 –
-												20 triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="8" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_8"> <label for="mul_8">20 –
-												30 triệu</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="9" tabindex="1" type="checkbox"
-												name="hdn_muc_luong[]" id="mul_9"> <label for="mul_9">Trên
-												30 triệu</label>
-										</div>
+										@endforeach
 									</div>
 								</li>
 								<li>
@@ -241,46 +71,13 @@
 							<ul class="box_drop_kinhnghiem nomargin">
 								<li>
 									<div class="modal-drop-mucluong font14">
+										@foreach($dropdownData['yearOfexps'] as $item)
 										<div class="demo-list pb_6">
-											<input value="8" tabindex="1" type="checkbox"
+											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox"
 												name="hdn_kinh_nghiem[]" id="kn_8"> <label for="kn_8"
-												class="font14">Chưa có kinh nghiệm</label>
+												class="font14">{{ $item['name'] }}</label>
 										</div>
-										<div class="demo-list pb_6">
-											<input value="1" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_1"> <label for="kn_1"
-												class="font14">Dưới 1 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="2" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_2"> <label for="kn_2"
-												class="font14">1 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="3" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_3"> <label for="kn_3"
-												class="font14">2 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="4" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_4"> <label for="kn_4"
-												class="font14">3 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="5" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_5"> <label for="kn_5"
-												class="font14">4 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="6" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_6"> <label for="kn_6"
-												class="font14">5 năm</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="7" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_7"> <label for="kn_7"
-												class="font14">Hơn 5 năm</label>
-										</div>
+										@endforeach
 									</div>
 								</li>
 								<li>
@@ -307,13 +104,9 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						data-diss="-1" tabindex="-1" data-select-class="trinh_do_ntd2">
 						<option value="">Tất cả Trình độ</option>
-						<option value="1">Trên đại học</option>
-						<option value="2">Đại học</option>
-						<option value="3">Cao đẳng</option>
-						<option value="4">Trung cấp</option>
-						<option value="7">Chứng chỉ nghề</option>
-						<option value="5">Trung học</option>
-						<option value="6">Không yêu cầu bằng cấp</option>
+						@foreach($dropdownData['degrees'] as $item)
+							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
@@ -342,43 +135,9 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1" data-select-class="ngoai_ngu_ntd2">
 						<option value="">Tất cả Ngoại ngữ</option>
-						<option value="EN-DE">Tiếng Anh – Tiếng Đức</option>
-						<option value="EN-RU">Tiếng Anh - Tiếng Nga</option>
-						<option value="EN-IT">Tiếng Anh – Tiếng Ý</option>
-						<option value="EN-ES">Tiếng Anh – Tiếng Tây Ban Nha</option>
-						<option value="EN">English - Tiếng Anh</option>
-						<option value="FR">French - Tiếng Pháp</option>
-						<option value="US">United States - Tiếng Anh Mỹ</option>
-						<option value="RU">Russian - Tiếng Nga</option>
-						<option value="CN">Chinese - Tiếng Trung</option>
-						<option value="KR">Korean - Tiếng Hàn</option>
-						<option value="JP">Japanese - Tiếng Nhật</option>
-						<option value="DE">German - Tiếng Đức</option>
-						<option value="SA">Arabic - Tiếng Ả Rập</option>
-						<option value="BJ">Bengalic - Tiếng Bengal</option>
-						<option value="BG">Bulgarian - Tiếng Bungary</option>
-						<option value="BF">Burmese - Tiếng Miến điện</option>
-						<option value="KH">Cambodian - Tiếng Campuchia</option>
-						<option value="CZ">Czech - Tiếng Séc</option>
-						<option value="DA">Danmark - Tiếng Đan mạch</option>
-						<option value="SX">Dutch - Tiếng Hà Lan</option>
-						<option value="FI">Finnish - Tiếng phần Lan</option>
-						<option value="GR">Greek - Tiếng Hy Lạp</option>
-						<option value="IN">Hindi - Tiếng Hinđi</option>
-						<option value="HU">Hungarian - Tiếng Hungary</option>
-						<option value="ID">Indonesian - Tiếng Inđônesia</option>
-						<option value="IT">Italian - Tiếng Ý</option>
-						<option value="LA">Laotian - Tiếng Lào</option>
-						<option value="MY">Malay - Tiếng Mã Lai</option>
-						<option value="NO">Norwegian - Tiếng Nauy</option>
-						<option value="PL">Polish - Tiếng Ba Lan</option>
-						<option value="PT">Portuguese - Tiếng Bồ Đào Nha</option>
-						<option value="RO">Romanian - Tiếng Ru ma ni</option>
-						<option value="ES">Spanish - Tiếng Tây Ban Nha</option>
-						<option value="TW">Taiwanese - Tiếng Đài Loan</option>
-						<option value="TR">Turkish - Tiếng Thổ Nhĩ Kỳ</option>
-						<option value="TH">Thai - Tiếng Thái</option>
-						<option value="UA">Ukrainian - Tiếng Ucraina</option>
+						@foreach($dropdownData['languages'] as $item)
+							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
