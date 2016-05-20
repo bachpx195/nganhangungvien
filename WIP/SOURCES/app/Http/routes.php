@@ -53,7 +53,7 @@ Route::group(['prefix' => ''], function()
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);
 	
-	Route::match(['get', 'post'], '/ho-so', [
+	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
 		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
 	]);
 });

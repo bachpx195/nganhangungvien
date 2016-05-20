@@ -8,6 +8,6 @@ class CandidateHelper{
 	public static function uri($candidate) {
 	
 		$slug = StringHelper::uri($candidate->cv_title);
-		return $slug . '-' . $candidate->id;
+		return $slug . '_' . $candidate->id;
 	}
 }
