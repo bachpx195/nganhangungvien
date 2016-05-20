@@ -21,7 +21,7 @@ class CandidateRepo implements ICandidateRepo {
      * @param $offset
      * @param $limit
      */
-    public function search($params) {
+    public function search($params, $pageSize = 10) {
         $query = Candidate::select();
 
         if(isset($params['title']) && $params['title']){
@@ -52,7 +52,7 @@ class CandidateRepo implements ICandidateRepo {
             $query = $query->where('sex', '=', $params['sex']);
         }
 
-        return $query->paginate();
+        return $query->paginate($pageSize);
 
     }
 

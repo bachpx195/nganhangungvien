@@ -43,7 +43,7 @@
 										<a
 										href="https://vieclam24h.vn/nha-tuyen-dung/quan-tri-kinh-doanh/nhan-vien-van-phong-c14p0id2252351.html"
 										class="text_grey"> {{ $item->full_name }} <i
-											class="text_pink display_inline">(Cập nhật: 19/05/2016)</i>
+											class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($item->updated_at)}})</i>
 									</a>
 									</span>
 								</div>
@@ -84,7 +84,7 @@
 				</div>
 
 				<div class="box_pagination_footer text-center">
-					{{$candidates->render()}}
+					{!! $candidates->render() !!}
 				</div>
 			</div>
 		</div>

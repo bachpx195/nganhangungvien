@@ -31,7 +31,8 @@ class SearchController extends Controller {
 	{
 		$params = $request->all();
 		
-		$candidates = $this->candidateRepo->search($params);
+		$pageSize = config('front.pageSize');
+		$candidates = $this->candidateRepo->search($params, $pageSize);
 		
 		return view('front/search/search_result')
 				->with('candidates', $candidates);

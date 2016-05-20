@@ -18,7 +18,7 @@ interface ICandidateRepo
      * @param $offset
      * @param $limit
      */
-    public function search($params);
+    public function search($params, $pageSize = 10);
 
     public function careerStatistic();
 
