@@ -7649,7 +7649,6 @@ input:focus{
 
 .box_filter_map{
     float:left;
-    width:62%;
     padding:15px 16px;
     border-left: 1px solid #eee;
 }
@@ -9532,8 +9531,9 @@ max-width:400px;
     color: #F77F00;
 }
 .container{
-    width: 578px !important;
-    padding: 0px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .ml-20{
     margin-left: -20px;
