@@ -19,4 +19,14 @@ interface ICandidateRepo
      * @param $limit
      */
     public function search($params);
+
+    public function careerStatistic();
+
+    public function experienceYearsStatistic();
+
+    public function levelsStatistic();
+
+    public function salariesStatistic();
+
+    public function provinceStatistic();
 }

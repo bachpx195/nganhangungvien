@@ -1,6 +1,7 @@
 <?php namespace App\Repositories;
 
 use App\Model\Candidate;
+use DB;
 
 class CandidateRepo implements ICandidateRepo {
 
@@ -53,5 +54,31 @@ class CandidateRepo implements ICandidateRepo {
 
         return $query->paginate();
 
+    }
+
+    public function careerStatistic() {
+        // Hiện tại chỉ dựa vào ngành nghề hiện tại, sau này có thể bổ sung thống kê theo ngành nghề liên quan
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM job j LEFT JOIN (SELECT job, COUNT(*) AS num_candidates FROM candidate GROUP BY job) c ON j.id = c.job ORDER BY num_candidates DESC") );
+        return $results;
+    }
+
+    public function experienceYearsStatistic() {
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM experience_years p LEFT JOIN (SELECT experience_years, COUNT(*) AS num_candidates FROM candidate GROUP BY experience_years) c ON p.id = c.experience_years ORDER BY id") );
+        return $results;
+    }
+
+    public function levelsStatistic() {
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM level p LEFT JOIN (SELECT level, COUNT(*) AS num_candidates FROM candidate GROUP BY level) c ON p.id = c.level ORDER BY id") );
+        return $results;
+    }
+
+    public function salariesStatistic() {
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM salary p LEFT JOIN (SELECT expect_salary, COUNT(*) AS num_candidates FROM candidate GROUP BY expect_salary) c ON p.id = c.expect_salary ORDER BY id") );
+        return $results;
+    }
+
+    public function provinceStatistic() {
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM province p LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate GROUP BY province_id) c ON p.id = c.province_id  ORDER BY num_candidates DESC") );
+        return $results;
     }
 }

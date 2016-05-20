@@ -10,8 +10,16 @@ use App\Model\Salary;
 use App\Model\Level;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
+use App\Repositories\ICandidateRepo;
 
 class HomeController extends Controller {
+
+	protected $candidateRepo;
+
+	public function __construct(ICandidateRepo $candidateRepo)
+	{
+		$this->candidateRepo = $candidateRepo;
+	}
 
 	/**
 	 * Index page
@@ -27,9 +35,16 @@ class HomeController extends Controller {
 		$dropdownData['degrees'] = Level::all();
 		$dropdownData['yearOfexps'] = ExperienceYears::all();
 		$dropdownData['languages'] = ForeignLanguage::all();
+
+		$tabsData = [];
+		$tabsData['careers'] = $this->candidateRepo->careerStatistic();
+		$tabsData['experienceYears'] = $this->candidateRepo->experienceYearsStatistic();
+		$tabsData['levels'] = $this->candidateRepo->levelsStatistic();
+		$tabsData['salaries'] = $this->candidateRepo->salariesStatistic();
+		$tabsData['provinces'] = $this->candidateRepo->provinceStatistic();
 		
 		return view('front/home/index')
-				->with('dropdownData', $dropdownData);
+				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData);
 	}
 	
 }
