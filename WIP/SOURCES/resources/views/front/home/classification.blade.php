@@ -31,7 +31,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['experienceYears'] as $index =>  $item)
-										<div class="listkn"><a href="{{ $item->id }}#" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
@@ -47,7 +47,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['levels'] as $index =>  $item)
-										<div class="listkn"><a href="{{ $item->id }}#" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
@@ -63,7 +63,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['salaries'] as $index =>  $item)
-										<div class="listkn"><a href="{{ $item->id }}#" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
