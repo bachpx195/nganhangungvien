@@ -1,6 +1,7 @@
 <div class="box-child-ths">
     <div class="head-box-child-ths">
-        <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" href="https://vieclam24h.vn/ntv-trang-tao-ho-so-tim-viec-lan-dau.html#coll_ntk" class="accordion">
+        <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" href="#coll_ntk"
+           class="accordion">
             <span class="uppercase bold text-tim-nhat">NGƯỜI THAM KHẢO</span>
             <span class="required_l_n">(không bắt buộc)</span>
             <span class="required_r"><i class="icn-main-menu icn-arr-down"></i></span>
@@ -20,18 +21,24 @@
                             Họ và tên <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <input type="text" class="form-control input-lg2 color-input inputTextNTK required" id="fullname_tk" name="thamkhao[c_ho_ten]" value="">
+                            <input type="text"
+                                   class="form-control input-lg2 color-input inputTextNTK required"
+                                   id="fullname_tk" name="thamkhao[c_ho_ten]" value=""/>
                         </div>
-                        <div id="error_c_ho_ten" class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_ho_ten"
+                             class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="form-group clearfix mb_16">
                         <label for="company_name_ntk" class="control-label-info bold txt-ghi fs14 w180">
                             Công ty/Tổ chức <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <input type="text" class="form-control input-lg2 color-input inputTextNTK required" id="company_name_ntk" name="thamkhao[c_cong_ty]" value="">
+                            <input type="text"
+                                   class="form-control input-lg2 color-input inputTextNTK required"
+                                   id="company_name_ntk" name="thamkhao[c_cong_ty]" value=""/>
                         </div>
-                        <div id="error_c_cong_ty" class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_cong_ty"
+                             class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
 
 
@@ -40,28 +47,38 @@
                             Số điện thoại <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <input type="text" class="form-control input-lg2 color-input inputTextNTK required" name="thamkhao[c_so_dien_thoai]" id="tel_ntk" value="">
+                            <input type="text"
+                                   class="form-control input-lg2 color-input inputTextNTK required"
+                                   name="thamkhao[c_so_dien_thoai]" id="tel_ntk" value=""/>
                         </div>
-                        <div id="error_c_so_dien_thoai" class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_so_dien_thoai"
+                             class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="form-group clearfix mb_16">
                         <label for="chucvu_ntk" class="control-label-info bold txt-ghi fs14 w180">
                             Chức vụ <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <input name="thamkhao[c_chuc_vu]" type="text" class="form-control input-lg2 color-input inputTextNTK required" id="chucvu_ntk" value="">
+                            <input name="thamkhao[c_chuc_vu]" type="text"
+                                   class="form-control input-lg2 color-input inputTextNTK required"
+                                   id="chucvu_ntk" value=""/>
                         </div>
-                        <div id="error_c_chuc_vu" class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_chuc_vu"
+                             class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
 
                     <div class="form-group mb1 input-phone">
                         <label class="control-label-info bold txt-ghi fs14 w180"></label>
                         <div class="fr-input-wd153">
                             <div class="fr-input-wd153 floatLeft">
-                                <button type="button" id="btnSaveThamKhao" class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Lưu</button>
+                                <button type="button" id="btnSaveThamKhao"
+                                        class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Lưu
+                                </button>
                             </div>
                             <div class="fr-input-wd153 floatLeft">
-                                <button type="reset" id="btnRegisterThamKhao" class="btn btnhuy w153 fwb uppercase fs16">Hủy</button>
+                                <button type="reset" id="btnRegisterThamKhao"
+                                        class="btn btnhuy w153 fwb uppercase fs16">Hủy
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -79,5 +96,6 @@
 
     <div class="box-ngonngu2"></div>
     <div class="footer-box-child-ths" id="addthamkhao2_new">
-        <a href="https://vieclam24h.vn/ntv-trang-tao-ho-so-tim-viec-lan-dau.html#"><i class="icn-main-menu icn-add-ths"></i>THÊM NGƯỜI THAM KHẢO </a>
-    </div><input type="hidden" id="nguoitk_status_id" value="0"></div>
+        <a href="#"><i class="icn-main-menu icn-add-ths"></i>THÊM NGƯỜI THAM KHẢO </a>
+    </div>
+    <input type="hidden" id="nguoitk_status_id" value="0"/></div>

@@ -33,7 +33,7 @@ class SearchController extends Controller {
 		
 		$candidates = $this->candidateRepo->search($params);
 		
-		return view('front/search/index')
+		return view('front/search/search_result')
 				->with('candidates', $candidates);
 	}
 	

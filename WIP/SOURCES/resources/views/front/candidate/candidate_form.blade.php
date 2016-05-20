@@ -34,8 +34,10 @@
 
 	@include('front.candidate.skill_forte')
 	<div class="clearfix"></div>
+	@include('front.candidate.contact_person')
 </div>
 
+@include('front.candidate.candidate_form_js')
 <!-- select2 -->
 <script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
 

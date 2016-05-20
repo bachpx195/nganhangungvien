@@ -1,77 +1,136 @@
 <div class="box-child-ths">
-    <form class="form-horizontal" id="frm-hoso">
+
+    <form id="frm-hoso" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}">
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_init" value="1">
         <!---Thoong tin dang ky -->
         <div class="block-pop-dangky">
             <div id="block-thong-tin-dang-nhap" class="mb_30 pt_6">
-
-                <input type="hidden" name="token-key" id="token-key" value="eb32d4a21613db81ebe5d45543153ace">
-                <input type="hidden" name="token-value" id="token-value" value="ce1ffdebdb3a660ccbf1401109aacfdf">
-                <input type="hidden" name="OpN5B3wNO3PEH8db" value="5c2c235638936b62d70648d3147a47a0">
-                <input type="hidden" id="c_trang_thai" name="hoso[c_trang_thai]" value="-2">
-                <input type="hidden" id="loai_ho_so" name="hoso[loai_ho_so]" value="daydu">
-                <input type="hidden" id="ten_file_dinh_kem" name="hoso[ten_file_dinh_kem]" value="">
-
                 <div class="head-box-child-ths">
                     <span class="uppercase bold text-tim-nhat">THÔNG TIN TỔNG QUAN</span>
                     <span class="required_l">(bắt buộc)</span>
                     <span class="required_r">(<label>*</label>)Thông tin bắt buộc nhập</span>
                 </div>
-
                 <div class="clearfix"></div>
-
                 <div class="row">
                     <div class="ln_hr_head"></div>
                 </div>
 
                 <div class="clearfix"></div>
                 <!-- input email -->
-
                 <div class="body-box-child-ths pb16 mt16">
+                    <div class="form-group clearfix mb_16">
+                        <label for="email" class="control-label-info bold txt-color-363636 fs14 w180">
+                            Email <span class="colorRed">*</span>
+                        </label>
+                        <div class="register_fr_input_wd583">
+                            <input type="text" class="form-control input-lg2 color-input" id="email"
+                                   name="email" placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com">
+                        </div>
+                        <div class="mess_notice_fullname clearfix italic error_email">Vui lòng nhập địa chỉ email đúng để NTD liên hệ được với bạn</div>
+                        <div class="mess_notice_fullname clearfix italic error_email display_none"  id="error_txt_email" ></div>
+                    </div>
+
+                    <!-- input Họ và Tên * -->
+                    <div class="form-group clearfix mb_16">
+                        <label for="full_name" class="control-label-info bold txt-color-363636 fs14 w180">
+                            Họ và Tên <span class="colorRed">*</span>
+                        </label>
+                        <div class="register_fr_input_wd583">
+                            <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name" placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B.">
+                        </div>
+                        <div class="mess_notice_fullname clearfix require_req_full_name err_full_name" id="error_full_name">Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu.</div>
+                    </div>
+
+                    <!-- input birthday -->
+                    <div class="form-group mb_16">
+                        <label for="birthday" class="control-label-info bold txt-color-363636 fs14 w180">
+                            Ngày sinh <span class="colorRed">*</span></label>
+                        <div class="register_fr_input_wd583 select_style31 city_select">
+                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <select id="birthday" name="birthday_day" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                    <option value="" selected="">Ngày</option>
+                                    <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>                                            </select>
+                            </div>
+                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <select id="thang_sinh" name="birthday_month" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                    <option value="" selected="">Tháng</option>
+                                    <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>                                            </select>
+                            </div>
+                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                <select id="nam_sinh" name="birthday_year" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                    <option value="" selected="">Năm</option>
+                                    <option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option>                                            </select>
+                            </div>
+                        </div>
+                        <div class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none" id="error_birth"></div>
+                    </div>
+
+                    <div class="form-group mb1 input-phone">
+                        <label for="phone_number" class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span></label>
+                        <div class="fr-input-wd333">
+                            <input type="text" class="form-control input-lg2 color-input" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168" />
+                        </div>
+                    </div>
 
                     <div class="form-group clearfix mt_8 mb0 ">
-                        <label for="c_tieu_de" class="control-label-info bold txt-ghi fs14 w180">
+                        <label for="c_tieu_de"
+                               class="control-label-info bold txt-ghi fs14 w180">
                             Vị trí mong muốn <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <input type="text" class="inputTextTop form-control input-lg2 color-input" id="c_tieu_de" name="hoso[c_tieu_de]" placeholder="Ví dụ: Nhân viên kinh doanh, Nhân viên hành chính ....">
+                            <input type="text"
+                                   class="inputTextTop form-control input-lg2 color-input"
+                                   id="c_tieu_de" name="hoso[c_tieu_de]"
+                                   placeholder="Ví dụ: Nhân viên kinh doanh, Nhân viên hành chính ....">
                         </div>
-                        <div id="error_c_tieu_de" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_tieu_de"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen2" class="control-label-info bold txt-ghi fs14 w180">Cấp bậc hiện tại <span class="colorRed">*</span></label>
+                        <label for="c_chuc_vu"
+                               class="control-label-info bold txt-ghi fs14 w180">Cấp
+                            bậc hiện tại <span class="colorRed">*</span></label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_chuc_vu_hien_tai"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn cấp bậc</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen1" tabindex="-1"></div><select id="c_chuc_vu_hien_tai" name="hoso[c_chuc_vu_hien_tai]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" tabindex="-1" data-diss="1" data-select-class="tinh_thanh_reg">
+                                <select id="c_chuc_vu_hien_tai"
+                                        name="current_rank"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        tabindex="-1" data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
                                     <option value="0">Chọn cấp bậc</option>
-                                    <option value="3">Quản lý cấp cao</option>
-                                    <option value="4">Quản lý cấp trung</option>
-                                    <option value="9">Quản lý nhóm - giám sát</option>
-                                    <option value="6">Chuyên gia</option>
-                                    <option value="7">Chuyên viên - Nhân viên</option>
-                                    <option value="13">Cộng tác viên</option>
+                                    @foreach($ranks as $index => $rank)
+                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_chuc_vu_hien_tai" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_chuc_vu_hien_tai"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen2" class="control-label-info bold txt-ghi fs14 w180">Cấp bậc mong muốn <span class="colorRed">*</span></label>
+                        <label for="c_chuc_vu"
+                               class="control-label-info bold txt-ghi fs14 w180">Cấp
+                            bậc mong muốn <span class="colorRed">*</span></label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_chuc_vu"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn cấp bậc</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2" tabindex="-1"></div><select id="c_chuc_vu" name="hoso[c_chuc_vu]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" tabindex="-1" data-diss="1" data-select-class="tinh_thanh_reg">
+                                <select id="c_chuc_vu"
+                                        name="expect_rank"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        tabindex="-1" data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
                                     <option value="0">Chọn cấp bậc</option>
-                                    <option value="3">Quản lý cấp cao</option>
-                                    <option value="4">Quản lý cấp trung</option>
-                                    <option value="9">Quản lý nhóm - giám sát</option>
-                                    <option value="6">Chuyên gia</option>
-                                    <option value="7">Chuyên viên - Nhân viên</option>
-                                    <option value="13">Cộng tác viên</option>
+                                    @foreach($ranks as $index => $rank)
+                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_chuc_vu" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_chuc_vu"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <!-- input Ngành nghề quan tâm -->
@@ -82,279 +141,168 @@
                         </label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe" id="s2id_fk_tinh"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Ngành nghề</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen3" tabindex="-1"></div><select id="fk_tinh" name="fk_tinh" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe select2-offscreen" tabindex="-1">
+                                <select id="fk_tinh" name="fk_tinh"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
+                                        tabindex="-1">
                                     <option value="0">Chọn Ngành nghề</option>
-                                    <option value="63">Bán hàng </option>
-                                    <option value="49">Báo chí-Truyền hình</option>
-                                    <option value="1">Bảo hiểm</option>
-                                    <option value="94">Bảo vệ</option>
-                                    <option value="79">Biên-Phiên dịch</option>
-                                    <option value="2">Bưu chính</option>
-                                    <option value="101">Chứng khoán- Vàng</option>
-                                    <option value="4">Cơ khí-Chế tạo</option>
-                                    <option value="88">Công nghệ cao</option>
-                                    <option value="90">Công nghiệp</option>
-                                    <option value="6">Dầu khí-Hóa chất</option>
-                                    <option value="80">Đầu tư</option>
-                                    <option value="50">Dệt may - Da giày</option>
-                                    <option value="7">Dịch vụ</option>
-                                    <option value="54">Điện tử viễn thông</option>
-                                    <option value="8">Điện-Điện tử</option>
-                                    <option value="9">Du lịch</option>
-                                    <option value="76">Game</option>
-                                    <option value="10">Giáo dục-Đào tạo</option>
-                                    <option value="85">Hàng gia dụng</option>
-                                    <option value="57">Hàng hải</option>
-                                    <option value="55">Hàng không</option>
-                                    <option value="38">Hành chính-Văn phòng</option>
-                                    <option value="87">Hoá học-Sinh học</option>
-                                    <option value="93">Hoạch định-Dự án</option>
-                                    <option value="12">In ấn-Xuất bản</option>
-                                    <option value="5">IT phần cứng/mạng</option>
-                                    <option value="74">IT phần mềm</option>
-                                    <option value="81">KD bất động sản</option>
-                                    <option value="30">Kế toán-Kiểm toán</option>
-                                    <option value="84">Khách sạn-Nhà hàng</option>
-                                    <option value="15">Kiến trúc-TK nội thất</option>
-                                    <option value="16">Kỹ thuật</option>
-                                    <option value="61">Kỹ thuật ứng dụng</option>
-                                    <option value="48">Làm bán thời gian</option>
-                                    <option value="26">Lao động phổ thông</option>
-                                    <option value="53">Marketing-PR</option>
-                                    <option value="20">Mỹ phẩm-Trang sức</option>
-                                    <option value="22">Ngân hàng</option>
-                                    <option value="44">Ngành nghề khác</option>
-                                    <option value="62">Nghệ thuật - Điện ảnh</option>
-                                    <option value="78">Người giúp việc</option>
-                                    <option value="59">Nhân sự</option>
-                                    <option value="96">Nhân viên kinh doanh</option>
-                                    <option value="17">Nông-Lâm-Ngư nghiệp</option>
-                                    <option value="65">NV trông quán Internet</option>
-                                    <option value="89">Ô tô - Xe máy</option>
-                                    <option value="18">Pháp lý</option>
-                                    <option value="92">Promotion Girl (PG)</option>
-                                    <option value="28">Quan hệ đối ngoại</option>
-                                    <option value="14">Quản trị kinh doanh</option>
-                                    <option value="46">Sinh viên làm thêm</option>
-                                    <option value="34">Thực phẩm-Đồ uống</option>
-                                    <option value="75">Thiết kế đồ hoạ web</option>
-                                    <option value="32">Thiết kế-Mỹ thuật</option>
-                                    <option value="86">Thời trang</option>
-                                    <option value="33">Thủ công mỹ nghệ</option>
-                                    <option value="91">Thư ký-Trợ lý</option>
-                                    <option value="52">Thực tập</option>
-                                    <option value="77">Thương mại điện tử</option>
-                                    <option value="36">Tiếp thị-Quảng cáo</option>
-                                    <option value="83">Tổ chức sự kiện-Quà tặng</option>
-                                    <option value="37">Tư vấn</option>
-                                    <option value="39">Vận tải</option>
-                                    <option value="40">Vật tư-Thiết bị</option>
-                                    <option value="41">Xây dựng</option>
-                                    <option value="42">Xuất, nhập khẩu</option>
-                                    <option value="43">Y tế-Dược</option>
+                                    @foreach($jobs as $index => $job)
+                                        <option value="{{$job->id}}">{{$job->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_nganhnghe" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group mb_2  list-nganh-nghe">
-                        <label class="control-label-info w180"></label>
-                        <div class="fr_ip_vtmm fs12 col-xs-8">
-                            <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                        </div>
+                        <div id="error_nganhnghe"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <!-- input Tỉnh/thành phố * -->
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen3" class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Địa điểm làm việc <span class="colorRed">*</span><span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span></label>
+                        <label for="province_id"
+                               class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Địa
+                            điểm làm việc <span class="colorRed">*</span><span
+                                    class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span></label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_tinh_thanh" id="s2id_fk_tinh"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Tỉnh thành</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen18" tabindex="-1"></div><select id="fk_tinh" name="fk_tinh" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_tinh_thanh select2-offscreen" tabindex="-1">
+                                <select id="fk_tinh" name="province_id"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_tinh_thanh"
+                                        tabindex="-1">
                                     <option value="0">Chọn Tỉnh thành</option>
-                                    <option value="1">TP. HCM</option>
-                                    <option value="2">Hà Nội</option>
-                                    <option value="9">Bình Dương</option>
-                                    <option value="19">Đồng Nai</option>
-                                    <option value="21">Cần Thơ</option>
-                                    <option value="22">Hải Phòng</option>
-                                    <option value="23">Đà Nẵng</option>
-                                    <option value="26">Hưng Yên</option>
-                                    <option value="27">Hải Dương</option>
-                                    <option value="30">Quảng Ngãi</option>
-                                    <option value="32">Bắc Ninh</option>
-                                    <option value="42">Yên Bái</option>
-                                    <option value="43">Vĩnh Phúc</option>
-                                    <option value="44">Vĩnh Long</option>
-                                    <option value="45">Tuyên Quang</option>
-                                    <option value="46">Trà Vinh</option>
-                                    <option value="47">Tiền Giang</option>
-                                    <option value="48">Thanh Hóa</option>
-                                    <option value="49">Thái Nguyên</option>
-                                    <option value="50">Thái Bình</option>
-                                    <option value="51">Tây Ninh</option>
-                                    <option value="52">An Giang</option>
-                                    <option value="53">Bà Rịa - Vũng Tàu</option>
-                                    <option value="54">Sơn La</option>
-                                    <option value="55">Sóc Trăng</option>
-                                    <option value="56">Quảng Trị</option>
-                                    <option value="57">Quảng Ninh</option>
-                                    <option value="58">Quảng Nam</option>
-                                    <option value="59">Quảng Bình</option>
-                                    <option value="60">Phú Yên</option>
-                                    <option value="61">Phú Thọ</option>
-                                    <option value="62">Ninh Thuận</option>
-                                    <option value="63">Ninh Bình</option>
-                                    <option value="64">Nghệ An</option>
-                                    <option value="65">Nam Định</option>
-                                    <option value="66">Long An</option>
-                                    <option value="67">Lâm Đồng</option>
-                                    <option value="68">Lào Cai</option>
-                                    <option value="69">Lạng Sơn</option>
-                                    <option value="70">Lai Châu</option>
-                                    <option value="71">Kon Tum</option>
-                                    <option value="72">Kiên Giang</option>
-                                    <option value="73">Khánh Hòa</option>
-                                    <option value="74">Hòa Bình</option>
-                                    <option value="75">Hậu Giang</option>
-                                    <option value="76">Hà Tĩnh</option>
-                                    <option value="77">Hà Nam</option>
-                                    <option value="78">Hà Giang</option>
-                                    <option value="79">Gia Lai</option>
-                                    <option value="80">Đồng Tháp</option>
-                                    <option value="81">Điện Biên</option>
-                                    <option value="82">Đắc Nông</option>
-                                    <option value="83">Đắc Lắc</option>
-                                    <option value="84">Cửu Long</option>
-                                    <option value="85">Cao Bằng</option>
-                                    <option value="86">Cà Mau</option>
-                                    <option value="87">Bình Thuận</option>
-                                    <option value="88">Bình Phước</option>
-                                    <option value="89">Bình Định</option>
-                                    <option value="90">Bến Tre</option>
-                                    <option value="91">Bắc Giang</option>
-                                    <option value="92">Bắc Kạn</option>
-                                    <option value="93">Bạc Liêu</option>
-                                    <option value="94">Thừa Thiên Huế</option>
-                                    <option value="95">Toàn quốc</option>
-                                    <option value="96">Miền Bắc</option>
-                                    <option value="97">Miền Trung</option>
-                                    <option value="98">Miền Nam</option>
-                                    <option value="99">Nước ngoài</option>
+                                    @foreach($provinces as $index => $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_fk_tinh" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
-                    </div>
-                    <div class="clearfix"></div>
-
-                    <div class="form-group mb_2  list-dia-diem">
-                        <label class="control-label-info w180"></label>
-                        <div class="fr_ip_vtmm fs12 col-xs-8">
-                            <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                        </div>
+                        <div id="error_fk_tinh"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group mt_8">
-                        <label for="s2id_autogen4" class="control-label-info bold txt-ghi fs14 w180">Trình độ học vấn cao nhất<span class="colorRed">*</span></label>
+                        <label for="level"
+                               class="control-label-info bold txt-ghi fs14 w180">Trình
+                            độ học vấn cao nhất<span
+                                    class="colorRed">*</span></label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_trinh_do_hv"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Trình độ học vấn cao nhất</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen4" tabindex="-1"></div><select id="c_trinh_do_hv" name="hoso[c_trinh_do]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" tabindex="-1" data-diss="1" data-select-class="tinh_thanh_reg">
-                                    <option value="0" selected="">Chọn Trình độ học vấn cao nhất</option>
-                                    <option value="1">Trên đại học</option>
-                                    <option value="2">Đại học</option>
-                                    <option value="3">Cao đẳng</option>
-                                    <option value="4">Trung cấp</option>
-                                    <option value="7">Chứng chỉ nghề</option>
-                                    <option value="5">Trung học</option>
-                                    <option value="6">Không yêu cầu bằng cấp</option>
+                                <select id="c_trinh_do_hv" name="level"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        tabindex="-1" data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
+                                    <option value="0" selected>Chọn Trình độ học vấn
+                                        cao nhất
+                                    </option>
+                                    @foreach($levels as $index => $level)
+                                        <option value="{{$level->id}}">{{$level->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_trinh_do_hv" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_trinh_do_hv"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen2" class="control-label-info bold txt-ghi fs14 w180">Tổng số năm kinh nghiệm <span class="colorRed">*</span></label>
+                        <label for="c_chuc_vu"
+                               class="control-label-info bold txt-ghi fs14 w180">Tổng
+                            số năm kinh nghiệm <span
+                                    class="colorRed">*</span></label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_so_nam_kinh_nghiem"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Kinh nghiệm</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen5" tabindex="-1"></div><select id="c_so_nam_kinh_nghiem" name="hoso[c_so_nam_kinh_nghiem]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" tabindex="-1" data-diss="1" data-select-class="tinh_thanh_reg">
+                                <select id="c_so_nam_kinh_nghiem"
+                                        name="experience_years"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        tabindex="-1" data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
                                     <option value="0">Chọn Kinh nghiệm</option>
-                                    <option value="8">Chưa có kinh nghiệm</option>
-                                    <option value="1">Dưới 1 năm</option>
-                                    <option value="2">1 năm</option>
-                                    <option value="3">2 năm</option>
-                                    <option value="4">3 năm</option>
-                                    <option value="5">4 năm</option>
-                                    <option value="6">5 năm</option>
-                                    <option value="7">Hơn 5 năm</option>
+                                    @foreach($experienceYears as $index => $experienceYear)
+                                        <option value="{{$experienceYear->id}}">{{$experienceYear->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_so_nam_kinh_nghiem" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_so_nam_kinh_nghiem"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
 
                     <!-- input Hình thức làm việc -->
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen6" class="control-label-info bold txt-ghi fs14 w180">
+                        <label for="employment_status"
+                               class="control-label-info bold txt-ghi fs14 w180">
                             Hình thức làm việc <span class="colorRed">*</span>
                         </label>
 
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_thoi_gian_lam_viec"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Hình thức làm việc</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen6"></div><select id="c_thoi_gian_lam_viec" name="hoso[c_thoi_gian_lam_viec]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" data-diss="1" data-select-class="tinh_thanh_reg" tabindex="-1">
+                                <select id="c_thoi_gian_lam_viec"
+                                        name="employment_status"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
                                     <option value="">Chọn Hình thức làm việc</option>
-                                    <option value="1">Toàn thời gian cố định</option>
-                                    <option value="2">Toàn thời gian tạm thời</option>
-                                    <option value="3">Bán thời gian cố định</option>
-                                    <option value="4">Bán thời gian tạm thời</option>
-                                    <option value="5">Theo hợp đồng tư vấn</option>
-                                    <option value="6">Thực tập</option>
-                                    <option value="7">Khác</option>
+                                    @foreach($employmentStatuses as $index => $employmentStatus)
+                                        <option value="{{$employmentStatus->id}}">{{$employmentStatus->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_thoi_gian_lam_viec" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_thoi_gian_lam_viec"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
                     <!-- input Mức lương mong muốn -->
 
                     <div class="form-group mt_16">
-                        <label for="s2id_autogen7" class="control-label-info bold txt-ghi fs14 w180">
+                        <label for="c_muc_luong"
+                               class="control-label-info bold txt-ghi fs14 w180">
                             Mức lương mong muốn <span class="colorRed">*</span>
                         </label>
 
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <div class="select2-container reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2" id="s2id_c_muc_luong"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Chọn Mức lương</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen7"></div><select id="c_muc_luong" name="hoso[c_muc_luong]" class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2 select2-offscreen" data-diss="1" data-select-class="tinh_thanh_reg" tabindex="-1">
+                                <select id="c_muc_luong" name="hoso[c_muc_luong]"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
+                                        data-disS="1"
+                                        data-select-class="tinh_thanh_reg">
                                     <option value="">Chọn Mức lương</option>
-                                    <option value="1">Thỏa thuận</option>
-                                    <option value="2">1 - 3 triệu</option>
-                                    <option value="3">3 - 5 triệu</option>
-                                    <option value="4">5 - 7 triệu</option>
-                                    <option value="5">7 – 10 triệu</option>
-                                    <option value="6">10 – 15 triệu</option>
-                                    <option value="7">15 – 20 triệu</option>
-                                    <option value="8">20 – 30 triệu</option>
-                                    <option value="9">Trên 30 triệu</option>
+                                    @foreach($salaries as $index => $salary)
+                                        <option value="{{$salary->id}}">{{$salary->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="error_c_muc_luong" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_muc_luong"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
 
                     <!-- input Mức lương mong muốn -->
                     <div class="form-group mt_16">
-                        <label for="c_muc_tieu_nghe_nghiep" class="control-label-info bold txt-ghi fs14 w180">
+                        <label for="job_goal"
+                               class="control-label-info bold txt-ghi fs14 w180">
                             Mục tiêu nghề nghiệp <span class="colorRed">*</span>
                         </label>
                         <div class="fr_ip_vtmm col-xs-8">
-                            <textarea name="hoso[c_muc_tieu_nghe_nghiep]" id="c_muc_tieu_nghe_nghiep" placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới" class="inputTxtAreaTop form-control" rows="5"></textarea>
+                            <textarea name="job_goal"
+                                      id="c_muc_tieu_nghe_nghiep"
+                                      placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
+                                      class="inputTxtAreaTop form-control"
+                                      rows="5"></textarea>
                         </div>
-                        <div id="error_c_muc_tieu_nghe_nghiep" class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                        <div id="error_c_muc_tieu_nghe_nghiep"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>
+
+                    <div class="form-group mb1 input-phone">
+                        <label class="control-label-info bold txt-ghi fs14 w180"></label>
+                        <div class="fr-input-wd153">
+                            <div class="fr-input-wd153 floatLeft">
+                                <button type="submit" class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">
+                                    Lưu
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>

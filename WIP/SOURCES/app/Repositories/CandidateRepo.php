@@ -29,7 +29,7 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['occupation']) && $params['occupation']){
-            $query = $query->where('expect_job', '=', $params['occupation']);
+            $query = $query->where('job', '=', $params['occupation']);
         }
 
         if(isset($params['province']) && $params['province']){

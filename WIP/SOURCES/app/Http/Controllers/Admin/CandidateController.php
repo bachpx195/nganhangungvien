@@ -11,14 +11,33 @@ use App\Model\Candidate;
 class CandidateController extends Controller {
 
     protected $candidateRepo;
-    protected $roleRepo;
+    protected $experienceYearsRepo;
+    protected $rankRepo;
+    protected $jobRepo;
+    protected $exigencyRepo;
+    protected $salaryRepo;
+    protected $provinceRepo;
+    protected $levelRepo;
+    protected $foreignLanguageRepo;
+    protected $employmentStatusRepo;
 
     /**
      * CandidateController constructor.
      *
      * @param ICandidateRepo $candidateRepo
      */
-    public function __construct(ICandidateRepo $candidateRepo) {
+    public function __construct(
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $experienceYearsRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo,
+        ICandidateRepo $candidateRepo) {
 
         $this->candidateRepo = $candidateRepo;
     }
