@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\DateTimeHelper;
 use App\Http\Controllers\Controller;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
@@ -12,14 +13,18 @@ use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IRankRepo;
 use App\Repositories\ISalaryRepo;
+use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
+use Validator;
+use DateTime;
 
 class CandidateController extends Controller {
 
     const DEFAULT_STATUS = 1;
+    const PREFIX_CANDIDATE_CODE = 'NTV';
 
     protected $candidateRepo;
     protected $experienceYearsRepo;
@@ -31,6 +36,7 @@ class CandidateController extends Controller {
     protected $levelRepo;
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
+    protected $registrar;
 
     /**
      * CandidateController constructor.
@@ -45,7 +51,7 @@ class CandidateController extends Controller {
      * @param ILevelRepo $levelRepo
      * @param IForeignLanguageRepo $foreignLanguageRepo
      * @param IEmploymentStatusRepo $employmentStatusRepo
-     * @param ICandidateRepo $candidateRepo
+     * @param Registrar $registrar
      */
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -57,9 +63,10 @@ class CandidateController extends Controller {
         IProvinceRepo $provinceRepo,
         ILevelRepo $levelRepo,
         IForeignLanguageRepo $foreignLanguageRepo,
-        IEmploymentStatusRepo $employmentStatusRepo
+        IEmploymentStatusRepo $employmentStatusRepo,
+        Registrar $registrar
     ) {
-
+        $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
         $this->experienceYearsRepo = $experienceYearsRepo;
         $this->rankRepo = $rankRepo;
@@ -108,35 +115,20 @@ class CandidateController extends Controller {
             // get form input data
             $input = $request->all();
 
+            $validator = $this->validateGeneralInformation($request->all());
+
+            if ($validator->fails()) {
+                //return redirect(route('candidate.form'))->withErrors($validator, 'general_info');
+            }
+
             $candidate = new Candidate;
-            $candidate->full_name = $input['full_name'];
-            $candidate->email = $input['email'];
-            //$candidate->birthday
-            //$candidate->sex
-            $candidate->phone_number = $input['phone_number'];
-            //$candidate->image
-            $candidate->province_id = $input['province_id'];
-            //$candidate->address = $input['address'];
-            //$candidate->cv_title = $input['cv_title'];
-            $candidate->level = $input['level'];
-            $candidate->experience_years = $input['experience_years'];
-            $candidate->current_rank = $input['current_rank'];
-            $candidate->expect_rank = $input['expect_rank'];
-
-            //TODO: change field name from expect_job to job
-            //$candidate->expect_job = $input['expect_job'];
-            //$candidate->expect_salary = $input['expect_salary'];
-            //$candidate->expect_address = $input['expect_address'];
-            //$candidate->exigency = $input['exigency'];
-            $candidate->job_goal = $input['job_goal'];
-
-            //TODO: GET candidate_code and insert to DB after that
-            //$candidate->skill_forte = $input['skill_forte'];
-            //$candidate->attach_cv = $input['attach_cv'];
-            $candidate->view_total = 0;
-            $candidate->status = self::DEFAULT_STATUS;
+            $candidate = $this->getGeneralInfoByInput($candidate, $input);
 
             $candidate->save();
+            if ($candidate->id) {
+                $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
+                $candidate->save();
+            }
 
             return redirect(route('candidate.form'));
         }
@@ -161,5 +153,68 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * @param $candidate
+     * @param $input
+     * @return mixed
+     */
+    private function getGeneralInfoByInput($candidate, $input)
+    {
+        $candidate->full_name = $input['full_name'];
+        $candidate->email = $input['email'];
+
+        $birthdayYear = $input['birthday_year'];
+        $birthdayMonth = $input['birthday_month'];
+        $birthdayDay = $input['birthday_day'];
+
+        $date = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
+        $candidate->birthday = $date;
+        //$candidate->birthday = DateTimeHelper::formatDate($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
+
+        //$candidate->sex
+        $candidate->phone_number = $input['phone_number'];
+        //$candidate->image
+        $candidate->province_id = $input['province_id'];
+        //$candidate->address = $input['address'];
+        $candidate->cv_title = $input['cv_title'];
+        $candidate->level = $input['level'];
+        $candidate->experience_years = $input['experience_years'];
+        $candidate->current_rank = $input['current_rank'];
+        $candidate->expect_rank = $input['expect_rank'];
+
+        $candidate->job = $input['job'];
+        $candidate->expect_salary = $input['expect_salary'];
+        $candidate->expect_address = $input['expect_address'];
+        $candidate->exigency = $input['exigency'];
+        $candidate->job_goal = $input['job_goal'];
+
+        $candidate->view_total = 0;
+        $candidate->status = self::DEFAULT_STATUS;
+
+        return $candidate;
+    }
+
+    private function validateGeneralInformation($data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|email',
+            'full_name' => 'required',
+            'birthday' => 'required',
+            'sex' => 'required',
+            'phone_number' => 'required',
+            //'image' => 'required',
+            'province_id' => 'required',
+            'current_rank' => 'required',
+            'expect_rank' => 'required',
+            'job' => 'required',
+            'address' => 'required',
+            'level' => 'required',
+            'experience_years' => 'required',
+            'employment_status' => 'required',
+            'expect_salary' => 'required',
+            'job_goal' => 'required'
+        ]);
     }
 }

@@ -17,7 +17,7 @@
 	<div class="block-content div-frm-hoso" id="frm-login-info">
 		<div class="mb8">
 			<div class="center-p12p24 ">
-				@include('front.candidate.genarel_information')
+				@include('front.candidate.general_information')
 
 				@include('front.candidate.experience_skill')
 				<div class="clearfix"></div>

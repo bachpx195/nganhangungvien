@@ -21,6 +21,19 @@
                 <!-- input email -->
                 <div class="body-box-child-ths pb16 mt16">
                     <div class="form-group clearfix mb_16">
+                        <label for="cv_title" class="control-label-info bold txt-color-363636 fs14 w180">
+                            Tiêu đề hồ sơ <span class="colorRed">*</span>
+                        </label>
+                        <div class="register_fr_input_wd583">
+                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
+                                   name="cv_title" placeholder="Ví dụ: Nhân viên chăm sóc khách hàng - vận hành game">
+                        </div>
+                        <div class="mess_notice_fullname clearfix italic error_email">Vui lòng nhập tiêu đề hồ sơ đúng để NTD liên hệ được với bạn</div>
+                        <div class="mess_notice_fullname clearfix italic error_email display_none"  id="error_txt_email" ></div>
+                    </div>
+
+
+                    <div class="form-group clearfix mb_16">
                         <label for="email" class="control-label-info bold txt-color-363636 fs14 w180">
                             Email <span class="colorRed">*</span>
                         </label>
@@ -74,20 +87,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group clearfix mt_8 mb0 ">
-                        <label for="c_tieu_de"
-                               class="control-label-info bold txt-ghi fs14 w180">
-                            Vị trí mong muốn <span class="colorRed">*</span>
-                        </label>
-                        <div class="fr_ip_vtmm col-xs-8">
-                            <input type="text"
-                                   class="inputTextTop form-control input-lg2 color-input"
-                                   id="c_tieu_de" name="hoso[c_tieu_de]"
-                                   placeholder="Ví dụ: Nhân viên kinh doanh, Nhân viên hành chính ....">
-                        </div>
-                        <div id="error_c_tieu_de"
-                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
-                    </div>
                     <div class="clearfix"></div>
                     <div class="form-group mt_16">
                         <label for="c_chuc_vu"
@@ -141,7 +140,7 @@
                         </label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <select id="fk_tinh" name="fk_tinh"
+                                <select id="fk_tinh" name="job"
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
                                         tabindex="-1">
                                     <option value="0">Chọn Ngành nghề</option>
@@ -164,7 +163,7 @@
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                 <select id="fk_tinh" name="province_id"
-                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_tinh_thanh"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
                                         tabindex="-1">
                                     <option value="0">Chọn Tỉnh thành</option>
                                     @foreach($provinces as $index => $province)
@@ -252,14 +251,14 @@
                     <!-- input Mức lương mong muốn -->
 
                     <div class="form-group mt_16">
-                        <label for="c_muc_luong"
+                        <label for="expect_salary"
                                class="control-label-info bold txt-ghi fs14 w180">
                             Mức lương mong muốn <span class="colorRed">*</span>
                         </label>
 
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <select id="c_muc_luong" name="hoso[c_muc_luong]"
+                                <select id="c_muc_luong" name="expect_salary"
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         data-disS="1"
                                         data-select-class="tinh_thanh_reg">
@@ -271,6 +270,50 @@
                             </div>
                         </div>
                         <div id="error_c_muc_luong"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                    </div>
+
+                    <!-- input Tỉnh/thành phố * -->
+                    <div class="form-group mt_16">
+                        <label for="expect_address"
+                               class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Địa
+                            điểm mong muốn <span class="colorRed">*</span><span
+                                    class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
+                        <div class="fr-input-wd333 select_style31 city_select">
+                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                                <select id="fk_tinh" name="expect_address"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
+                                        tabindex="-1">
+                                    <option value="0">Chọn địa điểm</option>
+                                    @foreach($provinces as $index => $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div id="error_fk_tinh"
+                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!-- input Tỉnh/thành phố * -->
+                    <div class="form-group mt_16">
+                        <label for="exigency"
+                               class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Nhu cầu công việc <span class="colorRed">*</span><span
+                                    class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
+                        <div class="fr-input-wd333 select_style31 city_select">
+                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                                <select id="fk_tinh" name="exigency"
+                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
+                                        tabindex="-1">
+                                    <option value="0">Chọn nhu cầu làm việc</option>
+                                    @foreach($exigencies as $index => $exigency)
+                                        <option value="{{$exigency->id}}">{{$exigency->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div id="error_fk_tinh"
                              class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
                     <div class="clearfix"></div>

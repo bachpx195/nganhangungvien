@@ -63,7 +63,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
 </head>
 
-<body class="no_scroll page_on_load s21_home" id="s22_chi_tiet_ho_so">
+<body class="page_on_load s21_home" id="s22_chi_tiet_ho_so">
     <div class="container-fluid nopadding">
         @include('front.layout.header')
 
