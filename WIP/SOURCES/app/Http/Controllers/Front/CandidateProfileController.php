@@ -3,15 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Model\Province;
-use App\Model\Job;
-use App\Model\Salary;
-use App\Model\Level;
-use App\Model\ExperienceYears;
-use App\Model\ForeignLanguage;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Repositories\ICandidateRepo;
 
 class CandidateProfileController extends BaseController {
 	
@@ -24,7 +17,7 @@ class CandidateProfileController extends BaseController {
 	{
 		$dropdownData = $this->dropdownData();
 		
-		return view('front/search/search_result')
+		return view('front/profile/candidate')
 				->with('dropdownData', $dropdownData);
 	}
 	
