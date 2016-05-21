@@ -71,7 +71,7 @@
 
         <div class="show-content w_100 box_right">
             <div id="cols-right" class="bg_grey">
-                <div class="content_cols-right pt_16 pl_24 pb_24">
+                <div class="content_cols pt_16 pb_24">
                     @yield('content')
                 </div>
 

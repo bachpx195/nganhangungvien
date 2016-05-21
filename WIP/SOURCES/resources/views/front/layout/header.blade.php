@@ -10,7 +10,7 @@
 				</div>
 			</div>
 
-			<div class="menu_cong_header floatRight pos_absolute">
+			<div class="menu_cong_header floatRight">
 				<a class="bt_head_cong floatLeft active" href="#" data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_menu icn_cong_head_ntd mt_10"></div>
 					<div class="title_cong_menu w_100">Dành cho Nhà tuyển dụng</div>

@@ -146,6 +146,13 @@ div.section{
     min-width: 732px;*/
     padding-right: 25px;
 }
+
+.content_cols{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .header{
     z-index: 210;
     padding-right: 38px;
@@ -160,8 +167,8 @@ div.section{
     padding-right: 10px;
 }
 .box_header{
-    max-width: 1156px;
-    min-width: 728px;
+    /*max-width: 1156px;
+    min-width: 728px;*/
 }
 .col_head1{
     min-width: 177px;
@@ -364,7 +371,7 @@ div.section{
     left: 180px;
 }
 .btn-nobg {
-    color: #3f51b5;
+    color: #00549F;
     background-color: transparent;
 }
 .btn-nobg:hover {
@@ -792,7 +799,7 @@ select.select-style {
     padding: 18px 16px;
     background: url(../images/bg_tab_sprites.png) repeat top transparent;
     background-position: 0px -50px;
-    color: #63248c;
+    color: #00549F;
     height: 50px;
     z-index: 100;
     padding-left: 30px;
@@ -1003,7 +1010,7 @@ select.select-style {
 }
 
 .btn_more_list:hover{
-    color: #63228a!important;
+    color: #00549F!important;
 }
 .btn_more_list:active{
     background: #eeeeee;
@@ -1018,7 +1025,7 @@ select.select-style {
     overflow: hidden;
     font-weight: 700;
     font-size: 18px;
-    border-left: 5px solid #3f51b5;
+    border-left: 5px solid #00549F;
     padding: 0 10px;
     line-height: 29px;
     margin-bottom: 10px;
@@ -1847,7 +1854,7 @@ ul.request-line {
     margin-top: 10px;
 }
 .text-tim-nhat {
-    color: #3f51b5;
+    color: #00549F;
     text-transform: uppercase;
     font-size: 16px;
 }
@@ -2045,8 +2052,8 @@ ul.request-line {
 }
 .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan {
     color: #fff;
-    background-color: #3f51b5;
-    border-color: #3f51b5;
+    background-color: #00549F;
+    border-color: #00549F;
     padding: 9px 16px;
     margin-right: 4px;
     margin-top: 4px;
@@ -2055,7 +2062,7 @@ ul.request-line {
     max-width: 400px!important;
 }
 .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:hover, .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:focus {
-    background-color: #005192;
+    background-color: #006192;
     color: #fff;
 }
 .box_alert_content_dangkytuvan .col_list_left{
@@ -4677,12 +4684,12 @@ table {
     text-decoration:none!important;
 }
 .btn-blue:hover,.btn-blue:focus {
-    background:#521a74;
+    background:#00649F;
     color:#FFFFFF;
     text-decoration:none!important;
 }
 .btn-blue:active {
-    background:#3d0d5a;
+    background:#00649F;
     color:#FFFFFF;
     text-decoration:none!important;
 }
@@ -7220,8 +7227,8 @@ input:focus{
     border-color: #00549F!important;
 }
 #s22_chi_tiet_ho_so .btn-ntv-dky-tuvan:hover{
-    background:#521a74;
-    border-color: #521a74!important;
+    background:#00649F;
+    border-color: #00649F!important;
 }
 #s22_chi_tiet_ho_so .btn-ntv-dky-tuvan:active{
     background:#3d0d5a;
@@ -7386,7 +7393,7 @@ input:focus{
 
 #s22_chi_tiet_ho_so .col_msg_left{
     float:left;
-    width:74%;
+    width:100%;
     text-align:left;
 }
 
@@ -9296,11 +9303,11 @@ padding-right:0 !important;
 }
 .icn_cong_head_quanly {
     background-position: 0px 0px;
-    margin-left:8px;
+    margin-left:35px;
 }
 .icn_cong_head_chuyenmon {
     background-position: -24px 0px;
-    margin-left:24px;
+    margin-left:32px;
 }
 .icn_cong_head_phothong {
     background-position: -48px 0px;
@@ -9312,7 +9319,7 @@ padding-right:0 !important;
 }
 .icn_cong_head_ntd {
     background-position: -96px 0px;
-    margin-left:28px;
+    margin-left:55px;
 }
 .col_head2 {
     min-width: 120px;
