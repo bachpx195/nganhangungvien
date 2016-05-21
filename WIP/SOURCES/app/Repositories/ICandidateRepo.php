@@ -29,4 +29,14 @@ interface ICandidateRepo
     public function salariesStatistic();
 
     public function provinceStatistic();
+
+    public function candidateStatistic();
+
+    public function bestViewStatistic();
+
+    public function countAllStatistic();
+
+    public function countNewStatistic();
+
+    public function countRecentStatistic();
 }
