@@ -61,7 +61,7 @@
 				</span>
 			</button>
 			<button class="btn btn-white mr_8 pull-left no-shadow"
-				onclick="javascript: print_preview('https://vieclam24h.vn/trang-in-ho-so/nhan-vien-trade-marketing-id3193240.html','width=900,height=900,scrollbars=yes');">
+				onclick="">
 				<span class="line-icon"> <i class="icon-print icon_free_style"></i>
 					<span class="pl_28 fwb">In Hồ sơ</span>
 				</span>
