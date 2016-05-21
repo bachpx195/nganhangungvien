@@ -235,6 +235,7 @@
                                 <!-- end block message -->
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
