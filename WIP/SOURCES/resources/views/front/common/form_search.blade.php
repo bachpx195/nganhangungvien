@@ -1,4 +1,4 @@
-<form method="get" action="/tim-kiem-ung-vien-nhanh/"
+<form method="get" action="/tim-kiem-ung-vien/"
 	id="search_box_full" class="frm_search_box_full">
 	<div class="box_filter_content w_100 ">
 		<div class="filter_content_line1 border_bt pos_relative">
@@ -6,7 +6,7 @@
 				<div id="sl-nganhnghe1"
 					class="filter_box font14 style-flat w_100 box_nganhnghe_s">
 					<i class="icon_select_box icon_listbox icon_24 icon-24"></i> <select
-						name="hdn_nganh_nghe_cap1"
+						name="occupation"
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1" data-select-class="nganh_nghe">
 						<option value="">Tất cả Ngành nghề</option>
@@ -19,7 +19,7 @@
 			<div class="col-xs-3 border_r pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i class="icon_select_box icon_locabox icon_24 icon-24"></i> <select
-						name="hdn_dia_diem"
+						name="province"
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1">
 						<option value="">Tất cả tỉnh thành</option>
@@ -74,7 +74,7 @@
 										@foreach($dropdownData['yearOfexps'] as $item)
 										<div class="demo-list pb_6">
 											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox"
-												name="hdn_kinh_nghiem[]" id="kn_8"> <label for="kn_8"
+												name="yearOfexp" id="kn_8"> <label for="kn_8"
 												class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
@@ -102,7 +102,7 @@
 						class="icon_select_box icon_24 icon-24"></i> <select
 						name="trinh_do_ntd"
 						class="selectpicker box_select_filter pos_relative select-style"
-						data-diss="-1" tabindex="-1" data-select-class="trinh_do_ntd2">
+						data-diss="-1" tabindex="-1" data-select-class="degree">
 						<option value="">Tất cả Trình độ</option>
 						@foreach($dropdownData['degrees'] as $item)
 							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -116,7 +116,7 @@
 					<i
 						style="background-image: url(/assets/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
 						class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i> <select
-						name="gioi_tinh_ntd"
+						name="sex"
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
@@ -131,7 +131,7 @@
 					<i
 						style="background-image: url(/assets/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
 						class="icon_select_box icon_ngoai_ngu icon_24 icon-24"></i> <select
-						style="margin-left: 5px;" name="ngoai_ngu_ntd"
+						style="margin-left: 5px;" name="language"
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1" data-select-class="ngoai_ngu_ntd2">
 						<option value="">Tất cả Ngoại ngữ</option>
@@ -146,7 +146,7 @@
 					<i
 						style="background-image: url(/assets/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
 						class="icon_select_box icon_thoi_gian icon_24 icon-24"></i> <select
-						style="margin-left: 5px;" name="thoi_gian_ntd"
+						style="margin-left: 5px;" name="timeUpdate"
 						class="selectpicker box_select_filter pos_relative select-style"
 						data-diss="-1" tabindex="-1" data-select-class="thoi_gian_ntd2">
 						<option value="" selected>Thời gian cập nhật</option>
