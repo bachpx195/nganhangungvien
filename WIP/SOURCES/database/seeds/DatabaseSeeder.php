@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('RankSeeder');
         $this->call('CandidateSeeder');
         $this->call('CandidateExpectJopSeeder');
+        $this->call('ExigencySeeder');
     }
 
 }

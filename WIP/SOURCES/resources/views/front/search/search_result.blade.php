@@ -3,7 +3,7 @@
 @section('content')
 <div id="cols-right" class="bg_grey">
 	<div class="content_cols-right pt_16 pl_24 pb_24">
-		@include('front/search/form_search', [])
+		@include('front.common.form_search', ['dropdownData' => $dropdownData])
 		
 		<br/>
 
@@ -36,12 +36,12 @@
 									<span
 										class="title-blockjob-main truncate-ellipsis font14 text_grey2">
 										<a
-										href="https://vieclam24h.vn/nha-tuyen-dung/quan-tri-kinh-doanh/nhan-vien-van-phong-c14p0id2252351.html"
+										href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->id])}}"
 										target="_blank" class="text_grey2 "> {{ $item->cv_title }} </a>
 									</span> <span
 										class="title-blockjob-sub truncate-ellipsis font14 text_grey">
 										<a
-										href="https://vieclam24h.vn/nha-tuyen-dung/quan-tri-kinh-doanh/nhan-vien-van-phong-c14p0id2252351.html"
+										href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->id])}}"
 										class="text_grey"> {{ $item->full_name }} <i
 											class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($item->updated_at)}})</i>
 									</a>

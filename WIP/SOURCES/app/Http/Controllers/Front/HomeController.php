@@ -13,14 +13,7 @@ use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
 use App\Repositories\ICandidateRepo;
 
-class HomeController extends Controller {
-
-	protected $candidateRepo;
-
-	public function __construct(ICandidateRepo $candidateRepo)
-	{
-		$this->candidateRepo = $candidateRepo;
-	}
+class HomeController extends BaseController {
 
 	/**
 	 * Index page
@@ -29,13 +22,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$dropdownData = [];
-		$dropdownData['provinces'] = Province::all();
-		$dropdownData['occupations'] = Job::all();
-		$dropdownData['salaryGrades'] = Salary::all();
-		$dropdownData['degrees'] = Level::all();
-		$dropdownData['yearOfexps'] = ExperienceYears::all();
-		$dropdownData['languages'] = ForeignLanguage::all();
+		$dropdownData = $this->dropdownData();
 
 		$tabsData = [];
 		$tabsData['careers'] = $this->candidateRepo->careerStatistic();

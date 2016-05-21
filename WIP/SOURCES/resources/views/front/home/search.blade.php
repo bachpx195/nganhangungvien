@@ -136,7 +136,7 @@
 			addListener(window, "load", fun_hoso_keypress);
 		}
 	</script>
-	<div class="box_filter_map text-center">
+	<div class="box_filter_map text-center" style="width: 400px;">
 		<div class="statistic font16">
 			Cả nước tổng cộng có <br /><span class="text_orange font28 bold">610,976</span> hồ sơ người đang tìm việc
 		</div>
@@ -195,5 +195,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="box_filter_map text-left" style="width: 250px;">
+		<div class="statistic font16">
+			Video tuyển dụng
+		</div>
+		<iframe width="250" height="340" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
 	</div>
 </div>
