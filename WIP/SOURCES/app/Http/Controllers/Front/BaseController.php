@@ -40,4 +40,7 @@ class BaseController extends Controller {
 		return $dropdownData;
 	}
 	
+	protected function errorView(){
+		return response()->view('front.errors.404', [], 404);
+	}
 }

@@ -98,7 +98,7 @@
 			<div class="col-xs-3 border_r pl_14 pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
-						style="background-image: url(asset/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
+						style="background-image: url(/assets/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
 						class="icon_select_box icon_24 icon-24"></i> <select
 						name="trinh_do_ntd"
 						class="selectpicker box_select_filter pos_relative select-style"
@@ -114,7 +114,7 @@
 			<div class="col-xs-3 border_r pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
-						style="background-image: url(asset/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
+						style="background-image: url(/assets/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
 						class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i> <select
 						name="gioi_tinh_ntd"
 						class="selectpicker box_select_filter pos_relative select-style"
@@ -129,7 +129,7 @@
 			<div class="col-xs-3 border_r pr_6 pl_8">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
-						style="background-image: url(asset/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
+						style="background-image: url(/assets/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
 						class="icon_select_box icon_ngoai_ngu icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="ngoai_ngu_ntd"
 						class="selectpicker box_select_filter pos_relative select-style"
@@ -144,7 +144,7 @@
 			<div class="col-xs-3 border_r pr_8">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
-						style="background-image: url(asset/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
+						style="background-image: url(/assets/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
 						class="icon_select_box icon_thoi_gian icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="thoi_gian_ntd"
 						class="selectpicker box_select_filter pos_relative select-style"

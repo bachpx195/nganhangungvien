@@ -6,9 +6,9 @@ class ForeignLanguage extends Model {
 
     protected $table = 'foreign_language';
 
-    public function candidate()
+    public function candidates()
     {
-        return $this->belongsTo('App\Model\Candidate', 'candidate_id', 'id');
+        return $this->hasMany('App\Model\CandidateForeignLanguage', 'language_id');
     }
 
 }

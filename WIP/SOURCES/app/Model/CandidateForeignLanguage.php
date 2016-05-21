@@ -1,4 +1,5 @@
-<?php namespace App;
+<?php 
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,11 +9,11 @@ class CandidateForeignLanguage extends Model {
 
     public function candidate()
     {
-        return $this->belongsTo('App\Model\Candidate', 'candidate_id', 'id');
+        return $this->belongsTo('App\Model\Candidate', 'candidate_id');
     }
 
-    public function foreignLanguage()
+    public function language()
     {
-        return $this->belongsTo('App\Model\ForeignLanguage', 'language_id', 'id');
+        return $this->belongsTo('App\Model\ForeignLanguage', 'language_id');
     }
 }

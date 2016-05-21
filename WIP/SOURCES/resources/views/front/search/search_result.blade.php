@@ -69,7 +69,12 @@
 										data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
 										<i
 											class="icon_select_box icon_local_list icon_24 icon-24 pos_relative"></i><br>
-										{{$item->expectAddress ? $item->expectAddress->name : ''}}
+										@if(count($item->expectAddresses) > 0)
+										@foreach($item->expectAddresses as $index=>$address)
+											{{$address->name}}@if($index < count($item->expectAddresses) - 1), 
+											@endif 
+										@endforeach 
+										@endif 
 									</div>
 
 								</div>
