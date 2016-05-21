@@ -45,11 +45,11 @@
 $(function() {
 	jQuery("body")
 	.on("click", "#btn-save", function(){
-		
+
 		$form = $(this).closest('form');
-		
+
 		var validator = $form.validate({
-			ignore		: "", 
+			ignore		: "",
 			errorClass	: 'help-block has-error'
 		});
 	    if(validator.form()) {

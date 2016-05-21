@@ -186,7 +186,6 @@ class CandidateController extends Controller {
 
         $candidate->job = $input['job'];
         $candidate->expect_salary = $input['expect_salary'];
-        $candidate->expect_address = $input['expect_address'];
         $candidate->exigency = $input['exigency'];
         $candidate->job_goal = $input['job_goal'];
 

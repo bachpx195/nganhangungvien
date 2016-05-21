@@ -273,30 +273,6 @@
                              class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
 
-                    <!-- input Tỉnh/thành phố * -->
-                    <div class="form-group mt_16">
-                        <label for="expect_address"
-                               class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Địa
-                            điểm mong muốn <span class="colorRed">*</span><span
-                                    class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
-                        <div class="fr-input-wd333 select_style31 city_select">
-                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                <select id="fk_tinh" name="expect_address"
-                                        class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
-                                        tabindex="-1">
-                                    <option value="0">Chọn địa điểm</option>
-                                    @foreach($provinces as $index => $province)
-                                        <option value="{{$province->id}}">{{$province->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div id="error_fk_tinh"
-                             class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
-                    </div>
-                    <div class="clearfix"></div>
-
-                    <!-- input Tỉnh/thành phố * -->
                     <div class="form-group mt_16">
                         <label for="exigency"
                                class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Nhu cầu công việc <span class="colorRed">*</span><span
