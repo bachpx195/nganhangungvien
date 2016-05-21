@@ -2,38 +2,8 @@
 
 @section('content')
 <div class="">
-	<div class="top-ads clearfix mb10">
-		<div class="row w_100">
-			<script type="text/javascript" src="http://admicro1.vcmedia.vn/ads_codes/ads_box_221.ads"></script>
-			<script type="text/javascript" src="//admicro1.vcmedia.vn/core/admicro_core_nld.js?id=1"></script>
-			<div style="height:0px; width:0px; overflow:hidden;">
-				<object style="visibility:hidden;" type="application/x-shockwave-flash" height="0" width="0"
-						classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="_admFlck" bgcolor="#ffffff">
-					<param value="//adi.vcmedia.vn/adt/flck.swf?id=1" name="movie">
-					<param value="true" name="allowFullScreen">
-					<param value="opaque" name="wmode">
-					<param value="always" name="allowscriptaccess">
-					<embed width="0" height="0" allowfullscreen="true" allowscriptaccess="always" quality="high"
-						   name="_admFlck" id="_admFlck" src="//adi.vcmedia.vn/adt/flck.swf?id=1"
-						   type="application/x-shockwave-flash" wmode="opaque">
-				</object>
-				<object type="application/x-shockwave-flash" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-						width="1px" height="1px" id="shareObject" name="shareObject">
-					<param value="//adi.vcmedia.vn/adt/cpc/tvcads/2012/demoTVC/Temperature/share_object.swf"
-						   name="movie">
-					<param value="high" name="quality">
-					<param value="transparent" name="wmode">
-					<param value="11.0.0.0" name="swfversion">
-					<param value="false" name="allowFullScreen">
-					<param value="always" name="allowScriptAccess">
-					<embed src="//adi.vcmedia.vn/adt/cpc/tvcads/2012/demoTVC/Temperature/share_object.swf"
-						   pluginspage="http://www.macromedia.com/go/getflashplayer"
-						   type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent"
-						   quality="high" name="shareObject" width="1px" height="1px" id="shareObject">
-				</object>
-			</div>
-		</div>
-	</div>
+
+	@include('front/home/ads')
 	
 	<div class="box_alert_content w_100 font14 " id="box_alert_message">
 		<div class="col_msg_left">

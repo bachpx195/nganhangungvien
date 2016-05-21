@@ -18,7 +18,7 @@ h1,h2,h3 {
 .font8{font-size:8px !important;}.font9{font-size:9px !important;}.font10{font-size:10px !important;}.font11{font-size:11px !important;}.font12{font-size:12px !important;}.font13{font-size:13px !important;}.font14{font-size:14px !important;}.font15{font-size:15px !important;}.font16{font-size:16px !important;}.font17{font-size:17px !important;}.font18{font-size:18px !important;}.font19{font-size:19px !important;}.font20{font-size:20px !important;}.font21{font-size:21px !important;}.font22{font-size:22px !important;}.font23{font-size:23px !important;}.font24{font-size:24px !important;}.font28{font-size:28px !important;}.font32{font-size:32px !important;}
 
 /* font color*/
-.text_blue{color: #63248a}
+.text_blue{color: #00549F}
 .text_red{color: red}
 .text_yellow{color: yellow}
 .text_grey{color: grey}
@@ -39,7 +39,7 @@ h1,h2,h3 {
 .text_424242{color:#424242}
 
 /* link color */
-a.text_blue:hover,a.text_blue:focus,a.text_blue:active{color: #63248a}
+a.text_blue:hover,a.text_blue:focus,a.text_blue:active{color: #00549F}
 a.text_red:hover,a.text_red:focus,a.text_red:active{color: red}
 a.text_yellow:hover,a.text_yellow:focus,a.text_yellow:active{color: yellow}
 a.text_grey:hover,a.text_grey:focus,a.text_grey:active{color: grey}
@@ -50,7 +50,7 @@ a.text_brown:hover,a.text_brown:focus,a.text_brown:active {color: brown}
 a.text_white:hover,a.text_white:focus,a.text_white:active{color: white}
 a.text_pink:hover,a.text_pink:focus,a.text_pink:active{color: #ff0e7e}
 a.text_black:hover,a.text_black:focus,a.text_black:active{color: #333333}
-a.text_blue3 {color:#63248a}
+a.text_blue3 {color:#00549F}
 
 a.text_grey2:visited{color: #a0a0a0}
 
@@ -73,7 +73,7 @@ a.text_grey2:visited{color: #a0a0a0}
 padding:15px!important;
 }
 /* bg color*/
-.bg_blue{background: #63248a !important;}
+.bg_blue{background: #00549F !important;}
 .bg_pink{background: #ffa726;}
 .bg_grey{background: #eeeeee;}
 .bg_grey2{background: #616161;}
@@ -822,7 +822,7 @@ position: relative;
   background: #ffffff;
 }
 #s23_ho_so_moi_nhat .text-tim-nhat {
-  color: #63248a;
+  color: #00549F;
   text-transform: uppercase;
   font-size: 16px;
 }
