@@ -138,7 +138,7 @@
 	</script>
 	<div class="box_filter_map text-center" style="width: 400px;">
 		<div class="statistic font16">
-			Cả nước tổng cộng có <br /><span class="text_orange font28 bold">610,976</span> hồ sơ người đang tìm việc
+			Cả nước tổng cộng có <br /><span class="text_orange font28 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 		</div>
 
 		<div class="map-ntd">

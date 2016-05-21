@@ -34,8 +34,14 @@ class HomeController extends BaseController {
 		$candidatesData=[];
 		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
 		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+
+		$countData=[];
+		$countData['all'] = $this->candidateRepo->countAllStatistic();
+		$countData['rencent'] = $this->candidateRepo->countRecentStatistic();
+		$countData['new'] = $this->candidateRepo->countNewStatistic();
+
 		return view('front/home/index')
-				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData)->with('candidatesData', $candidatesData);
+				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData)->with('candidatesData', $candidatesData)->with('countData',$countData);
 	}
 	
 }

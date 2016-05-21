@@ -88,8 +88,32 @@ class CandidateRepo implements ICandidateRepo {
     }
 
     public function bestViewStatistic() {  
-        $results = DB::table('candidate')->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')->leftJoin('salary','candidate.expect_salary','=','salary.id')->leftJoin('province','candidate.province_id','=','province.id')->select('view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')->orderBy('view_total','decs')->where('full_name','<>',' ')->take(20)->get();
+        $results = DB::table('candidate')->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')->leftJoin('salary','candidate.expect_salary','=','salary.id')->leftJoin('province','candidate.province_id','=','province.id')->select('view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')->orderBy('view_total','decs')->take(20)->get();
         return $results;
     }
 
+    public function countAllStatistic()
+    {
+        $results = DB::table('candidate')->where('full_name','<>',' ')->count();
+        return $results;
+
+    }
+    public function countNewStatistic()
+    {   
+        $date = date('Y-m-d');
+        $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
+        // $month = date("m",strtotime($prev_date));
+        // $day = date("d",strtotime($prev_date));
+        // $year = date("Y",strtotime($prev_date));
+        // $results = DB::table('candidate')->whereMonth('updated_at', '=', $month)->whereDay('updated_at', '=', $day)->orWhere('updated_at', '>=', date('Y-m-d').' 00:00:00')->whereYear('updated_at', '=', $year)->Where('full_name','<>',' ')->count();
+        $results = DB::table('candidate')->Where('updated_at', '>=', $prev_date.' 00:00:00')->Where('full_name','<>',' ')->count();
+        return $results;
+    }
+    public function countRecentStatistic()
+    {   
+        $date = date('Y-m-d');
+        $prev_month = date('Y-m-d', strtotime($date .' -1 month'));
+        $results = DB::table('candidate')->Where('updated_at', '>=', $prev_month.' 00:00:00')->Where('full_name','<>',' ')->count();
+        return $results;
+    }
 }
