@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Candidate;
 use App\Model\Province;
 use App\Model\Job;
 use App\Model\Salary;
@@ -42,9 +43,12 @@ class HomeController extends Controller {
 		$tabsData['levels'] = $this->candidateRepo->levelsStatistic();
 		$tabsData['salaries'] = $this->candidateRepo->salariesStatistic();
 		$tabsData['provinces'] = $this->candidateRepo->provinceStatistic();
-		
+
+		$candidatesData=[];
+		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
+		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
 		return view('front/home/index')
-				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData);
+				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData)->with('candidatesData', $candidatesData);
 	}
 	
 }

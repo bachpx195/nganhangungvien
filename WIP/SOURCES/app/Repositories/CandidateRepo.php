@@ -80,5 +80,16 @@ class CandidateRepo implements ICandidateRepo {
     public function provinceStatistic() {
         $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM province p LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate GROUP BY province_id) c ON p.id = c.province_id  ORDER BY num_candidates DESC") );
         return $results;
+    } 
+
+    public function candidateStatistic() {  
+        $results = DB::table('candidate')->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')->leftJoin('salary','candidate.expect_salary','=','salary.id')->leftJoin('province','candidate.province_id','=','province.id')->select('full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')->orderBy('updated','decs')->where('full_name','<>',' ')->take(20)->get();
+        return $results;
     }
+
+    public function bestViewStatistic() {  
+        $results = DB::table('candidate')->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')->leftJoin('salary','candidate.expect_salary','=','salary.id')->leftJoin('province','candidate.province_id','=','province.id')->select('view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')->orderBy('view_total','decs')->where('full_name','<>',' ')->take(20)->get();
+        return $results;
+    }
+
 }
