@@ -59,9 +59,6 @@
             for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
                 $("#general-infomation .validator-message[data-name='" + errors[i].name +"']").removeClass('display_none');
                 if (birthday.indexOf(errors[i].name) > -1) {
-                    console.log('errors[i].name----');
-                    console.log(errors[i].name);
-                    console.log(birthday);
                     $("#general-infomation .validator-message[data-name='birthday']").removeClass('display_none');
                 }
             }
