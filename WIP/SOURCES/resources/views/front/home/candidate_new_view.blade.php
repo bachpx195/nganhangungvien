@@ -14,11 +14,11 @@
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
                         <span class="title-blockjob-main truncate-ellipsis font14">
-                        <a href="#" class="link_box_panel1 text_grey2 ">
+                        <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
                         {{ $key->cv_title }}                     </a>
                         </span>
                         <span class="title-blockjob-sub truncate-ellipsis font14">
-                        <a href="#" class="link_box_panel2 text_grey">
+                        <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
                         {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($key->updated)}})</span>
                         </a>
                         </span>
@@ -60,11 +60,11 @@
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
                         <span class="title-blockjob-main truncate-ellipsis font14">
-                        <a href="#" class="link_box_panel1 text_grey2 ">
+                        <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
                         {{ $key->cv_title }}                     </a>
                         </span>
                         <span class="title-blockjob-sub truncate-ellipsis font14">
-                        <a href="#" class="link_box_panel2 text_grey">
+                        <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
                         {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($key->updated)}})</span>
                         </a>
                         </span>

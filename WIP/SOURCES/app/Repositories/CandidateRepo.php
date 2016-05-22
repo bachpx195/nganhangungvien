@@ -87,7 +87,7 @@ class CandidateRepo implements ICandidateRepo {
                 ->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->leftJoin('province','candidate.province_id','=','province.id')
-                ->select('full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
+                ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
                 ->orderBy('updated','decs')
                 ->where('full_name','<>',' ')
                 ->take(20)
@@ -100,7 +100,7 @@ class CandidateRepo implements ICandidateRepo {
                 ->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->leftJoin('province','candidate.province_id','=','province.id')
-                ->select('view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
+                ->select('candidate.id', 'view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
                 ->orderBy('view_total','decs')
                 ->take(20)
                 ->get();
