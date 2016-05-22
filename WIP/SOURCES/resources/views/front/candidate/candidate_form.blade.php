@@ -3,13 +3,10 @@
 <title>Tạo hồ sơ ứng viên</title>
 
 @section('content')
-@if (count($errors) > 0)
+@if (!empty($candidate['email_errors']))
 	<div class="block-note-ths">
 		<div class="pos-dang-ky-hotline">
-			@foreach ($errors->all() as $error)
-				<p>{{ $error }}</p>
-			@endforeach
-
+			{{ $candidate['email_errors'] }}
 			<div class="ln_hr"></div>
 		</div>
 	</div>

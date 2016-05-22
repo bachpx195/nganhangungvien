@@ -127,7 +127,11 @@ class CandidateController extends Controller {
 
                 if ($validator->fails()) {
                     $data = Input::except(array('_token', '_method'));
-                    return Redirect::route('candidate.form', $data)->withErrors($validator)->withInput();
+                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
+                    return Redirect::route('candidate.form', $data);
+
+                    //TODO: Research why validator errors not appearing laravel?
+                    //return Redirect::route('candidate.form', $data)->withErrors($validator);
                 }
 
                 $candidate = new Candidate;
