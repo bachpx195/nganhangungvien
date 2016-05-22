@@ -27,7 +27,8 @@
                         </label>
                         <div class="register_fr_input_wd583">
                             <input type="text" class="form-control input-lg2 color-input" id="cv_title"
-                                   name="cv_title" placeholder="Ví dụ: Nhân viên chăm sóc khách hàng - vận hành game">
+                                   name="cv_title" placeholder="Ví dụ: Nhân viên chăm sóc khách hàng - vận hành game"
+                                    value="{{$candidate['cv_title']}}">
                         </div>
                         <div class="error_reg_mess clearfix italic validator-message display_none"
                              data-name="cv_title">
@@ -42,8 +43,10 @@
                         </label>
                         <div class="register_fr_input_wd583">
                             <input type="text" class="form-control input-lg2 color-input" id="email"
-                                   name="email" placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com">
+                                   name="email" placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com"
+                                   value="{{$candidate['email']}}">
                         </div>
+                        @include('front.common.form_error', array('fieldName' => 'email'))
                         <div class="error_reg_mess clearfix italic validator-message display_none" data-name="email">
                             Vui lòng nhập địa chỉ email đúng để NTD liên hệ được với bạn</div>
                     </div>
@@ -54,10 +57,49 @@
                             Họ và Tên <span class="colorRed">*</span>
                         </label>
                         <div class="register_fr_input_wd583">
-                            <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name" placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B.">
+                            <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
+                                   placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                                   value="{{ $candidate['full_name'] }}">
                         </div>
                         <div class="error_reg_mess clearfix italic validator-message display_none" data-name="full_name">
                             Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu.</div>
+                    </div>
+
+                    <!-- input Giới tính -->
+                    <div class="form-group clearfix mb_16">
+                        <label class="control-label-checkbox bold txt-color-363636 fs14 w180">
+                            Giới tính <span class="colorRed">*</span>
+                        </label>
+                        <div class="register_fr_input_wd583">
+                            <div class="demo-list-green mr_24 sex-lable">
+                                <input tabindex="1" type="radio" name="sex" value="0" id="ml_0"
+                                       @if ($candidate['sex'] != 1) checked @endif>
+                                <label for="ml_0" class="font14 fwn">Nữ</label>
+                            </div>
+                            <div class="demo-list-green  sex-lable">
+                                <input tabindex="1" type="radio" name="sex" value="1" id="ml_1"
+                                       @if ($candidate['sex'] == 1) checked @endif>
+                                <label for="ml_1" class="font14 fwn">Nam</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- input Tình trạng hôn nhân -->
+                    <div class="form-group clearfix mb_18">
+                        <label class="control-label-checkbox bold txt-color-363636 fs14 w180">
+                            Tình trạng hôn nhân<span class="colorRed">*</span>
+                        </label>
+                        <div class="register_fr_input_wd583 ">
+                            <div class="demo-list-green mr_24 sex-lable">
+                                <input tabindex="2" type="radio" name="is_married" id="tthn_0" value="0"
+                                       @if ($candidate['is_married'] != 1) checked @endif>
+                                <label for="tthn_0" class="font14 fwn">Độc thân</label>
+                            </div>
+                            <div class="demo-list-green mr_24 sex-lable">
+                                <input tabindex="2" type="radio" name="is_married" id="tthn_1"  value="1"
+                                       @if ($candidate['is_married'] == 1) checked @endif>
+                                <label for="tthn_1" class="font14 fwn">Đã có gia đình</label>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- input birthday -->
@@ -67,18 +109,18 @@
                         <div class="register_fr_input_wd583 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
                                 <select id="birthday" name="birthday_day" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                    <option value="" selected="">Ngày</option>
-                                    <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>                                            </select>
+                                    @include('front.common.day_options', array('selected' => $candidate['birthday_day']))
+                                </select>
                             </div>
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
                                 <select id="thang_sinh" name="birthday_month" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                    <option value="" selected="">Tháng</option>
-                                    <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>                                            </select>
+                                    @include('front.common.month_options', array('selected' => $candidate['birthday_month']))
+                                </select>
                             </div>
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
                                 <select id="nam_sinh" name="birthday_year" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                    <option value="" selected="">Năm</option>
-                                    <option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option>                                            </select>
+                                    @include('front.common.year_options', array('selected' => $candidate['birthday_year']))
+                                </select>
                             </div>
                         </div>
                         <div class="error_reg_mess clearfix italic validator-message display_none" data-name="birthday">
@@ -88,7 +130,8 @@
                     <div class="form-group mb1 input-phone">
                         <label for="phone_number" class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span></label>
                         <div class="fr-input-wd333">
-                            <input type="text" class="form-control input-lg2 color-input" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168" />
+                            <input type="text" class="form-control input-lg2 color-input" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168"
+                                   value="{{ $candidate['phone_number'] }}">
                         </div>
                         <div class="error_reg_mess clearfix italic validator-message display_none" data-name="phone_number">
                             Vui lòng nhập vào số điện thoại.</div>
@@ -106,10 +149,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         tabindex="-1" data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn cấp bậc</option>
-                                    @foreach($ranks as $index => $rank)
-                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['current_rank'],
+                                            'options' => $ranks,
+                                            'defaultName' => 'Chọn cấp bậc'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -128,10 +173,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         tabindex="-1" data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn cấp bậc</option>
-                                    @foreach($ranks as $index => $rank)
-                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['expect_rank'],
+                                            'options' => $ranks,
+                                            'defaultName' => 'Chọn cấp bậc'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -149,10 +196,12 @@
                                 <select id="fk_tinh" name="job"
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
                                         tabindex="-1">
-                                    <option value="">Chọn Ngành nghề</option>
-                                    @foreach($jobs as $index => $job)
-                                        <option value="{{$job->id}}">{{$job->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['expect_rank'],
+                                            'options' => $ranks,
+                                            'defaultName' => 'Chọn Ngành nghề'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -162,17 +211,19 @@
                     <div class="clearfix"></div>
                     <div class="form-group mt_16">
                         <label class="control-label-info bold txt-ghi fs14 w180 lineheight_24">
-                            Ngành nghề <span class="colorRed">*</span>
+                            Tỉnh thành <span class="colorRed">*</span>
                         </label>
                         <div class="fr-input-wd333 select_style31 city_select">
                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                 <select id="fk_tinh" name="province_id"
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
                                         tabindex="-1">
-                                    <option value="">Chọn Tỉnh thành</option>
-                                    @foreach($provinces as $index => $province)
-                                        <option value="{{$province->id}}">{{$province->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['province_id'],
+                                            'options' => $provinces,
+                                            'defaultName' => 'Chọn Tỉnh thành'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -191,12 +242,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         tabindex="-1" data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn Trình độ học vấn
-                                        cao nhất
-                                    </option>
-                                    @foreach($levels as $index => $level)
-                                        <option value="{{$level->id}}">{{$level->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['level'],
+                                            'options' => $levels,
+                                            'defaultName' => 'Chọn Trình độ học vấn cao nhất'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -216,10 +267,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         tabindex="-1" data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn Kinh nghiệm</option>
-                                    @foreach($experienceYears as $index => $experienceYear)
-                                        <option value="{{$experienceYear->id}}">{{$experienceYear->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['experience_years'],
+                                            'options' => $experienceYears,
+                                            'defaultName' => 'Chọn Kinh nghiệm'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -241,10 +294,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn hình thức làm việc</option>
-                                    @foreach($employmentStatuses as $index => $employmentStatus)
-                                        <option value="{{$employmentStatus->id}}">{{$employmentStatus->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['employment_status'],
+                                            'options' => $employmentStatuses,
+                                            'defaultName' => 'Chọn hình thức làm việc'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -266,10 +321,12 @@
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
                                         data-disS="1"
                                         data-select-class="tinh_thanh_reg">
-                                    <option value="">Chọn Mức lương</option>
-                                    @foreach($salaries as $index => $salary)
-                                        <option value="{{$salary->id}}">{{$salary->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['expect_salary'],
+                                            'options' => $salaries,
+                                            'defaultName' => 'Chọn Mức lương'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -286,10 +343,12 @@
                                 <select id="fk_tinh" name="exigency"
                                         class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
                                         tabindex="-1">
-                                    <option value="">Chọn nhu cầu làm việc</option>
-                                    @foreach($exigencies as $index => $exigency)
-                                        <option value="{{$exigency->id}}">{{$exigency->name}}</option>
-                                    @endforeach
+                                    @include('front.common.options',
+                                        array(
+                                            'selected' => $candidate['exigency'],
+                                            'options' => $exigencies,
+                                            'defaultName' => 'Chọn nhu cầu làm việc'
+                                            ))
                                 </select>
                             </div>
                         </div>
@@ -308,7 +367,8 @@
                                       id="c_muc_tieu_nghe_nghiep"
                                       placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                       class="inputTxtAreaTop form-control"
-                                      rows="5"></textarea>
+                                      rows="5"
+                                      value="{{ $candidate['job_goal'] }}"></textarea>
                         </div>
                         <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job_goal">
                             Vui lòng chọn mục tiêu nghề nghiệp.</div>

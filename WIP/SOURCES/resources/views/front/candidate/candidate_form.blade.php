@@ -3,6 +3,18 @@
 <title>Tạo hồ sơ ứng viên</title>
 
 @section('content')
+@if (count($errors) > 0)
+	<div class="block-note-ths">
+		<div class="pos-dang-ky-hotline">
+			@foreach ($errors->all() as $error)
+				<p>{{ $error }}</p>
+			@endforeach
+
+			<div class="ln_hr"></div>
+		</div>
+	</div>
+@endif
+
 <div class="content_dangky" id="frm-login-info">
 	<div class="">
 		<div class="w_50 floatLeft">

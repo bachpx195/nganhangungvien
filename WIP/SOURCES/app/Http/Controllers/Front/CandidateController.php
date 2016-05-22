@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Helpers\DateTimeHelper;
 use App\Http\Controllers\Controller;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
@@ -18,8 +17,11 @@ use Illuminate\Http\Request;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Validator;
 use DateTime;
+use Exception;
 
 class CandidateController extends Controller {
 
@@ -84,6 +86,7 @@ class CandidateController extends Controller {
      *
      * @param Request $request
      * @return mixed
+     * @throws Exception
      */
     public function candidateForm(Request $request) {
         $salaries = $this->salaryRepo->all();
@@ -98,7 +101,11 @@ class CandidateController extends Controller {
 
         // get method
         if ($request->isMethod('get')) {
-            $candidate = new Candidate;
+            if (!empty(Input::all())) {
+                $candidate = Input::all();
+            } else {
+                $candidate = new Candidate;
+            }
 
             return view('front/candidate/candidate_form')
                 ->with('candidate', $candidate)
@@ -115,19 +122,24 @@ class CandidateController extends Controller {
             // get form input data
             $input = $request->all();
 
-            $validator = $this->validateGeneralInformation($request->all());
+            try {
+                $validator = $this->validateGeneralInformation($request->all());
 
-            if ($validator->fails()) {
-                //return redirect(route('candidate.form'))->withErrors($validator, 'general_info');
-            }
+                if ($validator->fails()) {
+                    $data = Input::except(array('_token', '_method'));
+                    return Redirect::route('candidate.form', $data)->withErrors($validator)->withInput();
+                }
 
-            $candidate = new Candidate;
-            $candidate = $this->getGeneralInfoByInput($candidate, $input);
+                $candidate = new Candidate;
+                $candidate = $this->getGeneralInfoByInput($candidate, $input);
 
-            $candidate->save();
-            if ($candidate->id) {
-                $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
                 $candidate->save();
+                if ($candidate->id) {
+                    $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
+                    $candidate->save();
+                }
+            } catch (\Exception $e) {
+                //throw new Exception('Something wrong!!');
             }
 
             return redirect(route('candidate.form'));
@@ -173,11 +185,11 @@ class CandidateController extends Controller {
         $candidate->birthday = $date;
         //$candidate->birthday = DateTimeHelper::formatDate($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
 
-        //$candidate->sex
+        $candidate->sex = $input['sex'];
         $candidate->phone_number = $input['phone_number'];
         //$candidate->image
         $candidate->province_id = $input['province_id'];
-        //$candidate->address = $input['address'];
+        $candidate->is_married = $input['is_married'];
         $candidate->cv_title = $input['cv_title'];
         $candidate->level = $input['level'];
         $candidate->experience_years = $input['experience_years'];
@@ -195,10 +207,20 @@ class CandidateController extends Controller {
         return $candidate;
     }
 
+    /**
+     * Validate for general information of the candidate
+     * @param $data
+     * @return mixed
+     */
     private function validateGeneralInformation($data)
     {
+        $birthdayYear = $data['birthday_year'];
+        $birthdayMonth = $data['birthday_month'];
+        $birthdayDay = $data['birthday_day'];
+        $data['birthday'] = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
+
         return Validator::make($data, [
-            'email' => 'required|email',
+            'email' => 'required|email|unique:candidate',
             'full_name' => 'required',
             'birthday' => 'required',
             'sex' => 'required',
@@ -208,7 +230,7 @@ class CandidateController extends Controller {
             'current_rank' => 'required',
             'expect_rank' => 'required',
             'job' => 'required',
-            'address' => 'required',
+            //'address' => 'required',
             'level' => 'required',
             'experience_years' => 'required',
             'employment_status' => 'required',
