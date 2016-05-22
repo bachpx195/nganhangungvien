@@ -63,6 +63,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
 </head>
 
 <body class="page_on_load s21_home" id="s22_chi_tiet_ho_so">
