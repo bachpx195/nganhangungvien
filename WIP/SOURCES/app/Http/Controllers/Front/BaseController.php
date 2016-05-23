@@ -40,6 +40,15 @@ class BaseController extends Controller {
 		return $dropdownData;
 	}
 	
+	protected function candidatesData()
+	{
+		$candidatesData=[];
+		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
+		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+
+		return $candidatesData;
+	}
+
 	protected function errorView(){
 		return response()->view('front.errors.404', [], 404);
 	}

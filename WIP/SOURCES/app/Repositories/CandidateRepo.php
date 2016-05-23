@@ -83,8 +83,7 @@ class CandidateRepo implements ICandidateRepo {
     } 
 
     public function candidateStatistic() {  
-        $results = DB::table('candidate')
-                ->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
+        $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->leftJoin('province','candidate.province_id','=','province.id')
                 ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
@@ -96,8 +95,7 @@ class CandidateRepo implements ICandidateRepo {
     }
 
     public function bestViewStatistic() {  
-        $results = DB::table('candidate')
-                ->leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
+        $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->leftJoin('province','candidate.province_id','=','province.id')
                 ->select('candidate.id', 'view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
@@ -133,6 +131,31 @@ class CandidateRepo implements ICandidateRepo {
                 ->Where('updated_at', '>=', $prev_month.' 00:00:00')
                 ->Where('full_name','<>',' ')
                 ->count();
+        return $results;
+    }
+
+    public function sameExpStatistic($id)
+    {
+        $candidate = Candidate::find($id);
+        if(!$candidate->experience_years){
+            return NULL;
+        }
+        $results = Candidate::Where('experience_years','=',"$candidate->experience_years")
+        ->take(20)
+        ->get();
+
+        return $results;
+    }
+    
+    public function sameLvlStatistic($id)
+    {
+        $candidate = Candidate::find($id);
+        if(!$candidate->level){
+            return NULL;
+        }
+        $results = Candidate::Where('level','=',"$candidate->level")
+        ->take(20)
+        ->get();
         return $results;
     }
 }

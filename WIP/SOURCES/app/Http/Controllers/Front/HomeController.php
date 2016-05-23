@@ -24,6 +24,8 @@ class HomeController extends BaseController {
 	{
 		$dropdownData = $this->dropdownData();
 
+		$candidatesData = $this->candidatesData();
+
 		$tabsData = [];
 		$tabsData['careers'] = $this->candidateRepo->careerStatistic();
 		$tabsData['experienceYears'] = $this->candidateRepo->experienceYearsStatistic();
@@ -31,17 +33,16 @@ class HomeController extends BaseController {
 		$tabsData['salaries'] = $this->candidateRepo->salariesStatistic();
 		$tabsData['provinces'] = $this->candidateRepo->provinceStatistic();
 
-		$candidatesData=[];
-		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
-		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
-
 		$countData=[];
 		$countData['all'] = $this->candidateRepo->countAllStatistic();
 		$countData['rencent'] = $this->candidateRepo->countRecentStatistic();
 		$countData['new'] = $this->candidateRepo->countNewStatistic();
 
 		return view('front/home/index')
-				->with('dropdownData', $dropdownData)->with('tabsData', $tabsData)->with('candidatesData', $candidatesData)->with('countData',$countData);
+				->with('dropdownData', $dropdownData)
+				->with('tabsData', $tabsData)
+				->with('candidatesData', $candidatesData)
+				->with('countData',$countData);
 	}
 	
 }

@@ -38,7 +38,13 @@
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
                                  <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
-                                 {{ $key->province }}                        
+                                 @if(count($key->expectAddresses) > 0)
+                                 @foreach($key->expectAddresses as $index=>$item)
+                                    {{$item->name}}<span
+                                    class="text_pink">@if($index < count($key->expectAddresses) - 1), 
+                                    @endif 
+                                 @endforeach 
+                                 @endif                      
                               </div>
                            </div>
                         </div>
@@ -84,7 +90,13 @@
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
                                  <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
-                                 {{ $key->province }}                        
+                                 @if(count($key->expectAddresses) > 0)
+                                 @foreach($key->expectAddresses as $index=>$item)
+                                    {{$item->name}}<span
+                                    class="text_pink">@if($index < count($key->expectAddresses) - 1), 
+                                    @endif 
+                                 @endforeach 
+                                 @endif                         
                               </div>
                            </div>
                         </div>

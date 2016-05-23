@@ -39,4 +39,9 @@ interface ICandidateRepo
     public function countNewStatistic();
 
     public function countRecentStatistic();
+
+    public function sameExpStatistic($id);
+
+    public function sameLvlStatistic($id);
+
 }
