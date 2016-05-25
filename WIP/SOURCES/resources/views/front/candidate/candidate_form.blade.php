@@ -22,34 +22,39 @@
 
 	<div class="clearfix"></div>
 	<div class="mt8"></div>
+	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}"
+		  name="candidate_form">
+		<div class="block-content div-frm-hoso" id="frm-login-info">
+			<div class="mb8">
+				<div class="center-p12p24 ">
+					@include('front.candidate.general_information')
 
-	<div class="block-content div-frm-hoso" id="frm-login-info">
-		<div class="mb8">
-			<div class="center-p12p24 ">
-				@include('front.candidate.general_information')
+					@include('front.candidate.experience_skill')
+					<div class="clearfix"></div>
 
-				@include('front.candidate.experience_skill')
-				<div class="clearfix"></div>
-
-				@include('front.candidate.certificate')
+					@include('front.candidate.certificate')
+				</div>
 			</div>
+			@include('front.candidate.foreign_language')
+			<div class="clearfix"></div>
 		</div>
-		@include('front.candidate.foreign_language')
+
+		@include('front.candidate.information_technology')
 		<div class="clearfix"></div>
-	</div>
 
-	@include('front.candidate.information_technology')
-	<div class="clearfix"></div>
-
-	@include('front.candidate.skill_forte')
-	<div class="clearfix"></div>
-	@include('front.candidate.contact_person')
+		@include('front.candidate.skill_forte')
+		<div class="clearfix"></div>
+		@include('front.candidate.contact_person')
+		@include('front.candidate.save_btn')
+	</form>
 </div>
 
 @include('front.candidate.candidate_form_js')
 <!-- select2 -->
 <script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
-@include('front.candidate.validator.general_information_js')
+@include('front.candidate.validator.candidate_form_js')
+@include('front.candidate.template.experience_skill_template')
+@include('front.candidate.render.experience_skill_render')
 
 <script>
 $(function() {

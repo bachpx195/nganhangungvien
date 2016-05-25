@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Model\Experience;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
 use App\Repositories\IExperienceYearsRepo;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
@@ -124,7 +126,8 @@ class CandidateController extends Controller {
 
             try {
                 $validator = $this->validateGeneralInformation($request->all());
-
+                //TODO: Move it in service or repository base
+                DB::beginTransaction();
                 if ($validator->fails()) {
                     $data = Input::except(array('_token', '_method'));
                     $data['email_errors'] = 'Email bạn nhập đã tồn tại';
@@ -142,7 +145,20 @@ class CandidateController extends Controller {
                     $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
                     $candidate->save();
                 }
+
+                //Save a experience
+                $experienceCount = isset($input['experience_count']) ? $input['experience_count'] : 1;
+                for ($i = 1; $i <= $experienceCount; $i++) {
+                    $experience = new Experience();
+                    $experience->candidate_id  = $candidate->id;
+                    if ($this->canSaveExperience($input, $i)) {
+                        $experience = $this->getExperienceInfo($experience, $input, $i);
+                        $experience->save();
+                    }
+                }
+                DB::commit();
             } catch (\Exception $e) {
+                DB::rollBack();
                 //throw new Exception('Something wrong!!');
             }
 
@@ -169,6 +185,49 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Can save a experience
+     *
+     * @param $experience
+     * @param $index
+     * @return bool
+     */
+    private function canSaveExperience($experience, $index) {
+        if (!empty(trim($experience['experience_company_name_' . $index])) && !empty(trim($experience['experience_office_' . $index]))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get experience info
+     *
+     * @param $experience
+     * @param $input
+     * @param $index
+     */
+    private function getExperienceInfo($experience, $input, $index)
+    {
+        $experience->company_name = $input['experience_company_name_' . $index];
+        $experience->office = $input['experience_office_' . $index];
+        $experience->salary = $input['experience_salary_' . $index];
+
+        $dayInMonth = $input['experience_day_in_month_' . $index];
+        $dayInYear = $input['experience_day_in_year_' . $index];
+        $dayIn = new DateTime($dayInYear . '-' . $dayInMonth . '-01');
+        $experience->day_in = $dayIn;
+
+        $dayOutMonth = $input['experience_day_out_month_' . $index];
+        $dayOutYear = $input['experience_day_out_year_' . $index];
+        $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
+        $experience->day_out = $dayOut;
+
+        $experience->description = $input['experience_description_' . $index];
+
+        return $experience;
     }
 
     /**
