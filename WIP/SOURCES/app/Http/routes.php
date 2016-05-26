@@ -56,6 +56,11 @@ Route::group(['prefix' => ''], function()
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
 		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
 	]);
+	
+	//Đăng ký tài khoản
+	Route::match(['get', 'post'], '/nha-tuyen-dung/dang-ky', [
+		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
+	]);
 });
 
 Route::match(['get', 'post'], '/candidate/form', [
