@@ -1,4 +1,4 @@
-<script>
+$( document ).ready(function() {
     $('#add-more-experience').on('click', function(e) {
         var template = $('#experience-template').html();
         var index = +$('#experience-count').val() + 1;
@@ -8,4 +8,4 @@
         var rendered = Mustache.render(template, {index: index});
         $( "#experience-list" ).append($(rendered));
     });
-</script>
+});

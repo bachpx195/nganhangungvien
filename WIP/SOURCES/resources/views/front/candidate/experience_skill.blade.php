@@ -25,7 +25,7 @@
                     <p>- Không yêu cầu nếu chưa có kinh nghiệm</p>
                 </div>
                 <div class="clearfix"></div>
-                {{ $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1 }}
+                <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
                 <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
 
                 @for ($i = 1; $i <= $experienceCount; $i++)
@@ -144,11 +144,9 @@
                 @endfor
             </div>
         </div>
-
-        <div class="form-group">
-            <div id="add-more-experience" class="footer-box-child-ths">
-                <i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC
-            </div>
+        <div class="footer-box-child-ths" id="add-more-experience">
+            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC
+                CHỈ</a>
         </div>
     </div>
 </div>

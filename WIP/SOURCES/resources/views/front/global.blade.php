@@ -34,6 +34,9 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/custom.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
+
     <script type="text/javascript">
         function addListener(obj, eventName, listener) {
             if (obj.addEventListener) {
@@ -59,9 +62,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.mobile.custom.min.js') }}"></script>
@@ -81,6 +82,8 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
 </body>
 
 </html>
