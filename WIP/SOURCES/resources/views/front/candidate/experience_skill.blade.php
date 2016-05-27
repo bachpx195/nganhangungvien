@@ -138,15 +138,11 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="ln_hr_head"></div>
-                    </div>
                 @endfor
             </div>
         </div>
         <div class="footer-box-child-ths" id="add-more-experience">
-            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC
-                CHỈ</a>
+            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC</a>
         </div>
     </div>
 </div>

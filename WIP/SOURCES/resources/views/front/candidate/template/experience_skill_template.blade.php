@@ -1,5 +1,8 @@
 <div id="experience-template" style="display: none;">
     <div class="experience-skill-item">
+        <div class="row">
+            <div class="ln_hr_head"></div>
+        </div>
         <!-- tên company_name -->
         <div class="form-group mt16">
             <label for="experience_company_name"
@@ -102,9 +105,6 @@
                 </div>
                 <div id="error_c_mo_ta_cong_viec"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
-            </div>
-            <div class="row">
-                <div class="ln_hr_head"></div>
             </div>
         </div>
     </div>
