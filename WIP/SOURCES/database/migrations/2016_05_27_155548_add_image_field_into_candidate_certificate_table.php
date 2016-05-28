@@ -13,7 +13,7 @@ class AddImageFieldIntoCandidateCertificateTable extends Migration {
 	public function up()
 	{
 		Schema::table('candidate_certificate', function($table) {
-			$table->string('image', 200)->after('specialize');
+			$table->string('image', 200)->after('specialize')->nullable();
 		});
 	}
 

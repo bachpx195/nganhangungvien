@@ -37,12 +37,12 @@
             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select id="day-in-month" name="started_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="started_at_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.month_options')
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select id="day_in_year" name="started_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="started_at_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.year_options')
                     </select>
                 </div>
@@ -50,12 +50,12 @@
                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                     Hiện tại</p>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select id="day_out_month" name="ended_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="ended_at_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.month_options')
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select id="day_out_year" name="ended_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="ended_at_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.year_options')
                     </select>
                 </div>
@@ -110,14 +110,14 @@
             <label class="control-label-info bold txt-color-363636 fs14 w181"></label>
             <div class="fr_input_bangcap_chungchi">
                 <div class="display_block btn-big plr6 pos_relactive w208 floatLeft">
-                    <input type="file" name="image_@{{index}}"
+                    <input type="file" name="certificate_image_@{{index}}"
                            id="dinhkembangcap"
                            class="bt_input pos_absolute"
                            onchange="fileOnchange2(this)">
                     <span class='icon_upload_file'></span>Tải
                     ảnh bằng cấp (nếu có)
                 </div>
-                <span class="select_file_note floatLeft txt-color-363636">(Bạn chưa chọn file nào)</span>
+                <span id="note_select_file_certificate_image_@{{index}}" class="select_file_note floatLeft txt-color-363636">(Bạn chưa chọn file nào)</span>
                 <div class="note_size_photo clearfix font12 italic">
                     (Dạng file ảnh .jpg, .gif, .png, dung
                     lượng <=300KB)

@@ -42,12 +42,12 @@
             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select id="started_month" name="day_in_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="day_in_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select id="stated_year" name="day_in_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="day_in_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.year_options'))
                     </select>
                 </div>
@@ -55,12 +55,12 @@
                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                     Hiện tại</p>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select id="thang_sinh" name="day_out_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="day_out_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select id="nam_sinh" name="day_out_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="day_out_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
                         @include('front.common.year_options'))
                     </select>
                 </div>

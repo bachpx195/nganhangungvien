@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Model\CandidateCertificate;
 use App\Model\Experience;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
@@ -15,6 +16,7 @@ use App\Repositories\IRankRepo;
 use App\Repositories\ISalaryRepo;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
+use App\Helpers\FileHelper;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
@@ -147,15 +149,10 @@ class CandidateController extends Controller {
                 }
 
                 //Save a experience
-                $experienceCount = isset($input['experience_count']) ? $input['experience_count'] : 1;
-                for ($i = 1; $i <= $experienceCount; $i++) {
-                    $experience = new Experience();
-                    $experience->candidate_id  = $candidate->id;
-                    if ($this->canSaveExperience($input, $i)) {
-                        $experience = $this->getExperienceInfo($experience, $input, $i);
-                        $experience->save();
-                    }
-                }
+                $this->saveExperience($candidate, $input);
+
+                //Save a certificate
+                $this->saveCertificate($candidate, $input, $request);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -188,6 +185,104 @@ class CandidateController extends Controller {
     }
 
     /**
+     * Save certificates
+     *
+     * @param $candidate
+     * @param $input
+     * @param $request
+     */
+    private function saveCertificate($candidate, $input, $request)
+    {
+        $certificateCount = isset($input['certificate_count']) ? $input['certificate_count'] : 1;
+        for ($i = 1; $i <= $certificateCount; $i++) {
+            $certificate = new CandidateCertificate();
+            $certificate->candidate_id  = $candidate->id;
+            if ($this->canSaveCertificate($input, $i)) {
+                $certificate = $this->getCertificateInfo($certificate, $input, $i, $request);
+                $certificate->save();
+            }
+        }
+    }
+
+    /**
+     * Get certificate info
+     *
+     * @param $certificate
+     * @param $input
+     * @param $index
+     * @param $request
+     * @return
+     */
+    private function getCertificateInfo($certificate, $input, $index, $request)
+    {
+        $certificate->certificate_name = $input['certificate_name_' . $index];
+        $certificate->training_unit = $input['training_unit_' . $index];
+        $certificate->graduation_type = $input['graduation_type_' . $index];
+        $certificate->specialize = $input['specialize_' . $index];
+
+        $candidateImgPath = FileHelper::getCandidateImgPath();
+        $imageName = FileHelper::getNewFileName($index);
+
+        if (!empty($request->file('certificate_image_' . $index))) {
+            $imgExtension = $request->file('certificate_image_' . $index)->getClientOriginalExtension();
+            $request->file('certificate_image_' . $index)->move($candidateImgPath, $imageName . '.' . $imgExtension);
+            $certificate->image = $imageName . '.' . $imgExtension;
+
+        }
+
+        if (!empty($input['started_at_month_' . $index]) && !empty($input['started_at_year_' . $index])) {
+            $startedMonth = $input['started_at_month_' . $index];
+            $startedYear = $input['started_at_year_' . $index];
+            $started = new DateTime($startedYear . '-' . $startedMonth . '-01');
+            $certificate->started_at = $started;
+        }
+
+        if (!empty($input['ended_at_month_' . $index]) && !empty($input['ended_at_year_' . $index])) {
+            $endedMonth = $input['ended_at_month_' . $index];
+            $endedYear = $input['ended_at_year_' . $index];
+            $ended = new DateTime($endedYear . '-' . $endedMonth . '-01');
+            $certificate->ended_at = $ended;
+        }
+
+        return $certificate;
+    }
+
+    /**
+     * Can save a certificate
+     *
+     * @param $certificate
+     * @param $index
+     * @return bool
+     */
+    private function canSaveCertificate($certificate, $index) {
+        if (!empty(trim($certificate['certificate_name_' . $index])) && !empty(trim($certificate['certificate_name_' . $index]))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Save experiences
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveExperience($candidate, $input)
+    {
+        $experienceCount = isset($input['experience_count']) ? $input['experience_count'] : 1;
+        for ($i = 1; $i <= $experienceCount; $i++) {
+            $experience = new Experience();
+            $experience->candidate_id  = $candidate->id;
+            if ($this->canSaveExperience($input, $i)) {
+                $experience = $this->getExperienceInfo($experience, $input, $i);
+                $experience->save();
+            }
+        }
+    }
+
+
+    /**
      * Can save a experience
      *
      * @param $experience
@@ -215,15 +310,19 @@ class CandidateController extends Controller {
         $experience->office = $input['experience_office_' . $index];
         $experience->salary = $input['experience_salary_' . $index];
 
-        $dayInMonth = $input['experience_day_in_month_' . $index];
-        $dayInYear = $input['experience_day_in_year_' . $index];
-        $dayIn = new DateTime($dayInYear . '-' . $dayInMonth . '-01');
-        $experience->day_in = $dayIn;
+        if (!empty($input['experience_day_in_month_' . $index]) && !empty($input['experience_day_in_year_' . $index])) {
+            $dayInMonth = $input['experience_day_in_month_' . $index];
+            $dayInYear = $input['experience_day_in_year_' . $index];
+            $dayIn = new DateTime($dayInYear . '-' . $dayInMonth . '-01');
+            $experience->day_in = $dayIn;
+        }
 
-        $dayOutMonth = $input['experience_day_out_month_' . $index];
-        $dayOutYear = $input['experience_day_out_year_' . $index];
-        $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
-        $experience->day_out = $dayOut;
+        if (!empty($input['experience_day_out_month_' . $index]) && !empty($input['experience_day_out_year_' . $index])) {
+            $dayOutMonth = $input['experience_day_out_month_' . $index];
+            $dayOutYear = $input['experience_day_out_year_' . $index];
+            $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
+            $experience->day_out = $dayOut;
+        }
 
         $experience->description = $input['experience_description_' . $index];
 
@@ -231,6 +330,8 @@ class CandidateController extends Controller {
     }
 
     /**
+     * Get general info by input
+     *
      * @param $candidate
      * @param $input
      * @return mixed
@@ -272,6 +373,7 @@ class CandidateController extends Controller {
 
     /**
      * Validate for general information of the candidate
+     *
      * @param $data
      * @return mixed
      */
