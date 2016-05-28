@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\CandidateHelper;
 use App\Http\Controllers\Controller;
 use App\Model\CandidateCertificate;
 use App\Model\Experience;
@@ -102,6 +103,7 @@ class CandidateController extends Controller {
         $foreignLanguages = $this->foreignLanguageRepo->all();
         $provinces = $this->provinceRepo->all();
         $employmentStatuses = $this->employmentStatusRepo->all();
+        $graduationTypes = CandidateHelper::getGraduationTypes();
 
         // get method
         if ($request->isMethod('get')) {
@@ -121,7 +123,8 @@ class CandidateController extends Controller {
                 ->with('levels', $levels)
                 ->with('foreignLanguages', $foreignLanguages)
                 ->with('provinces', $provinces)
-                ->with('employmentStatuses', $employmentStatuses);
+                ->with('employmentStatuses', $employmentStatuses)
+                ->with('graduationTypes', $graduationTypes);
         } else {
             // get form input data
             $input = $request->all();

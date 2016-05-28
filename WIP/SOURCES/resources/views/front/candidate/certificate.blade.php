@@ -117,16 +117,12 @@
                                                 <select name="graduation_type_{{$i}}"
                                                         class="reqCheckBoxEdit tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style select_box2 required"
                                                         data-disS="1">
-                                                    <option value="0" selected>Chọn loại
-                                                        tốt nghiệp
-                                                    </option>
-                                                    <option value="1">Xuất sắc</option>
-                                                    <option value="2">Giỏi</option>
-                                                    <option value="3">Khá</option>
-                                                    <option value="4">Trung bình khá
-                                                    </option>
-                                                    <option value="5">Trung bình
-                                                    </option>
+                                                    @include('front.common.options',
+                                                        array(
+                                                            'selected' => $candidate['graduation_type_' . $i],
+                                                            'options' => $graduationTypes,
+                                                            'defaultName' => 'Chọn loại tốt nghiệp'
+                                                            ))
                                                 </select>
                                             </div>
                                         </div>

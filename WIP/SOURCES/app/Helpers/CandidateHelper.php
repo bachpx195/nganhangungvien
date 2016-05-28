@@ -41,4 +41,33 @@ class CandidateHelper {
 				return "";
 		}
 	}
+
+	/**
+	 * @return object
+     */
+	public static function getGraduationTypes()
+	{
+		return array(
+			(object) [
+				'id' => 1,
+				'name' => 'Xuất sắc'
+			],
+			(object) [
+				'id' => 2,
+				'name' => 'Giỏi'
+			],
+			(object) [
+				'id' => 3,
+				'name' => 'Khá'
+			],
+			(object) [
+				'id' => 4,
+				'name' => 'Trung bình khá'
+			],
+			(object) [
+				'id' => 5,
+				'name' => 'Trung bình'
+			]
+		);
+	}
 }
