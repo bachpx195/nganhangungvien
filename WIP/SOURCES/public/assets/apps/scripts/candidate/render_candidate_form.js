@@ -18,4 +18,14 @@ $( document ).ready(function() {
         var rendered = Mustache.render(template, {index: index});
         $( "#certificate-list" ).append($(rendered));
     });
+
+    $('#add-more-languages').on('click', function(e) {
+        var template = $('#language-template').html();
+        var index = +$('#language-count').val() + 1;
+        $('#language-count').val(index);
+        Mustache.parse(template);   // optional, speeds up future uses
+
+        var rendered = Mustache.render(template, {index: index});
+        $( "#language-list" ).append($(rendered));
+    });
 });

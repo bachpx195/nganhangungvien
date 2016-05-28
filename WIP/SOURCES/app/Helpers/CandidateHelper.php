@@ -70,4 +70,29 @@ class CandidateHelper {
 			]
 		);
 	}
+
+	/**
+	 * Get scale list
+	 */
+	public static function getScales()
+	{
+		return array(
+			(object) [
+				'id' => 1,
+				'name' => 'Tốt'
+			],
+			(object) [
+				'id' => 2,
+				'name' => 'Khá'
+			],
+			(object) [
+				'id' => 3,
+				'name' => 'Trung bình'
+			],
+			(object) [
+				'id' => 4,
+				'name' => 'Kém'
+			]
+		);
+	}
 }

@@ -39,7 +39,8 @@
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input name="experience_company_name_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
-                                       id="experience_company_name" value=""/>
+                                       id="experience_company_name"
+                                       value="{{isset($candidate['experience_company_name_' . $i]) ? $candidate['experience_company_name_' . $i] : ''}}"/>
                             </div>
                             <div id="error_c_cong_ty"
                                  class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
@@ -53,7 +54,8 @@
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input name="experience_office_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
-                                       id="experience_office" value=""/>
+                                       id="experience_office"
+                                       value="{{isset($candidate['experience_office_' . $i]) ? $candidate['experience_office_' . $i] : ''}}"/>
                             </div>
                             <div id="error_c_chuc_danh"
                                  class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
@@ -133,7 +135,8 @@
                                 <div class="fr_ip_vtmm col-xs-8">
                             <textarea name="experience_description_{{$i}}"
                                       class="form-control pt4 pb4 pl_10 pr_10 inputTextAreaKNEdit required"
-                                      id="experience_description" rows="5"></textarea>
+                                      id="experience_description" rows="5"
+                                    value="{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}"></textarea>
                                 </div>
                                 <div id="error_c_mo_ta_cong_viec"
                                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>

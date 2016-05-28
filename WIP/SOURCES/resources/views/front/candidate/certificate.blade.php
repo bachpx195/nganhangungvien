@@ -36,7 +36,8 @@
                                             <input placeholder="Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT..."
                                                    type="text"
                                                    class="form-control input-lg2 color-input inputTextEdit required"
-                                                   name="certificate_name_{{$i}}" value=""/>
+                                                   name="certificate_name_{{$i}}"
+                                                   value="{{isset($candidate['certificate_name_' . $i]) ? $candidate['certificate_name_' . $i] : ''}}"/>
                                         </div>
                                         <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
@@ -49,7 +50,8 @@
                                         <div class="fr_ip_vtmm col-xs-8">
                                             <input type="text"
                                                    class="form-control input-lg2 color-input inputTextEdit required"
-                                                   name="training_unit_{{$i}}" value=""/>
+                                                   name="training_unit_{{$i}}"
+                                                   value="{{isset($candidate['training_unit_' . $i]) ? $candidate['training_unit_' . $i] : ''}}"/>
                                         </div>
                                         <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
@@ -101,7 +103,8 @@
                                         <div class="fr_ip_vtmm col-xs-8">
                                             <input type="text"
                                                    class="form-control input-lg2 color-input "
-                                                   name="specialize_{{$i}}" value=""/>
+                                                   name="specialize_{{$i}}"
+                                                   value="{{isset($candidate['specialize_' . $i]) ? $candidate['specialize_' . $i] : ''}}"/>
                                         </div>
                                         <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
