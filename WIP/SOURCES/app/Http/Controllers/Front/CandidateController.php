@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Helpers\CandidateHelper;
 use App\Http\Controllers\Controller;
 use App\Model\CandidateCertificate;
+use App\Model\CandidateForeignLanguage;
 use App\Model\Experience;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
@@ -104,6 +105,7 @@ class CandidateController extends Controller {
         $provinces = $this->provinceRepo->all();
         $employmentStatuses = $this->employmentStatusRepo->all();
         $graduationTypes = CandidateHelper::getGraduationTypes();
+        $scales = CandidateHelper::getScales();
 
         // get method
         if ($request->isMethod('get')) {
@@ -124,7 +126,8 @@ class CandidateController extends Controller {
                 ->with('foreignLanguages', $foreignLanguages)
                 ->with('provinces', $provinces)
                 ->with('employmentStatuses', $employmentStatuses)
-                ->with('graduationTypes', $graduationTypes);
+                ->with('graduationTypes', $graduationTypes)
+                ->with('scales', $scales);
         } else {
             // get form input data
             $input = $request->all();
@@ -156,6 +159,9 @@ class CandidateController extends Controller {
 
                 //Save a certificate
                 $this->saveCertificate($candidate, $input, $request);
+
+                //Save a foreign languages
+                $this->saveForeignLanguages($candidate, $input);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -185,6 +191,59 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Save foreign languages
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveForeignLanguages($candidate, $input)
+    {
+        $languageCount = isset($input['language_count']) ? $input['language_count'] : 1;
+        for ($i = 1; $i <= $languageCount; $i++) {
+            $language = new CandidateForeignLanguage();
+            $language->candidate_id  = $candidate->id;
+            if ($this->canSaveLanguage($input, $i)) {
+                $language = $this->getLanguageInfo($language, $input, $i);
+                $language->save();
+            }
+        }
+    }
+
+    /**
+     * Get language info
+     *
+     * @param $language
+     * @param $input
+     * @param $index
+     * @return
+     */
+    private function getLanguageInfo($language, $input, $index)
+    {
+        $language->language_id = $input['language_id_' . $index];
+        $language->read = isset($input['read_' . $index]) ? $input['read_' . $index] : 0;
+        $language->write = isset($input['write_' . $index]) ? $input['write_' . $index] : 0;
+        $language->listen = isset($input['listen_' . $index]) ? $input['listen_' . $index] : 0;
+        $language->speak = isset($input['speak_' . $index]) ? $input['speak_' . $index] : 0;
+
+        return $language;
+    }
+
+    /**
+     * Can save a language
+     *
+     * @param $language
+     * @param $index
+     * @return bool
+     */
+    private function canSaveLanguage($language, $index) {
+        if (!empty(trim($language['language_id_' . $index]))) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

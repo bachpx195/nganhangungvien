@@ -52,6 +52,7 @@
 @include('front.candidate.candidate_form_js')
 @include('front.candidate.template.experience_skill_template')
 @include('front.candidate.template.certificate_template')
+@include('front.candidate.template.language_template')
 
 <script>
 $(function() {
