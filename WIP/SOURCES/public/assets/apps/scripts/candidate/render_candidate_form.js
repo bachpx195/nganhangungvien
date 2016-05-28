@@ -8,4 +8,14 @@ $( document ).ready(function() {
         var rendered = Mustache.render(template, {index: index});
         $( "#experience-list" ).append($(rendered));
     });
+
+    $('#add-more-certificate').on('click', function(e) {
+        var template = $('#certificate-template').html();
+        var index = +$('#certificate-count').val() + 1;
+        $('#certificate-count').val(index);
+        Mustache.parse(template);   // optional, speeds up future uses
+
+        var rendered = Mustache.render(template, {index: index});
+        $( "#certificate-list" ).append($(rendered));
+    });
 });

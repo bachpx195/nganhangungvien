@@ -23,7 +23,7 @@
 	<div class="clearfix"></div>
 	<div class="mt8"></div>
 	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}"
-		  name="candidate_form">
+		  name="candidate_form"  enctype="multipart/form-data">
 		<div class="block-content div-frm-hoso" id="frm-login-info">
 			<div class="mb8">
 				<div class="center-p12p24 ">
@@ -51,6 +51,7 @@
 
 @include('front.candidate.candidate_form_js')
 @include('front.candidate.template.experience_skill_template')
+@include('front.candidate.template.certificate_template')
 
 <script>
 $(function() {
