@@ -6,6 +6,7 @@ use App\Helpers\CandidateHelper;
 use App\Http\Controllers\Controller;
 use App\Model\CandidateCertificate;
 use App\Model\CandidateForeignLanguage;
+use App\Model\CandidateItLevel;
 use App\Model\Experience;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
@@ -141,7 +142,7 @@ class CandidateController extends Controller {
                     $data['email_errors'] = 'Email bạn nhập đã tồn tại';
                     return Redirect::route('candidate.form', $data);
 
-                    //TODO: Research why validator errors not appearing laravel?
+                    //TODO: Research why the validate errors not appearing laravel?
                     //return Redirect::route('candidate.form', $data)->withErrors($validator);
                 }
 
@@ -162,6 +163,9 @@ class CandidateController extends Controller {
 
                 //Save a foreign languages
                 $this->saveForeignLanguages($candidate, $input);
+
+                //Save a IT level
+                $this->saveITLevel($candidate, $input);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -191,6 +195,54 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Save a IT level
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveITLevel($candidate, $input)
+    {
+        $iTLevel = new CandidateItLevel();
+        $iTLevel->candidate_id  = $candidate->id;
+        if ($this->canSaveITLevel($input)) {
+            $iTLevel = $this->getITLevelInfo($iTLevel, $input);
+            $iTLevel->save();
+        }
+    }
+
+    /**
+     * Get IT level info
+     *
+     * @param $itLevel
+     * @param $input
+     * @return
+     */
+    private function getITLevelInfo($itLevel, $input)
+    {
+        $itLevel->word = isset($input['word']) ? $input['word'] : 0;
+        $itLevel->excel = isset($input['excel']) ? $input['excel'] : 0;
+        $itLevel->power_point = isset($input['power_point']) ? $input['power_point'] : 0;
+        $itLevel->out_look = isset($input['out_look']) ? $input['out_look'] : 0;
+
+        return $itLevel;
+    }
+
+    /**
+     * Can save a IT level
+     *
+     * @param $itLevel
+     * @return bool
+     */
+    private function canSaveITLevel($itLevel) {
+        if (!empty(trim($itLevel['word'])) || !empty(trim($itLevel['excel']))
+                || !empty(trim($itLevel['power_point'])) || !empty(trim($itLevel['out_look']))) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
