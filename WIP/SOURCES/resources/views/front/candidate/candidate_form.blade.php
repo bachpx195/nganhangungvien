@@ -41,9 +41,6 @@
 
 		@include('front.candidate.information_technology')
 		<div class="clearfix"></div>
-
-		@include('front.candidate.skill_forte')
-		<div class="clearfix"></div>
 		@include('front.candidate.contact_person')
 		@include('front.candidate.save_btn')
 	</form>
@@ -53,23 +50,6 @@
 @include('front.candidate.template.experience_skill_template')
 @include('front.candidate.template.certificate_template')
 @include('front.candidate.template.language_template')
+@include('front.candidate.template.contact_person_template')
 
-<script>
-$(function() {
-	jQuery("body")
-	.on("click", "#btn-save", function(){
-
-		$form = $(this).closest('form');
-
-		var validator = $form.validate({
-			ignore		: "",
-			errorClass	: 'help-block has-error'
-		});
-	    if(validator.form()) {
-	    	$form.submit();
-	    } else {
-	    }
-	});
-});
-</script>
 @endsection

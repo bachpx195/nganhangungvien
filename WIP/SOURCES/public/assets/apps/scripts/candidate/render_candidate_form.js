@@ -28,4 +28,14 @@ $( document ).ready(function() {
         var rendered = Mustache.render(template, {index: index});
         $( "#language-list" ).append($(rendered));
     });
+
+    $('#add-more-contact-person').on('click', function(e) {
+        var template = $('#contact-person-template').html();
+        var index = +$('#contact-person-count').val() + 1;
+        $('#contact-person-count').val(index);
+        Mustache.parse(template);   // optional, speeds up future uses
+
+        var rendered = Mustache.render(template, {index: index});
+        $( "#contact-person-list" ).append($(rendered));
+    });
 });
