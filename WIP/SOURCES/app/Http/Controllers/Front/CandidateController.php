@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Helpers\CandidateHelper;
 use App\Http\Controllers\Controller;
 use App\Model\CandidateCertificate;
+use App\Model\CandidateContactPerson;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
@@ -166,6 +167,9 @@ class CandidateController extends Controller {
 
                 //Save a IT level
                 $this->saveITLevel($candidate, $input);
+
+                //Save a contact persons
+                $this->saveContactPersons($candidate, $input);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -195,6 +199,59 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Save a contact persons
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveContactPersons($candidate, $input)
+    {
+        $contactPersonCount = isset($input['contact_person_count']) ? $input['contact_person_count'] : 1;
+        for ($i = 1; $i <= $contactPersonCount; $i++) {
+            $contactPerson = new CandidateContactPerson();
+            $contactPerson->candidate_id  = $candidate->id;
+            if ($this->canSaveContactPerson($input, $i)) {
+                $contactPerson = $this->getContactPersonInfo($contactPerson, $input, $i);
+                $contactPerson->save();
+            }
+        }
+    }
+
+    /**
+     * Get a contact person info
+     *
+     * @param $contactPerson
+     * @param $input
+     * @param $index
+     * @return
+     */
+    private function getContactPersonInfo($contactPerson, $input, $index)
+    {
+        $contactPerson->full_name = $input['contact_person_full_name_' . $index];
+        $contactPerson->company = isset($input['contact_person_company_' . $index]);
+        $contactPerson->phone_number = isset($input['contact_person_phone_number_' . $index]);
+        $contactPerson->office = isset($input['contact_person_office_' . $index]);
+
+        return $contactPerson;
+    }
+
+    /**
+     * Can save a contact person
+     *
+     * @param $contactPerson
+     * @param $index
+     * @return bool
+     */
+    private function canSaveContactPerson($contactPerson, $index) {
+        if (!empty(trim($contactPerson['contact_person_full_name_' . $index])) && !empty(trim($contactPerson['contact_person_company_' . $index]))
+        && !empty(trim($contactPerson['contact_person_phone_number_' . $index])) && !empty(trim($contactPerson['contact_person_office_' . $index]))) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -478,6 +535,7 @@ class CandidateController extends Controller {
         $candidate->expect_salary = $input['expect_salary'];
         $candidate->exigency = $input['exigency'];
         $candidate->job_goal = $input['job_goal'];
+        $candidate->skill_forte = $input['skill_forte'];
 
         $candidate->view_total = 0;
         $candidate->status = self::DEFAULT_STATUS;
