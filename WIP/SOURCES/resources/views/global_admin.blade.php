@@ -39,6 +39,7 @@
 	<link href="{{ asset('/assets/layouts/layout2/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/layouts/layout2/css/themes/blue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
 	<link href="{{ asset('/assets/layouts/layout2/css/custom.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END THEME LAYOUT STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" /> </head>
 
@@ -93,6 +94,8 @@
 	<script src="{{ asset('/assets/layouts/layout2/scripts/layout.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/layouts/layout2/scripts/demo.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
 	<!-- END THEME LAYOUT SCRIPTS -->
 
 	<!-- THANHLV END ADD 2016/05/11 -->
