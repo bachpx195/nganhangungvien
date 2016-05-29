@@ -23,7 +23,7 @@
 	<div class="clearfix"></div>
 	<div class="mt8"></div>
 	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}"
-		  name="candidate_form">
+		  name="candidate_form"  enctype="multipart/form-data">
 		<div class="block-content div-frm-hoso" id="frm-login-info">
 			<div class="mb8">
 				<div class="center-p12p24 ">
@@ -41,37 +41,15 @@
 
 		@include('front.candidate.information_technology')
 		<div class="clearfix"></div>
-
-		@include('front.candidate.skill_forte')
-		<div class="clearfix"></div>
 		@include('front.candidate.contact_person')
 		@include('front.candidate.save_btn')
 	</form>
 </div>
 
 @include('front.candidate.candidate_form_js')
-<!-- select2 -->
-<script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
-@include('front.candidate.validator.candidate_form_js')
 @include('front.candidate.template.experience_skill_template')
-@include('front.candidate.render.experience_skill_render')
+@include('front.candidate.template.certificate_template')
+@include('front.candidate.template.language_template')
+@include('front.candidate.template.contact_person_template')
 
-<script>
-$(function() {
-	jQuery("body")
-	.on("click", "#btn-save", function(){
-
-		$form = $(this).closest('form');
-
-		var validator = $form.validate({
-			ignore		: "",
-			errorClass	: 'help-block has-error'
-		});
-	    if(validator.form()) {
-	    	$form.submit();
-	    } else {
-	    }
-	});
-});
-</script>
 @endsection

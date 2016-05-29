@@ -39,116 +39,51 @@
                     <label class="control-label-checkbox bold txt-ghi fs14 w180">
                         MS Word </label>
                     <div class="fr_ip_vtmm floatLeft pl_40">
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="1" tabindex="1"
-                                   type="radio" name="tinhoc[word]" id="tinhoc_word_1"
-                                   value="1">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="2" tabindex="1"
-                                   type="radio" name="tinhoc[word]" id="tinhoc_word_2"
-                                   value="2">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="3" tabindex="1"
-                                   type="radio" name="tinhoc[word]" id="tinhoc_word_3"
-                                   value="3">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="4" tabindex="1"
-                                   type="radio" name="tinhoc[word]" id="tinhoc_word_4"
-                                   value="4">
-                        </div>
+                        @include('front.common.radios',
+                            array(
+                                'selected' => $candidate['word'],
+                                'radios' => $scales,
+                                'radioName' => 'word'
+                                ))
                     </div>
                 </div>
                 <div class="form-group clearfix mb_16">
                     <label class="control-label-checkbox bold txt-ghi fs14 w180">
                         MS Excel </label>
                     <div class="fr_ip_vtmm floatLeft pl_40">
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="1" tabindex="1"
-                                   type="radio" name="tinhoc[excel]" id="tinhoc_excel_1"
-                                   value="1">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="2" tabindex="1"
-                                   type="radio" name="tinhoc[excel]" id="tinhoc_excel_2"
-                                   value="2">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="3" tabindex="1"
-                                   type="radio" name="tinhoc[excel]" id="tinhoc_excel_3"
-                                   value="3">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="4" tabindex="1"
-                                   type="radio" name="tinhoc[excel]" id="tinhoc_excel_4"
-                                   value="4">
-                        </div>
+                        @include('front.common.radios',
+                            array(
+                                'selected' => $candidate['excel'],
+                                'radios' => $scales,
+                                'radioName' => 'excel'
+                                ))
                     </div>
                 </div>
                 <div class="form-group clearfix mb_16">
                     <label class="control-label-checkbox bold txt-ghi fs14 w180">
                         MS Power Point </label>
                     <div class="fr_ip_vtmm floatLeft pl_40">
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="1" tabindex="1"
-                                   type="radio" name="tinhoc[point]" id="tinhoc_point_1"
-                                   value="1">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="2" tabindex="1"
-                                   type="radio" name="tinhoc[point]" id="tinhoc_point_2"
-                                   value="2">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="3" tabindex="1"
-                                   type="radio" name="tinhoc[point]" id="tinhoc_point_3"
-                                   value="3">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="4" tabindex="1"
-                                   type="radio" name="tinhoc[point]" id="tinhoc_point_4"
-                                   value="4">
-                        </div>
+                        @include('front.common.radios',
+                            array(
+                                'selected' => $candidate['power_point'],
+                                'radios' => $scales,
+                                'radioName' => 'power_point'
+                                ))
                     </div>
                 </div>
                 <div class="form-group clearfix mb_16">
                     <label class="control-label-checkbox bold txt-ghi fs14 w180">
                         MS Outlook </label>
                     <div class="fr_ip_vtmm floatLeft pl_40">
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="1" tabindex="1"
-                                   type="radio" name="tinhoc[outlook]" id="tinhoc_outlook_1"
-                                   value="1">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="2" tabindex="1"
-                                   type="radio" name="tinhoc[outlook]" id="tinhoc_outlook_2"
-                                   value="2">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="3" tabindex="1"
-                                   type="radio" name="tinhoc[outlook]" id="tinhoc_outlook_3"
-                                   value="3">
-                        </div>
-                        <div class="demo-list  sex-lable trinhdo">
-                            <input class="input_capdo_tinhoc" relval="4" tabindex="1"
-                                   type="radio" name="tinhoc[outlook]" id="tinhoc_outlook_4"
-                                   value="4">
-                        </div>
+                        @include('front.common.radios',
+                            array(
+                                'selected' => $candidate['out_look'],
+                                'radios' => $scales,
+                                'radioName' => 'out_look'
+                                ))
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group clearfix ">
-                    <label class="control-label-checkbox bold txt-ghi fs14 w180">
-                        Phần mềm khác
-                    </label>
-                    <div class="fr_ip_vtmm col-xs-8">
-                                            <textarea class="form-control" rows="3" name="tinhoc[c_phan_mem_khac]"
-                                                      id="c_phan_mem_khac"></textarea>
-                    </div>
-                </div>
             </div>
         </div>
         <!--- End -->

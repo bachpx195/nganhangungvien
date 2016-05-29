@@ -25,7 +25,7 @@
                     <p>- Không yêu cầu nếu chưa có kinh nghiệm</p>
                 </div>
                 <div class="clearfix"></div>
-                {{ $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1 }}
+                <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
                 <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
 
                 @for ($i = 1; $i <= $experienceCount; $i++)
@@ -39,7 +39,8 @@
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input name="experience_company_name_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
-                                       id="experience_company_name" value=""/>
+                                       id="experience_company_name"
+                                       value="{{isset($candidate['experience_company_name_' . $i]) ? $candidate['experience_company_name_' . $i] : ''}}"/>
                             </div>
                             <div id="error_c_cong_ty"
                                  class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
@@ -53,7 +54,8 @@
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input name="experience_office_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
-                                       id="experience_office" value=""/>
+                                       id="experience_office"
+                                       value="{{isset($candidate['experience_office_' . $i]) ? $candidate['experience_office_' . $i] : ''}}"/>
                             </div>
                             <div id="error_c_chuc_danh"
                                  class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
@@ -69,26 +71,29 @@
                             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                    <select id="day-in-month" name="experience_day_in_month_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                        @include('front.common.month_options', array('selected' => $candidate['experience_day_in_month_' . $i]))
+                                    <select name="experience_day_in_month_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                        @include('front.common.month_options',
+                                        array('selected' => isset($candidate['experience_day_in_month_' . $i]) ? $candidate['experience_day_in_month_' . $i] : ''))
                                     </select>
                                 </div>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                    <select id="day_in_year" name="experience_day_in_year_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                        @include('front.common.year_options', array('selected' => $candidate['experience_day_in_year_' . $i]))
+                                    <select name="experience_day_in_year_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                        @include('front.common.year_options',
+                                        array('selected' => isset($candidate['experience_day_in_year_' . $i]) ? $candidate['experience_day_in_year_' . $i] : ''))
                                     </select>
                                 </div>
                                 <span class="txt-color-757575 fs14 italic pl_16 pr12 floatLeft lbl_from_bangcap">đến</span>
                                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                                     Hiện tại</p>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                    <select id="day_out_month" name="experience_day_out_month_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                        @include('front.common.month_options', array('selected' => $candidate['experience_day_out_month_' . $i]))
+                                    <select name="experience_day_out_month_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                        @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                                     </select>
                                 </div>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                    <select id="day_out_year" name="experience_day_out_year_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
-                                        @include('front.common.year_options', array('selected' => $candidate['experience_day_out_month_' . $i]))
+                                    <select name="experience_day_out_year_{{$i}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                                        @include('front.common.year_options',
+                                        array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                                     </select>
                                 </div>
                                 <div id="error_c_thoigian"
@@ -110,7 +115,7 @@
                                                 data-select-class="tinh_thanh_reg">
                                             @include('front.common.options',
                                                 array(
-                                                    'selected' => $candidate['experience_salary_' . $i],
+                                                    'selected' => isset($candidate['experience_salary_' . $i]) ? $candidate['experience_salary_' . $i] : '',
                                                     'options' => $salaries,
                                                     'defaultName' => 'Chọn Mức lương'
                                                     ))
@@ -130,7 +135,8 @@
                                 <div class="fr_ip_vtmm col-xs-8">
                             <textarea name="experience_description_{{$i}}"
                                       class="form-control pt4 pb4 pl_10 pr_10 inputTextAreaKNEdit required"
-                                      id="experience_description" rows="5"></textarea>
+                                      id="experience_description" rows="5"
+                                    value="{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}"></textarea>
                                 </div>
                                 <div id="error_c_mo_ta_cong_viec"
                                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
@@ -138,17 +144,11 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="ln_hr_head"></div>
-                    </div>
                 @endfor
             </div>
         </div>
-
-        <div class="form-group">
-            <div id="add-more-experience" class="footer-box-child-ths">
-                <i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC
-            </div>
+        <div class="footer-box-child-ths" id="add-more-experience">
+            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC</a>
         </div>
     </div>
 </div>

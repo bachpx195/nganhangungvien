@@ -1,4 +1,4 @@
-<script>
+$( document ).ready(function() {
     var validator = new FormValidator('candidate_form', [{
         name: 'cv_title',
         display: 'required',
@@ -53,17 +53,15 @@
         rules: 'required'
     }], function(errors, event) {
         //Hidden all validate messages
-        $('#general-infomation .validator-message').addClass('display_none');
+        $('#candidate-form .validator-message').addClass('display_none');
         var birthday = ['birthday_year', 'birthday_month', 'birthday_day'];
         if (errors.length > 0) {
-            console.log('errors-------------------------------------');
-            console.log(errors);
             for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
-                $("#general-infomation .validator-message[data-name='" + errors[i].name +"']").removeClass('display_none');
+                $("#candidate-form .validator-message[data-name='" + errors[i].name +"']").removeClass('display_none');
                 if (birthday.indexOf(errors[i].name) > -1) {
-                    $("#general-infomation .validator-message[data-name='birthday']").removeClass('display_none');
+                    $("#candidate-form .validator-message[data-name='birthday']").removeClass('display_none');
                 }
             }
         }
     });
-</script>
+});
