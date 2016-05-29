@@ -15,13 +15,13 @@
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
         <div class="form-group clearfix mb_16">
-            <label for="contact_person_company__@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
+            <label for="contact_person_company_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
                 Công ty/Tổ chức <span class="colorRed">*</span>
             </label>
             <div class="fr_ip_vtmm col-xs-8">
                 <input type="text"
                        class="form-control input-lg2 color-input inputTextNTK required"
-                       name="contact_person_company__@{{index}}"/>
+                       name="contact_person_company_@{{index}}"/>
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>

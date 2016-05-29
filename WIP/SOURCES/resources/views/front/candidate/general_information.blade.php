@@ -369,6 +369,22 @@
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job_goal">
                         Vui lòng chọn mục tiêu nghề nghiệp.</div>
                 </div>
+
+                <div class="form-group mt_16">
+                    <label for="job_goal"
+                           class="control-label-info bold txt-ghi fs14 w180">
+                        Kỹ năng & Sở trường <span class="colorRed">*</span>
+                    </label>
+                    <div class="fr_ip_vtmm col-xs-8">
+                        <textarea name="skill_forte"
+                                  placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
+                                  class="inputTxtAreaTop form-control"
+                                  rows="5"
+                                  value="{{ $candidate['skill_forte'] }}"></textarea>
+                    </div>
+                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
+                        Vui lòng chọn mục tiêu nghề nghiệp.</div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
