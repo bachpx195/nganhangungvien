@@ -20,10 +20,6 @@
 						<form id="form_register" class="form-horizontal"
 							enctype="multipart/form-data" method="POST">
 
-							<input type="hidden" name="token-key" id="token-key"
-								value="005f8c7788463f772945d56d8a00612b"> <input type="hidden"
-								name="token-value" id="token-value"
-								value="ed2ea114ead1dcd26b784c04df683cbb">
 							<div id="block-thong-tin-dang-nhap" class="mb_30 pt_6">
 								<div class="clear mb_14">
 									<span class="title_info_login_ntd "></span><span
@@ -40,11 +36,10 @@
 									</label>
 									<div class="register_fr_input_wd583">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="txt_email" name="txt_email"
+											id="txt_email" name="txt_email" required
+											data-required-msg="Vui lòng nhập email đúng định dạng"
 											placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com">
 									</div>
-									<div class="mess_notice_fullname clearfix italic error_email"
-										id="error_txt_email"></div>
 								</div>
 
 								<!-- input password -->
@@ -57,12 +52,8 @@
 										<input type="password"
 											class="form-control input-lg2 color-input" id="txt_password"
 											name="txt_password"
-											onchange="kiem_tra_do_manh_mat_khau(this)" />
+											required data-required-msg="Vui lòng nhập mật khẩu" />
 									</div>
-									<div class="control-label-info bold fs14 italic"
-										id="warning_pass"></div>
-									<div class="error_reg_mess clearfix err_password display_none"
-										id="error_txt_password"></div>
 								</div>
 								<!-- input repassword -->
 								<div class="form-group mb_14">
@@ -73,11 +64,9 @@
 									<div class="fr-input-wd333">
 										<input type="password"
 											class="form-control input-lg2 color-input"
-											id="retype_password" name="retype_password" />
+											id="retype_password" name="retype_password"
+											   required data-required-msg="Vui lòng nhập xác nhận mật khẩu"/>
 									</div>
-									<div
-										class="error_reg_mess clearfix err_retype_password display_none"
-										id="error_retype_password"></div>
 								</div>
 							</div>
 							<div id="block-thong-tin-ca-nhan" class="mb_22">
@@ -94,15 +83,9 @@
 									<div class="register_fr_input_wd583">
 										<input type="text" class="form-control input-lg2 color-input"
 											id="company_name" name="company_name"
-											placeholder="Ví dụ: Công ty cổ phần nguồn nhân lực Siêu Việt">
+											placeholder="Ví dụ: Công Ty Cổ Phần Giải Pháp Tuyển Dụng Thuê Ngoài Việt Nam"
+											required data-required-msg="Ghi tên công ty đầy đủ và rõ ràng theo Giấy phép đăng ký kinh doanh">
 									</div>
-									<div
-										class="mess_notice_fullname clearfix require_req_fullname err_fullname">Ghi
-										tên công ty đầy đủ và rõ ràng theo Giấy phép đăng ký kinh
-										doanh</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-company_name display_none"
-										id="error_company_name"></div>
 								</div>
 
 								<!-- input Quy mô công ty -->
@@ -116,8 +99,8 @@
 											class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
 											<select id="company_size" name="company_size"
 												class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
-												data-disS="1">
-												<option value="0">Chọn Quy mô công ty</option>
+													required data-required-msg="Vui lòng chọn quy mô công ty">
+												<option value="">Chọn Quy mô công ty</option>
 												<option value="1">Ít hơn 10 nhân viên</option>
 												<option value="6">Từ 10 - 24 nhân viên</option>
 												<option value="2">Từ 25 - 99 nhân viên</option>
@@ -126,10 +109,8 @@
 												<option value="5">Trên 1000 nhân viên</option>
 											</select>
 										</div>
+										<span data-for='company_size' class='k-invalid-msg'></span>
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic error_qmcty display_none"
-										id="error_company_size"></div>
 								</div>
 
 								<!-- input tel_co_dinh -->
@@ -140,11 +121,9 @@
 									</label>
 									<div class="fr-input-wd333">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="tel_co_dinh" name="tel_co_dinh" />
+											id="tel_co_dinh" name="tel_co_dinh"
+											required data-required-msg="Vui lòng nhập số điện thoại cố định"/>
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-tel_co_dinh display_none"
-										id="error_tel_co_dinh"></div>
 								</div>
 
 								<!-- input company_info -->
@@ -158,11 +137,9 @@
 											class="form-control p14 inputTextArea txt-color-757575"
 											id="company_info" name="company_info"
 											placeholder="Hãy cung cấp những thông tin cơ bản như: năm thành lập, ngành nghề hoạt động chính, thành tựu đã đạt được, đính hướng phát triển tương lai..."
+											required data-required-msg="Vui lòng nhập giới thiệu về công ty"
 											rows="4"></textarea>
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-about_company display_none"
-										id="error_company_info"></div>
 								</div>
 
 								<!-- input company_address -->
@@ -174,13 +151,9 @@
 									<div class="register_fr_input_wd583">
 										<input type="text" class="form-control input-lg2 color-input"
 											id="company_address" name="company_address"
-											placeholder="Ví dụ: Số nhà 98A, phố Ngụy Như Kon Tum, phường Nhân Chính , quận Thanh Xuân" />
+											placeholder="Ví dụ: Số nhà 98A, phố Ngụy Như Kon Tum, phường Nhân Chính , quận Thanh Xuân"
+											   required data-required-msg="Vui lòng nhập chi tiết địa chỉ của bạn bằng tiếng Việt có dấu."/>
 									</div>
-									<div class="notice_address_detail clearfix err_address">Vui
-										lòng nhập chi tiết địa chỉ của bạn bằng tiếng Việt có dấu.</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-address display_none"
-										id="error_company_address"></div>
 								</div>
 								<!-- input Tỉnh/thành phố * -->
 								<div class="form-group mb_16">
@@ -193,82 +166,15 @@
 											class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
 											<select id="city_id" name="tinh_thanh_reg"
 												class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
-												tabindex="-1">
-												<option value="0">Chọn Tỉnh thành</option>
-												<option value="2">Hà Nội</option>
-												<option value="1">TP. HCM</option>
-												<option value="99">Nước ngoài</option>
-												<option value="23">Đà Nẵng</option>
-												<option value="9">Bình Dương</option>
-												<option value="21">Cần Thơ</option>
-												<option value="22">Hải Phòng</option>
-												<option value="53">Bà Rịa - Vũng Tàu</option>
-												<option value="92">Bắc Kạn</option>
-												<option value="94">Thừa Thiên Huế</option>
-												<option value="91">Bắc Giang</option>
-												<option value="32">Bắc Ninh</option>
-												<option value="93">Bạc Liêu</option>
-												<option value="90">Bến Tre</option>
-												<option value="89">Bình Định</option>
-												<option value="88">Bình Phước</option>
-												<option value="87">Bình Thuận</option>
-												<option value="86">Cà Mau</option>
-												<option value="85">Cao Bằng</option>
-												<option value="84">Cửu Long</option>
-												<option value="83">Đắc Lắc</option>
-												<option value="82">Đắc Nông</option>
-												<option value="52">An Giang</option>
-												<option value="81">Điện Biên</option>
-												<option value="19">Đồng Nai</option>
-												<option value="80">Đồng Tháp</option>
-												<option value="79">Gia Lai</option>
-												<option value="78">Hà Giang</option>
-												<option value="77">Hà Nam</option>
-												<option value="76">Hà Tĩnh</option>
-												<option value="27">Hải Dương</option>
-												<option value="75">Hậu Giang</option>
-												<option value="74">Hòa Bình</option>
-												<option value="26">Hưng Yên</option>
-												<option value="73">Khánh Hòa</option>
-												<option value="72">Kiên Giang</option>
-												<option value="71">Kon Tum</option>
-												<option value="70">Lai Châu</option>
-												<option value="69">Lạng Sơn</option>
-												<option value="68">Lào Cai</option>
-												<option value="67">Lâm Đồng</option>
-												<option value="66">Long An</option>
-												<option value="65">Nam Định</option>
-												<option value="64">Nghệ An</option>
-												<option value="63">Ninh Bình</option>
-												<option value="62">Ninh Thuận</option>
-												<option value="61">Phú Thọ</option>
-												<option value="60">Phú Yên</option>
-												<option value="59">Quảng Bình</option>
-												<option value="58">Quảng Nam</option>
-												<option value="30">Quảng Ngãi</option>
-												<option value="57">Quảng Ninh</option>
-												<option value="56">Quảng Trị</option>
-												<option value="55">Sóc Trăng</option>
-												<option value="54">Sơn La</option>
-												<option value="51">Tây Ninh</option>
-												<option value="50">Thái Bình</option>
-												<option value="49">Thái Nguyên</option>
-												<option value="48">Thanh Hóa</option>
-												<option value="47">Tiền Giang</option>
-												<option value="46">Trà Vinh</option>
-												<option value="45">Tuyên Quang</option>
-												<option value="44">Vĩnh Long</option>
-												<option value="43">Vĩnh Phúc</option>
-												<option value="42">Yên Bái</option>
-												<option value="95">Toàn quốc</option>
-												<option value="96">Miền Bắc</option>
-												<option value="98">Miền Nam</option>
-												<option value="97">Miền Trung</option>
+												tabindex="-1"
+													required data-required-msg="Vui lòng chọn tỉnh thành">
+												<option value="">Chọn Tỉnh thành</option>
+
 											</select>
 										</div>
+										<span data-for='tinh_thanh_reg' class='k-invalid-msg'></span>
 									</div>
-									<div class="error_reg_mess clearfix err_city display_none"
-										id="error_tinh_thanh_reg"></div>
+
 								</div>
 
 								<!-- input website -->
@@ -279,9 +185,6 @@
 										<input type="text" class="form-control input-lg2 color-input"
 											id="website" name="website" />
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-website display_none"
-										id="error_website"></div>
 								</div>
 
 
@@ -301,11 +204,9 @@
 									</label>
 									<div class="register_fr_input_wd583">
 										<input type="text" name="contact_name"
-											class="form-control input-lg2 color-input" id="contact_name" />
+											class="form-control input-lg2 color-input" id="contact_name"
+											   required data-required-msg="Vui lòng nhập tên người liên hệ" />
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-name-contact display_none"
-										id="error_contact_name"></div>
 								</div>
 								<!-- input phone -->
 								<div class="dien-thoai-lien-he form-group mb1 input-phone mb_6">
@@ -315,11 +216,9 @@
 									</label>
 									<div class="fr-input-wd333">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="phone" name="phone[]" />
+											id="phone" name="phone[]"
+											required data-required-msg="Vui lòng nhập số điện thoại liên hệ"/>
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-tel display_none"
-										id="error_phone"></div>
 								</div>
 								<div class="form-group mb_10" id="add_tel_contact">
 									<label class="control-label-checkbox w180"></label>
@@ -338,11 +237,9 @@
 									</label>
 									<div class="fr-input-wd333">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="contact_email" name="contact_email" />
+											id="contact_email" name="contact_email"
+											   required data-required-msg="Vui lòng nhập email người liên hệ"/>
 									</div>
-									<div
-										class="clearfix error_reg_mess clearfix fs14 italic invalid-msg-email_contact display_none"
-										id="error_contact_email"></div>
 								</div>
 								<div class="mb_16">
 									<div class="line-break02"></div>
@@ -355,17 +252,15 @@
 									</label>
 									<div class="register_fr_input_wd583 w390 pl_10">
 										<div class="img_security_code floatLeft">
-											<img src="/common/captcha?time=1464279410"
-												alt="Nhap ma bao mat" title="Nhập mã bảo mật" />
+											{!! captcha_image_html('RegisterCaptcha') !!}
 										</div>
 										<!--<div class="img_security_code floatLeft"></div>-->
 										<div class="fr-input-wd333 w263 ">
 											<input type="text" class="form-control input-lg2 color-input"
-												id="captcha" name="captcha" />
+												id="captcha" name="captcha"
+												   required data-required-msg="Vui lòng nhập mã bảo mật"/>
 										</div>
 									</div>
-									<div class="error_reg_mess clearfix err_scode display_none"
-										id="error_captcha"></div>
 								</div>
 
 								<div class="form-group mb_12">
