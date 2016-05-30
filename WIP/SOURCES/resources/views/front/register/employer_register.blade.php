@@ -19,7 +19,7 @@
 					<div class="center-p12p24 ">
 						<form id="form_register" class="form-horizontal"
 							enctype="multipart/form-data" method="POST">
-
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div id="block-thong-tin-dang-nhap" class="mb_30 pt_6">
 								<div class="clear mb_14">
 									<span class="title_info_login_ntd "></span><span
@@ -169,7 +169,9 @@
 												tabindex="-1"
 													required data-required-msg="Vui lòng chọn tỉnh thành">
 												<option value="">Chọn Tỉnh thành</option>
-
+												@foreach($provinces as $item)
+													<option value="{{ $item->id }}">{{ $item->name }}</option>
+												@endforeach
 											</select>
 										</div>
 										<span data-for='tinh_thanh_reg' class='k-invalid-msg'></span>
@@ -209,14 +211,15 @@
 									</div>
 								</div>
 								<!-- input phone -->
+								<input type="hidden" class="form-control input-lg2 color-input"
+									   id="phones" name="phone[]">
 								<div class="dien-thoai-lien-he form-group mb1 input-phone mb_6">
 									<label for="phone"
 										class="control-label-info bold txt-ghi fs14 w180">Số điện
 										thoại liên hệ <span class="colorRed">*</span>
 									</label>
 									<div class="fr-input-wd333">
-										<input type="text" class="form-control input-lg2 color-input"
-											id="phone" name="phone[]"
+										<input type="text" class="form-control input-lg2 color-input phone_txt" name="phone1"
 											required data-required-msg="Vui lòng nhập số điện thoại liên hệ"/>
 									</div>
 								</div>

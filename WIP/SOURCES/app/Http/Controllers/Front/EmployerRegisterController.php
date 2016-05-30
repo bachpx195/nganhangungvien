@@ -15,7 +15,17 @@ class EmployerRegisterController extends BaseController {
 	 */
 	public function register(Request $request)
 	{
-		return view('front/register/employer_register');
+		if($request->isMethod('POST')){
+			$data = $request->all();
+			var_dump($data);
+			die();
+		}else{
+
+		}
+
+		$provinces = $this->provinceRepo->getSortedList();
+		return view('front/register/employer_register')
+				-> with('provinces', $provinces);
 	}
 	
 }
