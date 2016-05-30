@@ -134,7 +134,7 @@ class CandidateController extends Controller {
                 $candidate = new Candidate;
             }
 
-            return view('front/candidate/candidate_form')
+            return view('admin/candidate/candidate_form')
                 ->with('candidate', $candidate)
                 ->with('salaries', 	$salaries)
                 ->with('experienceYears', $experienceYears)
