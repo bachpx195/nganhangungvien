@@ -61,3 +61,7 @@ Route::group(['prefix' => ''], function()
 Route::match(['get', 'post'], '/candidate/form', [
 	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
 ]);
+
+Route::match(['get', 'post'], '/new/form', [
+	'as' => 'new.form', 'uses' => 'Front\NewController@newForm'
+]);

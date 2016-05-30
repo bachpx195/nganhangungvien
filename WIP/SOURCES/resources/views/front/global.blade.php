@@ -34,6 +34,8 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/custom.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all' >
     <script type="text/javascript">
         function addListener(obj, eventName, listener) {
             if (obj.addEventListener) {
@@ -64,6 +66,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
 </head>
 
 <body class="page_on_load s21_home" id="s22_chi_tiet_ho_so">
