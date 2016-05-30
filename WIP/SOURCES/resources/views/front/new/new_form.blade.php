@@ -141,7 +141,6 @@
 
 <!-- select2 -->
 <script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
-@include('front.candidate.validator.general_information_js')
 @include('front.candidate.candidate_form_js')
 
 <script>

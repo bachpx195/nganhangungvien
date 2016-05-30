@@ -12,15 +12,16 @@ class VerifyCsrfToken extends BaseVerifier {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
-    public function handle($request, Closure $next)
-    {
-        $response = $next($request);
 
-        if (last(explode('\\',get_class($response))) != 'RedirectResponse') {
-            $response->header('P3P', 'CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
-        }
+	public function handle($request, Closure $next)
+	{
+		$response = $next($request);
 
-        return $response;
-    }
+		if (last(explode('\\',get_class($response))) != 'RedirectResponse') {
+			$response->header('P3P', 'CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+		}
+
+		return $response;
+	}
 
 }

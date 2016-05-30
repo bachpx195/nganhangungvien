@@ -28,6 +28,7 @@ class FileHelper {
     {
         return public_path() . '/candidate/image/';
     }
+
      public static function getNewsImgPath()
     {
         return public_path() . '/news/images/';

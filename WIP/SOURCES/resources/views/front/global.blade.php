@@ -36,6 +36,8 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all' >
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
     <script type="text/javascript">
         function addListener(obj, eventName, listener) {
             if (obj.addEventListener) {
@@ -45,9 +47,23 @@
             }
         }
     </script>
+</head>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
+<body class="page_on_load s21_home" id="s22_chi_tiet_ho_so">
+    <div class="container-fluid nopadding">
+        @include('front.layout.header')
+
+        <div class="show-content w_100 box_right">
+            <div id="cols-right" class="bg_grey">
+                <div class="content_cols pt_16 pb_24">
+                    @yield('content')
+                </div>
+
+                @include('front.layout.footer')
+            </div>
+        </div>
+    </div>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.mobile.custom.min.js') }}"></script>
@@ -66,6 +82,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
 </head>
 
@@ -83,6 +100,10 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
 </body>
 
 </html>

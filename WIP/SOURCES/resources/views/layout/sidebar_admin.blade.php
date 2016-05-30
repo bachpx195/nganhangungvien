@@ -30,13 +30,13 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
+						<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
 							<i class="icon-settings"></i> DANH SÁCH
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="?p=dashboard-2" target="_blank" class="nav-link">
+						<a href="{{route('admin.candidate.form')}}" target="_blank" class="nav-link">
 							<i class="icon-globe"></i> THÊM HỒ SƠ
 							<span class="arrow nav-toggle"></span>
 						</a>
