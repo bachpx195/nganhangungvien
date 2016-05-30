@@ -30,13 +30,13 @@
 								</div>
 								<!-- input email -->
 								<div class="form-group clearfix mb_14">
-									<label for="txt_email"
+									<label for="email"
 										class="control-label-info bold txt-color-363636 fs14 w180">
 										Email <span class="colorRed">*</span>
 									</label>
 									<div class="register_fr_input_wd583">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="txt_email" name="txt_email" required
+											id="email" name="email" required
 											data-required-msg="Vui lòng nhập email đúng định dạng"
 											placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com">
 									</div>
@@ -44,14 +44,14 @@
 
 								<!-- input password -->
 								<div class="form-group mb_14">
-									<label for="txt_password"
+									<label for="password"
 										class="control-label-info bold txt-color-363636 fs14 w180">Mật
 										khẩu <span class="colorRed">*</span>
 									</label>
 									<div class="fr-input-wd333">
 										<input type="password"
-											class="form-control input-lg2 color-input" id="txt_password"
-											name="txt_password"
+											class="form-control input-lg2 color-input" id="password"
+											name="password"
 											required data-required-msg="Vui lòng nhập mật khẩu" />
 									</div>
 								</div>
@@ -66,6 +66,17 @@
 											class="form-control input-lg2 color-input"
 											id="retype_password" name="retype_password"
 											   required data-required-msg="Vui lòng nhập xác nhận mật khẩu"/>
+									</div>
+								</div>
+								<div class="form-group mb_14">
+									<label for="fullname"
+										   class="control-label-info bold txt-color-363636 fs14 w180">
+										Họ và tên <span class="colorRed">*</span>
+									</label>
+									<div class="register_fr_input_wd583">
+										<input type="text" class="form-control input-lg2 color-input"
+											   id="fullname" name="fullname" required
+											   data-required-msg="Vui lòng nhập họ tên">
 									</div>
 								</div>
 							</div>
@@ -115,27 +126,27 @@
 
 								<!-- input tel_co_dinh -->
 								<div class="form-group mb_8">
-									<label for="tel_co_dinh"
+									<label for="phone"
 										class="control-label-info bold txt-color-363636 fs14 w180">Điện
 										thoại cố định <span class="colorRed">*</span>
 									</label>
 									<div class="fr-input-wd333">
 										<input type="text" class="form-control input-lg2 color-input"
-											id="tel_co_dinh" name="tel_co_dinh"
+											id="phone" name="phone"
 											required data-required-msg="Vui lòng nhập số điện thoại cố định"/>
 									</div>
 								</div>
 
 								<!-- input company_info -->
 								<div class="form-group mb_16">
-									<label for="company_info"
+									<label for="company_description"
 										class="control-label-info bold txt-color-363636 fs14 w180">Giới
 										thiệu về công ty <span class="colorRed">*</span>
 									</label>
 									<div class="register_fr_input_wd583">
 										<textarea
 											class="form-control p14 inputTextArea txt-color-757575"
-											id="company_info" name="company_info"
+											id="company_description" name="company_description"
 											placeholder="Hãy cung cấp những thông tin cơ bản như: năm thành lập, ngành nghề hoạt động chính, thành tựu đã đạt được, đính hướng phát triển tương lai..."
 											required data-required-msg="Vui lòng nhập giới thiệu về công ty"
 											rows="4"></textarea>
@@ -157,14 +168,14 @@
 								</div>
 								<!-- input Tỉnh/thành phố * -->
 								<div class="form-group mb_16">
-									<label for="city_id"
+									<label for="province_id"
 										class="control-label-info bold txt-ghi fs14 w180">Tỉnh/thành
 										phố <span class="colorRed">*</span>
 									</label>
 									<div class="fr-input-wd333 select_style31 city_select">
 										<div
 											class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-											<select id="city_id" name="tinh_thanh_reg"
+											<select id="province_id" name="province_id"
 												class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
 												tabindex="-1"
 													required data-required-msg="Vui lòng chọn tỉnh thành">
@@ -174,7 +185,6 @@
 												@endforeach
 											</select>
 										</div>
-										<span data-for='tinh_thanh_reg' class='k-invalid-msg'></span>
 									</div>
 
 								</div>
@@ -200,37 +210,37 @@
 
 								<!-- input Tên người liên hệ -->
 								<div class="form-group mb1 input-phone mb_10">
-									<label for="contact_name"
+									<label for="contact_person"
 										class="control-label-info bold txt-ghi fs14 w180">Tên người
 										liên hệ <span class="colorRed">*</span>
 									</label>
 									<div class="register_fr_input_wd583">
-										<input type="text" name="contact_name"
-											class="form-control input-lg2 color-input" id="contact_name"
+										<input type="text" name="contact_person"
+											class="form-control input-lg2 color-input" id="contact_person"
 											   required data-required-msg="Vui lòng nhập tên người liên hệ" />
 									</div>
 								</div>
 								<!-- input phone -->
-								<input type="hidden" class="form-control input-lg2 color-input"
-									   id="phones" name="phone[]">
+								<!--<input type="hidden" class="form-control input-lg2 color-input"
+									   id="phones" name="phones">-->
 								<div class="dien-thoai-lien-he form-group mb1 input-phone mb_6">
-									<label for="phone"
+									<label for="contact_phone"
 										class="control-label-info bold txt-ghi fs14 w180">Số điện
 										thoại liên hệ <span class="colorRed">*</span>
 									</label>
 									<div class="fr-input-wd333">
-										<input type="text" class="form-control input-lg2 color-input phone_txt" name="phone1"
+										<input type="text" class="form-control input-lg2 color-input phone_txt" name="contact_phone"
 											required data-required-msg="Vui lòng nhập số điện thoại liên hệ"/>
 									</div>
 								</div>
-								<div class="form-group mb_10" id="add_tel_contact">
+								<!--<div class="form-group mb_10" id="add_tel_contact">
 									<label class="control-label-checkbox w180"></label>
 									<div class="fr-input-wd333">
 										<span class="color_add_tel fs14 cursor_pointer" id="addPhone">
 											<span class="add_tel_692095"></span>Thêm Số điện thoại
 										</span>
 									</div>
-								</div>
+								</div>-->
 
 								<!-- input Email liên hệ -->
 								<div class="form-group mb_10">
@@ -260,7 +270,7 @@
 										<!--<div class="img_security_code floatLeft"></div>-->
 										<div class="fr-input-wd333 w263 ">
 											<input type="text" class="form-control input-lg2 color-input"
-												id="captcha" name="captcha"
+												id="CaptchaCode" name="CaptchaCode"
 												   required data-required-msg="Vui lòng nhập mã bảo mật"/>
 										</div>
 									</div>
@@ -275,9 +285,6 @@
 									</div>
 								</div>
 							</div>
-
-							<input type="hidden" name="So0mDSzUKXNXpZwQ"
-								value="5fdd65539273ba3e54f0be751732b23b">
 						</form>
 					</div>
 				</div>

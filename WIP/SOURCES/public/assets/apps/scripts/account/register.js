@@ -6,19 +6,11 @@ $(document).ready(function () {
 
     $("#btnRegister").click(function () {
         if (validator.validate()) {
-            //collect phone number
-            var phones = [];
-            $('.phone_txt').each(function () {
-                phones.push($(this).val());
-            });
-
-            $("#phones").val(phones);
-
             $("#form_register").submit();
         }
     });
 
-    var numberOfPhones = 1;
+    /*var numberOfPhones = 1;
     $('#addPhone').click(function () {
         var div = $(this).parent().parent().parent();
         var html = div.find('.input-phone').last().clone(true, true);
@@ -29,5 +21,5 @@ $(document).ready(function () {
         div.find('.input-phone').last().after(html);
 
         var validator = $("#form_register").kendoValidator().data("kendoValidator");
-    })
+    })*/
 });

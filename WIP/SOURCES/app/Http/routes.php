@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 /**
  * Frontend
  */
-Route::group(['prefix' => ''], function()
+Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
 	Route::get('/', 'Front\HomeController@index');
 

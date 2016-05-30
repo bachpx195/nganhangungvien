@@ -51,9 +51,14 @@ return [
     'RegisterCaptcha' => [
         'UserInputId' => 'CaptchaCode',
         'CodeLength' => CaptchaRandomization::GetRandomCodeLength(3, 4),
-        'CodeStyle' => CodeStyle::Alpha,
+        'CodeStyle' => CodeStyle::Numeric,
         'ImageWidth' => 100,
-        'ImageHeight' => 30
+        'ImageHeight' => 30,
+        'ImageStyle' => CaptchaRandomization::GetRandomImageStyle([
+            ImageStyle::Radar,
+            ImageStyle::Collage,
+            ImageStyle::Fingerprints,
+        ]),
     ],
 
     /*
