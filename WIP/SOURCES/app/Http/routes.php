@@ -15,6 +15,28 @@
 	'as' => 'index', 'uses' => 'WelcomeController@index'
 ]);*/
 
+/**
+ * Backend
+ */
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::match(['get'], '/candidate/list', [
+		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
+	]);
+
+	Route::match(['get', 'post'], '/candidate/form', [
+		'as' => 'admin.candidate.form', 'uses' => 'Admin\CandidateController@candidateForm'
+	]);
+
+	Route::match(['get', 'post'], '/candidate/update/{id}', [
+		'as' => 'admin.candidate.update', 'uses' => 'Admin\CandidateController@candidateUpdate'
+	]);
+
+	Route::post('/candidate/delete/{id}', [
+		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
+	]);
+});
+
 Route::match(['get', 'post'], '/admin', [
 	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
 ]);
@@ -56,8 +78,17 @@ Route::group(['prefix' => ''], function()
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
 		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
 	]);
+	
+	//Đăng ký tài khoản
+	Route::match(['get', 'post'], '/nha-tuyen-dung/dang-ky', [
+		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
+	]);
 });
 
 Route::match(['get', 'post'], '/candidate/form', [
 	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+]);
+
+Route::match(['get', 'post'], '/new/form', [
+	'as' => 'new.form', 'uses' => 'Front\NewController@newForm'
 ]);

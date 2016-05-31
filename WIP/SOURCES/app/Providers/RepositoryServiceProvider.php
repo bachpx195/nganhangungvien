@@ -72,6 +72,11 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\IProvinceRepo',
 			'App\Repositories\ProvinceRepo');
+
+		$this->app->bind(
+			'App\Repositories\INewRepo',
+			'App\Repositories\NewRepo');
+
 	}
 
 }
