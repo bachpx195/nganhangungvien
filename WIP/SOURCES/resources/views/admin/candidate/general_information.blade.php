@@ -68,11 +68,11 @@
                     </label>
                     <div class="col-sm-10">
                         <label class="radio-inline radio-styled">
-                            <input type="radio" name="inlineRadioOptions" value="2"
+                            <input type="radio" name="sex" value="2"
                                    @if ($candidate['sex'] != 1) checked @endif><span>Nữ</span>
                         </label>
                         <label class="radio-inline radio-styled">
-                            <input type="radio" name="inlineRadioOptions" value="1"
+                            <input type="radio" name="sex" value="1"
                                    @if ($candidate['sex'] == 1) checked @endif><span>Nam</span>
                         </label>
                     </div>
@@ -84,11 +84,11 @@
                     </label>
                     <div class="col-sm-10 ">
                         <label class="radio-inline radio-styled">
-                            <input type="radio" name="inlineRadioOptions" value="0"
+                            <input type="radio" name="is_married" value="0"
                                    @if ($candidate['is_married'] != 1) checked @endif><span>Độc thân</span>
                         </label>
                         <label class="radio-inline radio-styled">
-                            <input type="radio" name="inlineRadioOptions" value="1"
+                            <input type="radio" name="is_married" value="1"
                                    @if ($candidate['is_married'] == 1) checked @endif><span>Lập gia đình</span>
                         </label>
                     </div>

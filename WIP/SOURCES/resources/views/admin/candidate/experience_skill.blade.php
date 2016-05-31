@@ -125,7 +125,7 @@
                     </div>
                     <div class="clearfix"></div>
 
-                    <div class="form-group">
+                    <div class="form-group clearfix mt_16">
                         <label class="col-sm-2 control-label">
                             Mô tả công việc <span class="colorRed">*</span>
                         </label>

@@ -27,7 +27,7 @@
 
 	<div class="clearfix"></div>
 	<div class="mt8"></div>
-	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}"
+	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('admin.candidate.form') }}"
 		  name="candidate_form"  enctype="multipart/form-data">
 		<div class="block-content div-frm-hoso" id="frm-login-info">
 			<div class="mb8">
