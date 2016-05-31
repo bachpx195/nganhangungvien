@@ -113,7 +113,7 @@
                                     data-disS="1">
                                 @include('front.common.options',
                                     array(
-                                        'selected' => $candidate['graduation_type_' . $i],
+                                        'selected' => isset($candidate['graduation_type_' . $i]) ? $candidate['graduation_type_' . $i] : '',
                                         'options' => $graduationTypes,
                                         'defaultName' => 'Chọn loại tốt nghiệp'
                                         ))

@@ -26,7 +26,8 @@
                             <div class="col-sm-10">
                                 <input type="text"
                                        class="form-control"
-                                       name="contact_person_full_name_{{$i}}" value="{{$candidate['contact_person_full_name_' . $i]}}"/>
+                                       name="contact_person_full_name_{{$i}}"
+                                       value="{{isset($candidate['contact_person_full_name_' . $i]) ? $candidate['contact_person_full_name_' . $i] : ''}}"/>
                             </div>
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                         </div>
@@ -37,7 +38,8 @@
                             <div class="col-sm-10">
                                 <input type="text"
                                        class="form-control"
-                                       name="contact_person_company_{{$i}}" value="{{$candidate['contact_person_company_' . $i]}}"/>
+                                       name="contact_person_company_{{$i}}"
+                                       value="{{isset($candidate['contact_person_company_' . $i]) ? $candidate['contact_person_company_' . $i] : ''}}"/>
                             </div>
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                         </div>
@@ -50,7 +52,8 @@
                             <div class="col-sm-10">
                                 <input type="text"
                                        class="form-control"
-                                       name="contact_person_phone_number_{{$i}}" value="{{$candidate['contact_person_phone_number_'. $i]}}"/>
+                                       name="contact_person_phone_number_{{$i}}"
+                                       value="{{isset($candidate['contact_person_phone_number_'. $i]) ? $candidate['contact_person_phone_number_'. $i] : ''}}"/>
                             </div>
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                         </div>
@@ -61,7 +64,7 @@
                             <div class="col-sm-10">
                                 <input name="contact_person_office_{{$i}}" type="text"
                                        class="form-control"
-                                      value="{{$candidate['contact_person_office_' . $i]}}"/>
+                                      value="{{isset($candidate['contact_person_office_' . $i]) ? $candidate['contact_person_office_' . $i] : ''}}"/>
                             </div>
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                         </div>

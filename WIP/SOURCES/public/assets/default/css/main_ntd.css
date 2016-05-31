@@ -2743,7 +2743,9 @@ ul.request-line {
     padding-left: 201px;
     font-style: italic;
 }
-.colorRegRed, .colorRed, .has-error{
+.colorRegRed,
+.colorRed,
+.has-error{
     color: #ff0000 !important;
 }
 .display_none{
@@ -4759,7 +4761,7 @@ table {
 }
 .btn-blue2-cong {
     background:#00acc1;
-    color:#FFFFFF;`
+    color:#FFFFFF;
 }
 .btn-blue-cong:hover, .btn-blue-cong:focus {
     background: #303f9f;

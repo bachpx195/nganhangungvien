@@ -131,7 +131,7 @@
                         </label>
                         <div class="col-sm-10 ">
                             <textarea name="experience_description_{{$i}}"
-                              class="form-control pt4 pb4 pl_10 pr_10 inputTextAreaKNEdit required"
+                              class="form-control"
                               id="experience_description" rows="5"
                             value="{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}"></textarea>
                         </div>

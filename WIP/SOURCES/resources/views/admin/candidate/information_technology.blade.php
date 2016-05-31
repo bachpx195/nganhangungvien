@@ -36,7 +36,7 @@
                 <div class="col-sm-10">
                     @include('front.common.radios',
                         array(
-                            'selected' => $candidate['word'],
+                            'selected' => isset($candidate['word']) ? $candidate['word'] : '',
                             'radios' => $scales,
                             'radioName' => 'word'
                             ))
@@ -48,7 +48,7 @@
                 <div class="col-sm-10">
                     @include('front.common.radios',
                         array(
-                            'selected' => $candidate['excel'],
+                            'selected' => isset($candidate['excel']) ? $candidate['excel'] : '',
                             'radios' => $scales,
                             'radioName' => 'excel'
                             ))
@@ -60,7 +60,7 @@
                 <div class="col-sm-10">
                     @include('front.common.radios',
                         array(
-                            'selected' => $candidate['power_point'],
+                            'selected' => isset($candidate['power_point']) ? $candidate['power_point'] : '',
                             'radios' => $scales,
                             'radioName' => 'power_point'
                             ))
@@ -72,7 +72,7 @@
                 <div class="col-sm-10">
                     @include('front.common.radios',
                         array(
-                            'selected' => $candidate['out_look'],
+                            'selected' => isset($candidate['out_look']) ? $candidate['out_look'] : '',
                             'radios' => $scales,
                             'radioName' => 'out_look'
                             ))

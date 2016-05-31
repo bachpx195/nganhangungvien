@@ -28,7 +28,7 @@
                         <select name="language_id_{{$i}}" class="form-control">
                             @include('front.common.options',
                                 array(
-                                    'selected' => $candidate['language_id_' . $i],
+                                    'selected' => isset($candidate['language_id_' . $i]) ? $candidate['language_id_' . $i] : '',
                                     'options' => $foreignLanguages,
                                     'defaultName' => 'Chọn ngoại ngữ'
                                     ))
@@ -61,7 +61,7 @@
                         <div class="col-sm-10 ">
                             @include('front.common.radios',
                                 array(
-                                    'selected' => $candidate['listen_' . $i],
+                                    'selected' => isset($candidate['listen_' . $i]) ? $candidate['listen_' . $i] : '',
                                     'radios' => $scales,
                                     'radioName' => 'listen_' . $i
                                     ))
@@ -72,7 +72,7 @@
                         <div class="col-sm-10 ">
                             @include('front.common.radios',
                                 array(
-                                    'selected' => $candidate['speak_' . $i],
+                                    'selected' => isset($candidate['speak_' . $i]) ? $candidate['speak_' . $i] : '',
                                     'radios' => $scales,
                                     'radioName' => 'speak_' . $i
                                     ))
@@ -83,7 +83,7 @@
                         <div class="col-sm-10 ">
                             @include('front.common.radios',
                                 array(
-                                    'selected' => $candidate['read_' . $i],
+                                    'selected' => isset($candidate['read_' . $i]) ? $candidate['read_' . $i] : '',
                                     'radios' => $scales,
                                     'radioName' => 'read_' . $i
                                     ))
@@ -94,7 +94,7 @@
                         <div class="col-sm-10 ">
                             @include('front.common.radios',
                                 array(
-                                    'selected' => $candidate['write_' . $i],
+                                    'selected' => isset($candidate['write_' . $i]) ? $candidate['write_' . $i] : '',
                                     'radios' => $scales,
                                     'radioName' => 'write_' . $i
                                     ))

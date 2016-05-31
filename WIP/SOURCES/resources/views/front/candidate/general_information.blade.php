@@ -373,7 +373,7 @@
                 <div class="form-group mt_16">
                     <label for="job_goal"
                            class="control-label-info bold txt-ghi fs14 w180">
-                        Kỹ năng & Sở trường <span class="colorRed">*</span>
+                        Kỹ năng & Sở trường
                     </label>
                     <div class="fr_ip_vtmm col-xs-8">
                         <textarea name="skill_forte"
