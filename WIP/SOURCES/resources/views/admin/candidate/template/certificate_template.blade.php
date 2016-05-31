@@ -84,10 +84,8 @@
                         class="colorRed">*</span>
             </label>
             <div class="col-sm-10">
-                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                    <select name="graduation_type_@{{index}}"
-                            class="reqCheckBoxEdit tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style select_box2 required"
-                            data-disS="1">
+                <div class="">
+                    <select name="graduation_type_@{{index}}" class="form-control">
                         @include('front.common.options',
                             array(
                                 'options' => $graduationTypes,

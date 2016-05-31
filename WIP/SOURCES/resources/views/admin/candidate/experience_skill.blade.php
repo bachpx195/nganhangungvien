@@ -75,25 +75,25 @@
                         <span class="col-sm-1">từ </span>
                         <div class="col-sm-2">
                             <select name="experience_day_in_month_{{$i}}" class="form-control">
-                                @include('front.common.month_options',
+                                @include('admin.common.month_options',
                                 array('selected' => isset($candidate['experience_day_in_month_' . $i]) ? $candidate['experience_day_in_month_' . $i] : ''))
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select name="experience_day_in_year_{{$i}}" class="form-control">
-                                @include('front.common.year_options',
+                                @include('admin.common.year_options',
                                 array('selected' => isset($candidate['experience_day_in_year_' . $i]) ? $candidate['experience_day_in_year_' . $i] : ''))
                             </select>
                         </div>
                         <span class="col-sm-1">đến </span>
                         <div class="col-sm-2">
                             <select name="experience_day_out_month_{{$i}}" class="form-control">
-                                @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
+                                @include('admin.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select name="experience_day_out_year_{{$i}}" class="form-control">
-                                @include('front.common.year_options',
+                                @include('admin.common.year_options',
                                 array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                             </select>
                         </div>
@@ -110,7 +110,7 @@
 
                         <div class="col-sm-10 ">
                             <select name="experience_salary_{{$i}}" class="form-control">
-                                @include('front.common.options',
+                                @include('admin.common.options',
                                          array(
                                              'selected' => isset($candidate['experience_salary_' . $i]) ? $candidate['experience_salary_' . $i] : '',
                                              'options' => $salaries,

@@ -106,7 +106,8 @@ class CandidateController extends Controller {
 
         return view('admin/candidate/list')
             ->with('candidates', $candidates)
-            ->with('activeMenu', $activeMenu);
+            ->with('activeMenu', $activeMenu)
+            ->with('pageTitle', Constants::CANDIDATE_LIST_PT);
     }
 
     /**
@@ -118,7 +119,8 @@ class CandidateController extends Controller {
      */
     public function candidateForm(Request $request) {
         $activeMenu = Constants::CANDIDATE;
-        
+        $pageTitle = Constants::CANDIDATE_NEW_PT;
+
         $salaries = $this->salaryRepo->all();
         $experienceYears = $this->experienceYearsRepo->all();
         $ranks = $this->rankRepo->all();
@@ -152,7 +154,8 @@ class CandidateController extends Controller {
                 ->with('employmentStatuses', $employmentStatuses)
                 ->with('graduationTypes', $graduationTypes)
                 ->with('scales', $scales)
-                ->with('activeMenu', $activeMenu);
+                ->with('activeMenu', $activeMenu)
+                ->with('pageTitle', $pageTitle);
         } else {
             // get form input data
             $input = $request->all();

@@ -34,7 +34,7 @@
                 <label class="col-sm-2 control-label">
                     MS Word </label>
                 <div class="col-sm-10">
-                    @include('front.common.radios',
+                    @include('admin.common.radios',
                         array(
                             'selected' => isset($candidate['word']) ? $candidate['word'] : '',
                             'radios' => $scales,
@@ -46,7 +46,7 @@
                 <label class="col-sm-2 control-label">
                     MS Excel </label>
                 <div class="col-sm-10">
-                    @include('front.common.radios',
+                    @include('admin.common.radios',
                         array(
                             'selected' => isset($candidate['excel']) ? $candidate['excel'] : '',
                             'radios' => $scales,
@@ -58,7 +58,7 @@
                 <label class="col-sm-2 control-label">
                     MS Power Point </label>
                 <div class="col-sm-10">
-                    @include('front.common.radios',
+                    @include('admin.common.radios',
                         array(
                             'selected' => isset($candidate['power_point']) ? $candidate['power_point'] : '',
                             'radios' => $scales,
@@ -70,7 +70,7 @@
                 <label class="col-sm-2 control-label">
                     MS Outlook </label>
                 <div class="col-sm-10">
-                    @include('front.common.radios',
+                    @include('admin.common.radios',
                         array(
                             'selected' => isset($candidate['out_look']) ? $candidate['out_look'] : '',
                             'radios' => $scales,

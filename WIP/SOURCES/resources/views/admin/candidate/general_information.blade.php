@@ -341,7 +341,7 @@
                 <div class="form-group mt_16">
                     <label for="job_goal"
                            class="col-sm-2 control-label">
-                        Kỹ năng & Sở trường <span class="has-error">*</span>
+                        Kỹ năng & Sở trường
                     </label>
                     <div class="fr_ip_vtmm col-xs-8">
                         <textarea name="skill_forte"

@@ -57,25 +57,25 @@
                         <span class="col-sm-1">từ </span>
                         <div class="col-sm-2">
                             <select name="started_at_month_{{$i}}" class="form-control">
-                                @include('front.common.month_options',
+                                @include('admin.common.month_options',
                                 array('selected' => isset($candidate['started_at_month_' . $i]) ? $candidate['started_at_month_' . $i] : ''))
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select name="started_at_year_{{$i}}" class="form-control">
-                                @include('front.common.year_options',
+                                @include('admin.common.year_options',
                                 array('selected' => isset($candidate['started_at_year_' . $i]) ? $candidate['started_at_year_' . $i] : ''))
                             </select>
                         </div>
                         <span class="col-sm-1">đến </span>
                         <div class="col-sm-2">
                             <select name="ended_at_month_{{$i}}" class="form-control">
-                                @include('front.common.month_options', array('selected' => isset($candidate['ended_at_month_' . $i]) ? $candidate['ended_at_month_' . $i] : ''))
+                                @include('admin.common.month_options', array('selected' => isset($candidate['ended_at_month_' . $i]) ? $candidate['ended_at_month_' . $i] : ''))
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select name="ended_at_year_{{$i}}" class="form-control">
-                                @include('front.common.year_options',
+                                @include('admin.common.year_options',
                                 array('selected' => isset($candidate['ended_at_year_' . $i]) ? $candidate['ended_at_year_' . $i] : ''))
                             </select>
                         </div>
@@ -107,11 +107,9 @@
                                 class="colorRed">*</span>
                     </label>
                     <div class="col-sm-10">
-                        <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select name="graduation_type_{{$i}}"
-                                    class="reqCheckBoxEdit tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style select_box2 required"
-                                    data-disS="1">
-                                @include('front.common.options',
+                        <div class="">
+                            <select name="graduation_type_{{$i}}" class="form-control">
+                                @include('admin.common.options',
                                     array(
                                         'selected' => isset($candidate['graduation_type_' . $i]) ? $candidate['graduation_type_' . $i] : '',
                                         'options' => $graduationTypes,

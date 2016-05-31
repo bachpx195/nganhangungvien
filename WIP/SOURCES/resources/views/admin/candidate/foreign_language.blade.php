@@ -26,7 +26,7 @@
                     </label>
                     <div class="col-sm-10 ">
                         <select name="language_id_{{$i}}" class="form-control">
-                            @include('front.common.options',
+                            @include('admin.common.options',
                                 array(
                                     'selected' => isset($candidate['language_id_' . $i]) ? $candidate['language_id_' . $i] : '',
                                     'options' => $foreignLanguages,
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Nghe</label>
                         <div class="col-sm-10 ">
-                            @include('front.common.radios',
+                            @include('admin.common.radios',
                                 array(
                                     'selected' => isset($candidate['listen_' . $i]) ? $candidate['listen_' . $i] : '',
                                     'radios' => $scales,
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Nói</label>
                         <div class="col-sm-10 ">
-                            @include('front.common.radios',
+                            @include('admin.common.radios',
                                 array(
                                     'selected' => isset($candidate['speak_' . $i]) ? $candidate['speak_' . $i] : '',
                                     'radios' => $scales,
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Đọc</label>
                         <div class="col-sm-10 ">
-                            @include('front.common.radios',
+                            @include('admin.common.radios',
                                 array(
                                     'selected' => isset($candidate['read_' . $i]) ? $candidate['read_' . $i] : '',
                                     'radios' => $scales,
@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Viết</label>
                         <div class="col-sm-10 ">
-                            @include('front.common.radios',
+                            @include('admin.common.radios',
                                 array(
                                     'selected' => isset($candidate['write_' . $i]) ? $candidate['write_' . $i] : '',
                                     'radios' => $scales,
