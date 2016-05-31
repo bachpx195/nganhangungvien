@@ -1,50 +1,50 @@
 <div id="contact-person-template" style="display: none;">
     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
-        <div class="row">
+        <div class="form-group ">
             <div class="ln_hr_head"></div>
         </div>
-        <div class="form-group clearfix mb_16 mt16">
-            <label for="contact_person_full_name_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
+        <div class="form-group">
+            <label for="contact_person_full_name_@{{index}}" class="col-sm-2 control-label">
                 Họ và tên <span class="colorRed">*</span>
             </label>
-            <div class="fr_ip_vtmm col-xs-8">
+            <div class="col-sm-10">
                 <input type="text"
-                       class="form-control input-lg2 color-input inputTextNTK required"
+                       class="form-control"
                        name="contact_person_full_name_@{{index}}"/>
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-        <div class="form-group clearfix mb_16">
-            <label for="contact_person_company_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
+        <div class="form-group">
+            <label for="contact_person_company_@{{index}}" class="col-sm-2 control-label">
                 Công ty/Tổ chức <span class="colorRed">*</span>
             </label>
-            <div class="fr_ip_vtmm col-xs-8">
+            <div class="col-sm-10">
                 <input type="text"
-                       class="form-control input-lg2 color-input inputTextNTK required"
+                       class="form-control"
                        name="contact_person_company_@{{index}}"/>
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
 
 
-        <div class="form-group clearfix mb_16">
-            <label class="control-label-info bold txt-ghi fs14 w180">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
                 Số điện thoại <span class="colorRed">*</span>
             </label>
-            <div class="fr_ip_vtmm col-xs-8">
+            <div class="col-sm-10">
                 <input type="text"
-                       class="form-control input-lg2 color-input inputTextNTK required"
+                       class="form-control"
                        name="contact_person_phone_number_@{{index}}"/>
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-        <div class="form-group clearfix mb_16">
-            <label for="contact_person_office_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
+        <div class="form-group">
+            <label for="contact_person_office_@{{index}}" class="col-sm-2 control-label">
                 Chức vụ <span class="colorRed">*</span>
             </label>
-            <div class="fr_ip_vtmm col-xs-8">
+            <div class="col-sm-10">
                 <input name="contact_person_office_@{{index}}" type="text"
-                       class="form-control input-lg2 color-input inputTextNTK required"/>
+                       class="form-control"/>
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>

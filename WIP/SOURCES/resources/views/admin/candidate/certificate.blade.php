@@ -144,8 +144,8 @@
                 <div class="clearfix"></div>
             </div>
         @endfor
-        <div class="footer-box-child-ths" id="add-more-certificate">
-            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM BẰNG CẤP CHỨNG CHỈ</a>
-        </div>
+    </div>
+    <div class="footer-box-child-ths" id="add-more-certificate">
+        <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM BẰNG CẤP CHỨNG CHỈ</a>
     </div>
 </div>
