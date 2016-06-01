@@ -8,4 +8,16 @@ class ExigencyRepo implements IExigencyRepo {
 
         return Exigency::get();
     }
+
+	public function filter($name) {
+
+		$query = Exigency::select();
+		
+		if ($name != null) {
+			$query = $query->where('name', 'like', '%' . $name . '%');
+		}
+		
+		return $query->orderBy('id', 'dec')
+					->paginate();
+	}
 }
