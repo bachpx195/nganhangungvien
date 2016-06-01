@@ -35,11 +35,27 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
-});
 
-Route::match(['get', 'post'], '/admin', [
-	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
-]);
+	Route::match(['get'], '/news/list', [
+		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
+	]);
+
+	Route::post('/news/delete/{id}', [
+		'as' => 'admin.news.delete', 'uses' => 'Admin\NewController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/province/list', [
+		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
+	]);
+
+	Route::match(['get', 'post'], 'province/form', [
+		'as' => 'admin.province.form', 'uses' => 'Admin\ProvinceController@tinhForm'
+	]);
+
+	Route::post('/province/delete/{id}', [
+		'as' => 'admin.province.delete', 'uses' => 'Admin\ProvinceController@delete'
+	]);
+});
 
 /**
  * Authentication
@@ -89,6 +105,6 @@ Route::match(['get', 'post'], '/candidate/form', [
 	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
 ]);
 
-Route::match(['get', 'post'], '/new/form', [
-	'as' => 'new.form', 'uses' => 'Front\NewController@newForm'
+Route::match(['get', 'post'], '/news/form', [
+	'as' => 'new.form', 'uses' => 'Admin\NewController@newForm'
 ]);

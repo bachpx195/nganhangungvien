@@ -8,4 +8,16 @@ class ProvinceRepo implements IProvinceRepo {
 
         return Province::get();
     }
+
+    public function filter($name) {
+		
+		$query = Province::select();
+		
+		if ($name != null) {
+			$query = $query->where('name', 'like', '%' . $name . '%');
+		}
+		
+		return $query->orderBy('updated_at', 'dec')
+					->paginate();
+	}
 }

@@ -16,5 +16,10 @@ interface INewRepo
      * @param $limit
      */
 
+    public function search($params, $pageSize = 10);
+
     public function all();
+
+    public function findById($id);
+
 }

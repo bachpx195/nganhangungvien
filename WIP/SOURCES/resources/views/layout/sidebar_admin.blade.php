@@ -76,14 +76,36 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
+						<a href="{{ route('admin.news.list') }}" class="nav-link nav-toggle">
 							<i class="icon-settings"></i> DANH SÁCH
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="?p=dashboard-2" target="_blank" class="nav-link">
+						<a href="{{ route('new.form') }}" target="_blank" class="nav-link">
 							<i class="icon-globe"></i> THÊM TIN TỨC
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">TỈNH/THÀNH PHỐ</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.province.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.province.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM TỈNH/THÀNH PHỐ
 							<span class="arrow nav-toggle"></span>
 						</a>
 					</li>

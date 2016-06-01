@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Front;
+<?php 
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,32 +26,60 @@ class NewController extends Controller {
         $this->newRepo = $newRepo;
     }
 
+    public function newsList(Request $request)
+    {
+        $params = $request->all();
 
+        $pageSize = config('front.pageSize');
+        $news = $this->newRepo->search($params, $pageSize);
+
+        return view('admin/news/list')
+            ->with('news', $news);
+    }
+
+
+    public function delete(Request $request, $id) { 
+        $data = [];
+
+        if ($request->ajax()) {
+
+            News::find($id)->delete();
+
+            $data = ['status' => true, 'message' => ''];
+        }
+
+        return $data;
+    }
 
     public function newForm(Request $request){
     	
     	if ($request->isMethod('get')){
-	    	if (!empty(Input::all())) {
-	                $new = Input::all();
-	            } else {
-	                $new = new News;
-	            }
-	        return view('front/new/new_form');
-        } else {
-        	$validator = Validator::make($request->all(), [
-		            'tieu_de' => 'required|max:1000',
-					'noi_dung' => 'required',
-					'news_image_' => 'image|max:300',
-					'link' => 'URL',
-	        ]);
-	        if($validator->fails()) {
-	        	
-	            $errors = $validator->errors()->all();
-	            return redirect(route('new.form'))
-	                    ->withErrors($validator)
-	                    ->withInput();
+	    	// if ($request->has('id')) {
+      //           $new = $this->newRepo->findById($request->get('id'));
 
-		    }else{
+      //           if ($new == null) {
+      //               $new = new News;
+      //           }
+      //       } else {
+      //           $new = new News;
+      //       }
+            $new = new News;
+	        return view('front/new/new_form')->with('new',$new);
+        } else {
+     //    	$validator = Validator::make($request->all(), [
+		   //          'tieu_de' => 'required|max:1000',
+					// 'noi_dung' => 'required',
+					// 'news_image_' => 'image|max:300',
+					// 'link' => 'URL',
+	    //     ]);
+	     //    if($validator->fails()) {
+	        	
+	     //        $errors = $validator->errors()->all();
+	     //        return redirect(route('new.form'))
+	     //                ->withErrors($validator)
+	     //                ->withInput();
+
+		    // }else{
 
 	        	$input = $request->all();
 	        	$new = new News;
@@ -61,7 +91,7 @@ class NewController extends Controller {
 	            }
 	            return redirect(route('new.form'));
 	        }
-	    }
+	    // }
     }
 
         /**
