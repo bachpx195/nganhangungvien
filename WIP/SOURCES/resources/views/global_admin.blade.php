@@ -39,6 +39,9 @@
 	<link href="{{ asset('/assets/layouts/layout2/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/layouts/layout2/css/themes/blue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
 	<link href="{{ asset('/assets/layouts/layout2/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+	<link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" type="text/css" />
+
 	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END THEME LAYOUT STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -96,8 +99,30 @@
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/resources/plugin/validation/jquery.validate.min.js') }}" ></script>
+	<script src="{{ asset('/resources/plugin/validation/additional-methods.min.js') }}" ></script>
+	<script>
+	jQuery.extend(jQuery.validator.messages, {
+		required: '@lang('validation.required', ['attribute' => ''])',
+		remote: "Please fix this field.",
+		email: jQuery.validator.format("@lang('validation.email')"),
+		url: "Please enter a valid URL.",
+		date: "@lang('validation.date', ['format' => 'dd/mm/YYYY'])",
+		dateISO: "Please enter a valid date (ISO).",
+		number: jQuery.validator.format("@lang('validation.numeric')"),
+		digits: jQuery.validator.format("@lang('validation.digits')"),
+		creditcard: "Please enter a valid credit card number.",
+		equalTo: '@lang('validation.equal_password')',
+		accept: "Please enter a value with a valid extension.",
+		maxlength: jQuery.validator.format("@lang('validation.max.string', ['attribute' => '', 'max' => '{0}'])"),
+		minlength: jQuery.validator.format("@lang('validation.min.string', ['attribute' => '', 'min' => '{0}'])"),
+		rangelength: jQuery.validator.format("@lang('validation.between.string', ['min' => '{0}', 'max' => '{1}'])"),
+		range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+		max: jQuery.validator.format("@lang('validation.max.numeric')"),
+		min: jQuery.validator.format("@lang('validation.min.numeric')")
+	});
+	</script>
 	<!-- END THEME LAYOUT SCRIPTS -->
-
 	<!-- THANHLV END ADD 2016/05/11 -->
 </head>
 

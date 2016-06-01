@@ -136,10 +136,10 @@ class CandidateController extends Controller {
 
             return view('front/candidate/candidate_form')
                 ->with('candidate', $candidate)
-                ->with('salaries', 	$salaries)
+                ->with('salaries',  $salaries)
                 ->with('experienceYears', $experienceYears)
                 ->with('ranks', $ranks)
-                ->with('jobs', 	$jobs)
+                ->with('jobs',  $jobs)
                 ->with('exigencies', $exigencies)
                 ->with('levels', $levels)
                 ->with('foreignLanguages', $foreignLanguages)

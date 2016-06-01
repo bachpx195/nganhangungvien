@@ -10,4 +10,6 @@ interface IProvinceRepo
      * @author cuongnm
      */
     public function getSortedList();
+
+   	public function filter($name);
 }
