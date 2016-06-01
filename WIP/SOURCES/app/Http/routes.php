@@ -35,11 +35,87 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
-});
 
-Route::match(['get', 'post'], '/admin', [
-	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
-]);
+	Route::match(['get'], '/news/list', [
+		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
+	]);
+
+	Route::post('/news/delete/{id}', [
+		'as' => 'admin.news.delete', 'uses' => 'Admin\NewController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/province/list', [
+		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
+	]);
+
+	Route::match(['get', 'post'], 'province/form', [
+		'as' => 'admin.province.form', 'uses' => 'Admin\ProvinceController@tinhForm'
+	]);
+
+	Route::post('/province/delete/{id}', [
+		'as' => 'admin.province.delete', 'uses' => 'Admin\ProvinceController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/level/list', [
+		'as' => 'admin.level.list', 'uses' => 'Admin\LevelController@levelList'
+	]);
+
+	Route::match(['get', 'post'], 'level/form', [
+		'as' => 'admin.level.form', 'uses' => 'Admin\LevelController@levelForm'
+	]);
+
+	Route::post('/level/delete/{id}', [
+		'as' => 'admin.level.delete', 'uses' => 'Admin\LevelController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/rank/list', [
+		'as' => 'admin.rank.list', 'uses' => 'Admin\RankController@rankList'
+	]);
+
+	Route::match(['get', 'post'], 'rank/form', [
+		'as' => 'admin.rank.form', 'uses' => 'Admin\RankController@rankForm'
+	]);
+
+	Route::post('/rank/delete/{id}', [
+		'as' => 'admin.rank.delete', 'uses' => 'Admin\RankController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/salary/list', [
+		'as' => 'admin.salary.list', 'uses' => 'Admin\SalaryController@salaryList'
+	]);
+
+	Route::match(['get', 'post'], 'salary/form', [
+		'as' => 'admin.salary.form', 'uses' => 'Admin\SalaryController@salaryForm'
+	]);
+
+	Route::post('/salary/delete/{id}', [
+		'as' => 'admin.salary.delete', 'uses' => 'Admin\SalaryController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/job/list', [
+		'as' => 'admin.job.list', 'uses' => 'Admin\JobController@jobList'
+	]);
+
+	Route::match(['get', 'post'], 'job/form', [
+		'as' => 'admin.job.form', 'uses' => 'Admin\JobController@jobForm'
+	]);
+
+	Route::post('/job/delete/{id}', [
+		'as' => 'admin.job.delete', 'uses' => 'Admin\JobController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/exigency/list', [
+		'as' => 'admin.exigency.list', 'uses' => 'Admin\ExigencyController@exigencyList'
+	]);
+
+	Route::match(['get', 'post'], 'exigency/form', [
+		'as' => 'admin.exigency.form', 'uses' => 'Admin\ExigencyController@exigencyForm'
+	]);
+
+	Route::post('/exigency/delete/{id}', [
+		'as' => 'admin.exigency.delete', 'uses' => 'Admin\ExigencyController@delete'
+	]);
+});
 
 /**
  * Authentication
@@ -87,4 +163,8 @@ Route::group(['prefix' => ''], function()
 
 Route::match(['get', 'post'], '/candidate/form', [
 	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+]);
+
+Route::match(['get', 'post'], '/news/form', [
+	'as' => 'new.form', 'uses' => 'Admin\NewController@newForm'
 ]);

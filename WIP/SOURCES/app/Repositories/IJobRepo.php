@@ -3,4 +3,6 @@
 interface IJobRepo
 {
     public function all();
+
+    function filter($name);
 }

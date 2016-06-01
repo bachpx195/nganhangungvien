@@ -76,18 +76,159 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
+						<a href="{{ route('admin.news.list') }}" class="nav-link nav-toggle">
 							<i class="icon-settings"></i> DANH SÁCH
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="?p=dashboard-2" target="_blank" class="nav-link">
+						<a href="{{ route('new.form') }}" target="_blank" class="nav-link">
 							<i class="icon-globe"></i> THÊM TIN TỨC
 							<span class="arrow nav-toggle"></span>
 						</a>
 					</li>
 				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">TỈNH/THÀNH PHỐ</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.province.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.province.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM TỈNH/THÀNH PHỐ
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">TRÌNH ĐỘ HỌC VẤN</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.level.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.level.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM HỌC VẤN
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">CẤP BẬC</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.rank.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.rank.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM CẤP BẬC
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">LƯƠNG</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.salary.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.salary.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM LƯƠNG
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">NGHỀ NGHIỆP</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.job.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.job.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM NGHỀ NGHIỆP
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">NHU CẦU CÔNG VIỆC</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{ route('admin.exigency.list') }}" class="nav-link nav-toggle">
+							<i class="icon-settings"></i> DANH SÁCH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('admin.exigency.form') }}" target="_blank" class="nav-link">
+							<i class="icon-globe"></i> THÊM NHU CẦU CÔNG VIỆC
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<!-- VIDEO -->
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link nav-toggle">
+					<i class="icon-briefcase"></i>
+					<span class="title">VIDEO</span>
+					<span class="arrow "></span>
+				</a>
 			</li>
 
 			<li class="nav-item {{($activeMenu == 'user') ? 'active open' : ''}}">
