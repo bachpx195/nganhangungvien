@@ -8,4 +8,16 @@ class JobRepo implements IJobRepo {
 
         return Job::get();
     }
+
+    public function filter($name) {
+	
+		$query = Job::select();
+		
+		if ($name != null) {
+			$query = $query->where('name', 'like', '%' . $name . '%');
+		}
+		
+		return $query->orderBy('id', 'dec')
+					->paginate();
+	}
 }

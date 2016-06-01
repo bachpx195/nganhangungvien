@@ -3,4 +3,6 @@
 interface IExigencyRepo
 {
     public function all();
+
+    public function filter($name);
 }

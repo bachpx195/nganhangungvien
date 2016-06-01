@@ -8,4 +8,16 @@ class SalaryRepo implements ISalaryRepo {
 
         return Salary::get();
     }
+
+    public function filter($name) {
+	
+		$query = Salary::select();
+		
+		if ($name != null) {
+			$query = $query->where('name', 'like', '%' . $name . '%');
+		}
+		
+		return $query->orderBy('id', 'dec')
+					->paginate();
+	}
 }
