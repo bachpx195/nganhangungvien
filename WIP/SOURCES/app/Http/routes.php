@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
+	
+	Route::match(['get'], '/employer/list', [
+		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
+	]);
 
 	Route::match(['get'], '/news/list', [
 		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
