@@ -6,6 +6,8 @@ class Rank extends Model {
 
     protected $table = 'rank';
 
+    public $timestamps = false;
+
     public function employer()
     {
         return $this->belongsTo('App\Model\Employer', 'employer_id', 'id');

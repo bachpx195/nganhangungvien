@@ -16,5 +16,10 @@ interface INewRepo
      * @param $limit
      */
 
+    public function search($name);
+
     public function all();
+
+    public function findById($id);
+
 }

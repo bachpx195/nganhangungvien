@@ -330,7 +330,7 @@
 
 		@include('front/home/candidate_new_view', ['candidatesData' => $candidatesData])
 
-		@if((count($sameData['exp']) > 0) && (count($sameData['lvl']) > 0) )
+		@if((count($sameData['exp']) > 0) && (count($sameData['lvl']) > 0) && $candidate->experienceYears )
 		<div class="box_tab pt_22">
 		   <div role="tabpanel">
 		      <!-- Nav tabs -->
@@ -358,13 +358,13 @@
 	                           		<div class="w_33 floatLeft">
 	                           	   		<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
 	                                 	<i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-	                                 	{{ $key->expectSalary ? $key->expectSalary->name : "" }}                        
+	                                 	{{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}                        
 	                              	</div>
 	                           		</div>
 	                           		<div class="w_33 floatLeft">
 	                              		<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
 	                                 	<i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-	                                 	{{ $key->experienceYears ? $key->experienceYears->name: "" }}                            
+	                                 	{{ $key->experienceYears ? $key->experienceYears->name: '&nbsp;' }}                            
 	                              		</div>
 	                           		</div>
 	                           		<div class="w_33 floatLeft">
@@ -388,7 +388,7 @@
 		            <a href="#">
 		               <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
 		                  <i class="icon_load_more icon_24 icon-24"></i>
-		                  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm 4 năm ngành Tiếp thị-Quảng cáo        
+		                  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}        
 		               </h3>
 		            </a>
 		         </div>
@@ -410,13 +410,13 @@
 	                           		<div class="w_33 floatLeft">
 	                           	   		<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
 	                                 	<i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-	                                 	{{ $key->expectSalary ? $key->expectSalary->name : "" }}                        
+	                                 	{{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}                        
 	                              	</div>
 	                           		</div>
 	                           		<div class="w_33 floatLeft">
 	                              		<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
 	                                 	<i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-	                                 	{{ $key->experienceYears ? $key->experienceYears->name: "" }}                            
+	                                 	{{ $key->experienceYears ? $key->experienceYears->name:'&nbsp;'}}                            
 	                              		</div>
 	                           		</div>
 	                           		<div class="w_33 floatLeft">
@@ -440,7 +440,7 @@
 		            <a href="#">
 		               <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
 		                  <i class="icon_load_more icon_24 icon-24"></i>
-		                  Xem thêm Hồ sơ tìm việc cùng cấp bậc Chuyên viên - Nhân viên ngành Tiếp thị-Quảng cáo        
+		                  Xem thêm Hồ sơ tìm việc cùng cấp bậc       
 		               </h3>
 		            </a>
 		         </div>

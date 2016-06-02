@@ -318,14 +318,6 @@ $(document).ready(function() {
 
 
     /* js add form */
-    $('#addPhone').click(function() {
-        var div = $(this).parent().parent().parent();
-        var html = div.find('.input-phone').last().clone(true, true);
-        html.find('input').val('');
-        div.find('.input-phone').last().after(html);
-        div.find('.input-phone').removeClass('mb1');
-        div.find('.input-phone').last().addClass('mb1');
-    })
     $('#addbangcap').click(function() {
         var div = $(this).parent().parent().parent();
         var html = div.find('.box-bangcap').last().clone(true, true);

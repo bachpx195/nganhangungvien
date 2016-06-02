@@ -1,55 +1,60 @@
-@extends('global')
+@extends('global_admin')
 
-<title>@lang('messages.candidate.form')</title>
+<title>Tạo hồ sơ ứng viên</title>
 
 @section('content')
+<link href="{{ asset('/assets/default/css/main_ntd.css') }}" rel="stylesheet" property='stylesheet'
+	  type='text/css' media='all'>
+<link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
+	  type='text/css' media='all'>
 
-<h3 class="page-title">@lang('messages.candidate.form')</h3>
-
-@if (count($errors) > 0)
-	<div class="alert alert-danger">
-		@lang('messages.form.global.error')<br>
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
+@if (!empty($candidate['email_errors']))
+	<div class="block-note-ths">
+		<div class="pos-dang-ky-hotline">
+			{{ $candidate['email_errors'] }}
+			<div class="ln_hr"></div>
+		</div>
 	</div>
 @endif
 
-<form id="candidate" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}">
-
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" name="_init" value="1">
-	<input type="hidden" name="full_name" value="AB" />
-	<input type="hidden" name="email" value="ab@a.com" />
-
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-9">
-			<input type="submit" id="btn-save" class="btn btn-primary" value="@lang('messages.form.global.save')">
+<div class="content_dangky">
+	<div class="">
+		<div class="w_50 floatLeft">
+			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
+			<span class="uppercase bold fs16 text-xanh-nuocbien">Tạo hồ sơ tìm việc từng bước</span>
 		</div>
 	</div>
-</form>
 
-<!-- select2 -->
-<script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
+	<div class="clearfix"></div>
+	<div class="mt8"></div>
+	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('admin.candidate.form') }}"
+		  name="candidate_form"  enctype="multipart/form-data">
+		<div class="block-content div-frm-hoso">
+			<div class="mb8">
+				<div class="center-p12p24 ">
+					@include('admin.candidate.general_information')
 
-<script>
-$(function() {
-	jQuery("body")
-	.on("click", "#btn-save", function(){
-		
-		$form = $(this).closest('form');
-		
-		var validator = $form.validate({
-			ignore		: "", 
-			errorClass	: 'help-block has-error'
-		});
-	    if(validator.form()) {
-	    	$form.submit();
-	    } else {
-	    }
-	});
-});
-</script>
+					@include('admin.candidate.experience_skill')
+					<div class="clearfix"></div>
+
+					@include('admin.candidate.certificate')
+				</div>
+			</div>
+			@include('admin.candidate.foreign_language')
+			<div class="clearfix"></div>
+		</div>
+
+		@include('admin.candidate.information_technology')
+		<div class="clearfix"></div>
+		@include('admin.candidate.contact_person')
+		@include('admin.candidate.save_btn')
+	</form>
+</div>
+
+@include('admin.candidate.candidate_form_js')
+@include('admin.candidate.template.experience_skill_template')
+@include('admin.candidate.template.certificate_template')
+@include('admin.candidate.template.language_template')
+@include('admin.candidate.template.contact_person_template')
+
 @endsection

@@ -3,4 +3,6 @@
 interface IRankRepo
 {
     public function all();
+
+    public function filter($name);
 }

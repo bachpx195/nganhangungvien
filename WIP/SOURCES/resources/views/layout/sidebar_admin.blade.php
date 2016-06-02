@@ -11,18 +11,18 @@
 		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
 		<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 		<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<?php $activeMenu = isset($activeMenu) ? $activeMenu : 'dashboard';?>
 		<ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-			<li class="nav-item start active open">
+			<li class="nav-item start {{($activeMenu == 'dashboard') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-home"></i>
 					<span class="title">BẢNG QUẢN TRỊ</span>
-					<span class="selected"></span>
 					<span class="arrow open"></span>
 				</a>
 			</li>
 
 			<!-- HỒ SƠ ỨNG VIÊN -->
-			<li class="nav-item">
+			<li class="nav-item {{($activeMenu == 'candidate') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-folder"></i>
 					<span class="title">HỒ SƠ ỨNG VIÊN</span>
@@ -45,7 +45,7 @@
 			</li>
 
 			<!-- NHÀ TUYỂN DỤNG -->
-			<li class="nav-item">
+			<li class="nav-item {{($activeMenu == 'employer') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-briefcase"></i>
 					<span class="title">NHÀ TUYỂN DỤNG</span>
@@ -68,21 +68,22 @@
 			</li>
 
 			<!-- TIN TỨC -->
-			<li class="nav-item">
+
+			<li class="nav-item {{($activeMenu == 'news') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
-					<i class="icon-briefcase"></i>
+					<i class="icon-note"></i>
 					<span class="title">TIN TỨC</span>
 					<span class="arrow "></span>
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
+						<a href="{{ route('admin.news.list') }}" class="nav-link nav-toggle">
 							<i class="icon-settings"></i> DANH SÁCH
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="?p=dashboard-2" target="_blank" class="nav-link">
+						<a href="{{ route('admin.news.form') }}" target="_blank" class="nav-link">
 							<i class="icon-globe"></i> THÊM TIN TỨC
 							<span class="arrow nav-toggle"></span>
 						</a>
@@ -90,6 +91,70 @@
 				</ul>
 			</li>
 
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-social-dribbble"></i>
+                    <span class="title">DỮ LIỆU HỆ THỐNG</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.province.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">TỈNH/THÀNH PHỐ</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.level.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">TRÌNH ĐỘ HỌC VẤN</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.rank.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">CẤP BẬC</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.salary.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">LƯƠNG</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.job.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">NGHỀ NGHIỆP</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.exigency.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">NHU CẦU CÔNG VIỆC</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.companysize.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">QUY MÔ CÔNG TY</span>
+                            <span class="arrow"></span>
+                        </a>
+                        
+                    </li>
+                </ul>                                                                              
+            </li>          
 			<!-- VIDEO -->
 			<li class="nav-item">
 				<a href="javascript:;" class="nav-link nav-toggle">
@@ -99,7 +164,7 @@
 				</a>
 			</li>
 
-			<li class="nav-item  ">
+			<li class="nav-item {{($activeMenu == 'user') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-user"></i>
 					<span class="title">NGƯỜI DÙNG</span>
@@ -132,7 +197,7 @@
 					</li>
 				</ul>
 			</li>
-			<li class="nav-item  ">
+			<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-settings"></i>
 					<span class="title">CẤU HÌNH HỆ THỐNG</span>

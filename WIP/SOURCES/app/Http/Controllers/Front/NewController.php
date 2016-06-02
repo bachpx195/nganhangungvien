@@ -24,6 +24,8 @@ class NewController extends Controller {
         $this->newRepo = $newRepo;
     }
 
+
+
     public function newForm(Request $request){
     	
     	if ($request->isMethod('get')){

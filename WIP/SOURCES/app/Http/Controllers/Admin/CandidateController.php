@@ -18,6 +18,7 @@ use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IRankRepo;
 use App\Repositories\ISalaryRepo;
+use App\Libs\Constants;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 use App\Helpers\FileHelper;
@@ -97,13 +98,16 @@ class CandidateController extends Controller {
      */
     public function candidateList(Request $request)
     {
+        $activeMenu = Constants::CANDIDATE;
         $params = $request->all();
 
         $pageSize = config('front.pageSize');
         $candidates = $this->candidateRepo->search($params, $pageSize);
 
         return view('admin/candidate/list')
-            ->with('candidates', $candidates);
+            ->with('candidates', $candidates)
+            ->with('activeMenu', $activeMenu)
+            ->with('pageTitle', Constants::CANDIDATE_LIST_PT);
     }
 
     /**
@@ -114,6 +118,9 @@ class CandidateController extends Controller {
      * @throws Exception
      */
     public function candidateForm(Request $request) {
+        $activeMenu = Constants::CANDIDATE;
+        $pageTitle = Constants::CANDIDATE_NEW_PT;
+
         $salaries = $this->salaryRepo->all();
         $experienceYears = $this->experienceYearsRepo->all();
         $ranks = $this->rankRepo->all();
@@ -134,19 +141,21 @@ class CandidateController extends Controller {
                 $candidate = new Candidate;
             }
 
-            return view('front/candidate/candidate_form')
+            return view('admin/candidate/candidate_form')
                 ->with('candidate', $candidate)
-                ->with('salaries', 	$salaries)
+                ->with('salaries',  $salaries)
                 ->with('experienceYears', $experienceYears)
                 ->with('ranks', $ranks)
-                ->with('jobs', 	$jobs)
+                ->with('jobs',  $jobs)
                 ->with('exigencies', $exigencies)
                 ->with('levels', $levels)
                 ->with('foreignLanguages', $foreignLanguages)
                 ->with('provinces', $provinces)
                 ->with('employmentStatuses', $employmentStatuses)
                 ->with('graduationTypes', $graduationTypes)
-                ->with('scales', $scales);
+                ->with('scales', $scales)
+                ->with('activeMenu', $activeMenu)
+                ->with('pageTitle', $pageTitle);
         } else {
             // get form input data
             $input = $request->all();
@@ -158,7 +167,7 @@ class CandidateController extends Controller {
                 if ($validator->fails()) {
                     $data = Input::except(array('_token', '_method'));
                     $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    return Redirect::route('candidate.form', $data);
+                    return Redirect::route('admin.candidate.form', $data);
 
                     //TODO: Research why the validate errors not appearing laravel?
                     //return Redirect::route('candidate.form', $data)->withErrors($validator);
@@ -193,7 +202,7 @@ class CandidateController extends Controller {
                 //throw new Exception('Something wrong!!');
             }
 
-            return redirect(route('candidate.form'));
+            return redirect(route('admin.candidate.form'));
         }
     }
 
@@ -247,10 +256,10 @@ class CandidateController extends Controller {
      */
     private function getContactPersonInfo($contactPerson, $input, $index)
     {
-        $contactPerson->full_name = $input['contact_person_full_name_' . $index];
-        $contactPerson->company = isset($input['contact_person_company_' . $index]);
-        $contactPerson->phone_number = isset($input['contact_person_phone_number_' . $index]);
-        $contactPerson->office = isset($input['contact_person_office_' . $index]);
+        $contactPerson->full_name = isset($input['contact_person_full_name_' . $index]) ? $input['contact_person_full_name_' . $index] : '';
+        $contactPerson->company = isset($input['contact_person_company_' . $index]) ? $input['contact_person_company_' . $index] : $input['contact_person_company_' . $index];
+        $contactPerson->phone_number = isset($input['contact_person_phone_number_' . $index]) ? $input['contact_person_phone_number_' . $index] : '';
+        $contactPerson->office = isset($input['contact_person_office_' . $index]) ? $input['contact_person_office_' . $index] : '';
 
         return $contactPerson;
     }
@@ -311,8 +320,8 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveITLevel($itLevel) {
-        if (!empty(trim($itLevel['word'])) || !empty(trim($itLevel['excel']))
-            || !empty(trim($itLevel['power_point'])) || !empty(trim($itLevel['out_look']))) {
+        if (!empty($itLevel['word']) || !empty($itLevel['excel'])
+            || !empty($itLevel['power_point']) || !empty($itLevel['out_look'])) {
             return true;
         }
 
@@ -403,10 +412,10 @@ class CandidateController extends Controller {
      */
     private function getCertificateInfo($certificate, $input, $index, $request)
     {
-        $certificate->certificate_name = $input['certificate_name_' . $index];
-        $certificate->training_unit = $input['training_unit_' . $index];
-        $certificate->graduation_type = $input['graduation_type_' . $index];
-        $certificate->specialize = $input['specialize_' . $index];
+        $certificate->certificate_name = isset($input['certificate_name_' . $index]) ? $input['certificate_name_' . $index] : '';
+        $certificate->training_unit = isset($input['training_unit_' . $index]) ? $input['training_unit_' . $index] : '';
+        $certificate->graduation_type = isset($input['graduation_type_' . $index]) ? $input['graduation_type_' . $index] : '';
+        $certificate->specialize = isset($input['specialize_' . $index]) ? $input['specialize_' . $index] : '';
 
         $candidateImgPath = FileHelper::getCandidateImgPath();
         $imageName = FileHelper::getNewFileName($index);
@@ -494,9 +503,9 @@ class CandidateController extends Controller {
      */
     private function getExperienceInfo($experience, $input, $index)
     {
-        $experience->company_name = $input['experience_company_name_' . $index];
-        $experience->office = $input['experience_office_' . $index];
-        $experience->salary = $input['experience_salary_' . $index];
+        $experience->company_name = isset($input['experience_company_name_' . $index]) ? $input['experience_company_name_' . $index] : '';
+        $experience->office = isset($input['experience_office_' . $index]) ? $input['experience_office_' . $index] : '';
+        $experience->salary = isset($input['experience_salary_' . $index]) ? $input['experience_salary_' . $index] : '';
 
         if (!empty($input['experience_day_in_month_' . $index]) && !empty($input['experience_day_in_year_' . $index])) {
             $dayInMonth = $input['experience_day_in_month_' . $index];
@@ -512,7 +521,7 @@ class CandidateController extends Controller {
             $experience->day_out = $dayOut;
         }
 
-        $experience->description = $input['experience_description_' . $index];
+        $experience->description = isset($input['experience_description_' . $index]) ? $input['experience_description_' . $index] : '';
 
         return $experience;
     }

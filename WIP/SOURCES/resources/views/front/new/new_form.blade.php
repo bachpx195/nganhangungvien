@@ -44,7 +44,7 @@
                         Tiêu đề tin tức <span class="colorRed">*</span>
                     </label>
                     <div class="fr_ip_vtmm col-xs-8">
-                        <input type="text" class="form-control input-lg2 color-input" id="new_title" value=""
+                        <input type="text" class="form-control input-lg2 color-input" id="new_title" value="{{ $new->title }}"
                                name="tieu_de" placeholder=""
                                 />
                     </div>
@@ -75,7 +75,7 @@
                 <div class="clearfix"></div>
 
                 <div class="form-group mb_20">
-                    <label class="control-label-info bold txt-color-363636 fs14 w181"></label>
+                    <label class="control-label-info bold txt-color-363636 fs14 w181">Hình ảnh</label>
                     <div class="fr_input_bangcap_chungchi">
                         <div class="display_block btn-big plr6 pos_relactive w208 floatLeft">
                             <input type="file" name="news_image_"
@@ -90,8 +90,10 @@
                             (Dạng file ảnh .jpg, .gif, .png, dung
                             lượng <=300KB)
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
                 <div class="clearfix"></div>
 
                 <div class="form-group clearfix mb_16">
@@ -161,8 +163,6 @@ $(function() {
 	});
 });
 $(document).ready(function() {
-    var IMAGE_PATH = 'http://localhost:8000/images/thread/';
-
     $.ajaxSetup({
         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content')     }
     });

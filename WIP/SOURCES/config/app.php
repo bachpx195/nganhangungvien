@@ -144,9 +144,7 @@ return [
 		'Dimsav\Translatable\TranslatableServiceProvider',
 		'Barryvdh\Cors\CorsServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
-		'Pingpong\Modules\ModulesServiceProvider',
-		//'Pingpong\Trusty\TrustyServiceProvider',
-		'Teepluss\Component\ComponentServiceProvider',
+		'LaravelCaptcha\Providers\LaravelCaptchaServiceProvider',
 
 		/*
 		 * Application Service Providers...
