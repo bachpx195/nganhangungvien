@@ -194,8 +194,8 @@
                                     tabindex="-1">
                                 @include('front.common.options',
                                     array(
-                                        'selected' => $candidate['job'],
-                                        'options' => $job,
+                                        'selected' => isset($candidate['job']) ? $candidate['job'] : '',
+                                        'options' => $jobs,
                                         'defaultName' => 'Chọn Ngành nghề'
                                         ))
                             </select>
