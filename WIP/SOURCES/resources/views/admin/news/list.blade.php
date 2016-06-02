@@ -6,6 +6,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
+                         <div class="search-bar ">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <form id="user" class="form-horizontal" role="form" method="get" action="{{ route('admin.news.list') }}">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm cho..." name="name" value="{{ $name }}" >
+                                            <span class="input-group-btn">
+                                                <input type="submit" class="btn blue uppercase bold" value="Tìm Kiếm">
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <table id="datatable1" class="table table-striped table-hover">
                             <thead>
                             <tr>
@@ -13,7 +27,7 @@
                                 <th>Tiêu đề</th>
                                 <th>Đường dẫn</th>
                                 <th>Ngày đăng</th>
-                                <th>Actions</th>
+                                <th class="text-right">Quản lý</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -24,8 +38,8 @@
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->link }}</td>
                                             <td>{{ date('F d, Y', strtotime($item->updated_at)) }}</td>
-                                            <td>
-                                                <a href="{{route('new.form'). '?id=' . $item->id}}" target="_blank">
+                                            <td class="text-right">
+                                                <a href="{{route('admin.news.form'). '?id=' . $item->id}}" target="_blank">
                                                     <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                      data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
                                                 <a class="sweet-delete"

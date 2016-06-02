@@ -36,13 +36,19 @@ Route::group(['prefix' => 'admin'], function()
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
 
-	Route::match(['get'], '/news/list', [
-		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
+	// BEGIN NEWS
+	Route::match(['get', 'post'], '/news/list', [
+		'as' => 'admin.news.list', 'uses' => 'Admin\NewsController@newsList'
+	]);
+
+	Route::match(['get', 'post'], 'news/form', [
+		'as' => 'admin.news.form', 'uses' => 'Admin\NewsController@newsForm'
 	]);
 
 	Route::post('/news/delete/{id}', [
-		'as' => 'admin.news.delete', 'uses' => 'Admin\NewController@delete'
+		'as' => 'admin.news.delete', 'uses' => 'Admin\NewsController@delete'
 	]);
+	// END NEWS
 
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'

@@ -16,6 +16,7 @@ class ProvinceController extends Controller {
 	public function tinh(Request $request) {
 		$name 		= $request->input('name');
 		$provinceList 	= $this->provinceRepo->filter($name);
+
 		$pagination 	= $provinceList->appends($request->all());
 
 		return view('admin.province.list')
