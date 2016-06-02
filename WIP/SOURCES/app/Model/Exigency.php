@@ -6,6 +6,8 @@ class Exigency extends Model {
 
     protected $table = 'exigency';
 
+    public $timestamps = false;
+
     public function candidate()
     {
         return $this->belongsTo('App\Model\Candidate', 'candidate_id', 'id');

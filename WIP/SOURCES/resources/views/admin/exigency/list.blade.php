@@ -9,9 +9,9 @@
                          <div class="search-bar ">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <form id="user" class="form-horizontal" role="form" method="get" action="{{ route('admin.province.list') }}">
+                                    <form id="user" class="form-horizontal" role="form" method="get" action="{{ route('admin.exigency.list') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Tỉnh/Thành phố..." name="name" value="{{ $name }}" >
+                                            <input type="text" class="form-control" placeholder="Nhu cầu công việc..." name="name" value="{{ $name }}" >
                                             <span class="input-group-btn">
                                                 <input type="submit" class="btn blue uppercase bold" value="Tìm Kiếm">
                                             </span>
@@ -24,23 +24,23 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên tỉnh</th>
+                                <th>Nhu cầu công việc</th>
                                 <th class="text-right" >Quản lý</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @if(count($provinceList) > 0)
-                                    @foreach($provinceList as $index=>$item)
+                                @if(count($exigencyList) > 0)
+                                    @foreach($exigencyList as $index=>$item)
                                         <tr class="gradeX">
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td class="text-right">
-                                                <a href="{{route('admin.province.form'). '?id=' . $item->id}}" target="_blank">
+                                                <a href="{{route('admin.exigency.form'). '?id=' . $item->id}}" target="_blank">
                                                     <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                      data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
                                                 <a class="sweet-delete"
                                                     data-id="{{$item->id}}"
-                                                    data-url="{{route('admin.province.delete', ['id' => $item->id])}}">
+                                                    data-url="{{route('admin.exigency.delete', ['id' => $item->id])}}">
                                                     <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
                                                             data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
                                                 </a>
@@ -53,7 +53,7 @@
                             </tbody>
                         </table>
                         <div class="box_pagination_footer text-center">
-                            {!! $provinceList->render() !!}
+                            {!! $exigencyList->render() !!}
                         </div>
                     </div><!--end .table-responsive
             </div><!--end .row -->

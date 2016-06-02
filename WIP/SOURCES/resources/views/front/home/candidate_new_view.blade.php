@@ -26,13 +26,13 @@
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
                                  <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-                                 {{ $key->salary }}                        
+                                 {{ $key->salary? $key->salary: '&nbsp;' }}                        
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
                                  <i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-                                 {{ $key->exp_years }}                            
+                                 {{ $key->exp_years? $key->exp_years: '&nbsp;' }}                            
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
@@ -78,13 +78,13 @@
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
                                  <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-                                 {{ $key->salary }}                        
+                                 {{ $key->salary? $key->salary: '&nbsp;' }}                        
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
                               <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
                                  <i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-                                 {{ $key->exp_years }}                            
+                                 {{ $key->exp_years? $key->exp_years: '&nbsp;' }}                            
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
