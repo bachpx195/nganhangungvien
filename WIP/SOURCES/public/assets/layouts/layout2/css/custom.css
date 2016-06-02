@@ -2,3 +2,8 @@
 .page-sidebar .page-sidebar-menu>li>a>.title, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>.title {
     margin-top: 10px;
 }
+a.add-more-btn,
+a.add-more-btn:hover{
+    color: #FFF;
+    text-decoration: none;
+}

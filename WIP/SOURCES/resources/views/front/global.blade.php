@@ -32,6 +32,14 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+
+    <link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/kendoui/styles/kendo.material.min.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+
+    <link href="{{ asset('/assets/default/css/kendo.custom.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/custom.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
     <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
@@ -69,6 +77,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.mobile.custom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mbExtruder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.menu-aim.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
     <!-- menu aim -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/modernizr.js') }}"></script>
     <!-- Modernizr -->
@@ -82,14 +91,16 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
-
-
 </head>
     
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
+
 </body>
 
 </html>

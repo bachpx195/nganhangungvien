@@ -106,6 +106,7 @@
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
         <!-- input logo_company -->
+        <!-- TODO
         <div class="form-group mb_20">
             <label class="control-label-info bold txt-color-363636 fs14 w181"></label>
             <div class="fr_input_bangcap_chungchi">
@@ -124,6 +125,7 @@
                 </div>
             </div>
         </div>
+        -->
         <div class="clearfix"></div>
     </div>
 </div>

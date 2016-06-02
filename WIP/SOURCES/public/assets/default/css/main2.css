@@ -1448,6 +1448,9 @@ a.collapsed .icn-arr-down {
 .tinh_thanh_reg .select2-search input {
     background-position: -45px -164px !important;
 }
+.select2-with-searchbox .select2-search input {
+    background-position: -45px -164px !important;
+}
 .select2-results .select2-result-label {
     padding: 6px;
 }

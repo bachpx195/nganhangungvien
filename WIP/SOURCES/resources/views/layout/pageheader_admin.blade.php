@@ -84,18 +84,18 @@
 	</div>
 </div>
 <!-- END THEME PANEL -->
-<h3 class="page-title"> Dashboard 2
-	<small>dashboard & statistics</small>
+<h3 class="page-title">
+	{{isset($pageTitle) ? $pageTitle : 'Dashboard'}}
 </h3>
 <div class="page-bar">
 	<ul class="page-breadcrumb">
 		<li>
 			<i class="icon-home"></i>
-			<a href="index.html">Home</a>
+			<a href="/admin">Home</a>
 			<i class="fa fa-angle-right"></i>
 		</li>
 		<li>
-			<span>Dashboard</span>
+			<span>{{isset($pageTitle) ? $pageTitle : 'Dashboard'}}</span>
 		</li>
 	</ul>
 	<div class="page-toolbar">

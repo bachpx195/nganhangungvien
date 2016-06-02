@@ -20,7 +20,7 @@
  */
 Route::group(['prefix' => 'admin'], function()
 {
-	Route::match(['get'], '/candidate/list', [
+	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
@@ -161,7 +161,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 /**
  * Frontend
  */
-Route::group(['prefix' => ''], function()
+Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
 	Route::get('/', 'Front\HomeController@index');
 
@@ -176,6 +176,11 @@ Route::group(['prefix' => ''], function()
 	//Đăng ký tài khoản
 	Route::match(['get', 'post'], '/nha-tuyen-dung/dang-ky', [
 		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
+	]);
+
+	//Profile
+	Route::match(['get', 'post'], '/tai-khoan/profile', [
+		'as' => 'account.profile', 'uses' => 'Front\AccountProfileController@index'
 	]);
 });
 

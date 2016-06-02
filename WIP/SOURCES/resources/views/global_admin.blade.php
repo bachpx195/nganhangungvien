@@ -106,6 +106,10 @@
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
 	<script src="{{ asset('/resources/plugin/validation/jquery.validate.min.js') }}" ></script>
 	<script src="{{ asset('/resources/plugin/validation/additional-methods.min.js') }}" ></script>
 	<script src="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" ></script>
