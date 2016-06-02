@@ -17,9 +17,12 @@ class ProvinceController extends Controller {
 		$name 		= $request->input('name');
 		$provinceList 	= $this->provinceRepo->filter($name);
 
+		$pagination 	= $provinceList->appends($request->all());
+
 		return view('admin.province.list')
 					->with('provinceList', 	$provinceList)
-					->with('name', $name);
+					->with('name', $name)
+					->with('pagination', 	$pagination);
 	}
 
 
