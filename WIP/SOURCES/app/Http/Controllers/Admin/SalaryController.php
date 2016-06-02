@@ -52,13 +52,16 @@ public function __construct(ISalaryRepo $salaryRepo) {
 				$salary->save();
 			} else {
 				
-				$validator = $this->validatorSalary($request->all());
-				
+				// $validator = $this->validatorSalary($request->all());
+		        $validator = Validator::make($request->all(), [
+		        	'name' 		=> 'max:50|unique:salary',
+		        ]);
 				if ($validator->fails()) {
 						
-					$this->throwValidationException(
-							$request, $validator
-					);
+            			$errors = $validator->errors()->all();
+            			return redirect(route('admin.salary.form'))
+                        ->withErrors($validator)
+                        ->withInput();
 				}
 				
 				$salary = new Salary;

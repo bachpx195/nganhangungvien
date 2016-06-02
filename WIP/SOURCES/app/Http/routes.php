@@ -121,6 +121,18 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/exigency/delete/{id}', [
 		'as' => 'admin.exigency.delete', 'uses' => 'Admin\ExigencyController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/company-size/list', [
+		'as' => 'admin.companysize.list', 'uses' => 'Admin\CompanySizeController@companySizeList'
+	]);
+
+	Route::match(['get', 'post'], 'company-size/form', [
+		'as' => 'admin.companysize.form', 'uses' => 'Admin\CompanySizeController@companySizeForm'
+	]);
+
+	Route::post('/company-size/delete/{id}', [
+		'as' => 'admin.companysize.delete', 'uses' => 'Admin\CompanySizeController@delete'
+	]);
 });
 
 /**
