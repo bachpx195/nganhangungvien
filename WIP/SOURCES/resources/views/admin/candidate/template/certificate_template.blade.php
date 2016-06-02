@@ -97,6 +97,7 @@
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
         <!-- input logo_company -->
+        <!-- TODO:
         <div class="form-group ">
             <label class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
@@ -115,6 +116,7 @@
                 </div>
             </div>
         </div>
+        -->
         <div class="clearfix"></div>
     </div>
 </div>
