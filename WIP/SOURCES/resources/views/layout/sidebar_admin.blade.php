@@ -53,7 +53,7 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
+						<a href="{{route('admin.employer.list')}}" class="nav-link nav-toggle">
 							<i class="icon-settings"></i> DANH SÁCH
 							<span class="arrow"></span>
 						</a>

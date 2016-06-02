@@ -6,42 +6,57 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        <table id="datatable1" class="table table-striped table-hover">
+                        <div class="search-bar ">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <form id="user" class="form-horizontal" role="form" method="get" action="{{ route('admin.employer.list') }}">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Tên nhà tuyển dụng/Tên công ty/Số điện thoại" name="keyword" value="{{ $keyword }}" >
+                                            <span class="input-group-btn">
+                                                <input type="submit" class="btn blue uppercase bold" value="Tìm Kiếm">
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="employerList" class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>Hồ sơ ứng viên</th>
-                                <th>Tên ứng viên</th>
-                                <th>Mức lương</th>
-                                <th>Kinh nghiệm</th>
-                                <th>Actions</th>
+                                <th>Nhà tuyển dụng</th>
+                                <th>Tên công ty</th>
+                                <th>Số điện thoại</th>
+                                <th>Người liên hệ</th>
+                                <th>Quản lý</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if(count($candidates) > 0)
-                                @foreach($candidates as $index=>$item)
+                            @if(count($employers) > 0)
+                                @foreach($employers as $index=>$item)
                                     <tr class="gradeX">
-                                        <td>{{ $item->cv_title }}</td>
-                                        <td>{{ $item->full_name }}</td>
-                                        <td>{{$item->expectSalary ? $item->expectSalary->name : ''}}</td>
-                                        <td>{{$item->experienceYears ? $item->experienceYears->name : ''}}</td>
+                                        <td>{{ $item->user->full_name }}</td>
+                                        <td>{{ $item->company_name }}</td>
+                                        <td>{{$item->phone}}</td>
+                                        <td>{{$item->contact_person}}</td>
                                         <td>
-                                            <a href="{{route('admin.candidate.update', ['id' => $item->id])}}" target="_blank">
+                                            <a href="">
+                                                <span class="label label-sm label-success"> Approved </span></a>
+                                            <a href="{{route('admin.employer.detail', ['id' => $item->id])}}" target="_blank">
                                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                         data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
-                                            <a class="sweet-delete"
-                                               data-id="{{$item->id}}"
-                                               data-url="{{route('admin.candidate.delete', ['id' => $item->id])}}">
-                                                <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
-                                                        data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
-                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
                             @else
-                                Chưa có hồ sơ phù hợp
+                                <tr>
+                                    <td colspan="5">Chưa có nhà tuyển dụng phù hợp</td>
+                                </tr>
                             @endif
                             </tbody>
                         </table>
+                        <div class="box_pagination_footer text-center">
+                            {!! $employers->render() !!}
+                        </div>
                     </div><!--end .table-responsive -->
                 </div><!--end .col -->
             </div><!--end .row -->

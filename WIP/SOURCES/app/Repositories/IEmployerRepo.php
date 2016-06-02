@@ -11,5 +11,5 @@ interface IEmployerRepo
      * @param int $pageSize number of record in page
      * @return mixed
      */
-    public function search($params, $pageSize = 10);
+    public function search($keyword, $pageSize = 10);
 }
