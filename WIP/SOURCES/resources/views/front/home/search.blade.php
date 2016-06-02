@@ -23,7 +23,7 @@
 						<select name="province" class="selectpicker box_select_filter pos_relative select-style" tabindex="-1" data-select-class="tinh_thanh_ntd">
 							<option value="">Tất cả Tỉnh thành</option>
 							@foreach($dropdownData['provinces'] as $item)
-								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+								<option value="{{ $item->id }}">{{ $item->name }}</option>
 							@endforeach
 						</select>
 					</div>

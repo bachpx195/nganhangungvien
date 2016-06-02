@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4e7a77f4153ed582eb22cfbbb34bf990",
-    "content-hash": "8cd41f1801f00c48342aea144fff0db8",
+    "hash": "61b67abb2866547442738feeeeca8dcc",
+    "content-hash": "5486f4e40e1e2bb6ffce3112079de661",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -98,6 +98,94 @@
                 "laravel"
             ],
             "time": "2015-05-25 13:45:30"
+        },
+        {
+            "name": "captcha-com/captcha",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.captcha.com/botdetect-php-captcha-library.git",
+                "reference": "9d8df905f86d9834dc5e6f718e6c105629299826"
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "suggest": {
+                "captcha-com/cakephp-captcha": "BotDetect 4 PHP Captcha integration for the CakePHP framework.",
+                "captcha-com/laravel-captcha": "BotDetect 4 PHP Captcha integration for the Laravel framework.",
+                "captcha-com/symfony-captcha-bundle": "BotDetect 4 PHP Captcha integration for the Symfony framework."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "BotDetect Captcha",
+                    "email": "botdetect.support@captcha.com",
+                    "homepage": "http://captcha.com/php-captcha.html"
+                }
+            ],
+            "description": "BotDetect 4 PHP Captcha Free composer package.",
+            "homepage": "http://captcha.com/php-captcha.html",
+            "keywords": [
+                "captcha"
+            ],
+            "time": "2016-03-07 11:51:21"
+        },
+        {
+            "name": "captcha-com/laravel-captcha",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/captcha-com/laravel-captcha.git",
+                "reference": "107cf0ab85b38cda1035d0813b2799f1c14dcdef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/captcha-com/laravel-captcha/zipball/107cf0ab85b38cda1035d0813b2799f1c14dcdef",
+                "reference": "107cf0ab85b38cda1035d0813b2799f1c14dcdef",
+                "shasum": ""
+            },
+            "require": {
+                "captcha-com/captcha": "4.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelCaptcha\\": "src/"
+                },
+                "files": [
+                    "src/Support/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "BotDetect Captcha",
+                    "email": "botdetect.support@captcha.com",
+                    "homepage": "http://captcha.com/doc/php/laravel-captcha-quickstart.html"
+                }
+            ],
+            "description": "BotDetect 4 PHP Captcha integration for the Laravel framework.",
+            "homepage": "http://captcha.com/doc/php/laravel-captcha-quickstart.html",
+            "keywords": [
+                "Laravel Captcha",
+                "captcha"
+            ],
+            "time": "2016-03-08 04:17:26"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -300,354 +388,6 @@
             "time": "2014-10-24 07:27:01"
         },
         {
-            "name": "doctrine/annotations",
-            "version": "v1.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/annotations.git",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/lexer": "1.*",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "doctrine/cache": "1.*",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Annotations\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Docblock Annotations Parser",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "parser"
-            ],
-            "time": "2015-08-31 12:32:49"
-        },
-        {
-            "name": "doctrine/cache",
-            "version": "v1.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/cache.git",
-                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/f8af318d14bdb0eff0336795b428b547bd39ccb6",
-                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.5|~7.0"
-            },
-            "conflict": {
-                "doctrine/common": ">2.2,<2.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.0",
-                "predis/predis": "~1.0",
-                "satooshi/php-coveralls": "~0.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Caching library offering an object-oriented API for many cache backends",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "cache",
-                "caching"
-            ],
-            "time": "2015-12-31 16:37:02"
-        },
-        {
-            "name": "doctrine/collections",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/collections.git",
-                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
-                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Collections\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Collections Abstraction library",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "array",
-                "collections",
-                "iterator"
-            ],
-            "time": "2015-04-14 22:21:58"
-        },
-        {
-            "name": "doctrine/common",
-            "version": "v2.6.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/common.git",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/a579557bc689580c19fee4e27487a67fe60defc0",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "1.*",
-                "doctrine/cache": "1.*",
-                "doctrine/collections": "1.*",
-                "doctrine/inflector": "1.*",
-                "doctrine/lexer": "1.*",
-                "php": "~5.5|~7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\": "lib/Doctrine/Common"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common Library for Doctrine projects",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "annotations",
-                "collections",
-                "eventmanager",
-                "persistence",
-                "spl"
-            ],
-            "time": "2015-12-25 13:18:31"
-        },
-        {
-            "name": "doctrine/dbal",
-            "version": "v2.5.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/dbal.git",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": ">=2.4,<2.7-dev",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*",
-                "symfony/console": "2.*"
-            },
-            "suggest": {
-                "symfony/console": "For helpful console commands such as SQL execution and import of files."
-            },
-            "bin": [
-                "bin/doctrine-dbal"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\DBAL\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                }
-            ],
-            "description": "Database Abstraction Layer",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "dbal",
-                "persistence",
-                "queryobject"
-            ],
-            "time": "2016-01-05 22:11:12"
-        },
-        {
             "name": "doctrine/inflector",
             "version": "v1.1.0",
             "source": {
@@ -713,143 +453,6 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "doctrine/lexer",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/lexer.git",
-                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
-                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Lexer\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "lexer",
-                "parser"
-            ],
-            "time": "2014-09-09 13:34:57"
-        },
-        {
-            "name": "erusev/parsedown",
-            "version": "1.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown.git",
-                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
-                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Parsedown": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "Parser for Markdown.",
-            "homepage": "http://parsedown.org",
-            "keywords": [
-                "markdown",
-                "parser"
-            ],
-            "time": "2015-10-04 16:44:32"
-        },
-        {
-            "name": "erusev/parsedown-extra",
-            "version": "0.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown-extra.git",
-                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown-extra/zipball/0db5cce7354e4b76f155d092ab5eb3981c21258c",
-                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "~1.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ParsedownExtra": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "An extension of Parsedown that adds support for Markdown Extra.",
-            "homepage": "https://github.com/erusev/parsedown-extra",
-            "keywords": [
-                "markdown",
-                "markdown extra",
-                "parsedown",
-                "parser"
-            ],
-            "time": "2015-11-01 10:19:22"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -1163,56 +766,6 @@
                 "laravel"
             ],
             "time": "2016-02-02 14:55:52"
-        },
-        {
-            "name": "laravelcollective/html",
-            "version": "v5.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
-                "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "~5.0",
-                "illuminate/routing": "~5.0",
-                "illuminate/session": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Collective\\Html\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                },
-                {
-                    "name": "Adam Engebretson",
-                    "email": "adam@laravelcollective.com"
-                }
-            ],
-            "time": "2015-05-06 14:23:37"
         },
         {
             "name": "league/flysystem",
@@ -1779,198 +1332,6 @@
                 "writer"
             ],
             "time": "2015-08-30 14:30:44"
-        },
-        {
-            "name": "pingpong/generators",
-            "version": "2.0.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pingpong-labs/generators.git",
-                "reference": "0bf9bc1f151436438b463ad94f7574d666a66057"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/generators/zipball/0bf9bc1f151436438b463ad94f7574d666a66057",
-                "reference": "0bf9bc1f151436438b463ad94f7574d666a66057",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "~2.5",
-                "illuminate/filesystem": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.4.0",
-                "pingpong/support": "~2.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pingpong\\Generators\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pingpong Labs",
-                    "email": "pingpong.labs@gmail.com"
-                }
-            ],
-            "description": "Laravel Generators",
-            "keywords": [
-                "generators",
-                "laravel",
-                "pingpong"
-            ],
-            "time": "2015-06-24 05:53:24"
-        },
-        {
-            "name": "pingpong/modules",
-            "version": "2.0.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pingpong-labs/modules.git",
-                "reference": "2d03f066571f12e996bae139eefc6ba57567e830"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/modules/zipball/2d03f066571f12e996bae139eefc6ba57567e830",
-                "reference": "2d03f066571f12e996bae139eefc6ba57567e830",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.0.*",
-                "laravelcollective/html": "~5.0",
-                "php": ">=5.4.0",
-                "pingpong/generators": "~2.0",
-                "pingpong/support": "~2.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pingpong\\Modules\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pingpong Labs",
-                    "email": "pingpong.labs@gmail.com"
-                }
-            ],
-            "description": "Laravel Modules",
-            "keywords": [
-                "hmvc",
-                "laravel",
-                "module",
-                "modules",
-                "pingpong"
-            ],
-            "time": "2015-06-22 17:55:34"
-        },
-        {
-            "name": "pingpong/support",
-            "version": "2.0.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pingpong-labs/support.git",
-                "reference": "a2057526e0b3bfadbb50edda879b20f7acb7496b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/support/zipball/a2057526e0b3bfadbb50edda879b20f7acb7496b",
-                "reference": "a2057526e0b3bfadbb50edda879b20f7acb7496b",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown-extra": "0.7.*",
-                "illuminate/filesystem": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pingpong\\Support\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pingpong Labs",
-                    "email": "pingpong.labs@gmail.com"
-                }
-            ],
-            "description": "Support Component of Pingpong Sky Package",
-            "time": "2015-06-05 07:04:03"
-        },
-        {
-            "name": "pingpong/trusty",
-            "version": "2.0.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pingpong-labs/trusty.git",
-                "reference": "5335c66ac75c8aedb3b405a8230f90a113a9f5fb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pingpong-labs/trusty/zipball/5335c66ac75c8aedb3b405a8230f90a113a9f5fb",
-                "reference": "5335c66ac75c8aedb3b405a8230f90a113a9f5fb",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/auth": "5.0.*",
-                "illuminate/database": "5.0.*",
-                "illuminate/routing": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pingpong\\Trusty\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pingpong Labs",
-                    "email": "pingpong.labs@gmail.com"
-                }
-            ],
-            "description": "Roles and Permissions for Laravel 4",
-            "keywords": [
-                "laravel",
-                "permissions",
-                "pingpong",
-                "roles"
-            ],
-            "time": "2015-06-05 07:25:05"
         },
         {
             "name": "psr/log",
@@ -3051,54 +2412,6 @@
                 "dump"
             ],
             "time": "2015-07-01 10:03:42"
-        },
-        {
-            "name": "teepluss/component",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/teepluss/laravel-component.git",
-                "reference": "c292f48afe800baa1faab73374a6ddbacb4fe7b3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/teepluss/laravel-component/zipball/c292f48afe800baa1faab73374a6ddbacb4fe7b3",
-                "reference": "c292f48afe800baa1faab73374a6ddbacb4fe7b3",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=5.0.1",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Teepluss\\Component\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Teepluss",
-                    "email": "teepluss@gmail.com"
-                }
-            ],
-            "description": "Component is used to separate small parts from the main view and still works perfectly.",
-            "homepage": "https://github.com/teepluss/laravel-component",
-            "keywords": [
-                "asset",
-                "component",
-                "laravel",
-                "layout",
-                "widget"
-            ],
-            "time": "2015-07-28 05:00:28"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4267,8 +3580,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "barryvdh/laravel-cors": 20,
-        "teepluss/component": 20
+        "barryvdh/laravel-cors": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
