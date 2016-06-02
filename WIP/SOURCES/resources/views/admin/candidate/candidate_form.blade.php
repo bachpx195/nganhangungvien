@@ -17,7 +17,7 @@
 	</div>
 @endif
 
-<div class="content_dangky" id="frm-login-info">
+<div class="content_dangky">
 	<div class="">
 		<div class="w_50 floatLeft">
 			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
@@ -29,7 +29,7 @@
 	<div class="mt8"></div>
 	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('admin.candidate.form') }}"
 		  name="candidate_form"  enctype="multipart/form-data">
-		<div class="block-content div-frm-hoso" id="frm-login-info">
+		<div class="block-content div-frm-hoso">
 			<div class="mb8">
 				<div class="center-p12p24 ">
 					@include('admin.candidate.general_information')

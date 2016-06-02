@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job">
-                        Vui lòng chọn cấp bậc mong muốn.</div>
+                        Vui lòng chọn ngành nghề mong muốn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
