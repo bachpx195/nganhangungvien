@@ -27,21 +27,42 @@ class EmployerRegisterController extends BaseController
      */
     public function register(Request $request)
     {
-        if ($request->isMethod('POST')) {
+        if ($request->isMethod('GET')) {
+
+            if (!empty(Input::all())) {
+                $employer = Input::all();
+            } else {
+                $employer = new Employer();
+            }
+
+            $provinces = $this->provinceRepo->getSortedList();
+
+            return view('front.account.employer_register')
+                ->with('provinces', $provinces)
+                ->with('employer', $employer);
+
+        } else if($request->isMethod('POST')){
             $input = $request->all();
-            echo json_encode($input);
 
             try {
                 $validator = $this->validateGeneralInformation($input);
 
                 if ($validator->fails()) {
-                    die("false");
-                    $data = Input::except(array('_token', '_method'));
+                    $data = Input::except(array('_token', '_method', 'password', 'retype_password'));
                     $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    return Redirect::route('candidate.form', $data);
 
-                    //TODO: Research why the validate errors not appearing laravel?
-                    //return Redirect::route('candidate.form', $data)->withErrors($validator);
+                    /*return Redirect::to('employer.register')
+                        ->withErrors($validator);*/
+
+                    return Redirect::route('employer.register', $data);
+
+                    /*return Redirect::route('employer.register')
+                        ->withErrors($errors)
+                        ->withInput(Input::except(array('_token', '_method')));*/
+
+                    //return Redirect::back()->withErrors($validator)->withInput();
+                    /*return view('front.account.employer_register')
+                        -> withInput();*/
                 }
 
                 DB::beginTransaction();
@@ -63,17 +84,10 @@ class EmployerRegisterController extends BaseController
                 throw new Exception($e);
             }
 
-            die('ok');
-            //return redirect(route('candidate.form'));
-
-
-        } else {
-
+            return redirect(route('account.profile'));
         }
 
-        $provinces = $this->provinceRepo->getSortedList();
-        return view('front/register/employer_register')
-            ->with('provinces', $provinces);
+
     }
 
     /**

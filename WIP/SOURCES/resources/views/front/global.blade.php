@@ -93,27 +93,11 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
-</head>
-
-<body class="page_on_load s21_home" id="s22_chi_tiet_ho_so">
-    <div class="container-fluid nopadding">
-        @include('front.layout.header')
-
-        <div class="show-content w_100 box_right">
-            <div id="cols-right" class="bg_grey">
-                <div class="content_cols pt_16 pb_24">
-                    @yield('content')
-                </div>
-
-                @include('front.layout.footer')
-            </div>
-        </div>
-    </div>
-
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
+
 </body>
 
 </html>

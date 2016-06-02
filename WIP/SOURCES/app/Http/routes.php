@@ -99,6 +99,11 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/nha-tuyen-dung/dang-ky', [
 		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
 	]);
+
+	//Profile
+	Route::match(['get', 'post'], '/tai-khoan/profile', [
+		'as' => 'account.profile', 'uses' => 'Front\AccountProfileController@index'
+	]);
 });
 
 Route::match(['get', 'post'], '/candidate/form', [
