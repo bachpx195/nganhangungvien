@@ -21,7 +21,7 @@
 	<div class="">
 		<div class="w_50 floatLeft">
 			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
-			<span class="uppercase bold fs16 text-xanh-nuocbien">Tạo hồ sơ tìm việc từng bước</span>
+			<span class="uppercase bold fs16 text-xanh-nuocbien">{{$pageTitle}}</span>
 		</div>
 	</div>
 
