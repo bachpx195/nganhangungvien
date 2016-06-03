@@ -20,6 +20,7 @@
         @for ($i = 1; $i <= $certificateCount; $i++)
                 <!-- input Tên Bằng cấp/Chứng chỉ -->
             <div class="certificate-item">
+                <input type="hidden" name="certificate_id_{{$i}}" value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
                 <div class="form-group ">
                     <label for="certificate_name_{{$i}}"
                            class="col-sm-2 control-label">
