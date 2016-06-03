@@ -9,10 +9,15 @@ use App\Model\CandidateContactPerson;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
+use App\Repositories\ICandidateCertificateRepo;
+use App\Repositories\ICandidateForeignLanguageRepo;
+use App\Repositories\IContactPersonRepo;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
+use App\Repositories\IExperienceRepo;
 use App\Repositories\IExperienceYearsRepo;
 use App\Repositories\IForeignLanguageRepo;
+use App\Repositories\IITLevelRepo;
 use App\Repositories\IJobRepo;
 use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
@@ -48,6 +53,11 @@ class CandidateController extends Controller {
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
     protected $registrar;
+    protected $experienceRepo;
+    protected $certificateRepo;
+    protected $itLevelRepo;
+    protected $candidateForeignLanguageRepo;
+    protected $contactPersonRepo;
 
     /**
      * CandidateController constructor.
@@ -63,6 +73,11 @@ class CandidateController extends Controller {
      * @param IForeignLanguageRepo $foreignLanguageRepo
      * @param IEmploymentStatusRepo $employmentStatusRepo
      * @param Registrar $registrar
+     * @param IExperienceRepo $experienceRepo
+     * @param ICandidateCertificateRepo $certificateRepo
+     * @param IITLevelRepo $itLevelRepo
+     * @param ICandidateForeignLanguageRepo $candidateForeignLanguageRepo
+     * @param IContactPersonRepo $contactPersonRepo
      */
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -75,7 +90,12 @@ class CandidateController extends Controller {
         ILevelRepo $levelRepo,
         IForeignLanguageRepo $foreignLanguageRepo,
         IEmploymentStatusRepo $employmentStatusRepo,
-        Registrar $registrar
+        Registrar $registrar,
+        IExperienceRepo $experienceRepo,
+        ICandidateCertificateRepo $certificateRepo,
+        IITLevelRepo $itLevelRepo,
+        ICandidateForeignLanguageRepo $candidateForeignLanguageRepo,
+        IContactPersonRepo $contactPersonRepo
     ) {
         $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
@@ -88,6 +108,11 @@ class CandidateController extends Controller {
         $this->levelRepo = $levelRepo;
         $this->foreignLanguageRepo = $foreignLanguageRepo;
         $this->employmentStatusRepo = $employmentStatusRepo;
+        $this->experienceRepo = $experienceRepo;
+        $this->certificateRepo = $certificateRepo;
+        $this->itLevelRepo = $itLevelRepo;
+        $this->candidateForeignLanguageRepo = $candidateForeignLanguageRepo;
+        $this->contactPersonRepo = $contactPersonRepo;
     }
 
     /**
@@ -124,7 +149,7 @@ class CandidateController extends Controller {
         }
         $pageTitle = Constants::CANDIDATE_NEW_PT;
 
-        return $this->candidateForm($candidate, $request, $pageTitle);
+        return $this->candidateForm($candidate, $request, $pageTitle, null);
     }
 
     /**
@@ -139,7 +164,7 @@ class CandidateController extends Controller {
         $candidate = Candidate::find($id);
         $candidate = $this->prepareCandidateData($candidate);
 
-        return $this->candidateForm($candidate, $request, $pageTitle);
+        return $this->candidateForm($candidate, $request, $pageTitle, $id);
     }
 
     /**
@@ -148,9 +173,10 @@ class CandidateController extends Controller {
      * @param $candidate
      * @param Request $request
      * @param $pageTitle
+     * @param null $id
      * @return mixed
      */
-    public function candidateForm($candidate, $request, $pageTitle) {
+    public function candidateForm($candidate, $request, $pageTitle, $id = null) {
         $activeMenu = Constants::CANDIDATE;
 
         $salaries = $this->salaryRepo->all();
@@ -167,6 +193,11 @@ class CandidateController extends Controller {
 
         // get method
         if ($request->isMethod('get')) {
+            if (empty($id)) {
+                $action = route('admin.candidate.form');
+            } else {
+                $action = route('admin.candidate.update', array('id' => $id));
+            }
             return view('admin/candidate/candidate_form')
                 ->with('candidate', $candidate)
                 ->with('salaries',  $salaries)
@@ -181,19 +212,21 @@ class CandidateController extends Controller {
                 ->with('graduationTypes', $graduationTypes)
                 ->with('scales', $scales)
                 ->with('activeMenu', $activeMenu)
-                ->with('pageTitle', $pageTitle);
+                ->with('pageTitle', $pageTitle)
+                ->with('action', $action);
         } else {
             // get form input data
             $input = $request->all();
 
             try {
-                $validator = $this->validateGeneralInformation($request->all(), $candidate);
+                $validator = $this->validateGeneralInformation($request->all(), $id);
                 //TODO: Move it in service or repository base
                 DB::beginTransaction();
                 if ($validator->fails()) {
                     $data = Input::except(array('_token', '_method'));
-                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    if (empty($candidate->id)) {
+
+                    if (empty($id)) {
+                        $data['email_errors'] = 'Email bạn nhập đã tồn tại';
                         return Redirect::route('admin.candidate.form', $data);
                     } else {
                         return Redirect::route('admin.candidate.update', $data);
@@ -203,8 +236,10 @@ class CandidateController extends Controller {
                     //return Redirect::route('candidate.form', $data)->withErrors($validator);
                 }
 
-                if (empty($candidate->id)) {
+                if (empty($id)) {
                     $candidate = new Candidate();
+                } else {
+                    $candidate = Candidate::find($id);
                 }
 
                 $candidate = $this->getGeneralInfoByInput($candidate, $input);
@@ -277,6 +312,156 @@ class CandidateController extends Controller {
         $candidate['birthday_month'] = isset($birthDays[1]) ? $birthDays[1] : '';
         $candidate['birthday_day'] = isset($birthDays[2]) ? $birthDays[2] : '';
 
+        $experiences = $this->experienceRepo->getExperiencesByCandidateId($candidate->id);
+        $this->populateExperiencesToCandidate($candidate, $experiences);
+
+        $certificates = $this->certificateRepo->getCertificatesByCandidateId($candidate->id);
+        $this->populateCertificatesToCandidate($candidate, $certificates);
+
+        $foreignLanguages = $this->candidateForeignLanguageRepo->getForeignLanguagesByCandidateId($candidate->id);
+        $this->populateForeignLanguagesToCandidate($candidate, $foreignLanguages);
+
+        $itLevels = $this->itLevelRepo->getITLevelsByCandidateId($candidate->id);
+        $this->populateITLevelsToCandidate($candidate, $itLevels);
+
+        $contactPersons = $this->contactPersonRepo->getContactPersonsByCandidateId($candidate->id);
+        $this->populateContactPersonsToCandidate($candidate, $contactPersons);
+
+        return $candidate;
+    }
+
+    /**
+     * Populate contact persons to candidate
+     *
+     * @param $candidate
+     * @param $contactPersons
+     * @return mixed
+     */
+    private function populateContactPersonsToCandidate($candidate, $contactPersons)
+    {
+        if (count($contactPersons) > 0) {
+            for ($i = 0; $i < count($contactPersons);$i ++)
+            {
+                $candidate['contact_person_id_' . ($i + 1)] = $contactPersons[$i]->id;
+                $candidate['contact_person_full_name_' . ($i + 1)] = $contactPersons[$i]->full_name;
+                $candidate['contact_person_company_' . ($i + 1)] = $contactPersons[$i]->company;
+                $candidate['contact_person_phone_number_' . ($i + 1)] = $contactPersons[$i]->phone_number;
+                $candidate['contact_person_office_' . ($i + 1)] = $contactPersons[$i]->office;
+            }
+
+            $candidate['contact_person_count'] = count($contactPersons);
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate it levels to candidate
+     *
+     * @param $candidate
+     * @param $itLevels
+     * @return mixed
+     */
+    private function populateITLevelsToCandidate($candidate, $itLevels)
+    {
+        $candidate['word'] = $itLevels[0]->word;
+        $candidate['excel'] = $itLevels[0]->excel;
+        $candidate['power_point'] = $itLevels[0]->power_point;
+        $candidate['out_look'] = $itLevels[0]->out_look;
+
+        return $candidate;
+    }
+
+
+    /**
+     * Populate it foreign languages to candidate
+     *
+     * @param $candidate
+     * @param $foreignLanguages
+     * @return mixed
+     */
+    private function populateForeignLanguagesToCandidate($candidate, $foreignLanguages)
+    {
+        if (count($foreignLanguages) > 0) {
+            for ($i = 0; $i < count($foreignLanguages);$i ++)
+            {
+                $candidate['foreign_language_id_' . ($i + 1)] = $foreignLanguages[$i]->id;
+                $candidate['language_id_' . ($i + 1)] = $foreignLanguages[$i]->language_id;
+                $candidate['read_' . ($i + 1)] = $foreignLanguages[$i]->read;
+                $candidate['write_' . ($i + 1)] = $foreignLanguages[$i]->write;
+                $candidate['listen_' . ($i + 1)] = $foreignLanguages[$i]->listen;
+                $candidate['speak_' . ($i + 1)] = $foreignLanguages[$i]->speak;
+            }
+
+            $candidate['language_count'] = count($foreignLanguages);
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate certificates to candidate
+     *
+     * @param $candidate
+     * @param $certificates
+     * @return mixed
+     */
+    private function populateCertificatesToCandidate($candidate, $certificates)
+    {
+        if (count($certificates) > 0) {
+            for ($i = 0; $i < count($certificates);$i ++)
+            {
+                $candidate['certificate_id_' . ($i + 1)] = $certificates[$i]->id;
+                $candidate['certificate_name_' . ($i + 1)] = $certificates[$i]->certificate_name;
+                $candidate['training_unit_' . ($i + 1)] = $certificates[$i]->training_unit;
+                $candidate['graduation_type_' . ($i + 1)] = $certificates[$i]->graduation_type;
+                $candidate['specialize_' . ($i + 1)] = $certificates[$i]->specialize;
+
+                $startedAts =  explode("-", $certificates[$i]->started_at);
+                $candidate['started_at_month_' . ($i + 1)] = $startedAts[1];
+                $candidate['started_at_year' . ($i + 1)] = $startedAts[0];
+
+                $endedAts =  explode("-", $certificates[$i]->ended_at);
+                $candidate['ended_at_month_' . ($i + 1)] = $endedAts[1];
+                $candidate['ended_at_year_' . ($i + 1)] = $endedAts[0];
+            }
+
+            $candidate['certificate_count'] = count($certificates);
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate experiences to candidate
+     *
+     * @param $candidate
+     * @param $experiences
+     * @return mixed
+     */
+    private function populateExperiencesToCandidate($candidate, $experiences)
+    {
+        if (count($experiences) > 0) {
+            for ($i = 0; $i < count($experiences);$i ++)
+            {
+                $candidate['experience_id_' . ($i + 1)] = $experiences[$i]->id;
+                $candidate['experience_company_name_' . ($i + 1)] = $experiences[$i]->company_name;
+                $candidate['experience_office_' . ($i + 1)] = $experiences[$i]->office;
+                $candidate['experience_salary_' . ($i + 1)] = $experiences[$i]->salary;
+                $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
+
+                $dayIns =  explode("-", $experiences[$i]->day_in);
+                $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
+                $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+
+                $dayOuts =  explode("-", $experiences[$i]->day_out);
+                $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
+                $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+            }
+
+            $candidate['experience_count'] = count($experiences);
+        }
+
         return $candidate;
     }
 
@@ -290,7 +475,12 @@ class CandidateController extends Controller {
     {
         $contactPersonCount = isset($input['contact_person_count']) ? $input['contact_person_count'] : 1;
         for ($i = 1; $i <= $contactPersonCount; $i++) {
-            $contactPerson = new CandidateContactPerson();
+            if (empty($input['contact_person_id_' . $i])) {
+                $contactPerson = new CandidateContactPerson();
+            } else {
+                $contactPerson = CandidateContactPerson::find($input['contact_person_id_' . $i]);
+            }
+
             $contactPerson->candidate_id  = $candidate->id;
             if ($this->canSaveContactPerson($input, $i)) {
                 $contactPerson = $this->getContactPersonInfo($contactPerson, $input, $i);
@@ -391,7 +581,12 @@ class CandidateController extends Controller {
     {
         $languageCount = isset($input['language_count']) ? $input['language_count'] : 1;
         for ($i = 1; $i <= $languageCount; $i++) {
-            $language = new CandidateForeignLanguage();
+            if (empty($input['foreign_language_id_' . $i])) {
+                $language = new CandidateForeignLanguage();
+            } else {
+                $language = CandidateForeignLanguage::find($input['foreign_language_id_' . $i]);
+            }
+
             $language->candidate_id  = $candidate->id;
             if ($this->canSaveLanguage($input, $i)) {
                 $language = $this->getLanguageInfo($language, $input, $i);
@@ -445,7 +640,11 @@ class CandidateController extends Controller {
     {
         $certificateCount = isset($input['certificate_count']) ? $input['certificate_count'] : 1;
         for ($i = 1; $i <= $certificateCount; $i++) {
-            $certificate = new CandidateCertificate();
+            if (empty($input['certificate_id_' . $i])) {
+                $certificate = new CandidateCertificate();
+            } else {
+                $certificate = CandidateCertificate::find($input['certificate_id_' . $i]);
+            }
             $certificate->candidate_id  = $candidate->id;
             if ($this->canSaveCertificate($input, $i)) {
                 $certificate = $this->getCertificateInfo($certificate, $input, $i, $request);
@@ -522,7 +721,12 @@ class CandidateController extends Controller {
     {
         $experienceCount = isset($input['experience_count']) ? $input['experience_count'] : 1;
         for ($i = 1; $i <= $experienceCount; $i++) {
-            $experience = new Experience();
+            if (empty($input['experience_id_' . $i])) {
+                $experience = new Experience();
+            } else {
+                $experience = Experience::find($input['experience_id_' . $i]);
+            }
+
             $experience->candidate_id  = $candidate->id;
             if ($this->canSaveExperience($input, $i)) {
                 $experience = $this->getExperienceInfo($experience, $input, $i);
@@ -613,6 +817,7 @@ class CandidateController extends Controller {
         $candidate->job = $input['job'];
         $candidate->expect_salary = $input['expect_salary'];
         $candidate->exigency = $input['exigency'];
+        $candidate->employment_status = $input['employment_status'];
         $candidate->job_goal = $input['job_goal'];
         $candidate->skill_forte = $input['skill_forte'];
 
@@ -626,10 +831,10 @@ class CandidateController extends Controller {
      * Validate for general information of the candidate
      *
      * @param $data
-     * @param $candidate
+     * @param $id
      * @return mixed
      */
-    private function validateGeneralInformation($data, $candidate)
+    private function validateGeneralInformation($data, $id)
     {
         $birthdayYear = $data['birthday_year'];
         $birthdayMonth = $data['birthday_month'];
@@ -654,7 +859,7 @@ class CandidateController extends Controller {
             'job_goal' => 'required'
         ];
 
-        if (!empty($candidate->id)) {
+        if (empty($id)) {
             $validators['email'] = 'required|email|unique:candidate';
         }
 
