@@ -111,15 +111,47 @@ class CandidateController extends Controller {
     }
 
     /**
-     * Build a candidate's form
+     * Create a new candidate
      *
      * @param Request $request
      * @return mixed
-     * @throws Exception
      */
-    public function candidateForm(Request $request) {
-        $activeMenu = Constants::CANDIDATE;
+    public function candidateCreate(Request $request) {
+        if (!empty(Input::all())) {
+            $candidate = Input::all();
+        } else {
+            $candidate = new Candidate;
+        }
         $pageTitle = Constants::CANDIDATE_NEW_PT;
+
+        return $this->candidateForm($candidate, $request, $pageTitle);
+    }
+
+    /**
+     * Update a candidate
+     * 
+     * @param Request $request
+     * @param int $id
+     * @return mixed
+     */
+    public function candidateUpdate(Request $request, $id) {
+        $pageTitle = Constants::CANDIDATE_UPDATE_PT;
+        $candidate = Candidate::find($id);
+        $candidate = $this->prepareCandidateData($candidate);
+
+        return $this->candidateForm($candidate, $request, $pageTitle);
+    }
+
+    /**
+     * Build a candidate's form
+     *
+     * @param $candidate
+     * @param Request $request
+     * @param $pageTitle
+     * @return mixed
+     */
+    public function candidateForm($candidate, $request, $pageTitle) {
+        $activeMenu = Constants::CANDIDATE;
 
         $salaries = $this->salaryRepo->all();
         $experienceYears = $this->experienceYearsRepo->all();
@@ -135,12 +167,6 @@ class CandidateController extends Controller {
 
         // get method
         if ($request->isMethod('get')) {
-            if (!empty(Input::all())) {
-                $candidate = Input::all();
-            } else {
-                $candidate = new Candidate;
-            }
-
             return view('admin/candidate/candidate_form')
                 ->with('candidate', $candidate)
                 ->with('salaries',  $salaries)
@@ -161,23 +187,29 @@ class CandidateController extends Controller {
             $input = $request->all();
 
             try {
-                $validator = $this->validateGeneralInformation($request->all());
+                $validator = $this->validateGeneralInformation($request->all(), $candidate);
                 //TODO: Move it in service or repository base
                 DB::beginTransaction();
                 if ($validator->fails()) {
                     $data = Input::except(array('_token', '_method'));
                     $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    return Redirect::route('admin.candidate.form', $data);
+                    if (empty($candidate->id)) {
+                        return Redirect::route('admin.candidate.form', $data);
+                    } else {
+                        return Redirect::route('admin.candidate.update', $data);
+                    }
 
                     //TODO: Research why the validate errors not appearing laravel?
                     //return Redirect::route('candidate.form', $data)->withErrors($validator);
                 }
 
-                $candidate = new Candidate;
-                $candidate = $this->getGeneralInfoByInput($candidate, $input);
+                if (empty($candidate->id)) {
+                    $candidate = new Candidate();
+                }
 
+                $candidate = $this->getGeneralInfoByInput($candidate, $input);
                 $candidate->save();
-                if ($candidate->id) {
+                if ($candidate->id && empty($candidate->candidate_code)) {
                     $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
                     $candidate->save();
                 }
@@ -202,7 +234,11 @@ class CandidateController extends Controller {
                 //throw new Exception('Something wrong!!');
             }
 
-            return redirect(route('admin.candidate.form'));
+            if (empty($candidate->id)) {
+                return redirect(route('admin.candidate.form'));
+            } else {
+                return redirect(route('admin.candidate.update', array('id' => $candidate->id)));
+            }
         }
     }
 
@@ -225,6 +261,23 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Prepare candidate data
+     *
+     * @param mix $candidate
+     * @return mixed
+     */
+    private function prepareCandidateData($candidate)
+    {
+        $birthDays = explode("-", $candidate['birthday']);
+
+        $candidate['birthday_year'] = isset($birthDays[0]) ? $birthDays[0] : '';
+        $candidate['birthday_month'] = isset($birthDays[1]) ? $birthDays[1] : '';
+        $candidate['birthday_day'] = isset($birthDays[2]) ? $birthDays[2] : '';
+
+        return $candidate;
     }
 
     /**
@@ -573,17 +626,17 @@ class CandidateController extends Controller {
      * Validate for general information of the candidate
      *
      * @param $data
+     * @param $candidate
      * @return mixed
      */
-    private function validateGeneralInformation($data)
+    private function validateGeneralInformation($data, $candidate)
     {
         $birthdayYear = $data['birthday_year'];
         $birthdayMonth = $data['birthday_month'];
         $birthdayDay = $data['birthday_day'];
         $data['birthday'] = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
 
-        return Validator::make($data, [
-            'email' => 'required|email|unique:candidate',
+        $validators = [
             'full_name' => 'required',
             'birthday' => 'required',
             'sex' => 'required',
@@ -599,6 +652,12 @@ class CandidateController extends Controller {
             'employment_status' => 'required',
             'expect_salary' => 'required',
             'job_goal' => 'required'
-        ]);
+        ];
+
+        if (!empty($candidate->id)) {
+            $validators['email'] = 'required|email|unique:candidate';
+        }
+
+        return Validator::make($data, $validators);
     }
 }

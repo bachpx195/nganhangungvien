@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin'], function()
 	]);
 
 	Route::match(['get', 'post'], '/candidate/form', [
-		'as' => 'admin.candidate.form', 'uses' => 'Admin\CandidateController@candidateForm'
+		'as' => 'admin.candidate.form', 'uses' => 'Admin\CandidateController@candidateCreate'
 	]);
 
 	Route::match(['get', 'post'], '/candidate/update/{id}', [
