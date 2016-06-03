@@ -9,10 +9,15 @@ use App\Model\CandidateContactPerson;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
+use App\Repositories\ICandidateCertificateRepo;
+use App\Repositories\ICandidateForeignLanguageRepo;
+use App\Repositories\IContactPersonRepo;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
+use App\Repositories\IExperienceRepo;
 use App\Repositories\IExperienceYearsRepo;
 use App\Repositories\IForeignLanguageRepo;
+use App\Repositories\IITLevelRepo;
 use App\Repositories\IJobRepo;
 use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
@@ -48,6 +53,11 @@ class CandidateController extends Controller {
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
     protected $registrar;
+    protected $experienceRepo;
+    protected $certificateRepo;
+    protected $itLevelRepo;
+    protected $candidateForeignLanguageRepo;
+    protected $contactPersonRepo;
 
     /**
      * CandidateController constructor.
@@ -63,6 +73,11 @@ class CandidateController extends Controller {
      * @param IForeignLanguageRepo $foreignLanguageRepo
      * @param IEmploymentStatusRepo $employmentStatusRepo
      * @param Registrar $registrar
+     * @param IExperienceRepo $experienceRepo
+     * @param ICandidateCertificateRepo $certificateRepo
+     * @param IITLevelRepo $itLevelRepo
+     * @param ICandidateForeignLanguageRepo $candidateForeignLanguageRepo
+     * @param IContactPersonRepo $contactPersonRepo
      */
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -75,7 +90,12 @@ class CandidateController extends Controller {
         ILevelRepo $levelRepo,
         IForeignLanguageRepo $foreignLanguageRepo,
         IEmploymentStatusRepo $employmentStatusRepo,
-        Registrar $registrar
+        Registrar $registrar,
+        IExperienceRepo $experienceRepo,
+        ICandidateCertificateRepo $certificateRepo,
+        IITLevelRepo $itLevelRepo,
+        ICandidateForeignLanguageRepo $candidateForeignLanguageRepo,
+        IContactPersonRepo $contactPersonRepo
     ) {
         $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
@@ -88,6 +108,11 @@ class CandidateController extends Controller {
         $this->levelRepo = $levelRepo;
         $this->foreignLanguageRepo = $foreignLanguageRepo;
         $this->employmentStatusRepo = $employmentStatusRepo;
+        $this->experienceRepo = $experienceRepo;
+        $this->certificateRepo = $certificateRepo;
+        $this->itLevelRepo = $itLevelRepo;
+        $this->candidateForeignLanguageRepo = $candidateForeignLanguageRepo;
+        $this->contactPersonRepo = $contactPersonRepo;
     }
 
     /**
@@ -276,6 +301,151 @@ class CandidateController extends Controller {
         $candidate['birthday_year'] = isset($birthDays[0]) ? $birthDays[0] : '';
         $candidate['birthday_month'] = isset($birthDays[1]) ? $birthDays[1] : '';
         $candidate['birthday_day'] = isset($birthDays[2]) ? $birthDays[2] : '';
+
+        $experiences = $this->experienceRepo->getExperiencesByCandidateId($candidate->id);
+        $this->populateExperiencesToCandidate($candidate, $experiences);
+
+        $certificates = $this->certificateRepo->getCertificatesByCandidateId($candidate->id);
+        $this->populateCertificatesToCandidate($candidate, $certificates);
+
+        $foreignLanguages = $this->candidateForeignLanguageRepo->getForeignLanguagesByCandidateId($candidate->id);
+        $this->populateForeignLanguagesToCandidate($candidate, $foreignLanguages);
+
+        $itLevels = $this->itLevelRepo->getITLevelsByCandidateId($candidate->id);
+        $this->populateITLevelsToCandidate($candidate, $itLevels);
+
+        $contactPersons = $this->contactPersonRepo->getContactPersonsByCandidateId($candidate->id);
+        $this->populateContactPersonsToCandidate($candidate, $contactPersons);
+
+        return $candidate;
+    }
+
+    /**
+     * Populate contact persons to candidate
+     *
+     * @param $candidate
+     * @param $contactPersons
+     * @return mixed
+     */
+    private function populateContactPersonsToCandidate($candidate, $contactPersons)
+    {
+        if (count($contactPersons) > 0) {
+            for ($i = 0; $i < count($contactPersons);$i ++)
+            {
+                $candidate['full_name_' . ($i + 1)] = $contactPersons[$i]->full_name;
+                $candidate['company_' . ($i + 1)] = $contactPersons[$i]->company;
+                $candidate['phone_number_' . ($i + 1)] = $contactPersons[$i]->phone_number;
+                $candidate['office_' . ($i + 1)] = $contactPersons[$i]->office;
+            }
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate it levels to candidate
+     *
+     * @param $candidate
+     * @param $itLevels
+     * @return mixed
+     */
+    private function populateITLevelsToCandidate($candidate, $itLevels)
+    {
+        for ($i = 0; $i < count($itLevels);$i ++)
+        {
+            $candidate['word_' . ($i + 1)] = $itLevels[$i]->word;
+            $candidate['excel_' . ($i + 1)] = $itLevels[$i]->excel;
+            $candidate['power_point_' . ($i + 1)] = $itLevels[$i]->power_point;
+            $candidate['out_look_' . ($i + 1)] = $itLevels[$i]->out_look;
+        }
+
+        return $candidate;
+    }
+
+
+    /**
+     * Populate it foreign languages to candidate
+     *
+     * @param $candidate
+     * @param $foreignLanguages
+     * @return mixed
+     */
+    private function populateForeignLanguagesToCandidate($candidate, $foreignLanguages)
+    {
+        if (count($foreignLanguages) > 0) {
+            for ($i = 0; $i < count($foreignLanguages);$i ++)
+            {
+                $candidate['language_id_' . ($i + 1)] = $foreignLanguages[$i]->language_id;
+                $candidate['read_' . ($i + 1)] = $foreignLanguages[$i]->read;
+                $candidate['write_' . ($i + 1)] = $foreignLanguages[$i]->write;
+                $candidate['listen_' . ($i + 1)] = $foreignLanguages[$i]->listen;
+                $candidate['speak_' . ($i + 1)] = $foreignLanguages[$i]->speak;
+            }
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate certificates to candidate
+     *
+     * @param $candidate
+     * @param $certificates
+     * @return mixed
+     */
+    private function populateCertificatesToCandidate($candidate, $certificates)
+    {
+        if (count($certificates) > 0) {
+            for ($i = 0; $i < count($certificates);$i ++)
+            {
+                $candidate['certificate_name_' . ($i + 1)] = $certificates[$i]->certificate_name;
+                $candidate['training_unit_' . ($i + 1)] = $certificates[$i]->training_unit;
+                $candidate['graduation_type_' . ($i + 1)] = $certificates[$i]->graduation_type;
+                $candidate['specialize_' . ($i + 1)] = $certificates[$i]->specialize;
+
+                $startedAts =  explode("-", $certificates[$i]->started_at);
+                $candidate['started_at_month_' . ($i + 1)] = $startedAts[1];
+                $candidate['started_at_year' . ($i + 1)] = $startedAts[0];
+
+                $endedAts =  explode("-", $certificates[$i]->ended_at);
+                $candidate['ended_at_month_' . ($i + 1)] = $endedAts[1];
+                $candidate['ended_at_year_' . ($i + 1)] = $endedAts[0];
+            }
+
+            $candidate['certificate_count'] = count($certificates);
+        }
+
+        return $candidate;
+    }
+
+    /**
+     * Populate experiences to candidate
+     *
+     * @param $candidate
+     * @param $experiences
+     * @return mixed
+     */
+    private function populateExperiencesToCandidate($candidate, $experiences)
+    {
+        if (count($experiences) > 0) {
+            for ($i = 0; $i < count($experiences);$i ++)
+            {
+                $candidate['experience_company_name_' . ($i + 1)] = $experiences[$i]->company_name;
+                $candidate['experience_office_' . ($i + 1)] = $experiences[$i]->office;
+                $candidate['experience_salary_' . ($i + 1)] = $experiences[$i]->salary;
+                $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
+
+                $dayIns =  explode("-", $experiences[$i]->day_in);
+                $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
+                $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+
+                $dayOuts =  explode("-", $experiences[$i]->day_out);
+                $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
+                $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+            }
+
+            $candidate['experience_count'] = count($experiences);
+        }
 
         return $candidate;
     }
