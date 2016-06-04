@@ -17,17 +17,17 @@ class ExperienceYearsController extends Controller {
 
 	public function experienceyearsList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
-
+        $experienceyearsList 	= $this->experienceyearsRepo->all();
 
 		return view('admin.experienceyears.list')
 					->with('experienceyearsList', 	$experienceyearsList)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT)
+					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT);
 	}
 
 	public function experienceyearsForm(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
-        $pageTitle  = Constants::EXPERIENCEYEARS_NEW_PT;
+        $pageTitle  = Constants::EXPERIECEYEARS_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			

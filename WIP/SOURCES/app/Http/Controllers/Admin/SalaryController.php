@@ -11,22 +11,20 @@ use Validator;
 
 class SalaryController extends Controller {
 
-public function __construct(ISalaryRepo $salaryRepo) {
+	public function __construct(ISalaryRepo $salaryRepo) {
 		$this->salaryRepo = $salaryRepo;
 	}
 
 	public function salaryList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$salaryList 	= $this->salaryRepo->filter($name);
-		$pagination 	= $salaryList->appends($request->all());
+		$salaryList 	= $this->salaryRepo->all();
 
 		return view('admin.salary.list')
 					->with('salaryList', 	$salaryList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::SALARY_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::SALARY_LIST_PT);
 	}
 
 	public function salaryForm(Request $request) {
