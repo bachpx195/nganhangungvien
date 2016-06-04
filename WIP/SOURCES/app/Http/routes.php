@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +20,9 @@
  */
 Route::group(['prefix' => 'admin'], function()
 {
+	Route::match(['get'], '/', [
+		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
+	]);
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
