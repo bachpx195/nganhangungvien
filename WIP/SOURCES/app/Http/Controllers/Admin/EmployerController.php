@@ -30,15 +30,13 @@ class EmployerController extends Controller
     {
         $activeMenu = Constants::EMPLOYER;
         $keyword = $request->input('keyword');
-
         $pageSize = config('front.pageSize');
         $employers = $this->employerRepo->search($keyword, $pageSize);
 
         return view('admin/employer/list')
             ->with('employers', $employers)
             ->with('activeMenu', $activeMenu)
-            ->with('keyword', $keyword)
-            ->with('pageTitle', 'Danh sách nhà tuyển dụng');
+            ->with('pageTitle', Constants::EMPLOYER_LIST);
     }
 
     /**
@@ -48,6 +46,7 @@ class EmployerController extends Controller
      */
     public function employerDetail(Request $request)
     {
+        $activeMenu = Constants::EMPLOYER;
         if ($request->isMethod('get')) {
 
             if ($request->has('id')) {
@@ -57,7 +56,9 @@ class EmployerController extends Controller
                 abort(404, 'Not found employer');
             }
             return view('admin.employer.employer_detail')
-                ->with('employer', $employer);
+                ->with('employer', $employer)
+                ->with('activeMenu', $activeMenu)
+                ->with('pageTitle', Constants::EMPLOYER_DETAIL);
         }
     }
 

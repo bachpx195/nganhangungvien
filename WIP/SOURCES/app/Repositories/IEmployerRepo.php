@@ -7,7 +7,7 @@ interface IEmployerRepo
      * - Employer name
      * - Company name
      * - Phone number
-     * @param $params some params to search employer
+     * @param $keyword some params to search employer
      * @param int $pageSize number of record in page
      * @return mixed
      */

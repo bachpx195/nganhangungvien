@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-8 profile-info">
-                    <div class="portlet box blue">
+                    <div class="portlet box green">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-gift"></i> Thông tin công ty </div>

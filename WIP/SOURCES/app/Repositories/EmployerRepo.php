@@ -20,7 +20,7 @@ class EmployerRepo implements IEmployerRepo
                 ->orwhere('users.username', 'LIKE', '%' . $keyword . '%');
         }
 
-        return $query->paginate();
+        return $query->paginate($pageSize);
     }
 
     /**
