@@ -24,10 +24,10 @@
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">STT</th>
-                                <th style="width: 15%;">Code</th>
+                                <th style="width: 10px;">STT</th>
+                                <th style="width: 20%;">Code</th>
                                 <th style="width: 65%;" class="text-center">Giá trị</th>
-                                <th style="width: 15%;"></th>
+                                <th style="width: 61px;"></th>
                             </tr>
                         </thead>
                         <tbody>

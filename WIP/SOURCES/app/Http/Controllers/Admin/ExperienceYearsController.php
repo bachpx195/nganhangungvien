@@ -22,7 +22,7 @@ class ExperienceYearsController extends Controller {
 		return view('admin.experienceyears.list')
 					->with('experienceyearsList', 	$experienceyearsList)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT);
+					->with('pageTitle', Constants::EXPERIECEYEARS_LIST_PT);
 	}
 
 	public function experienceyearsForm(Request $request) {

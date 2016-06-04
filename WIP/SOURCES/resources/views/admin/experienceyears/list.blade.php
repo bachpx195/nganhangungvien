@@ -21,20 +21,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="portlet-body">>
+                <div class="portlet-body">
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">STT</th>
+                                <th style="width: 10px;">STT</th>
                                 <th style="width: 80%;" class="text-center">Số năm kinh nghiệm</th>
-                                <th style="width: 15%;"></th>
+                                <th style="width: 61px;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(count($experienceyearsList) > 0)
                                 @foreach($experienceyearsList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td class="text-center"></td>
+                                        <td class="text-center">{{ $index + 1 }}</td>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td>
                                             <a href="{{route('admin.experienceyears.form'). '?id=' . $item->id}}" target="_blank">

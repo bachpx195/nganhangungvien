@@ -43,7 +43,7 @@ class NewRepo implements INewRepo {
     }
 
     public function all(){
-        return News::get();
+        return News::orderBy('id', 'dec')->get();
     }
 
     public function findById($id) {

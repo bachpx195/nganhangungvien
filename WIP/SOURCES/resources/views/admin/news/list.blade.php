@@ -24,18 +24,18 @@
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">STT</th>
+                                <th style="width: 10px;">STT</th>
                                 <th style="width: 40%;">Tiêu đề</th>
-                                <th style="width: 20%;">Đường dẫn</th>
+                                <th style="width: 25%;">Đường dẫn</th>
                                 <th style="width: 20%;">Ngày đăng</th>
-                                <th style="width: 15%;">Actions</th>
+                                <th style="width: 61px;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(count($newsList) > 0)
                                 @foreach($newsList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td class="text-center"></td>
+                                        <td class="text-center">{{ $index + 1 }}</td>
                                         <td class="">{{ $item->title }}</td>
                                         <td class="">{{ $item->link }}</td>
                                         <td class="">{{ date('F d, Y', strtotime($item->updated_at)) }}</td>

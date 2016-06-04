@@ -6,7 +6,7 @@ class CompanySizeRepo implements ICompanySizeRepo {
     
     public function all() {
 
-        return CompanySize::get();
+        return CompanySize::orderBy('id', 'dec')->get();
     }
 
     public function filter($name) {

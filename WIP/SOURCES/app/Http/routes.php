@@ -20,10 +20,11 @@ Route::match(['get', 'post'], '/admin', [
  */
 Route::group(['prefix' => 'admin'], function()
 {
+	//router admin
 	Route::match(['get'], '/', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
-	
+
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);

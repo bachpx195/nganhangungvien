@@ -6,6 +6,6 @@ class ConfigRepo implements IConfigRepo {
 
     public function all() {
 
-        return Config::get();
+        return Config::orderBy('id', 'dec')->get();
     }
 }
