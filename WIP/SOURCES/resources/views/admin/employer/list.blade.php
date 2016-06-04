@@ -1,23 +1,5 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript">
-    function changeEmployerStatus(id, status) {
-        $.ajax({
-            type: "POST",
-            url: 'http://localhost/employer/status/' + id,
-            data: {'status': status},
-            dataType: 'JSON',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function () {
-                console.log("Request sent success!");
-            }
-        })
-    }
-    ;
-</script>
 @section('content')
     <div class="row">
         <div class="col-md-12">
