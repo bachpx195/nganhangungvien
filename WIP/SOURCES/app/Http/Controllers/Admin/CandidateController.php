@@ -364,10 +364,10 @@ class CandidateController extends Controller {
      */
     private function populateITLevelsToCandidate($candidate, $itLevels)
     {
-        $candidate['word'] = $itLevels[0]->word;
-        $candidate['excel'] = $itLevels[0]->excel;
-        $candidate['power_point'] = $itLevels[0]->power_point;
-        $candidate['out_look'] = $itLevels[0]->out_look;
+        $candidate['word'] = !empty($itLevels[0]) ? $itLevels[0]->word : '';
+        $candidate['excel'] = !empty($itLevels[0]) ? $itLevels[0]->excel : '';
+        $candidate['power_point'] = !empty($itLevels[0]) ? $itLevels[0]->power_point : '';
+        $candidate['out_look'] = !empty($itLevels[0]) ? $itLevels[0]->out_look : '';
 
         return $candidate;
     }
