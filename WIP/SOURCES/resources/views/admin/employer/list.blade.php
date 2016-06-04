@@ -17,14 +17,14 @@
                 <div class="portlet-body">
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
-                        <tr>
-                            <th style="width: 3%;">STT</th>
-                            <th style="width: 20%;">Nhà tuyển dụng</th>
-                            <th style="width: 30%;">Tên công ty</th>
-                            <th style="width: 12%;">Số điện thoại</th>
-                            <th style="width: 15%;">Người liên hệ</th>
-                            <th style="width: 15%;"></th>
-                        </tr>
+                            <tr>
+                                <th style="width: 10px;">STT</th>
+                                <th style="width: 20%;">Nhà tuyển dụng</th>
+                                <th>Tên công ty</th>
+                                <th style="width: 12%;">Số điện thoại</th>
+                                <th style="width: 15%;">Người liên hệ</th>
+                                <th style="width: 110px;"></th>
+                            </tr>
                         </thead>
                         <tbody>
                         @if(count($employers) > 0)
@@ -35,7 +35,7 @@
                                     <td>{{ $item->company_name }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->contact_person }}</td>
-                                    <td>
+                                    <td style="width: 110px;">
                                         <a class="change-status"
                                            data-id="{{$item->id}}" data-status="{{$item->status}}"
                                            data-url="{{route('admin.employer.status', ['id' => $item->id])}}">
