@@ -6,6 +6,8 @@ class CompanySize extends Model {
 
     protected $table = 'company_size';
 
+    public $timestamps = false;
+
     public function employer()
     {
         return $this->belongsTo('App\Model\Employer', 'employer_id', 'id');

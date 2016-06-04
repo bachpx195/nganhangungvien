@@ -63,29 +63,27 @@
                 <div id="error_c_thoigian"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
             </div>
-
-            <div class="clearfix"></div>
-            <div class="form-group mt_16">
-                <label for="expect_salary"
-                       class="col-sm-2 control-label">
-                    Mức lương <span class="colorRed">*</span>
-                </label>
-
-                <div class="col-sm-10 ">
-                    <select name="experience_salary_@{{index}}" class="form-control">
-                        @include('front.common.options',
-                                 array(
-                                     'options' => $salaries,
-                                     'defaultName' => 'Chọn Mức lương'
-                                     ))
-                    </select>
-                </div>
-            </div>
-            <div class="error_reg_mess clearfix italic validator-message display_none"
-                 data-name="experience_salary_@{{index}}">
-                Vui lòng chọn mức lương.</div>
         </div>
-        <div class="clearfix"></div>
+
+        <div class="form-group mt_16">
+            <label for="expect_salary"
+                   class="col-sm-2 control-label">
+                Mức lương <span class="colorRed">*</span>
+            </label>
+
+            <div class="col-sm-10 ">
+                <select name="experience_salary_@{{index}}" class="form-control">
+                    @include('front.common.options',
+                             array(
+                                 'options' => $salaries,
+                                 'defaultName' => 'Chọn Mức lương'
+                                 ))
+                </select>
+            </div>
+        </div>
+        <div class="error_reg_mess clearfix italic validator-message display_none"
+             data-name="experience_salary_@{{index}}">
+            Vui lòng chọn mức lương.</div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">

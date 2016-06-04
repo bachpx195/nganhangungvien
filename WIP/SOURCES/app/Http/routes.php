@@ -20,12 +20,12 @@ Route::match(['get', 'post'], '/admin', [
  */
 Route::group(['prefix' => 'admin'], function()
 {
-	Route::match(['get'], '/candidate/list', [
+	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
 	Route::match(['get', 'post'], '/candidate/form', [
-		'as' => 'admin.candidate.form', 'uses' => 'Admin\CandidateController@candidateForm'
+		'as' => 'admin.candidate.form', 'uses' => 'Admin\CandidateController@candidateCreate'
 	]);
 
 	Route::match(['get', 'post'], '/candidate/update/{id}', [
@@ -47,13 +47,19 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/employer/status/{id}', [
 		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
-	Route::match(['get'], '/news/list', [
-		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
+	// BEGIN NEWS
+	Route::match(['get', 'post'], '/news/list', [
+		'as' => 'admin.news.list', 'uses' => 'Admin\NewsController@newsList'
+	]);
+
+	Route::match(['get', 'post'], 'news/form', [
+		'as' => 'admin.news.form', 'uses' => 'Admin\NewsController@newsForm'
 	]);
 
 	Route::post('/news/delete/{id}', [
-		'as' => 'admin.news.delete', 'uses' => 'Admin\NewController@delete'
+		'as' => 'admin.news.delete', 'uses' => 'Admin\NewsController@delete'
 	]);
+	// END NEWS
 
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
@@ -126,6 +132,18 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/exigency/delete/{id}', [
 		'as' => 'admin.exigency.delete', 'uses' => 'Admin\ExigencyController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/company-size/list', [
+		'as' => 'admin.companysize.list', 'uses' => 'Admin\CompanySizeController@companySizeList'
+	]);
+
+	Route::match(['get', 'post'], 'company-size/form', [
+		'as' => 'admin.companysize.form', 'uses' => 'Admin\CompanySizeController@companySizeForm'
+	]);
+
+	Route::post('/company-size/delete/{id}', [
+		'as' => 'admin.companysize.delete', 'uses' => 'Admin\CompanySizeController@delete'
+	]);
 });
 
 /**
@@ -154,7 +172,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 /**
  * Frontend
  */
-Route::group(['prefix' => ''], function()
+Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
 	Route::get('/', 'Front\HomeController@index');
 
@@ -169,6 +187,11 @@ Route::group(['prefix' => ''], function()
 	//Đăng ký tài khoản
 	Route::match(['get', 'post'], '/nha-tuyen-dung/dang-ky', [
 		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
+	]);
+
+	//Profile
+	Route::match(['get', 'post'], '/tai-khoan/profile', [
+		'as' => 'account.profile', 'uses' => 'Front\AccountProfileController@index'
 	]);
 });
 

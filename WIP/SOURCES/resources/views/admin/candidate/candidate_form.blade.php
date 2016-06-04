@@ -17,19 +17,19 @@
 	</div>
 @endif
 
-<div class="content_dangky" id="frm-login-info">
+<div class="content_dangky">
 	<div class="">
 		<div class="w_50 floatLeft">
 			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
-			<span class="uppercase bold fs16 text-xanh-nuocbien">Tạo hồ sơ tìm việc từng bước</span>
+			<span class="uppercase bold fs16 text-xanh-nuocbien">{{$pageTitle}}</span>
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 	<div class="mt8"></div>
-	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{ route('admin.candidate.form') }}"
+	<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{$action}}"
 		  name="candidate_form"  enctype="multipart/form-data">
-		<div class="block-content div-frm-hoso" id="frm-login-info">
+		<div class="block-content div-frm-hoso">
 			<div class="mb8">
 				<div class="center-p12p24 ">
 					@include('admin.candidate.general_information')

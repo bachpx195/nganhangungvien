@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\ISalaryRepo;
@@ -15,6 +16,7 @@ public function __construct(ISalaryRepo $salaryRepo) {
 	}
 
 	public function salaryList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
 		$salaryList 	= $this->salaryRepo->filter($name);
 		$pagination 	= $salaryList->appends($request->all());
@@ -22,11 +24,14 @@ public function __construct(ISalaryRepo $salaryRepo) {
 		return view('admin.salary.list')
 					->with('salaryList', 	$salaryList)
 					->with('name', $name)
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::SALARY_LIST_PT)
 					->with('pagination', 	$pagination);
 	}
 
 	public function salaryForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::SALARY_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,7 +43,9 @@ public function __construct(ISalaryRepo $salaryRepo) {
 			}
 				
 			return view('admin.salary.salary_form')
-						->with('salary', 	$salary);
+					->with('salary', 	$salary)
+	                ->with('activeMenu', $activeMenu)
+	                ->with('pageTitle', $pageTitle);
 		} else {
 			
 			// get form input data
@@ -52,13 +59,16 @@ public function __construct(ISalaryRepo $salaryRepo) {
 				$salary->save();
 			} else {
 				
-				$validator = $this->validatorSalary($request->all());
-				
+				// $validator = $this->validatorSalary($request->all());
+		        $validator = Validator::make($request->all(), [
+		        	'name' 		=> 'max:50|unique:salary',
+		        ]);
 				if ($validator->fails()) {
 						
-					$this->throwValidationException(
-							$request, $validator
-					);
+            			$errors = $validator->errors()->all();
+            			return redirect(route('admin.salary.form'))
+                        ->withErrors($validator)
+                        ->withInput();
 				}
 				
 				$salary = new Salary;

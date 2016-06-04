@@ -20,6 +20,7 @@
         @for ($i = 1; $i <= $certificateCount; $i++)
                 <!-- input Tên Bằng cấp/Chứng chỉ -->
             <div class="certificate-item">
+                <input type="hidden" name="certificate_id_{{$i}}" value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
                 <div class="form-group ">
                     <label for="certificate_name_{{$i}}"
                            class="col-sm-2 control-label">
@@ -121,6 +122,7 @@
                     <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                 </div>
                 <!-- input logo_company -->
+                <!-- TODO:
                 <div class="form-group ">
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-10">
@@ -139,6 +141,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="clearfix"></div>
             </div>
         @endfor

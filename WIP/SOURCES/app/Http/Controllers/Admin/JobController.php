@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\IJobRepo;
@@ -15,6 +16,7 @@ class JobController extends Controller {
 	}
 
 	public function jobList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
 		$jobList 	= $this->jobRepo->filter($name);
 		$pagination 	= $jobList->appends($request->all());
@@ -22,10 +24,14 @@ class JobController extends Controller {
 		return view('admin.job.list')
 					->with('jobList', 	$jobList)
 					->with('name', $name)
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::JOB_LIST_PT)
 					->with('pagination', 	$pagination);
 	}
 
 	public function jobForm(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::JOB_NEW_PT;
 	
 		// get method
 		if ($request->isMethod('get')) {
@@ -38,7 +44,9 @@ class JobController extends Controller {
 			}
 				
 			return view('admin.job.job_form')
-						->with('job', 	$job);
+					->with('job', 	$job)
+	                ->with('activeMenu', $activeMenu)
+	                ->with('pageTitle', $pageTitle);
 		} else {
 			
 			// get form input data

@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 use App\Repositories\IProvinceRepo;
 use Illuminate\Http\Request;
 use App\Model\Province;
@@ -14,19 +15,24 @@ class ProvinceController extends Controller {
 	}
 
 	public function tinh(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
 		$provinceList 	= $this->provinceRepo->filter($name);
+
 		$pagination 	= $provinceList->appends($request->all());
 
 		return view('admin.province.list')
 					->with('provinceList', 	$provinceList)
 					->with('name', $name)
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::PROVINCE_LIST_PT)
 					->with('pagination', 	$pagination);
 	}
 
 
 	public function tinhForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::PROVINCE_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,6 +44,8 @@ class ProvinceController extends Controller {
 			}
 				
 			return view('admin.province.province_form')
+	                	->with('activeMenu', $activeMenu)
+	                	->with('pageTitle', $pageTitle)
 						->with('province', 	$province);
 		} else {
 			

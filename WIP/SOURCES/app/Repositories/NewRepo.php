@@ -19,26 +19,26 @@ class NewRepo implements INewRepo {
      * @param $limit
      */
 
-    public function search($params, $pageSize = 10) {
+    public function search($name) {
         $query = News::select();
 
-        if(isset($params['title']) && $params['title']){
-            $query = $query->where('title', '=', $params['title']);
+        if ($name != null) {
+
+            $query = $query->where('title', 'like', '%' . $name . '%')
+                            ->orWhere('link', 'like', '%' . $name . '%');
+            // echo "<pre>";
+            //     print_r($query);
+            // echo "</pre>";
+            
+            // $query = $query->where('content', 'like', '%' . $name . '%');
+
+            // $query = $query->where('description', 'like', '%' . $name . '%');
+
+            // $query = $query->where('link', 'like', '%' . $name . '%');
+
         }
 
-        if(isset($params['content']) && $params['content']){
-            $query = $query->where('content', '=', $params['content']);
-        }
-
-        if(isset($params['description']) && $params['description']){
-            $query = $query->where('description', '=', $params['description']);
-        }
-
-        if(isset($params['link']) && $params['link']){
-            $query = $query->where('link', '=', $params['link']);
-        }
-
-        return $query->paginate($pageSize);
+        return $query->paginate();
 
     }
 

@@ -81,6 +81,25 @@ class RepositoryServiceProvider extends ServiceProvider {
 			'App\Repositories\INewRepo',
 			'App\Repositories\NewRepo');
 
+		$this->app->bind(
+			'App\Repositories\IExperienceRepo',
+			'App\Repositories\ExperienceRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateCertificateRepo',
+			'App\Repositories\CandidateCertificateRepo');
+
+		$this->app->bind(
+			'App\Repositories\IITLevelRepo',
+			'App\Repositories\ITLevelRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateForeignLanguageRepo',
+			'App\Repositories\CandidateForeignLanguageRepo');
+
+		$this->app->bind(
+			'App\Repositories\IContactPersonRepo',
+			'App\Repositories\ContactPersonRepo');
 	}
 
 }

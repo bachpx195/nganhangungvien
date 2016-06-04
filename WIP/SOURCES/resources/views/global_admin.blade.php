@@ -30,6 +30,8 @@
 	<link href="{{ asset('/assets/global/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL STYLES -->
 	<link href="{{ asset('/assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
@@ -43,6 +45,8 @@
 	<link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" type="text/css" />
 
 	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END THEME LAYOUT STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" /> </head>
 
@@ -86,6 +90,9 @@
 	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL SCRIPTS -->
 	<script src="{{ asset('/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
@@ -105,12 +112,16 @@
 	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
 	<script src="{{ asset('/resources/plugin/validation/jquery.validate.min.js') }}" ></script>
 	<script src="{{ asset('/resources/plugin/validation/additional-methods.min.js') }}" ></script>
+	<script src="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" ></script>
+	<script src="{{ asset('/assets/pages/scripts/components-editors.min.js') }}" ></script>
+	<script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
+	<script src="{{ asset('/assets/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
 	<script>
 	jQuery.extend(jQuery.validator.messages, {
 		required: '@lang('validation.required', ['attribute' => ''])',
 		remote: "Please fix this field.",
 		email: jQuery.validator.format("@lang('validation.email')"),
-		url: "Please enter a valid URL.",
+		url: "Đường dẫn chưa chính xác.",
 		date: "@lang('validation.date', ['format' => 'dd/mm/YYYY'])",
 		dateISO: "Please enter a valid date (ISO).",
 		number: jQuery.validator.format("@lang('validation.numeric')"),

@@ -21,8 +21,14 @@
                     <label class="col-md-3 control-label">Mức Lương <span class="required" aria-required="true">*</span></label>
                     <div class="col-md-4">
                         <input type="text" class="form-control input-circle" name="name" value="{{ old('name') != null ? old('name') : $salary->name }}" data-rule-required="true">
+
                     </div>
                 </div>
+                        @if ($errors->has('name'))
+                            <span class="help-block">
+                                {{ $errors->first('name') }}
+                            </span>
+                        @endif
             </div>
             <div class="form-actions">
                 <div class="row">
