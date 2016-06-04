@@ -13,6 +13,8 @@
 @endif
 
 <div class="content_dangky" id="frm-login-info">
+	@include('front.candidate.send-cv-by-emaill')
+
 	<div class="">
 		<div class="w_50 floatLeft">
 			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
