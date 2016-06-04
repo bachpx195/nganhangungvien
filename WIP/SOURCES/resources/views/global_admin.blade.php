@@ -121,7 +121,7 @@
 		required: '@lang('validation.required', ['attribute' => ''])',
 		remote: "Please fix this field.",
 		email: jQuery.validator.format("@lang('validation.email')"),
-		url: "Please enter a valid URL.",
+		url: "Đường dẫn chưa chính xác.",
 		date: "@lang('validation.date', ['format' => 'dd/mm/YYYY'])",
 		dateISO: "Please enter a valid date (ISO).",
 		number: jQuery.validator.format("@lang('validation.numeric')"),

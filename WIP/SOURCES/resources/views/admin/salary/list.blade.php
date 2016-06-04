@@ -1,73 +1,67 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
 @section('content')
-    <div class="row">        
+    <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
             <div class="portlet light ">
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Danh sách</span>
+                        <span class="caption-subject bold uppercase"> {{$pageTitle}}</span>
+                    </div>
+                    <div class="actions">
+
                     </div>
                 </div>
                 <div class="portlet-body">
                     <div class="table-toolbar">
                         <div class="row">
-                                <div class="col-md-5">
-                                    <form id="user" class="form-horizontal" role="form" method="get" action="{{ route('admin.salary.list') }}">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Mức Lương..." name="name" value="{{ $name }}" >
-                                            <span class="input-group-btn">
-                                                <input type="submit" class="btn sbold green" value="Tìm Kiếm">
-                                            </span>
-                                        </div>
-                                    </form>
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    <button class="btn sbold green">
+                                        <a href="{{route('admin.salary.form')}}" target="_blank" class="add-more-btn">
+                                            THÊM LƯƠNG <i class="fa fa-plus"></i>
+                                        </a>
+                                    </button>
                                 </div>
-                                <div class="col-md-7">
-                                    <div class="btn-group pull-right">
-                                        <button id="sample_editable_1_new" class="btn sbold green" onclick="location.href='{{ route('admin.salary.form') }}'">Thêm mới
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th>STT</th>
-                                <th class="text-center" >Mức lương</th>
-                                <th class="text-right" >Quản lý</th>
+                                <th style="width: 5%;">STT</th>
+                                <th style="width: 80%;" class="text-center">Lương</th>
+                                <th style="width: 15%;">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(count($salaryList) > 0)
                                 @foreach($salaryList as $index=>$item)
-                                <tr class="odd gradeX">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td class="text-center">{{ $item->name }}</td>
-                                    <td class="text-right">
-                                        <a href="{{route('admin.salary.form'). '?id=' . $item->id}}" target="_blank">
-                                            <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
-                                             data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
-                                        <a class="sweet-delete"
-                                            data-id="{{$item->id}}"
-                                            data-url="{{route('admin.salary.delete', ['id' => $item->id])}}">
-                                            <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
-                                                    data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr class="gradeX odd" role="row">
+                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td class="text-center">{{ $item->name }}</td>
+                                        <td>
+                                            <a href="{{route('admin.salary.form'). '?id=' . $item->id}}" target="_blank">
+                                                <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
+                                                 data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
+                                            <a class="sweet-delete"
+                                                data-id="{{$item->id}}"
+                                                data-url="{{route('admin.salary.delete', ['id' => $item->id])}}">
+                                                <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
+                                                        data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             @else
-                                Chưa có thông tin phù hợp!
-                            @endif                             
+                                Chưa có thông tin phù hợp
+                            @endif
                         </tbody>
                     </table>
-                    <div class="box_pagination_footer text-center">
-                        {!! $salaryList->render() !!}
-                    </div>
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->

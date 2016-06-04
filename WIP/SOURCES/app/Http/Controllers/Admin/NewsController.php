@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Response;
 use App\Helpers\FileHelper;
 use App\Http\Requests\NewsRequest;
 use Validator;
+use App\Libs\Constants;
 
 class NewsController extends Controller {
 
@@ -26,17 +27,23 @@ class NewsController extends Controller {
 
     public function newsList(Request $request)
     {
+        $activeMenu = Constants::NEWS;
+
         $name 		= $request->input('name');
-        $news = $this->newRepo->search($name);
-        $pagination     = $news->appends($request->all());
+        $newsList = $this->newRepo->search($name);
+        $pagination     =$newsList->appends($request->all());
         return view('admin.news.list')
-            ->with('news', $news)
+            ->with('activeMenu', $activeMenu)
+            ->with('newsList', $newsList)
             ->with('pagination',    $pagination)
+            ->with('pageTitle', Constants::NEWS_LIST_PT)
             ->with('name', $name);
     }
 
     public function newsForm(Request $request) {
-    
+
+        $activeMenu = Constants::NEWS;
+        $pageTitle  = Constants::NEWS_NEW_PT;
         // get method
         if ($request->isMethod('get')) {
             
@@ -48,6 +55,8 @@ class NewsController extends Controller {
             }
                 
             return view('admin.news.news_form')
+                        ->with('activeMenu', $activeMenu)
+                        ->with('pageTitle', $pageTitle)
                         ->with('news',    $news);
         }else {
             
@@ -56,29 +65,61 @@ class NewsController extends Controller {
             
             if ($request->has('id')) {
                 
-                $salary = Salary::find($request->get('id'));
-                $salary->name = $input['name'];
-                
-                $salary->save();
-            } else {
-                
-                $validator = $this->validatorSalary($request->all());
-                
-                if ($validator->fails()) {
+                $news = News::find($request->get('id'));
+                $news->title = $input['tieu_de'];
+                $news->content = $input['noi_dung']; 
+                $news->description = $input['mieu_ta'];
+                $news->password = $input['mat_khau'];
+                $news->link = $input['link'];
                         
-                    $this->throwValidationException(
-                            $request, $validator
-                    );
-                }
+                $news->save();
+            } else {             
+                // $validator = $this->validatorNews($request->all());
                 
-                $salary = new Salary;
-                $salary->name = $input['name'];
-                
-                $salary->save();
+                // if ($validator->fails()) {
+                        
+                //     $this->throwValidationException(
+                //             $request, $validator
+                //     );
+                // }
+                $news = new News;             
+                $news = $this->getGeneralInfoByInput($news, $input, $request,'1');
+                $news->save();
             }
             
-            return redirect(route('admin.salary.list'));
+            return redirect(route('admin.news.list'));
         }
+    }
+
+    public function delete(Request $request, $id) { 
+        $data = [];
+
+        if ($request->ajax()) {
+
+            News::find($id)->delete();
+
+            $data = ['status' => true, 'message' => ''];
+        }
+
+        return $data;
+    }
+
+    private function getGeneralInfoByInput($news, $input, $request, $index)
+    {
+        $news->title = $input['tieu_de'];
+        $news->content = $input['noi_dung']; 
+        $news->description = $input['mieu_ta'];
+        $news->password = $input['mat_khau'];
+        $news->link = $input['link'];
+
+        $newsImgPath = FileHelper::getNewsImgPath();
+        $imageName = FileHelper::getNewFileName($index);
+        if (!empty($request->file('news_image_'))) {
+            $imgExtension = $request->file('news_image_')->getClientOriginalExtension();
+            $request->file('news_image_')->move($newsImgPath, $imageName . '.' . $imgExtension);
+            $news->image = $imageName . '.' . $imgExtension;
+        }
+        return $news;
     }
 
 
