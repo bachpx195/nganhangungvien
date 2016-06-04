@@ -13,78 +13,80 @@
 		<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<?php $activeMenu = isset($activeMenu) ? $activeMenu : 'dashboard';?>
 		<ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-			<li class="nav-item start {{($activeMenu == 'dashboard') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
-					<i class="icon-home"></i>
-					<span class="title">BẢNG QUẢN TRỊ</span>
-					<span class="arrow open"></span>
-				</a>
-			</li>
-
-			<!-- HỒ SƠ ỨNG VIÊN -->
-			<li class="nav-item {{($activeMenu == 'candidate') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
-					<i class="icon-folder"></i>
-					<span class="title">HỒ SƠ ỨNG VIÊN</span>
-					<span class="arrow "></span>
-				</a>
-				<ul class="sub-menu">
-					<li class="nav-item">
-						<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
-							<i class="icon-settings"></i> DANH SÁCH
-							<span class="arrow"></span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="{{route('admin.candidate.form')}}" target="_blank" class="nav-link">
-							<i class="icon-globe"></i> THÊM HỒ SƠ
-							<span class="arrow nav-toggle"></span>
-						</a>
-					</li>
-				</ul>
-			</li>
 
 			<!-- NHÀ TUYỂN DỤNG -->
 			<li class="nav-item {{($activeMenu == 'employer') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
+				<a href="{{route('admin.employer.list')}}" class="nav-link nav-toggle">
 					<i class="icon-briefcase"></i>
-					<span class="title">NHÀ TUYỂN DỤNG</span>
+					<span class="title">QUẢN TRỊ<br/>NHÀ TUYỂN DỤNG</span>
 					<span class="arrow "></span>
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
-						<a href="javascript:;" class="nav-link nav-toggle">
-							<i class="icon-settings"></i> DANH SÁCH
+						<a href="{{route('admin.employer.list')}}" class="nav-link nav-toggle">
+							<i class="icon-list"></i> DANH SÁCH NHÀ TUYỂN DỤNG
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="?p=dashboard-2" target="_blank" class="nav-link">
-							<i class="icon-globe"></i> THÊM HỒ SƠ
+							<i class="icon-plus"></i> THÊM HỒ SƠ NHÀ TUYỂN DỤNG
 							<span class="arrow nav-toggle"></span>
 						</a>
 					</li>
 				</ul>
 			</li>
 
-			<!-- TIN TỨC -->
+			<!-- HỒ SƠ ỨNG VIÊN -->
+			<li class="nav-item {{($activeMenu == 'candidate') ? 'active open' : ''}}">
+				<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
+					<i class="icon-folder"></i>
+					<span class="title">QUẢN TRỊ<br/>HỒ SƠ ỨNG VIÊN</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
+							<i class="icon-list"></i> DANH SÁCH ỨNG VIÊN
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{route('admin.candidate.form')}}" target="_blank" class="nav-link">
+							<i class="icon-plus"></i> THÊM HỒ SƠ ỨNG VIÊN
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+			</li>
 
+			<!-- TÀI KHOẢN GIAO DỊCH -->
 			<li class="nav-item {{($activeMenu == 'news') ? 'active open' : ''}}">
 				<a href="javascript:;" class="nav-link nav-toggle">
 					<i class="icon-note"></i>
-					<span class="title">TIN TỨC</span>
+					<span class="title">QUẢN LÝ GIAO DỊCH</span>
+					<span class="arrow "></span>
+				</a>
+			</li>
+
+			<!-- TIN TỨC -->
+
+			<li class="nav-item {{($activeMenu == 'news') ? 'active open' : ''}}">
+				<a href="{{ route('admin.news.list') }}" class="nav-link nav-toggle">
+					<i class="icon-note"></i>
+					<span class="title">QUẢN TRỊ<br/>TIN TỨC</span>
 					<span class="arrow "></span>
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item">
 						<a href="{{ route('admin.news.list') }}" class="nav-link nav-toggle">
-							<i class="icon-settings"></i> DANH SÁCH
+							<i class="icon-list"></i> DANH SÁCH TIN TỨC
 							<span class="arrow"></span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="{{ route('admin.news.form') }}" target="_blank" class="nav-link">
-							<i class="icon-globe"></i> THÊM TIN TỨC
+							<i class="icon-plus"></i> THÊM TIN TỨC
 							<span class="arrow nav-toggle"></span>
 						</a>
 					</li>

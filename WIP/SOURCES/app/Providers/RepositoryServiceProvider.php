@@ -34,6 +34,10 @@ class RepositoryServiceProvider extends ServiceProvider {
 			'App\Repositories\CandidateRepo');
 
 		$this->app->bind(
+			'App\Repositories\IEmployerRepo',
+			'App\Repositories\EmployerRepo');
+
+		$this->app->bind(
 			'App\Repositories\ILevelRepo',
 			'App\Repositories\LevelRepo');
 

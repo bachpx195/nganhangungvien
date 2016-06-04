@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Helpers\CandidateHelper;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 use App\Model\CandidateCertificate;
 use App\Model\CandidateContactPerson;
 use App\Model\CandidateForeignLanguage;
@@ -97,6 +98,8 @@ class CandidateController extends Controller {
      * @throws Exception
      */
     public function candidateForm(Request $request) {
+        $activeHeaderMenu = Constants::CANDIDATE;
+
         $salaries = $this->salaryRepo->all();
         $experienceYears = $this->experienceYearsRepo->all();
         $ranks = $this->rankRepo->all();
@@ -129,7 +132,8 @@ class CandidateController extends Controller {
                 ->with('provinces', $provinces)
                 ->with('employmentStatuses', $employmentStatuses)
                 ->with('graduationTypes', $graduationTypes)
-                ->with('scales', $scales);
+                ->with('scales', $scales)
+                ->with('activeHeaderMenu', $activeHeaderMenu);
         } else {
             // get form input data
             $input = $request->all();

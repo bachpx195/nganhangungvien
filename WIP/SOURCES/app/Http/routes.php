@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::match(['get', 'post'], '/', [
-	'as' => 'index', 'uses' => 'WelcomeController@index'
-]);*/
+Route::match(['get', 'post'], '/admin', [
+	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
+]);
 
 /**
  * Backend
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function()
 	Route::match(['get'], '/', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
-
+	
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
@@ -39,6 +39,17 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
+	
+	Route::match(['get'], '/employer/list', [
+		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
+	]);
+
+	Route::match(['get'], '/employer/detail', [
+		'as' => 'admin.employer.detail', 'uses' => 'Admin\EmployerController@employerDetail'
+	]);
+
+	Route::post('/employer/status/{id}', [
+		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [
