@@ -197,10 +197,10 @@
 		</div>
 	</div>
 
-	<div class="box_filter_map text-left" style="width: 250px;">
+	<div class="box_filter_map text-left" id="youtube-video">
 		<div class="statistic font16">
 			Video tuyển dụng
 		</div>
-		<iframe width="250" height="340" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
+		<iframe id="youtube-video-frame" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
 	</div>
 </div>
