@@ -1,5 +1,17 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
+<script type="text/javascript">
+    function changeEmployerStatus(id, status) {
+        $.ajax({
+            type: "POST",
+            url: '/employer/status/' + id,
+            data: {'status': status},
+            success: function() {
+                console.log("Request sent success!");
+            }
+        })
+    };
+</script>
 @section('content')
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -34,13 +46,18 @@
                             @if(count($employers) > 0)
                                 @foreach($employers as $index=>$item)
                                     <tr class="gradeX">
-                                        <td>{{ $item->user->full_name }}</td>
+                                        <td>{{ isset($item->user) && $item->user ? $item->user->username : '' }}</td>
                                         <td>{{ $item->company_name }}</td>
-                                        <td>{{$item->phone}}</td>
-                                        <td>{{$item->contact_person}}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->contact_person }}</td>
                                         <td>
-                                            <a href="">
-                                                <span class="label label-sm label-success"> Approved </span></a>
+                                            @if($item->status == 1)
+                                                {{--<button type="button" class="btn btn-primary">Enabled</button>--}}
+                                                <a href="javascript:;" onclick="changeEmployerStatus({{$item->id}}, 0);" class="btn blue btn-outline sbold " id="status-active-{{ $item->id }}"> Enabled </a>
+                                            @else
+                                                {{--<span class="label label-sm label-success"> Disabled </span>--}}
+                                                <a href="javascript:;" onclick="changeEmployerStatus({{$item->id}}, 1);" class="btn gray btn-outline sbold " id="status-disable-{{ $item->id }}"> Disabled </a>
+                                            @endif
                                             <a href="{{route('admin.employer.detail', ['id' => $item->id])}}" target="_blank">
                                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                         data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>

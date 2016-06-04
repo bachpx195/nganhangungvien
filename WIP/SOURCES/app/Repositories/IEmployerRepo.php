@@ -12,4 +12,12 @@ interface IEmployerRepo
      * @return mixed
      */
     public function search($keyword, $pageSize = 10);
+
+    /**
+     * Change employer status
+     * @param $id employer id
+     * @param $status status want to set
+     * @return mixed
+     */
+    public function updateStatus($id, $status);
 }

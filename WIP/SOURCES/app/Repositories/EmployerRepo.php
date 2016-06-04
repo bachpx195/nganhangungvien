@@ -16,9 +16,23 @@ class EmployerRepo implements IEmployerRepo
         if (isset($keyword) && $keyword) {
             $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%');
             $query = $query->where('phone', 'LIKE', '%' . $keyword . '%');
-            $query = $query->user->where('username', 'LIKE', '%' . $keyword . '%');
+//            $query = $query->user->where('username', 'LIKE', '%' . $keyword . '%');
         }
 
         return $query->paginate($pageSize);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function updateStatus($id, $status)
+    {
+        $employer = Employer::find($id);
+        if (!$employer) {
+            return false;
+        }
+        $employer->status = $status;
+        $employer->save();
+        return true;
     }
 }

@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::match(['get', 'post'], '/', [
-	'as' => 'index', 'uses' => 'WelcomeController@index'
-]);*/
+Route::match(['get', 'post'], '/admin', [
+	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
+]);
 
 /**
  * Backend
@@ -39,6 +39,13 @@ Route::group(['prefix' => 'admin'], function()
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
 	]);
+
+	Route::match(['get'], '/employer/detail', [
+		'as' => 'admin.employer.detail', 'uses' => 'Admin\EmployerController@employerDetail'
+	]);
+
+	Route::post('/employer/status/{id}', [
+		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
 	Route::match(['get'], '/news/list', [
 		'as' => 'admin.news.list', 'uses' => 'Admin\NewController@newsList'
