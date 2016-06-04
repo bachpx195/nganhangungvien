@@ -7,7 +7,7 @@ class ProvinceRepo implements IProvinceRepo {
 
     public function all() {
 
-        return Province::get();
+        return Province::orderBy('id', 'dec')->get();
     }
 
     public function getSortedList(){

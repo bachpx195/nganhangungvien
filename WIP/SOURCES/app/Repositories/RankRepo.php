@@ -6,7 +6,7 @@ class RankRepo implements IRankRepo {
     
     public function all() {
 
-        return Rank::get();
+        return Rank::orderBy('id', 'dec')->get();
     }
 
     public function filter($name) {

@@ -6,7 +6,7 @@ class LevelRepo implements ILevelRepo {
     
     public function all() {
 
-        return Level::get();
+        return Level::orderBy('id', 'dec')->get();
     }
 
     public function filter($name) {

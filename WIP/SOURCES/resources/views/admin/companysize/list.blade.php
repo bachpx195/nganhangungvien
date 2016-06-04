@@ -25,16 +25,16 @@
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">STT</th>
-                                <th style="width: 80%;" class="text-center">Quy mô công ty</th>
-                                <th style="width: 15%;">Actions</th>
+                                <th style="width: 10px;">STT</th>
+                                <th style="width: 85%;" class="text-center">Quy mô công ty</th>
+                                <th style="width: 61px;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(count($companysizeList) > 0)
                                 @foreach($companysizeList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td></td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td>
                                             <a href="{{route('admin.companysize.form'). '?id=' . $item->id}}" target="_blank">

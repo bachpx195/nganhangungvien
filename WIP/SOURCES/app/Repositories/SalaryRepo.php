@@ -6,7 +6,7 @@ class SalaryRepo implements ISalaryRepo {
 
     public function all() {
 
-        return Salary::get();
+        return Salary::orderBy('id', 'dec')->get();
     }
 
     public function filter($name) {

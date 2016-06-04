@@ -15,7 +15,7 @@ class Constants {
     //Page title = PT
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';
     const CANDIDATE_LIST_PT = 'Quản lý hồ sơ ứng viên';
-
+    //config
     const CONFIG_NEW_PT = 'Tạo mới cấu hình hệ thống';
     const CONFIG_LIST_PT = 'Quản lý cấu hình hệ thống';
 
