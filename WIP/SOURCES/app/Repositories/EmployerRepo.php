@@ -21,7 +21,7 @@ class EmployerRepo implements IEmployerRepo
                 ->orwhere('user.username', 'LIKE', '%' . $keyword . '%');
         }*/
 
-        $query = DB::select(DB::raw('SELECT e.*, u.username FROM employer e JOIN user u ON e.user_id = u.id'));
+        $query = DB::select(DB::raw('SELECT e.*, u.username FROM employer e JOIN user u ON e.user_id = u.id order by created_at desc'));
 
         return $query;
     }
