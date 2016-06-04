@@ -16,18 +16,18 @@
                         <div class="portlet-body">
                             <h3 class="font-green sbold uppercase"> {{ $employer->company_name }}</h3>
                             <p style="text-align: justify;">
-                                {{$employer->company_description}}
+                                {{ $employer->company_description }}
                             </p>
                             <p>
                                 <b>Địa chỉ:</b> {{ $employer->company_address }}
                             </p>
                             <ul class="list-inline">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> {{ isset($employer->province) && $employer->province ? $employer->province->name : '' }} </li>
+                                    <i class="fa fa-map-marker"></i> {{ $employer->provinceName }} </li>
                                 <li>
                                     <i class="fa fa-link"></i> <a href="{{ $employer->website }}">{{$employer->website}}</a> </li>
                                 <li>
-                                    <i class="fa fa-users"></i> {{ $employer->company_size }} </li>
+                                    <i class="fa fa-users"></i> {{ $employer->companySize }} </li>
                             </ul>
                         </div>
                     </div>

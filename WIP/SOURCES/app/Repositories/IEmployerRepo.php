@@ -13,6 +13,8 @@ interface IEmployerRepo
      */
     public function search($keyword, $pageSize = 10);
 
+    public function findById($id);
+
     /**
      * Change employer status
      * @param $id employer id
