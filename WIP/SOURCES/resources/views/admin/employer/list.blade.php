@@ -28,7 +28,7 @@
                                 <th>Tên công ty</th>
                                 <th style="width: 12%;">Số điện thoại</th>
                                 <th style="width: 15%;">Người liên hệ</th>
-                                <th style="width: 80px;"></th>
+                                <th style="width: 85px;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@
                                     <td>{{ $item->company_name }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->contact_person }}</td>
-                                    <td style="width: 80px;">
+                                    <td style="width: 85px;">
                                         <a class="change-status"
                                            data-id="{{$item->id}}" data-status="{{$item->status}}"
                                            data-url="{{route('admin.employer.status', ['id' => $item->id])}}">
@@ -52,7 +52,7 @@
                                                         data-placement="top" data-original-title="Click to enable employer"> Ẩn </button>
                                             @endif
                                         </a>
-                                        <a href="{{route('admin.employer.detail', ['id' => $item->id])}}" target="_blank">
+                                        <a href="{{route('admin.employer.detail', ['id' => $item->id])}}">
                                             <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                     data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
                                     </td>

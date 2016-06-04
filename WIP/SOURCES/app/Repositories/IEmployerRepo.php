@@ -13,6 +13,11 @@ interface IEmployerRepo
      */
     public function search($keyword, $pageSize = 10);
 
+    /**
+     * Find employer by id
+     * @param $id employer id
+     * @return mixed
+     */
     public function findById($id);
 
     /**

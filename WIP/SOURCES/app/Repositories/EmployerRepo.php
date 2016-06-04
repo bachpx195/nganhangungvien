@@ -11,30 +11,31 @@ class EmployerRepo implements IEmployerRepo
      */
     public function search($keyword, $pageSize = 10)
     {
-        // TODO: Find error later
-        /*$query = Employer::join('user', 'employer.user_id', '=', 'user.id')
-            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person', 'employer.status', 'user.username');
+        $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
+            ->join('province', 'employer.province_id', '=', 'province.id')
+            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person', 'employer.status', 'user.username', 'employer.created_at');
 
         if ($keyword) {
-            $query = $query->where('employer.company_name', 'LIKE', '%' . $keyword . '%')
-                ->orwhere('employer.phone', 'LIKE', '%' . $keyword . '%')
-                ->orwhere('user.username', 'LIKE', '%' . $keyword . '%');
-        }*/
+            $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('phone', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('username', 'LIKE', '%' . $keyword . '%');
+        }
 
-        $query = DB::select(DB::raw('SELECT e.*, u.username FROM employer e JOIN user u ON e.user_id = u.id order by created_at desc'));
-
-        return $query;
+        return $query->orderBy('created_at', 'desc')->get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function findById($id)
     {
-        $query = DB::select(DB::raw('SELECT e.*, 
-              c.name as companySize, 
-              p.name as provinceName 
-            FROM employer e 
-            JOIN province p ON e.province_id = p.id 
-            JOIN company_size c ON e.company_size = c.id 
-            WHERE e.id = ' . $id))[0];
+        $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
+            ->join('province', 'employer.province_id', '=', 'province.id')
+            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->where('employer.id', '=', $id)
+            ->select('employer.*', 'province.name as provinceName', 'company_size.name as companySize')
+            ->first();
 
         return $query;
     }
