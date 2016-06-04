@@ -1,11 +1,16 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="text/javascript">
     function changeEmployerStatus(id, status) {
         $.ajax({
             type: "POST",
-            url: '/employer/status/' + id,
+            url: 'http://localhost/employer/status/' + id,
             data: {'status': status},
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function() {
                 console.log("Request sent success!");
             }
@@ -52,10 +57,8 @@
                                         <td>{{ $item->contact_person }}</td>
                                         <td>
                                             @if($item->status == 1)
-                                                {{--<button type="button" class="btn btn-primary">Enabled</button>--}}
                                                 <a href="javascript:;" onclick="changeEmployerStatus({{$item->id}}, 0);" class="btn blue btn-outline sbold " id="status-active-{{ $item->id }}"> Enabled </a>
                                             @else
-                                                {{--<span class="label label-sm label-success"> Disabled </span>--}}
                                                 <a href="javascript:;" onclick="changeEmployerStatus({{$item->id}}, 1);" class="btn gray btn-outline sbold " id="status-disable-{{ $item->id }}"> Disabled </a>
                                             @endif
                                             <a href="{{route('admin.employer.detail', ['id' => $item->id])}}" target="_blank">

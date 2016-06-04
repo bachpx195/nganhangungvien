@@ -11,16 +11,16 @@ class EmployerRepo implements IEmployerRepo
      */
     public function search($keyword, $pageSize = 10)
     {
-        $query = Employer::select();
+        $query = Employer::leftJoin('users', 'employer.user_id', '=', 'users.id')
+            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person', 'employer.status', 'users.username');
 
         if ($keyword) {
-            $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%')
-                ->orwhere('phone', 'LIKE', '%' . $keyword . '%');
-//            $query = $query->where('phone', 'LIKE', '%' . $keyword . '%');
-//            $query = $query->user->where('username', 'LIKE', '%' . $keyword . '%');
+            $query = $query->where('employer.company_name', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('employer.phone', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('users.username', 'LIKE', '%' . $keyword . '%');
         }
 
-        return $query->paginate($pageSize);
+        return $query->paginate();
     }
 
     /**
