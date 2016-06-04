@@ -17,6 +17,8 @@
     <div id="language-list" class="row">
         <div class="form-group "> </div>
         @for ($i = 1; $i <= $languageCount; $i++)
+            <input type="hidden" name="foreign_language_id_{{$i}}"
+                   value="{{isset($candidate['foreign_language_id_' . $i]) ? $candidate['foreign_language_id_' . $i] : ''}}">
             <div class="form-horizontal">
                 <!-- input Ngoại ngữ -->
                 <div class="form-group" id="div_slt_ngoaingu">

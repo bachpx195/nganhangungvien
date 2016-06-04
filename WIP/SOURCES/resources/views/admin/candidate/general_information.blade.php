@@ -331,8 +331,7 @@
                                   id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                   class="inputTxtAreaTop form-control"
-                                  rows="5"
-                                  value="{{ $candidate['job_goal'] }}"></textarea>
+                                  rows="5">{{ $candidate['job_goal'] }}</textarea>
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job_goal">
                         Vui lòng chọn mục tiêu nghề nghiệp.</div>
@@ -347,8 +346,7 @@
                         <textarea name="skill_forte"
                                   placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
                                   class="inputTxtAreaTop form-control"
-                                  rows="5"
-                                  value="{{ $candidate['skill_forte'] }}"></textarea>
+                                  rows="5">{{ $candidate['skill_forte'] }}</textarea>
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
                         Vui lòng chọn mục tiêu nghề nghiệp.</div>

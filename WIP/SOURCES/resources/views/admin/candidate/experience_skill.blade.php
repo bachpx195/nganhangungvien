@@ -15,7 +15,6 @@
     </div>
     <div class="clearfix"></div>
 
-
     <div  id="experience-list">
         <div class="form-group">
             <div class="box-knlv">
@@ -33,6 +32,8 @@
 
         @for ($i = 1; $i <= $experienceCount; $i++)
             <div class="experience-skill-item">
+                <input type="hidden" name="experience_id_{{$i}}"
+                       value="{{isset($candidate['experience_id_' . $i]) ? $candidate['experience_id_' . $i] : ''}}">
                 <!-- tên company_name -->
                 <div class="form-group">
                     <label for="experience_company_name_{{$i}}"
@@ -122,27 +123,25 @@
                     <div class="error_reg_mess clearfix italic validator-message display_none"
                          data-name="experience_salary_{{$i}}">
                         Vui lòng chọn mức lương.</div>
-                </div>
+
                     <div class="clearfix"></div>
 
-                <div class="form-group clearfix mt_16">
-                    <label class="col-sm-2 control-label">
-                        Mô tả công việc <span class="colorRed">*</span>
-                    </label>
-                    <div class="col-sm-10 ">
-                        <textarea name="experience_description_{{$i}}"
-                          class="form-control"
-                          id="experience_description" rows="5"
-                        value="{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}"></textarea>
+                    <div class="form-group clearfix mt_16">
+                        <label class="col-sm-2 control-label">
+                            Mô tả công việc <span class="colorRed">*</span>
+                        </label>
+                        <div class="col-sm-10 ">
+                            <textarea name="experience_description_{{$i}}" class="form-control"
+                                      id="experience_description" rows="5">{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}</textarea>
+                        </div>
+                        <div id="error_c_mo_ta_cong_viec"
+                             class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>
-                    <div id="error_c_mo_ta_cong_viec"
-                         class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
-                </div>
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
             </div>
         @endfor
-        <div class="footer-box-child-ths" id="add-more-experience">
-            <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC</a>
-        </div>
+    </div>
+    <div class="footer-box-child-ths" id="add-more-experience">
+        <a href="javascript:void(0)"><i class="icn-main-menu icn-add-ths"></i>THÊM KINH NGHIỆM LÀM VIỆC</a>
     </div>
 </div>
