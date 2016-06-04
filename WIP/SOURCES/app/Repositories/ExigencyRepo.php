@@ -6,7 +6,7 @@ class ExigencyRepo implements IExigencyRepo {
     
     public function all() {
 
-        return Exigency::get();
+        return Exigency::orderBy('id', 'dec')->get();
     }
 
 	public function filter($name) {

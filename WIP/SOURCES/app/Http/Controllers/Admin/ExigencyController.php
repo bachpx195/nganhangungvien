@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\IExigencyRepo;
@@ -15,18 +16,20 @@ class ExigencyController extends Controller {
 	}
 
 	public function exigencyList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$exigencyList 	= $this->exigencyRepo->filter($name);
-		$pagination 	= $exigencyList->appends($request->all());
+		$exigencyList 	= $this->exigencyRepo->all();
 
 		return view('admin.exigency.list')
 					->with('exigencyList', 	$exigencyList)
 					->with('name', $name)
-					->with('pagination', 	$pagination);
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::EXIGENCY_LIST_PT);
 	}
 
 	public function exigencyForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::EXIGENCY_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,6 +41,8 @@ class ExigencyController extends Controller {
 			}
 				
 			return view('admin.exigency.exigency_form')
+	               		->with('activeMenu', $activeMenu)
+	                	->with('pageTitle', $pageTitle)
 						->with('exigency', 	$exigency);
 		} else {
 			

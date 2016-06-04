@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -11,15 +11,20 @@
 |
 */
 
-/*Route::match(['get', 'post'], '/', [
-	'as' => 'index', 'uses' => 'WelcomeController@index'
-]);*/
+Route::match(['get', 'post'], '/admin', [
+	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
+]);
 
 /**
  * Backend
  */
 Route::group(['prefix' => 'admin'], function()
 {
+	//router admin
+	Route::match(['get'], '/', [
+		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
+	]);
+
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
@@ -35,6 +40,17 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
+	
+	Route::match(['get'], '/employer/list', [
+		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
+	]);
+
+	Route::match(['get'], '/employer/detail', [
+		'as' => 'admin.employer.detail', 'uses' => 'Admin\EmployerController@employerDetail'
+	]);
+
+	Route::post('/employer/status/{id}', [
+		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [
@@ -133,6 +149,30 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/company-size/delete/{id}', [
 		'as' => 'admin.companysize.delete', 'uses' => 'Admin\CompanySizeController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/experience-years/list', [
+		'as' => 'admin.experienceyears.list', 'uses' => 'Admin\ExperienceYearsController@experienceYearsList'
+	]);
+
+	Route::match(['get', 'post'], 'experience-years/form', [
+		'as' => 'admin.experienceyears.form', 'uses' => 'Admin\ExperienceYearsController@experienceYearsForm'
+	]);
+
+	Route::post('/experience-years/delete/{id}', [
+		'as' => 'admin.experienceyears.delete', 'uses' => 'Admin\ExperienceYearsController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/config/list', [
+		'as' => 'admin.config.list', 'uses' => 'Admin\ConfigController@configList'
+	]);
+
+	Route::match(['get', 'post'], 'config/form', [
+		'as' => 'admin.config.form', 'uses' => 'Admin\ConfigController@configForm'
+	]);
+
+	Route::post('/config/delete/{id}', [
+		'as' => 'admin.config.delete', 'uses' => 'Admin\ConfigController@delete'
+	]);
 });
 
 /**
@@ -186,8 +226,4 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 
 Route::match(['get', 'post'], '/candidate/form', [
 	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
-]);
-
-Route::match(['get', 'post'], '/news/form', [
-	'as' => 'new.form', 'uses' => 'Admin\NewController@newForm'
 ]);

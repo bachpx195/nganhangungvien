@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\ILevelRepo;
@@ -15,18 +16,20 @@ class LevelController extends Controller {
 	}
 
 	public function levelList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$levelList 	= $this->levelRepo->filter($name);
-		$pagination 	= $levelList->appends($request->all());
+		$levelList 	= $this->levelRepo->all();
 
 		return view('admin.level.list')
 					->with('levelList', 	$levelList)
 					->with('name', $name)
-					->with('pagination', 	$pagination);
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::LEVEL_LIST_PT);
 	}
 
 	public function levelForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::LEVEL_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,7 +41,9 @@ class LevelController extends Controller {
 			}
 				
 			return view('admin.level.level_form')
-						->with('level', 	$level);
+						->with('level', 	$level)
+	               		->with('activeMenu', $activeMenu)
+	                	->with('pageTitle', $pageTitle);
 		} else {
 			
 			// get form input data

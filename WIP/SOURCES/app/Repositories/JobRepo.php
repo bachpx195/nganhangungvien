@@ -6,7 +6,7 @@ class JobRepo implements IJobRepo {
     
     public function all() {
 
-        return Job::get();
+        return Job::orderBy('id', 'dec')->get();
     }
 
     public function filter($name) {

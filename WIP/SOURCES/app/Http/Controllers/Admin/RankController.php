@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\IRankRepo;
@@ -15,18 +16,20 @@ class RankController extends Controller {
 	}
 
 	public function rankList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$rankList 	= $this->rankRepo->filter($name);
-		$pagination 	= $rankList->appends($request->all());
+		$rankList 	= $this->rankRepo->all();
 
 		return view('admin.rank.list')
 					->with('rankList', 	$rankList)
 					->with('name', $name)
-					->with('pagination', 	$pagination);
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::RANK_LIST_PT);
 	}
 
 	public function rankForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::RANK_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,7 +41,9 @@ class RankController extends Controller {
 			}
 				
 			return view('admin.rank.rank_form')
-						->with('rank', 	$rank);
+	                ->with('activeMenu', $activeMenu)
+	                ->with('pageTitle', $pageTitle)
+					->with('rank', 	$rank);
 		} else {
 			
 			// get form input data

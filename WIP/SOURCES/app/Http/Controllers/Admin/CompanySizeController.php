@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 
 use Illuminate\Http\Request;
 use App\Repositories\ICompanySizeRepo;
@@ -15,18 +16,20 @@ public function __construct(ICompanySizeRepo $companysizeRepo) {
 	}
 
 	public function companysizeList(Request $request) {
+        $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$companysizeList 	= $this->companysizeRepo->filter($name);
-		$pagination 	= $companysizeList->appends($request->all());
+		$companysizeList 	= $this->companysizeRepo->all();
 
 		return view('admin.companysize.list')
 					->with('companysizeList', 	$companysizeList)
 					->with('name', $name)
-					->with('pagination', 	$pagination);
+					->with('activeMenu', $activeMenu)
+					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT);
 	}
 
 	public function companysizeForm(Request $request) {
-	
+        $activeMenu = Constants::DATASYSTEM;
+        $pageTitle  = Constants::COMPANYSIZE_NEW_PT;
 		// get method
 		if ($request->isMethod('get')) {
 			
@@ -38,6 +41,8 @@ public function __construct(ICompanySizeRepo $companysizeRepo) {
 			}
 				
 			return view('admin.companysize.companysize_form')
+		                ->with('activeMenu', $activeMenu)
+	                	->with('pageTitle', $pageTitle)
 						->with('companysize', 	$companysize);
 		} else {
 			

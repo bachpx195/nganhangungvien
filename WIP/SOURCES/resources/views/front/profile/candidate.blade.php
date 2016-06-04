@@ -31,18 +31,21 @@
 							<span class="bold">Giới tính:</span> <span>{{$candidate->sex ? 'Nam' : 'Nữ'}}</span> | <span
 								class="bold">Ngày sinh:</span> {{DateTimeHelper::formatDate($candidate->birthday)}}
 						</div>
-						<div class="list-items mb_0">
+						<div class="list-items mb_10">
 							<div class="box_login_hotline">
-								<div class="clearfix">
-									Chỉ tài khoản Nhà tuyển dụng đã xác thực mới Xem được thông tin
-									liên hệ của ứng viên Nguyễn Văn Tùng . Nếu chưa xác thực, Quý
-									khách vui lòng liên hệ <a href="javascript:void(0)"
-										onclick="popup_hotline()" class="text_blue font14 fwb">HOTLINE
-										(Bấm vào đây để xem)</a> hoặc <a href="javascript:void(0)"
-										class="show_s09b_ntd_register text_blue font14 fwb">Đăng ký tư
-										vấn</a> để được bộ phận CSKH liên hệ hỗ trợ ngay trong 30
-									phút.
-								</div>
+								@if ($candidate->id  == 19)
+									<span><strong>Số địa thoại :</strong></span> 0935726336
+									<br/><span><strong>Địa chỉ :</strong></span> P1602 - CT1 Chung cư Nam Xala - Phường Phúc La - Quận Hà Đông - TP. Hà Nội
+									<br/><span><strong>Facebook :</strong></span> <a> htpps://facebook.com</a> - <span><strong>Email :</strong></span>  <a>thanhlv@bloomgoo.vn</a>
+								@else
+									<span> Đăng nhập để xem được thông tin liên hệ của ứng viên</span>
+									<a href="javascript:;"
+									   class="member_login btn font16 btn-pink btn-lg ml_10">Đăng nhập
+									</a>
+									<a href="{{route('employer.register')}}"
+									   class="member_register btn font16 btn-pink btn-lg ml_10">Đăng ký tài khoản
+									</a>
+								@endif
 								<!--<div class="clearfix"><a href="#" class="text_blue font14 fwb">Bấm đây để tìm hiểu chi tiết dịch vụ</a></div>-->
 							</div>
 						</div>

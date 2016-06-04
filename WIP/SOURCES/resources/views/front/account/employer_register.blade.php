@@ -11,15 +11,15 @@
     @endif
 
 
-    <div class="content_dangky w800 bg_white mt16 box_shadow">
+    <div class="content_dangky bg_white mt16 box_shadow">
         <div class="block_ntv_dangky regis_header h_56" id="regis_header">
+
             <div class="w_50 floatLeft">
                 <span class="title_ntd_dky "></span><span
                         class="uppercase bold fs16 color_ntd_dky">Nhà Tuyển dụng Đăng ký</span>
             </div>
             <div class="w_50 floatLeft block-right-ntv txr">
-			<span class="text-co-tai-khoan">Bạn đã có tài khoản? <a
-                        href="javascript:void(0)" class="text-dang-nhap underline">Đăng nhập</a></span>
+                (<span class="colorRed">*</span>) Thông tin bắt buộc nhập
             </div>
         </div>
         <div class="regis_content_1 w800">
@@ -35,9 +35,6 @@
                                     <div class="clear mb_14">
                                         <span class="title_info_login_ntd "></span><span
                                                 class="fwb txt-color-363636 fs20">Thông tin đăng nhập</span>
-                                    </div>
-                                    <div class="require_info clearfix mb_10 italic">
-                                        (<span class="colorRed">*</span>) Thông tin bắt buộc nhập
                                     </div>
                                     <!-- input email -->
                                     <div class="form-group clearfix mb_14">
@@ -281,23 +278,22 @@
                                         <div class="line-break02"></div>
                                     </div>
                                     <!-- input Nhập mã bảo mật * -->
-                                    <div class="form-group mb_20">
+                                    <!--<div class="form-group mb_20">
                                         <label for="captcha"
                                                class="control-label-info bold txt-ghi fs14 w185">Nhập mã bảo
                                             mật <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583 w390 pl_10">
                                             <div class="img_security_code floatLeft">
-                                                {!! captcha_image_html('RegisterCaptcha') !!}
+
                                             </div>
-                                            <!--<div class="img_security_code floatLeft"></div>-->
                                             <div class="fr-input-wd333 w263 ">
                                                 <input type="text" class="form-control input-lg2 color-input"
                                                        id="CaptchaCode" name="CaptchaCode"
                                                        required data-required-msg="Vui lòng nhập mã bảo mật"/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div class="form-group mb_12">
                                         <label class="control-label-info w185"></label>

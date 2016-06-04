@@ -7,7 +7,6 @@
             <div class="head-box-child-ths">
                 <span class="uppercase bold text-tim-nhat">THÔNG TIN TỔNG QUAN</span>
                 <span class="required_l">(bắt buộc)</span>
-                <span class="required_r">(<label>*</label>)Thông tin bắt buộc nhập</span>
             </div>
             <div class="clearfix"></div>
             <div class="row">
@@ -98,22 +97,20 @@
                 <div class="form-group">
                     <label for="birthday" class="col-sm-2 control-label">
                         Ngày sinh <span class="has-error">*</span></label>
-                    <div class="col-sm-10">
-                        <div class="col-sm-4">
+                    <div class="col-sm-3">
                             <select name="birthday_day" class="form-control">
                                 @include('admin.common.day_options', array('selected' => $candidate['birthday_day']))
                             </select>
-                        </div>
-                        <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-3">
                             <select name="birthday_month" class="form-control">
                                 @include('admin.common.month_options', array('selected' => $candidate['birthday_month']))
                             </select>
-                        </div>
-                        <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-3">
                             <select name="birthday_year" class="form-control">
                                 @include('admin.common.year_options', array('selected' => $candidate['birthday_year']))
                             </select>
-                        </div>
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="birthday">
                         Vui lòng ngày, tháng, năm sinh.</div>
@@ -326,7 +323,7 @@
                            class="col-sm-2 control-label">
                         Mục tiêu nghề nghiệp <span class="has-error">*</span>
                     </label>
-                    <div class="fr_ip_vtmm col-xs-8">
+                    <div class="col-sm-10">
                         <textarea name="job_goal"
                                   id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
@@ -342,7 +339,7 @@
                            class="col-sm-2 control-label">
                         Kỹ năng & Sở trường
                     </label>
-                    <div class="fr_ip_vtmm col-xs-8">
+                    <div class="col-sm-10">
                         <textarea name="skill_forte"
                                   placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
                                   class="inputTxtAreaTop form-control"

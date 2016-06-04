@@ -18,8 +18,8 @@ class CandidateRepo implements ICandidateRepo {
      * - Upate time
      *
      * @param $params
-     * @param $offset
-     * @param $limit
+     * @param int $pageSize
+     * @return
      */
     public function search($params, $pageSize = 10) {
         $query = Candidate::select();

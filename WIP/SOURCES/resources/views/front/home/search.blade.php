@@ -1,6 +1,6 @@
 <div class="box_filter_content w_100 mt_16" id="box_search_ntd">
 
-	<form method="get" action="/tim-kiem-ung-vien/" id="search_box_hosoungvien">
+	<form method="get" action="{{route('candidate.search')}}" id="search_box_hosoungvien">
 		<div class="box_filter_search">
 			<div class="filter_content_line1 pos_relative">
 				<div class="col-xs-12 pr_2 border_bt">
@@ -197,10 +197,10 @@
 		</div>
 	</div>
 
-	<div class="box_filter_map text-left" style="width: 250px;">
+	<div class="box_filter_map text-left" id="youtube-video">
 		<div class="statistic font16">
 			Video tuyển dụng
 		</div>
-		<iframe width="250" height="340" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
+		<iframe id="youtube-video-frame" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
 	</div>
 </div>
