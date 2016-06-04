@@ -91,7 +91,7 @@
 				</ul>
 			</li>
 
-            <li class="nav-item  ">
+            <li class="nav-item {{($activeMenu == 'datasystem') ? 'active open' : ''}} ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-social-dribbble"></i>
                     <span class="title">DỮ LIỆU HỆ THỐNG</span>

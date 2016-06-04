@@ -21,20 +21,20 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Tiêu đề <span class="colorRed">*</span></label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control input-lg2 color-input" id="new_title" value="{{ old('tieu_de') != null ? old('tieu_de') : $news->title }}" name="tieu_de" placeholder="" />
+                        <input type="text" class="form-control input-lg2 color-input" id="new_title" value="{{ old('tieu_de') != null ? old('tieu_de') : $news->title }}" name="tieu_de" data-rule-required="true" placeholder="" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">Miêu tả ngắn</label>
                     <div class="col-md-10">
-						<textarea id="mieu_ta" class="form-control" rows="3" name="mieu_ta"></textarea>
+						<textarea id="mieu_ta" class="form-control" rows="3" name="mieu_ta" data-rule-required="true">{{ old('mieu_ta') != null ? old('mieu_ta') : $news->description }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">Nội dung</label>
                     <div class="col-md-10">
 						<textarea id="noi_dung" class="form-control" rows="3"
-                                                  name="noi_dung"></textarea>
+                                                  name="noi_dung" data-rule-required="true">{{ old('noi_dung') != null ? old('noi_dung') : $news->content }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +49,7 @@
 						            <span class="btn red btn-outline btn-file">
 						                <span class="fileinput-new"> Chọn hình ảnh </span>
 						                <span class="fileinput-exists"> Thay đổi </span>
-						                <input  type="file" name=""> </span>
+						                <input  type="file" name="news_image_"> </span>
 						            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
 						        </div>
 						    </div>
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Đường dẫn URL </label>
                     <div class="col-md-5">
-                        <input type="text" class="form-control input-lg2 color-input" id="link" value="{{ old('link') != null ? old('link') : $news->link }}" name="link" placeholder="" />
+                        <input type="url" class="form-control input-lg2 color-input" id="link" value="{{ old('link') != null ? old('link') : $news->link }}" name="link" placeholder="" />
                     </div>
                 </div>
 
