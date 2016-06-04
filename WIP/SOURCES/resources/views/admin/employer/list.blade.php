@@ -1,5 +1,10 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
+<style type="text/css">
+    .btn-employer {
+        width: 55px;
+    }
+</style>
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +28,7 @@
                                 <th>Tên công ty</th>
                                 <th style="width: 12%;">Số điện thoại</th>
                                 <th style="width: 15%;">Người liên hệ</th>
-                                <th style="width: 110px;"></th>
+                                <th style="width: 80px;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,16 +40,16 @@
                                     <td>{{ $item->company_name }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->contact_person }}</td>
-                                    <td style="width: 110px;">
+                                    <td style="width: 80px;">
                                         <a class="change-status"
                                            data-id="{{$item->id}}" data-status="{{$item->status}}"
                                            data-url="{{route('admin.employer.status', ['id' => $item->id])}}">
                                             @if($item->status == 1)
-                                                <button type="button" class="btn blue btn-outline" data-toggle="tooltip"
-                                                        data-placement="top" data-original-title="Click to disable employer"> Enabled </button>
+                                                <button type="button" class="btn-employer btn blue btn-outline" data-toggle="tooltip"
+                                                        data-placement="top" data-original-title="Click to disable employer"> Hiện </button>
                                             @else
-                                                <button type="button" class="btn dark btn-outline" data-toggle="tooltip"
-                                                        data-placement="top" data-original-title="Click to enable employer"> Disabled </button>
+                                                <button type="button" class="btn-employer btn dark btn-outline" data-toggle="tooltip"
+                                                        data-placement="top" data-original-title="Click to enable employer"> Ẩn </button>
                                             @endif
                                         </a>
                                         <a href="{{route('admin.employer.detail', ['id' => $item->id])}}" target="_blank">
