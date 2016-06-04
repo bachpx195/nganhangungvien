@@ -21,20 +21,20 @@
 					<span class="title">QUẢN TRỊ<br/>NHÀ TUYỂN DỤNG</span>
 					<span class="arrow "></span>
 				</a>
-				{{--<ul class="sub-menu">--}}
-					{{--<li class="nav-item">--}}
-						{{--<a href="{{route('admin.employer.list')}}" class="nav-link nav-toggle">--}}
-							{{--<i class="icon-list"></i> DANH SÁCH NHÀ TUYỂN DỤNG--}}
-							{{--<span class="arrow"></span>--}}
-						{{--</a>--}}
-					{{--</li>--}}
-					{{--<li class="nav-item">--}}
-						{{--<a href="?p=dashboard-2" target="_blank" class="nav-link">--}}
-							{{--<i class="icon-plus"></i> THÊM HỒ SƠ NHÀ TUYỂN DỤNG--}}
-							{{--<span class="arrow nav-toggle"></span>--}}
-						{{--</a>--}}
-					{{--</li>--}}
-				{{--</ul>--}}
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{route('admin.employer.list')}}" class="nav-link nav-toggle">
+							<i class="icon-list"></i> DANH SÁCH NHÀ TUYỂN DỤNG
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="?p=dashboard-2" target="_blank" class="nav-link">
+							<i class="icon-plus"></i> THÊM HỒ SƠ NHÀ TUYỂN DỤNG
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
 			</li>
 
 			<!-- HỒ SƠ ỨNG VIÊN -->
@@ -153,6 +153,13 @@
                             <span class="title">QUY MÔ CÔNG TY</span>
                             <span class="arrow"></span>
                         </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.experienceyears.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">KINH NGHIỆM</span>
+                            <span class="arrow"></span>
+                        </a>
                         
                     </li>
                 </ul>                                                                              
@@ -174,38 +181,53 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="page_user_profile_1.html" class="nav-link ">
 							<i class="icon-user"></i>
 							<span class="title">DANH SÁCH</span>
 						</a>
 					</li>
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="page_user_profile_1_account.html" class="nav-link ">
 							<i class="icon-user-female"></i>
 							<span class="title">THÊM NGƯỜI DÙNG</span>
 						</a>
 					</li>
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="page_user_profile_1_help.html" class="nav-link ">
 							<i class="icon-user-following"></i>
 							<span class="title">QUYỀN NGƯỜI DÙNG</span>
 						</a>
 					</li>
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="page_user_profile_2.html" class="nav-link ">
 							<i class="icon-users"></i>
 							<span class="title">PHÂN QUYỀN</span>
 						</a>
 					</li>
 				</ul>
 			</li>
-			{{--<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">--}}
-				{{--<a href="javascript:;" class="nav-link nav-toggle">--}}
-					{{--<i class="icon-settings"></i>--}}
-					{{--<span class="title">CẤU HÌNH HỆ THỐNG</span>--}}
-					{{--<span class="arrow"></span>--}}
-				{{--</a>--}}
-			{{--</li>--}}
+			<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">
+				<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
+					<i class="icon-settings"></i>
+					<span class="title">CẤU HÌNH HỆ THỐNG</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{route('admin.config.list')}}" class="nav-link nav-toggle">
+							<i class="icon-list"></i> DANH SÁCH CẤU HÌNH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{route('admin.config.form')}}" target="_blank" class="nav-link">
+							<i class="icon-plus"></i> THÊM HỒ CẤU HÌNH
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+
+			</li>
 		</ul>
 		<!-- END SIDEBAR MENU -->
 	</div>

@@ -17,16 +17,14 @@ class ProvinceController extends Controller {
 	public function tinh(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$provinceList 	= $this->provinceRepo->filter($name);
+		$provinceList 	= $this->provinceRepo->all();
 
-		$pagination 	= $provinceList->appends($request->all());
 
 		return view('admin.province.list')
 					->with('provinceList', 	$provinceList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::PROVINCE_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::PROVINCE_LIST_PT);
 	}
 
 

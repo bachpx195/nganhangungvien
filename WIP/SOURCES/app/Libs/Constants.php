@@ -16,8 +16,12 @@ class Constants {
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';
     const CANDIDATE_LIST_PT = 'Quản lý hồ sơ ứng viên';
 
+    const CONFIG_NEW_PT = 'Tạo mới cấu hình hệ thống';
+    const CONFIG_LIST_PT = 'Quản lý cấu hình hệ thống';
+
     const EMPLOYER_LIST = 'Quản lý nhà tuyển dụng';
     const EMPLOYER_DETAIL = 'Chi tiết nhà tuyển dụng';
+
 
     const PROVINCE_NEW_PT = 'Tạo mới tỉnh/thành phố';
     const PROVINCE_LIST_PT = 'Quản lý tỉnh/thành phố';

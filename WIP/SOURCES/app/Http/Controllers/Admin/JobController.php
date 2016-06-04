@@ -18,15 +18,13 @@ class JobController extends Controller {
 	public function jobList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$jobList 	= $this->jobRepo->filter($name);
-		$pagination 	= $jobList->appends($request->all());
+		$jobList 	= $this->jobRepo->all();
 
 		return view('admin.job.list')
 					->with('jobList', 	$jobList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::JOB_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::JOB_LIST_PT);
 	}
 
 	public function jobForm(Request $request) {

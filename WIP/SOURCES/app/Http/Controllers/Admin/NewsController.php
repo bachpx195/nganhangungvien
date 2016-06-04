@@ -30,12 +30,10 @@ class NewsController extends Controller {
         $activeMenu = Constants::NEWS;
 
         $name 		= $request->input('name');
-        $newsList = $this->newRepo->search($name);
-        $pagination     =$newsList->appends($request->all());
+        $newsList = $this->newRepo->all();
         return view('admin.news.list')
             ->with('activeMenu', $activeMenu)
             ->with('newsList', $newsList)
-            ->with('pagination',    $pagination)
             ->with('pageTitle', Constants::NEWS_LIST_PT)
             ->with('name', $name);
     }

@@ -281,23 +281,22 @@
                                         <div class="line-break02"></div>
                                     </div>
                                     <!-- input Nhập mã bảo mật * -->
-                                    <div class="form-group mb_20">
+                                    <!--<div class="form-group mb_20">
                                         <label for="captcha"
                                                class="control-label-info bold txt-ghi fs14 w185">Nhập mã bảo
                                             mật <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583 w390 pl_10">
                                             <div class="img_security_code floatLeft">
-                                                {!! captcha_image_html('RegisterCaptcha') !!}
+
                                             </div>
-                                            <!--<div class="img_security_code floatLeft"></div>-->
                                             <div class="fr-input-wd333 w263 ">
                                                 <input type="text" class="form-control input-lg2 color-input"
                                                        id="CaptchaCode" name="CaptchaCode"
                                                        required data-required-msg="Vui lòng nhập mã bảo mật"/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div class="form-group mb_12">
                                         <label class="control-label-info w185"></label>

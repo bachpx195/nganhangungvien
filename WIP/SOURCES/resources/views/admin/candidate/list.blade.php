@@ -37,7 +37,7 @@
                         @if(count($candidates) > 0)
                             @foreach($candidates as $index=>$item)
                                 <tr class="gradeX odd" role="row">
-                                    <td></td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $item->cv_title }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->full_name }}</td>

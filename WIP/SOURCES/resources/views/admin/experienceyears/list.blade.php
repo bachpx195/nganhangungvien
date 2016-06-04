@@ -1,3 +1,4 @@
+@endsection
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
 @section('content')
@@ -13,35 +14,35 @@
                     <div class="actions">
                         <div class="btn-group">
                             <button class="btn sbold green">
-                                <a href="{{route('admin.salary.form')}}" target="_blank" class="add-more-btn">
-                                    THÊM LƯƠNG <i class="fa fa-plus"></i>
+                                <a href="{{route('admin.experienceyears.form')}}" target="_blank" class="add-more-btn">
+                                    THÊM KINH NGHIỆM <i class="fa fa-plus"></i>
                                 </a>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="portlet-body">
+                <div class="portlet-body">>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
                                 <th style="width: 5%;">STT</th>
-                                <th style="width: 80%;" class="text-center">Lương</th>
+                                <th style="width: 80%;" class="text-center">Số năm kinh nghiệm</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($salaryList) > 0)
-                                @foreach($salaryList as $index=>$item)
+                            @if(count($experienceyearsList) > 0)
+                                @foreach($experienceyearsList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td></td>
+                                        <td class="text-center"></td>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td>
-                                            <a href="{{route('admin.salary.form'). '?id=' . $item->id}}" target="_blank">
+                                            <a href="{{route('admin.experienceyears.form'). '?id=' . $item->id}}" target="_blank">
                                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
                                                  data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
                                             <a class="sweet-delete"
                                                 data-id="{{$item->id}}"
-                                                data-url="{{route('admin.salary.delete', ['id' => $item->id])}}">
+                                                data-url="{{route('admin.experienceyears.delete', ['id' => $item->id])}}">
                                                 <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
                                                         data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
                                             </a>

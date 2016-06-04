@@ -18,15 +18,13 @@ class RankController extends Controller {
 	public function rankList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$rankList 	= $this->rankRepo->filter($name);
-		$pagination 	= $rankList->appends($request->all());
+		$rankList 	= $this->rankRepo->all();
 
 		return view('admin.rank.list')
 					->with('rankList', 	$rankList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::RANK_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::RANK_LIST_PT);
 	}
 
 	public function rankForm(Request $request) {
