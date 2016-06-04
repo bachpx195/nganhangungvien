@@ -13,9 +13,10 @@ class EmployerRepo implements IEmployerRepo
     {
         $query = Employer::select();
 
-        if (isset($keyword) && $keyword) {
-            $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%');
-            $query = $query->where('phone', 'LIKE', '%' . $keyword . '%');
+        if ($keyword) {
+            $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('phone', 'LIKE', '%' . $keyword . '%');
+//            $query = $query->where('phone', 'LIKE', '%' . $keyword . '%');
 //            $query = $query->user->where('username', 'LIKE', '%' . $keyword . '%');
         }
 
