@@ -45,7 +45,7 @@
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_menu icn_cong_head_ntd mt_10"></div>
 					<div class="title_cong_menu w_100">Dành cho Nhà tuyển dụng</div>
-				</a> <a class="bt_head_cong floatLeft " href="#"
+				</a> <a class="bt_head_cong floatLeft " href="{{route('candidate.form')}}"
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_menu icn_cong_head_quanly mt_10"></div>
 					<div class="title_cong_menu w_100">Dành cho Ứng viên</div>

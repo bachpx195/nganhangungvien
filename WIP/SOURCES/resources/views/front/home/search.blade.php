@@ -1,6 +1,6 @@
 <div class="box_filter_content w_100 mt_16" id="box_search_ntd">
 
-	<form method="get" action="/tim-kiem-ung-vien/" id="search_box_hosoungvien">
+	<form method="get" action="{{route('candidate.search')}}" id="search_box_hosoungvien">
 		<div class="box_filter_search">
 			<div class="filter_content_line1 pos_relative">
 				<div class="col-xs-12 pr_2 border_bt">
