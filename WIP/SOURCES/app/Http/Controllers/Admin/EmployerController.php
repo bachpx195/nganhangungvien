@@ -50,7 +50,7 @@ class EmployerController extends Controller
         if ($request->isMethod('get')) {
 
             if ($request->has('id')) {
-                $employer = Employer::find($request->get('id'));
+                $employer = $this->employerRepo->findById($request->get('id'));
             }
             if (!$employer) {
                 abort(404, 'Not found employer');
