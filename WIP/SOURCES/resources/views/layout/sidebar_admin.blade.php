@@ -151,6 +151,13 @@
                             <span class="title">QUY MÔ CÔNG TY</span>
                             <span class="arrow"></span>
                         </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.experienceyears.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">KINH NGHIỆM</span>
+                            <span class="arrow"></span>
+                        </a>
                         
                     </li>
                 </ul>                                                                              
@@ -198,11 +205,26 @@
 				</ul>
 			</li>
 			<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
+				<a href="{{route('admin.candidate.list')}}" class="nav-link nav-toggle">
 					<i class="icon-settings"></i>
 					<span class="title">CẤU HÌNH HỆ THỐNG</span>
-					<span class="arrow"></span>
+					<span class="arrow "></span>
 				</a>
+				<ul class="sub-menu">
+					<li class="nav-item">
+						<a href="{{route('admin.config.list')}}" class="nav-link nav-toggle">
+							<i class="icon-list"></i> DANH SÁCH CẤU HÌNH
+							<span class="arrow"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{route('admin.config.form')}}" target="_blank" class="nav-link">
+							<i class="icon-plus"></i> THÊM HỒ CẤU HÌNH
+							<span class="arrow nav-toggle"></span>
+						</a>
+					</li>
+				</ul>
+
 			</li>
 		</ul>
 		<!-- END SIDEBAR MENU -->

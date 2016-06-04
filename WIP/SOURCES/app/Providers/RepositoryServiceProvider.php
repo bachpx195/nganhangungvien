@@ -96,6 +96,10 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\IContactPersonRepo',
 			'App\Repositories\ContactPersonRepo');
+
+		$this->app->bind(
+			'App\Repositories\IConfigRepo',
+			'App\Repositories\ConfigRepo');
 	}
 
 }

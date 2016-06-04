@@ -11,38 +11,29 @@
                         <span class="caption-subject bold uppercase"> {{$pageTitle}}</span>
                     </div>
                     <div class="actions">
-
+                        <div class="btn-group">
+                            <button class="btn sbold green">
+                                <a href="{{route('admin.exigency.form')}}" target="_blank" class="add-more-btn">
+                                    THÊM NHU CẦU CÔNG VIỆC <i class="fa fa-plus"></i>
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="btn-group">
-                                    <button class="btn sbold green">
-                                        <a href="{{route('admin.exigency.form')}}" target="_blank" class="add-more-btn">
-                                            THÊM NHU CẦU CÔNG VIỆC <i class="fa fa-plus"></i>
-                                        </a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                        </div>
-                    </div>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
                                 <th style="width: 5%;">STT</th>
                                 <th style="width: 80%;" class="text-center">Nhu cầu công việc</th>
-                                <th style="width: 15%;">Actions</th>
+                                <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(count($exigencyList) > 0)
                                 @foreach($exigencyList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td></td>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td>
                                             <a href="{{route('admin.exigency.form'). '?id=' . $item->id}}" target="_blank">

@@ -18,15 +18,13 @@ class ExigencyController extends Controller {
 	public function exigencyList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$exigencyList 	= $this->exigencyRepo->filter($name);
-		$pagination 	= $exigencyList->appends($request->all());
+		$exigencyList 	= $this->exigencyRepo->all();
 
 		return view('admin.exigency.list')
 					->with('exigencyList', 	$exigencyList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::EXIGENCY_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::EXIGENCY_LIST_PT);
 	}
 
 	public function exigencyForm(Request $request) {

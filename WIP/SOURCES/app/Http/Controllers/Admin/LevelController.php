@@ -18,15 +18,13 @@ class LevelController extends Controller {
 	public function levelList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$levelList 	= $this->levelRepo->filter($name);
-		$pagination 	= $levelList->appends($request->all());
+		$levelList 	= $this->levelRepo->all();
 
 		return view('admin.level.list')
 					->with('levelList', 	$levelList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::LEVEL_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::LEVEL_LIST_PT);
 	}
 
 	public function levelForm(Request $request) {

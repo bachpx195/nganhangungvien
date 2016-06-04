@@ -18,15 +18,13 @@ public function __construct(ICompanySizeRepo $companysizeRepo) {
 	public function companysizeList(Request $request) {
         $activeMenu = Constants::DATASYSTEM;
 		$name 		= $request->input('name');
-		$companysizeList 	= $this->companysizeRepo->filter($name);
-		$pagination 	= $companysizeList->appends($request->all());
+		$companysizeList 	= $this->companysizeRepo->all();
 
 		return view('admin.companysize.list')
 					->with('companysizeList', 	$companysizeList)
 					->with('name', $name)
 					->with('activeMenu', $activeMenu)
-					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT)
-					->with('pagination', 	$pagination);
+					->with('pageTitle', Constants::COMPANYSIZE_LIST_PT);
 	}
 
 	public function companysizeForm(Request $request) {

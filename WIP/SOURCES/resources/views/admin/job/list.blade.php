@@ -11,25 +11,16 @@
                         <span class="caption-subject bold uppercase"> {{$pageTitle}}</span>
                     </div>
                     <div class="actions">
-
+                        <div class="btn-group">
+                            <button class="btn sbold green">
+                                <a href="{{route('admin.job.form')}}" target="_blank" class="add-more-btn">
+                                    THÊM NGHỀ NGHIỆP <i class="fa fa-plus"></i>
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="btn-group">
-                                    <button class="btn sbold green">
-                                        <a href="{{route('admin.job.form')}}" target="_blank" class="add-more-btn">
-                                            THÊM NGHỀ NGHIỆP <i class="fa fa-plus"></i>
-                                        </a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                        </div>
-                    </div>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
@@ -42,7 +33,7 @@
                             @if(count($jobList) > 0)
                                 @foreach($jobList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td class="text-center"></td>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td>
                                             <a href="{{route('admin.job.form'). '?id=' . $item->id}}" target="_blank">
