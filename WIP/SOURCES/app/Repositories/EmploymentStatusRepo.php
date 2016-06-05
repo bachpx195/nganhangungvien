@@ -6,6 +6,6 @@ class EmploymentStatusRepo implements IEmploymentStatusRepo {
     
     public function all() {
 
-        return EmploymentStatus::get();
+        return EmploymentStatus::orderBy('id', 'dec')->get();
     }
 }
