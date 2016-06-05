@@ -50,7 +50,12 @@ class Constants {
     const NEWS_NEW_PT = 'Tạo mới tin tức';
     const NEWS_LIST_PT = 'Quản lý tin tức';
 
-
     const CANDIDATE_UPDATE_PT = 'Cập nhật hồ sơ ứng viên';
+
+    const EMPLOYMENTSTATUS_NEW_PT = 'Tạo mới hình thức làm việc';
+    const EMPLOYMENTSTATUS_LIST_PT = 'Quản lý hình thức làm việc';
+
+    const FOREIGNLANGUAGE_NEW_PT = 'Tạo mới ngoại ngữ';
+    const FOREIGNLANGUAGE_LIST_PT = 'Quản lý ngoại ngữ';
 
 }

@@ -25,7 +25,7 @@
                                 <li>
                                     <i class="fa fa-map-marker"></i> {{ $employer->provinceName }} </li>
                                 <li>
-                                    <i class="fa fa-link"></i> <a href="{{ $employer->website }}">{{$employer->website}}</a> </li>
+                                    <i class="fa fa-link"></i> <a href="{{ $employer->website }}" target="_blank">{{$employer->website}}</a> </li>
                                 <li>
                                     <i class="fa fa-users"></i> {{ $employer->companySize }} </li>
                             </ul>

@@ -6,6 +6,6 @@ class ForeignLanguageRepo implements IForeignLanguageRepo {
 
     public function all() {
 
-        return ForeignLanguage::get();
+        return ForeignLanguage::orderBy('id', 'dec')->get();
     }
 }
