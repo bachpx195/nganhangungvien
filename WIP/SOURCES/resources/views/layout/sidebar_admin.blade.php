@@ -160,7 +160,20 @@
                             <span class="title">KINH NGHIỆM</span>
                             <span class="arrow"></span>
                         </a>
-                        
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.employmentstatus.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">HÌNH THỨC LÀM VIỆC</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('admin.foreignlanguage.list') }}" class="nav-link nav-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="title">NGOẠI NGỮ</span>
+                            <span class="arrow"></span>
+                        </a>
                     </li>
                 </ul>                                                                              
             </li>          

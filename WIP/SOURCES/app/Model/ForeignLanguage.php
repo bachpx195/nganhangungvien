@@ -4,6 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ForeignLanguage extends Model {
 
+
+    public $timestamps = false;
+
     protected $table = 'foreign_language';
 
     public function candidates()

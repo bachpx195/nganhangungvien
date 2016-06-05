@@ -173,6 +173,30 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('/config/delete/{id}', [
 		'as' => 'admin.config.delete', 'uses' => 'Admin\ConfigController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/employment-status/list', [
+		'as' => 'admin.employmentstatus.list', 'uses' => 'Admin\EmploymentStatusController@employmentStatusList'
+	]);
+
+	Route::match(['get', 'post'], 'employment-status/form', [
+		'as' => 'admin.employmentstatus.form', 'uses' => 'Admin\EmploymentStatusController@employmentStatusForm'
+	]);
+
+	Route::post('/employment-status/delete/{id}', [
+		'as' => 'admin.employmentstatus.delete', 'uses' => 'Admin\EmploymentStatusController@delete'
+	]);
+
+	Route::match(['get', 'post'], '/foreign-language/list', [
+		'as' => 'admin.foreignlanguage.list', 'uses' => 'Admin\ForeignLanguageController@foreignlanguageList'
+	]);
+
+	Route::match(['get', 'post'], 'foreign-language/form', [
+		'as' => 'admin.foreignlanguage.form', 'uses' => 'Admin\ForeignLanguageController@foreignLanguageForm'
+	]);
+
+	Route::post('/foreign-language/delete/{id}', [
+		'as' => 'admin.foreignlanguage.delete', 'uses' => 'Admin\ForeignLanguageController@delete'
+	]);
 });
 
 /**
