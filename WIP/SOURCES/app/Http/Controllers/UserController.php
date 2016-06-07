@@ -13,6 +13,7 @@ class UserController extends Controller {
 	
 	protected $userRepo;
 	protected $roleRepo;
+	protected $registrar;
 
 	/**
 	 * UserController constructor.
@@ -127,5 +128,10 @@ class UserController extends Controller {
 		}
 	
 		return $data;
+	}
+
+	public function userPay()
+	{
+		return view('user/pay');
 	}
 }
