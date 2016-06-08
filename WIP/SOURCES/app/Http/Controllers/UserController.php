@@ -7,25 +7,35 @@ use Illuminate\Contracts\Auth\Registrar;
 
 use App\Repositories\IUserRepo;
 use App\Repositories\IRoleRepo;
+use App\Libs\BaoKim\Card;
 use App\User;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
 	
 	protected $userRepo;
 	protected $roleRepo;
 	protected $registrar;
+	protected $card;
 
 	/**
 	 * UserController constructor.
 	 * @param IUserRepo $userRepo
 	 * @param IRoleRepo $roleRepo
 	 * @param Registrar $registrar
+	 * @param Card $card
 	 */
-	public function __construct(IUserRepo $userRepo, IRoleRepo $roleRepo, Registrar $registrar) {
+	public function __construct(
+		IUserRepo $userRepo,
+		IRoleRepo $roleRepo,
+		Registrar $registrar,
+		Card $card
+	) {
 		
 		$this->userRepo = $userRepo;
 		$this->roleRepo = $roleRepo;
 		$this->registrar = $registrar;
+		$this->card = $card;
 	}
 	
 	public function userList(Request $request) {
@@ -130,8 +140,27 @@ class UserController extends Controller {
 		return $data;
 	}
 
-	public function userPay()
+	/**
+	 * Payment by card
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userPay(Request $request)
 	{
-		return view('user/pay');
+		if ($request->isMethod('get')) {
+			return view('user/pay');
+		} else {
+			//TODO: Validate for user pay form
+			$userData = Input::except(array('_token', '_method'));
+			$r = $this->card->baoKimCardApi($userData);
+
+			if ($r['success'])
+			{
+				die('Paid successfully!');
+			} else {
+				die('Paid not successfully!');
+			}
+		}
 	}
 }

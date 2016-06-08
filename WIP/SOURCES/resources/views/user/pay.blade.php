@@ -27,12 +27,12 @@
                                 <!-- input email -->
                                 <div class="body-box-child-ths pb16 mt16">
                                     <div class="form-group clearfix mb_16">
-                                        <label for="cv_title" class="control-label-info bold txt-color-363636 fs14 w180">
+                                        <label for="balance" class="control-label-info bold txt-color-363636 fs14 w180">
                                             Tiền trong tài khoản <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input" id="cv_title"
-                                                   name="cv_title" value="0">
+                                                   name="balance" value="0" disabled>
                                         </div>
                                     </div>
 
@@ -43,15 +43,15 @@
                                         <div class="register_fr_input_wd583">
                                             <div class="row">
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="1" checked="checked">
+                                                    <input type="radio" name="card_id" value="MOBI" checked="checked">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/mobifone.png') }}" alt="" />
                                                 </label>
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="2">
+                                                    <input type="radio" name="card_id" value="VIETTEL">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/viettel.png') }}" alt="" />
                                                 </label>
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="3">
+                                                    <input type="radio" name="card_id" value="VINA">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/vinaphone.png') }}" alt="" />
                                                 </label>
                                             </div>
@@ -59,12 +59,12 @@
                                     </div>
 
                                     <div class="form-group clearfix mb_16">
-                                        <label for="serial" class="control-label-info bold txt-color-363636 fs14 w180">
+                                        <label for="seri_field" class="control-label-info bold txt-color-363636 fs14 w180">
                                             Seri <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
-                                                   name="serial" placeholder="Seri thẻ nạp"
+                                            <input type="text" class="form-control input-lg2 color-input"
+                                                   name="seri_field" placeholder="Seri thẻ nạp"
                                                    value="">
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                             Mã thẻ <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
+                                            <input type="text" class="form-control input-lg2 color-input"
                                                    name="pin_field" placeholder="Mã thẻ nạp"
                                                    value="">
                                         </div>
