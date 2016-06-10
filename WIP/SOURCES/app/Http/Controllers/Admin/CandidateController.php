@@ -32,6 +32,7 @@ use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use DateTime;
@@ -264,6 +265,9 @@ class CandidateController extends Controller {
                 //Save a contact persons
                 $this->saveContactPersons($candidate, $input);
                 DB::commit();
+
+                //send email
+                $this->sendEmail($input);
             } catch (\Exception $e) {
                 DB::rollBack();
                 //throw new Exception('Something wrong!!');
@@ -296,6 +300,19 @@ class CandidateController extends Controller {
         }
 
         return $data;
+    }
+
+    /**
+     * Send mail to candidate
+     *
+     * @param $data
+     */
+    private function sendEmail($data){
+
+        Mail::send('front.emails.candidate.register', $data, function ($message) use ($data) {
+            $message->subject('Đăng ký ứng viên thành công')
+                ->to($data['email']);
+        });
     }
 
     /**
