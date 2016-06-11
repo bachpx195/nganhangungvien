@@ -348,6 +348,30 @@
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
                         Vui lòng chọn mục tiêu nghề nghiệp.</div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Ảnh đại diện</label>
+                    <div class="col-md-10">
+                        <div class="col-md-9">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail upload-image">
+                                    @include('admin.common.candidate_image',
+                                    array('candidateImage' => isset($candidate['image']) ? $candidate['image'] : ''))
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
+                                <div>
+						            <span class="btn red btn-outline btn-file">
+						                <span class="fileinput-new"> Chọn hình ảnh </span>
+						                <span class="fileinput-exists"> Thay đổi </span>
+						                <input  type="file" name="image" accept="image/*" > </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                </div>
+                            </div>
+                            <div class="clearfix margin-top-10">
+                                <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>

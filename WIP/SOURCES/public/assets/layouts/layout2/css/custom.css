@@ -19,3 +19,7 @@ a.add-more-btn:hover{
     padding-left: 0px;
 }
 
+.upload-image {
+    width: 200px;
+    height: 150px;
+}

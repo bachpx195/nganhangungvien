@@ -255,8 +255,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['post'], '/user/account/changecontactperson', [
 		'as' => 'user.account.changecontactperson', 'uses' => 'Front\AccountProfileController@changeEmployerContactPersonInfo'
 	]);
+
+	Route::match(['get', 'post'], '/candidate/form', [
+		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+	]);
+
+	Route::match(['get', 'post'], '/user/pay', [
+		'as' => 'user.pay', 'uses' => 'UserController@userPay'
+	]);
 });
 
-Route::match(['get', 'post'], '/candidate/form', [
-	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
-]);
+

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Mail;
 
 use Validator;
 use DateTime;
@@ -78,6 +79,10 @@ class EmployerRegisterController extends BaseController
                 $employer->save();
 
                 DB::commit();
+
+                //send email
+                $this->sendEmail($input);
+
             } catch (\Exception $e) {
                 DB::rollBack();
                 //die('false');
@@ -86,6 +91,14 @@ class EmployerRegisterController extends BaseController
 
             return redirect(route('user.account'));
         }
+    }
+
+    private function sendEmail($data){
+        
+        Mail::send('front.emails.register', $data, function ($message) use ($data) {
+            $message->subject('Đăng ký nhà tuyển dụng thành công')
+                ->to($data['email']);
+        });
     }
 
     /**

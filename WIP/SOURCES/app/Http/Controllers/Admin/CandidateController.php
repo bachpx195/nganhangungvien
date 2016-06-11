@@ -242,7 +242,7 @@ class CandidateController extends Controller {
                     $candidate = Candidate::find($id);
                 }
 
-                $candidate = $this->getGeneralInfoByInput($candidate, $input);
+                $candidate = $this->getGeneralInfoByInput($candidate, $input, $request, $id);
                 $candidate->save();
                 if ($candidate->id && empty($candidate->candidate_code)) {
                     $candidate->candidate_code = self::PREFIX_CANDIDATE_CODE . $candidate->id;
@@ -515,8 +515,8 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveContactPerson($contactPerson, $index) {
-        if (!empty(trim($contactPerson['contact_person_full_name_' . $index])) && !empty(trim($contactPerson['contact_person_company_' . $index]))
-            && !empty(trim($contactPerson['contact_person_phone_number_' . $index])) && !empty(trim($contactPerson['contact_person_office_' . $index]))) {
+        if (!empty($contactPerson['contact_person_full_name_' . $index]) && !empty($contactPerson['contact_person_company_' . $index])
+            && !empty($contactPerson['contact_person_phone_number_' . $index]) && !empty($contactPerson['contact_person_office_' . $index])) {
             return true;
         }
 
@@ -622,7 +622,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveLanguage($language, $index) {
-        if (!empty(trim($language['language_id_' . $index]))) {
+        if (!empty($language['language_id_' . $index])) {
             return true;
         }
 
@@ -704,7 +704,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveCertificate($certificate, $index) {
-        if (!empty(trim($certificate['certificate_name_' . $index])) && !empty(trim($certificate['certificate_name_' . $index]))) {
+        if (!empty($certificate['certificate_name_' . $index]) && !empty($certificate['certificate_name_' . $index])) {
             return true;
         }
 
@@ -744,7 +744,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveExperience($experience, $index) {
-        if (!empty(trim($experience['experience_company_name_' . $index])) && !empty(trim($experience['experience_office_' . $index]))) {
+        if (!empty($experience['experience_company_name_' . $index]) && !empty($experience['experience_office_' . $index])) {
             return true;
         }
 
@@ -788,9 +788,11 @@ class CandidateController extends Controller {
      *
      * @param $candidate
      * @param $input
+     * @param $request
+     * @param $id
      * @return mixed
      */
-    private function getGeneralInfoByInput($candidate, $input)
+    private function getGeneralInfoByInput($candidate, $input, $request, $id)
     {
         $candidate->full_name = $input['full_name'];
         $candidate->email = $input['email'];
@@ -805,7 +807,6 @@ class CandidateController extends Controller {
 
         $candidate->sex = $input['sex'];
         $candidate->phone_number = $input['phone_number'];
-        //$candidate->image
         $candidate->province_id = $input['province_id'];
         $candidate->is_married = $input['is_married'];
         $candidate->cv_title = $input['cv_title'];
@@ -821,7 +822,18 @@ class CandidateController extends Controller {
         $candidate->job_goal = $input['job_goal'];
         $candidate->skill_forte = $input['skill_forte'];
 
-        $candidate->view_total = 0;
+        $candidateImgPath = FileHelper::getCandidateImgPath();
+        $imageName = FileHelper::getNewFileName();
+
+        if (!empty($request->file('image'))) {
+            $imgExtension = $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($candidateImgPath, $imageName . '.' . $imgExtension);
+            $candidate->image = $imageName . '.' . $imgExtension;
+        }
+
+        if (empty($id)) {
+            $candidate->view_total = 0;
+        }
         $candidate->status = self::DEFAULT_STATUS;
 
         return $candidate;
