@@ -243,8 +243,17 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	]);
 
 	//Profile
-	Route::match(['get', 'post'], '/tai-khoan/profile', [
-		'as' => 'account.profile', 'uses' => 'Front\AccountProfileController@index'
+	Route::match(['get'], '/user/account', [
+		'as' => 'user.account', 'uses' => 'Front\AccountProfileController@manageAccountProfile'
+	]);
+	Route::match(['post'], '/user/account/changepassword', [
+		'as' => 'user.account.changepassword', 'uses' => 'Front\AccountProfileController@changeAccountPassword'
+	]);
+	Route::match(['post'], '/user/account/changecompanyinfo', [
+		'as' => 'user.account.changecompanyinfo', 'uses' => 'Front\AccountProfileController@changeCompanyInformation'
+	]);
+	Route::match(['post'], '/user/account/changecontactperson', [
+		'as' => 'user.account.changecontactperson', 'uses' => 'Front\AccountProfileController@changeEmployerContactPersonInfo'
 	]);
 });
 

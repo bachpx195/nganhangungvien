@@ -53,4 +53,19 @@ class EmployerRepo implements IEmployerRepo
         $employer->save();
         return true;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findByUserId($userId)
+    {
+        $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
+            ->join('province', 'employer.province_id', '=', 'province.id')
+            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->where('user.id', '=', $userId)
+            ->select('employer.*', 'user.id as userId', 'user.email as userEmail', 'province.name as provinceName', 'company_size.name as companySize')
+            ->first();
+
+        return $query;
+    }
 }

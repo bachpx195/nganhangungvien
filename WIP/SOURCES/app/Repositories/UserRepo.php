@@ -1,6 +1,6 @@
 <?php namespace App\Repositories;
 
-use App\User;
+use App\Model\User;
 
 class UserRepo implements IUserRepo {
 	
@@ -29,5 +29,12 @@ class UserRepo implements IUserRepo {
 		
 		return User::where('email', $email)->first();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function findById($userId)
+	{
+		return User::where('id', $userId)->first();
+	}
 }

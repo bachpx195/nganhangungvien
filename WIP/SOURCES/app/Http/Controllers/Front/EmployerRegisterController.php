@@ -84,10 +84,8 @@ class EmployerRegisterController extends BaseController
                 throw new Exception($e);
             }
 
-            return redirect(route('account.profile'));
+            return redirect(route('user.account'));
         }
-
-
     }
 
     /**
