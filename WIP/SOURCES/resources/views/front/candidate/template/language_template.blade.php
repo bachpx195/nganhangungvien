@@ -17,10 +17,7 @@
                             <div class=" col-xs-8">
                                 <div class="ngoai_ngu w224 pl_10 col-xs-4 pr_2 mr_24 select_style31 city_select">
                                     <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                                        <select name="language_id_@{{index}}"
-                                                class="checkComboboxEditNN tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
-                                                data-disS="1"
-                                                data-select-class="select_language">
+                                        <select name="language_id_@{{index}}">
                                             @include('front.common.options',
                                                 array(
                                                     'options' => $foreignLanguages,
