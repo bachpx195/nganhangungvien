@@ -51,10 +51,9 @@
                                                     Quy mô công ty <span class="colorRed">*</span>
                                                 </label>
                                                 <div class="fr-input-wd333 select_style31 city_select">
-                                                    <div
-                                                            class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                                                    <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                         <select id="company_size" name="company_size"
-                                                                class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style cInput"
+                                                                class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style cSelect"
                                                                 required
                                                                 data-required-msg="Vui lòng chọn quy mô công ty">
                                                             <option value="">Chọn Quy mô công ty</option>
@@ -122,7 +121,7 @@
                                                 <div class="fr-input-wd333 select_style31 city_select">
                                                     <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                         <select id="province_id" name="province_id"
-                                                                class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style cInput"
+                                                                class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style cSelect"
                                                                 tabindex="-1" required
                                                                 data-required-msg="Vui lòng chọn tỉnh thành">
                                                             <option value="">Chọn Tỉnh thành</option>

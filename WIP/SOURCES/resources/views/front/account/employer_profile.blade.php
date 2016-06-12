@@ -3,12 +3,15 @@
     .list-items .fwb {
         font-weight: bold;
     }
+
     #select-data {
         padding-left: 0px;
     }
+
     .title_text_line span {
         color: #00549F;
     }
+
     #popup_change_password, #popup_change_company_info, #popup_change_contact_person {
         -moz-box-align: center;
         -moz-box-pack: center;
@@ -48,11 +51,12 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="list-items fc-btn-edit">
-                            <button id="btnChangePassword" class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_3">
-                                <span class="line-icon text_grey3">
-                                    <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span
-                                            class="pl_28"> Đổi mật khẩu</span>
-                                </span>
+                            <button id="btnChangePassword"
+                                    class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_3">
+                            <span class="line-icon text_grey3">
+                                <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span
+                                        class="pl_28"> Đổi mật khẩu</span>
+                            </span>
                             </button>
                         </div>
                     </div>
@@ -65,7 +69,7 @@
             <div class="box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16 ml_12 mr_12">
                 <div class="w_100">
                     <div class="box_info font14">
-                        <div class="pull-left w_100">
+                        <div class="pull-left w_100" id="employer_company_information_content">
                             <div class="list-items mb_0">
                                 <span class="fwb">Tên công ty: </span>{{ $employer->company_name }}
                             </div>
@@ -93,10 +97,11 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="list-items fc-btn-edit">
-                            <button id="btnChangeCompanyInfo" class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_4">
-                                <span class="line-icon text_grey3">
-                                    <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span class="pl_28"> Chỉnh sửa</span>
-                                </span>
+                            <button id="btnChangeCompanyInfo"
+                                    class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_4">
+                            <span class="line-icon text_grey3">
+                                <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span class="pl_28"> Chỉnh sửa</span>
+                            </span>
                             </button>
                         </div>
                     </div>
@@ -109,14 +114,11 @@
             <div class="box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16 ml_12 mr_12">
                 <div class="w_100">
                     <div class="box_info chu_tai_khoan font14">
-                        <div class="pull-left w_100">
+                        <div class="pull-left w_100" id="employer_contact_person_content">
                             <div class="list-items mb_0">
                                 <span class="fwb">Tên người liên hệ: </span><span
                                         class="name"> {{ $employer->contact_person }}</span>
                             </div>
-                            {{--<div class="list-items mb_0">
-                                <span class="fwb">Địa chỉ liên hệ: </span><span class="address"> {{ $employer-> }}</span>
-                            </div>--}}
                             <div class="list-items mb_0">
                                 <span class="fwb">Số điện thoại liên hệ: </span><span
                                         class="tel"> {{ $employer->contact_phone }}</span>
@@ -128,10 +130,11 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="list-items fc-btn-edit">
-                            <button id="btnChangeContactPerson" class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_5">
-                                <span class="line-icon text_grey3">
-                                    <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span class="pl_28"> Chỉnh sửa</span>
-                                </span>
+                            <button id="btnChangeContactPerson"
+                                    class="btn btn-white no-shadow btn-xs font14 pr_12 pl_6 mt_10 show_popup_s33_5">
+                            <span class="line-icon text_grey3">
+                                <i class="icon-24 icon_24 icon-pencil pos_absolute"></i> <span class="pl_28"> Chỉnh sửa</span>
+                            </span>
                             </button>
                         </div>
                     </div>
@@ -152,6 +155,13 @@
         @include('front.account.popup_change_contact_person')
     </div>
 </div>
-
+<!-- template popup -->
+<div class="popup_template_company_info" id="popup_template_company_info" hidden="hidden">
+    @include('front.account.template.popup_change_company_info')
+</div>
+<div class="popup_template_contact_person" id="popup_template_contact_person" hidden="hidden">
+    @include('front.account.template.popup_change_contact_person')
+</div>
+<!-- javascript function -->
 @include('front.account.employer_profile_js')
 @endsection
