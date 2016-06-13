@@ -2,11 +2,12 @@ span.k-widget.k-tooltip-validation {
     display: inline-block;
     text-align: left;
     border: 0;
-    padding: 0;
     margin: 0;
     background: none;
     box-shadow: none;
     color: red;
+    display: table-cell;
+    padding: 8px 0 0 0;
 }
 
 .k-tooltip-validation .k-warning {

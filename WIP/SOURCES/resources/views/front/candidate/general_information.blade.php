@@ -24,11 +24,8 @@
                     <div class="register_fr_input_wd583">
                         <input type="text" class="form-control input-lg2 color-input" id="cv_title"
                                name="cv_title" placeholder="Ví dụ: Nhân viên chăm sóc khách hàng - vận hành game"
+                               required data-required-msg="Vui lòng nhập Tiêu đề hồ sơ"
                                 value="{{$candidate['cv_title']}}">
-                    </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none"
-                         data-name="cv_title">
-                        Vui lòng nhập tiêu đề hồ sơ đúng để NTD liên hệ được với bạn
                     </div>
                 </div>
 
@@ -38,13 +35,12 @@
                         Email <span class="colorRed">*</span>
                     </label>
                     <div class="register_fr_input_wd583">
-                        <input type="text" class="form-control input-lg2 color-input" id="email"
+                        <input type="email" class="form-control input-lg2 color-input" id="email"
                                name="email" placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com"
+                               required data-required-msg="Vui lòng không bỏ trống Email"
                                value="{{$candidate['email']}}">
                     </div>
                     @include('front.common.form_error', array('fieldName' => 'email'))
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="email">
-                        Vui lòng nhập địa chỉ email đúng để NTD liên hệ được với bạn</div>
                 </div>
 
                 <!-- input Họ và Tên * -->
@@ -55,10 +51,9 @@
                     <div class="register_fr_input_wd583">
                         <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
                                placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                               required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
                                value="{{ $candidate['full_name'] }}">
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="full_name">
-                        Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu.</div>
                 </div>
 
                 <!-- input Giới tính -->
@@ -104,33 +99,33 @@
                         Ngày sinh <span class="colorRed">*</span></label>
                     <div class="register_fr_input_wd583 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                            <select id="birthday" name="birthday_day" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                            <select name="birthday_day" class="select-style w128"
+                                    required data-required-msg="Vui lòng chọn Ngày sinh">
                                 @include('front.common.day_options', array('selected' => $candidate['birthday_day']))
                             </select>
                         </div>
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                            <select id="thang_sinh" name="birthday_month" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                            <select name="birthday_month" class="select-style w128"
+                                    required data-required-msg="Vui lòng chọn Tháng sinh">
                                 @include('front.common.month_options', array('selected' => $candidate['birthday_month']))
                             </select>
                         </div>
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                            <select id="nam_sinh" name="birthday_year" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                            <select name="birthday_year" class="select-style w128"
+                                    required data-required-msg="Vui lòng chọn Năm sinh">
                                 @include('front.common.year_options', array('selected' => $candidate['birthday_year']))
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="birthday">
-                        Vui lòng ngày, tháng, năm sinh.</div>
                 </div>
 
                 <div class="form-group mb1 input-phone">
                     <label for="phone_number" class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span></label>
                     <div class="fr-input-wd333">
                         <input type="text" class="form-control input-lg2 color-input" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168"
+                               required data-required-msg="Vui lòng nhập vào Số điện thoại"
                                value="{{ $candidate['phone_number'] }}">
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="phone_number">
-                        Vui lòng nhập vào số điện thoại.</div>
                 </div>
 
                 <div class="clearfix"></div>
@@ -140,11 +135,9 @@
                         bậc hiện tại <span class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_chuc_vu_hien_tai"
-                                    name="current_rank"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    tabindex="-1" data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="current_rank"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Cấp bậc hiện tại">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['current_rank'],
@@ -154,8 +147,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="current_rank">
-                        Vui lòng chọn cấp bậc hiện tại.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group mt_16">
@@ -164,11 +155,8 @@
                         bậc mong muốn <span class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_chuc_vu"
-                                    name="expect_rank"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    tabindex="-1" data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="expect_rank" class="select-style"
+                                    required data-required-msg="Vui lòng chọn Cấp bậc mong muốn">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['expect_rank'],
@@ -178,8 +166,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="expect_rank">
-                        Vui lòng chọn cấp bậc mong muốn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <!-- input Ngành nghề quan tâm -->
@@ -189,9 +175,9 @@
                     </label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="fk_tinh" name="job"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
-                                    tabindex="-1">
+                            <select name="job"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
                                 @include('front.common.options',
                                     array(
                                         'selected' => isset($candidate['job']) ? $candidate['job'] : '',
@@ -201,8 +187,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job">
-                        Vui lòng chọn cấp bậc mong muốn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group mt_16">
@@ -211,9 +195,9 @@
                     </label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="fk_tinh" name="province_id"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
-                                    tabindex="-1">
+                            <select name="province_id"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['province_id'],
@@ -223,21 +207,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="province_id">
-                        Vui lòng nhập chọn tỉnh thành..</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group mt_8">
-                    <label for="level"
-                           class="control-label-info bold txt-ghi fs14 w180">Trình
-                        độ học vấn cao nhất<span
+                    <label for="level" class="control-label-info bold txt-ghi fs14 w180">Trình độ học vấn cao nhất<span
                                 class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_trinh_do_hv" name="level"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    tabindex="-1" data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="level"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Trình độ học vấn">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['level'],
@@ -247,49 +226,38 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="level">
-                        Vui lòng chọn trình độ học vấn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group mt_16">
-                    <label for="experience_years"
-                           class="control-label-info bold txt-ghi fs14 w180">Tổng
-                        số năm kinh nghiệm <span
+                    <label for="experience_years" class="control-label-info bold txt-ghi fs14 w180">Tổng số năm kinh nghiệm <span
                                 class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_so_nam_kinh_nghiem"
-                                    name="experience_years"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    tabindex="-1" data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="experience_years"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Số năm kinh nghiệm">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['experience_years'],
                                         'options' => $experienceYears,
-                                        'defaultName' => 'Chọn Kinh nghiệm'
+                                        'defaultName' => 'Chọn năm kinh nghiệm'
                                         ))
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="experience_years">
-                        Vui lòng chọn số năm kinh nghiệm.</div>
                 </div>
 
                 <!-- input Hình thức làm việc -->
                 <div class="form-group mt_16">
-                    <label for="employment_status"
-                           class="control-label-info bold txt-ghi fs14 w180">
+                    <label for="employment_status" class="control-label-info bold txt-ghi fs14 w180">
                         Hình thức làm việc <span class="colorRed">*</span>
                     </label>
 
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_thoi_gian_lam_viec"
-                                    name="employment_status"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="employment_status"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Hình thức làm việc">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['employment_status'],
@@ -299,24 +267,20 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="employment_status">
-                        Vui lòng chọn hình thực làm việc.</div>
                 </div>
                 <div class="clearfix"></div>
                 <!-- input Mức lương mong muốn -->
 
                 <div class="form-group mt_16">
-                    <label for="expect_salary"
-                           class="control-label-info bold txt-ghi fs14 w180">
+                    <label for="expect_salary" class="control-label-info bold txt-ghi fs14 w180">
                         Mức lương mong muốn <span class="colorRed">*</span>
                     </label>
 
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="c_muc_luong" name="expect_salary"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg select_box2"
-                                    data-disS="1"
-                                    data-select-class="tinh_thanh_reg">
+                            <select name="expect_salary"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Số lương mong muốn">
                                 @include('front.common.options',
                                     array(
                                         'selected' => $candidate['expect_salary'],
@@ -326,8 +290,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="expect_salary">
-                        Vui lòng chọn số lương mong muốn.</div>
                 </div>
 
                 <div class="form-group mt_16">
@@ -336,9 +298,9 @@
                                 class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
                         <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
-                            <select id="fk_tinh" name="exigency"
-                                    class="reqCheckBoxTop diadiem_lv selectpicker box_select_filter_reg them_nganhnghe"
-                                    tabindex="-1">
+                            <select name="exigency"
+                                    class="select-style"
+                                    required data-required-msg="Vui lòng chọn Nhu cầu công việc.">
                                 @include('front.common.options',
                                     array(
                                         'selected' => isset($candidate['exigency']) ? $candidate['exigency'] : '',
@@ -348,8 +310,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="exigency">
-                        Vui lòng chọn nhu cầu công việc.</div>
                 </div>
                 <div class="clearfix"></div>
 
@@ -360,14 +320,12 @@
                     </label>
                     <div class="fr_ip_vtmm col-xs-8">
                         <textarea name="job_goal"
-                                  id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                   class="inputTxtAreaTop form-control"
+                                  required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
                                   rows="5"
                                   value="{{ $candidate['job_goal'] }}"></textarea>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job_goal">
-                        Vui lòng chọn mục tiêu nghề nghiệp.</div>
                 </div>
 
                 <div class="form-group mt_16">
@@ -382,8 +340,6 @@
                                   rows="5"
                                   value="{{ $candidate['skill_forte'] }}"></textarea>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
-                        Vui lòng chọn mục tiêu nghề nghiệp.</div>
                 </div>
 
                 <div class="form-group">

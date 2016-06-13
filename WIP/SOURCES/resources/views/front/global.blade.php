@@ -92,7 +92,6 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
 </head>
     
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
