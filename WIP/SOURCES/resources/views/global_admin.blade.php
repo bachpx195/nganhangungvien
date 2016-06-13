@@ -47,6 +47,14 @@
 	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+
+	<link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+	<link href="{{ asset('/assets/default/kendoui/styles/kendo.material.min.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+	<link href="{{ asset('/assets/default/css/kendo.custom.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+
 	<!-- END THEME LAYOUT STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" /> </head>
 
@@ -106,7 +114,6 @@
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
-	<script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
@@ -116,6 +123,7 @@
 	<script src="{{ asset('/assets/pages/scripts/components-editors.min.js') }}" ></script>
 	<script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
 	<script src="{{ asset('/assets/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
 	<script>
 	jQuery.extend(jQuery.validator.messages, {
 		required: '@lang('validation.required', ['attribute' => ''])',
