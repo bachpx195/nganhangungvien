@@ -27,7 +27,7 @@ class AccountProfileController extends BaseController
         ICompanySizeRepo $companySizeRepo
     )
     {
-        parent::__construct($candidateRepo, $provinceRepo, $companySizeRepo);
+        parent::__construct($candidateRepo, $provinceRepo);
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;

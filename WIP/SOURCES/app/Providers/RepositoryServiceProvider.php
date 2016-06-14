@@ -104,6 +104,10 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\IConfigRepo',
 			'App\Repositories\ConfigRepo');
+
+		$this->app->bind(
+			'App\Repositories\ITransactionRepo',
+			'App\Repositories\TransactionRepo');
 	}
 
 }
