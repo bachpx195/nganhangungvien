@@ -51,7 +51,7 @@
 							</li>
 							<li class="divider"> </li>
 							<li>
-								<a href="{{ url('/auth/logout') }}">
+								<a href="{{ url('/admin/logout') }}">
 									<i class="icon-logout"></i> Đăng xuất </a>
 							</li>
 						</ul>

@@ -25,6 +25,7 @@ class AuthController extends Controller {
 	use AuthenticatesAndRegistersUsers;
 
 	protected $redirectTo = "/admin";
+	protected $redirectAfterLogout = 'admin/login';
 	
 	/**
 	 * Create a new authentication controller instance.
@@ -43,6 +44,13 @@ class AuthController extends Controller {
 
 	public function getLogin(Request $request) {
 		return view('admin.account.login');
+	}
+
+	public function getLogout()
+	{
+		$this->auth->logout();
+
+		return redirect($this->redirectAfterLogout);
 	}
 	
 	/**
