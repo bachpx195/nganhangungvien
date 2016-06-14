@@ -74,7 +74,7 @@ class AuthController extends Controller {
 				return redirect()->intended($this->redirectTo);
         	}
 
-        	return redirect($this->loginPath())
+        	return redirect('admin/login')
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
 						'email' => trans('messages.auth.login.error'),

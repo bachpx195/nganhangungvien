@@ -57,6 +57,13 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Password</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
+        <div class="form-group font-red">
+            @if($errors->has())
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            @endif
+        </div>
         <div class="form-actions">
             <button type="submit" class="btn green uppercase">Login</button>
         </div>
