@@ -40,6 +40,10 @@ class AuthController extends Controller {
 
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
+
+	public function getLogin(Request $request) {
+		return view('admin.account.login');
+	}
 	
 	/**
 	 * Custom login
@@ -49,19 +53,19 @@ class AuthController extends Controller {
 	 */
 	public function postLogin(Request $request) {  
 		
-		$email = $request->input('email');  
-		$password = $request->input('password');  
-        
+		$email = $request->input('username');
+		$password = $request->input('password');
+        echo $email;
+		echo $password;
 		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))   {
 			return redirect()->intended($this->redirectTo);
         }
         else {
-        	
+
 			if (Auth::attempt(['username' => $email, 'password' => $password, 'status' => 1]))   {
-				
 				return redirect()->intended($this->redirectTo);
         	}
-        	
+
         	return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
