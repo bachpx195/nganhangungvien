@@ -7,6 +7,14 @@ $( document ).ready(function() {
 
         var rendered = Mustache.render(template, {index: index});
         $( "#experience-list" ).append($(rendered));
+
+        setTimeout(function(){
+            $('.candidate-front [name="day_in_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="day_in_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="day_out_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="day_out_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="experience_salary_' + index + '"]').select2().addClass('select-style');
+        },0);
     });
 
     $('#add-more-certificate').on('click', function(e) {
@@ -17,6 +25,14 @@ $( document ).ready(function() {
 
         var rendered = Mustache.render(template, {index: index});
         $( "#certificate-list" ).append($(rendered));
+
+        setTimeout(function(){
+            $('.candidate-front [name="started_at_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="started_at_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="ended_at_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="ended_at_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="graduation_type_' + index + '"]').select2().addClass('select-style');
+        },0);
     });
 
     $('#add-more-languages').on('click', function(e) {
@@ -27,6 +43,10 @@ $( document ).ready(function() {
 
         var rendered = Mustache.render(template, {index: index});
         $( "#language-list" ).append($(rendered));
+
+        setTimeout(function(){
+            $('.candidate-front [name="language_id_' + index + '"]').select2().addClass('select-style');
+        },0);
     });
 
     $('#add-more-contact-person').on('click', function(e) {

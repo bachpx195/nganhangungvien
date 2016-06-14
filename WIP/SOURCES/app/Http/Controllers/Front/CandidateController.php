@@ -27,6 +27,7 @@ use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use DateTime;
@@ -175,6 +176,9 @@ class CandidateController extends Controller {
                 //Save a contact persons
                 $this->saveContactPersons($candidate, $input);
                 DB::commit();
+
+                //send email
+                $this->sendEmail($input);
             } catch (\Exception $e) {
                 DB::rollBack();
                 //throw new Exception('Something wrong!!');
@@ -185,24 +189,16 @@ class CandidateController extends Controller {
     }
 
     /**
-     * Delete a candidate
+     * Send mail to candidate
      *
-     * @param Request $request
-     * @param $id
-     * @return array
+     * @param $data
      */
-    public function delete(Request $request, $id) {
+    private function sendEmail($data){
 
-        $data = [];
-
-        if ($request->ajax()) {
-
-            Candidate::find($id)->delete();
-
-            $data = ['status' => true, 'message' => ''];
-        }
-
-        return $data;
+        Mail::send('front.emails.candidate.register', $data, function ($message) use ($data) {
+            $message->subject('Đăng ký ứng viên thành công')
+                ->to($data['email']);
+        });
     }
 
     /**

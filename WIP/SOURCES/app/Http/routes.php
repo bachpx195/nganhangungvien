@@ -15,10 +15,21 @@ Route::match(['get', 'post'], '/admin', [
 	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
 ]);
 
+Route::get('/admin/login', [
+	'as' => 'admin.getLogin', 'uses' => 'Auth\AuthController@getLogin'
+]);
+Route::post('/admin/login', [
+	'as' => 'admin.postLogin', 'uses' => 'Auth\AuthController@postLogin'
+]);
+Route::get('/admin/logout', [
+	'as' => 'admin.logout', 'uses' => 'Auth\AuthController@getLogout'
+]);
+
+
 /**
  * Backend
  */
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 {
 	//router admin
 	Route::match(['get'], '/', [

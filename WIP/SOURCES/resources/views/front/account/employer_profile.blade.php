@@ -157,10 +157,10 @@
 </div>
 <!-- template popup -->
 <div class="popup_template_company_info" id="popup_template_company_info" hidden="hidden">
-    @include('front.account.template.popup_change_company_info')
+    @include('front.account.template.template_change_company_info')
 </div>
 <div class="popup_template_contact_person" id="popup_template_contact_person" hidden="hidden">
-    @include('front.account.template.popup_change_contact_person')
+    @include('front.account.template.template_change_contact_person')
 </div>
 <!-- javascript function -->
 @include('front.account.employer_profile_js')
