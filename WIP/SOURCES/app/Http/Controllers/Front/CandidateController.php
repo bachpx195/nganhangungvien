@@ -27,6 +27,7 @@ use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use DateTime;
@@ -152,7 +153,7 @@ class CandidateController extends Controller {
                 }
 
                 $candidate = new Candidate;
-                $candidate = $this->getGeneralInfoByInput($candidate, $input);
+                $candidate = $this->getGeneralInfoByInput($candidate, $input, $request);
 
                 $candidate->save();
                 if ($candidate->id) {
@@ -175,6 +176,9 @@ class CandidateController extends Controller {
                 //Save a contact persons
                 $this->saveContactPersons($candidate, $input);
                 DB::commit();
+
+                //send email
+                $this->sendEmail($input);
             } catch (\Exception $e) {
                 DB::rollBack();
                 //throw new Exception('Something wrong!!');
@@ -185,24 +189,16 @@ class CandidateController extends Controller {
     }
 
     /**
-     * Delete a candidate
+     * Send mail to candidate
      *
-     * @param Request $request
-     * @param $id
-     * @return array
+     * @param $data
      */
-    public function delete(Request $request, $id) {
+    private function sendEmail($data){
 
-        $data = [];
-
-        if ($request->ajax()) {
-
-            Candidate::find($id)->delete();
-
-            $data = ['status' => true, 'message' => ''];
-        }
-
-        return $data;
+        Mail::send('front.emails.candidate.register', $data, function ($message) use ($data) {
+            $message->subject('Đăng ký ứng viên thành công')
+                ->to($data['email']);
+        });
     }
 
     /**
@@ -250,8 +246,8 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveContactPerson($contactPerson, $index) {
-        if (!empty(trim($contactPerson['contact_person_full_name_' . $index])) && !empty(trim($contactPerson['contact_person_company_' . $index]))
-        && !empty(trim($contactPerson['contact_person_phone_number_' . $index])) && !empty(trim($contactPerson['contact_person_office_' . $index]))) {
+        if (!empty($contactPerson['contact_person_full_name_' . $index]) && !empty($contactPerson['contact_person_company_' . $index])
+        && !empty($contactPerson['contact_person_phone_number_' . $index]) && !empty($contactPerson['contact_person_office_' . $index])) {
             return true;
         }
 
@@ -298,8 +294,8 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveITLevel($itLevel) {
-        if (!empty(trim($itLevel['word'])) || !empty(trim($itLevel['excel']))
-                || !empty(trim($itLevel['power_point'])) || !empty(trim($itLevel['out_look']))) {
+        if (!empty($itLevel['word']) || !empty($itLevel['excel'])
+                || !empty($itLevel['power_point']) || !empty($itLevel['out_look'])) {
             return true;
         }
 
@@ -352,7 +348,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveLanguage($language, $index) {
-        if (!empty(trim($language['language_id_' . $index]))) {
+        if (!empty($language['language_id_' . $index])) {
             return true;
         }
 
@@ -430,7 +426,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveCertificate($certificate, $index) {
-        if (!empty(trim($certificate['certificate_name_' . $index])) && !empty(trim($certificate['certificate_name_' . $index]))) {
+        if (!empty($certificate['certificate_name_' . $index]) && !empty($certificate['certificate_name_' . $index])) {
             return true;
         }
 
@@ -465,7 +461,7 @@ class CandidateController extends Controller {
      * @return bool
      */
     private function canSaveExperience($experience, $index) {
-        if (!empty(trim($experience['experience_company_name_' . $index])) && !empty(trim($experience['experience_office_' . $index]))) {
+        if (!empty($experience['experience_company_name_' . $index]) && !empty($experience['experience_office_' . $index])) {
             return true;
         }
 
@@ -509,9 +505,10 @@ class CandidateController extends Controller {
      *
      * @param $candidate
      * @param $input
+     * @param $request
      * @return mixed
      */
-    private function getGeneralInfoByInput($candidate, $input)
+    private function getGeneralInfoByInput($candidate, $input, $request)
     {
         $candidate->full_name = $input['full_name'];
         $candidate->email = $input['email'];
@@ -526,7 +523,6 @@ class CandidateController extends Controller {
 
         $candidate->sex = $input['sex'];
         $candidate->phone_number = $input['phone_number'];
-        //$candidate->image
         $candidate->province_id = $input['province_id'];
         $candidate->is_married = $input['is_married'];
         $candidate->cv_title = $input['cv_title'];
@@ -540,6 +536,16 @@ class CandidateController extends Controller {
         $candidate->exigency = $input['exigency'];
         $candidate->job_goal = $input['job_goal'];
         $candidate->skill_forte = $input['skill_forte'];
+        $candidate->employment_status = $input['employment_status'];
+
+        $candidateImgPath = FileHelper::getCandidateImgPath();
+        $imageName = FileHelper::getNewFileName();
+
+        if (!empty($request->file('image'))) {
+            $imgExtension = $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($candidateImgPath, $imageName . '.' . $imgExtension);
+            $candidate->image = $imageName . '.' . $imgExtension;
+        }
 
         $candidate->view_total = 0;
         $candidate->status = self::DEFAULT_STATUS;

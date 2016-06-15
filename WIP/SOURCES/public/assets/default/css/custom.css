@@ -44,3 +44,35 @@
 .spacer-50{
 	height : 50px;
 }
+.upload-image {
+	width: 200px;
+	height: 150px;
+}
+
+/**NAP THE**/
+label.card-deposit > input {
+	display: none;
+}
+label.card-deposit > input + img {
+	cursor: pointer;
+	border: 2px solid #CCCCCC;
+	background: #CCCCCC;
+	/* margin-bottom: 20px!important; */
+}
+.img-thumbnail {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+label.card-deposit > input:checked + img {
+	border: 2px solid #FF9933;
+	background: #FF9933;
+}

@@ -15,10 +15,21 @@ Route::match(['get', 'post'], '/admin', [
 	'as' => 'index', 'uses' => 'WelcomeController@indexAdmin'
 ]);
 
+Route::get('/admin/login', [
+	'as' => 'admin.getLogin', 'uses' => 'Auth\AuthController@getLogin'
+]);
+Route::post('/admin/login', [
+	'as' => 'admin.postLogin', 'uses' => 'Auth\AuthController@postLogin'
+]);
+Route::get('/admin/logout', [
+	'as' => 'admin.logout', 'uses' => 'Auth\AuthController@getLogout'
+]);
+
+
 /**
  * Backend
  */
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 {
 	//router admin
 	Route::match(['get'], '/', [
@@ -243,11 +254,36 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	]);
 
 	//Profile
-	Route::match(['get', 'post'], '/tai-khoan/profile', [
-		'as' => 'account.profile', 'uses' => 'Front\AccountProfileController@index'
+	Route::match(['get'], '/user/account', [
+		'as' => 'user.account', 'uses' => 'Front\AccountProfileController@manageAccountProfile'
+	]);
+	Route::match(['post'], '/user/account/changepassword', [
+		'as' => 'user.account.changepassword', 'uses' => 'Front\AccountProfileController@changeAccountPassword'
+	]);
+	Route::match(['post'], '/user/account/changecompanyinfo', [
+		'as' => 'user.account.changecompanyinfo', 'uses' => 'Front\AccountProfileController@changeCompanyInformation'
+	]);
+	Route::match(['post'], '/user/account/changecontactperson', [
+		'as' => 'user.account.changecontactperson', 'uses' => 'Front\AccountProfileController@changeEmployerContactPersonInfo'
+	]);
+
+	Route::match(['get', 'post'], '/candidate/form', [
+		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+	]);
+
+	// Employer Transaction
+	Route::match(['get'], '/user/transaction', [
+		'as' => 'user.transaction', 'uses' => 'Front\EmployerTransactionController@getEmployerTransaction'
+	]);
+	Route::match(['get'], '/user/transaction/loadmore', [
+		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
 	]);
 });
 
-Route::match(['get', 'post'], '/candidate/form', [
-	'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
-]);
+Route::group(['middleware' => ['auth']], function() {
+	Route::match(['get', 'post'], '/user/pay', [
+		'as' => 'user.pay', 'uses' => 'UserController@userPay'
+	]);
+});
+
+

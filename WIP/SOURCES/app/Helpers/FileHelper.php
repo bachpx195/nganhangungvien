@@ -11,7 +11,7 @@ class FileHelper {
      * @param int $index
      * @return string
      */
-    public static function getNewFileName($index)
+    public static function getNewFileName($index = null)
     {
         if (empty($index)) {
             return date('YmdHis') . '-' . substr(microtime(), 2,3)  . rand(0, 100);

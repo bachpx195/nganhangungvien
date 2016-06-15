@@ -23,6 +23,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="cv_title"
                                name="cv_title" placeholder="Ví dụ: Nhân viên chăm sóc khách hàng - vận hành game"
+                               required data-required-msg="Vui lòng nhập Tiêu đề hồ sơ"
                                 value="{{$candidate['cv_title']}}">
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none"
@@ -37,13 +38,12 @@
                         Email <span class="has-error">*</span>
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email"
+                        <input type="email" class="form-control" id="email"
                                name="email" placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com"
+                               required data-required-msg="Vui lòng không bỏ trống Email"
                                value="{{$candidate['email']}}">
                     </div>
-                    @include('admin.common.form_error', array('fieldName' => 'email'))
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="email">
-                        Vui lòng nhập địa chỉ email đúng để NTD liên hệ được với bạn</div>
+                    @include('admin.common.form_error', array('fieldName' => 'email'))>
                 </div>
 
                 <!-- input Họ và Tên * -->
@@ -54,10 +54,9 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="full_name" name="full_name"
                                placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                               required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
                                value="{{ $candidate['full_name'] }}">
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="full_name">
-                        Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu.</div>
                 </div>
 
                 <!-- input Giới tính -->
@@ -98,17 +97,20 @@
                     <label for="birthday" class="col-sm-2 control-label">
                         Ngày sinh <span class="has-error">*</span></label>
                     <div class="col-sm-3">
-                            <select name="birthday_day" class="form-control">
+                            <select name="birthday_day" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Ngày sinh">
                                 @include('admin.common.day_options', array('selected' => $candidate['birthday_day']))
                             </select>
                     </div>
                     <div class="col-sm-3">
-                            <select name="birthday_month" class="form-control">
+                            <select name="birthday_month" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Tháng sinh">
                                 @include('admin.common.month_options', array('selected' => $candidate['birthday_month']))
                             </select>
                     </div>
                     <div class="col-sm-3">
-                            <select name="birthday_year" class="form-control">
+                            <select name="birthday_year" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Năm sinh">
                                 @include('admin.common.year_options', array('selected' => $candidate['birthday_year']))
                             </select>
                     </div>
@@ -120,10 +122,9 @@
                     <label for="phone_number" class="col-sm-2 control-label">Số điện thoại <span class="has-error">*</span></label>
                     <div class="fr-input-wd333">
                         <input type="text" class="form-control" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168"
+                               required data-required-msg="Vui lòng nhập vào Số điện thoại"
                                value="{{ $candidate['phone_number'] }}">
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="phone_number">
-                        Vui lòng nhập vào số điện thoại.</div>
                 </div>
 
                 <div class="clearfix"></div>
@@ -133,7 +134,8 @@
                         bậc hiện tại <span class="has-error">*</span></label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="current_rank" class="form-control">
+                            <select name="current_rank" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Cấp bậc hiện tại">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['current_rank'],
@@ -143,8 +145,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="current_rank">
-                        Vui lòng chọn cấp bậc hiện tại.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
@@ -153,7 +153,8 @@
                         bậc mong muốn <span class="has-error">*</span></label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="expect_rank" class="form-control">
+                            <select name="expect_rank" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Cấp bậc mong muốn">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['expect_rank'],
@@ -163,8 +164,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="expect_rank">
-                        Vui lòng chọn cấp bậc mong muốn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <!-- input Ngành nghề quan tâm -->
@@ -174,7 +173,8 @@
                     </label>
                     <div class="col-md-10">
                         <div class="">
-                            <select name="job" class="form-control">
+                            <select name="job" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['job'],
@@ -184,8 +184,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job">
-                        Vui lòng chọn ngành nghề mong muốn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
@@ -194,7 +192,8 @@
                     </label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="province_id" class="form-control">
+                            <select name="province_id" class="form-control"
+                                    required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['province_id'],
@@ -204,8 +203,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="province_id">
-                        Vui lòng nhập chọn tỉnh thành..</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
@@ -215,7 +212,8 @@
                                 class="has-error">*</span></label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="level" class="form-control">
+                            <select name="level" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Trình độ học vấn">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['level'],
@@ -225,8 +223,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="level">
-                        Vui lòng chọn trình độ học vấn.</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group mt_16">
@@ -236,7 +232,8 @@
                                 class="has-error">*</span></label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="experience_years" class="form-control">
+                            <select name="experience_years" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Số năm kinh nghiệm">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['experience_years'],
@@ -246,8 +243,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="experience_years">
-                        Vui lòng chọn số năm kinh nghiệm.</div>
                 </div>
 
                 <!-- input Hình thức làm việc -->
@@ -259,7 +254,8 @@
 
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="employment_status" class="form-control">
+                            <select name="employment_status" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Hình thức làm việc">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['employment_status'],
@@ -269,8 +265,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="employment_status">
-                        Vui lòng chọn hình thực làm việc.</div>
                 </div>
                 <div class="clearfix"></div>
                 <!-- input Mức lương mong muốn -->
@@ -283,7 +277,8 @@
 
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="expect_salary" class="form-control">
+                            <select name="expect_salary" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Số lương mong muốn">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => $candidate['expect_salary'],
@@ -293,8 +288,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="expect_salary">
-                        Vui lòng chọn số lương mong muốn.</div>
                 </div>
 
                 <div class="form-group mt_16">
@@ -303,7 +296,8 @@
                                 class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
                     <div class="col-sm-10">
                         <div class="">
-                            <select name="exigency" class="form-control">
+                            <select name="exigency" class="form-control"
+                                    required data-required-msg="Vui lòng chọn Nhu cầu công việc.">
                                 @include('admin.common.options',
                                     array(
                                         'selected' => isset($candidate['exigency']) ? $candidate['exigency'] : '',
@@ -313,8 +307,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="exigency">
-                        Vui lòng chọn nhu cầu công việc.</div>
                 </div>
                 <div class="clearfix"></div>
 
@@ -328,10 +320,9 @@
                                   id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                   class="inputTxtAreaTop form-control"
+                                  required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
                                   rows="5">{{ $candidate['job_goal'] }}</textarea>
                     </div>
-                    <div class="error_reg_mess clearfix italic validator-message display_none" data-name="job_goal">
-                        Vui lòng chọn mục tiêu nghề nghiệp.</div>
                 </div>
 
                 <div class="form-group mt_16">
@@ -347,6 +338,30 @@
                     </div>
                     <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
                         Vui lòng chọn mục tiêu nghề nghiệp.</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Ảnh đại diện</label>
+                    <div class="col-md-10">
+                        <div class="col-md-9">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail upload-image">
+                                    @include('admin.common.candidate_image',
+                                    array('candidateImage' => isset($candidate['image']) ? $candidate['image'] : URL::asset('assets/image/default.png')))
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
+                                <div>
+						            <span class="btn red btn-outline btn-file">
+						                <span class="fileinput-new"> Chọn hình ảnh </span>
+						                <span class="fileinput-exists"> Thay đổi </span>
+						                <input  type="file" name="image" accept="image/*" > </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                </div>
+                            </div>
+                            <div class="clearfix margin-top-10">
+                                <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>

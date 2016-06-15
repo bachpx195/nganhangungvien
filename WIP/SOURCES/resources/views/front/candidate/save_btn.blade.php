@@ -5,7 +5,8 @@
                 <div class="form-group mb1 input-phone">
                     <div class="fr-input-wd153" style="text-align: center">
                         <div class="fr-input-wd153">
-                            <button type="submit"class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Lưu</button>
+                            <button type="button" class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16"
+                            id="register-candidate-btn">Tải hồ sơ ngay</button>
                         </div>
                     </div>
                 </div>

@@ -44,6 +44,8 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all' >
+    <link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
     <script type="text/javascript">
@@ -90,16 +92,17 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
 </head>
     
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/user/pay_validate.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
+    <script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
 
 </body>
 

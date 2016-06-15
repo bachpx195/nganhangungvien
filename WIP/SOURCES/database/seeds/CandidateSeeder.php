@@ -144,7 +144,6 @@ class CandidateSeeder extends Seeder {
 			'email' => '19@mail.com',
 			'Experience_years' => '2',
 		]);
-		
 	}
 	
 }
