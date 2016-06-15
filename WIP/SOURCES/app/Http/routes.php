@@ -253,6 +253,12 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
 	]);
 
+	Route::match(['get', 'post'], '/candidate/form', [
+		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+	]);
+});
+
+Route::group(['middleware' => ['auth']], function() {
 	//Profile
 	Route::match(['get'], '/user/account', [
 		'as' => 'user.account', 'uses' => 'Front\AccountProfileController@manageAccountProfile'
@@ -267,10 +273,6 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'user.account.changecontactperson', 'uses' => 'Front\AccountProfileController@changeEmployerContactPersonInfo'
 	]);
 
-	Route::match(['get', 'post'], '/candidate/form', [
-		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
-	]);
-
 	// Employer Transaction
 	Route::match(['get'], '/user/transaction', [
 		'as' => 'user.transaction', 'uses' => 'Front\EmployerTransactionController@getEmployerTransaction'
@@ -278,9 +280,6 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get'], '/user/transaction/loadmore', [
 		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
 	]);
-});
-
-Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/pay', [
 		'as' => 'user.pay', 'uses' => 'UserController@userPay'
 	]);

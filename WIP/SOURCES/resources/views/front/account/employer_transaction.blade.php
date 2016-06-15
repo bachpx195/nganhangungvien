@@ -3,6 +3,9 @@
     .number {
         text-align: right;
     }
+    #list_hs {
+        min-height: 180px;
+    }
 </style>
 @section('content')
     <div class="container-fluid nopadding">

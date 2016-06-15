@@ -124,12 +124,9 @@
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         required data-required-msg="Vui lòng chọn quy mô công ty">
                                                     <option value="">Chọn Quy mô công ty</option>
-                                                    <option value="1">Ít hơn 10 nhân viên</option>
-                                                    <option value="6">Từ 10 - 24 nhân viên</option>
-                                                    <option value="2">Từ 25 - 99 nhân viên</option>
-                                                    <option value="3">Từ 100 - 499 nhân viên</option>
-                                                    <option value="4">Từ 500 - 999 nhân viên</option>
-                                                    <option value="5">Trên 1000 nhân viên</option>
+                                                    @foreach($companySize as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <span data-for='company_size' class='k-invalid-msg'></span>

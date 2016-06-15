@@ -10,6 +10,7 @@ use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -41,7 +42,8 @@ class AccountProfileController extends BaseController
     public function manageAccountProfile(Request $request)
     {
         if ($request->isMethod('get')) {
-            $employer = $this->employerRepo->findByUserId(276);
+            $user = Auth::user();
+            $employer = $this->employerRepo->findByUserId($user->id);
             if (!$employer) {
                 return $this->errorView();
             }
