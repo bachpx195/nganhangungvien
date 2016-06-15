@@ -31,7 +31,7 @@
                                         </label>
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
-                                                   name="balance" value="0" disabled>
+                                                   name="balance" value="{{$employer->balance}}" disabled>
                                         </div>
                                     </div>
 

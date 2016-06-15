@@ -271,16 +271,18 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
 	]);
 
-	Route::match(['get', 'post'], '/user/pay', [
-		'as' => 'user.pay', 'uses' => 'UserController@userPay'
-	]);
-
 	// Employer Transaction
 	Route::match(['get'], '/user/transaction', [
 		'as' => 'user.transaction', 'uses' => 'Front\EmployerTransactionController@getEmployerTransaction'
 	]);
 	Route::match(['get'], '/user/transaction/loadmore', [
 		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
+	]);
+});
+
+Route::group(['middleware' => ['auth']], function() {
+	Route::match(['get', 'post'], '/user/pay', [
+		'as' => 'user.pay', 'uses' => 'UserController@userPay'
 	]);
 });
 

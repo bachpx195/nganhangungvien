@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\EmployerRepo;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Registrar;
 
@@ -9,6 +10,7 @@ use App\Repositories\IUserRepo;
 use App\Repositories\IRoleRepo;
 use App\Libs\BaoKim\Card;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
@@ -17,18 +19,21 @@ class UserController extends Controller {
 	protected $roleRepo;
 	protected $registrar;
 	protected $card;
+	protected $employerRepo;
 
 	/**
 	 * UserController constructor.
 	 * @param IUserRepo $userRepo
 	 * @param IRoleRepo $roleRepo
 	 * @param Registrar $registrar
+	 * @param EmployerRepo $employerRepo
 	 * @param Card $card
 	 */
 	public function __construct(
 		IUserRepo $userRepo,
 		IRoleRepo $roleRepo,
 		Registrar $registrar,
+		EmployerRepo $employerRepo,
 		Card $card
 	) {
 		
@@ -36,6 +41,7 @@ class UserController extends Controller {
 		$this->roleRepo = $roleRepo;
 		$this->registrar = $registrar;
 		$this->card = $card;
+		$this->employerRepo = $employerRepo;
 	}
 	
 	public function userList(Request $request) {
@@ -149,9 +155,11 @@ class UserController extends Controller {
 	public function userPay(Request $request)
 	{
 		if ($request->isMethod('get')) {
-			return view('user/pay');
+			$user = Auth::user();
+			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+			return view('user/pay', ['employer' => $employer]);
 		} else {
-			//TODO: Validate for user pay form
 			$userData = Input::except(array('_token', '_method'));
 			$r = $this->card->baoKimCardApi($userData);
 
