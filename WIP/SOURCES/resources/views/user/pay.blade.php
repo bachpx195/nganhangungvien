@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form class="form-horizontal" role="form" method="POST" action="{{ route('user.pay') }}" enctype="multipart/form-data">
+    <form id="user-pay-form" class="form-horizontal" role="form" method="POST" action="{{ route('user.pay') }}" enctype="multipart/form-data">
         <div class="block-content div-frm-hoso" id="frm-login-info">
             <div class="mb8">
                 <div class="center-p12p24 ">
@@ -24,14 +24,13 @@
                                 </div>
 
                                 <div class="clearfix"></div>
-                                <!-- input email -->
                                 <div class="body-box-child-ths pb16 mt16">
                                     <div class="form-group clearfix mb_16">
                                         <label for="balance" class="control-label-info bold txt-color-363636 fs14 w180">
                                             Tiền trong tài khoản <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
+                                            <input type="text" class="form-control input-lg2 color-input"
                                                    name="balance" value="0" disabled>
                                         </div>
                                     </div>
@@ -65,6 +64,7 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    name="seri_field" placeholder="Seri thẻ nạp"
+                                                   required data-required-msg="Vui lòng nhập Seri thẻ nạp"
                                                    value="">
                                         </div>
                                     </div>
@@ -76,16 +76,16 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    name="pin_field" placeholder="Mã thẻ nạp"
+                                                   required data-required-msg="Vui lòng nhập Mã thẻ nạp"
                                                    value="">
                                         </div>
                                     </div>
 
                                     <div class="form-group clearfix mb_16">
-                                        <label class="control-label-info bold txt-color-363636 fs14 w180">
-
-                                        </label>
+                                        <label class="control-label-info bold txt-color-363636 fs14 w180"></label>
                                         <div class="register_fr_input_wd583">
-                                            <button type="submit"class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Nạp thẻ ngay</button>
+                                            <button type="button" id="user-pay-btn"
+                                                    class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Nạp thẻ ngay</button>
                                         </div>
                                     </div>
                                 </div>
