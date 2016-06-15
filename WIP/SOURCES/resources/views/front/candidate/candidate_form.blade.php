@@ -12,7 +12,7 @@
 	</div>
 @endif
 
-<div class="content_dangky" id="frm-login-info">
+<div class="candidate-front" id="frm-login-info">
 	@include('front.candidate.send-cv-by-emaill')
 
 	<div class="">

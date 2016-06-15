@@ -37,12 +37,12 @@
             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="started_at_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="started_at_month_@{{index}}" class="w128">
                         @include('front.common.month_options')
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="started_at_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="started_at_year_@{{index}}" class="w128">
                         @include('front.common.year_options')
                     </select>
                 </div>
@@ -50,12 +50,12 @@
                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                     Hiện tại</p>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="ended_at_month_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="ended_at_month_@{{index}}" class="w128">
                         @include('front.common.month_options')
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="ended_at_year_@{{index}}" class="selectpicker checkCombobox box_select_filter_reg pos_relative select-style w128" data-disS="1">
+                    <select name="ended_at_year_@{{index}}" class="w128">
                         @include('front.common.year_options')
                     </select>
                 </div>
@@ -88,7 +88,7 @@
             <div class="fr-input-wd333 select_style31 city_select">
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                     <select name="graduation_type_@{{index}}"
-                            class="reqCheckBoxEdit tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style select_box2 required"
+                            class="required"
                             data-disS="1">
                         <option value="0" selected>Chọn loại
                             tốt nghiệp

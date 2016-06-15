@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Front;
 
@@ -14,47 +14,49 @@ use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\IProvinceRepo;
 
-class BaseController extends Controller {
+class BaseController extends Controller
+{
 
-	protected $candidateRepo,
-			  $provinceRepo;
-	
-	public function __construct(
-			ICandidateRepo $candidateRepo,
-			IProvinceRepo $provinceRepo)
-	{
-		$this->candidateRepo = $candidateRepo;
-		$this->provinceRepo = $provinceRepo;
-	}
-	
-	/**
-	 * Get dropdown data
-	 *
-	 *
-	 */
-	protected function dropdownData()
-	{
-		$dropdownData = [];
-		$dropdownData['provinces'] = $this->provinceRepo->getSortedList();
-		$dropdownData['occupations'] = Job::all();
-		$dropdownData['salaryGrades'] = Salary::all();
-		$dropdownData['degrees'] = Level::all();
-		$dropdownData['yearOfexps'] = ExperienceYears::all();
-		$dropdownData['languages'] = ForeignLanguage::all();
-		
-		return $dropdownData;
-	}
-	
-	protected function candidatesData()
-	{
-		$candidatesData=[];
-		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
-		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+    protected $candidateRepo,
+        $provinceRepo;
 
-		return $candidatesData;
-	}
+    public function __construct(
+        ICandidateRepo $candidateRepo,
+        IProvinceRepo $provinceRepo)
+    {
+        $this->candidateRepo = $candidateRepo;
+        $this->provinceRepo = $provinceRepo;
+    }
 
-	protected function errorView(){
-		return response()->view('front.errors.404', [], 404);
-	}
+    /**
+     * Get dropdown data
+     *
+     *
+     */
+    protected function dropdownData()
+    {
+        $dropdownData = [];
+        $dropdownData['provinces'] = $this->provinceRepo->getSortedList();
+        $dropdownData['occupations'] = Job::all();
+        $dropdownData['salaryGrades'] = Salary::all();
+        $dropdownData['degrees'] = Level::all();
+        $dropdownData['yearOfexps'] = ExperienceYears::all();
+        $dropdownData['languages'] = ForeignLanguage::all();
+
+        return $dropdownData;
+    }
+
+    protected function candidatesData()
+    {
+        $candidatesData = [];
+        $candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
+        $candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+
+        return $candidatesData;
+    }
+
+    protected function errorView()
+    {
+        return response()->view('front.errors.404', [], 404);
+    }
 }

@@ -213,9 +213,7 @@ return [
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 		
 		//Bussiness
-		'CandidateHelper'   => 'App\Helpers\CandidateHelper',
-		
-		'Module' 			=> 'Pingpong\Modules\Facades\Module',
+		'CandidateHelper'   => 'App\Helpers\CandidateHelper'
 	],
 
 ];

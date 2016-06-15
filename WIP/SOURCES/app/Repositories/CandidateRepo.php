@@ -19,9 +19,10 @@ class CandidateRepo implements ICandidateRepo {
      *
      * @param $params
      * @param int $pageSize
+     * @param string $orderBy
      * @return
      */
-    public function search($params, $pageSize = 10) {
+    public function search($params, $pageSize = 10, $orderBy = 'created_at') {
         $query = Candidate::select();
 
         if(isset($params['title']) && $params['title']){
@@ -51,6 +52,8 @@ class CandidateRepo implements ICandidateRepo {
         if(isset($params['sex']) && $params['sex']){
             $query = $query->where('sex', '=', $params['sex']);
         }
+
+        $query = $query->orderBy($orderBy, 'desc');
 
         return $query->paginate($pageSize);
 
