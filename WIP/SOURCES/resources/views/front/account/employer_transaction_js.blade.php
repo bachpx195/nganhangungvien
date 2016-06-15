@@ -46,7 +46,6 @@
 
 
         (function () {
-            //works in chrome
             $(window).bind('scroll', function(ev){
 
                 //get the viewport height. i.e. this is the viewable browser window height
@@ -61,7 +60,6 @@
                 if( windowHeight - clientHeight === scrollY ){
                     $("#btnShowMoreTransaction").trigger('click');
                 }
-
             });
         })();
     });
