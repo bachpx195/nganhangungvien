@@ -43,5 +43,26 @@
                 }
             });
         });
+
+
+        (function () {
+            //works in chrome
+            $(window).bind('scroll', function(ev){
+
+                //get the viewport height. i.e. this is the viewable browser window height
+                var clientHeight = document.body.clientHeight,
+
+                //height of the window/document. $(window).height() and $(document).height() also return this value.
+                windowHeight = $(this).outerHeight(),
+
+                //current top position of the window scroll. Seems this *only* works when bound inside of a scoll event.
+                scrollY = $(this).scrollTop();
+
+                if( windowHeight - clientHeight === scrollY ){
+                    $("#btnShowMoreTransaction").trigger('click');
+                }
+
+            });
+        })();
     });
 </script>
