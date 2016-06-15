@@ -68,4 +68,20 @@ class EmployerRepo implements IEmployerRepo
 
         return $query;
     }
+
+    /**
+     * Find employer info by user id
+     *
+     * @param int $userId
+     * @return Employer|null
+     */
+    public function findEmployerInfoByUserId($userId)
+    {
+        $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
+            ->where('user.id', '=', $userId)
+            ->select('employer.*')
+            ->first();
+
+        return $query;
+    }
 }

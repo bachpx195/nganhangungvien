@@ -58,4 +58,14 @@ class Constants {
     const FOREIGNLANGUAGE_NEW_PT = 'Tạo mới ngoại ngữ';
     const FOREIGNLANGUAGE_LIST_PT = 'Quản lý ngoại ngữ';
 
+    /*
+     * Config of BAOKIM gateway
+     */
+    public static $BAO_KIM = array(
+        'gateway' => 'BaoKim',
+        'merchant_id' => '',
+        'secure_pass' => '',
+        'api_password' => '',
+        'api_username' => ''
+    );
 }

@@ -2,30 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\EmployerRepo;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Registrar;
 
 use App\Repositories\IUserRepo;
 use App\Repositories\IRoleRepo;
+use App\Libs\BaoKim\Card;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
 	
 	protected $userRepo;
 	protected $roleRepo;
 	protected $registrar;
+	protected $card;
+	protected $employerRepo;
 
 	/**
 	 * UserController constructor.
 	 * @param IUserRepo $userRepo
 	 * @param IRoleRepo $roleRepo
 	 * @param Registrar $registrar
+	 * @param EmployerRepo $employerRepo
+	 * @param Card $card
 	 */
-	public function __construct(IUserRepo $userRepo, IRoleRepo $roleRepo, Registrar $registrar) {
+	public function __construct(
+		IUserRepo $userRepo,
+		IRoleRepo $roleRepo,
+		Registrar $registrar,
+		EmployerRepo $employerRepo,
+		Card $card
+	) {
 		
 		$this->userRepo = $userRepo;
 		$this->roleRepo = $roleRepo;
 		$this->registrar = $registrar;
+		$this->card = $card;
+		$this->employerRepo = $employerRepo;
 	}
 	
 	public function userList(Request $request) {
@@ -130,8 +146,29 @@ class UserController extends Controller {
 		return $data;
 	}
 
-	public function userPay()
+	/**
+	 * Payment by card
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userPay(Request $request)
 	{
-		return view('user/pay');
+		if ($request->isMethod('get')) {
+			$user = Auth::user();
+			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+			return view('user/pay', ['employer' => $employer]);
+		} else {
+			$userData = Input::except(array('_token', '_method'));
+			$r = $this->card->baoKimCardApi($userData);
+
+			if ($r['success'])
+			{
+				die('Paid successfully!');
+			} else {
+				die('Paid not successfully!');
+			}
+		}
 	}
 }

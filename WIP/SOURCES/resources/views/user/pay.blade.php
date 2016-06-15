@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form class="form-horizontal" role="form" method="POST" action="{{ route('user.pay') }}" enctype="multipart/form-data">
+    <form id="user-pay-form" class="form-horizontal" role="form" method="POST" action="{{ route('user.pay') }}" enctype="multipart/form-data">
         <div class="block-content div-frm-hoso" id="frm-login-info">
             <div class="mb8">
                 <div class="center-p12p24 ">
@@ -24,15 +24,14 @@
                                 </div>
 
                                 <div class="clearfix"></div>
-                                <!-- input email -->
                                 <div class="body-box-child-ths pb16 mt16">
                                     <div class="form-group clearfix mb_16">
-                                        <label for="cv_title" class="control-label-info bold txt-color-363636 fs14 w180">
+                                        <label for="balance" class="control-label-info bold txt-color-363636 fs14 w180">
                                             Tiền trong tài khoản <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
-                                                   name="cv_title" value="0">
+                                            <input type="text" class="form-control input-lg2 color-input"
+                                                   name="balance" value="{{$employer->balance}}" disabled>
                                         </div>
                                     </div>
 
@@ -43,15 +42,15 @@
                                         <div class="register_fr_input_wd583">
                                             <div class="row">
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="1" checked="checked">
+                                                    <input type="radio" name="card_id" value="MOBI" checked="checked">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/mobifone.png') }}" alt="" />
                                                 </label>
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="2">
+                                                    <input type="radio" name="card_id" value="VIETTEL">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/viettel.png') }}" alt="" />
                                                 </label>
                                                 <label class="card-deposit col-xs-4">
-                                                    <input type="radio" name="card_id" value="3">
+                                                    <input type="radio" name="card_id" value="VINA">
                                                     <img class="img-thumbnail"  src="{{ URL::asset('assets/image/vinaphone.png') }}" alt="" />
                                                 </label>
                                             </div>
@@ -59,12 +58,13 @@
                                     </div>
 
                                     <div class="form-group clearfix mb_16">
-                                        <label for="serial" class="control-label-info bold txt-color-363636 fs14 w180">
+                                        <label for="seri_field" class="control-label-info bold txt-color-363636 fs14 w180">
                                             Seri <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
-                                                   name="serial" placeholder="Seri thẻ nạp"
+                                            <input type="text" class="form-control input-lg2 color-input"
+                                                   name="seri_field" placeholder="Seri thẻ nạp"
+                                                   required data-required-msg="Vui lòng nhập Seri thẻ nạp"
                                                    value="">
                                         </div>
                                     </div>
@@ -74,18 +74,18 @@
                                             Mã thẻ <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-                                            <input type="text" class="form-control input-lg2 color-input" id="cv_title"
+                                            <input type="text" class="form-control input-lg2 color-input"
                                                    name="pin_field" placeholder="Mã thẻ nạp"
+                                                   required data-required-msg="Vui lòng nhập Mã thẻ nạp"
                                                    value="">
                                         </div>
                                     </div>
 
                                     <div class="form-group clearfix mb_16">
-                                        <label class="control-label-info bold txt-color-363636 fs14 w180">
-
-                                        </label>
+                                        <label class="control-label-info bold txt-color-363636 fs14 w180"></label>
                                         <div class="register_fr_input_wd583">
-                                            <button type="submit"class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Nạp thẻ ngay</button>
+                                            <button type="button" id="user-pay-btn"
+                                                    class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16">Nạp thẻ ngay</button>
                                         </div>
                                     </div>
                                 </div>
