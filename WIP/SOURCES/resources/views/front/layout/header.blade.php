@@ -62,7 +62,7 @@
 														</div>
 														<div class="pull-left ml_12 lh_20 w171">
 															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
-															<p class="bold text_grey2 mb_5 fwb font14">BloomGoo</p>
+															<p class="bold text_grey2 mb_5 fwb font14">{{Auth::user()->full_name}}</p>
 														</div>
 														<div class="clearfix"></div>
 													</div>
