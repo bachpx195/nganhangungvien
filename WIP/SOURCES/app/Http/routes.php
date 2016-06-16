@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 {
 	//router admin
 	Route::match(['get'], '/', [
-		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
+		'as' => 'admin', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
 	Route::match(['get'], '/candidate', [

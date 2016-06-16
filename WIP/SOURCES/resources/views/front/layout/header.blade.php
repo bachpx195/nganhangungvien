@@ -61,13 +61,18 @@
 															<img src="/assets/default/images/avatar.png" width="56px" alt="user avatar" title=" user avatar">
 														</div>
 														<div class="pull-left ml_12 lh_20 w171">
+															@if (Auth::user()->user_type == 'employer')
 															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
+															@elseif (Auth::user()->user_type == 'admin')
+															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản quản trị</span></p>
+															@endif
 															<p class="bold text_grey2 mb_5 fwb font14">{{Auth::user()->full_name}}</p>
 														</div>
 														<div class="clearfix"></div>
 													</div>
 												</div>
 												<ul class="request-line mt_10 mb_4">
+													@if (Auth::user()->user_type == 'employer')
 													<li class="pb_6 pos_relative w_100">
 														<span class="icon_24 icon-24 icon-taikhoan pos_absolute"></span>
 														<a href="{{route('user.account')}}" class="txt-ghi pl12 w232 ablock_menu">Quản lý tài khoản</a>
@@ -77,6 +82,12 @@
 														<span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
 														<a href="#" class="txt-ghi pl12 w232 ablock_menu">Hồ sơ đã lưu</a>
 													</li>
+													@elseif (Auth::user()->user_type == 'admin')
+													<li class="pb_6 pos_relative w_100">
+														<span class="icon_24 icon-24 icon-taikhoan pos_absolute"></span>
+														<a href="{{route('admin')}}" class="txt-ghi pl12 w232 ablock_menu">Trang quản trị</a>
+													</li>
+													@endif
 												</ul>
 												<div class="pl_16 pr_16 pb_8 bg_grey4">
 													<button class="btn no-shadow btnLogout text_grey3" onclick="window.location.href='/logout'">
