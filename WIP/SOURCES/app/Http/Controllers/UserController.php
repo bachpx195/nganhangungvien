@@ -12,6 +12,8 @@ use App\Libs\BaoKim\Card;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+
 
 class UserController extends Controller {
 	
@@ -154,21 +156,28 @@ class UserController extends Controller {
 	 */
 	public function userPay(Request $request)
 	{
+		$user = Auth::user();
+		$paymentStatus = Session::get('paymentStatus', null);
+		Session::forget('paymentStatus');
+
+
 		if ($request->isMethod('get')) {
-			$user = Auth::user();
 			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 
-			return view('user/pay', ['employer' => $employer]);
+			return view('user/pay', ['employer' => $employer, 'paymentStatus' => $paymentStatus]);
 		} else {
 			$userData = Input::except(array('_token', '_method'));
 			$r = $this->card->baoKimCardApi($userData);
 
 			if ($r['success'])
 			{
-				die('Paid successfully!');
+				$this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+				Session::put('paymentStatus', true);
 			} else {
-				die('Paid not successfully!');
+				Session::put('paymentStatus', false);
 			}
+
+			return redirect(route('user.pay'));
 		}
 	}
 }

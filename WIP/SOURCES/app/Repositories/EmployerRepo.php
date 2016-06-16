@@ -84,4 +84,26 @@ class EmployerRepo implements IEmployerRepo
 
         return $query;
     }
+
+    /**
+     * Increase balance after payment
+     *
+     * @param int $userId
+     * @param int $balance
+     * {@inheritDoc}
+     */
+    public function increaseBalanceAfterPayment($userId, $balance)
+    {
+        $employer = Employer::where('user.id', '=', $userId)->first();
+
+        if (!$employer) {
+            return false;
+        }
+
+        $oldBalance = isset($employer->balance) ? $employer->balance : 0;
+        $employer->balance = $oldBalance + $balance;
+        $employer->save();
+
+        return true;
+    }
 }
