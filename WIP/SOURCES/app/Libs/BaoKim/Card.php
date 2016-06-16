@@ -92,7 +92,7 @@ class Card {
                     break;
             }
 
-            return array('success' => true, 'result' => $token);
+            return array('success' => true, 'amount' => $token);
         } else {
             return array('success' => false, 'err' => 'Status Code:' . $status . '.'. 'Error:'.$result['errorMessage']);
         }
