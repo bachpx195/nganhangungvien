@@ -25,6 +25,7 @@
 	<!-- Thong tin lien he -->
 	@include('front/home/contact_info')
 	<!-- END Thong tin lien he -->
+
 </div>
 @endsection
 

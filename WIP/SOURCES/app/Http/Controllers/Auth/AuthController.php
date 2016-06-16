@@ -39,7 +39,7 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => ['getLogout', 'getLogoutFront']]);
 	}
 
 	public function getLogin(Request $request) {
@@ -52,6 +52,13 @@ class AuthController extends Controller {
 
 		return redirect($this->redirectAfterLogout);
 	}
+
+	public function getLogoutFront()
+	{
+		$this->auth->logout();
+
+		return redirect('');
+	}
 	
 	/**
 	 * Custom login
@@ -63,8 +70,7 @@ class AuthController extends Controller {
 		
 		$email = $request->input('username');
 		$password = $request->input('password');
-        echo $email;
-		echo $password;
+
 		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))   {
 			return redirect()->intended($this->redirectTo);
         }
@@ -81,4 +87,21 @@ class AuthController extends Controller {
 					]);
         }
     }
+
+	public function postLoginFront(Request $request) {
+		$email = $request->input('username');
+		$password = $request->input('password');
+
+		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1])
+			|| Auth::attempt(['username' => $email, 'password' => $password, 'status' => 1]))   {
+			return response()->json([
+				'error' => 0
+			]);
+		}
+		else {
+			return response()->json([
+				'error' => 0
+			]);
+		}
+	}
 }

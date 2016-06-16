@@ -12,6 +12,7 @@ use App\Model\Level;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
 use App\Repositories\ICandidateRepo;
+use Auth;
 
 class HomeController extends BaseController {
 
@@ -22,6 +23,7 @@ class HomeController extends BaseController {
 	 */
 	public function index()
 	{
+		//echo Auth::user()->username;
 		$dropdownData = $this->dropdownData();
 
 		$candidatesData = $this->candidatesData();

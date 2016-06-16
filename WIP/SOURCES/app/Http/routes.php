@@ -24,6 +24,12 @@ Route::post('/admin/login', [
 Route::get('/admin/logout', [
 	'as' => 'admin.logout', 'uses' => 'Auth\AuthController@getLogout'
 ]);
+Route::post('/login', [
+	'as' => 'front.postLogin', 'uses' => 'Auth\AuthController@postLoginFront'
+]);
+Route::get('/logout', [
+	'as' => 'front.logout', 'uses' => 'Auth\AuthController@getLogoutFront'
+]);
 
 
 /**
