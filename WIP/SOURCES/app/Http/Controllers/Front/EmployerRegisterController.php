@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
+use Auth;
 
 use Validator;
 use DateTime;
@@ -49,21 +50,9 @@ class EmployerRegisterController extends BaseController
                 $validator = $this->validateGeneralInformation($input);
 
                 if ($validator->fails()) {
-                    $data = Input::except(array('_token', '_method', 'password', 'retype_password'));
-                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
 
-                    /*return Redirect::to('employer.register')
-                        ->withErrors($validator);*/
+                    return Redirect::back()->withErrors($validator)->withInput();
 
-                    return Redirect::route('employer.register', $data);
-
-                    /*return Redirect::route('employer.register')
-                        ->withErrors($errors)
-                        ->withInput(Input::except(array('_token', '_method')));*/
-
-                    //return Redirect::back()->withErrors($validator)->withInput();
-                    /*return view('front.account.employer_register')
-                        -> withInput();*/
                 }
 
                 DB::beginTransaction();
@@ -82,6 +71,7 @@ class EmployerRegisterController extends BaseController
 
                 //send email
                 $this->sendEmail($input);
+                Auth::attempt(['email' => $user->email, 'password' => $user->password]);
 
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -149,6 +139,11 @@ class EmployerRegisterController extends BaseController
      */
     private function validateGeneralInformation($data)
     {
+        $messages = [
+            'email.unique' => 'Email đã tồn tại trong hệ thống.',
+            //'required' => 'Vui lòng điền các thông tin được yêu cầu.',
+        ];
+
         return Validator::make($data, [
             'email' => 'required|email|unique:user',
             'fullname' => 'required',
@@ -161,8 +156,9 @@ class EmployerRegisterController extends BaseController
             'province_id' => 'required',
             'contact_person' => 'required',
             'contact_phone' => 'required',
-            'contact_email' => 'required'
-        ]);
+            'contact_email' => 'required',
+            //'CaptchaCode'=> 'valid_captcha'
+        ], $messages);
     }
 
 }
