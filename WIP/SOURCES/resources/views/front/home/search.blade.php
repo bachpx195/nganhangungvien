@@ -72,7 +72,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_kinh_nghiem icon_24 icon-24"></i>
-						<select name="yearOfexp" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
+						<select name="yearOfexp[]" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
 							<option value="">Tất cả Kinh nghiệm</option>
 							@foreach($dropdownData['yearOfexps'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>

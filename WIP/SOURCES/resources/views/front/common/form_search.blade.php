@@ -11,7 +11,7 @@
 						tabindex="-1" data-select-class="nganh_nghe">
 						<option value="">Tất cả Ngành nghề</option>
 						@foreach($dropdownData['occupations'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['occupation']) && $params['occupation'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -24,7 +24,7 @@
 						tabindex="-1">
 						<option value="">Tất cả tỉnh thành</option>
 						@foreach($dropdownData['provinces'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['province']) && $params['province'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -42,7 +42,8 @@
 									<div class="modal-drop-mucluong font14">
 										@foreach($dropdownData['salaryGrades'] as $item)
 										<div class="demo-list pb_6">
-											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1">
+											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1"
+												   @if (isset($params['salaryGrade']) && in_array($item['id'], $params['salaryGrade'])) checked @endif>
 											<label for="mul_1" class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
@@ -74,7 +75,8 @@
 										@foreach($dropdownData['yearOfexps'] as $item)
 										<div class="demo-list pb_6">
 											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox"
-												name="yearOfexp" id="kn_8"> <label for="kn_8"
+												name="yearOfexp[]" id="kn_8"
+												   @if (isset($params['yearOfexp']) && in_array($item['id'], $params['yearOfexp'])) checked @endif> <label for="kn_8"
 												class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
@@ -100,12 +102,12 @@
 					<i
 						style="background-image: url(/assets/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
 						class="icon_select_box icon_24 icon-24"></i> <select
-						name="trinh_do_ntd"
+						name="degree"
 						class="selectpicker box_select_filter pos_relative select-style"
 						data-diss="-1" tabindex="-1" data-select-class="degree">
 						<option value="">Tất cả Trình độ</option>
 						@foreach($dropdownData['degrees'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['degree']) && $params['degree'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -120,8 +122,8 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
-						<option value="0">Nữ</option>
-						<option value="1">Nam</option>
+						<option value="0" @if (isset($params['sex']) && $params['sex'] === '0') selected @endif>Nữ</option>
+						<option value="1" @if (isset($params['sex']) && $params['sex'] === '1') selected @endif>Nam</option>
 					</select>
 				</div>
 			</div>
@@ -136,7 +138,7 @@
 						tabindex="-1" data-select-class="ngoai_ngu_ntd2">
 						<option value="">Tất cả Ngoại ngữ</option>
 						@foreach($dropdownData['languages'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['language']) && $params['language'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -149,11 +151,11 @@
 						style="margin-left: 5px;" name="timeUpdate"
 						class="selectpicker box_select_filter pos_relative select-style"
 						data-diss="-1" tabindex="-1" data-select-class="thoi_gian_ntd2">
-						<option value="" selected>Thời gian cập nhật</option>
-						<option value="1">Trong vòng 1 Ngày</option>
-						<option value="2">1 Tuần gần đây</option>
-						<option value="3">1 Tháng gần đây</option>
-						<option value="4">2 Tháng gần đây</option>
+						<option value="">Thời gian cập nhật</option>
+						<option value="1" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 1) selected @endif>Trong vòng 1 Ngày</option>
+						<option value="2" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 2) selected @endif>1 Tuần gần đây</option>
+						<option value="3" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 3) selected @endif>1 Tháng gần đây</option>
+						<option value="4" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 4) selected @endif>2 Tháng gần đây</option>
 					</select>
 				</div>
 			</div>
@@ -163,9 +165,9 @@
 
 			<div class="box_search_all pt_10 pl_5 w_100"
 				style="padding: 0 !important">
-				<input type="search" style="height: 50px;" name="hdn_tu_khoa"
+				<input type="search" style="height: 50px;" name="title"
 					class="inputsearchall_full input_search_all noboder pl_10 w_100 pr_10 font14"
-					placeholder="Nhập tiêu đề hồ sơ. VD: Nhân viên kinh doanh">
+					placeholder="Nhập tiêu đề hồ sơ. VD: Nhân viên kinh doanh" value="{{isset($params['title']) ? $params['title'] : ''}}">
 			</div>
 			<div class="box_search_all_r w322 pos_absolute">
 				<div class="search_advance floatLeft mr_6 mt_12 border_l w110">
