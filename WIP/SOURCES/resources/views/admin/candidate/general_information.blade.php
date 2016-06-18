@@ -43,7 +43,7 @@
                                required data-required-msg="Vui lòng không bỏ trống Email"
                                value="{{$candidate['email']}}">
                     </div>
-                    @include('admin.common.form_error', array('fieldName' => 'email'))>
+                    @include('admin.common.form_error', array('fieldName' => 'email'))
                 </div>
 
                 <!-- input Họ và Tên * -->
@@ -361,6 +361,14 @@
                             <div class="clearfix margin-top-10">
                                 <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tải lên CV đính kèm</label>
+                    <div class="col-md-10">
+                        <input name="attach_cv" type="file" multiple class="file-loading btn red btn-outline btn-file"
+                               accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                     </div>
                 </div>
             </div>

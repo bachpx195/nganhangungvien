@@ -53,6 +53,7 @@
 				@include('admin.candidate.information_technology')
 				<div class="clearfix"></div>
 				@include('admin.candidate.contact_person')
+				@include('admin.common.display_attach_cv', array('candidateAttachCv' => isset($candidate['attach_cv']) ? $candidate['attach_cv'] : ''))
 				@include('admin.candidate.save_btn')
 			</form>
 		</div>

@@ -848,6 +848,15 @@ class CandidateController extends Controller {
             $candidate->image = $imageName . '.' . $imgExtension;
         }
 
+        $candidateCvPath = FileHelper::getCandidateAttachCVPath();
+        $fileName = FileHelper::getNewFileName();
+
+        if (!empty($request->file('attach_cv'))) {
+            $imgExtension = $request->file('attach_cv')->getClientOriginalExtension();
+            $request->file('attach_cv')->move($candidateCvPath, $fileName . '.' . $imgExtension);
+            $candidate->attach_cv = $fileName . '.' . $imgExtension;
+        }
+
         if (empty($id)) {
             $candidate->view_total = 0;
         }

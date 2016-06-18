@@ -364,6 +364,14 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tải lên CV đính kèm</label>
+                    <div class="col-md-10">
+                        <input name="attach_cv" type="file" multiple class="file-loading btn red btn-outline btn-file"
+                               accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
