@@ -104,6 +104,6 @@ class EmployerRepo implements IEmployerRepo
         $employer->balance = $oldBalance + $balance;
         $employer->save();
 
-        return true;
+        return $employer;
     }
 }

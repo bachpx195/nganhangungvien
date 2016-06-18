@@ -55,22 +55,20 @@ function selectOptionMobile(e) {
 
 function pay_mobilecard() {
     if (!running_paymentMobilecard) {
-        if (void 0 !== u) return void alert("Báº¡n khÃ´ng thá»ƒ sá»­ dá»¥ng hÃ¬nh thá»©c nÃ y!");
         var e = $('input[name="ncc"]:checked'),
             t = $("#seri_popup").val();
         t = t.replace(/ /g, "");
         var u = $("#code_popup").val();
         u = u.replace(/ /g, "");
         var a = $("#captcha_popup_mc");
-        return void 0 === e.val() ? void alert("Xin vui lÃ²ng chá»n nhÃ  máº¡ng!") : "" === u ? (alert("Xin vui lÃ²ng nháº­p mÃ£ cÃ o!"), void $("#code_popup").focus()) : "" === t ? (alert("Xin vui lÃ²ng nháº­p sá»‘ serie!"), void $("#seri_popup").focus()) : "" == a.val() ? (alert("Xin vui lÃ²ng nháº­p mÃ£ xÃ¡c nháº­n!"), void a.focus()) : (running_paymentMobilecard = !0, t = t, u = u, $("#pay-loading-mc").show(), $.ajax({
-            url: "/users/ajax/aja_payment_mobilecard.php",
+        return void 0 === e.val() ? void alert("Xin vui lòng chọn nhà mạng!") : "" === u ? (alert("Xin vui lòng nhập mã số thẻ!"), void $("#code_popup").focus()) : "" === t ? (alert("Xin vui lòng nhập số seri!"), void a.focus()) : (running_paymentMobilecard = !0, t = t, u = u, $("#pay-loading-mc").show(), $.ajax({
+            url: "/user/pay",
             type: "POST",
             dataType: "json",
             data: {
-                card: e.val(),
-                seri: t,
-                code: u,
-                captcha: a.val()
+                card_id: e.val(),
+                seri_field: t,
+                pin_field: u
             },
             beforeSend: function() {
                 $(".btn_submit").css({
@@ -85,14 +83,23 @@ function pay_mobilecard() {
                 })
             },
             success: function(t) {
-                if (running_paymentMobilecard = !1, $("#pay-loading-mc").hide(), "" !== t.error && (alert(t.error), changeSecurity(), a.val("")), void 0 !== t["return"]) {
-                    $("#acc_main").text(t["return"].money), $("#seri_popup").val(""), $("#code_popup").val(""), $("#captcha_popup_mc").val("");
-                    var u = a.parent().find("a");
-                    reloadSecurityCode(u), e.removeAttr("checked"), alert("ChÃºc má»«ng báº¡n Ä‘Ã£ náº¡p tiá»n thÃ nh cÃ´ng vÃ o tÃ i khoáº£n " + t["return"].email + "\nSá»‘ tiá»n trong tÃ i khoáº£n cá»§a báº¡n: " + t["return"].money + "VNÄ"), _detailCallBackDownload()
+                if (t.success) {
+                    if (running_paymentMobilecard = !1, $("#pay-loading-mc").hide(), void 0 !== t["employer"]) {
+                        $("#acc_main").text(t["employer"].balance);
+
+                        //Reset top up form
+                        $("#seri_popup").val("");
+                        $("#code_popup").val("");
+                        $("#captcha_popup_mc").val("");
+
+                        alert("Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + ".000 VNĐ");
+                    }
+                } else {
+                    alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
                 }
             },
             error: function(e) {
-                alert("CÃ³ lá»—i xáº£y ra. Vui lÃ²ng thá»­ láº¡i !"), $(".loading_mn").remove(), $(".btn_submit").css("background-color", "#fa0")
+                alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
             }
         }), void 0)
     }
