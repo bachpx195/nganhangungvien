@@ -94,7 +94,7 @@ class EmployerRepo implements IEmployerRepo
      */
     public function increaseBalanceAfterPayment($userId, $balance)
     {
-        $employer = Employer::where('user.id', '=', $userId)->first();
+        $employer = Employer::where('user_id', '=', $userId)->first();
 
         if (!$employer) {
             return false;
