@@ -16,10 +16,13 @@
         -->
     </div>
     <ul class="listOpt">
+        @if($employer->vip != 1)
         <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="icon i_m_mb"></i><span>Thẻ điện thoại</span></a></li>
-        <li><a onclick="showForm_addMoney(this)" data-rel="atm" href="javascript:;"><i class="icon i_m_atm"></i><span>Thẻ ATM online</span></a></li>
+        @endif
+        <li><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="icon i_m_atm"></i><span>Thẻ ATM online</span></a></li>
         <li><a onclick="showForm_addMoney(this)" data-rel="online" href="javascript:;"><i class="icon i_m_bk"></i><span>Tài khoản VIP</span></a></li>
     </ul>
+    @if($employer->vip != 1)
     <div class="boxAddMoney_content" id="mobile">
         <h4>Thẻ điện thoại</h4>
         <div>
@@ -27,7 +30,7 @@
             <div>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon mobifone"></i><input type="radio" name="ncc" value="MOBI"/></a>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon vinaphone"></i><input type="radio" name="ncc" value="VINA"/></a>
-                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon viettel"></i><input type="radio" name="ncc" value="VIETTEL"/></a>
+                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon viettel"></i><input type="radio" name="ncc" value="VIETEL"/></a>
                 <p><input  name="code_popup" id="code_popup" type="text" placeholder="Mã số thẻ"/></p>
                 <p><input name="seri_popup" id="seri_popup" type="text"  placeholder="Seri thẻ"name="txt_seri"/></p>
                 <p class="note">Mệnh giá tối thiểu 20.000 vnđ</p>
@@ -39,7 +42,8 @@
         <p>Mua thẻ nạp online <a href="http://store.baokim.vn/card/multiMobileNew" rel="nofollow" target="_blank">tại đây</a></p>
         <p>Nếu gặp lỗi thì <a target="_blank" rel="nofollow" href="http://123doc.org/statics-detail/905-loi-khi-mua-tai-lieu-cach-xu-ly.htm">Click vào đây</a></p>
     </div>
-    <div class="boxAddMoney_content hidden" id="atm">
+    @endif
+    <div class="boxAddMoney_content @if($employer->vip != 1) hidden @endif" id="atm">
         <h4>Thẻ ATM online</h4>
         <div><div>
                 <div class="text_input">

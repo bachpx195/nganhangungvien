@@ -84,4 +84,29 @@ class EmployerController extends Controller
 
         return $data;
     }
+
+    /**
+     * Set employer is VIP
+     *
+     * @param Request $request
+     * @param int $id
+     *
+     * @return array $result
+     */
+    public function setVip(Request $request, $id)
+    {
+        $result = [];
+
+        if ($request->ajax()) {
+            if (!$request->has('vip')) {
+                $result = ['success' => false, 'message' => 'Not found vip'];
+            } else {
+                $vip = $request->input('vip');
+                $success = $this->employerRepo->setVip($id, $vip);
+                $result = ['success' => $success, 'message' => ''];
+            }
+        }
+
+        return $result;
+    }
 }

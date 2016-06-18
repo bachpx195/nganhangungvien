@@ -69,6 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/employer/status/{id}', [
 		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
+	Route::post('/employer/set-vip/{id}', [
+		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
+
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [
 		'as' => 'admin.news.list', 'uses' => 'Admin\NewsController@newsList'

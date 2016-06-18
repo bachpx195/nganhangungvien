@@ -19,7 +19,7 @@
 
                     </div>
                 </div>
-                <div class="portlet-body">
+                <div class="portlet-body" id="admin-employers">
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
@@ -28,6 +28,7 @@
                                 <th>Tên công ty</th>
                                 <th style="width: 12%;">Số điện thoại</th>
                                 <th style="width: 15%;">Người liên hệ</th>
+                                <th style="width: 5%;">Set VIP</th>
                                 <th style="width: 85px;"></th>
                             </tr>
                         </thead>
@@ -40,6 +41,12 @@
                                     <td>{{ $item->company_name }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->contact_person }}</td>
+                                    <td style="text-align: center;">
+                                        <input type="checkbox" class="icheck set-vip"  @if($item->vip == 1) checked @endif
+                                               data-id="{{$item->id}}" data-vip="{{$item->vip}}"
+                                               data-url="{{route('admin.employer.set_vip', ['id' => $item->id])}}"
+                                        >
+                                    </td>
                                     <td style="width: 85px;">
                                         <a class="change-status"
                                            data-id="{{$item->id}}" data-status="{{$item->status}}"
