@@ -10,7 +10,7 @@
             <p>{{$employer->email}}</p>
             <p><a target="_blank" href="{{route('user.transaction')}}">Lịch sử giao dịch</a></p>
         </div>
-        <p>Tài khoản: <span>{{$employer->balance}}.000 VNĐ</span></p>
+        <p><span>{{$employer->balance}}.000 VNĐ</span></p>
         <p class="line_space"></p>
     </div>
     <ul class="listOpt">
