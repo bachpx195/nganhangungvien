@@ -85,7 +85,7 @@ function pay_mobilecard() {
             success: function(t) {
                 if (t.success) {
                     if (running_paymentMobilecard = !1, $("#pay-loading-mc").hide(), void 0 !== t["employer"]) {
-                        $("#acc_main").text(t["employer"].balance);
+                        //$("#acc_main").text(t["employer"].balance);
 
                         //Reset top up form
                         $("#seri_popup").val("");
