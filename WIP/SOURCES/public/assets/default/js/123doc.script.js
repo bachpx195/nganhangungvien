@@ -95,10 +95,12 @@ function pay_mobilecard() {
                         alert("Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + ".000 VNĐ");
                     }
                 } else {
+                    running_paymentMobilecard = !1;
                     alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
                 }
             },
             error: function(e) {
+                running_paymentMobilecard = !1;
                 alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
             }
         }), void 0)
