@@ -67,11 +67,11 @@
                     <div class="col-sm-10">
                         <label class="radio-inline radio-styled">
                             <input type="radio" name="sex" value="2"
-                                   @if ($candidate['sex'] != 1) checked @endif><span>Nữ</span>
+                                   @if ($candidate['sex'] == 2) checked @endif><span>Nữ</span>
                         </label>
                         <label class="radio-inline radio-styled">
                             <input type="radio" name="sex" value="1"
-                                   @if ($candidate['sex'] == 1) checked @endif><span>Nam</span>
+                                   @if ($candidate['sex'] != 2) checked @endif><span>Nam</span>
                         </label>
                     </div>
                 </div>
