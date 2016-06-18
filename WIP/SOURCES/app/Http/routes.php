@@ -289,6 +289,10 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/pay', [
 		'as' => 'user.pay', 'uses' => 'UserController@userPay'
 	]);
+	Route::match(['get', 'post'], '/user/top-up', [
+		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
+	]);
+
 });
 
 
