@@ -8,7 +8,7 @@ use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
-use app\Repositories\ISaveCvRepo;
+use App\Repositories\ISaveCvRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -79,8 +79,8 @@ class AccountProfileController extends BaseController
             }
             $saveCvs = $this->getSaveCvs($start, $limit);
             $start = $start + $limit;
-            return view('front.account.savecv')
-                ->with('$saveCvs', $saveCvs)
+            return view('front.account.employer_saved_cv')
+                ->with('saveCvs', $saveCvs)
                 ->with('start', $start)
                 ->with('limit', $limit);
         }
