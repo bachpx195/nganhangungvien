@@ -136,9 +136,9 @@
 			addListener(window, "load", fun_hoso_keypress);
 		}
 	</script>
-	<div class="box_filter_map text-center" style="width: 400px;">
-		<div class="statistic font16">
-			Cả nước tổng cộng có <br /><span class="text_orange font28 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
+	<div class="box_filter_map text-center" style="width: 680px;">
+		<div class="statistic font20">
+			Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 		</div>
 
 		<div class="map-ntd">
@@ -199,8 +199,34 @@
 
 	<div class="box_filter_map text-left" id="youtube-video">
 		<div class="statistic font16">
-			Video tuyển dụng
+			VIDEO TUYỂN DỤNG
 		</div>
 		<iframe id="youtube-video-frame" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
+		<br/>
+		<div>
+			<div class="row">
+				<div class="statistic font16">
+					LIÊN HỆ ĐỂ ĐƯỢC HỖ TRỢ
+				</div>
+				<div>
+					<span class="bg-white bold font14 text_blue">Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
+					<span class="bg-white bold font14 text_blue">Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div>
+			<div class="row">
+				<div class="statistic font16">
+					HOẶC SỬ DỤNG DỊCH VỤ
+				</div>
+				<div>
+					<a class="btn btn-pink btn-lg w260 pl_16 btn_timkiem_all">
+						<i class="icon_arrow_orange icon_24 icon-24"></i>
+						THUÊ NGOÀI TRỌN GÓI
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

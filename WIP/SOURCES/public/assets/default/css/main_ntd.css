@@ -149,7 +149,6 @@ div.section{
 
 #youtube-video-frame {
     width: 100%;
-    height: 350px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -172,7 +171,8 @@ div.section{
     }
 
     #youtube-video {
-        width: 540px;
+        width: 340px;
+        height: 420px;
     }
 }
 
@@ -184,7 +184,8 @@ div.section{
     }
 
     #youtube-video {
-        width: 580px;
+        width: 320px;
+        height: 420px;
     }
 }
 
@@ -4075,7 +4076,7 @@ table {
     background-image:url(../images/xfull-map.png);
     background-repeat:no-repeat;
     background-position:center 15px;
-    width: 400px;
+    width: 680px;
     height: 300px;
     padding-left: 0;
     position: relative;
@@ -4138,7 +4139,7 @@ table {
 
 .map .nuoc-ngoai {
     top: 11px;
-    left: 252px;
+    left: 392px;
 }
 
 .map .nuoc-ngoai img {
@@ -4150,7 +4151,7 @@ table {
 
 .map .dong-bac-bo {
     top:78px;
-    left:201px;
+    left:341px;
 }
 
 .map .dong-bac-bo img {
@@ -4160,7 +4161,7 @@ table {
 
 .map .tay-bac-bo {
     top:69px;
-    left: -17px;
+    left: 123px;
     padding:0 6px;
 }
 
@@ -4171,7 +4172,7 @@ table {
 
 .map .bac-trung-bo {
     top:120px;
-    left:-3px;
+    left:137px;
 }
 
 .map .bac-trung-bo img {
@@ -4181,7 +4182,7 @@ table {
 
 .map .nam-trung-bo {
     top:167px;
-    left:247px;
+    left:387px;
 }
 
 .map .nam-trung-bo img {
@@ -4191,7 +4192,7 @@ table {
 
 .map .tay-nguyen {
     top: 175px;
-    left: 0px;
+    left: 140px;
 }
 
 .map .tay-nguyen img {
@@ -4201,7 +4202,7 @@ table {
 
 .map .tay-nam-bo {
     top: 225px;
-    left: -8px;
+    left: 132px;
 }
 
 .map .tay-nam-bo img {
@@ -4211,7 +4212,7 @@ table {
 
 .map .dong-nam-bo {
     top: 209px;
-    left: 248px;
+    left: 388px;
 }
 
 .map .dong-nam-bo img {
