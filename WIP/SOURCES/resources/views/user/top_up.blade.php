@@ -2,6 +2,7 @@
     <h3>Nạp tiền vào tài khoản</h3>
     <a href="javascript:;" onclick="closeBox()">×</a>
     <div class="boxAddMoney_user">
+        <!--
         <a target="_blank" href="{{route('user.account')}}">
             <img src="http://media.store123doc.com:8080/images/default/user_small.png"
                  alt="{{$employer->username}}" onerror="this.src='{{URL::to('/' . 'assets/default/images/user_small.png')}}'"/></a>
@@ -12,6 +13,7 @@
         </div>
         <p><span>{{$employer->balance}}.000 VNĐ</span></p>
         <p class="line_space"></p>
+        -->
     </div>
     <ul class="listOpt">
         <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="icon i_m_mb"></i><span>Thẻ điện thoại</span></a></li>
