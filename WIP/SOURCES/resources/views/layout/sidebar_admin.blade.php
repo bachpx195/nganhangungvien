@@ -178,8 +178,8 @@
                 </ul>                                                                              
             </li>          
 			<!-- VIDEO -->
-			<li class="nav-item">
-				<a href="javascript:;" class="nav-link nav-toggle">
+			<li class="nav-item {{($activeMenu == 'video') ? 'active open' : ''}}" >
+				<a href="{{ route('admin.video') }}" class="nav-link nav-toggle">
 					<i class="icon-briefcase"></i>
 					<span class="title">VIDEO</span>
 					<span class="arrow "></span>

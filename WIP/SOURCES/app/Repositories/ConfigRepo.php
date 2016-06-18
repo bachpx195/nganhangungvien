@@ -8,4 +8,8 @@ class ConfigRepo implements IConfigRepo {
 
         return Config::orderBy('id', 'dec')->get();
     }
+
+    public function findByCode($code){
+        return Config::where('code', '=', $code)->first();
+    }
 }

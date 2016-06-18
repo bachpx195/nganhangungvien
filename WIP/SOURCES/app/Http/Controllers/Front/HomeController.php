@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 use Illuminate\Http\Request;
 use App\Model\Candidate;
 use App\Model\Province;
@@ -40,11 +41,19 @@ class HomeController extends BaseController {
 		$countData['rencent'] = $this->candidateRepo->countRecentStatistic();
 		$countData['new'] = $this->candidateRepo->countNewStatistic();
 
+		$linkYouTube = '';
+		$videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
+		if($videoConfig){
+			$linkYouTube = $videoConfig->value;
+			$linkYouTube = str_replace('watch?v=', 'embed/', $linkYouTube);
+		}
+
 		return view('front/home/index')
 				->with('dropdownData', $dropdownData)
 				->with('tabsData', $tabsData)
 				->with('candidatesData', $candidatesData)
-				->with('countData',$countData);
+				->with('countData',$countData)
+				->with('linkYouTube', $linkYouTube);
 	}
 	
 }
