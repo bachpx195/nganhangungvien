@@ -286,6 +286,12 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get'], '/user/transaction/loadmore', [
 		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
 	]);
+	Route::match(['get'], '/user/savedprofile', [
+		'as' => 'user.saved.profile', 'uses' => 'Front\AccountProfileController@getSavedProfiles'
+	]);
+	Route::match(['get'], '/user/savedprofile/loadmore', [
+		'as' => 'user.saved.profile.loadmore', 'uses' => 'Front\AccountProfileController@loadMoreSavedCv'
+	]);
 	Route::match(['get', 'post'], '/user/pay', [
 		'as' => 'user.pay', 'uses' => 'UserController@userPay'
 	]);

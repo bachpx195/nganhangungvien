@@ -13,6 +13,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\IProvinceRepo;
+use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
@@ -58,5 +59,14 @@ class BaseController extends Controller
     protected function errorView()
     {
         return response()->view('front.errors.404', [], 404);
+    }
+
+    /**
+     * Common function for get current login user
+     * @return mixed
+     */
+    protected function getCurrentUser() {
+        $user = Auth::user();
+        return $user;
     }
 }

@@ -8,9 +8,9 @@ use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
+use app\Repositories\ISaveCvRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -19,30 +19,33 @@ class AccountProfileController extends BaseController
     private $employerRepo;
     private $userRepo;
     private $companySizeRepo;
+    private $saveCvRepo;
 
     public function __construct(
         IEmployerRepo $employerRepo,
         IUserRepo $userRepo,
         IProvinceRepo $provinceRepo,
         ICandidateRepo $candidateRepo,
-        ICompanySizeRepo $companySizeRepo
+        ICompanySizeRepo $companySizeRepo,
+        ISaveCvRepo $saveCvRepo
     )
     {
         parent::__construct($candidateRepo, $provinceRepo);
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;
+        $this->saveCvRepo = $saveCvRepo;
     }
 
     /**
-     * Index page
-     *
-     * @return \Illuminate\View\View
+     * Get user profile
+     * @param Request $request
+     * @return view
      */
     public function manageAccountProfile(Request $request)
     {
         if ($request->isMethod('get')) {
-            $user = Auth::user();
+            $user = $this->getCurrentUser();
             $employer = $this->employerRepo->findByUserId($user->id);
             if (!$employer) {
                 return $this->errorView();
@@ -55,6 +58,54 @@ class AccountProfileController extends BaseController
                 ->with('companySizes', $companySizes);
         }
         return view('front/account/employer_profile');
+    }
+
+    /**
+     * Get all saved profile
+     * @param Request $request
+     * @return $this
+     */
+    public function getSavedProfiles(Request $request)
+    {
+        $start = 0;
+        $limit = config('constants.SAVE_CV_LIMIT');
+        if ($request->isMethod('get')) {
+            $input = $request->all();
+            if (isset($input['start'])) {
+                $start = $input['start'];
+            }
+            if (isset($input['limit'])) {
+                $limit = $input['limit'];
+            }
+            $saveCvs = $this->getSaveCvs($start, $limit);
+            $start = $start + $limit;
+            return view('front.account.savecv')
+                ->with('$saveCvs', $saveCvs)
+                ->with('start', $start)
+                ->with('limit', $limit);
+        }
+    }
+
+    /**
+     * Load more save csv
+     * @param Request $request
+     * @return array|mixed
+     */
+    public function loadMoreSavedCv(Request $request)
+    {
+        $start = 0;
+        $limit = config('constants.SAVE_CV_LIMIT');
+        if ($request->isMethod('get')) {
+            $input = $request->all();
+            if (isset($input['start'])) {
+                $start = $input['start'];
+            }
+            if (isset($input['limit'])) {
+                $limit = $input['limit'];
+            }
+            $saveCvs = $this->getSaveCvs($start, $limit);
+            return response()->json(['status' => true, 'saveCvs' => $saveCvs]);
+        }
     }
 
     /**
@@ -84,7 +135,7 @@ class AccountProfileController extends BaseController
             if (strcmp($user->password, $hashOldPassword) != 0) {
                 return response()->json(['status' => false, 'message' => 'Mật khẩu cũ không đúng']);
             }
-            // save pasword
+            // save password
             $user->password = Hash::make($input['newPassword']);
             $user->save();
 
@@ -100,8 +151,7 @@ class AccountProfileController extends BaseController
      */
     public function changeCompanyInformation(Request $request)
     {
-        if ($request->isMethod('post'))
-        {
+        if ($request->isMethod('post')) {
             $input = $request->all();
             try {
                 $validator = $this->validateChangeCompanyInformation($input);
@@ -138,8 +188,7 @@ class AccountProfileController extends BaseController
      */
     public function changeEmployerContactPersonInfo(Request $request)
     {
-        if ($request->isMethod('post'))
-        {
+        if ($request->isMethod('post')) {
             $input = $request->all();
             try {
                 $validator = $this->validateContactPersonInformation($input);
@@ -202,5 +251,21 @@ class AccountProfileController extends BaseController
             'contact_phone' => 'required',
             'contact_email' => 'required'
         ]);
+    }
+
+    /**
+     * Get save cv
+     * @param $start
+     * @param $limit
+     * @return array|mixed
+     */
+    private function getSaveCvs($start, $limit) {
+        $user = $this->getCurrentUser();
+        $employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+        $saveCvs = $this->saveCvRepo->getSavedCvByEmployerId($employer->id, $start, $limit);
+        if (!$saveCvs) {
+            $saveCvs = [];
+        }
+        return $saveCvs;
     }
 }
