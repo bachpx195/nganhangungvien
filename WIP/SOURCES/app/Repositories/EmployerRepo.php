@@ -12,9 +12,10 @@ class EmployerRepo implements IEmployerRepo
     public function search($keyword, $pageSize = 10)
     {
         $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
-            ->join('province', 'employer.province_id', '=', 'province.id')
-            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
-            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person', 'employer.status', 'user.username', 'employer.created_at');
+            ->leftJoin('province', 'employer.province_id', '=', 'province.id')
+            ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person',
+                'employer.status', 'user.username', 'employer.created_at', 'employer.vip');
 
         if ($keyword) {
             $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%')
@@ -105,5 +106,24 @@ class EmployerRepo implements IEmployerRepo
         $employer->save();
 
         return $employer;
+    }
+
+    /**
+     * Set employer is VIP
+     *
+     * @param int $id
+     * @param boolean $vip
+     * {@inheritDoc}
+     */
+    public function setVip($id, $vip)
+    {
+        $employer = Employer::find($id);
+        if (!$employer) {
+            return false;
+        }
+        $employer->vip = $vip;
+        $employer->save();
+
+        return true;
     }
 }
