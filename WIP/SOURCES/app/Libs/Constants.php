@@ -68,4 +68,6 @@ class Constants {
         'api_password' => '',
         'api_username' => ''
     );
+
+    const GOOGLE_DOC_PATH = 'https://docs.google.com/viewer';
 }
