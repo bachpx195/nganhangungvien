@@ -180,4 +180,17 @@ class UserController extends Controller {
 			return redirect(route('user.pay'));
 		}
 	}
+
+	/**
+	 * Show top up modal and payment
+	 *
+	 * @return mixed
+	 */
+	public function userTopUp()
+	{
+		$user = Auth::user();
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+		return view('user/top_up', ['employer' => $employer]);
+	}
 }

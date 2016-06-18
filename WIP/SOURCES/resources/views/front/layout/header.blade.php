@@ -82,6 +82,11 @@
 														<span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
 														<a href="#" class="txt-ghi pl12 w232 ablock_menu">Hồ sơ đã lưu</a>
 													</li>
+													<li class="pb_6 pos_relative w_100">
+														<span class="bg_blue pos_absolute number-notifi">0</span>
+														<span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
+														<a href="javascript:;" rel="nofollow" onclick="popupPayment_open()" class="txt-ghi pl12 w232 ablock_menu">Nạp tiền</a>
+													</li>
 													@elseif (Auth::user()->user_type == 'admin')
 													<li class="pb_6 pos_relative w_100">
 														<span class="icon_24 icon-24 icon-taikhoan pos_absolute"></span>
