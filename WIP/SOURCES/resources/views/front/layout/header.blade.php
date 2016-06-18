@@ -52,7 +52,7 @@
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_quanly mt_20"></div>
 					<div class="title_cong_menu w_100">ỨNG VIÊN</div>
-				</a> <a class="bt_head_cong floatLeft " href="#"
+				</a> <a class="bt_head_cong floatLeft {{($activeHeaderMenu == 'news') ? 'active' : ''}} " href="{{ route('news.show') }}"
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_chuyenmon mt_20"></div>
 					<div class="title_cong_menu w_100">TÀI LIỆU QUẢN TRỊ</div>

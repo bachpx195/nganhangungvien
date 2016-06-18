@@ -278,6 +278,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get'], '/user/transaction/loadmore', [
 		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
 	]);
+
+	Route::match(['get'], '/tai-lieu', [
+		'as' => 'news.show', 'uses' => 'Front\NewsController@index'
+	]);
+
+	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
+		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
+	]);
 });
 
 Route::group(['middleware' => ['auth']], function() {

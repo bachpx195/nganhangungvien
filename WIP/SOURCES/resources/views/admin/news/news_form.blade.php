@@ -42,8 +42,10 @@
                     <div class="col-md-10">
 						<div class="col-md-9">
 						    <div class="fileinput fileinput-new" data-provides="fileinput">
-						        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+						        <div class="fileinput-new thumbnail">
+                                    <img src="{{ isset($news['image']) ? URL::to('/') . '/news/images/' . $news->image : URL::asset('assets/image/default.png') }}" alt="" /> </div>
+<!--                                     @include('admin.common.news_image',
+                                    array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
 						        <div>
 						            <span class="btn red btn-outline btn-file">
@@ -85,62 +87,5 @@
     </div>
 </div>
 @include('front.candidate.candidate_form_js')
-<script>
-$(function() {
-	jQuery("body")
-	.on("click", "#btn-save", function(){
-
-		$form = $(this).closest('form');
-
-		var validator = $form.validate({
-			ignore		: "",
-			errorClass	: 'help-block has-error'
-		});
-	    if(validator.form()) {
-	    	$form.submit();
-	    } else {
-	    }
-	});
-});
-$(document).ready(function() {
-    $.ajaxSetup({
-        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content')     }
-    });
-
-    $('#noi_dung').summernote({
-	  height: 300,                 // set editor height
-	  minHeight: null,             // set minimum height of editor
-	  maxHeight: null,             // set maximum height of editor
-	  focus: true,                  // set focus to editable area after initializing
-	   toolbar: [
-	    ['style', ['style']],
-	    ['font', ['bold', 'italic', 'underline', 'clear']],
-	    ['fontname', ['fontname']],
-	    ['color', ['color']],
-	    ['para', ['ul', 'ol', 'paragraph']],
-	    ['height', ['height']],
-	    ['table', ['table']],
-	    ['insert', ['link', 'picture', 'hr']],
-	    ['view', ['fullscreen', 'codeview']],
-	    ['help', ['help']]
-	  ],
-    });
-    $('#mieu_ta').summernote({
-	  height: 100,                 // set editor height
-	  minHeight: null,             // set minimum height of editor
-	  maxHeight: null,             // set maximum height of editor
-	  focus: false,                  // set focus to editable area after initializing summernote
-	  toolbar: [
-	    ['style', ['style']],
-	    ['font', ['bold', 'italic', 'underline', 'clear']],
-	    ['fontname', ['fontname']],
-	    ['color', ['color']],
-	    ['para', ['ul', 'ol', 'paragraph']],
-	    ['height', ['height']],
-	    ['help', ['help']]
-	  ],
-	});
-});
-</script>
-
+@include('admin.news.news_form_js')
 @endsection

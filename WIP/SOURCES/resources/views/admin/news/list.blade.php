@@ -13,7 +13,7 @@
                     <div class="actions">
                         <div class="btn-group">
                             <button class="btn sbold green">
-                                <a href="{{route('admin.news.form')}}" target="_blank" class="add-more-btn">
+                                <a href="{{ route('admin.news.form') }}" target="_blank" class="add-more-btn">
                                     THÊM TIN TỨC <i class="fa fa-plus"></i>
                                 </a>
                             </button>
