@@ -96,6 +96,18 @@
                                                 <div id="error_company_info"
                                                      class="clearfix error_reg_mess fs14 italic invalid-msg display_none"></div>
                                             </div>
+                                            <!-- input logo company -->
+                                            <div class="form-group mb_20">
+                                                <label class="control-label-info bold txt-color-363636 fs14 w180">Logo công ty </label>
+                                                <div class="register_fr_input_wd583">
+                                                    <div class="display_block btn-big pos_relactive w170 floatLeft">
+                                                        <input type="file" class="w182 bt_input pos_absolute" id="logo" name="logo" onchange="fileOnchange(this)">
+                                                        <span class="icon_upload_file"></span>Chọn file đính kèm
+                                                    </div>
+                                                    <span class="select_file_note floatLeft txt-color-363636 fs12" id="note_select_file_logo">(File đang chọn: )</span>
+                                                    <div class="note_size_photo clearfix font12 italic" id="error_logo">(Dạng file ảnh .jpg, .gif, .png, dung lượng &lt;=300KB)</div>
+                                                </div>
+                                            </div>
                                             <!-- input address -->
                                             <div class="form-group mb_14">
                                                 <label class="control-label-info bold txt-color-363636 fs14 w180"

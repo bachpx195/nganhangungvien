@@ -282,4 +282,9 @@
             company_description: $('#about_company').val()
         };
     }
+
+    function fileOnchange(objFile) {
+        fileName = objFile.value.replace(/C:\\fakepath\\/i, '');
+        $("#note_select_file_"+objFile.name).html(fileName);
+    }
 </script>
