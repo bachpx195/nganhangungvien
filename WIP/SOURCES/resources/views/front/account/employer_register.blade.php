@@ -125,7 +125,7 @@
                                                 <select id="company_size" name="company_size"
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         required data-required-msg="Vui lòng chọn quy mô công ty">
-                                                    <option value="">Chọn Quy mô công ty</option>
+                                                    <option value="">-- Chọn quy mô công ty --</option>
                                                     @foreach($companySize as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
@@ -196,7 +196,7 @@
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         tabindex="-1"
                                                         required data-required-msg="Vui lòng chọn tỉnh thành">
-                                                    <option value="">Chọn Tỉnh thành</option>
+                                                    <option value=""> -- Chọn Tỉnh thành -- </option>
                                                     @foreach($provinces as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
@@ -305,7 +305,7 @@
                                         <label class="control-label-info w185"></label>
                                         <div class="fr-input-wd333 floatLeft pl_10">
                                             <button type="button" id="btnRegister"
-                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16">Đăng
+                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16 mb_10">Đăng
                                                 Ký
                                             </button>
                                         </div>
