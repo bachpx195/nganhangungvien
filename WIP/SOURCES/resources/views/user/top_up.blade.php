@@ -25,9 +25,9 @@
         <div>
             <img src="http://media.store123doc.com:8080/images/web_2//hd_mobile.png"/>
             <div>
-                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon mobifone"></i><input type="radio" name="ncc" value="92"/></a>
-                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon vinaphone"></i><input type="radio" name="ncc" value="93"/></a>
-                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon viettel"></i><input type="radio" name="ncc" value="107"/></a>
+                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon mobifone"></i><input type="radio" name="ncc" value="MOBI"/></a>
+                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon vinaphone"></i><input type="radio" name="ncc" value="VINA"/></a>
+                <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon viettel"></i><input type="radio" name="ncc" value="VIETTEL"/></a>
                 <p><input  name="code_popup" id="code_popup" type="text" placeholder="Mã số thẻ"/></p>
                 <p><input name="seri_popup" id="seri_popup" type="text"  placeholder="Seri thẻ"name="txt_seri"/></p>
                 <p class="note">Mệnh giá tối thiểu 20.000 vnđ</p>
