@@ -43,7 +43,7 @@
                                required data-required-msg="Vui lòng không bỏ trống Email"
                                value="{{$candidate['email']}}">
                     </div>
-                    @include('admin.common.form_error', array('fieldName' => 'email'))>
+                    @include('admin.common.form_error', array('fieldName' => 'email'))
                 </div>
 
                 <!-- input Họ và Tên * -->
