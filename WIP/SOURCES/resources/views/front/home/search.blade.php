@@ -197,10 +197,12 @@
 		</div>
 	</div>
 
-	<div class="box_filter_map text-left" id="youtube-video">
-		<div class="statistic font16">
-			Video tuyển dụng
+	@if ($linkYouTube)
+		<div class="box_filter_map text-left" id="youtube-video">
+			<div class="statistic font16">
+				Video tuyển dụng
+			</div>
+			<iframe id="youtube-video-frame" src="{{$linkYouTube}}" frameborder="0" allowfullscreen=""></iframe>
 		</div>
-		<iframe id="youtube-video-frame" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
-	</div>
+	@endif
 </div>

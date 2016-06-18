@@ -214,6 +214,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/foreign-language/delete/{id}', [
 		'as' => 'admin.foreignlanguage.delete', 'uses' => 'Admin\ForeignLanguageController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/video', [
+		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
+	]);
 });
 
 /**

@@ -8,7 +8,7 @@
 	
 	@include('front/home/count',['coutData' => $countData])
 	
-	@include('front/home/search', ['dropdownData' => $dropdownData, 'countData' => $countData])
+	@include('front/home/search', ['dropdownData' => $dropdownData, 'countData' => $countData, 'linkYouTube' => $linkYouTube])
 
 	<!-- Phan loai ho theo -->
 	<h3 class="title_text_line mt24 fwb">
