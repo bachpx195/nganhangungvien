@@ -1,0 +1,67 @@
+
+.box_AddMoney .icon,
+.box_AddMoney i[class^=icon] {
+    background-image: url(../images/bg_icon.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-top
+}
+
+.box_AddMoney .i_numpage {
+    width: 16px;
+    height: 15px;
+    background-position: 2px -31px
+}
+
+.box_AddMoney .i_numview {
+    width: 20px;
+    height: 15px;
+    background-position: -13px -31px
+}
+
+.box_AddMoney .i_numdown {
+    width: 14px;
+    height: 15px;
+    background-position: -31px -31px
+}
+
+.box_AddMoney .list.doc_list_cnt .i_type_doc {
+    right: 18px;
+    position: absolute;
+    left: inherit;
+    top: 18px
+}
+
+.box_AddMoney .doc_list_cnt .i_type_doc {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 9
+}
+
+.box_AddMoney .i_type_doc {
+    width: 16px;
+    height: 18px
+}
+
+.box_AddMoney .i_type_doc1,
+.i_type_doc3 {
+    background-position: 0 -360px
+}
+
+.box_AddMoney .i_type_doc2 {
+    background-position: 0 -378px
+}
+
+.box_AddMoney .i_type_doc4,
+.box_AddMoney .i_type_doc5,
+.box_AddMoney .i_type_doc6,
+.box_AddMoney .i_type_doc7,
+.box_AddMoney .i_type_doc8,
+.box_AddMoney .i_type_doc9 {
+    background-position: 0 -396px
+}
+
+.boxAddMoney li {
+    list-style: none;
+}

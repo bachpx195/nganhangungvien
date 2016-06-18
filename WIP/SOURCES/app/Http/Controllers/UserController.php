@@ -159,10 +159,9 @@ class UserController extends Controller {
 		$user = Auth::user();
 		$paymentStatus = Session::get('paymentStatus', null);
 		Session::forget('paymentStatus');
-
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 
 		if ($request->isMethod('get')) {
-			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 
 			return view('user/pay', ['employer' => $employer, 'paymentStatus' => $paymentStatus]);
 		} else {
@@ -171,13 +170,32 @@ class UserController extends Controller {
 
 			if ($r['success'])
 			{
-				$this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
-				Session::put('paymentStatus', true);
+				$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+				$paymentStatus = true;
 			} else {
-				Session::put('paymentStatus', false);
+				$paymentStatus = false;
 			}
 
-			return redirect(route('user.pay'));
+			Session::put('paymentStatus', $paymentStatus);
+
+			if($request->ajax()){
+				return array('success' => $paymentStatus, 'employer' => $employer);
+			} else {
+				return redirect(route('user.pay'));
+			}
 		}
+	}
+
+	/**
+	 * Show top up modal and payment
+	 *
+	 * @return mixed
+	 */
+	public function userTopUp()
+	{
+		$user = Auth::user();
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+		return view('user/top_up', ['employer' => $employer]);
 	}
 }

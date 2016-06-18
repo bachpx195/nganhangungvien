@@ -38,7 +38,7 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['salaryGrade']) && $params['salaryGrade']){
-            $query = $query->where('salary', '=', $params['salaryGrade']);
+            $query = $query->where('expect_salary', 'in', $params['salaryGrade']);
         }
 
         if(isset($params['degree']) && $params['degree']){
@@ -46,7 +46,7 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['yearOfExp']) && $params['yearOfExp']){
-            $query = $query->where('experience_years', '=', $params['yearOfExp']);
+            $query = $query->where('experience_years', 'in', $params['yearOfExp']);
         }
 
         if(isset($params['sex']) && $params['sex']){

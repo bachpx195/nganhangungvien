@@ -31,7 +31,8 @@ class SearchController extends BaseController {
 		
 		return view('front/search/search_result')
 				->with('candidates', $candidates)
-				->with('dropdownData', $dropdownData);
+				->with('dropdownData', $dropdownData)
+				->with('params', $params);
 	}
 	
 }
