@@ -10,12 +10,12 @@ class Card {
     {
         //TODO: Add config to pay by card
         $configs = [
-            'merchant_id' => '',
-            'api_username' => '',
-            'api_password' => '',
-            'secure_code' => '',
-            'CORE_API_HTTP_PWD' => '',
-            'CORE_API_HTTP_USR' => ''
+            'merchant_id' => '23022',
+            'api_username' => 'nganhangungviencom',
+            'api_password' => 'mQ4zgTD9U2afiirsCBTZ',
+            'secure_code' => '4867f6ab0f3c7844',
+            'CORE_API_HTTP_PWD' => '23022czjGWxt2hAm2SJ2fYoMRH9aNCX2OBV',
+            'CORE_API_HTTP_USR' => 'merchant_23022'
         ];
 
         //TESTING PURPOSES
