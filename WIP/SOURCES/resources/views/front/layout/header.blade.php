@@ -78,6 +78,10 @@
 														<a href="{{route('user.account')}}" class="txt-ghi pl12 w232 ablock_menu">Quản lý tài khoản</a>
 													</li>
 													<li class="pb_6 pos_relative w_100">
+														<span class="icon_24 icon-24 icon-transaction pos_absolute"></span>
+														<a href="{{route('user.transaction')}}" class="txt-ghi pl12 w232 ablock_menu">Lịch sử giao dịch</a>
+													</li>
+													<li class="pb_6 pos_relative w_100">
 														<span class="bg_blue pos_absolute number-notifi">0</span>
 														<span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
 														<a href="#" class="txt-ghi pl12 w232 ablock_menu">Hồ sơ đã lưu</a>
