@@ -1,16 +1,6 @@
 @extends('front/global')
 
 @section('content')
-    @if (!empty($employer['email_errors']))
-        <div class="block-note-ths">
-            <div class="pos-dang-ky-hotline">
-                {{ $employer['email_errors'] }}
-                <div class="ln_hr"></div>
-            </div>
-        </div>
-    @endif
-
-
     <div class="content_dangky bg_white mt16 box_shadow">
         <div class="block_ntv_dangky regis_header h_56" id="regis_header">
 
@@ -21,6 +11,16 @@
             <div class="w_50 floatLeft block-right-ntv txr">
                 (<span class="colorRed">*</span>) Thông tin bắt buộc nhập
             </div>
+        </div>
+        <div class="form-group mb_30 pt_6">
+            @if($errors->has())
+                @foreach ($errors->all() as $error)
+                    <div class="error_reg_mess clearfix err_password colorRegRed">
+                        <span class="error_reg_mess_icon"></span>
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
         </div>
         <div class="regis_content_1 w800">
             <div class="block-pop-dangky  pr0" id="regis_content">
@@ -87,7 +87,8 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="fullname" name="fullname" required
-                                                   data-required-msg="Vui lòng nhập họ tên">
+                                                   data-required-msg="Vui lòng nhập họ tên"
+                                                   value="{!! old('fullname') !!}">
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +108,8 @@
                                                    id="company_name" name="company_name"
                                                    placeholder="Ví dụ: Công Ty Cổ Phần Giải Pháp Tuyển Dụng Thuê Ngoài Việt Nam"
                                                    required
-                                                   data-required-msg="Ghi tên công ty đầy đủ và rõ ràng theo Giấy phép đăng ký kinh doanh">
+                                                   data-required-msg="Ghi tên công ty đầy đủ và rõ ràng theo Giấy phép đăng ký kinh doanh"
+                                                   value="{!! old('company_name') !!}">
                                         </div>
                                     </div>
 
@@ -123,13 +125,10 @@
                                                 <select id="company_size" name="company_size"
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         required data-required-msg="Vui lòng chọn quy mô công ty">
-                                                    <option value="">Chọn Quy mô công ty</option>
-                                                    <option value="1">Ít hơn 10 nhân viên</option>
-                                                    <option value="6">Từ 10 - 24 nhân viên</option>
-                                                    <option value="2">Từ 25 - 99 nhân viên</option>
-                                                    <option value="3">Từ 100 - 499 nhân viên</option>
-                                                    <option value="4">Từ 500 - 999 nhân viên</option>
-                                                    <option value="5">Trên 1000 nhân viên</option>
+                                                    <option value="">-- Chọn quy mô công ty --</option>
+                                                    @foreach($companySize as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <span data-for='company_size' class='k-invalid-msg'></span>
@@ -148,7 +147,8 @@
                                                    required data-required-msg="Vui lòng nhập số điện thoại cố định"
                                                    pattern="[0-9]{8,13}"
                                                    required
-                                                   data-pattern-msg="Vui lòng nhập số điện thoại đúng định đạng (Từ 8 đến 13 chữ số)"/>
+                                                   data-pattern-msg="Vui lòng nhập số điện thoại đúng định đạng (Từ 8 đến 13 chữ số)"
+                                                   value="{!! old('phone') !!}"/>
                                         </div>
                                     </div>
 
@@ -164,7 +164,7 @@
                                                 id="company_description" name="company_description"
                                                 placeholder="Hãy cung cấp những thông tin cơ bản như: năm thành lập, ngành nghề hoạt động chính, thành tựu đã đạt được, đính hướng phát triển tương lai..."
                                                 required data-required-msg="Vui lòng nhập giới thiệu về công ty"
-                                                rows="4"></textarea>
+                                                rows="4">{!! old('company_description') !!}</textarea>
                                         </div>
                                     </div>
 
@@ -179,7 +179,8 @@
                                                    id="company_address" name="company_address"
                                                    placeholder="Ví dụ: Số nhà 98A, phố Ngụy Như Kon Tum, phường Nhân Chính , quận Thanh Xuân"
                                                    required
-                                                   data-required-msg="Vui lòng nhập chi tiết địa chỉ của bạn bằng tiếng Việt có dấu."/>
+                                                   data-required-msg="Vui lòng nhập chi tiết địa chỉ của bạn bằng tiếng Việt có dấu."
+                                                   value="{!! old('company_address') !!}"/>
                                         </div>
                                     </div>
                                     <!-- input Tỉnh/thành phố * -->
@@ -195,7 +196,7 @@
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         tabindex="-1"
                                                         required data-required-msg="Vui lòng chọn tỉnh thành">
-                                                    <option value="">Chọn Tỉnh thành</option>
+                                                    <option value=""> -- Chọn Tỉnh thành -- </option>
                                                     @foreach($provinces as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
@@ -211,7 +212,8 @@
                                                class="control-label-info bold txt-ghi fs14 w180">Website </label>
                                         <div class="fr-input-wd333">
                                             <input type="text" class="form-control input-lg2 color-input"
-                                                   id="website" name="website"/>
+                                                   id="website" name="website"
+                                                   value="{!! old('website') !!}"/>
                                         </div>
                                     </div>
 
@@ -233,7 +235,8 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" name="contact_person"
                                                    class="form-control input-lg2 color-input" id="contact_person"
-                                                   required data-required-msg="Vui lòng nhập tên người liên hệ"/>
+                                                   required data-required-msg="Vui lòng nhập tên người liên hệ"
+                                                   value="{!! old('contact_person') !!}"/>
                                         </div>
                                     </div>
                                     <!-- input phone -->
@@ -250,7 +253,8 @@
                                                    required data-required-msg="Vui lòng nhập số điện thoại liên hệ"
                                                    pattern="[0-9]{8,13}"
                                                    required
-                                                   data-pattern-msg="Vui lòng nhập số điện thoại đúng định đạng (Từ 8 đến 13 chữ số)"/>
+                                                   data-pattern-msg="Vui lòng nhập số điện thoại đúng định đạng (Từ 8 đến 13 chữ số)"
+                                                   value="{!! old('contact_phone') !!}"/>
                                         </div>
                                     </div>
                                     <!--<div class="form-group mb_10" id="add_tel_contact">
@@ -271,14 +275,16 @@
                                         <div class="fr-input-wd333">
                                             <input type="email" class="form-control input-lg2 color-input"
                                                    id="contact_email" name="contact_email"
-                                                   required data-required-msg="Vui lòng nhập email người liên hệ"/>
+                                                   required data-required-msg="Vui lòng nhập email người liên hệ"
+                                                   value="{!! old('contact_email') !!}"/>
                                         </div>
                                     </div>
                                     <div class="mb_16">
                                         <div class="line-break02"></div>
                                     </div>
                                     <!-- input Nhập mã bảo mật * -->
-                                    <!--<div class="form-group mb_20">
+                                    <!--
+                                    <div class="form-group mb_20">
                                         <label for="captcha"
                                                class="control-label-info bold txt-ghi fs14 w185">Nhập mã bảo
                                             mật <span class="colorRed">*</span>
@@ -293,13 +299,13 @@
                                                        required data-required-msg="Vui lòng nhập mã bảo mật"/>
                                             </div>
                                         </div>
-                                    </div>-->
-
+                                    </div>
+                                    -->
                                     <div class="form-group mb_12">
                                         <label class="control-label-info w185"></label>
                                         <div class="fr-input-wd333 floatLeft pl_10">
                                             <button type="button" id="btnRegister"
-                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16">Đăng
+                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16 mb_10">Đăng
                                                 Ký
                                             </button>
                                         </div>

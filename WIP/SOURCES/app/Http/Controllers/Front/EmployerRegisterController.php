@@ -2,24 +2,39 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Model\Employer;
 use App\Model\User;
+use App\Repositories\ICandidateRepo;
+use App\Repositories\ICompanySizeRepo;
+use App\Repositories\IConfigRepo;
+use App\Repositories\IProvinceRepo;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Redirect;
+use Auth;
 use Validator;
-use DateTime;
-use Exception;
 
 class EmployerRegisterController extends BaseController
 {
     const DEFAULT_STATUS = 1;
+
+    private $companySizeRepo;
+
+    public function __construct(
+        IProvinceRepo $provinceRepo,
+        ICandidateRepo $candidateRepo,
+        ICompanySizeRepo $companySizeRepo,
+        IConfigRepo $configRepo
+    )
+    {
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
+        $this->companySizeRepo = $companySizeRepo;
+    }
 
     /**
      * Register employer
@@ -37,33 +52,23 @@ class EmployerRegisterController extends BaseController
             }
 
             $provinces = $this->provinceRepo->getSortedList();
+            $companySizes = $this->companySizeRepo->all();
 
             return view('front.account.employer_register')
                 ->with('provinces', $provinces)
+                ->with('companySize', $companySizes)
                 ->with('employer', $employer);
 
-        } else if($request->isMethod('POST')){
+        } else if ($request->isMethod('POST')) {
             $input = $request->all();
 
             try {
                 $validator = $this->validateGeneralInformation($input);
 
                 if ($validator->fails()) {
-                    $data = Input::except(array('_token', '_method', 'password', 'retype_password'));
-                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
 
-                    /*return Redirect::to('employer.register')
-                        ->withErrors($validator);*/
+                    return Redirect::back()->withErrors($validator)->withInput();
 
-                    return Redirect::route('employer.register', $data);
-
-                    /*return Redirect::route('employer.register')
-                        ->withErrors($errors)
-                        ->withInput(Input::except(array('_token', '_method')));*/
-
-                    //return Redirect::back()->withErrors($validator)->withInput();
-                    /*return view('front.account.employer_register')
-                        -> withInput();*/
                 }
 
                 DB::beginTransaction();
@@ -82,6 +87,7 @@ class EmployerRegisterController extends BaseController
 
                 //send email
                 $this->sendEmail($input);
+                Auth::attempt(['email' => $user->email, 'password' => $user->password]);
 
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -93,8 +99,9 @@ class EmployerRegisterController extends BaseController
         }
     }
 
-    private function sendEmail($data){
-        
+    private function sendEmail($data)
+    {
+
         Mail::send('front.emails.register', $data, function ($message) use ($data) {
             $message->subject('Đăng ký nhà tuyển dụng thành công')
                 ->to($data['email']);
@@ -107,7 +114,8 @@ class EmployerRegisterController extends BaseController
      * @param object $user
      * @param array $input
      */
-    private function mapUser($user, $input){
+    private function mapUser($user, $input)
+    {
         $user->username = $input['email'];
         $user->email = $input['email'];
         $user->full_name = $input['fullname'];
@@ -149,6 +157,11 @@ class EmployerRegisterController extends BaseController
      */
     private function validateGeneralInformation($data)
     {
+        $messages = [
+            'email.unique' => 'Email đã tồn tại trong hệ thống.',
+            //'required' => 'Vui lòng điền các thông tin được yêu cầu.',
+        ];
+
         return Validator::make($data, [
             'email' => 'required|email|unique:user',
             'fullname' => 'required',
@@ -161,8 +174,9 @@ class EmployerRegisterController extends BaseController
             'province_id' => 'required',
             'contact_person' => 'required',
             'contact_phone' => 'required',
-            'contact_email' => 'required'
-        ]);
+            'contact_email' => 'required',
+            //'CaptchaCode'=> 'valid_captcha'
+        ], $messages);
     }
 
 }

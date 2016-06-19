@@ -6,10 +6,12 @@ use App\Http\Requests;
 use App\Http\Response;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -24,10 +26,11 @@ class AccountProfileController extends BaseController
         IUserRepo $userRepo,
         IProvinceRepo $provinceRepo,
         ICandidateRepo $candidateRepo,
-        ICompanySizeRepo $companySizeRepo
+        ICompanySizeRepo $companySizeRepo,
+        IConfigRepo $configRepo
     )
     {
-        parent::__construct($candidateRepo, $provinceRepo);
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;
@@ -41,7 +44,8 @@ class AccountProfileController extends BaseController
     public function manageAccountProfile(Request $request)
     {
         if ($request->isMethod('get')) {
-            $employer = $this->employerRepo->findByUserId(276);
+            $user = Auth::user();
+            $employer = $this->employerRepo->findByUserId($user->id);
             if (!$employer) {
                 return $this->errorView();
             }

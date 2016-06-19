@@ -12,9 +12,10 @@ class EmployerRepo implements IEmployerRepo
     public function search($keyword, $pageSize = 10)
     {
         $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
-            ->join('province', 'employer.province_id', '=', 'province.id')
-            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
-            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person', 'employer.status', 'user.username', 'employer.created_at');
+            ->leftJoin('province', 'employer.province_id', '=', 'province.id')
+            ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person',
+                'employer.status', 'user.username', 'employer.created_at', 'employer.vip');
 
         if ($keyword) {
             $query = $query->where('company_name', 'LIKE', '%' . $keyword . '%')
@@ -31,8 +32,8 @@ class EmployerRepo implements IEmployerRepo
     public function findById($id)
     {
         $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
-            ->join('province', 'employer.province_id', '=', 'province.id')
-            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->leftJoin('province', 'employer.province_id', '=', 'province.id')
+            ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
             ->where('employer.id', '=', $id)
             ->select('employer.*', 'province.name as provinceName', 'company_size.name as companySize')
             ->first();
@@ -60,8 +61,8 @@ class EmployerRepo implements IEmployerRepo
     public function findByUserId($userId)
     {
         $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
-            ->join('province', 'employer.province_id', '=', 'province.id')
-            ->join('company_size', 'employer.company_size', '=', 'company_size.id')
+            ->leftJoin('province', 'employer.province_id', '=', 'province.id')
+            ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
             ->where('user.id', '=', $userId)
             ->select('employer.*', 'user.id as userId', 'user.email as userEmail', 'province.name as provinceName', 'company_size.name as companySize')
             ->first();
@@ -83,5 +84,46 @@ class EmployerRepo implements IEmployerRepo
             ->first();
 
         return $query;
+    }
+
+    /**
+     * Increase balance after payment
+     *
+     * @param int $userId
+     * @param int $balance
+     * {@inheritDoc}
+     */
+    public function increaseBalanceAfterPayment($userId, $balance)
+    {
+        $employer = Employer::where('user_id', '=', $userId)->first();
+
+        if (!$employer) {
+            return false;
+        }
+
+        $oldBalance = isset($employer->balance) ? $employer->balance : 0;
+        $employer->balance = $oldBalance + $balance;
+        $employer->save();
+
+        return $employer;
+    }
+
+    /**
+     * Set employer is VIP
+     *
+     * @param int $id
+     * @param boolean $vip
+     * {@inheritDoc}
+     */
+    public function setVip($id, $vip)
+    {
+        $employer = Employer::find($id);
+        if (!$employer) {
+            return false;
+        }
+        $employer->vip = $vip;
+        $employer->save();
+
+        return true;
     }
 }

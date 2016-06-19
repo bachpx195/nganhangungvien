@@ -331,6 +331,10 @@
 			</div>
 		</div>
 
+		@if (Auth::user())
+			@include('front.common.display_attach_cv', array('candidateAttachCv' => isset($candidate['attach_cv']) ? $candidate['attach_cv'] : ''))
+		@endif
+
 		@include('front/home/candidate_new_view', ['candidatesData' => $candidatesData])
 
 		@if((count($sameData['exp']) > 0) && (count($sameData['lvl']) > 0) && $candidate->experienceYears )

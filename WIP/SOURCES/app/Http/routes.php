@@ -269,6 +269,13 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/candidate/form', [
 		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
 	]);
+	Route::match(['get'], '/tai-lieu', [
+		'as' => 'news.show', 'uses' => 'Front\NewsController@index'
+	]);
+
+	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
+		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
+	]);
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -298,13 +305,6 @@ Route::group(['middleware' => ['auth']], function() {
 	]);
 	Route::match(['get', 'post'], '/user/top-up', [
 		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
-	]);
-	Route::match(['get'], '/tai-lieu', [
-		'as' => 'news.show', 'uses' => 'Front\NewsController@index'
-	]);
-
-	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
-		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
 	]);
 });
 

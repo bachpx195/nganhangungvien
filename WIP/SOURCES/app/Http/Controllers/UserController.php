@@ -12,6 +12,8 @@ use App\Libs\BaoKim\Card;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+
 
 class UserController extends Controller {
 	
@@ -154,21 +156,46 @@ class UserController extends Controller {
 	 */
 	public function userPay(Request $request)
 	{
-		if ($request->isMethod('get')) {
-			$user = Auth::user();
-			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+		$user = Auth::user();
+		$paymentStatus = Session::get('paymentStatus', null);
+		Session::forget('paymentStatus');
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 
-			return view('user/pay', ['employer' => $employer]);
+		if ($request->isMethod('get')) {
+
+			return view('user/pay', ['employer' => $employer, 'paymentStatus' => $paymentStatus]);
 		} else {
 			$userData = Input::except(array('_token', '_method'));
 			$r = $this->card->baoKimCardApi($userData);
 
 			if ($r['success'])
 			{
-				die('Paid successfully!');
+				$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+				$paymentStatus = true;
 			} else {
-				die('Paid not successfully!');
+				$paymentStatus = false;
+			}
+
+			Session::put('paymentStatus', $paymentStatus);
+
+			if($request->ajax()){
+				return array('success' => $paymentStatus, 'employer' => $employer);
+			} else {
+				return redirect(route('user.pay'));
 			}
 		}
+	}
+
+	/**
+	 * Show top up modal and payment
+	 *
+	 * @return mixed
+	 */
+	public function userTopUp()
+	{
+		$user = Auth::user();
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+		return view('user/top_up', ['employer' => $employer]);
 	}
 }

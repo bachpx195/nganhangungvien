@@ -1,3 +1,4 @@
+@include('front/account/login')
 <footer>
     <section id="bottom">
         <div class="section-inner">

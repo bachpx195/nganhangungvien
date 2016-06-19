@@ -47,6 +47,7 @@
 	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
 
 	<link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
 		  type='text/css' media='all'>
@@ -101,6 +102,7 @@
 	<script src="{{ asset('/assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/icheck/icheck.min.js') }}" type="text/javascript"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL SCRIPTS -->
 	<script src="{{ asset('/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
@@ -124,6 +126,7 @@
 	<script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
 	<script src="{{ asset('/assets/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
 	<script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/employer/employer.js') }}"></script>
 	<script>
 	jQuery.extend(jQuery.validator.messages, {
 		required: '@lang('validation.required', ['attribute' => ''])',

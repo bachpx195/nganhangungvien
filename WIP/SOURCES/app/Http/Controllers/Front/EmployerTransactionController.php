@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Requests;
 use App\Repositories\ITransactionRepo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployerTransactionController extends BaseController
 {
@@ -25,7 +26,7 @@ class EmployerTransactionController extends BaseController
     public function getEmployerTransaction(Request $request)
     {
         $start = 0;
-        $limit = 3;
+        $limit = config('constants.TRANSACTION_LIMIT');
         if ($request->isMethod('get')) {
             $input = $request->all();
             if (isset($input['start'])) {
@@ -34,9 +35,8 @@ class EmployerTransactionController extends BaseController
             if (isset($input['limit'])) {
                 $limit = $input['limit'];
             }
-            $userId = 276;
-
-            $transactions = $this->transactionRepo->findByUserId($userId, $start, $limit);
+            $user = Auth::user();
+            $transactions = $this->transactionRepo->findByUserId($user->id, $start, $limit);
             if (!$transactions) {
                 $transactions = [];
             }
@@ -56,7 +56,7 @@ class EmployerTransactionController extends BaseController
     public function loadMoreTransaction(Request $request)
     {
         $start = 0;
-        $limit = 3;
+        $limit = config('constants.TRANSACTION_LIMIT');
         if ($request->isMethod('get')) {
             $input = $request->all();
             if (isset($input['start'])) {
@@ -65,8 +65,8 @@ class EmployerTransactionController extends BaseController
             if (isset($input['limit'])) {
                 $limit = $input['limit'];
             }
-            $userId = 276;
-            $transactions = $this->transactionRepo->findByUserId($userId, $start, $limit);
+            $user = Auth::user();
+            $transactions = $this->transactionRepo->findByUserId($user->id, $start, $limit);
             if (!$transactions) {
                 $transactions = [];
             }

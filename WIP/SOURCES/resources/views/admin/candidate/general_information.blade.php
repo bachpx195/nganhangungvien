@@ -43,7 +43,7 @@
                                required data-required-msg="Vui lòng không bỏ trống Email"
                                value="{{$candidate['email']}}">
                     </div>
-                    @include('admin.common.form_error', array('fieldName' => 'email'))>
+                    @include('admin.common.form_error', array('fieldName' => 'email'))
                 </div>
 
                 <!-- input Họ và Tên * -->
@@ -67,11 +67,11 @@
                     <div class="col-sm-10">
                         <label class="radio-inline radio-styled">
                             <input type="radio" name="sex" value="2"
-                                   @if ($candidate['sex'] != 1) checked @endif><span>Nữ</span>
+                                   @if ($candidate['sex'] == 2) checked @endif><span>Nữ</span>
                         </label>
                         <label class="radio-inline radio-styled">
                             <input type="radio" name="sex" value="1"
-                                   @if ($candidate['sex'] == 1) checked @endif><span>Nam</span>
+                                   @if ($candidate['sex'] != 2) checked @endif><span>Nam</span>
                         </label>
                     </div>
                 </div>
@@ -341,26 +341,33 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">Ảnh đại diện</label>
+                    <label class="control-label-info bold txt-ghi fs14 w180">Ảnh đại diện</label>
                     <div class="col-md-10">
-                        <div class="col-md-9">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail upload-image">
-                                    @include('admin.common.candidate_image',
-                                    array('candidateImage' => isset($candidate['image']) ? $candidate['image'] : URL::asset('assets/image/default.png')))
-                                </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
-                                <div>
-						            <span class="btn red btn-outline btn-file">
-						                <span class="fileinput-new"> Chọn hình ảnh </span>
-						                <span class="fileinput-exists"> Thay đổi </span>
-						                <input  type="file" name="image" accept="image/*" > </span>
-                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
-                                </div>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail upload-image">
+                                @include('admin.common.candidate_image',
+                                array('candidateImage' => isset($candidate['image']) ? $candidate['image'] : URL::asset('assets/image/default.png')))
                             </div>
-                            <div class="clearfix margin-top-10">
-                                <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
+                            <div>
+                                <span class="btn red btn-outline btn-file">
+                                    <span class="fileinput-new"> Chọn hình ảnh </span>
+                                    <span class="fileinput-exists"> Thay đổi </span>
+                                    <input  type="file" name="image" accept="image/*" > </span>
+                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                            </div>
                         </div>
+                        <div class="clearfix margin-top-10">
+                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png )
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tải lên CV đính kèm</label>
+                    <div class="col-md-10">
+                        <input name="attach_cv" type="file" multiple class="file-loading btn red btn-outline btn-file"
+                               accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                     </div>
                 </div>
             </div>

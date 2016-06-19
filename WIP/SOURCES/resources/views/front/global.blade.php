@@ -45,6 +45,10 @@
     <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all' >
     <link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/default/css/123doc.index.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/123doc.top-up.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
 
     <!-- news css -->
 
@@ -68,8 +72,8 @@
         @include('front.layout.header')
 
         <div class="show-content w_100 box_right">
-            <div id="cols-right" class="bg_grey">
-                <div class="content_cols pt_16 pb_24">
+            <div class="bg_grey">
+                <div class="content_cols pt_6 pb_24">
                     @yield('content')
                 </div>
 
@@ -102,6 +106,7 @@
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/user/pay_validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/123doc.script.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>

@@ -3,7 +3,7 @@
 @section('content')
 <div id="cols-right" class="bg_grey">
 	<div class="content_cols-right pt_16 pl_24 pb_24">
-		@include('front.common.form_search', ['dropdownData' => $dropdownData])
+		@include('front.common.form_search', ['dropdownData' => $dropdownData, 'params' => $params])
 		
 		<br/>
 

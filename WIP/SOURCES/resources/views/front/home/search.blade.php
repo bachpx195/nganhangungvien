@@ -72,7 +72,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_kinh_nghiem icon_24 icon-24"></i>
-						<select name="yearOfexp" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
+						<select name="yearOfexp[]" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
 							<option value="">Tất cả Kinh nghiệm</option>
 							@foreach($dropdownData['yearOfexps'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -136,9 +136,9 @@
 			addListener(window, "load", fun_hoso_keypress);
 		}
 	</script>
-	<div class="box_filter_map text-center" style="width: 400px;">
-		<div class="statistic font16">
-			Cả nước tổng cộng có <br /><span class="text_orange font28 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
+	<div class="box_filter_map text-center" style="width: 680px;">
+		<div class="statistic font20">
+			Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 		</div>
 
 		<div class="map-ntd">
@@ -197,10 +197,39 @@
 		</div>
 	</div>
 
+
 	<div class="box_filter_map text-left" id="youtube-video">
+		@if ($linkYouTube)
 		<div class="statistic font16">
 			Video tuyển dụng
 		</div>
-		<iframe id="youtube-video-frame" src="https://www.youtube.com/embed/ZNN4wGUdrTE" frameborder="0" allowfullscreen=""></iframe>
+		<iframe id="youtube-video-frame" src="{{$linkYouTube}}" frameborder="0" allowfullscreen=""></iframe>
+		<br/>
+		@endif
+		<div>
+			<div class="row">
+				<div class="statistic font16">
+					LIÊN HỆ ĐỂ ĐƯỢC HỖ TRỢ
+				</div>
+				<div>
+					<span class="bg-white bold font14 text_blue">Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
+					<span class="bg-white bold font14 text_blue">Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div>
+			<div class="row">
+				<div class="statistic font16">
+					HOẶC SỬ DỤNG DỊCH VỤ
+				</div>
+				<div>
+					<a class="btn btn-pink btn-lg w260 pl_16 btn_timkiem_all">
+						<i class="icon_arrow_orange icon_24 icon-24"></i>
+						THUÊ NGOÀI TRỌN GÓI
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

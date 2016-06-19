@@ -3,6 +3,18 @@
 <title>Nạp tiền qua thẻ</title>
 
 @section('content')
+    @if ($paymentStatus !== null)
+        <div class="block-note-ths">
+            <div class="pos-dang-ky-hotline">
+                @if ($paymentStatus)
+                    Bạn đã thực hiện chuyển khoản thành công!
+                @else
+                    Quá trình chuyển khoản của bạn bị lỗi!
+                @endif
+                <div class="ln_hr"></div>
+            </div>
+        </div>
+    @endif
 
     <form id="user-pay-form" class="form-horizontal" role="form" method="POST" action="{{ route('user.pay') }}" enctype="multipart/form-data">
         <div class="block-content div-frm-hoso" id="frm-login-info">
@@ -31,7 +43,7 @@
                                         </label>
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
-                                                   name="balance" value="{{$employer->balance}}" disabled>
+                                                   name="balance" value="{{isset($employer->balance) ? $employer->balance : 0}}" disabled>
                                         </div>
                                     </div>
 

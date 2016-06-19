@@ -29,6 +29,14 @@ class FileHelper {
         return public_path() . '/candidate/image/';
     }
 
+    /**
+     * Get the path of candidate's attach CV
+     */
+    public static function getCandidateAttachCVPath()
+    {
+        return public_path() . '/candidate/cv/';
+    }
+
      public static function getNewsImgPath()
     {
         return public_path() . '/news/images/';

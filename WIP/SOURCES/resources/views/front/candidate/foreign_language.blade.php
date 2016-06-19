@@ -32,14 +32,14 @@
                                         <div class="ngoai_ngu w224 pl_10 col-xs-4 pr_2 mr_24 select_style31 city_select">
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                 <select name="language_id_{{$i}}"
-                                                        class="checkComboboxEditNN tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
+                                                        class="select-style"
                                                         data-disS="1"
                                                         data-select-class="select_language">
                                                     @include('front.common.options',
                                                         array(
                                                             'selected' => $candidate['language_id_' . $i],
                                                             'options' => $foreignLanguages,
-                                                            'defaultName' => 'Chọn ngoại ngữ'
+                                                            'defaultName' => '-- Chọn ngoại ngữ --'
                                                             ))
                                                 </select>
                                             </div>
