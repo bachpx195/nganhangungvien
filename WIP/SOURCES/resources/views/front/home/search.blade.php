@@ -206,7 +206,7 @@
 
 		@if ($linkYouTube)
 		<div class="statistic font16">
-			Video tuyển dụng
+			HƯỚNG DẪN ĐĂNG KÝ<br/>TÀI KHOẢN NHÀ TUYỂN DỤNG
 		</div>
 		<iframe id="youtube-video-frame" src="{{$linkYouTube}}" frameborder="0" allowfullscreen=""></iframe>
 		<br/>
@@ -219,6 +219,7 @@
 				<div>
 					<span class="bg-white bold font14 text_blue">Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
 					<span class="bg-white bold font14 text_blue">Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span>
+					<span class="bg-white bold font14 text_blue">Skype: </span><span class="bg-white text_pink font14 bold">CSKH.NGANHANGUNGVIEN</span>
 				</div>
 			</div>
 		</div>
@@ -231,7 +232,7 @@
 				<div>
 					<a class="btn btn-pink btn-lg w260 pl_16 btn_timkiem_all">
 						<i class="icon_arrow_orange icon_24 icon-24"></i>
-						THUÊ NGOÀI TRỌN GÓI
+						TÀI KHOẢN VIP
 					</a>
 				</div>
 			</div>
