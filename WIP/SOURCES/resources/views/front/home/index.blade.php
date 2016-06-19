@@ -1,5 +1,3 @@
-
-
 @extends('front/global')
 @section('content')
 <div class="">

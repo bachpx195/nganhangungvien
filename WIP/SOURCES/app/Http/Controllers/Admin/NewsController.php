@@ -64,12 +64,7 @@ class NewsController extends Controller {
             if ($request->has('id')) {
                 
                 $news = News::find($request->get('id'));
-                $news->title = $input['tieu_de'];
-                $news->content = $input['noi_dung']; 
-                $news->description = $input['mieu_ta'];
-                $news->password = $input['mat_khau'];
-                $news->link = $input['link'];
-                        
+                $news = $this->getGeneralInfoByInput($news, $input, $request,'1');                        
                 $news->save();
             } else {             
                 // $validator = $this->validatorNews($request->all());
