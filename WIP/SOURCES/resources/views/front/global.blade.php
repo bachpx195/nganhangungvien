@@ -32,6 +32,8 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
 
     <link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
@@ -49,6 +51,10 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/123doc.top-up.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+
+    <!-- news css -->
+
+    <!-- end news css -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
@@ -70,6 +76,11 @@
         <div class="show-content w_100 box_right">
             <div class="bg_grey">
                 <div class="content_cols pt_6 pb_24">
+
+                    @if (Auth::check() && Auth::user()->user_type == 'employer')
+                    {{--@include('front.layout.left_sidebar')--}}
+                    @endif
+
                     @yield('content')
                 </div>
 
@@ -84,6 +95,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/mbExtruder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.menu-aim.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/sweetalert.min.js') }}"></script>
     <!-- menu aim -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/modernizr.js') }}"></script>
     <!-- Modernizr -->
@@ -96,7 +108,6 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
-</head>
     
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
@@ -108,7 +119,6 @@
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
     <script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
-
 </body>
 
 </html>

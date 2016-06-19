@@ -36,6 +36,31 @@ class DateTimeHelper
 		
 		return $newDateString;
 	}
-	
-	
+
+	/**
+	 * @param $option
+	 * 			1: one day
+	 * 			2: one week
+	 * 			3: 1 month
+	 * 			4: 1 week
+	 */
+	public static function getDateFromNow($option){
+		$now = time();
+		$oneDay = 24 * 60 * 60;
+
+		switch ($option){
+			case 1:
+				$now = $now - $oneDay;
+				return strtotime(date('Y-m-d', $now));
+			case 2:
+				$now = $now - $oneDay * 7;
+				return strtotime(date('Y-m-d', $now));
+			case 3:
+				$now = $now - $oneDay * 30;
+				return strtotime(date('Y-m-d', $now));
+			case 4:
+				$now = $now - $oneDay * 2 * 30;
+				return strtotime(date('Y-m-d', $now));
+		}
+	}
 }

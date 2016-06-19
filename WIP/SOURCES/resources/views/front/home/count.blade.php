@@ -6,7 +6,7 @@
 	</div>
 </div>
 
-<div class="box_title_content w_100 font16 pos_relative mb_30 mt_16">
-	<h1 class="title_title_box pl_8 pr_8 uppercase bold text_blue">Cổng dành cho nhà tuyển dụng ({{ $countData['all'] }})</h1>
+<div class="box_title_content w_100 font18 pos_relative mb_30 mt_16">
+	<h1 class="title_title_box pl_8 pr_8 uppercase bold text_blue">NGÂN HÀNG CUNG CÂP ÚNG VIÊN CHO <span class="text_orange font18 bold">NHÀ TUYỂN DỤNG LỚN NHẤT VIỆT NAM</span></h1>
 	
 </div>

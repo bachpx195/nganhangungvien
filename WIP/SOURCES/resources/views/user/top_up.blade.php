@@ -37,10 +37,6 @@
                 <p class="appendPay"><a href="javascript:;" onclick="pay_mobilecard();" class="btn btn_submit">Nạp tiền</a></p>
             </div>
         </div>
-        <p>Phí nạp thẻ <a style="color: red;">23%</a> cho nhà mạng. <i style="color: #0aa888;font-weight: bold;">(Ví dụ: Nạp thẻ 20.000 sẽ được cộng 15.000 vào tài khoản)</i></p>
-        <p>Nạp sai 5 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
-        <p>Mua thẻ nạp online <a href="http://store.baokim.vn/card/multiMobileNew" rel="nofollow" target="_blank">tại đây</a></p>
-        <p>Nếu gặp lỗi thì <a target="_blank" rel="nofollow" href="http://123doc.org/statics-detail/905-loi-khi-mua-tai-lieu-cach-xu-ly.htm">Click vào đây</a></p>
     </div>
     @endif
     <div class="boxAddMoney_content @if($employer->vip != 1) hidden @endif" id="atm">

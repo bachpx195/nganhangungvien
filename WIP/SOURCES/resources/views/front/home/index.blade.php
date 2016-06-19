@@ -1,14 +1,16 @@
-
-
 @extends('front/global')
 @section('content')
-<div class="">
+	@if (Auth::check() && Auth::user()->user_type == 'employer')
+		<div class="" style="padding-left:232px;">
+	@else
+		<div class="">
+	@endif
 
 	@include('front/home/ads')
 	
 	@include('front/home/count',['coutData' => $countData])
 	
-	@include('front/home/search', ['dropdownData' => $dropdownData, 'countData' => $countData])
+	@include('front/home/search', ['dropdownData' => $dropdownData, 'countData' => $countData, 'linkYouTube' => $linkYouTube])
 
 	<!-- Phan loai ho theo -->
 	<h3 class="title_text_line mt24 fwb">

@@ -7,11 +7,11 @@ use App\Http\Requests;
 use App\Http\Response;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Validator;
@@ -27,24 +27,26 @@ class AccountProfileController extends BaseController
         IUserRepo $userRepo,
         IProvinceRepo $provinceRepo,
         ICandidateRepo $candidateRepo,
-        ICompanySizeRepo $companySizeRepo
+        ICompanySizeRepo $companySizeRepo,
+        IConfigRepo $configRepo
     )
     {
-        parent::__construct($candidateRepo, $provinceRepo);
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;
     }
 
     /**
-     * Index page
-     *
-     * @return \Illuminate\View\View
+     * Get user profile
+     * @param Request $request
+     * @return view
      */
     public function manageAccountProfile(Request $request)
     {
+
         if ($request->isMethod('get')) {
-            $user = Auth::user();
+            $user = $this->getCurrentUser();
             $employer = $this->employerRepo->findByUserId($user->id);
             if (!$employer) {
                 return $this->errorView();
@@ -56,6 +58,7 @@ class AccountProfileController extends BaseController
                 ->with('provinces', $provinces)
                 ->with('companySizes', $companySizes);
         }
+
         return view('front/account/employer_profile');
     }
 
@@ -86,7 +89,7 @@ class AccountProfileController extends BaseController
             if (strcmp($user->password, $hashOldPassword) != 0) {
                 return response()->json(['status' => false, 'message' => 'Mật khẩu cũ không đúng']);
             }
-            // save pasword
+            // save password
             $user->password = Hash::make($input['newPassword']);
             $user->save();
 
@@ -102,8 +105,7 @@ class AccountProfileController extends BaseController
      */
     public function changeCompanyInformation(Request $request)
     {
-        if ($request->isMethod('post'))
-        {
+        if ($request->isMethod('post')) {
             $input = $request->all();
             try {
                 $validator = $this->validateChangeCompanyInformation($input);
@@ -121,7 +123,7 @@ class AccountProfileController extends BaseController
                 $content = File::get($file['tmp_name']);
                 $result = $this->manager->saveFile($path, $content);
                 if ($result === true) {
-                    
+
                 }
             }
 
@@ -152,8 +154,7 @@ class AccountProfileController extends BaseController
      */
     public function changeEmployerContactPersonInfo(Request $request)
     {
-        if ($request->isMethod('post'))
-        {
+        if ($request->isMethod('post')) {
             $input = $request->all();
             try {
                 $validator = $this->validateContactPersonInformation($input);

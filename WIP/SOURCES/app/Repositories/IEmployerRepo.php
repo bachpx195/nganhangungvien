@@ -28,6 +28,13 @@ interface IEmployerRepo
     public function findByUserId($userId);
 
     /**
+     * Get employer by user id
+     * @param $userId
+     * @return mixed
+     */
+    function findEmployerInfoByUserId($userId);
+
+    /**
      * Change employer status
      * @param $id employer id
      * @param $status status want to set

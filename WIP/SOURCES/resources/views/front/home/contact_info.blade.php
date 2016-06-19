@@ -19,7 +19,8 @@
 				<div class="row  pl_14 pr_14">
 					<div class="txc">
 						<span class="bg-white bold font24 text_blue">Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421 - 0943 24 9699</span><br />
-						<span class="bg-white bold font24 text_blue">Email  : </span><span class="bg-white text_pink font24 bold">nganhangungvienvn@gmail.com</span>
+						<span class="bg-white bold font24 text_blue">Email  : </span><span class="bg-white text_pink font24 bold">nganhangungvienvn@gmail.com</span><br/>
+						<span class="bg-white bold font24 text_blue">Skype  : </span><span class="bg-white text_pink font24 bold">CSKH.NGANHANGUNGVIEN</span>
 					</div>
 				</div>
 			</div>

@@ -11,14 +11,17 @@
 		</div>
 	</div>
 @endif
-
-<div class="candidate-front" id="frm-login-info">
+@if (Auth::check() && Auth::user()->user_type == 'employer')
+	<div style="padding-left:232px;" class="candidate-front" id="frm-login-info">
+@else
+	<div class="candidate-front" id="frm-login-info">
+@endif
 	@include('front.candidate.send-cv-by-emaill')
 
 	<div class="">
 		<div class="w_50 floatLeft">
 			<span class="title_nguoi-tim-viec-dky borderxanh"></span>
-			<span class="uppercase bold fs16 text-xanh-nuocbien">Tạo hồ sơ tìm việc từng bước</span>
+			<span class="uppercase bold fs16 text-xanh-nuocbien">TẠO HỒ SƠ TÌM VIỆC TRỰC TUYẾN</span>
 		</div>
 	</div>
 
@@ -39,12 +42,11 @@
 			</div>
 			@include('front.candidate.foreign_language')
 			<div class="clearfix"></div>
+			@include('front.candidate.information_technology')
+			<div class="clearfix"></div>
+			@include('front.candidate.contact_person')
+			@include('front.candidate.save_btn')
 		</div>
-
-		@include('front.candidate.information_technology')
-		<div class="clearfix"></div>
-		@include('front.candidate.contact_person')
-		@include('front.candidate.save_btn')
 	</form>
 </div>
 

@@ -300,56 +300,12 @@ $(document).ready(function() {
 
 });
 
-function must_login(func_name, msg)
-{
-    var padding_h = $('.regis_header').height();
-    var padding_f = $('.regis_footer').height();
-    var height_w = $( window ).height();
-    var scroll_h = height_w - (padding_f + padding_h + 50);
-    if(msg == null || msg == 'undefined') {
-        url = "/taikhoan/must_login/"+encodeURI(func_name);
-    }else{
-        url = "/taikhoan/must_login/"+encodeURI(func_name)+'?msg='+encodeURI(msg);
-    }
-    $("#popup_yeu_cau_dang_nhap").load(url, function() {
-        //load popup confirm
-        var h_win_2 = height_w/2;
-        $("#overlay_popup, #popup_content_register_choice").show();
-        var h_pop_confirm_2 = $("#popup_content_register_choice").height()/2;
-        var h_confirm = h_win_2 - h_pop_confirm_2;
-        $("#pos_popup_register_choice").css('top',$(window).scrollTop() + h_confirm);
-        $("#pos_popup_register_choice").css('left',0);
-
-        $("#overlay_popup, #popup_component_register_choice").show();
-    });
-}
-
 function luutin(id){
     var idtin   = $(id).attr('data-idtin');
     var idnganh = $(id).attr('data-idnganh');
     var type    = $(id).attr('type');
     if(type == null || type == 'undefined') type = 'tintuyendung';
     var url_ajax = '/'+type+'/save?id='+idtin+'&nganh='+idnganh;
-    $.ajax({url:url_ajax,cache: false,success:function(result){
-        if (result == 'LOGIN') {
-            must_login('Lưu việc làm');
-            return false;
-        };
-        if (result == 'DONE') {
-            $("[data-idtin='"+idtin+"']").each(function (){
-                $(this).toggleClass('active');
-                var star = $(this).find('.icon-star-line').toggleClass('active');
-            });
-        };
-    }});
-}
-function luuhoso(id){
-    var idtin   = $(id).attr('data-idtin');
-    var idnganh = $(id).attr('data-idnganh');
-    var idntv = $(id).attr('data-idntv');
-    var type    = $(id).attr('data-type');
-    if(type == null || type == 'undefined') type = 'tintimviec';
-    var url_ajax = '/'+type+'/save?id='+idtin+'&nganh='+idnganh+'&ntv='+idntv;
     $.ajax({url:url_ajax,cache: false,success:function(result){
         if (result == 'LOGIN') {
             must_login('Lưu việc làm');

@@ -84,7 +84,7 @@
 													<li class="pb_6 pos_relative w_100">
 														<span class="bg_blue pos_absolute number-notifi">0</span>
 														<span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
-														<a href="#" class="txt-ghi pl12 w232 ablock_menu">Hồ sơ đã lưu</a>
+														<a href="{{route('user.saved.profile')}}" class="txt-ghi pl12 w232 ablock_menu">Hồ sơ đã lưu</a>
 													</li>
 													<li class="pb_6 pos_relative w_100">
 														<span class="bg_blue pos_absolute number-notifi">0</span>
@@ -125,7 +125,7 @@
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_quanly mt_20"></div>
 					<div class="title_cong_menu w_100">ỨNG VIÊN</div>
-				</a> <a class="bt_head_cong floatLeft " href="#"
+				</a> <a class="bt_head_cong floatLeft {{($activeHeaderMenu == 'news') ? 'active' : ''}} " href="{{ route('news.show') }}"
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_chuyenmon mt_20"></div>
 					<div class="title_cong_menu w_100">TÀI LIỆU QUẢN TRỊ</div>
