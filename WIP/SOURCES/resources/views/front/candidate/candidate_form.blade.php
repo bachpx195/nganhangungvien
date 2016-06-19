@@ -11,8 +11,11 @@
 		</div>
 	</div>
 @endif
-
-<div class="candidate-front" id="frm-login-info">
+@if (Auth::check() && Auth::user()->user_type == 'employer')
+	<div style="padding-left:232px;" class="candidate-front" id="frm-login-info">
+@else
+	<div class="candidate-front" id="frm-login-info">
+@endif
 	@include('front.candidate.send-cv-by-emaill')
 
 	<div class="">
@@ -39,12 +42,11 @@
 			</div>
 			@include('front.candidate.foreign_language')
 			<div class="clearfix"></div>
+			@include('front.candidate.information_technology')
+			<div class="clearfix"></div>
+			@include('front.candidate.contact_person')
+			@include('front.candidate.save_btn')
 		</div>
-
-		@include('front.candidate.information_technology')
-		<div class="clearfix"></div>
-		@include('front.candidate.contact_person')
-		@include('front.candidate.save_btn')
 	</form>
 </div>
 

@@ -69,6 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/employer/status/{id}', [
 		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
 
+	Route::post('/employer/set-vip/{id}', [
+		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
+
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [
 		'as' => 'admin.news.list', 'uses' => 'Admin\NewsController@newsList'
@@ -214,6 +217,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/foreign-language/delete/{id}', [
 		'as' => 'admin.foreignlanguage.delete', 'uses' => 'Admin\ForeignLanguageController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/video', [
+		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
+	]);
 });
 
 /**
@@ -262,6 +269,13 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/candidate/form', [
 		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
 	]);
+	Route::match(['get'], '/tai-lieu', [
+		'as' => 'news.show', 'uses' => 'Front\NewsController@index'
+	]);
+
+	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
+		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
+	]);
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -298,7 +312,6 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/top-up', [
 		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
 	]);
-
 });
 
 

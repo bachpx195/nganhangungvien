@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Response;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
@@ -24,10 +25,11 @@ class AccountProfileController extends BaseController
         IUserRepo $userRepo,
         IProvinceRepo $provinceRepo,
         ICandidateRepo $candidateRepo,
-        ICompanySizeRepo $companySizeRepo
+        ICompanySizeRepo $companySizeRepo,
+        IConfigRepo $configRepo
     )
     {
-        parent::__construct($candidateRepo, $provinceRepo);
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;

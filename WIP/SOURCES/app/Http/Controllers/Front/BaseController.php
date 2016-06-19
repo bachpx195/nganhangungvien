@@ -3,30 +3,30 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Model\Province;
-use App\Model\Job;
-use App\Model\Salary;
-use App\Model\Level;
+use App\Http\Requests;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
-use App\Http\Requests;
-use Illuminate\Http\Request;
+use App\Model\Job;
+use App\Model\Level;
+use App\Model\Salary;
 use App\Repositories\ICandidateRepo;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IProvinceRepo;
 use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
 
-    protected $candidateRepo,
-        $provinceRepo;
+    protected $candidateRepo, $provinceRepo, $configRepo;
 
     public function __construct(
         ICandidateRepo $candidateRepo,
-        IProvinceRepo $provinceRepo)
+        IProvinceRepo $provinceRepo,
+        IConfigRepo $configRepo)
     {
         $this->candidateRepo = $candidateRepo;
         $this->provinceRepo = $provinceRepo;
+        $this->configRepo = $configRepo;
     }
 
     /**

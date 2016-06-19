@@ -149,7 +149,6 @@ div.section{
 
 #youtube-video-frame {
     width: 100%;
-    height: 350px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -172,7 +171,8 @@ div.section{
     }
 
     #youtube-video {
-        width: 540px;
+        width: 340px;
+        height: 420px;
     }
 }
 
@@ -184,7 +184,8 @@ div.section{
     }
 
     #youtube-video {
-        width: 580px;
+        width: 320px;
+        height: 420px;
     }
 }
 
@@ -277,7 +278,8 @@ div.section{
 .box_left{
     position: absolute;
     top:0;
-    left:0;
+    left:5px;
+    margin-top: 60px;
 }
 .box_right, .box_footer{
     /*padding-left: 232px;*/
@@ -538,7 +540,7 @@ select.select-style {
     border-right: 1px solid #eeeeee;
 }
 .filter_box .select2-container{
-    top: 8px;
+    /*top: 8px;*/
 }
 .filter_box .select2-container .select2-choice {
     background: 0 0;
@@ -755,7 +757,7 @@ select.select-style {
     min-width: 728px;
 }
 .box_right .tab-content{
-    min-width: 728px;
+    /*min-width: 728px;*/
     margin-left: 1px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -2378,7 +2380,7 @@ ul.request-line {
     display: inline-block;
 }
 #frm-login-info .input-lg2 {
-    height: 40px;
+    height: 35px;
     vertical-align: middle;
 }
 #frm-login-info .form-control,.form-control:focus,textarea,textarea:hover,textarea:focus {
@@ -2410,7 +2412,7 @@ ul.request-line {
     margin-right: 6px;
     position: relative;
     line-height: 37px;
-    height: 40px;
+    height: 35px;
 }
 #frm-login-info .control-label-checkbox {
     text-align: right;
@@ -3752,7 +3754,7 @@ ul.request-line {
     color: #fff;
 }
 .user-info .box_filter_content .filter_content_line1, .filter_box.reg_box_tinhthanh {
-    height: 40px!important;
+    height: 35px!important;
 }
 .diadiem_lv .select2-chosen{
     width: 299px!important;
@@ -4075,7 +4077,7 @@ table {
     background-image:url(../images/xfull-map.png);
     background-repeat:no-repeat;
     background-position:center 15px;
-    width: 400px;
+    width: 680px;
     height: 300px;
     padding-left: 0;
     position: relative;
@@ -4138,7 +4140,7 @@ table {
 
 .map .nuoc-ngoai {
     top: 11px;
-    left: 252px;
+    left: 392px;
 }
 
 .map .nuoc-ngoai img {
@@ -4150,7 +4152,7 @@ table {
 
 .map .dong-bac-bo {
     top:78px;
-    left:201px;
+    left:341px;
 }
 
 .map .dong-bac-bo img {
@@ -4160,7 +4162,7 @@ table {
 
 .map .tay-bac-bo {
     top:69px;
-    left: -17px;
+    left: 123px;
     padding:0 6px;
 }
 
@@ -4171,7 +4173,7 @@ table {
 
 .map .bac-trung-bo {
     top:120px;
-    left:-3px;
+    left:137px;
 }
 
 .map .bac-trung-bo img {
@@ -4181,7 +4183,7 @@ table {
 
 .map .nam-trung-bo {
     top:167px;
-    left:247px;
+    left:387px;
 }
 
 .map .nam-trung-bo img {
@@ -4191,7 +4193,7 @@ table {
 
 .map .tay-nguyen {
     top: 175px;
-    left: 0px;
+    left: 140px;
 }
 
 .map .tay-nguyen img {
@@ -4201,7 +4203,7 @@ table {
 
 .map .tay-nam-bo {
     top: 225px;
-    left: -8px;
+    left: 132px;
 }
 
 .map .tay-nam-bo img {
@@ -4211,7 +4213,7 @@ table {
 
 .map .dong-nam-bo {
     top: 209px;
-    left: 248px;
+    left: 388px;
 }
 
 .map .dong-nam-bo img {
@@ -8477,7 +8479,7 @@ float:left;
     background: url("../images/icon-thonge4.png");
 }
 .box-filter-thongke .filter_box .select2-container {
-    top: 6px;
+    /*top: 6px;*/
 }
 .box-filter-thongke{
     min-width:686px;

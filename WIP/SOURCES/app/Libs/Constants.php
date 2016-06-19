@@ -11,6 +11,10 @@ class Constants {
     const USER      = 'user';
     const CONFIG    = 'config';
     const DATASYSTEM    = 'datasystem';
+    const VIDEO     = 'video';
+
+    // Configuration
+    const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
 
     //Page title = PT
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';

@@ -48,6 +48,9 @@
                             <div class="list-items mb_0">
                                 <span class="fwb">Mật khẩu: </span>********
                             </div>
+                            <div class="list-items mb_0">
+                                <span class="fwb">Số dư tài khoản: </span>{{ number_format($employer->balance) }} VNĐ
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="list-items fc-btn-edit">
