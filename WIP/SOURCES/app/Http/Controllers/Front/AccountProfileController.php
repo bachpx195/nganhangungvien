@@ -43,6 +43,7 @@ class AccountProfileController extends BaseController
      */
     public function manageAccountProfile(Request $request)
     {
+        
         if ($request->isMethod('get')) {
             $user = Auth::user();
             $employer = $this->employerRepo->findByUserId($user->id);
@@ -56,6 +57,7 @@ class AccountProfileController extends BaseController
                 ->with('provinces', $provinces)
                 ->with('companySizes', $companySizes);
         }
+        
         return view('front/account/employer_profile');
     }
 
