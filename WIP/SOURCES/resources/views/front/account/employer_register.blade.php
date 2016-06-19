@@ -132,7 +132,7 @@
                                                         required data-required-msg="Vui lòng chọn quy mô công ty">
                                                     <option value="">-- Chọn quy mô công ty --</option>
                                                     @foreach($companySize as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                        <option value="{{ $item->id }}" @if(old('company_size') == $item->id) selected @endif>{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -203,7 +203,7 @@
                                                         required data-required-msg="Vui lòng chọn tỉnh thành">
                                                     <option value=""> -- Chọn Tỉnh thành -- </option>
                                                     @foreach($provinces as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                        <option value="{{ $item->id }}" @if(old('province_id') == $item->id) selected @endif>{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
