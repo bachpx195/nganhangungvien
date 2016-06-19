@@ -18,4 +18,12 @@ interface ISaveCvRepo
      * @return mixed
      */
     function getSavedCvByCandidateAndEmployer($employerId, $candidateId);
+
+    /**
+     * Count saved cv
+     * @param $employerId
+     * @param $candidateId
+     * @return mixed
+     */
+    public function countSavedCv($employerId, $candidateId);
 }

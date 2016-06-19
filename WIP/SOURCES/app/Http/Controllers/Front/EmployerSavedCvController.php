@@ -48,25 +48,27 @@ class EmployerSavedCvController extends BaseController
                 ->with('start', $start)
                 ->with('limit', $limit);
         } else if ($request->isMethod('post')) {
+            $input = $request->all();
             $candidateId = -1;
             if (isset($input['candidateId'])) {
                 $candidateId = $input['candidateId'];
             }
             $user = $this->getCurrentUser();
+            if (!$user) {
+                return response()->json(['data' => 'LOGIN']);
+            }
             $employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
             $savedCv = $this->saveCvRepo->getSavedCvByCandidateAndEmployer($employer->id, $candidateId);
             if ($savedCv) {
                 // delete save cv
-                $savedCv->forceDelete();
-                return response()->json(['result' => 'DONE']);
+                SaveCv::destroy($savedCv->id);
+                return response()->json(['type' => 'cancel', 'data' => 'DONE']);
             } else {
                 $savedCv = new SaveCv();
                 $savedCv->employer_id = $employer->id;
                 $savedCv->candidate_id = $candidateId;
-                $savedCv->create_at = date('yyyy-MM-dd H:i:s');
-                $savedCv->updated_at = date('yyyy-MM-dd H:i:s');
                 $savedCv->save();
-                return response()->json(['result' => 'DONE']);
+                return response()->json(['type' => 'saved', 'data' => 'DONE']);
             }
         }
     }

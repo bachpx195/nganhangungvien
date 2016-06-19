@@ -56,12 +56,21 @@
 		</div>
 
 		<div class="box_button_action mt_16 row mrg button_s22">
-			<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow "
-				onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
+			@if($sameData['savedCv'] > 0)
+				<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow active"
+					onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
+					<span class="line-icon"> <i class="icon-star icon_free_style"></i> <span
+						class="pl_28 fwb">Lưu Hồ sơ</span>
+					</span>
+				</button>
+			@else
+				<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow"
+						onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
 				<span class="line-icon"> <i class="icon-star icon_free_style"></i> <span
-					class="pl_28 fwb">Lưu Hồ sơ</span>
+							class="pl_28 fwb">Lưu Hồ sơ</span>
 				</span>
-			</button>
+				</button>
+			@endif
 			<button class="btn btn-white mr_8 pull-left no-shadow"
 				onclick="">
 				<span class="line-icon"> <i class="icon-print icon_free_style"></i>

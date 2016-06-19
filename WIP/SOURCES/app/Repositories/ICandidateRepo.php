@@ -43,5 +43,4 @@ interface ICandidateRepo
     public function sameExpStatistic($id);
 
     public function sameLvlStatistic($id);
-
 }

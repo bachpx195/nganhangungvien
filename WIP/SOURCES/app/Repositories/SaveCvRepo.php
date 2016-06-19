@@ -1,6 +1,7 @@
 <?php namespace App\Repositories;
 
 use App\Model\SaveCv;
+use Illuminate\Support\Facades\DB;
 
 class SaveCvRepo implements ISaveCvRepo
 {
@@ -24,11 +25,23 @@ class SaveCvRepo implements ISaveCvRepo
      */
     function getSavedCvByCandidateAndEmployer($employerId, $candidateId)
     {
-        $query = SaveCv::join('candidate', 'save_cv.candidate_id', '=', 'candidate.id')
-            ->where('save_cv.employer_id', '=', $employerId)
-            ->where('save_cv.candidate_id', '='. $candidateId)
+        $query = DB::table('save_cv')
+            ->Where('employer_id', '=', $employerId)
+            ->Where('candidate_id', '=', $candidateId)
             ->select('save_cv.*')
             ->first();
+        return $query;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function countSavedCv($employerId, $candidateId)
+    {
+        $query = DB::table('save_cv')
+            ->Where('employer_id', '=', $employerId)
+            ->Where('candidate_id', '=', $candidateId)
+            ->count();
         return $query;
     }
 }
