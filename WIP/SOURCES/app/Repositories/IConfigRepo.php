@@ -3,4 +3,6 @@
 interface IConfigRepo
 {
     public function all();
+
+    public function findByCode($code);
 }

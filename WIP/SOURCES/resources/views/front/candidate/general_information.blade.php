@@ -63,13 +63,13 @@
                     </label>
                     <div class="register_fr_input_wd583">
                         <div class="demo-list-green mr_24 sex-lable">
-                            <input tabindex="1" type="radio" name="sex" value="0" id="ml_0"
-                                   @if ($candidate['sex'] != 1) checked @endif>
+                            <input tabindex="1" type="radio" name="sex" value="2" id="ml_0"
+                                   @if ($candidate['sex'] == 2) checked @endif>
                             <label for="ml_0" class="font14 fwn">Nữ</label>
                         </div>
                         <div class="demo-list-green  sex-lable">
                             <input tabindex="1" type="radio" name="sex" value="1" id="ml_1"
-                                   @if ($candidate['sex'] == 1) checked @endif>
+                                   @if ($candidate['sex'] != 2) checked @endif>
                             <label for="ml_1" class="font14 fwn">Nam</label>
                         </div>
                     </div>
