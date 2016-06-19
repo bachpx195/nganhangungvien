@@ -34,7 +34,7 @@
                                                         {{ $index + 1 }}
                                                     </td>
                                                     <td>
-                                                        <a href="#">{{ $item->candidateName }}</a>  (<strong>{{ $item->cv_title }}</strong>)
+                                                        <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->candidateId])}}">{{ $item->candidateName }}</a> ({{ $item->cv_title }})
                                                     </td>
                                                     <td style="width: 20%;">
                                                         {{ $item->created_at }}
