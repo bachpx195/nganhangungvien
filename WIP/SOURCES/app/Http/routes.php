@@ -24,6 +24,12 @@ Route::post('/admin/login', [
 Route::get('/admin/logout', [
 	'as' => 'admin.logout', 'uses' => 'Auth\AuthController@getLogout'
 ]);
+Route::post('/login', [
+	'as' => 'front.postLogin', 'uses' => 'Auth\AuthController@postLoginFront'
+]);
+Route::get('/logout', [
+	'as' => 'front.logout', 'uses' => 'Auth\AuthController@getLogoutFront'
+]);
 
 
 /**
@@ -33,7 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 {
 	//router admin
 	Route::match(['get'], '/', [
-		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
+		'as' => 'admin', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
 	Route::match(['get'], '/candidate', [
@@ -62,6 +68,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 
 	Route::post('/employer/status/{id}', [
 		'as' => 'admin.employer.status', 'uses' => 'Admin\EmployerController@employerStatus']);
+
+	Route::post('/employer/set-vip/{id}', [
+		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
 
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [
@@ -208,6 +217,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/foreign-language/delete/{id}', [
 		'as' => 'admin.foreignlanguage.delete', 'uses' => 'Admin\ForeignLanguageController@delete'
 	]);
+
+	Route::match(['get', 'post'], '/video', [
+		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
+	]);
 });
 
 /**
@@ -253,6 +266,12 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'employer.register', 'uses' => 'Front\EmployerRegisterController@register'
 	]);
 
+	Route::match(['get', 'post'], '/candidate/form', [
+		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
+	]);
+});
+
+Route::group(['middleware' => ['auth']], function() {
 	//Profile
 	Route::match(['get'], '/user/account', [
 		'as' => 'user.account', 'uses' => 'Front\AccountProfileController@manageAccountProfile'
@@ -267,10 +286,6 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'user.account.changecontactperson', 'uses' => 'Front\AccountProfileController@changeEmployerContactPersonInfo'
 	]);
 
-	Route::match(['get', 'post'], '/candidate/form', [
-		'as' => 'candidate.form', 'uses' => 'Front\CandidateController@candidateForm'
-	]);
-
 	// Employer Transaction
 	Route::match(['get'], '/user/transaction', [
 		'as' => 'user.transaction', 'uses' => 'Front\EmployerTransactionController@getEmployerTransaction'
@@ -278,19 +293,18 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get'], '/user/transaction/loadmore', [
 		'as' => 'user.transaction.loadmore', 'uses' => 'Front\EmployerTransactionController@loadMoreTransaction'
 	]);
-
+	Route::match(['get', 'post'], '/user/pay', [
+		'as' => 'user.pay', 'uses' => 'UserController@userPay'
+	]);
+	Route::match(['get', 'post'], '/user/top-up', [
+		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
+	]);
 	Route::match(['get'], '/tai-lieu', [
 		'as' => 'news.show', 'uses' => 'Front\NewsController@index'
 	]);
 
 	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
 		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
-	]);
-});
-
-Route::group(['middleware' => ['auth']], function() {
-	Route::match(['get', 'post'], '/user/pay', [
-		'as' => 'user.pay', 'uses' => 'UserController@userPay'
 	]);
 });
 
