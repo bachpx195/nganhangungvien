@@ -1,5 +1,3 @@
-
-
 @extends('front/global')
 @section('content')
 	@if (Auth::check() && Auth::user()->user_type == 'employer')
