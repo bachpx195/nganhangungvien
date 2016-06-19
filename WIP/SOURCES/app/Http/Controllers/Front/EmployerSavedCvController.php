@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Front;
 
 use App\Model\SaveCv;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
@@ -16,10 +17,11 @@ class EmployerSavedCvController extends BaseController
         IEmployerRepo $employerRepo,
         IProvinceRepo $provinceRepo,
         ICandidateRepo $candidateRepo,
-        ISaveCvRepo $saveCvRepo
+        ISaveCvRepo $saveCvRepo,
+        IConfigRepo $configRepo
     )
     {
-        parent::__construct($candidateRepo, $provinceRepo);
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->employerRepo = $employerRepo;
         $this->saveCvRepo = $saveCvRepo;
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\ISaveCvRepo;
@@ -20,10 +21,11 @@ class CandidateProfileController extends BaseController {
 		IEmployerRepo $employerRepo,
 		ISaveCvRepo $saveCvRepo,
 		IProvinceRepo $provinceRepo,
-		ICandidateRepo $candidateRepo
+		ICandidateRepo $candidateRepo,
+		IConfigRepo $configRepo
 	)
 	{
-		parent::__construct($candidateRepo, $provinceRepo);
+		parent::__construct($candidateRepo, $provinceRepo, $configRepo);
 		$this->employerRepo = $employerRepo;
 		$this->saveCvRepo = $saveCvRepo;
 	}
