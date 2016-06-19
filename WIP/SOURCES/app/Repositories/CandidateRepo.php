@@ -1,5 +1,6 @@
 <?php namespace App\Repositories;
 
+use App\Helpers\DateTimeHelper;
 use App\Model\Candidate;
 use DB;
 
@@ -22,7 +23,7 @@ class CandidateRepo implements ICandidateRepo {
      * @param string $orderBy
      * @return
      */
-    public function search($params, $pageSize = 10, $orderBy = 'created_at') {
+    public function search($params, $pageSize = 10, $orderBy = 'updated_at') {
         $query = Candidate::select();
 
         if(isset($params['title']) && $params['title']){
@@ -51,6 +52,28 @@ class CandidateRepo implements ICandidateRepo {
 
         if(isset($params['sex']) && $params['sex']){
             $query = $query->where('sex', '=', $params['sex']);
+        }
+
+        if(isset($params['employment_status']) && $params['employment_status']){
+            $query = $query->where('employment_status', '=', $params['employment_status']);
+        }
+
+        if(isset($params['rank']) && $params['rank']){
+            $query = $query->where('expect_rank', '=', $params['rank']);
+        }
+
+        if(isset($params['language']) && $params['language']){
+            $query = $query->whereHas('foreignLanguages', function($q) use ($params)
+            {
+                $q->where('language_id', '=', $params['language']);
+            });
+        }
+
+        if(isset($params['timeUpdate']) && $params['timeUpdate']){
+            $date = DateTimeHelper::getDateFromNow($params['timeUpdate']);
+            $date = date("Y-m-d", $date);
+
+            $query = $query->where('updated_at', '>=', $date);
         }
 
         $query = $query->orderBy($orderBy, 'desc');

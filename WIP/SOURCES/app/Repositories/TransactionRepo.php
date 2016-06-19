@@ -15,7 +15,7 @@ class TransactionRepo implements ITransactionRepo
             ->join('user', 'employer.user_id', '=', 'user.id')
             ->join('candidate', 'transaction.candidate_id', '=', 'candidate.id')
             ->where('user.id', '=', $userId)
-            ->select('candidate.full_name as candidateName', 'transaction.*')
+            ->select('transaction.*', 'candidate.id as candidateId', 'candidate.full_name as candidateName', 'candidate.cv_title')
             ->orderBy('transaction.created_at', 'desc')
             ->skip($start)
             ->take($limit)

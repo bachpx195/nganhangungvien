@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class SaveScv extends Model {
+class SaveCv extends Model {
 
-    protected $table = 'save_csv';
+    protected $table = 'save_cv';
 
     public function employer()
     {

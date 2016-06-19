@@ -32,6 +32,8 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
 
     <link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
@@ -76,7 +78,7 @@
                 <div class="content_cols pt_6 pb_24">
 
                     @if (Auth::check() && Auth::user()->user_type == 'employer')
-                    @include('front.layout.left_sidebar')
+                    {{--@include('front.layout.left_sidebar')--}}
                     @endif
 
                     @yield('content')
@@ -93,6 +95,7 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/mbExtruder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.menu-aim.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/sweetalert.min.js') }}"></script>
     <!-- menu aim -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/modernizr.js') }}"></script>
     <!-- Modernizr -->
@@ -116,7 +119,6 @@
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
     <script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
-
 </body>
 
 </html>

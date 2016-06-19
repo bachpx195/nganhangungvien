@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Model\EmploymentStatus;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
 use App\Model\Job;
 use App\Model\Level;
+use App\Model\Rank;
 use App\Model\Salary;
 use App\Repositories\ICandidateRepo;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IProvinceRepo;
+use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
@@ -42,6 +45,8 @@ class BaseController extends Controller
         $dropdownData['degrees'] = Level::all();
         $dropdownData['yearOfexps'] = ExperienceYears::all();
         $dropdownData['languages'] = ForeignLanguage::all();
+        $dropdownData['employmentStatuses'] = EmploymentStatus::all();
+        $dropdownData['ranks'] = Rank::all();
 
         return $dropdownData;
     }
@@ -58,5 +63,14 @@ class BaseController extends Controller
     protected function errorView()
     {
         return response()->view('front.errors.404', [], 404);
+    }
+
+    /**
+     * Common function for get current login user
+     * @return mixed
+     */
+    protected function getCurrentUser() {
+        $user = Auth::user();
+        return $user;
     }
 }

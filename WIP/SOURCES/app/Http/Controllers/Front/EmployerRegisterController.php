@@ -43,6 +43,14 @@ class EmployerRegisterController extends BaseController
      */
     public function register(Request $request)
     {
+        if ($request->session()->has('user')){
+            $user = $request->session()->get('user');
+            $request->session()->flush();
+
+            return view('front.account.employer_register_success')
+                ->with('user', $user);
+        }
+
         if ($request->isMethod('GET')) {
 
             if (!empty(Input::all())) {
@@ -87,7 +95,7 @@ class EmployerRegisterController extends BaseController
 
                 //send email
                 $this->sendEmail($input);
-                Auth::attempt(['email' => $user->email, 'password' => $user->password]);
+                //Auth::attempt(['email' => $user->email, 'password' => $user->password]);
 
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -95,7 +103,8 @@ class EmployerRegisterController extends BaseController
                 throw new Exception($e);
             }
 
-            return redirect(route('user.account'));
+            //return redirect(route('user.account'));
+            return Redirect::back()->with('user', $user);
         }
     }
 
