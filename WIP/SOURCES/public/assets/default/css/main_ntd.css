@@ -539,7 +539,7 @@ select.select-style {
     border-right: 1px solid #eeeeee;
 }
 .filter_box .select2-container{
-    top: 8px;
+    /*top: 8px;*/
 }
 .filter_box .select2-container .select2-choice {
     background: 0 0;
@@ -2379,7 +2379,7 @@ ul.request-line {
     display: inline-block;
 }
 #frm-login-info .input-lg2 {
-    height: 40px;
+    height: 35px;
     vertical-align: middle;
 }
 #frm-login-info .form-control,.form-control:focus,textarea,textarea:hover,textarea:focus {
@@ -2411,7 +2411,7 @@ ul.request-line {
     margin-right: 6px;
     position: relative;
     line-height: 37px;
-    height: 40px;
+    height: 35px;
 }
 #frm-login-info .control-label-checkbox {
     text-align: right;
@@ -3753,7 +3753,7 @@ ul.request-line {
     color: #fff;
 }
 .user-info .box_filter_content .filter_content_line1, .filter_box.reg_box_tinhthanh {
-    height: 40px!important;
+    height: 35px!important;
 }
 .diadiem_lv .select2-chosen{
     width: 299px!important;
@@ -8478,7 +8478,7 @@ float:left;
     background: url("../images/icon-thonge4.png");
 }
 .box-filter-thongke .filter_box .select2-container {
-    top: 6px;
+    /*top: 6px;*/
 }
 .box-filter-thongke{
     min-width:686px;

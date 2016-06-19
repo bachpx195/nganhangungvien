@@ -39,12 +39,11 @@
 			</div>
 			@include('front.candidate.foreign_language')
 			<div class="clearfix"></div>
+			@include('front.candidate.information_technology')
+			<div class="clearfix"></div>
+			@include('front.candidate.contact_person')
+			@include('front.candidate.save_btn')
 		</div>
-
-		@include('front.candidate.information_technology')
-		<div class="clearfix"></div>
-		@include('front.candidate.contact_person')
-		@include('front.candidate.save_btn')
 	</form>
 </div>
 

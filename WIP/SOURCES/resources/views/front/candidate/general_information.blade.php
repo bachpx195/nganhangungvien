@@ -17,7 +17,7 @@
             <div class="clearfix"></div>
             <!-- input email -->
             <div class="body-box-child-ths pb16 mt16">
-                <div class="form-group clearfix mb_16">
+                <div class="form-group">
                     <label for="cv_title" class="control-label-info bold txt-color-363636 fs14 w180">
                         Tiêu đề hồ sơ <span class="colorRed">*</span>
                     </label>
@@ -30,7 +30,7 @@
                 </div>
 
 
-                <div class="form-group clearfix mb_16">
+                <div class="form-group">
                     <label for="email" class="control-label-info bold txt-color-363636 fs14 w180">
                         Email <span class="colorRed">*</span>
                     </label>
@@ -44,7 +44,7 @@
                 </div>
 
                 <!-- input Họ và Tên * -->
-                <div class="form-group clearfix mb_16">
+                <div class="form-group">
                     <label for="full_name" class="control-label-info bold txt-color-363636 fs14 w180">
                         Họ và Tên <span class="colorRed">*</span>
                     </label>
@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- input Giới tính -->
-                <div class="form-group clearfix mb_16">
+                <div class="form-group">
                     <label class="control-label-checkbox bold txt-color-363636 fs14 w180">
                         Giới tính <span class="colorRed">*</span>
                     </label>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <!-- input Tình trạng hôn nhân -->
-                <div class="form-group clearfix mb_18">
+                <div class="form-group">
                     <label class="control-label-checkbox bold txt-color-363636 fs14 w180">
                         Tình trạng hôn nhân<span class="colorRed">*</span>
                     </label>
@@ -94,7 +94,7 @@
                 </div>
 
                 <!-- input birthday -->
-                <div class="form-group mb_16">
+                <div class="form-group">
                     <label for="birthday" class="control-label-info bold txt-color-363636 fs14 w180">
                         Ngày sinh <span class="colorRed">*</span></label>
                     <div class="register_fr_input_wd583 select_style31 city_select">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
 
-                <div class="form-group mb1 input-phone">
+                <div class="form-group input-phone">
                     <label for="phone_number" class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span></label>
                     <div class="fr-input-wd333">
                         <input type="text" class="form-control input-lg2 color-input" id="phone" name="phone_number" placeholder="Ví dụ: 0942465168"
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="c_chuc_vu"
                            class="control-label-info bold txt-ghi fs14 w180">Cấp
                         bậc hiện tại <span class="colorRed">*</span></label>
@@ -142,14 +142,14 @@
                                     array(
                                         'selected' => $candidate['current_rank'],
                                         'options' => $ranks,
-                                        'defaultName' => 'Chọn cấp bậc'
+                                        'defaultName' => '-- Chọn cấp bậc --'
                                         ))
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="c_chuc_vu"
                            class="control-label-info bold txt-ghi fs14 w180">Cấp
                         bậc mong muốn <span class="colorRed">*</span></label>
@@ -161,7 +161,7 @@
                                     array(
                                         'selected' => $candidate['expect_rank'],
                                         'options' => $ranks,
-                                        'defaultName' => 'Chọn cấp bậc'
+                                        'defaultName' => '-- Chọn cấp bậc --'
                                         ))
                             </select>
                         </div>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <!-- input Ngành nghề quan tâm -->
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label class="control-label-info bold txt-ghi fs14 w180 lineheight_24">
                         Ngành nghề <span class="colorRed">*</span>
                     </label>
@@ -182,14 +182,14 @@
                                     array(
                                         'selected' => isset($candidate['job']) ? $candidate['job'] : '',
                                         'options' => $jobs,
-                                        'defaultName' => 'Chọn Ngành nghề'
+                                        'defaultName' => '-- Chọn ngành nghề --'
                                         ))
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label class="control-label-info bold txt-ghi fs14 w180 lineheight_24">
                         Tỉnh thành <span class="colorRed">*</span>
                     </label>
@@ -202,14 +202,14 @@
                                     array(
                                         'selected' => $candidate['province_id'],
                                         'options' => $provinces,
-                                        'defaultName' => 'Chọn Tỉnh thành'
+                                        'defaultName' => '-- Chọn tỉnh thành --'
                                         ))
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group mt_8">
+                <div class="form-group">
                     <label for="level" class="control-label-info bold txt-ghi fs14 w180">Trình độ học vấn cao nhất<span
                                 class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
@@ -221,14 +221,14 @@
                                     array(
                                         'selected' => $candidate['level'],
                                         'options' => $levels,
-                                        'defaultName' => 'Chọn Trình độ học vấn cao nhất'
+                                        'defaultName' => '-- Chọn trình độ học vấn cao nhất --'
                                         ))
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="experience_years" class="control-label-info bold txt-ghi fs14 w180">Tổng số năm kinh nghiệm <span
                                 class="colorRed">*</span></label>
                     <div class="fr-input-wd333 select_style31 city_select">
@@ -240,7 +240,7 @@
                                     array(
                                         'selected' => $candidate['experience_years'],
                                         'options' => $experienceYears,
-                                        'defaultName' => 'Chọn năm kinh nghiệm'
+                                        'defaultName' => '-- Chọn năm kinh nghiệm --'
                                         ))
                             </select>
                         </div>
@@ -248,7 +248,7 @@
                 </div>
 
                 <!-- input Hình thức làm việc -->
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="employment_status" class="control-label-info bold txt-ghi fs14 w180">
                         Hình thức làm việc <span class="colorRed">*</span>
                     </label>
@@ -262,7 +262,7 @@
                                     array(
                                         'selected' => $candidate['employment_status'],
                                         'options' => $employmentStatuses,
-                                        'defaultName' => 'Chọn hình thức làm việc'
+                                        'defaultName' => '-- Chọn hình thức làm việc --'
                                         ))
                             </select>
                         </div>
@@ -271,7 +271,7 @@
                 <div class="clearfix"></div>
                 <!-- input Mức lương mong muốn -->
 
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="expect_salary" class="control-label-info bold txt-ghi fs14 w180">
                         Mức lương mong muốn <span class="colorRed">*</span>
                     </label>
@@ -285,14 +285,14 @@
                                     array(
                                         'selected' => $candidate['expect_salary'],
                                         'options' => $salaries,
-                                        'defaultName' => 'Chọn Mức lương'
+                                        'defaultName' => '-- Chọn mức lương --'
                                         ))
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="exigency"
                            class="control-label-info bold txt-ghi fs14 w180 lineheight_24">Nhu cầu công việc <span class="colorRed">*</span><span
                                 class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
@@ -305,7 +305,7 @@
                                     array(
                                         'selected' => isset($candidate['exigency']) ? $candidate['exigency'] : '',
                                         'options' => $exigencies,
-                                        'defaultName' => 'Chọn nhu cầu làm việc'
+                                        'defaultName' => '-- Chọn nhu cầu làm việc --'
                                         ))
                             </select>
                         </div>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="clearfix"></div>
 
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="job_goal"
                            class="control-label-info bold txt-ghi fs14 w180">
                         Mục tiêu nghề nghiệp <span class="colorRed">*</span>
@@ -328,7 +328,7 @@
                     </div>
                 </div>
 
-                <div class="form-group mt_16">
+                <div class="form-group">
                     <label for="job_goal"
                            class="control-label-info bold txt-ghi fs14 w180">
                         Kỹ năng & Sở trường
@@ -343,30 +343,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">Ảnh đại diện</label>
+                    <label class="control-label-info bold txt-ghi fs14 w180">Ảnh đại diện</label>
                     <div class="col-md-10">
-                        <div class="col-md-9">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail upload-image">
-                                    <img src="{{ URL::asset('assets/image/default.png') }}" alt="" />
-                                </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
-                                <div>
-						            <span class="btn red btn-outline btn-file">
-						                <span class="fileinput-new"> Chọn hình ảnh </span>
-						                <span class="fileinput-exists"> Thay đổi </span>
-						                <input  type="file" name="image" accept="image/*" > </span>
-                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
-                                </div>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail upload-image">
+                                <img src="{{ URL::asset('assets/image/default.png') }}" alt="" />
                             </div>
-                            <div class="clearfix margin-top-10">
-                                <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
+                            <div>
+                                <span class="btn red btn-outline btn-file">
+                                    <span class="fileinput-new"> Chọn hình ảnh </span>
+                                    <span class="fileinput-exists"> Thay đổi </span>
+                                    <input  type="file" name="image" accept="image/*" > </span>
+                                <a href="javascript:;" class="btn red fileinput-exists ml_10" data-dismiss="fileinput"> Hủy </a>
+                                <span class="label label-success ml_10">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png )
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">Tải lên CV đính kèm</label>
+                    <label class="control-label-info bold txt-ghi fs14 w180">Tải lên CV đính kèm</label>
                     <div class="col-md-10">
                         <input name="attach_cv" type="file" multiple class="file-loading btn red btn-outline btn-file"
                                accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
