@@ -26,8 +26,12 @@
                     }
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert('Đã có lỗi hệ thống. Vui lòng thử lại');
+            error: function (jqXHR, status, errorThrown) {
+                if (jqXHR.status == 401) {
+                    alert('Bạn phải đăng nhập để lưu hồ sơ');
+                } else {
+                    alert('Đã có lỗi hệ thống. Vui lòng thử lại');
+                }
             }
         });
     }

@@ -1,4 +1,9 @@
 @extends('front/global')
+<style type="text/css">
+    #list_hs {
+        min-height: 180px;
+    }
+</style>
 @section('content')
     <div class="container-fluid nopadding">
         <div class="content_body">
@@ -29,7 +34,7 @@
                                                         {{ $index + 1 }}
                                                     </td>
                                                     <td>
-                                                        <a href="#">{{ $item->candidateName }}</a>
+                                                        <a href="#">{{ $item->candidateName }}</a>  (<strong>{{ $item->cv_title }}</strong>)
                                                     </td>
                                                     <td style="width: 20%;">
                                                         {{ $item->created_at }}

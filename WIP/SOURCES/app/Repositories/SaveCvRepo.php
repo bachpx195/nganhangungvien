@@ -12,7 +12,7 @@ class SaveCvRepo implements ISaveCvRepo
     {
         $query = SaveCv::join('candidate', 'save_cv.candidate_id', '=', 'candidate.id')
             ->where('save_cv.employer_id', '=', $employerId)
-            ->select('save_cv.*', 'candidate.id as candidateId', 'candidate.full_name as candidateName')
+            ->select('save_cv.*', 'candidate.id as candidateId', 'candidate.full_name as candidateName', 'candidate.cv_title')
             ->orderBy('save_cv.created_at', 'desc')
             ->skip($start)
             ->take($limit)
