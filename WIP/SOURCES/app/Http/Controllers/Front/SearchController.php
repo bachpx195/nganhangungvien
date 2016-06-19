@@ -12,6 +12,7 @@ use App\Model\ForeignLanguage;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
+use Illuminate\Support\Facades\Input;
 
 class SearchController extends BaseController {
 	
@@ -26,6 +27,7 @@ class SearchController extends BaseController {
 		
 		$pageSize = config('front.pageSize');
 		$candidates = $this->candidateRepo->search($params, $pageSize);
+		$candidates->appends(Input::except('page'));
 		
 		$dropdownData = $this->dropdownData();
 		
