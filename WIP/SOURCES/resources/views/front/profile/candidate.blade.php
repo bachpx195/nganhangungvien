@@ -58,14 +58,16 @@
 		<div class="box_button_action mt_16 row mrg button_s22">
 			@if($sameData['savedCv'] > 0)
 				<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow active"
-					onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
+					onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}"
+					data-toggle="tooltip" data-placement="top" title="Hồ sơ này đã được lưu. Nhấp chuột để hủy lưu">
 					<span class="line-icon"> <i class="icon-star icon_free_style"></i> <span
 						class="pl_28 fwb">Lưu Hồ sơ</span>
 					</span>
 				</button>
 			@else
 				<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow"
-						onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
+						onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}"
+						data-toggle="tooltip" data-placement="top" title="Hồ sơ chưa lưu. Nhấp chuột để lưu lại">
 				<span class="line-icon"> <i class="icon-star icon_free_style"></i> <span
 							class="pl_28 fwb">Lưu Hồ sơ</span>
 				</span>
