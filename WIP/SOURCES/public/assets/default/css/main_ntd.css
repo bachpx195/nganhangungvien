@@ -133,8 +133,8 @@ div.section{
     width:232px;
 }
 #cols-right{
-    overflow-x: hidden;
-    overflow-y: scroll;
+    /*overflow-x: hidden;
+    overflow-y: scroll;*/
     /*min-width: 728px;*/
     width: 100% !important;
 }

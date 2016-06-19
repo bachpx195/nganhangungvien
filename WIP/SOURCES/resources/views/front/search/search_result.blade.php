@@ -83,16 +83,18 @@
 						@endforeach @else
 						Chưa có hồ sơ phù hợp
 						@endif
-						
-
+						<div class="list-items">
+						<div class="box_pagination_footer text-center">
+							{!! $candidates->render() !!}
+						</div>
+						<div class="list-items">
 					</div>
 				</div>
 
-				<div class="box_pagination_footer text-center">
-					{!! $candidates->render() !!}
-				</div>
+
 			</div>
 		</div>
+		<div class="form-group clearfix mb_16"></div>
 
 	</div>
 	

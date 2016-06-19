@@ -187,88 +187,37 @@
 									<div class="modal-body-searchad pt_8">
 										<div class="demo-list pb_6">
 											<input value="" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" checked id="ml_0"> <label for="ml_0"
+												name="employment_status" @if (!isset($params['employment_status']) || !$params['employment_status']) checked @endif> <label
 												class="font14">Tất cả hình thức</label>
 										</div>
-										<div class="demo-list pb_6">
-											<input value="1" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_1"> <label for="ml_1"
-												class="font14">Toàn thời gian cố định</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="2" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_2"> <label for="ml_2"
-												class="font14">Toàn thời gian tạm thời</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="3" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_3"> <label for="ml_3"
-												class="font14">Bán thời gian cố định</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="4" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_4"> <label for="ml_4"
-												class="font14">Bán thời gian tạm thời</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="5" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_5"> <label for="ml_5"
-												class="font14">Theo hợp đồng tư vấn</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="6" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_6"> <label for="ml_6"
-												class="font14">Thực tập</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="7" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_7"> <label for="ml_7"
-												class="font14">Khác</label>
-										</div>
+										@foreach($dropdownData['employmentStatuses'] as $item)
+											<div class="demo-list pb_6">
+												<input value="{{$item->id}}" tabindex="1" type="radio" name="employment_status"
+													   @if (isset($params['employment_status']) && $params['employment_status'] == $item->id) checked @endif>
+												<label class="font14">{{$item->name}}</label>
+											</div>
+										@endforeach
 									</div>
 								</li>
 								<li class="floatLeft pt12">
 									<div class="title_filter_searchad pos_relative mb_2 ml_16 w218">
 										<i class="icon_select_box icon_capbac icon_24 icon-24"></i>Chọn
-										cấp bậcc
+										cấp bậc
 									</div>
 									<div class="modal-body-searchad ml_16">
 										<div class="modal-body-searchad pt_8">
 											<div class="demo-list pb_6">
-												<input value="" tabindex="1" type="radio" name="hdn_cap_bac"
-													checked id="mr_0"> <label for="mr_0" class="font14">Tất cả
+												<input value="" tabindex="1" type="radio" name="rank"
+													   @if (!isset($params['rank']) || !$params['rank']) checked @endif> <label class="font14">Tất cả
 													Cấp bậc</label>
 											</div>
-											<div class="demo-list pb_6">
-												<input value="3" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_3"> <label for="mr_3"
-													class="font14">Quản lý cấp cao</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="4" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_4"> <label for="mr_4"
-													class="font14">Quản lý cấp trung</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="9" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_9"> <label for="mr_9"
-													class="font14">Quản lý nhóm - giám sát</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="6" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_6"> <label for="mr_6"
-													class="font14">Chuyên gia</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="7" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_7"> <label for="mr_7"
-													class="font14">Chuyên viên - Nhân viên</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="13" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_13"> <label for="mr_13"
-													class="font14">Cộng tác viên</label>
-											</div>
+											@foreach($dropdownData['ranks'] as $item)
+												<div class="demo-list pb_6">
+													<input value="{{$item->id}}" tabindex="1" type="radio" name="rank"
+														   @if (isset($params['rank']) && $params['rank'] == $item->id) checked @endif>
+													<label class="font14">{{$item->name}}</label>
+												</div>
+											@endforeach
 										</div>
 									</div>
 								</li>
@@ -300,13 +249,6 @@
                 $(this).closest('form.frm_search_box_full').submit();
              }
         });
-        setTimeout(function() {
-            $('.btn_search_time').click();
-            $('.filter_mucluong').hide();
-            $('.btn_search_time3').click();
-            $('.filter_kinhnghiem').hide();
-            }, 1000
-        );
     }
 
     if( document.addEventListener ) {
