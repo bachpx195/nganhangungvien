@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\FileHelper;
 use App\Http\Requests;
 use App\Http\Response;
 use App\Repositories\ICandidateRepo;
@@ -11,6 +12,7 @@ use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -112,6 +114,18 @@ class AccountProfileController extends BaseController
             } catch (\Exception $e) {
                 throw new Exception($e);
             }
+            // handle file
+            if (!empty($_FILES['logo'])) {
+                $file = $_FILES['logo'];
+                $path = FileHelper::getCompanyImgPath() . FileHelper::getNewFileName() . $file['name'];
+                $content = File::get($file['tmp_name']);
+                $result = $this->manager->saveFile($path, $content);
+                if ($result === true) {
+                    
+                }
+            }
+
+            // get employer
             $employerId = $input['employer_id'];
             $employer = $this->employerRepo->findById($employerId);
             if (!$employer) {
