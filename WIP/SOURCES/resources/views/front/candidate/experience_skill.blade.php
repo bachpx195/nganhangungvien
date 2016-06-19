@@ -115,7 +115,7 @@
                                                 array(
                                                     'selected' => isset($candidate['experience_salary_' . $i]) ? $candidate['experience_salary_' . $i] : '',
                                                     'options' => $salaries,
-                                                    'defaultName' => 'Chọn Mức lương'
+                                                    'defaultName' => '-- Chọn Mức lương --'
                                                     ))
                                         </select>
                                     </div>

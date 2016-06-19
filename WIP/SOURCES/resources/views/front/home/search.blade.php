@@ -197,8 +197,13 @@
 		</div>
 	</div>
 
+	@if (Auth::check() && Auth::user()->user_type == 'employer')
+		<div class="box_filter_map text-left" id="youtube-video" style="display: none;">
+	@else
+		<div class="box_filter_map text-left" id="youtube-video">
+	@endif
 
-	<div class="box_filter_map text-left" id="youtube-video">
+
 		@if ($linkYouTube)
 		<div class="statistic font16">
 			Video tuyển dụng

@@ -278,7 +278,8 @@ div.section{
 .box_left{
     position: absolute;
     top:0;
-    left:0;
+    left:5px;
+    margin-top: 60px;
 }
 .box_right, .box_footer{
     /*padding-left: 232px;*/
@@ -756,7 +757,7 @@ select.select-style {
     min-width: 728px;
 }
 .box_right .tab-content{
-    min-width: 728px;
+    /*min-width: 728px;*/
     margin-left: 1px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;

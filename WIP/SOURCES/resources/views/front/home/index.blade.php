@@ -2,7 +2,11 @@
 
 @extends('front/global')
 @section('content')
-<div class="">
+	@if (Auth::check() && Auth::user()->user_type == 'employer')
+		<div class="" style="padding-left:232px;">
+	@else
+		<div class="">
+	@endif
 
 	@include('front/home/ads')
 	
