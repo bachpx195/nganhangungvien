@@ -1,7 +1,12 @@
 @extends('front/global')
 
 @section('content')
-    <div class="content_dangky bg_white mt16 box_shadow">
+    @if (Auth::check() && Auth::user()->user_type == 'employer')
+        <div class="content_dangky" style="padding-left:232px;">
+    @else
+        <div class="content_dangky">
+    @endif
+            <div class="bg_white mt16 box_shadow">
         <div class="block_ntv_dangky regis_header h_56" id="regis_header">
 
             <div class="w_50 floatLeft">
@@ -315,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-
+</div>
             </div>
         </div>
     </div>
