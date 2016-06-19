@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Front;
 
+use App\Model\SaveCv;
 use App\Repositories\IEmployerRepo;
 use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
@@ -46,6 +47,27 @@ class EmployerSavedCvController extends BaseController
                 ->with('saveCvs', $saveCvs)
                 ->with('start', $start)
                 ->with('limit', $limit);
+        } else if ($request->isMethod('post')) {
+            $candidateId = -1;
+            if (isset($input['candidateId'])) {
+                $candidateId = $input['candidateId'];
+            }
+            $user = $this->getCurrentUser();
+            $employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+            $savedCv = $this->saveCvRepo->getSavedCvByCandidateAndEmployer($employer->id, $candidateId);
+            if ($savedCv) {
+                // delete save cv
+                $savedCv->forceDelete();
+                return response()->json(['result' => 'DONE']);
+            } else {
+                $savedCv = new SaveCv();
+                $savedCv->employer_id = $employer->id;
+                $savedCv->candidate_id = $candidateId;
+                $savedCv->create_at = date('yyyy-MM-dd H:i:s');
+                $savedCv->updated_at = date('yyyy-MM-dd H:i:s');
+                $savedCv->save();
+                return response()->json(['result' => 'DONE']);
+            }
         }
     }
 
@@ -77,7 +99,8 @@ class EmployerSavedCvController extends BaseController
      * @param $limit
      * @return array|mixed
      */
-    private function getSaveCvs($start, $limit) {
+    private function getSaveCvs($start, $limit)
+    {
         $user = $this->getCurrentUser();
         $employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
         $saveCvs = $this->saveCvRepo->getSavedCvByEmployerId($employer->id, $start, $limit);

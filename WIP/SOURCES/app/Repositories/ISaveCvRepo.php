@@ -10,4 +10,12 @@ interface ISaveCvRepo
      * @return mixed
      */
     function getSavedCvByEmployerId($employerId, $start, $limit);
+
+    /**
+     * Get save cv by employer id and candidate id
+     * @param $employerId employer id
+     * @param $candidateId candidate id
+     * @return mixed
+     */
+    function getSavedCvByCandidateAndEmployer($employerId, $candidateId);
 }

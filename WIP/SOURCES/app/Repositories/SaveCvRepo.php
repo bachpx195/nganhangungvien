@@ -18,4 +18,17 @@ class SaveCvRepo implements ISaveCvRepo
             ->get();
         return $query;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    function getSavedCvByCandidateAndEmployer($employerId, $candidateId)
+    {
+        $query = SaveCv::join('candidate', 'save_cv.candidate_id', '=', 'candidate.id')
+            ->where('save_cv.employer_id', '=', $employerId)
+            ->where('save_cv.candidate_id', '='. $candidateId)
+            ->select('save_cv.*')
+            ->first();
+        return $query;
+    }
 }

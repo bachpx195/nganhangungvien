@@ -57,8 +57,7 @@
 
 		<div class="box_button_action mt_16 row mrg button_s22">
 			<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow "
-				onclick="javascript:luuhoso(this)" data-idtin="3193240"
-				data-idnganh="36" data-type="tintimviec" data-idntv="3264433">
+				onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}">
 				<span class="line-icon"> <i class="icon-star icon_free_style"></i> <span
 					class="pl_28 fwb">Lưu Hồ sơ</span>
 				</span>
@@ -454,7 +453,7 @@
 		@endif
 
 	</div>
-
+	@include('front.profile.candidate_js')
 </div>
 
 @endsection

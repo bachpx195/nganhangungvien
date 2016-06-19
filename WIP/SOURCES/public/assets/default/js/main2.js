@@ -343,26 +343,6 @@ function luutin(id){
         };
     }});
 }
-function luuhoso(id){
-    var idtin   = $(id).attr('data-idtin');
-    var idnganh = $(id).attr('data-idnganh');
-    var idntv = $(id).attr('data-idntv');
-    var type    = $(id).attr('data-type');
-    if(type == null || type == 'undefined') type = 'tintimviec';
-    var url_ajax = '/'+type+'/save?id='+idtin+'&nganh='+idnganh+'&ntv='+idntv;
-    $.ajax({url:url_ajax,cache: false,success:function(result){
-        if (result == 'LOGIN') {
-            must_login('Lưu việc làm');
-            return false;
-        };
-        if (result == 'DONE') {
-            $("[data-idtin='"+idtin+"']").each(function (){
-                $(this).toggleClass('active');
-                var star = $(this).find('.icon-star-line').toggleClass('active');
-            });
-        };
-    }});
-}
 function createCookie(name,value,days) {
     if (days) {
         var date = new Date();
