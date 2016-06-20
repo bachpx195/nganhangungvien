@@ -44,6 +44,11 @@ class FileHelper {
 
     public static function getCompanyImgPath()
     {
-        return public_path() . '/company/images';
+        return public_path() . '/company/images/';
+    }
+
+    public static function getCompanyRelativePath()
+    {
+        return '/company/images/';
     }
 }

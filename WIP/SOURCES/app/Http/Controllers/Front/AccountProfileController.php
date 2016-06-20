@@ -12,8 +12,8 @@ use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 use Validator;
 
 class AccountProfileController extends BaseController
@@ -117,14 +117,16 @@ class AccountProfileController extends BaseController
                 throw new Exception($e);
             }
             // handle file
-            if (!empty($_FILES['logo'])) {
-                $file = $_FILES['logo'];
-                $path = FileHelper::getCompanyImgPath() . FileHelper::getNewFileName() . $file['name'];
-                $content = File::get($file['tmp_name']);
-                $result = $this->manager->saveFile($path, $content);
-                if ($result === true) {
+            $companyImgPath = FileHelper::getCompanyImgPath();
+            $imageName = FileHelper::getNewFileName();
 
-                }
+            $user = $this->getCurrentUser();
+            if (!empty($request->file('logo'))) {
+                $imgExtension = $request->file('logo')->getClientOriginalExtension();
+                $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
+                // save image for user
+                $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
+                $user->save();
             }
 
             // get employer
@@ -142,7 +144,13 @@ class AccountProfileController extends BaseController
             $employer->website = $input['website'];
             $employer->save();
 
-            return response()->json(['status' => true, 'message' => 'Cập nhật thông tin nhà tuyển dụng thành công']);
+            // create image url
+            $imgUrl = URL::asset('assets/image/default.png');
+            if (!empty($user->image)) {
+                $imgUrl = URL::to('/') . $user->image;
+            }
+            return response()->json(['status' => true, 'message' => 'Cập nhật thông tin nhà tuyển dụng thành công',
+                'img' => $imgUrl]);
         }
     }
 

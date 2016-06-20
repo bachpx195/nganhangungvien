@@ -72,8 +72,13 @@
                                     <div class="w_100">
                                         <div class="w_33 floatLeft"><strong>Ảnh đại diện: </strong></div>
                                         <div class="fileinput-new custom-thumbnail custom-upload-image floatLeft">
-                                            <img src="{{ URL::asset('assets/image/default.png') }}" height="130"
-                                                 width="170" alt=""/>
+                                            @if(empty($employer->image))
+                                                <img src="{{ URL::asset('assets/image/default.png') }}" height="130"
+                                                    width="170" alt=""/>
+                                            @else
+                                                <img src="{{ URL::to('/') . $employer->image }}" height="130"
+                                                     width="170" alt=""/>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
