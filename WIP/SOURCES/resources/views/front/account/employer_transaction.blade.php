@@ -1,12 +1,4 @@
 @extends('front/global')
-<style type="text/css">
-    .number {
-        text-align: right;
-    }
-    #list_hs {
-        min-height: 180px;
-    }
-</style>
 @section('content')
     <div class="container-fluid nopadding">
         <div class="content_body">

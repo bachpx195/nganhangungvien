@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\FileHelper;
 use App\Http\Requests;
 use App\Http\Response;
 use App\Repositories\ICandidateRepo;
@@ -12,6 +13,7 @@ use App\Repositories\IProvinceRepo;
 use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 use Validator;
 
 class AccountProfileController extends BaseController
@@ -42,7 +44,7 @@ class AccountProfileController extends BaseController
      */
     public function manageAccountProfile(Request $request)
     {
-        
+
         if ($request->isMethod('get')) {
             $user = $this->getCurrentUser();
             $employer = $this->employerRepo->findByUserId($user->id);
@@ -56,7 +58,7 @@ class AccountProfileController extends BaseController
                 ->with('provinces', $provinces)
                 ->with('companySizes', $companySizes);
         }
-        
+
         return view('front/account/employer_profile');
     }
 
@@ -114,6 +116,20 @@ class AccountProfileController extends BaseController
             } catch (\Exception $e) {
                 throw new Exception($e);
             }
+            // handle file
+            $companyImgPath = FileHelper::getCompanyImgPath();
+            $imageName = FileHelper::getNewFileName();
+
+            $user = $this->getCurrentUser();
+            if (!empty($request->file('logo'))) {
+                $imgExtension = $request->file('logo')->getClientOriginalExtension();
+                $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
+                // save image for user
+                $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
+                $user->save();
+            }
+
+            // get employer
             $employerId = $input['employer_id'];
             $employer = $this->employerRepo->findById($employerId);
             if (!$employer) {
@@ -128,7 +144,13 @@ class AccountProfileController extends BaseController
             $employer->website = $input['website'];
             $employer->save();
 
-            return response()->json(['status' => true, 'message' => 'Cập nhật thông tin nhà tuyển dụng thành công']);
+            // create image url
+            $imgUrl = URL::asset('assets/image/default.png');
+            if (!empty($user->image)) {
+                $imgUrl = URL::to('/') . $user->image;
+            }
+            return response()->json(['status' => true, 'message' => 'Cập nhật thông tin nhà tuyển dụng thành công',
+                'img' => $imgUrl]);
         }
     }
 

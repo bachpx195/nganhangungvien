@@ -170,7 +170,7 @@
                             // replace content
                             var template = $('#template_employer_company_information_content').html();
                             Mustache.parse(template);
-                            var output = Mustache.render(template, getCompanyInformationRenderData());
+                            var output = Mustache.render(template, getCompanyInformationRenderData(data));
                             $('#employer_company_information_content').html(output);
 
                             // dong popup sau 3 giay
@@ -271,7 +271,7 @@
         };
     }
 
-    function getCompanyInformationRenderData() {
+    function getCompanyInformationRenderData(data) {
         return {
             company_name: $('input[name=company_name]').val(),
             companySize: $('select[name=company_size] option:selected').text(),
@@ -279,7 +279,13 @@
             provinceName: $('select[name=province_id] option:selected').text(),
             phone: $('input[name=company_phone]').val(),
             website: $('input[name=website]').val(),
-            company_description: $('#about_company').val()
+            company_description: $('#about_company').val(),
+            company_logo: data.img
         };
+    }
+
+    function fileOnchange(objFile) {
+        fileName = objFile.value.replace(/C:\\fakepath\\/i, '');
+        $("#note_select_file_"+objFile.name).html(fileName);
     }
 </script>
