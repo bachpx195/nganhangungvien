@@ -37,7 +37,44 @@ $(document).ready(function() {
 	    ['view', ['fullscreen', 'codeview']],
 	    ['help', ['help']]
 	  ],
+        onImageUpload: function(files) {
+        	console.log('onImageUpload');
+            sendFile(files[0]);
+        }
     });
+        function sendFile(file, editor, welEditable) {
+
+        	console.log('sendFile');
+
+            data = new FormData();
+            data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+
+            console.log('Ok');
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: 'http://localhost:8080/sourcetree/WIP/SOURCES/public/news/upload',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+
+                	console.log('success');
+
+console.log(url);
+
+var urlFUll = 'http://localhost:8080/sourcetree/WIP/SOURCES/public/news/images/' + url;
+
+                    $('#noi_dung').summernote('editor.insertImage', urlFUll);
+                },
+                faild: function(response) {
+                	console.log(response);
+                },
+                error: function(error) {
+                	console.log(error);
+                }
+            });
+        }
     $('#mieu_ta').summernote({
 	  height: 100,                 // set editor height
 	  minHeight: null,             // set minimum height of editor

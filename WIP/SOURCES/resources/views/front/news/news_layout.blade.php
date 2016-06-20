@@ -7,30 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>NGAN HANG UNG VIEN</title>
     <!-- news css -->
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/owl.theme.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/font-awesome.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/style-kv2.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/StoriesSuccess.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/css/featured.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/reponsive.min.css') }}" property='stylesheet' >
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/header-footer.min.css') }}" property='stylesheet' >
-        <style type="text/css">
-         img.wp-smiley,
-         img.emoji {
-         display: inline !important;
-         border: none !important;
-         box-shadow: none !important;
-         height: 1em !important;
-         width: 1em !important;
-         margin: 0 .07em !important;
-         vertical-align: -0.1em !important;
-         background: none !important;
-         padding: 0 !important;
-         }
-      </style>
 
-    <!-- end news css -->
-    <!-- css all -->
+
+
+
     <link rel="stylesheet" href="{{ asset('/assets/default/css/normalize.min.css') }}" property='stylesheet'
           type='text/css' media='all'>
     <link rel="stylesheet" href="{{ asset('/assets/default/css/ionicons.min.css') }}" property='stylesheet'
@@ -59,6 +39,54 @@
           type='text/css' media='all'>
 
 
+
+
+
+    
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/owl.theme.min.css') }}" property='stylesheet' >
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/header-footer.min.css') }}" property='stylesheet'>
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/font-awesome.min.css') }}" property='stylesheet' >
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/style-kv2.min.css') }}" property='stylesheet' >
+        
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/StoriesSuccess.min.css') }}" property='stylesheet' >
+        <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/StoriesSuccess.min.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/css/featured.min.css') }}" property='stylesheet' >
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/reponsive.min.css') }}" property='stylesheet' >
+        <style type="text/css">
+         img.wp-smiley,
+         img.emoji {
+         display: inline !important;
+         border: none !important;
+         box-shadow: none !important;
+         height: 1em !important;
+         width: 1em !important;
+         margin: 0 .07em !important;
+         vertical-align: -0.1em !important;
+         background: none !important;
+         padding: 0 !important;
+         }
+        </style>
+<!--     <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/owl.theme.min.css" type="text/css" rel="stylesheet" />
+
+ -->
+    <!-- <link rel="stylesheet" href="{{ asset('/assets/pages/news/owl.theme.min.css') }}" property='stylesheet' > -->
+
+<!--     <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/header-footer.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link rel="stylesheet" href="{{ asset('/assets/pages/news/header-footer.min.css') }}" property='stylesheet'> -->
+<!--     <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/font/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link rel="stylesheet" href="{{ asset('/assets/pages/news/font-awesome.min.css') }}" property='stylesheet' > -->
+    <!-- <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/styles.min.css" type="text/css" rel="stylesheet"/> -->
+<!--     <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/StoriesSuccess.min.css" type="text/css" rel="stylesheet"/> -->
+<!-- <link rel="stylesheet" href="{{ asset('/assets/pages/news/StoriesSuccess.min.css') }}" property='stylesheet' > -->
+
+    <!--[if IE]>
+    <script defer src="https://www.kiotviet.vn/wp-content/themes/kiotviet/js/html5.min.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <!-- end news css -->
+    <!-- css all -->
+
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/styles.min.css') }}" property='stylesheet' >
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

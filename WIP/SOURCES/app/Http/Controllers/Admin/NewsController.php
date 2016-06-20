@@ -48,6 +48,7 @@ class NewsController extends Controller {
             if ($request->has('id')) {
                     
                 $news = News::find($request->get('id'));
+                $pageTitle  = Constants::NEWS_UPDATE_PT;
             } else {
                 $news = new News();
             }
@@ -113,6 +114,23 @@ class NewsController extends Controller {
             $news->image = $imageName . '.' . $imgExtension;
         }
         return $news;
+    }
+    public function upload_image(Request $request= null)
+    {   
+        // print($request->file('file'));
+        // die();
+        // dd('upload_image');
+        if($request->hasFile('file')){
+            $filename = str_random(20).'_'.$request->file('file')->getClientOriginalName();
+            $image_path = public_path() . '/news/images/';
+            $request->file('file')->move(
+                $image_path, $filename
+            );
+            echo $filename;    
+        }
+        else{
+            echo 'Oh No! Uploading your image has failed.';
+        }
     }
 
 

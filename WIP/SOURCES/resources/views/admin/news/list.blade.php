@@ -37,8 +37,8 @@
                                     <tr class="gradeX odd" role="row">
                                         <td class="text-center">{{ $index + 1 }}</td>
                                         <td class="">{{ $item->title }}</td>
-                                        <td class="">{{ $item->link }}</td>
-                                        <td class="">{{ date('F d, Y', strtotime($item->updated_at)) }}</td>
+                                        <td class=""><a href="$item->link" title="{{ $item->link }}">{{ substr($item->link, 0, 20) }}...</a></td>
+                                        <td class="">{{ $item->updated_at }}</td>
                                         <td>
                                             <a href="{{route('admin.news.form'). '?id=' . $item->id}}" target="_blank">
                                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"

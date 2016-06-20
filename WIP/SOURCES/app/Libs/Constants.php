@@ -53,6 +53,7 @@ class Constants {
 
     const NEWS_NEW_PT = 'Tạo mới tin tức';
     const NEWS_LIST_PT = 'Quản lý tin tức';
+    const NEWS_UPDATE_PT = 'Cập nhật tin tức';
 
     const CANDIDATE_UPDATE_PT = 'Cập nhật hồ sơ ứng viên';
 

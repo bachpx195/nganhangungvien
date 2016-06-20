@@ -315,3 +315,6 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 
+	Route::match(['get', 'post'], '/news/upload', [
+		'as' => 'news.upload', 'uses' => 'Admin\NewsController@upload_image'
+	]);
