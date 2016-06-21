@@ -17,16 +17,12 @@
                               {{ $new->title? $new->title : ''}}                               </a>
                            </h2>
                            <div class="date">{{ $new->updated_at? $new->updated_at : ''}}</div>
-                           <p style="display: inline;"><?php
-                           $str = strip_tags($new->description); 
-                           echo substr($str, 0, 200).'...'; 
-                           ?><a rel="nofollow" target="_blank" href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}" title="{{ $new->title? $new->title : ''}}">
+                           <p><?php echo substr(strip_tags($new->description), 0, 295); ?>...<a rel="nofollow" target="_blank" href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}" title="{{ $new->title? $new->title : ''}}">
                               Xem chi tiết
                               </a>
                            </p>
 
-                           <p>Download: <a href="{{ $new->link? $new->link : ''}}" target="_blank" rel="nofollow">{{ $new->link? $new->link : ''}}</a>&nbsp;</p>
-
+                           <p>Download: <a href="{{ $new->link? $new->link : ''}}" target="_blank" title="{{ $new->link }}" rel="nofollow">{{ $new->link? substr($new->link, 0, 50) : ''}}...</a>&nbsp;</p>
                            <p>Mật khẩu: <i> {{ $new->password? $new->password : ''}} </i>&nbsp;</p>
                         </li>
                         @endforeach

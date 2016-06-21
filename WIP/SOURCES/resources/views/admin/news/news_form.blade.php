@@ -7,9 +7,6 @@
             <i class="fa fa-gift"></i>Quản lý tin tức </div>
         <div class="tools">
             <a href="javascript:;" class="collapse"> </a>
-            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-            <a href="javascript:;" class="reload"> </a>
-            <a href="javascript:;" class="remove"> </a>
         </div>
     </div>
     <div class="portlet-body form">
@@ -19,7 +16,7 @@
             <input type="hidden" id="id" name="id" value="{{ $news->id }}" />
             <div class="form-body">
                 <div class="form-group">
-                    <label class="control-label col-md-2">Tiêu đề <span class="colorRed">*</span></label>
+                    <label class="control-label col-md-2">Tiêu đề <span class="colorRed" style="color: red;">*</span></label>
                     <div class="col-md-10">
                         <input type="text" class="form-control input-lg2 color-input" id="new_title" value="{{ old('tieu_de') != null ? old('tieu_de') : $news->title }}" name="tieu_de" data-rule-required="true" placeholder="" />
                     </div>

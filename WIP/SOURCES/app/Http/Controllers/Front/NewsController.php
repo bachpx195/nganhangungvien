@@ -40,11 +40,15 @@ class NewsController extends Controller {
     {
         $activeHeaderMenu = Constants::NEWS;
         $news = News::find($id);
+        $otherNews = News::Where('id',"<>","$id")
+                ->take(6)
+                ->get();
         if(!$news){
             return $this->errorView();
         }
         
         return view('front/news/profile')
+            ->with('otherNews',$otherNews)
             ->with('activeHeaderMenu',$activeHeaderMenu)
             ->with('news',$news);
     }

@@ -53,7 +53,7 @@ $(document).ready(function() {
             $.ajax({
                 data: data,
                 type: "POST",
-                url: 'http://localhost:8080/sourcetree/WIP/SOURCES/public/news/upload',
+                url: "{{ URL::to('news/upload') }}",
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -63,9 +63,8 @@ $(document).ready(function() {
 
 console.log(url);
 
-var urlFUll = 'http://localhost:8080/sourcetree/WIP/SOURCES/public/news/images/' + url;
 
-                    $('#noi_dung').summernote('editor.insertImage', urlFUll);
+                    $('#noi_dung').summernote('editor.insertImage', url);
                 },
                 faild: function(response) {
                 	console.log(response);

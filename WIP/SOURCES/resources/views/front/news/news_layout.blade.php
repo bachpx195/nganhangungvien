@@ -47,7 +47,7 @@
         <link rel="stylesheet" href="{{ asset('/assets/pages/news/header-footer.min.css') }}" property='stylesheet'>
         <link rel="stylesheet" href="{{ asset('/assets/pages/news/font-awesome.min.css') }}" property='stylesheet' >
         <link rel="stylesheet" href="{{ asset('/assets/pages/news/style-kv2.min.css') }}" property='stylesheet' >
-        
+        <link rel="stylesheet" href="{{ asset('/assets/pages/news/styles.min.css') }}" property='stylesheet' >       
         <link rel="stylesheet" href="{{ asset('/assets/pages/news/StoriesSuccess.min.css') }}" property='stylesheet' >
         <link href="https://www.kiotviet.vn/wp-content/themes/kiotviet/css/StoriesSuccess.min.css" type="text/css" rel="stylesheet"/>
         <link rel="stylesheet" href="{{ asset('/assets/pages/news/css/featured.min.css') }}" property='stylesheet' >
@@ -86,7 +86,6 @@
     <!-- end news css -->
     <!-- css all -->
 
-        <link rel="stylesheet" href="{{ asset('/assets/pages/news/styles.min.css') }}" property='stylesheet' >
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

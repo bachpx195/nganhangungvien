@@ -9,9 +9,22 @@
             <div class="content-write">
                <strong><?php echo "$news->description" ?></strong>
                <?php echo "$news->content" ?>
-               <p>---<br />Download: <a href="{{ $news->link? $news->link : ''}}" target="_blank" rel="nofollow">{{ $news->link? $news->link : ''}}</a>&nbsp;<br>Mật khẩu: <i> {{ $news->password? $news->password : ''}} </i>&nbsp;</p></p>
+               <p>---<br />Download: <a href="{{ $news->link? $news->link : ''}}" target="_blank" title="{{ $news->link }}" rel="nofollow">{{ $news->link? substr($news->link, 0, 50) : ''}}...</a>&nbsp;<br>Mật khẩu: <i> {{ $news->password? $news->password : ''}} </i>&nbsp;</p></p>
             </div>
+            <p>&nbsp;</p>
+                  <h3 class="title-right"><span>Bài viết liên quan</span></h3>
+                  <div class="blog-other">
+                     @foreach($otherNews as $index => $new)
+                        <div class="wrapper-qt-right">
+                           <a href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}" title="{{ $new->title? $new->title : ''}}" target="_blank"><img width="58" height="58" alt="{{ $new->title? $new->title : ''}}" src="{{ isset($new['image']) ? URL::to('/') . '/news/images/' . $new->image : URL::asset('assets/image/default.png') }}" class="avatar" /></a>
+                           <div class="wr-name">
+                              <h4><a href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}" title="{{ $new->title? $new->title : ''}}" target="_blank">{{ $new->title? $new->title : ''}}</a></h4>
+                           </div>
+                        </div>
+                     @endforeach
+                  </div>
          </div>
+
          @include('front/news/news_right_sidebar')
          <!--END right-->
          <div class="clb ovh"></div>

@@ -276,6 +276,12 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tai-lieu/{slug}_{id}', [
 		'as' => 'news.profile', 'uses' => 'Front\NewsController@profile'
 	]);
+
+
+	Route::match(['get', 'post'], '/news/upload', [
+		'as' => 'news.upload', 'uses' => 'Admin\NewsController@upload_image'
+	]);
+
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -314,7 +320,3 @@ Route::group(['middleware' => ['auth']], function() {
 	]);
 });
 
-
-	Route::match(['get', 'post'], '/news/upload', [
-		'as' => 'news.upload', 'uses' => 'Admin\NewsController@upload_image'
-	]);

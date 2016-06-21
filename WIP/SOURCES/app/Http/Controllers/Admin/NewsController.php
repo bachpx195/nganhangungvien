@@ -14,6 +14,7 @@ use App\Helpers\FileHelper;
 use App\Http\Requests\NewsRequest;
 use Validator;
 use App\Libs\Constants;
+use URL;
 
 class NewsController extends Controller {
 
@@ -120,13 +121,16 @@ class NewsController extends Controller {
         // print($request->file('file'));
         // die();
         // dd('upload_image');
+                    
+
         if($request->hasFile('file')){
             $filename = str_random(20).'_'.$request->file('file')->getClientOriginalName();
             $image_path = public_path() . '/news/images/';
             $request->file('file')->move(
                 $image_path, $filename
             );
-            echo $filename;    
+            $root = URL::to('news/images/');
+            echo "$root".'/'."$filename";    
         }
         else{
             echo 'Oh No! Uploading your image has failed.';
