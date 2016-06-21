@@ -4,9 +4,9 @@
 		<div class="pos_relative w_100 h56 bg_blue box_header">
 			<div class="col_head1 pos_relative floatLeft">
 				<div class="logo1_head pos_absolute">
-					<a href="/"> <img
-						src="{{ URL::asset('assets/default/images/logo1_new.png') }}"
-						alt="NGÂN HÀNG ỨNG VIÊN" title="NGÂN HÀNG ỨNG VIÊN" />
+					<a href="/">
+						<img src="{{ URL::asset('assets/default/images/logo1_new.png') }}"
+								alt="NGÂN HÀNG ỨNG VIÊN" title="NGÂN HÀNG ỨNG VIÊN" />
 					</a>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 								<ul class="nopadding nomargin">
 									<li class="pos_relative loggedin">
 										<a href="javascript:;" class="icnicon_40" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tài khoản">
-											<img src="/assets/default/images/avatar.png" class="header_avatar" alt="avatar" title="avatar">
+											<img src="{{ empty(Auth::user()->image) ? '/assets/default/images/avatar.png' : URL::to('/') . Auth::user()->image }}" class="header_avatar" alt="avatar" title="avatar">
 										</a>
 										<div class="loggedin popup_down">
 											<div class="header-user-info pos_absolute"></div>
@@ -58,7 +58,7 @@
 												<div class="pl_16 pr_16 pt_16 pb_14 bg_white user_box">
 													<div class="block-content">
 														<div class="avatar pull-left">
-															<img src="/assets/default/images/avatar.png" width="56px" alt="user avatar" title=" user avatar">
+															<img src="{{ empty(Auth::user()->image) ? '/assets/default/images/avatar.png' : URL::to('/') . Auth::user()->image }}" width="56px" alt="user avatar" title=" user avatar">
 														</div>
 														<div class="pull-left ml_12 lh_20 w171">
 															@if (Auth::user()->user_type == 'employer')
