@@ -115,6 +115,7 @@
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/user/pay_validate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/123doc.script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.number.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
