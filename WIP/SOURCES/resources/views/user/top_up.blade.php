@@ -280,28 +280,9 @@
                     </div>
                 </div>
 
-                <div class="text_input">
-                    <a href="javascript:;" onclick="show_listOption(this)" onblur="close_listOption(this)">Lựa chọn số tiền cần nạp <i class="arrow"></i></a>
-                    <div class="listOption listOption_moneyATM">
-                        <span>Chọn mệnh giá thẻ nạp</span>
-                        <ul>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input  name="pay_money_atm" value="20000" type="radio"/> <span>20,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="30000" type="radio"/> <span>30,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="40000" type="radio"/> <span>40,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="50000" type="radio"/> <span>50,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="60000" type="radio"/> <span>60,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="70000" type="radio"/> <span>70,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="80000" type="radio"/> <span>80,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="90000" type="radio"/> <span>90,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="100000" type="radio"/> <span>100,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="120000" type="radio"/> <span>120,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="150000" type="radio"/> <span>150,000VNĐ</span></a></li>
-                            <li><a href="javascript:;" onclick="selectOption(this)"><input name="pay_money_atm" value="200000" type="radio"/> <span>200,000VNĐ</span></a></li>
-                        </ul>
-                    </div>
-                </div>
+                <p style="margin-top: 10px;"><input id="pay-money-atm" type="text" name="pay_money_atm" placeholder="Nhập vào số tiền"/></p>
                 <p style="margin-top: 10px;"><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn"/></p>
-        <p>Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
+                <p>Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_atm();" class="btn btn_submit">Nạp tiền</a></p>
             </div></div>
     </div>
@@ -320,5 +301,6 @@
     var running_paymentAtm        = false;
     var running_paymentBk         = false;
     var running_paymentVisa       = false;
+    $("#pay-money-atm").number( true, 0 , ',','.' );
 </script>
 <script type="text/javascript" src="http://static.store123doc.com:81/static_v2/common/js/tooltip.min.js"></script>
