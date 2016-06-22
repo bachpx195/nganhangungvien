@@ -26,6 +26,7 @@ class Constants {
     const EMPLOYER_LIST = 'Quản lý nhà tuyển dụng';
     const EMPLOYER_DETAIL = 'Chi tiết nhà tuyển dụng';
 
+    const TRANSACTION_LIST = "Quản lý lịch sử giao dịch";
 
     const PROVINCE_NEW_PT = 'Tạo mới tỉnh/thành phố';
     const PROVINCE_LIST_PT = 'Quản lý tỉnh/thành phố';

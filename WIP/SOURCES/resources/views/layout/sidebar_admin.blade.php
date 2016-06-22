@@ -62,7 +62,7 @@
 
 			<!-- TÀI KHOẢN GIAO DỊCH -->
 			<li class="nav-item {{($activeMenu == 'news') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
+				<a href="{{ route('admin.transaction.list') }}" class="nav-link nav-toggle">
 					<i class="icon-note"></i>
 					<span class="title">QUẢN LÝ GIAO DỊCH</span>
 					<span class="arrow "></span>

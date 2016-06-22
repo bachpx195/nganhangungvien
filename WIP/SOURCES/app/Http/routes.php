@@ -57,7 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
-	
+
+	// Employer
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
 	]);
@@ -71,6 +72,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 
 	Route::post('/employer/set-vip/{id}', [
 		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
+
+	// Transaction
+	Route::match(['get'], '/giao-dich/danh-sach', [
+		'as' => 'admin.transaction.list', 'uses' => 'Admin\TransactionController@transactionList'
+	]);
 
 	// BEGIN NEWS
 	Route::match(['get', 'post'], '/news/list', [

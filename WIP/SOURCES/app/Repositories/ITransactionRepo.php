@@ -11,4 +11,12 @@ interface ITransactionRepo
      * @return mixed
      */
     function findByUserId($userId, $start, $limit);
+
+    /**
+     * Search transaction by employer information
+     * @param $keyword keyword want to search
+     * @param $pageSize number record in a page
+     * @return mixed
+     */
+    function search($keyword, $pageSize);
 }
