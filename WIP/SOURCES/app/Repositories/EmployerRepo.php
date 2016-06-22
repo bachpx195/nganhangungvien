@@ -35,7 +35,7 @@ class EmployerRepo implements IEmployerRepo
             ->leftJoin('province', 'employer.province_id', '=', 'province.id')
             ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
             ->where('employer.id', '=', $id)
-            ->select('employer.*', 'province.name as provinceName', 'company_size.name as companySize')
+            ->select('employer.*', 'user.image', 'province.name as provinceName', 'company_size.name as companySize')
             ->first();
 
         return $query;

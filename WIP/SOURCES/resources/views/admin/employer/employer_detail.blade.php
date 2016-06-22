@@ -1,5 +1,29 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
+<style type="text/css">
+    .custom-thumbnail {
+        display: block;
+        padding: 4px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+        transition: border .2s ease-in-out;
+    }
+    .custom-upload-image {
+        width: 180px;
+        height: 140px;
+    }
+    .floatLeft {
+        float: left;
+    }
+    .item-row {
+        margin-bottom: 7px;
+        margin-top: 7px;
+    }
+</style>
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -14,21 +38,51 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <h3 class="font-green sbold uppercase"> {{ $employer->company_name }}</h3>
-                            <p style="text-align: justify;">
-                                {{ $employer->company_description }}
-                            </p>
-                            <p>
-                                <b>Địa chỉ:</b> {{ $employer->company_address }}
-                            </p>
-                            <ul class="list-inline">
-                                <li>
-                                    <i class="fa fa-map-marker"></i> {{ $employer->provinceName }} </li>
-                                <li>
-                                    <i class="fa fa-link"></i> <a href="{{ $employer->website }}" target="_blank">{{$employer->website}}</a> </li>
-                                <li>
-                                    <i class="fa fa-users"></i> {{ $employer->companySize }} </li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="item-row">
+                                                <b>Tên công ty:</b> {{ $employer->company_name }}
+                                            </div>
+                                            <div class="item-row">
+                                                <b>Địa chỉ:</b> {{ $employer->company_address }}
+                                            </div>
+                                            <div class="item-row">
+                                                <b>Điện thoại cố định:</b> {{ $employer->phone }}
+                                            </div>
+                                            <div class="item-row">
+                                                <b>Website:</b> <a href="{{ $employer->website }}" target="_blank">{{$employer->website}}</a>
+                                            </div>
+                                            <div class="item-row">
+                                                <b>Tỉnh/Thành phố: </b> {{ $employer->provinceName }}
+                                            </div>
+                                            <div class="item-row">
+                                                <b>Quy mô công ty: </b> {{ $employer->companySize }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div style="margin-bottom: 5px;"><b>Ảnh đại diện:</b></div>
+                                            <div class="fileinput-new custom-thumbnail custom-upload-image floatLeft">
+                                                @if(empty($employer->image))
+                                                    <img src="{{ URL::asset('assets/image/default.png') }}" height="130"
+                                                         width="170" alt=""/>
+                                                @else
+                                                    <img src="{{ URL::to('/') . $employer->image }}" height="130"
+                                                         width="170" alt=""/>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>Địa chỉ:</b> {{ $employer->company_address }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
