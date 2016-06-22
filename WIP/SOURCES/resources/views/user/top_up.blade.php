@@ -1,8 +1,9 @@
 <div class="box_AddMoney">
     <h3>Nạp tiền vào tài khoản</h3>
     <a href="javascript:;" onclick="closeBox()">×</a>
+    <!--
     <div class="boxAddMoney_user">
-        <!--
+        
         <a target="_blank" href="{{route('user.account')}}">
             <img src="http://media.store123doc.com:8080/images/default/user_small.png"
                  alt="{{$employer->username}}" onerror="this.src='{{URL::to('/' . 'assets/default/images/user_small.png')}}'"/></a>
@@ -12,9 +13,9 @@
             <p><a target="_blank" href="{{route('user.transaction')}}">Lịch sử giao dịch</a></p>
         </div>
         <p><span>{{$employer->balance}}.000 VNĐ</span></p>
-        <p class="line_space"></p>
-        -->
+        <p class="line_space"></p> 
     </div>
+    -->
     <ul class="listOpt">
         @if($employer->vip != 1)
         <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="icon i_m_mb"></i><span>Thẻ điện thoại</span></a></li>
@@ -31,9 +32,12 @@
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon mobifone"></i><input type="radio" name="ncc" value="MOBI"/></a>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon vinaphone"></i><input type="radio" name="ncc" value="VINA"/></a>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon viettel"></i><input type="radio" name="ncc" value="VIETEL"/></a>
-                <p><input  name="code_popup" id="code_popup" type="text" placeholder="Mã số thẻ"/></p>
+                <p style="margin-top: 10px;"><input  name="code_popup" id="code_popup" type="text" placeholder="Mã số thẻ"/></p>
                 <p><input name="seri_popup" id="seri_popup" type="text"  placeholder="Seri thẻ"name="txt_seri"/></p>
-                <p class="note">Mệnh giá tối thiểu 20.000 vnđ</p>
+                <p><i style="color: #0aa888;font-weight: bold;">Mệnh giá tối thiểu 20.000 vnđ</i></p>
+                <p>Phí nạp thẻ <a style="color: red;">23%</a> cho nhà mạng. <i style="color: #0aa888;font-weight: bold;">(Ví dụ: Nạp thẻ 20.000 sẽ được cộng 15.000 vào tài khoản)</i></p>
+                <p>Nạp sai 5 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
+                <p>Hỗ trợ trực tuyến <a href="http://store.baokim.vn/card/multiMobileNew" rel="nofollow" target="_blank">tại đây</a></p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_mobilecard();" class="btn btn_submit">Nạp tiền</a></p>
             </div>
         </div>
@@ -296,7 +300,7 @@
                         </ul>
                     </div>
                 </div>
-                <p><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn"/></p>
+                <p style="margin-top: 10px;"><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn"/></p>
         <p>Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_atm();" class="btn btn_submit">Nạp tiền</a></p>
             </div></div>
