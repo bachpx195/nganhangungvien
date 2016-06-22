@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="datatable_ajax">
                         <thead>
                             <tr>
                                 <th style="width: 10px;">STT</th>
@@ -33,37 +33,8 @@
                                 <th style="width: 61px;"></th>
                             </tr>
                         </thead>
-                    <tbody>
-                        @if(count($candidates) > 0)
-                            @foreach($candidates as $index=>$item)
-                                <tr class="gradeX odd" role="row">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $item->cv_title }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->full_name }}</td>
-                                    <td>{{$item->expectSalary ? $item->expectSalary->name : ''}}</td>
-                                    <td>{{$item->experienceYears ? $item->experienceYears->name : ''}}</td>
-                                    <td style="width: 61px;">
-                                        <a href="{{route('admin.candidate.update', ['id' => $item->id])}}" target="_blank">
-                                            <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"
-                                                    data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button></a>
-                                        <a class="sweet-delete"
-                                           data-id="{{$item->id}}"
-                                           data-url="{{route('admin.candidate.delete', ['id' => $item->id])}}">
-                                            <button type="button" class="btn btn-icon-toggle " data-toggle="tooltip"
-                                                    data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            Chưa có hồ sơ phù hợp
-                        @endif
-                    </tbody>
+
                     </table>
-                    <div class="box_pagination_footer text-center">
-                        {!! $candidates->render() !!}
-                    </div>
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->

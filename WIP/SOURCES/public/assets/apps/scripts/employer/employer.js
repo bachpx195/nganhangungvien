@@ -1,4 +1,19 @@
 $(document).ready(function () {
+    TableDatatablesAjax.init({
+        url: "/admin/candidate/getList",
+        /*columns: [
+            { "data": "title" },
+            { "data": "email" },
+            { "data": "full_name" },
+            { "data": "extn" },
+            { "data": "start_date" },
+            { "data": "salary" }
+        ],*/
+        data: function(d){
+            console.log(d);
+        }
+    });
+
     $('#admin-employers .set-vip').on('ifChanged', function(event){
         var _this = $(this);
         var id = _this.data('id');

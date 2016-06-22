@@ -8,7 +8,7 @@ var TableDatatablesAjax = function () {
         });
     }
 
-    var handleRecords = function () {
+    var handleRecords = function (options) {
 
         var grid = new Datatable();
 
@@ -34,18 +34,42 @@ var TableDatatablesAjax = function () {
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
                 
                 "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
-
+                "columns": options.columns,
                 "lengthMenu": [
                     [10, 20, 50, 100, 150, -1],
                     [10, 20, 50, 100, 150, "All"] // change per page values here
                 ],
                 "pageLength": 10, // default record count per page
                 "ajax": {
-                    "url": "../demo/table_ajax.php", // ajax source
+                    "url": options.url, // ajax source
+                    "data": function ( d ) {
+                        if(options.data){
+                            options.data(d);
+                        }
+                    }
                 },
                 "order": [
                     [1, "asc"]
-                ]// set first column as a default sort by asc
+                ],// set first column as a default sort by asc
+                "language": {
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    },
+                    "emptyTable": "No data available in table",
+                    "info": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+                    "infoEmpty": "No records found",
+                    "infoFiltered": "(filtered1 from _MAX_ total records)",
+                    "lengthMenu": "Show _MENU_",
+                    "search": "Search:",
+                    "zeroRecords": "No matching records found",
+                    "paginate": {
+                        "previous":"Prev",
+                        "next": "Next",
+                        "last": "Last",
+                        "first": "First"
+                    }
+                },
             }
         });
 
@@ -86,16 +110,16 @@ var TableDatatablesAjax = function () {
     return {
 
         //main function to initiate the module
-        init: function () {
+        init: function (options) {
 
-            initPickers();
-            handleRecords();
+            //initPickers();
+            handleRecords(options);
         }
 
     };
 
 }();
 
-jQuery(document).ready(function() {
-    TableDatatablesAjax.init();
-});
+// jQuery(document).ready(function() {
+//     TableDatatablesAjax.init();
+// });

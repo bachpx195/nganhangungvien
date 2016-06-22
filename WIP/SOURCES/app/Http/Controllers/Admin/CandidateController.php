@@ -117,6 +117,26 @@ class CandidateController extends Controller {
     }
 
     /**
+     * Get dropdown data
+     *
+     *
+     */
+    protected function dropdownData()
+    {
+        $dropdownData = [];
+        $dropdownData['provinces'] = $this->provinceRepo->getSortedList();
+        $dropdownData['occupations'] = Job::all();
+        $dropdownData['salaryGrades'] = Salary::all();
+        $dropdownData['degrees'] = Level::all();
+        $dropdownData['yearOfexps'] = ExperienceYears::all();
+        $dropdownData['languages'] = ForeignLanguage::all();
+        $dropdownData['employmentStatuses'] = EmploymentStatus::all();
+        $dropdownData['ranks'] = Rank::all();
+
+        return $dropdownData;
+    }
+
+    /**
      * Index page
      *
      * @param Request $request
@@ -130,9 +150,12 @@ class CandidateController extends Controller {
         $pageSize = config('front.pageSize');
         $candidates = $this->candidateRepo->search($params, $pageSize);
 
+        //$dropdownData = $this->dropdownData();
+
         return view('admin/candidate/list')
             ->with('candidates', $candidates)
             ->with('activeMenu', $activeMenu)
+        //    ->with('dropdownData', $dropdownData)
             ->with('pageTitle', Constants::CANDIDATE_LIST_PT);
     }
 
@@ -902,5 +925,15 @@ class CandidateController extends Controller {
         }
 
         return Validator::make($data, $validators);
+    }
+
+    public function getList(Request $request){
+        $params = $request->all();
+
+        $pageSize = $params['length'];
+
+        //return response()->json([]);
+        echo '{"data":[["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"21\"\/><span><\/span><\/label>",21,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",4,"<span class=\"label label-sm label-success\">Pending<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"22\"\/><span><\/span><\/label>",22,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",9,"<span class=\"label label-sm label-success\">Pending<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"23\"\/><span><\/span><\/label>",23,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",8,"<span class=\"label label-sm label-success\">Pending<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"24\"\/><span><\/span><\/label>",24,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",3,"<span class=\"label label-sm label-info\">Closed<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"25\"\/><span><\/span><\/label>",25,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",9,"<span class=\"label label-sm label-success\">Pending<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"26\"\/><span><\/span><\/label>",26,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",8,"<span class=\"label label-sm label-danger\">On Hold<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"27\"\/><span><\/span><\/label>",27,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",1,"<span class=\"label label-sm label-success\">Pending<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"28\"\/><span><\/span><\/label>",28,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",7,"<span class=\"label label-sm label-danger\">On Hold<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"29\"\/><span><\/span><\/label>",29,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",8,"<span class=\"label label-sm label-danger\">On Hold<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"],["<label class=\"mt-checkbox mt-checkbox-single mt-checkbox-outline\"><input name=\"id[]\" type=\"checkbox\" class=\"checkboxes\" value=\"30\"\/><span><\/span><\/label>",30,"12\/09\/2013","Jhon Doe","Jhon Doe","450.60$",3,"<span class=\"label label-sm label-info\">Closed<\/span>","<a href=\"javascript:;\" class=\"btn btn-sm btn-outline grey-salsa\"><i class=\"fa fa-search\"><\/i> View<\/a>"]],"draw":3,"recordsTotal":178,"recordsFiltered":178}';
+        die();
     }
 }

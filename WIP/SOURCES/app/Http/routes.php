@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
+	/**************** Candidate ****************/
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
@@ -57,7 +58,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/candidate/delete/{id}', [
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
-	
+
+	Route::match(['post'], '/candidate/getList', [
+		'as' => 'admin.candidate.getList', 'uses' => 'Admin\CandidateController@getList'
+	]);
+
+	/**************** Employer ****************/
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
 	]);
@@ -254,6 +260,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::get('/', 'Front\HomeController@index');
 
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
+		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
+	]);
+
+	Route::match(['get', 'post'], '/ung-vien/{slug}', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);
 	
