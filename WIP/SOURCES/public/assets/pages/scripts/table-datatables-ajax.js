@@ -32,7 +32,7 @@ var TableDatatablesAjax = function () {
                 // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js). 
                 // So when dropdowns used the scrollable div should be removed. 
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
-                
+                "bSort": options.sortable !== undefined ? options.sortable : true,
                 "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
                 "columns": options.columns,
                 "lengthMenu": [
@@ -40,43 +40,37 @@ var TableDatatablesAjax = function () {
                     [10, 20, 50, 100, 150, "All"] // change per page values here
                 ],
                 "pageLength": 10, // default record count per page
-                "ajax": {
-                    "url": options.url, // ajax source
-                    "data": function ( d ) {
-                        if(options.data){
-                            options.data(d);
-                        }
-                    }
-                },
+                "ajax": options.ajax,
                 "order": [
                     [1, "asc"]
                 ],// set first column as a default sort by asc
                 "language": {
                     "aria": {
-                        "sortAscending": ": activate to sort column ascending",
-                        "sortDescending": ": activate to sort column descending"
+                        "sortAscending": ": Sắp xếp tăng dần",
+                        "sortDescending": ": Xắp xếp giảm dần"
                     },
-                    "emptyTable": "No data available in table",
+                    "emptyTable": "Dữ liệu trống",
                     "info": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
-                    "infoEmpty": "No records found",
-                    "infoFiltered": "(filtered1 from _MAX_ total records)",
-                    "lengthMenu": "Show _MENU_",
-                    "search": "Search:",
-                    "zeroRecords": "No matching records found",
+                    "infoEmpty": "Không có bản ghi nào",
+                    "infoFiltered": "(filtered1 từ _MAX_ tổng số bản ghi)",
+                    "lengthMenu": "Hiển thị _MENU_",
+                    "search": "Tìm kiếm:",
+                    "zeroRecords": "Không tìm thấy bản ghi nào",
+                    "page": "Trang",
                     "paginate": {
-                        "previous":"Prev",
-                        "next": "Next",
-                        "last": "Last",
-                        "first": "First"
+                        "previous":"Trước",
+                        "next": "Tiếp",
+                        "last": "Cuối",
+                        "first": "Đầu"
                     }
                 },
             }
         });
 
         // handle group actionsubmit button click
-        grid.getTableWrapper().on('click', '.table-group-action-submit', function (e) {
+        $('#btnSearch').click( function (e) {
             e.preventDefault();
-            var action = $(".table-group-action-input", grid.getTableWrapper());
+            /*var action = $(".table-group-action-input", grid.getTableWrapper());
             if (action.val() != "" && grid.getSelectedRowsCount() > 0) {
                 grid.setAjaxParam("customActionType", "group_action");
                 grid.setAjaxParam("customActionName", action.val());
@@ -99,12 +93,15 @@ var TableDatatablesAjax = function () {
                     container: grid.getTableWrapper(),
                     place: 'prepend'
                 });
-            }
+            }*/
+
+            grid.getDataTable().ajax.reload();
+            //grid.clearAjaxParams();
         });
 
-        grid.setAjaxParam("customActionType", "group_action");
-        grid.getDataTable().ajax.reload();
-        grid.clearAjaxParams();
+        //grid.setAjaxParam("customActionType", "group_action");
+        //grid.getDataTable().ajax.reload();
+        //grid.clearAjaxParams();
     }
 
     return {

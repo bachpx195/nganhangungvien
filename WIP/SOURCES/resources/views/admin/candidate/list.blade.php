@@ -21,20 +21,13 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="datatable_ajax">
-                        <thead>
-                            <tr>
-                                <th style="width: 10px;">STT</th>
-                                <th style="width: 15%;">Hồ sơ ứng viên</th>
-                                <th style="width: 20%;">Email</th>
-                                <th style="width: 20%;">Tên ứng viên</th>
-                                <th style="width: 15%;">Mức lương</th>
-                                <th>Kinh nghiệm</th>
-                                <th style="width: 61px;"></th>
-                            </tr>
-                        </thead>
+                    <div class="row">
+                        @include('admin.candidate.form_search', ['dropdownData' => $dropdownData])
+                    </div>
 
-                    </table>
+                    <div class="row">
+                        <div id="grid"></div>
+                    </div>
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->

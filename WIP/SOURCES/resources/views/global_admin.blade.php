@@ -161,7 +161,7 @@
 		@include('layout.sidebar_admin')
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				@include('layout.pageheader_admin')
+				{{--@include('layout.pageheader_admin')--}}
 				@yield('content')
 			</div>
 		</div>

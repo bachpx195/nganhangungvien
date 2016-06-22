@@ -27,7 +27,7 @@ class CandidateRepo implements ICandidateRepo {
         $query = Candidate::select();
 
         if(isset($params['title']) && $params['title']){
-            $query = $query->where('cv_title', '=', $params['title']);
+            $query = $query->where('cv_title', 'like', "%" . $params['title'] . "%");
         }
 
         if(isset($params['occupation']) && $params['occupation']){
@@ -50,7 +50,7 @@ class CandidateRepo implements ICandidateRepo {
             $query = $query->where('experience_years', 'in', $params['yearOfExp']);
         }
 
-        if(isset($params['sex']) && $params['sex']){
+        if(isset($params['sex']) && $params['sex'] !== "" && $params['sex'] !== null){
             $query = $query->where('sex', '=', $params['sex']);
         }
 
