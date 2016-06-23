@@ -59,13 +59,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
 
-	/**************** Employer ****************/
 	Route::match(['post'], '/candidate/getList', [
 		'as' => 'admin.candidate.getList', 'uses' => 'Admin\CandidateController@getList'
 	]);
 
+	/**************** Employer ****************/
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
+	]);
+
+	Route::match(['post'], '/employer/getList', [
+		'as' => 'admin.candidate.getList', 'uses' => 'Admin\EmployerController@getList'
 	]);
 
 	Route::match(['get'], '/employer/detail', [

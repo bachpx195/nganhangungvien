@@ -30,6 +30,7 @@ use App\Helpers\FileHelper;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -154,15 +155,15 @@ class CandidateController extends Controller
     public function candidateList(Request $request)
     {
         $activeMenu = Constants::CANDIDATE;
-        $params = $request->all();
-
-        $pageSize = config('front.pageSize');
-        $candidates = $this->candidateRepo->search($params, $pageSize);
+//        $params = $request->all();
+//
+//        $pageSize = config('front.pageSize');
+//        $candidates = $this->candidateRepo->search($params, $pageSize);
 
         $dropdownData = $this->dropdownData();
 
         return view('admin/candidate/list')
-            ->with('candidates', $candidates)
+            //->with('candidates', $candidates)
             ->with('activeMenu', $activeMenu)
             ->with('dropdownData', $dropdownData)
             ->with('pageTitle', Constants::CANDIDATE_LIST_PT);
@@ -949,6 +950,12 @@ class CandidateController extends Controller
         $input = $request->all();
 
         $pageSize = $input['length'];
+        $page = $input['page'];
+
+        // force current page to 5
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
 
         $candidates = $this->candidateRepo->search($input['params'], $pageSize);
         $total = $candidates->total();

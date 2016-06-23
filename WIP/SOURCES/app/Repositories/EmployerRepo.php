@@ -9,9 +9,9 @@ class EmployerRepo implements IEmployerRepo
     /**
      * {@inheritDoc}
      */
-    public function search($keyword, $pageSize = 10)
+    public function search($params, $pageSize = 10)
     {
-        $query = Employer::join('user', 'employer.user_id', '=', 'user.id')
+        /*$query = Employer::join('user', 'employer.user_id', '=', 'user.id')
             ->leftJoin('province', 'employer.province_id', '=', 'province.id')
             ->leftJoin('company_size', 'employer.company_size', '=', 'company_size.id')
             ->select('employer.id', 'employer.company_name', 'employer.phone', 'employer.contact_person',
@@ -23,7 +23,38 @@ class EmployerRepo implements IEmployerRepo
                 ->orwhere('username', 'LIKE', '%' . $keyword . '%');
         }
 
-        return $query->orderBy('created_at', 'desc')->get();
+        return $query->orderBy('created_at', 'desc')->get();*/
+
+        $query = Employer::select();
+
+        if(isset($params['company_name']) && $params['company_name']){
+            $query = $query->where('company_name', 'like', "%" . $params['company_name'] . "%");
+        }
+
+        if(isset($params['company_address']) && $params['company_address']){
+            $query = $query->where('company_address', 'like', "%" . $params['company_address'] . "%");
+        }
+
+        if(isset($params['province']) && $params['province']){
+            $query = $query->where('province_id', '=', $params['province']);
+        }
+
+        if(isset($params['contact']) && $params['contact']){
+            $query = $query->where('contact_person', 'like', "%" . $params['contact_person'] . "%")
+                    ->orWhere('contact_phone', 'like', "%" . $params['contact_phone'] . "%")
+                    ->orWhere('contact_email', 'like', "%" . $params['contact_email'] . "%");
+        }
+
+        if(isset($params['status']) && $params['status'] !== "" && $params['status'] !== null){
+            $query = $query->where('status', '=', $params['status']);
+        }
+
+        if(isset($params['vip']) && $params['vip'] !== "" && $params['vip'] !== null){
+            $query = $query->where('vip', '=', $params['vip']);
+        }
+
+
+        return $query->paginate($pageSize);
     }
 
     /**

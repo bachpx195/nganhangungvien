@@ -127,7 +127,6 @@
 	<script src="{{ asset('/assets/pages/scripts/table-datatables-ajax.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/assets/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
 	<script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/employer/employer.js') }}"></script>
 	<script>
 	jQuery.extend(jQuery.validator.messages, {
 		required: '@lang('validation.required', ['attribute' => ''])',

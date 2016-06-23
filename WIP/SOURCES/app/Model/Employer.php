@@ -8,7 +8,7 @@ class Employer extends Model {
 
     public function province()
     {
-        return $this->hasOne('App\Model\Province', 'province_id', 'id');
+        return $this->belongsTo('App\Model\Province', 'province_id', 'id');
     }
 
     public function user()
