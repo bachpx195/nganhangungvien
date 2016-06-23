@@ -33,3 +33,8 @@ span.k-widget.k-tooltip-validation {
 .k-dropdown-wrap .k-select{
     top: 8px;
 }
+.k-grid-header th.k-header{
+    white-space: normal;
+    vertical-align: middle;
+    text-align: center;
+}

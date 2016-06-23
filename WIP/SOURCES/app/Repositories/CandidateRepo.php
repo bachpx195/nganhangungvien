@@ -31,11 +31,17 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['occupation']) && $params['occupation']){
-            $query = $query->where('job', '=', $params['occupation']);
+            $query = $query->whereHas('expectJobs', function($q) use ($params)
+            {
+                $q->where('job_id', '=', $params['occupation']);
+            });
         }
 
         if(isset($params['province']) && $params['province']){
-            $query = $query->where('province_id', '=', $params['province']);
+            $query = $query->whereHas('expectAddresses', function($q) use ($params)
+            {
+                $q->where('province_id', '=', $params['province']);
+            });
         }
 
         if(isset($params['salaryGrade']) && $params['salaryGrade']){

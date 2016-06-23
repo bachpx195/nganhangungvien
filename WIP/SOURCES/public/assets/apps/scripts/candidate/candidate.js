@@ -154,7 +154,7 @@ $(document).ready(function () {
             title: "Thời gian cập nhật",
             width: "100px",
             template: function(item){
-                return item.updated_at.date;
+                return kendo.toString(new Date(item.updated_at.date), "dd/MM/yyyy");
             }
         }]
     });
