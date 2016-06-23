@@ -153,6 +153,7 @@ class EmployerRegisterController extends BaseController
         $employer->contact_phone = $input['contact_phone'];
         $employer->contact_email = $input['contact_email'];
 
+        $employer->vip = 0;
         $employer->status = self::DEFAULT_STATUS;
 
         return $employer;

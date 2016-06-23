@@ -13,7 +13,7 @@
                     <div class="actions">
                         <div class="btn-group">
                             <button class="btn sbold green">
-                                <a href="{{route('admin.candidate.form')}}" target="_blank" class="add-more-btn">
+                                <a href="{{route('admin.candidate.form')}}" class="add-more-btn">
                                     <span style="margin-right: 10px;">THÊM HỒ SƠ</span><i class="fa fa-plus"></i>
                                 </a>
                             </button>

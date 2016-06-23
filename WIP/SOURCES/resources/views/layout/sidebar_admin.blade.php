@@ -52,7 +52,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="{{route('admin.candidate.form')}}" target="_blank" class="nav-link">
+						<a href="{{route('admin.candidate.form')}}" class="nav-link">
 							<i class="icon-plus"></i> THÊM HỒ SƠ ỨNG VIÊN
 							<span class="arrow nav-toggle"></span>
 						</a>
@@ -85,7 +85,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="{{ route('admin.news.form') }}" target="_blank" class="nav-link">
+						<a href="{{ route('admin.news.form') }}" class="nav-link">
 							<i class="icon-plus"></i> THÊM TIN TỨC
 							<span class="arrow nav-toggle"></span>
 						</a>

@@ -50,7 +50,7 @@ $(document).ready(function () {
 
                 $.post('/admin/candidate/getList', {
                     length: options.data.pageSize,
-                    offset: options.data.page,
+                    page: options.data.page,
                     params: params
                 }, function (res) {
                     options.success(res)
