@@ -13,3 +13,28 @@ span.k-widget.k-tooltip-validation {
 .k-tooltip-validation .k-warning {
     display: none;
 }
+
+.k-grid-header .k-header{
+    color: #4c4c4c;
+}
+.k-grid-header th.k-header, .k-filter-row th {
+    font-weight: 700;
+}
+.k-grid th, .k-grid td{
+    font-size: 14px !important;
+}
+.k-grid td{
+    border-width: 0px 1px 1px 1px;
+    padding: 5px 5px;
+}
+.k-webkit .k-pager-wrap .k-pager-nav {
+    vertical-align: baseline;
+}
+.k-dropdown-wrap .k-select{
+    top: 8px;
+}
+.k-grid-header th.k-header{
+    white-space: normal;
+    vertical-align: middle;
+    text-align: center;
+}

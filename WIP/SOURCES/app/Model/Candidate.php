@@ -32,6 +32,11 @@ class Candidate extends Model {
     	return $this->belongsToMany('App\Model\Job', 'candidate_expect_job', 'candidate_id', 'job_id');
     }
 
+    public function job()
+    {
+        return $this->belongsTo('App\Model\Job', 'job', 'id');
+    }
+
     public function expectSalary()
     {
         return $this->belongsTo('App\Model\Salary', 'expect_salary', 'id');

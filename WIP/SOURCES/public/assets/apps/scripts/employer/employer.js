@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#admin-employers .set-vip').on('ifChanged', function(event){
         var _this = $(this);
         var id = _this.data('id');
