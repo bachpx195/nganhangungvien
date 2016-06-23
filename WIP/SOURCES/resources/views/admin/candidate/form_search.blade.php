@@ -76,7 +76,7 @@
     </div>
     <div class="form-actions">
         <div class="form-group col-md-offset-5 col-md-3">
-        <button class="btn blue" id="btnSearch">Tìm kiếm</button>
+        <button class="btn blue" id="btnSearchCandidate">Tìm kiếm</button>
         </div>
     </div>
 </form>

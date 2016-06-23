@@ -956,20 +956,64 @@ class CandidateController extends Controller
         $list = [];
         foreach ($candidates as $index => $item) {
             $list[] = array(
-                "id" => $item->id,
-                "cv_title" => $item->cv_title,
-                "email" => $item->email,
-                "candidate_code" => $item->candidate_code,
-                "full_name" => $item->full_name,
-                "updated_at" => $item->updated_at,
-                "salary" => $item->expectSalary ? $item->expectSalary->name : '',
-                "yearOfExp" => $item->experienceYears ? $item->experienceYears->name : ''
+                "id"                => $item->id,
+                "cv_title"          => $item->cv_title,
+                "email"             => $item->email,
+                "candidate_code"    => $item->candidate_code,
+                "full_name"         => $item->full_name,
+                "updated_at"        => $item->updated_at,
+                "salary"            => $item->expectSalary ? $item->expectSalary->name : '',
+                "yearOfExp"         => $item->experienceYears ? $item->experienceYears->name : '',
+                "expectJobs"        => $this->getExpectJobs($item),
+                "expectAddresses"   => $this->getExpectAddresses($item),
+                "foreignLanguages"  => $this->getForeignLanguages($item),
+                "maxLevel"          => $item->maxLevel ? $item->maxLevel->name : '',
+                "sex"               => $item->sex ? 'Nam' : 'Nữ',
             );
         }
 
         return response()->json([
-           "data"   => $list,
-           "total" => $total
-       ]);
+            "data" => $list,
+            "total" => $total
+        ]);
+    }
+
+    private function getExpectJobs($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->expectJobs) > 0) {
+            foreach ($candidate->expectJobs as $index => $item) {
+                $list[] = $item->name;
+            }
+        }
+
+        return $list;
+    }
+
+    private function getExpectAddresses($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->expectAddresses) > 0) {
+            foreach ($candidate->expectAddresses as $index => $item) {
+                $list[] = $item->name;
+            }
+        }
+
+        return $list;
+    }
+
+    private function getForeignLanguages($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->foreignLanguages) > 0) {
+            foreach ($candidate->foreignLanguages->slice(0, 1) as $index => $item) {
+                $list[] = $item->language->name;
+            }
+        }
+
+        return $list;
     }
 }

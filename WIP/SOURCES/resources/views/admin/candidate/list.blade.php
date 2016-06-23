@@ -24,7 +24,9 @@
                     <div class="row">
                         @include('admin.candidate.form_search', ['dropdownData' => $dropdownData])
                     </div>
-
+                    <div class="row">
+                        Kết quả: <span id="countResult">0</span> ứng viên
+                    </div>
                     <div class="row">
                         <div id="grid"></div>
                     </div>
@@ -33,4 +35,5 @@
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/candidate.js') }}"></script>
 @endsection
