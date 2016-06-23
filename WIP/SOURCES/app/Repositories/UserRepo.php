@@ -37,4 +37,12 @@ class UserRepo implements IUserRepo {
 	{
 		return User::where('id', $userId)->first();
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	function search($keyword, $pageSize)
+	{
+		
+	}
 }

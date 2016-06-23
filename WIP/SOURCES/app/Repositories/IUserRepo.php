@@ -12,4 +12,12 @@ interface IUserRepo
 	 * @return mixed
 	 */
 	public function findById($userId);
+
+	/**
+	 * Search user by keyword
+	 * @param $keyword keyword want to search
+	 * @param $pageSize page size
+	 * @return mixed
+	 */
+	function search($keyword, $pageSize);
 }
