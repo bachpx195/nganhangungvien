@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -299,6 +299,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 
 	Route::match(['get', 'post'], '/news/upload', [
 		'as' => 'news.upload', 'uses' => 'Admin\NewsController@upload_image'
+	]);
+
+	Route::match(['get', 'post'], '/kich-hoat/{id}-{confirmation_code}-{password}', [
+		'as' => 'user.active', 'uses' => 'Front\EmployerRegisterController@confirm'
+	]);
+
+	Route::match(['get', 'post'], '/tai-khoan/kiem-tra-xac-nhan/{id}-{confirmation_code}', [
+		'as' => 'user.actived', 'uses' => 'Front\EmployerRegisterController@confirmed'
 	]);
 
 });

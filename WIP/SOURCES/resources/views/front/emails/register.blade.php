@@ -17,14 +17,46 @@
             </div>
 
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
-                <p>Chào <span style="font-weight:bold">{{$fullname}}</span>!<br>
+                <p>Kính chào <span style="font-weight:bold">{{$fullname}}</span>!<br>
                     <br>
-                    Bạn đã đăng ký tài khoản Nhà Tuyển dụng của website Ngân hàng ứng viên với địa chỉ e-mail {{$email}}.</p>
+                    Ngân Hàng Ứng Viên xin Trân trọng Thông báo Quý khách đã đã đăng ký tài khoản Nhà Tuyển dụng Thành Công tại  Website:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mai{{$email}}.</p>
 
                 <p>Thông tin tài khoản của bạn như sau:<br>
-                    - Tài khoản đăng nhập: <span style="font-weight:bold">{{$fullname}}</span><br>
+                    - Tài khoản đăng nhập: <span style="font-weight:bold; text-decoration: none; color: black;">{{ $email }}</span><br>
                     - Mật khẩu : <span style="font-weight:bold">{{$password}}</span></p>
 
+                <p>Vui lòng xác thực tài khoản để tạo hồ sơ trực tuyến và được tìm kiếm bởi các Nhà tuyển dụng hàng đầu bằng cách bấm vào link dưới đây:</p>
+                <p></p>
+                <br/>
+                <center>
+                <?php $password_crypt = Crypt::encrypt($password);?>
+                <a href="{{ URL::to('kich-hoat/'.$id.'-'.$code.'-'.$password_crypt) }}" title="kích hoạt" target="_blank" style="font-size: 14px;
+                              text-decoration: none;
+                              box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.27);
+                              text-transform: uppercase;
+                              display: block;
+                              width: 40%;    color: #313534;
+                              background: #ffa726;
+                              color: #FFFFFF;
+                              border-color: #e5e6e6;    margin-bottom: 0;
+                              font-weight: normal;
+                              text-align: center;
+                              vertical-align: middle;
+                              touch-action: manipulation;
+                              cursor: pointer;
+                              background-image: none;
+                              border: 1px solid transparent;
+                              white-space: nowrap;
+                              padding: 10px 10px;
+                              font-size: 13px;
+                              line-height: 1.846153846;
+                              border-radius: 2px;
+                              border-spacing: 0;
+                              border-collapse: collapse;
+                              -webkit-user-select: none;" ><strong>XÁC THỰC TÀI KHOẢN</strong></a>
+                </center>
+                <br/>
+                <P></p>
                 <p>Nếu bạn có bất kỳ thắc mắc nào, hãy liên hệ với chúng tôi để nhận được sự hỗ trợ nhanh nhất.</p>
 
                 <p><em><strong>Mọi ý kiến thắc mắc</strong></em> <strong><em>vui lòng liên hệ:</em></strong></p>
