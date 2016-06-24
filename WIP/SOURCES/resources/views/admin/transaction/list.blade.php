@@ -1,15 +1,7 @@
 @extends('global_admin')
 <title>@lang('messages.site.title')</title>
-<style type="text/css">
-    #js-transaction .dataTables_length {
-        display: none;
-    }
-    #js-transaction .dataTables_paginate {
-        display: none;
-    }
-</style>
 @section('content')
-    <div id="js-transaction" class="row">
+    <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
             <div class="portlet light ">
@@ -22,46 +14,20 @@
 
                     </div>
                 </div>
-                <div class="portlet-body" id="admin-employers">
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                        <thead>
-                        <tr>
-                            <th style="width: 10px;">STT</th>
-                            <th style="width: 15%;">Nhà tuyển dụng</th>
-                            <th>Tên công ty</th>
-                            <th style="width: 20%;">Hồ sơ ứng viên</th>
-                            <th style="width: 15%;">Thời gian</th>
-                            <th style="width: 10%;">Số tiền</th>
-                            <th style="width: 10%;">Còn lại</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if(count($transactions) > 0)
-                            @foreach($transactions as $index=>$item)
-                                <tr class="gradeX odd" role="row">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $item->username }}</td>
-                                    <td>{{ $item->company_name }}</td>
-                                    <td>
-                                        <a target="_blank" href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->candidateId])}}">{{ $item->candidateName }}</a> ({{ $item->cv_title }})
-                                    </td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td class="number">
-                                        {{ number_format($item->balance, 0) }} VNĐ
-                                    </td>
-                                    <td class="number">
-                                        {{ number_format($item->amount, 0) }} VNĐ
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            Chưa có lịch sử giao dịch nào
-                        @endif
-                        </tbody>
-                    </table>
+                <div class="portlet-body" id="admin-transactions">
+                    <div class="row">
+                        @include('admin.transaction.form_search')
+                    </div>
+                    <div class="row">
+                        Kết quả: <span id="countResult">0</span> giao dịch
+                    </div>
+                    <div class="row">
+                        <div id="grid"></div>
+                    </div>
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/transaction/transaction.js') }}"></script>
 @endsection

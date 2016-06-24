@@ -82,9 +82,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/employer/set-vip/{id}', [
 		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
 
-	// Transaction
+	/***************** Transaction ***************/
 	Route::match(['get'], '/giao-dich/danh-sach', [
 		'as' => 'admin.transaction.list', 'uses' => 'Admin\TransactionController@transactionList'
+	]);
+	Route::match(['post'], '/transaction/getList', [
+		'as' => 'admin.transaction.getList', 'uses' => 'Admin\TransactionController@getList'
 	]);
 
 	// BEGIN NEWS
