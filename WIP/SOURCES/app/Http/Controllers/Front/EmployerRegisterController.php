@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Validator;
+use Crypt;
+
 
 class EmployerRegisterController extends BaseController
 {
-    const DEFAULT_STATUS = 1;
+    const DEFAULT_STATUS = 0;
 
     private $companySizeRepo;
 
@@ -81,8 +83,9 @@ class EmployerRegisterController extends BaseController
 
                 DB::beginTransaction();
 
+                $confirmation_code = str_random(30);
                 $user = new User;
-                $this->mapUser($user, $input);
+                $this->mapUser($user, $input,$confirmation_code);
                 $user->save();
 
                 $employer = new Employer;
@@ -93,8 +96,16 @@ class EmployerRegisterController extends BaseController
 
                 DB::commit();
 
+                $input['code'] = $confirmation_code;
+                $input['id'] = $user->id;
+
+                // echo "<pre>";
+                // print_r($data);
+                // echo "<pre>";
+                // die();
                 //send email
                 $this->sendEmail($input);
+
                 //Auth::attempt(['email' => $user->email, 'password' => $user->password]);
 
             } catch (\Exception $e) {
@@ -123,13 +134,14 @@ class EmployerRegisterController extends BaseController
      * @param object $user
      * @param array $input
      */
-    private function mapUser($user, $input)
-    {
+    private function mapUser($user, $input, $confirmation_code)
+    {   
         $user->username = $input['email'];
         $user->email = $input['email'];
         $user->full_name = $input['fullname'];
         $user->password = Hash::make($input['password']);
         $user->user_type = 'employer';
+        $user->confirmation_code = $confirmation_code;
         $user->status = self::DEFAULT_STATUS;
     }
 
@@ -187,5 +199,45 @@ class EmployerRegisterController extends BaseController
             //'CaptchaCode'=> 'valid_captcha'
         ], $messages);
     }
+    public function confirm($id,$confirmation_code, $password)
+    {
+        // if( ! $confirmation_code)
+        // {
+        //     throw new InvalidConfirmationCodeException;
+        // }
+        $user = User::find($id);
+        $user->status = 1;
+        // dd( $user->confirmation_code);
+        // if ( ! $user)
+        // {
+        //     throw new InvalidConfirmationCodeException;
+        // }
+        if( $user->confirmation_code == $confirmation_code){
+            $user->confirmation_code = null;
+            $user->save();
 
+            $employer = Employer::where('user_id','=',$id)->firstOrFail();
+            $employer->status = 1;
+            $employer->save();
+        }
+        // Flash::message('You have successfully verified your account.');
+
+            $email = $user->email;
+            $password = Crypt::decrypt($password);
+
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))   {
+            
+            return redirect()->intended(route('user.actived',['id' => $id, 'confirmation_code' => $confirmation_code]));
+        }else{
+            return view('front.account.employer_register_success')->with('user', $user);
+        }
+    }
+    public function confirmed($id,$confirmation_code){
+        $user = User::find($id);
+        $countData=[];
+        $countData['all'] = $this->candidateRepo->countAllStatistic();
+        $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
+        $countData['new'] = $this->candidateRepo->countNewStatistic();
+        return view('front.verification.success')->with('countData',$countData)->with('user', $user);
+    }
 }
