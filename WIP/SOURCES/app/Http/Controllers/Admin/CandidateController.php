@@ -30,6 +30,7 @@ use App\Helpers\FileHelper;
 
 use App\Repositories\ICandidateRepo;
 use App\Model\Candidate;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -37,8 +38,16 @@ use Illuminate\Support\Facades\Redirect;
 use Validator;
 use DateTime;
 use Exception;
+use App\Model\Job;
+use App\Model\Salary;
+use App\Model\Level;
+use App\Model\ExperienceYears;
+use App\Model\ForeignLanguage;
+use App\Model\EmploymentStatus;
+use App\Model\Rank;
 
-class CandidateController extends Controller {
+class CandidateController extends Controller
+{
 
     const DEFAULT_STATUS = 1;
     const PREFIX_CANDIDATE_CODE = 'NTV';
@@ -97,7 +106,8 @@ class CandidateController extends Controller {
         IITLevelRepo $itLevelRepo,
         ICandidateForeignLanguageRepo $candidateForeignLanguageRepo,
         IContactPersonRepo $contactPersonRepo
-    ) {
+    )
+    {
         $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
         $this->experienceYearsRepo = $experienceYearsRepo;
@@ -117,6 +127,26 @@ class CandidateController extends Controller {
     }
 
     /**
+     * Get dropdown data
+     *
+     *
+     */
+    protected function dropdownData()
+    {
+        $dropdownData = [];
+        $dropdownData['provinces'] = $this->provinceRepo->getSortedList();
+        $dropdownData['occupations'] = Job::all();
+        $dropdownData['salaryGrades'] = Salary::all();
+        $dropdownData['degrees'] = Level::all();
+        $dropdownData['yearOfexps'] = ExperienceYears::all();
+        $dropdownData['languages'] = ForeignLanguage::all();
+        $dropdownData['employmentStatuses'] = EmploymentStatus::all();
+        $dropdownData['ranks'] = Rank::all();
+
+        return $dropdownData;
+    }
+
+    /**
      * Index page
      *
      * @param Request $request
@@ -125,14 +155,17 @@ class CandidateController extends Controller {
     public function candidateList(Request $request)
     {
         $activeMenu = Constants::CANDIDATE;
-        $params = $request->all();
+//        $params = $request->all();
+//
+//        $pageSize = config('front.pageSize');
+//        $candidates = $this->candidateRepo->search($params, $pageSize);
 
-        $pageSize = config('front.pageSize');
-        $candidates = $this->candidateRepo->search($params, $pageSize);
+        $dropdownData = $this->dropdownData();
 
         return view('admin/candidate/list')
-            ->with('candidates', $candidates)
+            //->with('candidates', $candidates)
             ->with('activeMenu', $activeMenu)
+            ->with('dropdownData', $dropdownData)
             ->with('pageTitle', Constants::CANDIDATE_LIST_PT);
     }
 
@@ -142,7 +175,8 @@ class CandidateController extends Controller {
      * @param Request $request
      * @return mixed
      */
-    public function candidateCreate(Request $request) {
+    public function candidateCreate(Request $request)
+    {
         if (!empty(Input::all())) {
             $candidate = Input::all();
         } else {
@@ -155,12 +189,13 @@ class CandidateController extends Controller {
 
     /**
      * Update a candidate
-     * 
+     *
      * @param Request $request
      * @param int $id
      * @return mixed
      */
-    public function candidateUpdate(Request $request, $id) {
+    public function candidateUpdate(Request $request, $id)
+    {
         $pageTitle = Constants::CANDIDATE_UPDATE_PT;
         $candidate = Candidate::find($id);
         $candidate = $this->prepareCandidateData($candidate);
@@ -177,7 +212,8 @@ class CandidateController extends Controller {
      * @param null $id
      * @return mixed
      */
-    public function candidateForm($candidate, $request, $pageTitle, $id = null) {
+    public function candidateForm($candidate, $request, $pageTitle, $id = null)
+    {
         $activeMenu = Constants::CANDIDATE;
 
         $salaries = $this->salaryRepo->all();
@@ -201,10 +237,10 @@ class CandidateController extends Controller {
             }
             return view('admin/candidate/candidate_form')
                 ->with('candidate', $candidate)
-                ->with('salaries',  $salaries)
+                ->with('salaries', $salaries)
                 ->with('experienceYears', $experienceYears)
                 ->with('ranks', $ranks)
-                ->with('jobs',  $jobs)
+                ->with('jobs', $jobs)
                 ->with('exigencies', $exigencies)
                 ->with('levels', $levels)
                 ->with('foreignLanguages', $foreignLanguages)
@@ -288,7 +324,8 @@ class CandidateController extends Controller {
      * @param $id
      * @return array
      */
-    public function delete(Request $request, $id) {
+    public function delete(Request $request, $id)
+    {
 
         $data = [];
 
@@ -307,7 +344,8 @@ class CandidateController extends Controller {
      *
      * @param $data
      */
-    private function sendEmail($data){
+    private function sendEmail($data)
+    {
 
         Mail::send('front.emails.candidate.register', $data, function ($message) use ($data) {
             $message->subject('Đăng ký ứng viên thành công')
@@ -357,8 +395,7 @@ class CandidateController extends Controller {
     private function populateContactPersonsToCandidate($candidate, $contactPersons)
     {
         if (count($contactPersons) > 0) {
-            for ($i = 0; $i < count($contactPersons);$i ++)
-            {
+            for ($i = 0; $i < count($contactPersons); $i++) {
                 $candidate['contact_person_id_' . ($i + 1)] = $contactPersons[$i]->id;
                 $candidate['contact_person_full_name_' . ($i + 1)] = $contactPersons[$i]->full_name;
                 $candidate['contact_person_company_' . ($i + 1)] = $contactPersons[$i]->company;
@@ -400,8 +437,7 @@ class CandidateController extends Controller {
     private function populateForeignLanguagesToCandidate($candidate, $foreignLanguages)
     {
         if (count($foreignLanguages) > 0) {
-            for ($i = 0; $i < count($foreignLanguages);$i ++)
-            {
+            for ($i = 0; $i < count($foreignLanguages); $i++) {
                 $candidate['foreign_language_id_' . ($i + 1)] = $foreignLanguages[$i]->id;
                 $candidate['language_id_' . ($i + 1)] = $foreignLanguages[$i]->language_id;
                 $candidate['read_' . ($i + 1)] = $foreignLanguages[$i]->read;
@@ -426,19 +462,18 @@ class CandidateController extends Controller {
     private function populateCertificatesToCandidate($candidate, $certificates)
     {
         if (count($certificates) > 0) {
-            for ($i = 0; $i < count($certificates);$i ++)
-            {
+            for ($i = 0; $i < count($certificates); $i++) {
                 $candidate['certificate_id_' . ($i + 1)] = $certificates[$i]->id;
                 $candidate['certificate_name_' . ($i + 1)] = $certificates[$i]->certificate_name;
                 $candidate['training_unit_' . ($i + 1)] = $certificates[$i]->training_unit;
                 $candidate['graduation_type_' . ($i + 1)] = $certificates[$i]->graduation_type;
                 $candidate['specialize_' . ($i + 1)] = $certificates[$i]->specialize;
 
-                $startedAts =  explode("-", $certificates[$i]->started_at);
+                $startedAts = explode("-", $certificates[$i]->started_at);
                 $candidate['started_at_month_' . ($i + 1)] = $startedAts[1];
                 $candidate['started_at_year' . ($i + 1)] = $startedAts[0];
 
-                $endedAts =  explode("-", $certificates[$i]->ended_at);
+                $endedAts = explode("-", $certificates[$i]->ended_at);
                 $candidate['ended_at_month_' . ($i + 1)] = $endedAts[1];
                 $candidate['ended_at_year_' . ($i + 1)] = $endedAts[0];
             }
@@ -459,19 +494,18 @@ class CandidateController extends Controller {
     private function populateExperiencesToCandidate($candidate, $experiences)
     {
         if (count($experiences) > 0) {
-            for ($i = 0; $i < count($experiences);$i ++)
-            {
+            for ($i = 0; $i < count($experiences); $i++) {
                 $candidate['experience_id_' . ($i + 1)] = $experiences[$i]->id;
                 $candidate['experience_company_name_' . ($i + 1)] = $experiences[$i]->company_name;
                 $candidate['experience_office_' . ($i + 1)] = $experiences[$i]->office;
                 $candidate['experience_salary_' . ($i + 1)] = $experiences[$i]->salary;
                 $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
 
-                $dayIns =  explode("-", $experiences[$i]->day_in);
+                $dayIns = explode("-", $experiences[$i]->day_in);
                 $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
                 $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
 
-                $dayOuts =  explode("-", $experiences[$i]->day_out);
+                $dayOuts = explode("-", $experiences[$i]->day_out);
                 $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
                 $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
             }
@@ -498,7 +532,7 @@ class CandidateController extends Controller {
                 $contactPerson = CandidateContactPerson::find($input['contact_person_id_' . $i]);
             }
 
-            $contactPerson->candidate_id  = $candidate->id;
+            $contactPerson->candidate_id = $candidate->id;
             if ($this->canSaveContactPerson($input, $i)) {
                 $contactPerson = $this->getContactPersonInfo($contactPerson, $input, $i);
                 $contactPerson->save();
@@ -531,9 +565,11 @@ class CandidateController extends Controller {
      * @param $index
      * @return bool
      */
-    private function canSaveContactPerson($contactPerson, $index) {
+    private function canSaveContactPerson($contactPerson, $index)
+    {
         if (!empty($contactPerson['contact_person_full_name_' . $index]) && !empty($contactPerson['contact_person_company_' . $index])
-            && !empty($contactPerson['contact_person_phone_number_' . $index]) && !empty($contactPerson['contact_person_office_' . $index])) {
+            && !empty($contactPerson['contact_person_phone_number_' . $index]) && !empty($contactPerson['contact_person_office_' . $index])
+        ) {
             return true;
         }
 
@@ -549,7 +585,7 @@ class CandidateController extends Controller {
     private function saveITLevel($candidate, $input)
     {
         $iTLevel = new CandidateItLevel();
-        $iTLevel->candidate_id  = $candidate->id;
+        $iTLevel->candidate_id = $candidate->id;
         if ($this->canSaveITLevel($input)) {
             $iTLevel = $this->getITLevelInfo($iTLevel, $input);
             $iTLevel->save();
@@ -579,9 +615,11 @@ class CandidateController extends Controller {
      * @param $itLevel
      * @return bool
      */
-    private function canSaveITLevel($itLevel) {
+    private function canSaveITLevel($itLevel)
+    {
         if (!empty($itLevel['word']) || !empty($itLevel['excel'])
-            || !empty($itLevel['power_point']) || !empty($itLevel['out_look'])) {
+            || !empty($itLevel['power_point']) || !empty($itLevel['out_look'])
+        ) {
             return true;
         }
 
@@ -604,7 +642,7 @@ class CandidateController extends Controller {
                 $language = CandidateForeignLanguage::find($input['foreign_language_id_' . $i]);
             }
 
-            $language->candidate_id  = $candidate->id;
+            $language->candidate_id = $candidate->id;
             if ($this->canSaveLanguage($input, $i)) {
                 $language = $this->getLanguageInfo($language, $input, $i);
                 $language->save();
@@ -638,7 +676,8 @@ class CandidateController extends Controller {
      * @param $index
      * @return bool
      */
-    private function canSaveLanguage($language, $index) {
+    private function canSaveLanguage($language, $index)
+    {
         if (!empty($language['language_id_' . $index])) {
             return true;
         }
@@ -662,7 +701,7 @@ class CandidateController extends Controller {
             } else {
                 $certificate = CandidateCertificate::find($input['certificate_id_' . $i]);
             }
-            $certificate->candidate_id  = $candidate->id;
+            $certificate->candidate_id = $candidate->id;
             if ($this->canSaveCertificate($input, $i)) {
                 $certificate = $this->getCertificateInfo($certificate, $input, $i, $request);
                 $certificate->save();
@@ -720,7 +759,8 @@ class CandidateController extends Controller {
      * @param $index
      * @return bool
      */
-    private function canSaveCertificate($certificate, $index) {
+    private function canSaveCertificate($certificate, $index)
+    {
         if (!empty($certificate['certificate_name_' . $index]) && !empty($certificate['certificate_name_' . $index])) {
             return true;
         }
@@ -744,7 +784,7 @@ class CandidateController extends Controller {
                 $experience = Experience::find($input['experience_id_' . $i]);
             }
 
-            $experience->candidate_id  = $candidate->id;
+            $experience->candidate_id = $candidate->id;
             if ($this->canSaveExperience($input, $i)) {
                 $experience = $this->getExperienceInfo($experience, $input, $i);
                 $experience->save();
@@ -760,7 +800,8 @@ class CandidateController extends Controller {
      * @param $index
      * @return bool
      */
-    private function canSaveExperience($experience, $index) {
+    private function canSaveExperience($experience, $index)
+    {
         if (!empty($experience['experience_company_name_' . $index]) && !empty($experience['experience_office_' . $index])) {
             return true;
         }
@@ -902,5 +943,84 @@ class CandidateController extends Controller {
         }
 
         return Validator::make($data, $validators);
+    }
+
+    public function getList(Request $request)
+    {
+        $input = $request->all();
+
+        $pageSize = $input['length'];
+        $page = $input['page'];
+
+        // force current page to 5
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        $candidates = $this->candidateRepo->search($input['params'], $pageSize);
+        $total = $candidates->total();
+
+        $list = [];
+        foreach ($candidates as $index => $item) {
+            $list[] = array(
+                "id"                => $item->id,
+                "cv_title"          => $item->cv_title,
+                "email"             => $item->email,
+                "candidate_code"    => $item->candidate_code,
+                "full_name"         => $item->full_name,
+                "updated_at"        => $item->updated_at,
+                "salary"            => $item->expectSalary ? $item->expectSalary->name : '',
+                "yearOfExp"         => $item->experienceYears ? $item->experienceYears->name : '',
+                "expectJobs"        => $this->getExpectJobs($item),
+                "expectAddresses"   => $this->getExpectAddresses($item),
+                "foreignLanguages"  => $this->getForeignLanguages($item),
+                "maxLevel"          => $item->maxLevel ? $item->maxLevel->name : '',
+                "sex"               => $item->sex ? 'Nam' : 'Nữ',
+            );
+        }
+
+        return response()->json([
+            "data" => $list,
+            "total" => $total
+        ]);
+    }
+
+    private function getExpectJobs($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->expectJobs) > 0) {
+            foreach ($candidate->expectJobs as $index => $item) {
+                $list[] = $item->name;
+            }
+        }
+
+        return $list;
+    }
+
+    private function getExpectAddresses($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->expectAddresses) > 0) {
+            foreach ($candidate->expectAddresses as $index => $item) {
+                $list[] = $item->name;
+            }
+        }
+
+        return $list;
+    }
+
+    private function getForeignLanguages($candidate)
+    {
+        $list = [];
+
+        if (count($candidate->foreignLanguages) > 0) {
+            foreach ($candidate->foreignLanguages->slice(0, 1) as $index => $item) {
+                $list[] = $item->language->name;
+            }
+        }
+
+        return $list;
     }
 }

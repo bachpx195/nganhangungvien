@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
 
+	/**************** Candidate ****************/
 	Route::match(['get'], '/candidate', [
 		'as' => 'admin.candidate.list', 'uses' => 'Admin\CandidateController@candidateList'
 	]);
@@ -58,9 +59,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.candidate.delete', 'uses' => 'Admin\CandidateController@delete'
 	]);
 
-	// Employer
+	Route::match(['post'], '/candidate/getList', [
+		'as' => 'admin.candidate.getList', 'uses' => 'Admin\CandidateController@getList'
+	]);
+
+	/**************** Employer ****************/
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
+	]);
+
+	Route::match(['post'], '/employer/getList', [
+		'as' => 'admin.candidate.getList', 'uses' => 'Admin\EmployerController@getList'
 	]);
 
 	Route::match(['get'], '/employer/detail', [
@@ -275,6 +284,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);
+
+	Route::match(['get', 'post'], '/ung-vien/{slug}', [
+		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
+	]);
 	
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
 		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
@@ -299,6 +312,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 
 	Route::match(['get', 'post'], '/news/upload', [
 		'as' => 'news.upload', 'uses' => 'Admin\NewsController@upload_image'
+	]);
+
+	Route::match(['get', 'post'], '/kich-hoat/{id}-{confirmation_code}-{password}', [
+		'as' => 'user.active', 'uses' => 'Front\EmployerRegisterController@confirm'
+	]);
+
+	Route::match(['get', 'post'], '/tai-khoan/kiem-tra-xac-nhan/{id}-{confirmation_code}', [
+		'as' => 'user.actived', 'uses' => 'Front\EmployerRegisterController@confirmed'
 	]);
 
 });

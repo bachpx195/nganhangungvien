@@ -77,7 +77,7 @@
             $.ajax({
                 type: 'post',
                 dataType : 'json',
-                url: '/login',
+                url:"{{ URL::to('/login') }}",
                 data: datapost,
                 success: function (data) {
                     if (data.error == 0) { // thanh cong

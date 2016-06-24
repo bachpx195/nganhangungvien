@@ -27,15 +27,21 @@ class CandidateRepo implements ICandidateRepo {
         $query = Candidate::select();
 
         if(isset($params['title']) && $params['title']){
-            $query = $query->where('cv_title', '=', $params['title']);
+            $query = $query->where('cv_title', 'like', "%" . $params['title'] . "%");
         }
 
         if(isset($params['occupation']) && $params['occupation']){
-            $query = $query->where('job', '=', $params['occupation']);
+            $query = $query->whereHas('expectJobs', function($q) use ($params)
+            {
+                $q->where('job_id', '=', $params['occupation']);
+            });
         }
 
         if(isset($params['province']) && $params['province']){
-            $query = $query->where('province_id', '=', $params['province']);
+            $query = $query->whereHas('expectAddresses', function($q) use ($params)
+            {
+                $q->where('province_id', '=', $params['province']);
+            });
         }
 
         if(isset($params['salaryGrade']) && $params['salaryGrade']){
@@ -50,7 +56,7 @@ class CandidateRepo implements ICandidateRepo {
             $query = $query->where('experience_years', 'in', $params['yearOfExp']);
         }
 
-        if(isset($params['sex']) && $params['sex']){
+        if(isset($params['sex']) && $params['sex'] !== "" && $params['sex'] !== null){
             $query = $query->where('sex', '=', $params['sex']);
         }
 

@@ -40,11 +40,6 @@
                                 </li>
 
                                 <li class="pb_6 pos_relative">
-                                    <span class="icon_24 icon-24 icon-vl-da-luu pos_absolute"></span>
-                                    <a href="#" class="txt-ghi pl12 w232 ablock_menu ">Thay đổi mật khẩu</a>
-                                </li>
-
-                                <li class="pb_6 pos_relative">
                                     <span class="icon_24 icon-24 icon-quan-ly-tin-tuyen-dung pos_absolute"></span>
                                     <a href="#" class="txt-ghi pl12 w232 ablock_menu ">HD xem thông tin ứng viên</a>
                                 </li>

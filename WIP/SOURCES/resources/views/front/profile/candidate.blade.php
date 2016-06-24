@@ -83,12 +83,6 @@
 				<span class="pl_28 fwb">In Hồ sơ</span>
 			</span>
 		</button>
-		<button class="btn btn-white mr_8 pull-left no-shadow"
-			onclick="must_login('Gửi phản hồi')";>
-			<span class="line-icon"> <i class="icon-to-cao icon-16 icon_16"></i>
-				<span class="pl_22 fwb">Gửi phản hồi</span>
-			</span>
-		</button>
 		<span class="text_grey2 font12 mt8 mb12"> <span><span class="fwb">Lượt
 					xem:</span> {{$candidate->view_total}}</span> | <span> <span class="fwb">Mã:</span>
 				{{$candidate->candidate_code}}
