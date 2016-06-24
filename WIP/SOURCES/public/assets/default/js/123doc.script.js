@@ -29,24 +29,10 @@ function showForm_addMoney(e) {
     $(".boxAddMoney_content").not("#" + t).addClass("hidden"), $(".boxAddMoney_content#" + t).removeClass("hidden"), u.find("li > a").not(e).removeClass("active"), $(e).addClass("active")
 }
 
-function show_listOption(e) {
-    var t = $(e).parents(".text_input"),
-        u = $(".listOption", t);
-    $(".listOption", ".text_input").not(u).hide(), u.show()
-}
-
-function close_listOption(e) {
-    var t = $(e).parents(".text_input");
-    setTimeout(function() {
-        $(".listOption", t).hide()
-    }, 200)
-}
-
-function selectOption(e) {
-    var t = $(e).parents(".text_input"),
-        u = $("span", e).text();
-    $("input[type=radio]", t).removeAttr("checked"), $(e).parent().find("input[type=radio]").attr("checked", "checked"), t.find("a").first().text(u)
-}
+$(document).on('click', '.listOption_bankATM li a', function (e) {
+    $('.listOption_bankATM li a').find("input[type=radio]").prop('checked', false);
+    $(this).find("input[type=radio]").prop('checked', true);
+});
 
 function selectOptionMobile(e) {
     var t = $(e).find("input[type=radio]").attr("checked", "checked");
