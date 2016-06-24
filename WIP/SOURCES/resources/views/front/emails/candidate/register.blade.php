@@ -7,17 +7,17 @@
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
                 <p>Chào <span style="font-weight:bold">{{$full_name}}</span>!<br>
                     <br>
-                    Bạn đã tạo hồ sơ Ứng viên của website Ngân hàng ứng viên với địa chỉ e-mail {{$email}}.</p>
-
-                <p>Thông tin hồ sơ Ứng viên của bạn như sau:<br>
-                    - Tiêu đề hồ sơ: <span style="font-weight:bold">{{$cv_title}}</span><br>
-                    - Số điện thoại: <span style="font-weight:bold">{{$phone_number}}</span><br>
+                    Bạn đã tạo Hồ sơ Trực Tuyến Thành Công tại  Website:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mai {{$email}}.</p>
+                    
+                <p>Hồ sơ của bạn sẽ được Kiểm duyệt & Hiển thị tại Ngân Hàng Ứng Viên trong vòng 24h!</p>
+                
+                <p>Chúc bạn sớm tìm được công việc phù hợp!</p>
 
                 <p>Nếu bạn có bất kỳ thắc mắc nào, hãy liên hệ với chúng tôi để nhận được sự hỗ trợ nhanh nhất.</p>
 
                 <p><em><strong>Mọi ý kiến thắc mắc</strong></em> <strong><em>vui lòng liên hệ:</em></strong></p>
 
-                <p>- Hotline: </p>
+                <p>- Hotline: 04 6684 7421</p>
 
                 <p>- Email: <a href="mailto:hotro@nganhangungvien.com" target="_blank">hotro@nganhangungvien.com</a></p>
 
