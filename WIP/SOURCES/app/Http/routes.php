@@ -92,6 +92,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	]);
 	// END NEWS
 
+	// USER
+	Route::match(['get'], '/nguoi-dung/danh-sach', [
+		'as' => 'admin.user.list', 'uses' => 'Admin\UserController@userList'
+	]);
+
+	Route::match(['get', 'post'], '/nguoi-dung/dang-ky', [
+		'as' => 'admin.user.form.add', 'uses' => 'Admin\UserController@userFormCreate'
+	]);
+
+	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat', [
+		'as' => 'admin.user.form.update', 'uses' => 'Admin\UserController@userFormUpdate'
+	]);
+
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);

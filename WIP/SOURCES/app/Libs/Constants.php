@@ -64,6 +64,10 @@ class Constants {
     const FOREIGNLANGUAGE_NEW_PT = 'Tạo mới ngoại ngữ';
     const FOREIGNLANGUAGE_LIST_PT = 'Quản lý ngoại ngữ';
 
+    const USER_LIST = "Danh sách người dùng";
+    const USER_FORM = "Cập nhật thông tin người dùng";
+    const USER_FORM_ADD = "Thêm mới người dùng";
+
     /*
      * Config of BAOKIM gateway
      */

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Controller;
+use App\Libs\Constants;
 use App\Repositories\IUserRepo;
 use App\Services\Registrar;
 use Illuminate\Http\Request;
@@ -31,5 +32,19 @@ class UserController extends Controller
             ->with('transactions', $transactions)
             ->with('activeMenu', $activeMenu)
             ->with('pageTitle', Constants::TRANSACTION_LIST);
+    }
+
+    public function userFormCreate(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            $activeMenu = Constants::USER_FORM;
+
+            return view('admin/transaction/list')
+                ->with('transactions', $transactions)
+                ->with('activeMenu', $activeMenu)
+                ->with('pageTitle', Constants::TRANSACTION_LIST);
+        } else {
+            
+        }
     }
 }
