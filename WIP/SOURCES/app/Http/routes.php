@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -274,6 +274,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 
 	Route::match(['get', 'post'], '/ung-vien/{slug}', [
 		'as' => 'candidate.category', 'uses' => 'Front\SearchController@listByCategory'
+	]);
+
+	Route::match(['get', 'post'], '/danh-sach-ung-vien-nhieu-nguoi-xem', [
+		'as' => 'candidate.view', 'uses' => 'Front\SearchController@listByView'
+	]);
+
+	Route::match(['get', 'post'], '/ho-so-ung-vien-moi-nhat', [
+		'as' => 'candidate.new', 'uses' => 'Front\SearchController@listByTime'
 	]);
 	
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [

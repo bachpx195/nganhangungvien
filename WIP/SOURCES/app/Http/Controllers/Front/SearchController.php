@@ -67,5 +67,37 @@ class SearchController extends BaseController {
 			->with('categoryName', $categoryName)
 			->with('params', $params);
 	}
+
+	public function listByView(Request $request)
+	{
+
+		$pageSize = config('front.pageSize');
+		$candidates = $this->candidateRepo->search([], $pageSize, 'view_total');
+
+		$dropdownData = $this->dropdownData();
+		$title = trans("messages.front.title.view");
+
+		return view('front/search/search_category')
+			->with('candidates', $candidates)
+			->with('dropdownData', $dropdownData)
+			->with('categoryName', $title)
+			->with('params', []);
+	}
+
+	public function listByTime(Request $request)
+	{
+
+		$pageSize = config('front.pageSize');
+		$candidates = $this->candidateRepo->search([], $pageSize, 'updated_at');
+
+		$dropdownData = $this->dropdownData();
+		$title = trans("messages.front.title.new");
+
+		return view('front/search/search_category')
+			->with('candidates', $candidates)
+			->with('dropdownData', $dropdownData)
+			->with('categoryName', $title)
+			->with('params', []);
+	}
 	
 }
