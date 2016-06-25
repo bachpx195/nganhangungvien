@@ -1944,10 +1944,6 @@ div.icon-logo a {
     padding: 3px;
 }
 
-.listOption_bankATM ul li:nth-child(6n) {
-    margin-right: 0
-}
-
 .listOption_bankATM ul li a img {
     display: inline-block
 }
