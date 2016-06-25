@@ -273,7 +273,7 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	]);
 
 	Route::match(['get', 'post'], '/ung-vien/{slug}', [
-		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
+		'as' => 'candidate.category', 'uses' => 'Front\SearchController@listByCategory'
 	]);
 	
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
