@@ -14,7 +14,7 @@
 					<div id="gate_nganhnghe_hot" class="box_nganhnghe list_nganhnghe_all mt_10 ">
 						<div class="content_box_ola">
 							@foreach($tabsData['careers'] as $index =>  $item)
-								<div class="w_33 floatLeft {{ ( $index < 9 ? 'bold' : '') }} nganhnghe_item " data-khong-dau="Ke toan-Kiem toan"><a href="#{{ $item->id }}" class="text_black">{{ $item->name }} <span class="text_pink">({{ $item->num_candidates }})</span></a></div>
+								<div class="w_33 floatLeft {{ ( $index < 9 ? 'bold' : '') }} nganhnghe_item "><a href="{{CandidateHelper::uriByCate($item->id, $item->name, 'c')}}" class="text_black">{{ $item->name }} <span class="text_pink">({{ $item->num_candidates }})</span></a></div>
 							@endforeach
 						</div>
 					</div>
@@ -31,7 +31,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['experienceYears'] as $index =>  $item)
-										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="{{CandidateHelper::uriByCate($item->id, $item->name, 'e')}}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
@@ -47,7 +47,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['levels'] as $index =>  $item)
-										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="{{CandidateHelper::uriByCate($item->id, $item->name, 'd')}}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
@@ -63,7 +63,7 @@
 								<div class="clear"></div>
 								<div class="list_note_kinhnghiem">
 									@foreach($tabsData['salaries'] as $index =>  $item)
-										<div class="listkn"><a href="#{{ $item->id }}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
+										<div class="listkn"><a href="{{CandidateHelper::uriByCate($item->id, $item->name, 's')}}" class="nounder"><b>- {{ $item->name }} :</b> {{ $item->num_candidates }}</a></div>
 									@endforeach
 								</div>
 								<div class="clear"></div>
@@ -79,7 +79,7 @@
 					<div  id="gate_tinhthanh_sl"class="box_tinhthanh list_nganhnghe_all mt_10">
 						<div class="content_box_ola">
 							@foreach($tabsData['provinces'] as $index =>  $item)
-								<div class="w_33 floatLeft tinh_item {{ ( $index < 9 ? 'bold' : '') }}"><a href="#{{ $item->id }}" class="text_black">{{ $item->name }}<span class="text_pink"> ({{ $item->num_candidates }})</span></a></div>
+								<div class="w_33 floatLeft tinh_item {{ ( $index < 9 ? 'bold' : '') }}"><a href="{{CandidateHelper::uriByCate($item->id, $item->name, 'p')}}" class="text_black">{{ $item->name }}<span class="text_pink"> ({{ $item->num_candidates }})</span></a></div>
 							@endforeach
 						</div>
 					</div>

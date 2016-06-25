@@ -114,7 +114,7 @@ class CandidateRepo implements ICandidateRepo {
         return $results;
     } 
 
-    public function candidateStatistic() {  
+    public function candidateStatistic() {
         $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->leftJoin('province','candidate.province_id','=','province.id')
