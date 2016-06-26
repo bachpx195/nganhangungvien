@@ -7,9 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Libs\Constants;
 use App\Model\CandidateCertificate;
 use App\Model\CandidateContactPerson;
+use App\Model\CandidateExpectAddress;
+use App\Model\CandidateExpectJob;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
+use App\Repositories\ICandidateExpectAddressRepo;
+use App\Repositories\ICandidateExpectJobRepo;
 use App\Repositories\IEmploymentStatusRepo;
 use App\Repositories\IExigencyRepo;
 use App\Repositories\IExperienceYearsRepo;
@@ -49,6 +53,8 @@ class CandidateController extends Controller {
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
     protected $registrar;
+    protected $expectJobRepo;
+    protected $expectAddressRepo;
 
     /**
      * CandidateController constructor.
@@ -64,6 +70,8 @@ class CandidateController extends Controller {
      * @param IForeignLanguageRepo $foreignLanguageRepo
      * @param IEmploymentStatusRepo $employmentStatusRepo
      * @param Registrar $registrar
+     * @param ICandidateExpectJobRepo $expectJobRepo
+     * @param ICandidateExpectAddressRepo $expectAddressRepo
      */
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -76,7 +84,9 @@ class CandidateController extends Controller {
         ILevelRepo $levelRepo,
         IForeignLanguageRepo $foreignLanguageRepo,
         IEmploymentStatusRepo $employmentStatusRepo,
-        Registrar $registrar
+        Registrar $registrar,
+        ICandidateExpectJobRepo $expectJobRepo,
+        ICandidateExpectAddressRepo $expectAddressRepo
     ) {
         $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
@@ -89,6 +99,8 @@ class CandidateController extends Controller {
         $this->levelRepo = $levelRepo;
         $this->foreignLanguageRepo = $foreignLanguageRepo;
         $this->employmentStatusRepo = $employmentStatusRepo;
+        $this->expectJobRepo = $expectJobRepo;
+        $this->expectAddressRepo = $expectAddressRepo;
     }
 
     /**
@@ -113,6 +125,14 @@ class CandidateController extends Controller {
         $graduationTypes = CandidateHelper::getGraduationTypes();
         $scales = CandidateHelper::getScales();
 
+        if (empty($id)) {
+            $expectJobs = array();
+            $expectAddresses = array();
+        } else {
+            $expectJobs = $this->expectJobRepo->getExpectJobsByCandidateId($id);
+            $expectAddresses = $this->expectAddressRepo->getExpectAddressesByCandidateId($id);
+        }
+
         // get method
         if ($request->isMethod('get')) {
             if (!empty(Input::all())) {
@@ -133,6 +153,8 @@ class CandidateController extends Controller {
                 ->with('provinces', $provinces)
                 ->with('employmentStatuses', $employmentStatuses)
                 ->with('graduationTypes', $graduationTypes)
+                ->with('expectJobs', $expectJobs)
+                ->with('expectAddresses', $expectAddresses)
                 ->with('scales', $scales)
                 ->with('activeHeaderMenu', $activeHeaderMenu);
         } else {
@@ -175,6 +197,13 @@ class CandidateController extends Controller {
 
                 //Save a contact persons
                 $this->saveContactPersons($candidate, $input);
+
+                //Save expect jobs
+                $this->saveExpectJobs($candidate, $input);
+
+                //Save expect addresses
+                $this->saveExpectAddresses($candidate, $input);
+
                 DB::commit();
 
                 //send email
@@ -199,6 +228,84 @@ class CandidateController extends Controller {
             $message->subject('Đăng ký ứng viên thành công')
                 ->to($data['email']);
         });
+    }
+
+    /**
+     * Save expect addresses
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveExpectAddresses($candidate, $input)
+    {
+        $expectAddresses = $input['expect_addresses'];
+        foreach ($expectAddresses as $expectAddress) {
+            $candidateExpectAddress = $this->expectAddressRepo->getExpectAddress($candidate->id, $expectAddress);
+
+            if (empty($candidateExpectAddress)) {
+                try {
+                    $candidateExpectAddress = new CandidateExpectAddress();
+                    $candidateExpectAddress->province_id = $expectAddress;
+                    $candidateExpectAddress->candidate_id = $candidate->id;
+
+                    $candidateExpectAddress->save();
+                } catch(Exception $e) {
+
+                }
+            }
+        }
+
+        $oldExpectAddresses = $this->expectAddressRepo->getExpectAddressesByCandidateId($candidate->id);
+        foreach ($oldExpectAddresses as $expectAddress) {
+            if (!in_array($expectAddress->province_id, $expectAddresses)) {
+                try {
+                    CandidateExpectAddress::where('candidate_id', '=', $candidate->id)
+                        ->where('province_id', '=', $expectAddress->job_id)
+                        ->delete();
+                } catch(Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
+    }
+
+    /**
+     * Save expect jobs
+     *
+     * @param $candidate
+     * @param $input
+     */
+    private function saveExpectJobs($candidate, $input)
+    {
+        $expectJobs = $input['expect_jobs'];
+        foreach ($expectJobs as $expectJob) {
+            $candidateExpectJob = $this->expectJobRepo->getExpectJob($candidate->id, $expectJob);
+
+            if (empty($candidateExpectJob)) {
+                try {
+                    $candidateExpectJob = new CandidateExpectJob();
+                    $candidateExpectJob->job_id = $expectJob;
+                    $candidateExpectJob->candidate_id = $candidate->id;
+
+                    $candidateExpectJob->save();
+                } catch(Exception $e) {
+
+                }
+            }
+        }
+
+        $oldExpectJobs = $this->expectJobRepo->getExpectJobsByCandidateId($candidate->id);
+        foreach ($oldExpectJobs as $expectJob) {
+            if (!in_array($expectJob->job_id, $expectJobs)) {
+                try {
+                    CandidateExpectJob::where('candidate_id', '=', $candidate->id)
+                        ->where('job_id', '=', $expectJob->job_id)
+                        ->delete();
+                } catch(Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
     }
 
     /**

@@ -1331,8 +1331,8 @@ div.icon-logo a {
 }
 
 .boxAddMoney .box_AddMoney {
-    width: 900px;
-    min-height: 500px;
+    width: 950px;
+    min-height: 570px;
     background-color: #fff;
     margin: 20px auto 0;
     box-shadow: 0 0 5px #999;
@@ -1376,7 +1376,7 @@ div.icon-logo a {
     border: 1px solid #00a888;
     border-radius: 3px;
     text-align: center;
-    padding: 25px 0;
+    padding: 10px 0;
     text-decoration: none;
 }
 
@@ -1475,7 +1475,7 @@ div.icon-logo a {
 
 .boxAddMoney_content>h4 {
     color: #00a888;
-    padding: 10px 0 15px;
+    padding: 0 0 15px;
     border-bottom: 1px solid #ddd;
     font-size: 20px;
     font-weight: 400;
@@ -1885,14 +1885,10 @@ div.icon-logo a {
 }
 
 .listOption {
-    position: absolute;
-    width: 290px;
-    border: 1px solid #0a8;
     border-radius: 3px;
     top: 31px;
     left: 0;
     padding: 0 10px 10px;
-    display: none;
     z-index: 1
 }
 
@@ -1929,30 +1925,23 @@ div.icon-logo a {
 }
 
 .listOption_bankATM {
-    width: 640px;
-    min-height: 200px
+    width: 100%;
 }
 
 .listOption_bankATM ul {
     float: left;
-    width: 100%
+    width: 100%;
+    padding-left: 28px;
 }
 
 .listOption_bankATM ul li {
     width: 100px;
     margin-right: 8px;
     float: left;
-    margin-bottom: 5px
-}
-
-.listOption_bankATM ul li:nth-child(6n) {
-    margin-right: 0
-}
-
-.listOption_bankATM ul li a {
-    border: 1px solid #999;
+    margin-bottom: 5px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
     padding: 3px;
-    border-radius: 3px
 }
 
 .listOption_bankATM ul li a img {
