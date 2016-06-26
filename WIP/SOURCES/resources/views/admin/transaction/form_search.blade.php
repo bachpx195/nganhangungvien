@@ -9,9 +9,8 @@
             <input type="text" class="form-control" placeholder="Tên, email ứng viên" id="candidate_info">
         </div>
     </div>
-    <div class="form-actions">
-        <div class="form-group col-md-offset-5 col-md-3">
-            <button class="btn blue" id="btnSearchTransaction">Tìm kiếm</button>
-        </div>
+    <div class="form-group col-md-2">
+        <label> &nbsp; </label>
+        <button class="btn blue form-control" id="btnSearchTransaction">Tìm kiếm</button>
     </div>
 </form>
