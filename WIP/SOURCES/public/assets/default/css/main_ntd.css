@@ -2749,6 +2749,8 @@ ul.request-line {
 }
 .breaking-news {
     overflow: hidden;
+    margin-left: 16px;
+    display: inline-block;
 }
 .breaking-news .title {
     background-color: #e0e0e0;
@@ -2773,6 +2775,7 @@ ul.request-line {
     background-image: url(../images/arrow-chonviec.png);
     background-repeat: no-repeat;
     float: left;
+    cursor: pointer;
 }
 .error_reg_mess{
     color: red;

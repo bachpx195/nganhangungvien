@@ -112,6 +112,14 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\ISaveCvRepo',
 			'App\Repositories\SaveCvRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectJobRepo',
+			'App\Repositories\CandidateExpectJobRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectAddressRepo',
+			'App\Repositories\CandidateExpectAddressRepo');
 	}
 
 }
