@@ -175,8 +175,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="">
-                                    <select name="job" class="form-control"
-                                            required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
+                                    <select name="job" class="form-control job-change">
                                         @include('admin.common.options',
                                             array(
                                                 'selected' => $candidate['job'],
@@ -185,17 +184,34 @@
                                                 ))
                                     </select>
                                 </div>
+                                <div id="error_nganhnghe" class="has-error"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-md-10">
+                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                @if(count($expectJobs) > 0)
+                                    @foreach($expectJobs as $expectJob)
+                                        <div class="breaking-news">
+                                            <span class="title">{{$expectJob['name']}}</span>
+                                            <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
+                                                   type="text" value="{{$expectJob['job_id']}}">
+                                            <span class="icon icon-xs icon-arrow-org"></span>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
-                                Tỉnh thành <span class="has-error">*</span>
+                                Tỉnh thành mong muốn<span class="has-error">*</span>
                             </label>
                             <div class="col-sm-10">
                                 <div class="">
-                                    <select name="province_id" class="form-control"
-                                            required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
+                                    <select name="province_id" class="form-control address-change">
                                         @include('admin.common.options',
                                             array(
                                                 'selected' => $candidate['province_id'],
@@ -204,6 +220,24 @@
                                                 ))
                                     </select>
                                 </div>
+                                <div id="address-error" class="has-error"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-md-10">
+                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                @if(count($expectAddresses) > 0)
+                                    @foreach($expectAddresses as $expectAddress)
+                                        <div class="breaking-news">
+                                            <span class="title">{{$expectAddress['name']}}</span>
+                                            <input class="address_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
+                                                   type="text" value="{{$expectAddress['province_id']}}">
+                                            <span class="icon icon-xs icon-arrow-org"></span>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
