@@ -173,12 +173,12 @@
                         <!-- input Ngành nghề quan tâm -->
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Ngành nghề <span class="colorRed">*</span>
+                                Ngành nghề mong muốn <span class="colorRed">*</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select">
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="job"
-                                            class="select-style"
+                                            class="select-style job-change"
                                             required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
                                         @include('front.common.options',
                                             array(
@@ -188,17 +188,35 @@
                                                 ))
                                     </select>
                                 </div>
+                                <div id="error_nganhnghe" class="has-error"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-md-10">
+                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                @if(count($expectJobs) > 0)
+                                    @foreach($expectJobs as $expectJob)
+                                        <div class="breaking-news">
+                                            <span class="title">{{$expectJob['name']}}</span>
+                                            <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
+                                                   type="text" value="{{$expectJob['job_id']}}">
+                                            <span class="icon icon-xs icon-arrow-org"></span>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Tỉnh thành <span class="colorRed">*</span>
+                                Tỉnh thành mong muốn <span class="colorRed">*</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select">
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="province_id"
-                                            class="select-style"
+                                            class="select-style address-change"
                                             required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
                                         @include('front.common.options',
                                             array(
@@ -208,6 +226,24 @@
                                                 ))
                                     </select>
                                 </div>
+                                <div id="address-error" class="has-error"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-md-10">
+                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                @if(count($expectAddresses) > 0)
+                                    @foreach($expectAddresses as $expectAddress)
+                                        <div class="breaking-news">
+                                            <span class="title">{{$expectAddress['name']}}</span>
+                                            <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
+                                                   type="text" value="{{$expectAddress['province_id']}}">
+                                            <span class="icon icon-xs icon-arrow-org"></span>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -236,8 +272,7 @@
                             <div class="fr-input-wd333 select_style31 city_select">
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="experience_years"
-                                            class="select-style"
-                                            required data-required-msg="Vui lòng chọn Số năm kinh nghiệm">
+                                            class="select-style">
                                         @include('front.common.options',
                                             array(
                                                 'selected' => $candidate['experience_years'],
@@ -248,7 +283,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- input Hình thức làm việc -->
                         <div class="form-group">
                             <label for="employment_status" class="control-label-info bold txt-ghi fs14 col-md-3">

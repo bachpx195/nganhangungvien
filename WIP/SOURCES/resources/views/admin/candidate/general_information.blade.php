@@ -232,7 +232,7 @@
                                     @foreach($expectAddresses as $expectAddress)
                                         <div class="breaking-news">
                                             <span class="title">{{$expectAddress['name']}}</span>
-                                            <input class="address_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
+                                            <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
                                                    type="text" value="{{$expectAddress['province_id']}}">
                                             <span class="icon icon-xs icon-arrow-org"></span>
                                         </div>
