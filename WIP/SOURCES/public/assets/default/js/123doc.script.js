@@ -95,13 +95,13 @@ function pay_mobilecard() {
 
 function pay_atm(e) {
     if (!running_paymentAtm) {
-        if (void 0 !== e) return void alert("Báº¡n khÃ´ng thá»ƒ sá»­ dá»¥ng hÃ¬nh thá»©c nÃ y!");
-        var t = $('input[name="pm_atm"]:checked'),
-            u = $('input[name="pay_money_atm"]:checked'),
-            a = $("#captcha_popup_atm"),
-            o = $("#emal_atm"),
-            n = $("#phone_atm");
-        return void 0 === u.val() ? void alert("Xin vui lÃ²ng chá»n gÃ³i náº¡p tiá»n!") : void 0 === t.val() ? void alert("Xin vui lÃ²ng chá»n ngÃ¢n hÃ ng thanh toÃ¡n!") : "" === n.val() ? (alert("Xin vui lÃ²ng nháº­p sá»‘ Ä‘iá»‡n thoáº¡i!"), void n.focus()) : "" === a.val() ? (alert("Xin vui lÃ²ng nháº­p mÃ£ xÃ¡c nháº­n!"), void a.focus()) : (running_paymentAtm = !0, $("#pay-loading-atm").show(), $.ajax({
+        var t = $('input[name="pm_atm"]:checked');
+        var u = $('#pay-money-atm');
+        var o = $("#emal_atm");
+        var n = $("#phone_atm");
+
+        return void 0 === t.val() ? void alert("Xin vui lòng chọn ngân hàng thanh toán!") : "" === u.val() ? void alert("Xin vui lòng nhập vào số tiền!") : "" === n.val() ? (alert("Xin vui lòng nhập vào số điện thoại!"),
+            void n.focus()) : (running_paymentAtm = !0, $("#pay-loading-atm").show(), $.ajax({
             url: "/users/ajax/aja_payment_atm.php",
             type: "POST",
             dataType: "json",
@@ -110,7 +110,6 @@ function pay_atm(e) {
                 email: o.val(),
                 bank: t.val(),
                 money: u.val(),
-                capcha: a.val()
             },
             beforeSend: function() {
                 $(".btn_submit").css({
