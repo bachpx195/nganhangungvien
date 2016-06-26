@@ -1,4 +1,40 @@
 $(document).ready(function () {
+    $(document).on('click', '.change-status', function (e) {
+        var id = $(this).data('id');
+        var status = 1 - $(this).data('status');
+        var url = $(this).data('url');
+        swal({
+                title: 'Bạn có muốn thay đổi trạng thái?',
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#d9534f",
+                confirmButtonText: "Đồng ý!",
+                cancelButtonText: "Hủy!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {'status': status},
+                        complete: function(data) {
+                            if (data.status) {
+                                if (status == 1) {
+                                    var text = "Đã kích hoạt tài khoản thành công!";
+                                } else {
+                                    var text = "Đã bỏ kích hoat tài khoản thành công!";
+                                }
+                                swal("Thành công!", text);
+                                datasource.read();
+                            }
+                        }
+                    });
+                }
+            }
+        );
+    });
+
     var datasource = new kendo.data.DataSource({
         type: "json",
         serverFiltering: true,
@@ -52,9 +88,9 @@ $(document).ready(function () {
         resizable: true,
         columns: [{
             title: "",
-            width: "90px",
+            width: "95px",
             template: function (item) {
-                return '<a href="/admin/nguoi-dung/cap-nhat?id=' + item.id + '" >'
+                return '<a href="/admin/nguoi-dung/cap-nhat/' + item.id + '" >'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
 
                     + ' <a class="change-status" data-id="' + item.id + '" '

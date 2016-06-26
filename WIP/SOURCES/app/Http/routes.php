@@ -114,8 +114,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::match(['get', 'post'], '/nguoi-dung/dang-ky', [
 		'as' => 'admin.user.register', 'uses' => 'Admin\UserController@userFormRegister'
 	]);
-	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat', [
+	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat/{id}', [
 		'as' => 'admin.user.update', 'uses' => 'Admin\UserController@userFormUpdate'
+	]);
+	Route::post('/user/status/{id}', [
+		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
 	]);
 
 	/************** ROLE **************/

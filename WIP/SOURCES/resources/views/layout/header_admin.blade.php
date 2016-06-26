@@ -36,8 +36,8 @@
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 					<li class="dropdown dropdown-user">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-							<img alt="" class="img-circle" src="{{ URL::asset('/assets/layouts/layout2/img/avatar3_small.jpg') }}" />
-							<span class="username username-hide-on-mobile"> Admin </span>
+							<img alt="" class="img-circle" src="{{ empty(Auth::user()->image) ? '/assets/default/images/avatar.png' : URL::to('/') . Auth::user()->image }}" />
+							<span class="username username-hide-on-mobile"> {{ Auth::user()->username }} </span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">

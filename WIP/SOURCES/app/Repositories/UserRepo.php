@@ -57,4 +57,18 @@ class UserRepo implements IUserRepo {
 		$query = $query->orderBy('username', 'ASC');
 		return $query->paginate($pageSize);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function updateStatus($id, $status)
+	{
+		$user = User::find($id);
+		if (!$user) {
+			return false;
+		}
+		$user->status = $status;
+		$user->save();
+		return true;
+	}
 }

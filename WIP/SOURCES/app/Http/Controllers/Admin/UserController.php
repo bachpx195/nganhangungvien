@@ -9,6 +9,7 @@ use App\Repositories\IUserRepo;
 use App\Services\Registrar;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
@@ -48,8 +49,8 @@ class UserController extends Controller
      */
     public function userFormRegister(Request $request)
     {
-        if (!empty(Input::all())) {
-            $user = Input::all();
+        if (!empty($request->all())) {
+            $user = $request->all();
         } else {
             $user = new User();
         }
@@ -61,11 +62,11 @@ class UserController extends Controller
     /**
      * Show page update user information
      * @param Request $request
+     * @param $id user id
      * @return Redirect
      */
-    public function userFormUpdate(Request $request)
+    public function userFormUpdate(Request $request, $id)
     {
-        $id = $request['id'];
         $pageTitle = Constants::USER_FORM;
         $user = User::find($id);
 
@@ -88,8 +89,10 @@ class UserController extends Controller
         if ($request->isMethod('get')) {
             if (empty($id)) {
                 $action = route('admin.user.register');
+                $pageTitle = Constants::USER_FORM_ADD;
             } else {
                 $action = route('admin.user.update', array('id' => $id));
+                $pageTitle = Constants::USER_FORM;
             }
             return view('admin/users/user_form_register')
                 ->with('user', $user)
@@ -103,8 +106,8 @@ class UserController extends Controller
             if ($validator->fails()) {
                 $data = Input::except(array('_token', '_method'));
                 if (empty($id)) {
-                    $data['email_errors'] = 'Email hoặc username đã tồn tại';
-                    return Redirect::route('admin.user.register', $data);
+                    return Redirect::route('admin.user.register', $data)
+                        ->withErrors($validator);
                 } else {
                     return Redirect::route('admin.user.update', $data);
                 }
@@ -112,7 +115,8 @@ class UserController extends Controller
 
             if (empty($id)) {
                 $user = new User();
-                $user->password = $input['password'];
+                $user->password = Hash::make($input['password']);
+                $user->status = 1;
             } else {
                 $user = User::find($id);
             }
@@ -121,7 +125,6 @@ class UserController extends Controller
             $user->email = $input['email'];
             $user->phone_number = $input['phone_number'];
             $user->user_type = 'admin';
-            $user->status = 1;
 
             if (!empty($request->file('logo'))) {
                 $companyImgPath = FileHelper::getCompanyImgPath();
@@ -198,5 +201,28 @@ class UserController extends Controller
             "data" => $list,
             "total" => $total
         ]);
+    }
+
+    /**
+     * Change user status
+     * @param Request $request
+     * @param $id employer id
+     * @return result of update status
+     */
+    public function userStatus(Request $request, $id)
+    {
+        $data = [];
+
+        if ($request->ajax()) {
+            if (!$request->has('status')) {
+                $data = ['status' => false, 'message' => 'Not found status'];
+            } else {
+                $status = $request->input('status');
+                $success = $this->userRepo->updateStatus($id, $status);
+                $data = ['status' => $success, 'message' => ''];
+            }
+        }
+
+        return $data;
     }
 }

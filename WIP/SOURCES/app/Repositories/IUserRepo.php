@@ -20,4 +20,12 @@ interface IUserRepo
 	 * @return mixed
 	 */
 	function search($params, $pageSize);
+
+	/**
+	 * Update user status
+	 * @param $id user id
+	 * @param $status status
+	 * @return mixed
+	 */
+	function updateStatus($id, $status);
 }

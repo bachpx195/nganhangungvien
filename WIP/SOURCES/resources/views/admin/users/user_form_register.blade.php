@@ -20,28 +20,27 @@
             </div>
         </div>
         <div class="portlet-body">
-
-            @if (!empty($user['email_errors']))
-                <div class="block-note-ths">
-                    <div class="pos-dang-ky-hotline">
-                        {{ $user['email_errors'] }}
-                        <div class="ln_hr"></div>
-                    </div>
+            @if (!empty($errors->all()))
+            <div class="block-note-ths">
+            @foreach ($errors->all() as $error)
+                <div class="pos-dang-ky-hotline">
+                    {{ $error }}
                 </div>
+            @endforeach
+            </div>
             @endif
-
             <div class="content_dangky">
                 <div class="clearfix"></div>
                 <div class="mt8"></div>
                 <form id="candidate-form" class="form-horizontal" role="form" method="POST"
-                      onsubmit="return checkFormUser()" action="{{$action}}" name="user_form"
+                      onsubmit="return checkFormUser()" action="{{ @$action }}" name="user_form"
                       enctype="multipart/form-data">
                     <div class="block-content div-frm-hoso">
                         <div class="mb8">
                             <div class="center-p12p24">
                                 <div class="box-child-ths">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="_userId" value="{{ $user->id }}">
+                                    <input type="hidden" name="_userId" value="{{ @$user->id }}">
                                     <div class="block-pop-dangky">
                                         <div id="block-thong-tin-dang-nhap" class="mb_30 pt_6">
                                             <div class="body-box-child-ths pb16 mt16">
@@ -59,7 +58,7 @@
                                                                        name="username" placeholder="Ví dụ: annv"
                                                                        required
                                                                        data-required-msg="Vui lòng nhập tên đăng nhập"
-                                                                       value="{{$user['username']}}">
+                                                                       value="{{@$user['username']}}">
                                                             </div>
                                                         </div>
                                                         <!-- Họ và Tên -->
@@ -75,7 +74,7 @@
                                                                        placeholder="Ví dụ: Nguyễn Văn An."
                                                                        required
                                                                        data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
-                                                                       value="{{ $user['full_name'] }}">
+                                                                       value="{{ @$user['full_name'] }}">
                                                             </div>
                                                         </div>
                                                         <!-- Email -->
@@ -91,7 +90,7 @@
                                                                        placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com"
                                                                        required
                                                                        data-required-msg="Vui lòng nhập địa chỉ email"
-                                                                       value="{{$user['email']}}">
+                                                                       value="{{@$user['email']}}">
                                                             </div>
                                                         </div>
                                                         <!-- Số điện thoại -->
@@ -104,7 +103,7 @@
                                                                        id="phone"
                                                                        name="phone_number"
                                                                        placeholder="Ví dụ: 0942465168"
-                                                                       value="{{ $user['phone_number'] }}">
+                                                                       value="{{ @$user['phone_number'] }}">
                                                             </div>
                                                         </div>
                                                         <!-- Mật khẩu -->
