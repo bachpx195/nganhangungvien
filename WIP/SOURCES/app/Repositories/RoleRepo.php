@@ -1,13 +1,10 @@
 <?php namespace App\Repositories;
 
-use App\Role;
+use App\Model\Role;
 
 class RoleRepo implements IRoleRepo {
-	
 	public function all() {
-		
-		return Role::orderBy('ordering')
+		return Role::orderBy('created_at', 'DESC')
 					->get();
 	}
-	
 }

@@ -15,9 +15,9 @@ interface IUserRepo
 
 	/**
 	 * Search user by keyword
-	 * @param $keyword keyword want to search
+	 * @param $params param want to search
 	 * @param $pageSize page size
 	 * @return mixed
 	 */
-	function search($keyword, $pageSize);
+	function search($params, $pageSize);
 }

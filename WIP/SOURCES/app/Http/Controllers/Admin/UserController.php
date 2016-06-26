@@ -1,11 +1,17 @@
 <?php namespace App\Http\Controllers\Admin;
 
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Libs\Constants;
+use App\Model\User;
 use App\Repositories\IUserRepo;
 use App\Services\Registrar;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Validator;
 
 class UserController extends Controller
 {
@@ -21,30 +27,176 @@ class UserController extends Controller
         $this->userRepo = $userRepo;
     }
 
+    /**
+     * Get user list
+     * @param Request $request
+     * @return $this
+     */
     public function userList(Request $request)
     {
         $activeMenu = Constants::TRANSACTION_LIST;
-        $keyword = '';
-        $pageSize = config('front.pageSize');
-        $transactions = $this->transactionRepo->search($keyword, $pageSize);
 
-        return view('admin/transaction/list')
-            ->with('transactions', $transactions)
+        return view('admin/users/list')
             ->with('activeMenu', $activeMenu)
-            ->with('pageTitle', Constants::TRANSACTION_LIST);
+            ->with('pageTitle', Constants::USER_LIST);
     }
 
-    public function userFormCreate(Request $request)
+    /**
+     * Show page create new user
+     * @param Request $request
+     * @return Redirect
+     */
+    public function userFormRegister(Request $request)
     {
-        if ($request->isMethod('get')) {
-            $activeMenu = Constants::USER_FORM;
-
-            return view('admin/transaction/list')
-                ->with('transactions', $transactions)
-                ->with('activeMenu', $activeMenu)
-                ->with('pageTitle', Constants::TRANSACTION_LIST);
+        if (!empty(Input::all())) {
+            $user = Input::all();
         } else {
-            
+            $user = new User();
         }
+        $pageTitle = Constants::USER_FORM_ADD;
+
+        return $this->userForm($user, $request, $pageTitle, null);
+    }
+
+    /**
+     * Show page update user information
+     * @param Request $request
+     * @return Redirect
+     */
+    public function userFormUpdate(Request $request)
+    {
+        $id = $request['id'];
+        $pageTitle = Constants::USER_FORM;
+        $user = User::find($id);
+
+        return $this->userForm($user, $request, $pageTitle, $id);
+    }
+
+    /**
+     * Function handle register or update user information
+     * @param $user user information
+     * @param $request request
+     * @param $pageTitle page title
+     * @param null $id user id
+     * @return $this|Redirect
+     */
+    private function userForm($user, $request, $pageTitle, $id = null)
+    {
+        $activeMenu = Constants::USER;
+
+        // get method
+        if ($request->isMethod('get')) {
+            if (empty($id)) {
+                $action = route('admin.user.register');
+            } else {
+                $action = route('admin.user.update', array('id' => $id));
+            }
+            return view('admin/users/user_form_register')
+                ->with('user', $user)
+                ->with('activeMenu', $activeMenu)
+                ->with('pageTitle', $pageTitle)
+                ->with('action', $action);
+        } else {
+            // get form input data
+            $input = $request->all();
+            $validator = $this->validateUserInformation($input, $id);
+            if ($validator->fails()) {
+                $data = Input::except(array('_token', '_method'));
+                if (empty($id)) {
+                    $data['email_errors'] = 'Email hoặc username đã tồn tại';
+                    return Redirect::route('admin.user.register', $data);
+                } else {
+                    return Redirect::route('admin.user.update', $data);
+                }
+            }
+
+            if (empty($id)) {
+                $user = new User();
+                $user->password = $input['password'];
+            } else {
+                $user = User::find($id);
+            }
+            $user->username = $input['username'];
+            $user->full_name = $input['full_name'];
+            $user->email = $input['email'];
+            $user->phone_number = $input['phone_number'];
+            $user->user_type = 'admin';
+            $user->status = 1;
+
+            if (!empty($request->file('logo'))) {
+                $companyImgPath = FileHelper::getCompanyImgPath();
+                $imageName = FileHelper::getNewFileName();
+                $imgExtension = $request->file('logo')->getClientOriginalExtension();
+                $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
+                $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
+            }
+            $user->save();
+
+            if (empty($user->id)) {
+                return redirect(route('admin.user.register'));
+            } else {
+                return redirect(route('admin.user.update', array('id' => $user->id)));
+            }
+        }
+    }
+
+    /**
+     * Validate user information
+     * @param $data data want to validate
+     * @param $id user id
+     * @return mixed
+     */
+    private function validateUserInformation($data, $id)
+    {
+        $validators = [
+            'full_name' => 'required'
+        ];
+
+        if (!(isset($id) && $id)) {
+            $validators['username'] = 'required|unique:user';
+            $validators['email'] = 'required|email|unique:user';
+        }
+
+        return Validator::make($data, $validators);
+    }
+
+    /**
+     * Get list user
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getList(Request $request)
+    {
+        $input = $request->all();
+
+        $pageSize = $input['length'];
+        $page = $input['page'];
+
+        // force current page to 5
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        $users = $this->userRepo->search($input['params'], $pageSize);
+        $total = $users->total();
+
+        $list = [];
+        foreach ($users as $index => $item) {
+            $list[] = array(
+                "id"                => $item->id,
+                "username"          => $item->username,
+                "full_name"         => $item->full_name,
+                "email"             => $item->email,
+                "phone_number"      => $item->phone_number,
+                "status"            => $item->status,
+                "user_type"         => $item->user_type,
+                "create_at"         => date('d/m/Y H:i', strtotime($item->created_at))
+            );
+        }
+
+        return response()->json([
+            "data" => $list,
+            "total" => $total
+        ]);
     }
 }

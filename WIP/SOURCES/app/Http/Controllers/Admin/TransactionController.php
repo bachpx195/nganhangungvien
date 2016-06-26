@@ -25,16 +25,17 @@ class TransactionController extends Controller
     public function transactionList(Request $request)
     {
         $activeMenu = Constants::TRANSACTION_LIST;
-//        $keyword = '';
-//        $pageSize = config('front.pageSize');
-//        $transactions = $this->transactionRepo->search($keyword, $pageSize);
 
         return view('admin/transaction/list')
-//            ->with('transactions', $transactions)
             ->with('activeMenu', $activeMenu)
             ->with('pageTitle', Constants::TRANSACTION_LIST);
     }
 
+    /**
+     * Get list transaction
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getList(Request $request)
     {
         $input = $request->all();

@@ -187,26 +187,26 @@
 			</li>
 
 			<li class="nav-item {{($activeMenu == 'user') ? 'active open' : ''}}">
-				<a href="javascript:;" class="nav-link nav-toggle">
+				<a href="{{ route('admin.user.list') }}" class="nav-link nav-toggle">
 					<i class="icon-user"></i>
 					<span class="title">NGƯỜI DÙNG</span>
 					<span class="arrow"></span>
 				</a>
 				<ul class="sub-menu">
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="{{ route('admin.user.list') }}" class="nav-link ">
 							<i class="icon-user"></i>
 							<span class="title">DANH SÁCH</span>
 						</a>
 					</li>
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="{{ route('admin.user.register') }}" class="nav-link ">
 							<i class="icon-user-female"></i>
 							<span class="title">THÊM NGƯỜI DÙNG</span>
 						</a>
 					</li>
 					<li class="nav-item  ">
-						<a href="#" class="nav-link ">
+						<a href="{{ route('admin.role.list') }}" class="nav-link ">
 							<i class="icon-user-following"></i>
 							<span class="title">QUYỀN NGƯỜI DÙNG</span>
 						</a>

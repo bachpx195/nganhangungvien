@@ -104,17 +104,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	]);
 	// END NEWS
 
-	// USER
+	/********************* USER ************************/
 	Route::match(['get'], '/nguoi-dung/danh-sach', [
 		'as' => 'admin.user.list', 'uses' => 'Admin\UserController@userList'
 	]);
-
+	Route::match(['post'], '/user/getList', [
+		'as' => 'admin.user.getList', 'uses' => 'Admin\UserController@getList'
+	]);
 	Route::match(['get', 'post'], '/nguoi-dung/dang-ky', [
-		'as' => 'admin.user.form.add', 'uses' => 'Admin\UserController@userFormCreate'
+		'as' => 'admin.user.register', 'uses' => 'Admin\UserController@userFormRegister'
+	]);
+	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat', [
+		'as' => 'admin.user.update', 'uses' => 'Admin\UserController@userFormUpdate'
 	]);
 
-	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat', [
-		'as' => 'admin.user.form.update', 'uses' => 'Admin\UserController@userFormUpdate'
+	/************** ROLE **************/
+	Route::match(['get'], '/quyen/danh-sach', [
+		'as' => 'admin.role.list', 'uses' => 'Admin\RoleController@roleList'
+	]);
+	Route::match(['get', 'post'], '/quyen/cap-nhat', [
+		'as' => 'admin.role.update', 'uses' => 'Admin\RoleController@updateRole'
 	]);
 
 	Route::match(['get', 'post'], '/province/list', [

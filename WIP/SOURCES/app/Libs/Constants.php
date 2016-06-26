@@ -68,6 +68,10 @@ class Constants {
     const USER_FORM = "Cập nhật thông tin người dùng";
     const USER_FORM_ADD = "Thêm mới người dùng";
 
+    const ROLE_LIST = "Danh sách quyền";
+    const ROLE_FORM_ADD = "Thêm mới quyền";
+    const ROLE_FORM_UPDATE = "Cập nhật thông tin quyền";
+
     /*
      * Config of BAOKIM gateway
      */

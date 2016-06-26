@@ -41,8 +41,20 @@ class UserRepo implements IUserRepo {
 	/**
 	 * {@inheritDoc}
 	 */
-	function search($keyword, $pageSize)
+	function search($params, $pageSize)
 	{
-		
+		$query = User::select();
+
+		if (isset($params['user_info']) && $params['user_info']) {
+			$query = $query->where(function ($query) use ($params) {
+				$query->where('user.username', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.full_name', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.email', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.phone_number', 'like', '%' . $params['user_info'] . '%');
+			});
+		}
+
+		$query = $query->orderBy('username', 'ASC');
+		return $query->paginate($pageSize);
 	}
 }
