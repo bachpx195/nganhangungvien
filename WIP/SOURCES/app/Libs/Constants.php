@@ -15,6 +15,9 @@ class Constants {
 
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
+    // config expire vip interval month, default = 2 month
+    const CONFIG_EXPIRE_VIP = 'EXPIRE_VIP';
+    const CONFIG_EXPIRE_VIP_DEFAULT = 2;
 
     //Page title = PT
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';
