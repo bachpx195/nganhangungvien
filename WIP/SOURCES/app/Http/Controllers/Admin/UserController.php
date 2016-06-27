@@ -117,15 +117,14 @@ class UserController extends Controller
                 $user = new User();
                 $user->password = Hash::make($input['password']);
                 $user->status = 1;
+                $user->username = $input['username'];
+                $user->email = $input['email'];
+                $user->user_type = 'admin';
             } else {
                 $user = User::find($id);
             }
-            $user->username = $input['username'];
             $user->full_name = $input['full_name'];
-            $user->email = $input['email'];
             $user->phone_number = $input['phone_number'];
-            $user->user_type = 'admin';
-
             if (!empty($request->file('logo'))) {
                 $companyImgPath = FileHelper::getCompanyImgPath();
                 $imageName = FileHelper::getNewFileName();

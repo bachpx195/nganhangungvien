@@ -55,6 +55,7 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text" class="form-control uInput"
                                                                        id="username"
+                                                                       @if(isset($user->id) && $user->id) disabled @endif
                                                                        name="username" placeholder="Ví dụ: annv"
                                                                        required
                                                                        data-required-msg="Vui lòng nhập tên đăng nhập"
@@ -86,6 +87,7 @@
                                                             <div class="col-sm-10">
                                                                 <input type="email" class="form-control uInput"
                                                                        id="email"
+                                                                       @if(isset($user->id) && $user->id) disabled @endif
                                                                        name="email"
                                                                        placeholder="Ví dụ: abc@gmail.com; abc@yahoo.com"
                                                                        required
