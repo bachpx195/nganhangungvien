@@ -13,6 +13,11 @@ class Constants {
     const DATASYSTEM    = 'datasystem';
     const VIDEO     = 'video';
 
+    const ROLE_ADMIN = "ADMIN";
+    const ROLE_SUPER = "SUPER_ADMIN";
+
+    const USER_TYPE_ADMIN = "admin";
+
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
     // config expire vip interval month, default = 2 month
