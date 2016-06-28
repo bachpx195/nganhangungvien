@@ -19,6 +19,7 @@ use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IRankRepo;
 use App\Repositories\ISalaryRepo;
+use App\Repositories\IConfigRepo;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 use App\Helpers\FileHelper;
@@ -49,6 +50,7 @@ class CandidateController extends Controller {
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
     protected $registrar;
+    public $linkYouTubeChanel;
 
     /**
      * CandidateController constructor.
@@ -76,7 +78,8 @@ class CandidateController extends Controller {
         ILevelRepo $levelRepo,
         IForeignLanguageRepo $foreignLanguageRepo,
         IEmploymentStatusRepo $employmentStatusRepo,
-        Registrar $registrar
+        Registrar $registrar,
+        IConfigRepo $configRepo
     ) {
         $this->registrar = $registrar;
         $this->candidateRepo = $candidateRepo;
@@ -89,6 +92,7 @@ class CandidateController extends Controller {
         $this->levelRepo = $levelRepo;
         $this->foreignLanguageRepo = $foreignLanguageRepo;
         $this->employmentStatusRepo = $employmentStatusRepo;
+        $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
     }
 
     /**
@@ -134,7 +138,8 @@ class CandidateController extends Controller {
                 ->with('employmentStatuses', $employmentStatuses)
                 ->with('graduationTypes', $graduationTypes)
                 ->with('scales', $scales)
-                ->with('activeHeaderMenu', $activeHeaderMenu);
+                ->with('activeHeaderMenu', $activeHeaderMenu)
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         } else {
             // get form input data
             $input = $request->all();

@@ -236,6 +236,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::match(['get', 'post'], '/video', [
 		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
 	]);
+
+	Route::match(['get', 'post'], '/account/change-password', [
+		'as' => 'admin.account.changepassword', 'uses' => 'Admin\AccountProfileController@changeAccountPassword'
+	]);
 });
 
 /**
@@ -308,7 +312,12 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tai-khoan/kiem-tra-xac-nhan/{id}-{confirmation_code}', [
 		'as' => 'user.actived', 'uses' => 'Front\EmployerRegisterController@confirmed'
 	]);
-
+	Route::match(['post'],'/quen-mat-khau', [
+		'as' => 'user.reset.password', 'uses' => 'Front\ResetPasswordController@resetPassword'
+	]);
+	Route::match(['get', 'post'], '/tao-moi-mat-khau/{id}-{code}', [
+		'as' => 'user.reset.form', 'uses' => 'Front\ResetPasswordController@confirm'
+	]);
 });
 
 Route::group(['middleware' => ['auth']], function() {

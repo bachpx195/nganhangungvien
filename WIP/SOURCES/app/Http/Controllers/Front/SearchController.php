@@ -32,6 +32,7 @@ class SearchController extends BaseController {
 		$dropdownData = $this->dropdownData();
 		
 		return view('front/search/search_result')
+				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 				->with('candidates', $candidates)
 				->with('dropdownData', $dropdownData)
 				->with('params', $params);

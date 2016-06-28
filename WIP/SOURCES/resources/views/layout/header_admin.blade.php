@@ -46,7 +46,7 @@
 									<i class="icon-user"></i> Hồ sơ </a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="{{ route('admin.account.changepassword') }}">
 									<i class="icon-key"></i> Đổi mật khẩu </a>
 							</li>
 							<li class="divider"> </li>

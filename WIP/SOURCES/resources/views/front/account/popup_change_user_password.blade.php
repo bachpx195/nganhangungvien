@@ -23,7 +23,6 @@
                                           enctype="multipart/form-data" method="post"
                                           class="form-horizontal">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="userId" value="281">
                                         <div class="pt_8" id="block-thong-tin-dang-nhap">
                                             <!-- input Mật khẩu cũ -->
                                             <div class="mb_8 clearfix">

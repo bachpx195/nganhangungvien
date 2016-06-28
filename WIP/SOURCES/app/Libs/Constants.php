@@ -15,6 +15,7 @@ class Constants {
 
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
+    const CONFIG_YOUTUBE_CHANEL = 'LINK_YOUTUBE_CHANEL';
 
     //Page title = PT
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';

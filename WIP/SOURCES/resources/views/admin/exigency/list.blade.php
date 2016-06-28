@@ -33,8 +33,8 @@
                             @if(count($exigencyList) > 0)
                                 @foreach($exigencyList as $index=>$item)
                                     <tr class="gradeX odd" role="row">
-                                        <td></td>
-                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td class="text-center">{{$item->name}}</td>
                                         <td>
                                             <a href="{{route('admin.exigency.form'). '?id=' . $item->id}}" target="_blank">
                                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip"

@@ -27,6 +27,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-2">Link Kênh Youtube </label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control input-lg2 color-input" value="{{$videoLinkChanel}}" name="videoLinkChanel" />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-2">Hướng dẫn</label>
                                 <div class="col-md-10">
                                     Link Youtube cần có dạng <b>https://www.youtube.com/watch?v=tOlqnMr_3Sg</b>
