@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CandidateExpectJob extends Model {
 
+    public $timestamps = false;
+
     protected $table = 'candidate_expect_job';
 
     public function candidate()

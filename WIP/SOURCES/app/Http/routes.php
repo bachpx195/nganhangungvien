@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -82,9 +82,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::post('/employer/set-vip/{id}', [
 		'as' => 'admin.employer.set_vip', 'uses' => 'Admin\EmployerController@setVip']);
 
-	// Transaction
+	/***************** Transaction ***************/
 	Route::match(['get'], '/giao-dich/danh-sach', [
 		'as' => 'admin.transaction.list', 'uses' => 'Admin\TransactionController@transactionList'
+	]);
+	Route::match(['post'], '/transaction/getList', [
+		'as' => 'admin.transaction.getList', 'uses' => 'Admin\TransactionController@getList'
 	]);
 
 	// BEGIN NEWS
@@ -100,6 +103,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.news.delete', 'uses' => 'Admin\NewsController@delete'
 	]);
 	// END NEWS
+
+	/********************* USER ************************/
+	Route::match(['get'], '/nguoi-dung/danh-sach', [
+		'as' => 'admin.user.list', 'uses' => 'Admin\UserController@userList'
+	]);
+	Route::match(['post'], '/user/getList', [
+		'as' => 'admin.user.getList', 'uses' => 'Admin\UserController@getList'
+	]);
+	Route::match(['get', 'post'], '/nguoi-dung/dang-ky', [
+		'as' => 'admin.user.register', 'uses' => 'Admin\UserController@userFormRegister'
+	]);
+	Route::match(['get', 'post'], '/nguoi-dung/cap-nhat/{id}', [
+		'as' => 'admin.user.update', 'uses' => 'Admin\UserController@userFormUpdate'
+	]);
+	Route::post('/user/status/{id}', [
+		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
+	]);
 
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
@@ -277,7 +297,15 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	]);
 
 	Route::match(['get', 'post'], '/ung-vien/{slug}', [
-		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
+		'as' => 'candidate.category', 'uses' => 'Front\SearchController@listByCategory'
+	]);
+
+	Route::match(['get', 'post'], '/danh-sach-ung-vien-nhieu-nguoi-xem', [
+		'as' => 'candidate.view', 'uses' => 'Front\SearchController@listByView'
+	]);
+
+	Route::match(['get', 'post'], '/ho-so-ung-vien-moi-nhat', [
+		'as' => 'candidate.new', 'uses' => 'Front\SearchController@listByTime'
 	]);
 	
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [

@@ -7,7 +7,12 @@
             <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" href="#coll_tdth"
                class="accordion">
                 <span class="uppercase bold text-tim-nhat">CV của ứng viên</span>
-                <span class="required_l_n"></span>
+                <span class="required_l_n">
+                </span>
+            </a>
+            <a href="{{URL::to('/') . '/candidate/cv/' . $candidateAttachCv}}" target="_blank"
+                class="btn btn-success" type="button" style="background-color: #28acb8; color: #FFF;">
+                <i class="fa fa-download fa-fw"></i> Tải về
             </a>
         </div>
 

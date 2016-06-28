@@ -3,6 +3,12 @@
 
 namespace App\Helpers;
 
+use App\Model\Experience;
+use App\Model\ExperienceYears;
+use App\Model\Job;
+use App\Model\Level;
+use App\Model\Province;
+use App\Model\Salary;
 use Lang;
 use StringHelper;
 
@@ -94,5 +100,75 @@ class CandidateHelper {
 				'name' => 'Kém'
 			]
 		);
+	}
+
+	public static function getParamsBySlug($slug){
+		$params = [];
+
+		$temps = explode('-', $slug);
+		if(count($temps) > 0){
+			$code = $temps[count($temps) - 1];
+			$char = substr($code, 0, 1);
+			$id = substr($code, 1);
+
+			switch ($char){
+				case 'c': //career
+					$params['occupation'] = $id;
+					break;
+				case 'p': //province
+					$params['province'] = $id;
+					break;
+				case 'e': //experience
+					$params['yearOfExp'] = [$id];
+					break;
+				case 'd': //degree
+					$params['degree'] = $id;
+					break;
+				case 's': //salary
+					$params['salaryGrade'] = [$id];
+					break;
+			}
+		}
+
+		return $params;
+	}
+
+	public static function getCagegoryNameBySlug($slug){
+		$temps = explode('-', $slug);
+		if(count($temps) > 0){
+			$code = $temps[count($temps) - 1];
+			$char = substr($code, 0, 1);
+			$id = substr($code, 1);
+
+			switch ($char){
+				case 'c': //career
+					$category = Job::find($id);
+					return "Ngành " . $category->name;
+					break;
+				case 'p': //province
+					$category = Province::find($id);
+					return "Tỉnh " . $category->name;
+					break;
+				case 'e': //experience
+					$category = ExperienceYears::find($id);
+					return "Kinh nghiệm " . $category->name;
+					break;
+				case 'd': //degree
+					$category = Level::find($id);
+					return "Trình độ " . $category->name;
+					break;
+				case 's': //salary
+					$category = Salary::find($id);
+					return "Lương " . $category->name;
+					break;
+			}
+		}
+	}
+
+	public static function uriByCate($id, $title, $code){
+		$code = $code . $id;
+
+		$slug = StringHelper::uri ($title) . '-' . $code;
+		return route('candidate.category', ['slug' => $slug]);
 	}
 }

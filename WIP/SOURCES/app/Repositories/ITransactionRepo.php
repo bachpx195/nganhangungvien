@@ -14,9 +14,18 @@ interface ITransactionRepo
 
     /**
      * Search transaction by employer information
-     * @param $keyword keyword want to search
+     * @param $params param want to search
      * @param $pageSize number record in a page
      * @return mixed
      */
-    function search($keyword, $pageSize);
+    function search($params, $pageSize);
+
+    /**
+     * Count number of transactions of employer for candidate
+     *
+     * @param $employerId
+     * @param $candidateId
+     * @return mixed
+     */
+    function countTrans($employerId, $candidateId);
 }

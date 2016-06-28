@@ -45,7 +45,7 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['salaryGrade']) && $params['salaryGrade']){
-            $query = $query->where('expect_salary', 'in', $params['salaryGrade']);
+            $query = $query->whereIn('expect_salary', $params['salaryGrade']);
         }
 
         if(isset($params['degree']) && $params['degree']){
@@ -53,7 +53,7 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         if(isset($params['yearOfExp']) && $params['yearOfExp']){
-            $query = $query->where('experience_years', 'in', $params['yearOfExp']);
+            $query = $query->whereIn('experience_years', $params['yearOfExp']);
         }
 
         if(isset($params['sex']) && $params['sex'] !== "" && $params['sex'] !== null){
@@ -83,14 +83,17 @@ class CandidateRepo implements ICandidateRepo {
         }
 
         $query = $query->orderBy($orderBy, 'desc');
-
+        //die($query->toSql());
         return $query->paginate($pageSize);
 
     }
 
     public function careerStatistic() {
         // Hiện tại chỉ dựa vào ngành nghề hiện tại, sau này có thể bổ sung thống kê theo ngành nghề liên quan
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM job j LEFT JOIN (SELECT job, COUNT(*) AS num_candidates FROM candidate GROUP BY job) c ON j.id = c.job ORDER BY num_candidates DESC") );
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END 
+                    AS num_candidates FROM job j LEFT JOIN 
+                    (SELECT job_id, COUNT(*) AS num_candidates FROM candidate_expect_job GROUP BY job_id) 
+                    c ON j.id = c.job_id ORDER BY num_candidates DESC") );
         return $results;
     }
 
@@ -110,15 +113,16 @@ class CandidateRepo implements ICandidateRepo {
     }
 
     public function provinceStatistic() {
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM province p LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate GROUP BY province_id) c ON p.id = c.province_id  ORDER BY num_candidates DESC") );
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates 
+                                        FROM province p LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate_expect_address GROUP BY province_id) 
+                                        c ON p.id = c.province_id  ORDER BY num_candidates DESC") );
         return $results;
     } 
 
-    public function candidateStatistic() {  
+    public function candidateStatistic() {
         $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
-                ->leftJoin('province','candidate.province_id','=','province.id')
-                ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
+                ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','candidate.updated_at as updated')
                 ->orderBy('updated','decs')
                 ->where('full_name','<>',' ')
                 ->take(20)
@@ -129,8 +133,7 @@ class CandidateRepo implements ICandidateRepo {
     public function bestViewStatistic() {  
         $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
-                ->leftJoin('province','candidate.province_id','=','province.id')
-                ->select('candidate.id', 'view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','province.name as province','candidate.updated_at as updated')
+                ->select('candidate.id', 'view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary', 'candidate.updated_at as updated')
                 ->orderBy('view_total','decs')
                 ->take(20)
                 ->get();

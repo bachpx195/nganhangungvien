@@ -100,7 +100,7 @@ class AuthController extends Controller {
 		}
 		else {
 			return response()->json([
-				'error' => 0
+				'error' => 1
 			]);
 		}
 	}

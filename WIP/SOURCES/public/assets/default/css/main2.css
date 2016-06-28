@@ -6,7 +6,12 @@
     overflow: hidden;
     white-space: nowrap;
 }
-
+.error_reg_mess_cus {
+    color: red;
+    font-size: 14px;
+    padding-left: 181px;
+    padding-top: 2px;
+}
 .header_avatar {
     max-width: 40px;
     max-height: 40px;

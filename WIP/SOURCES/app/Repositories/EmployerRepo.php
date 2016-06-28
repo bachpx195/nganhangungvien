@@ -146,13 +146,19 @@ class EmployerRepo implements IEmployerRepo
      * @param boolean $vip
      * {@inheritDoc}
      */
-    public function setVip($id, $vip)
+    public function setVip($id, $vip, $expire_vip)
     {
         $employer = Employer::find($id);
         if (!$employer) {
             return false;
         }
         $employer->vip = $vip;
+        $employer->expire_vip = $expire_vip;
+//        if ($vip == 1) {
+//            $employer->expire_vip = date('Y-m-d h:m:s', strtotime("+" . $intervalTime . " months", time()));
+//        } else {
+//            $employer->expire_vip = date('Y-m-d h:m:s', time());
+//        }
         $employer->save();
 
         return true;

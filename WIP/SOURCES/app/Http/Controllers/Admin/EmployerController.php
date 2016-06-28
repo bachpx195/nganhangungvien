@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Model\Province;
+use App\Repositories\IConfigRepo;
 use App\Repositories\IProvinceRepo;
 use Illuminate\Http\Request;
 use App\Libs\Constants;
@@ -15,16 +16,19 @@ class EmployerController extends Controller
     protected $employerRepo;
     protected $registrar;
     protected $provinceRepo;
+    protected $configRepo;
 
     public function __construct(
         IEmployerRepo $employerRepo,
         IProvinceRepo $provinceRepo,
+        IConfigRepo $configRepo,
         Registrar $registrar
     )
     {
         $this->registrar = $registrar;
         $this->employerRepo = $employerRepo;
         $this->provinceRepo = $provinceRepo;
+        $this->configRepo = $configRepo;
     }
 
     /**
@@ -111,7 +115,12 @@ class EmployerController extends Controller
                 $result = ['success' => false, 'message' => 'Not found vip'];
             } else {
                 $vip = $request->input('vip');
-                $success = $this->employerRepo->setVip($id, $vip);
+                $expire_vip = $request->input('expire_vip');
+//                $intervalTime = $this->configRepo->findByCode(Constants::CONFIG_EXPIRE_VIP);
+//                if (!(isset($intervalTime) && $intervalTime)) {
+//                    $intervalTime = Constants::CONFIG_EXPIRE_VIP_DEFAULT;
+//                }
+                $success = $this->employerRepo->setVip($id, $vip, $expire_vip);
                 $result = ['success' => $success, 'message' => ''];
             }
         }
@@ -145,7 +154,8 @@ class EmployerController extends Controller
                 "company_address"   => $item->company_address,
                 "province"          => $item->province ? $item->province->name : '',
                 "status"            => $item->status,
-                "vip"               => $item->vip
+                "vip"               => $this->getVipState($item),
+                "expire_vip"        => $this->getVipState($item) == 1 ? $item->expire_vip : ''
             );
         }
 
@@ -153,5 +163,17 @@ class EmployerController extends Controller
             "data" => $list,
             "total" => $total
         ]);
+    }
+
+    private function getVipState($employer)
+    {
+        if ($employer->vip == 1) {
+            $expireDate = date('Y-m-d h:m:s', strtotime($employer->expire_vip));
+            $currentDate = date('Y-m-d h:m:s', time());
+            if (isset($employer->expire_vip) && ($expireDate > $currentDate)) {
+                return 1;
+            }
+        }
+        return 0;
     }
 }

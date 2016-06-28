@@ -11,15 +11,21 @@
                         <span class="caption-subject bold uppercase"> {{$pageTitle}}</span>
                     </div>
                     <div class="actions">
-
+                        <div class="btn-group">
+                            <button class="btn sbold green">
+                                <a href="{{ route('admin.user.register') }}" class="add-more-btn">
+                                    THÊM NGƯỜI DÙNG <i class="fa fa-plus"></i>
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="portlet-body" id="admin-transactions">
                     <div class="row">
-                        @include('admin.transaction.form_search')
+                        @include('admin.users.form_search')
                     </div>
                     <div class="row">
-                        Kết quả: <span id="countResult">0</span> giao dịch
+                        Kết quả: <span id="countResult">0</span> người dùng
                     </div>
                     <div class="row">
                         <div id="grid"></div>
@@ -29,5 +35,5 @@
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
-    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/transaction/transaction.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/user/user_admin.js') }}"></script>
 @endsection

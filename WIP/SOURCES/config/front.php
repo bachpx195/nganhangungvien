@@ -17,6 +17,6 @@ return [
     |
     */
 
-    'pageSize' => 10
+    'pageSize' => 20
 
 ];

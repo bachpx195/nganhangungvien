@@ -53,7 +53,7 @@
                   </div>
                   @endforeach
                </div>
-               <a href="#">
+               <a href="{{route("candidate.new")}}">
                   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
                      <i class="icon_load_more icon_24 icon-24"></i>
                      Xem thêm Hồ sơ mới nhất        
@@ -105,7 +105,7 @@
                   </div>
                   @endforeach
                </div>
-               <a href="#">
+               <a href="{{route("candidate.view")}}">
                   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
                      <i class="icon_load_more icon_24 icon-24"></i>
                      Xem thêm Hồ sơ được xem nhiều nhất        

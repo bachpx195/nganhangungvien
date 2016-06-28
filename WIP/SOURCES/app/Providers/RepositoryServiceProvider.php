@@ -30,6 +30,10 @@ class RepositoryServiceProvider extends ServiceProvider {
 				'App\Repositories\RoleRepo');
 
 		$this->app->bind(
+			'App\Repositories\IUserRoleRepo',
+			'App\Repositories\UserRoleRepo');
+
+		$this->app->bind(
 			'App\Repositories\ICandidateRepo',
 			'App\Repositories\CandidateRepo');
 
@@ -112,6 +116,14 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\ISaveCvRepo',
 			'App\Repositories\SaveCvRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectJobRepo',
+			'App\Repositories\CandidateExpectJobRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectAddressRepo',
+			'App\Repositories\CandidateExpectAddressRepo');
 	}
 
 }

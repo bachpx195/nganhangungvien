@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\ISaveCvRepo;
+use App\Repositories\ITransactionRepo;
 use Illuminate\Http\Request;
 use App\Model\Candidate;
 use App\Repositories\ICandidateRepo;
@@ -16,18 +18,21 @@ class CandidateProfileController extends BaseController {
 
 	private $employerRepo;
 	private $saveCvRepo;
+	private $transactionRepo;
 
 	public function __construct(
 		IEmployerRepo $employerRepo,
 		ISaveCvRepo $saveCvRepo,
 		IProvinceRepo $provinceRepo,
 		ICandidateRepo $candidateRepo,
-		IConfigRepo $configRepo
+		IConfigRepo $configRepo,
+		ITransactionRepo $transactionRepo
 	)
 	{
 		parent::__construct($candidateRepo, $provinceRepo, $configRepo);
 		$this->employerRepo = $employerRepo;
 		$this->saveCvRepo = $saveCvRepo;
+		$this->transactionRepo = $transactionRepo;
 	}
 
 	/**
@@ -48,9 +53,20 @@ class CandidateProfileController extends BaseController {
 
 		$user = $this->getCurrentUser();
 		$countSavedCv = 0;
+		$showContact = false;
+
 		if ($user) {
 			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 			$countSavedCv = $this->saveCvRepo->countSavedCv($employer->id, $candidate->id);
+
+			if(UserHelper::isVip($employer)){
+				$showContact = true;
+			}else{
+				$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
+				if($countTransactions > 0){
+					$showContact == true;
+				}
+			}
 		}
 		
 		$sameData=[];
@@ -63,7 +79,9 @@ class CandidateProfileController extends BaseController {
 				->with('dropdownData', $dropdownData)
 				->with('candidatesData', $candidatesData)
 				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
-				->with('sameData', $sameData);
+				->with('sameData', $sameData)
+				->with('sameData', $sameData)
+				->with('showContact', $showContact);
 	}
 	
 }

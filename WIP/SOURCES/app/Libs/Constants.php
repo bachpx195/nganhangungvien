@@ -13,9 +13,19 @@ class Constants {
     const DATASYSTEM    = 'datasystem';
     const VIDEO     = 'video';
 
+    const ROLE_ADMIN = "ADMIN";
+    const ROLE_SUPER = "SUPER_ADMIN";
+
+    const USER_TYPE_ADMIN = "admin";
+
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
+
     const CONFIG_YOUTUBE_CHANEL = 'LINK_YOUTUBE_CHANEL';
+
+    // config expire vip interval month, default = 2 month
+    const CONFIG_EXPIRE_VIP = 'EXPIRE_VIP';
+    const CONFIG_EXPIRE_VIP_DEFAULT = 2;
 
     //Page title = PT
     const CANDIDATE_NEW_PT = 'Tạo mới hồ sơ ứng viên';
@@ -64,6 +74,14 @@ class Constants {
 
     const FOREIGNLANGUAGE_NEW_PT = 'Tạo mới ngoại ngữ';
     const FOREIGNLANGUAGE_LIST_PT = 'Quản lý ngoại ngữ';
+
+    const USER_LIST = "Danh sách người dùng";
+    const USER_FORM = "Cập nhật thông tin người dùng";
+    const USER_FORM_ADD = "Thêm mới người dùng";
+
+    const ROLE_LIST = "Danh sách quyền";
+    const ROLE_FORM_ADD = "Thêm mới quyền";
+    const ROLE_FORM_UPDATE = "Cập nhật thông tin quyền";
 
     /*
      * Config of BAOKIM gateway
