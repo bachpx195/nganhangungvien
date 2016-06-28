@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Mật khẩu </label>
                     <div class="col-md-5">
-                        <input type="password" class="form-control input-lg2 color-input" id="password" name="mat_khau" value="{{ old('mat_khau') != null ? old('mat_khau') : $news->password }}"/>
+                        <input type="text" class="form-control input-lg2 color-input" id="password" name="mat_khau" value="{{ old('mat_khau') != null ? old('mat_khau') : $news->password }}"/>
                     </div>
                 </div>
             </div>

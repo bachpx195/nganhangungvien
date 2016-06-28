@@ -50,6 +50,7 @@ class EmployerRegisterController extends BaseController
             $request->session()->flush();
 
             return view('front.account.employer_register_success')
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('user', $user);
         }
 
@@ -66,6 +67,7 @@ class EmployerRegisterController extends BaseController
 
             return view('front.account.employer_register')
                 ->with('provinces', $provinces)
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('companySize', $companySizes)
                 ->with('employer', $employer);
 
@@ -230,7 +232,9 @@ class EmployerRegisterController extends BaseController
             
             return redirect()->intended(route('user.actived',['id' => $id, 'confirmation_code' => $confirmation_code]));
         }else{
-            return view('front.account.employer_register_success')->with('user', $user);
+            return view('front.account.employer_register_success')
+            ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+            ->with('user', $user);
         }
     }
     public function confirmed($id,$confirmation_code){
@@ -239,6 +243,9 @@ class EmployerRegisterController extends BaseController
         $countData['all'] = $this->candidateRepo->countAllStatistic();
         $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
         $countData['new'] = $this->candidateRepo->countNewStatistic();
-        return view('front.verification.success')->with('countData',$countData)->with('user', $user);
+        return view('front.verification.success')
+                    ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+                    ->with('countData',$countData)
+                    ->with('user', $user);
     }
 }

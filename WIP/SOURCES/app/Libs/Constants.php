@@ -20,6 +20,9 @@ class Constants {
 
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
+
+    const CONFIG_YOUTUBE_CHANEL = 'LINK_YOUTUBE_CHANEL';
+
     // config expire vip interval month, default = 2 month
     const CONFIG_EXPIRE_VIP = 'EXPIRE_VIP';
     const CONFIG_EXPIRE_VIP_DEFAULT = 2;

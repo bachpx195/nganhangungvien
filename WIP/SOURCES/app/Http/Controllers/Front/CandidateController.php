@@ -23,6 +23,7 @@ use App\Repositories\ILevelRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\IRankRepo;
 use App\Repositories\ISalaryRepo;
+use App\Repositories\IConfigRepo;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 use App\Helpers\FileHelper;
@@ -53,6 +54,7 @@ class CandidateController extends Controller {
     protected $foreignLanguageRepo;
     protected $employmentStatusRepo;
     protected $registrar;
+    public $linkYouTubeChanel;
     protected $expectJobRepo;
     protected $expectAddressRepo;
 
@@ -85,6 +87,7 @@ class CandidateController extends Controller {
         IForeignLanguageRepo $foreignLanguageRepo,
         IEmploymentStatusRepo $employmentStatusRepo,
         Registrar $registrar,
+        IConfigRepo $configRepo,
         ICandidateExpectJobRepo $expectJobRepo,
         ICandidateExpectAddressRepo $expectAddressRepo
     ) {
@@ -99,6 +102,7 @@ class CandidateController extends Controller {
         $this->levelRepo = $levelRepo;
         $this->foreignLanguageRepo = $foreignLanguageRepo;
         $this->employmentStatusRepo = $employmentStatusRepo;
+        $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
         $this->expectJobRepo = $expectJobRepo;
         $this->expectAddressRepo = $expectAddressRepo;
     }
@@ -156,7 +160,8 @@ class CandidateController extends Controller {
                 ->with('expectJobs', $expectJobs)
                 ->with('expectAddresses', $expectAddresses)
                 ->with('scales', $scales)
-                ->with('activeHeaderMenu', $activeHeaderMenu);
+                ->with('activeHeaderMenu', $activeHeaderMenu)
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         } else {
             // get form input data
             $input = $request->all();
