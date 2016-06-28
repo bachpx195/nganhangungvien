@@ -121,14 +121,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
 	]);
 
-	/************** ROLE **************/
-	Route::match(['get'], '/quyen/danh-sach', [
-		'as' => 'admin.role.list', 'uses' => 'Admin\RoleController@roleList'
-	]);
-	Route::match(['get', 'post'], '/quyen/cap-nhat', [
-		'as' => 'admin.role.update', 'uses' => 'Admin\RoleController@updateRole'
-	]);
-
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
