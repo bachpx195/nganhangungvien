@@ -19,4 +19,13 @@ interface ITransactionRepo
      * @return mixed
      */
     function search($params, $pageSize);
+
+    /**
+     * Count number of transactions of employer for candidate
+     *
+     * @param $employerId
+     * @param $candidateId
+     * @return mixed
+     */
+    function countTrans($employerId, $candidateId);
 }

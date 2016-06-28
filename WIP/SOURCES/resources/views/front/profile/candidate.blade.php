@@ -37,10 +37,17 @@
 					</div>
 					<div class="list-items mb_10">
 						<div class="box_login_hotline">
-							@if ($candidate->id  == 19)
-								<span><strong>Số địa thoại :</strong></span> 0935726336
-								<br/><span><strong>Địa chỉ :</strong></span> P1602 - CT1 Chung cư Nam Xala - Phường Phúc La - Quận Hà Đông - TP. Hà Nội
-								<br/><span><strong>Facebook :</strong></span> <a> htpps://facebook.com</a> - <span><strong>Email :</strong></span>  <a>thanhlv@bloomgoo.vn</a>
+							@if ($showContact)
+								<span><strong>Số địa thoại :</strong></span> {{$candidate->phone_number}}
+								<br/><span><strong>Địa chỉ :</strong></span> {{$candidate->address}}
+								<br/><span><strong>Email :</strong></span> <a>{{$candidate->email}}</a>
+							@elseif (Auth::check())
+								<div class="clearfix" id="candidateContact">
+									Nhà tuyển dụng chưa đăng ký gói tài khoản VIP để xem trực tiếp thông tin ứng viên {{$candidate->full_name}}.
+									<br>Quý khách có thể
+									<a href="javascript:void(0)" onclick="popup_hotline()" class="text_blue font14 fwb">đăng ký VIP (Bấm vào đây để đăng ký)</a>
+									<br>hoặc <a href="javascript:void(0)" class="show_s09b_ntd_register text_blue font14 fwb">Xem thông tin</a> ứng viên {{$candidate->full_name}}
+									(phí: 10.000đ)</div>
 							@else
 								<span> Đăng nhập để xem được thông tin liên hệ của ứng viên</span>
 								<a href="javascript:;"

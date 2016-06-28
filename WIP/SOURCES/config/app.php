@@ -213,7 +213,8 @@ return [
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 		
 		//Bussiness
-		'CandidateHelper'   => 'App\Helpers\CandidateHelper'
+		'CandidateHelper'   => 'App\Helpers\CandidateHelper',
+		'UserHelper'   => 'App\Helpers\UserHelper'
 	],
 
 ];
