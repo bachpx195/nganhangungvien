@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Model\Transaction;
+use Illuminate\Support\Facades\DB;
 
 class TransactionRepo implements ITransactionRepo
 {
@@ -49,5 +50,17 @@ class TransactionRepo implements ITransactionRepo
 
         $query = $query->orderBy('created_at', 'DESC');
         return $query->paginate($pageSize);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function countTrans($employerId, $candidateId)
+    {
+        $query = DB::table('transaction')
+            ->Where('employer_id', '=', $employerId)
+            ->Where('candidate_id', '=', $candidateId)
+            ->count();
+        return $query;
     }
 }
