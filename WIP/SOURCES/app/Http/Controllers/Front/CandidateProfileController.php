@@ -54,6 +54,7 @@ class CandidateProfileController extends BaseController {
 		$user = $this->getCurrentUser();
 		$countSavedCv = 0;
 		$showContact = false;
+		$transactionCost = "";
 
 		if ($user) {
 			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
@@ -65,6 +66,8 @@ class CandidateProfileController extends BaseController {
 				$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
 				if($countTransactions > 0){
 					$showContact == true;
+				}else{
+					$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
 				}
 			}
 		}
@@ -79,7 +82,12 @@ class CandidateProfileController extends BaseController {
 				->with('dropdownData', $dropdownData)
 				->with('candidatesData', $candidatesData)
 				->with('sameData', $sameData)
-				->with('showContact', $showContact);
+				->with('showContact', $showContact)
+				->with('transactionCost', $transactionCost);
+	}
+
+	public function viewContact(Request $request){
+		
 	}
 	
 }

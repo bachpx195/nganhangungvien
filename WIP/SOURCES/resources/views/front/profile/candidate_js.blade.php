@@ -35,4 +35,27 @@
             }
         });
     }
+
+    function viewContact(candidateId) {
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            async: false,
+            url: '{{ route('user.view.profile') }}',
+            data: {
+                candidateId: candidateId
+            },
+            cache: false,
+            success: function (result) {
+
+            },
+            error: function (jqXHR, status, errorThrown) {
+                if (jqXHR.status == 401) {
+                    alert('Bạn phải đăng nhập để lưu hồ sơ');
+                } else {
+                    alert('Đã có lỗi hệ thống. Vui lòng thử lại');
+                }
+            }
+        });
+    }
 </script>

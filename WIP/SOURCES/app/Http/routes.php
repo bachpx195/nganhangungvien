@@ -381,5 +381,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/top-up', [
 		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
 	]);
+	Route::match(['get', 'post'], '/user/viewprofile', [
+		'as' => 'user.view.profile', 'uses' => 'Front\CandidateProfileController@viewContact'
+	]);
 });
 
