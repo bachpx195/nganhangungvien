@@ -5,10 +5,15 @@ use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Libs\Constants;
 use App\Model\User;
+use App\Model\UserRole;
+use App\Repositories\IRoleRepo;
 use App\Repositories\IUserRepo;
+use App\Repositories\IUserRoleRepo;
+use Illuminate\Support\Facades\Auth;
 use App\Services\Registrar;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -17,15 +22,21 @@ use Validator;
 class UserController extends Controller
 {
     protected $userRepo;
+    protected $userRoleRepo;
+    protected $roleRepo;
     protected $registrar;
 
     public function __construct(
         IUserRepo $userRepo,
+        IUserRoleRepo $userRoleRepo,
+        IRoleRepo $roleRepo,
         Registrar $registrar
     )
     {
         $this->registrar = $registrar;
         $this->userRepo = $userRepo;
+        $this->userRoleRepo = $userRoleRepo;
+        $this->roleRepo = $roleRepo;
     }
 
     /**
@@ -67,10 +78,12 @@ class UserController extends Controller
      */
     public function userFormUpdate(Request $request, $id)
     {
-        $pageTitle = Constants::USER_FORM;
-        $user = User::find($id);
+        if (is_numeric($id)) {
+            $pageTitle = Constants::USER_FORM;
+            $user = User::find($id);
 
-        return $this->userForm($user, $request, $pageTitle, $id);
+            return $this->userForm($user, $request, $pageTitle, $id);
+        }
     }
 
     /**
@@ -84,6 +97,17 @@ class UserController extends Controller
     private function userForm($user, $request, $pageTitle, $id = null)
     {
         $activeMenu = Constants::USER;
+        $currentUser = Auth::user();
+        $role = $this->userRoleRepo->getRoleByUserId($currentUser->id);
+        if (!isset($role) || (isset($role) && empty($role->code))) {
+            $roleCode = Constants::ROLE_ADMIN;
+        } else {
+            $roleCode = $role->code;
+        }
+        $roles = $this->roleRepo->getRoleByRoleCode($roleCode);
+        if (!empty($id)) {
+            $user['role_id'] = $this->userRoleRepo->getRoleIdByUserId($id);
+        }
 
         // get method
         if ($request->isMethod('get')) {
@@ -96,43 +120,62 @@ class UserController extends Controller
             }
             return view('admin/users/user_form_register')
                 ->with('user', $user)
+                ->with('roles', $roles)
                 ->with('activeMenu', $activeMenu)
                 ->with('pageTitle', $pageTitle)
                 ->with('action', $action);
         } else {
             // get form input data
             $input = $request->all();
-            $validator = $this->validateUserInformation($input, $id);
-            if ($validator->fails()) {
-                $data = Input::except(array('_token', '_method'));
-                if (empty($id)) {
-                    return Redirect::route('admin.user.register', $data)
-                        ->withErrors($validator);
-                } else {
-                    return Redirect::route('admin.user.update', $data);
+            try {
+                $validator = $this->validateUserInformation($input, $id);
+                DB::beginTransaction();
+                if ($validator->fails()) {
+                    $data = Input::except(array('_token', '_method'));
+                    if (empty($id)) {
+                        return Redirect::route('admin.user.register', $data)
+                            ->withErrors($validator);
+                    } else {
+                        return Redirect::route('admin.user.update', $data);
+                    }
                 }
-            }
 
-            if (empty($id)) {
-                $user = new User();
-                $user->password = Hash::make($input['password']);
-                $user->status = 1;
-                $user->username = $input['username'];
-                $user->email = $input['email'];
-                $user->user_type = 'admin';
-            } else {
-                $user = User::find($id);
+                if (empty($id)) {
+                    $user = new User();
+                    $user->password = Hash::make($input['password']);
+                    $user->status = 1;
+                    $user->username = $input['username'];
+                    $user->email = $input['email'];
+                    $user->user_type = 'admin';
+                } else {
+                    $user = User::find($id);
+                }
+                $user->full_name = $input['full_name'];
+                $user->phone_number = $input['phone_number'];
+                if (!empty($request->file('logo'))) {
+                    $companyImgPath = FileHelper::getCompanyImgPath();
+                    $imageName = FileHelper::getNewFileName();
+                    $imgExtension = $request->file('logo')->getClientOriginalExtension();
+                    $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
+                    $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
+                }
+                $user->save();
+
+                if ($user->user_type == Constants::USER_TYPE_ADMIN) {
+                    // create user role
+                    $userRole = $this->userRoleRepo->getByUserId($user->id);
+                    if (!(isset($userRole) && $userRole)) {
+                        $userRole = new UserRole();
+                        $userRole->user_id = $user->id;
+                    }
+                    $userRole->role_id = $input['role'];
+                    $userRole->save();
+                }
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
             }
-            $user->full_name = $input['full_name'];
-            $user->phone_number = $input['phone_number'];
-            if (!empty($request->file('logo'))) {
-                $companyImgPath = FileHelper::getCompanyImgPath();
-                $imageName = FileHelper::getNewFileName();
-                $imgExtension = $request->file('logo')->getClientOriginalExtension();
-                $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
-                $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
-            }
-            $user->save();
 
             if (empty($user->id)) {
                 return redirect(route('admin.user.register'));
@@ -175,24 +218,28 @@ class UserController extends Controller
         $page = $input['page'];
 
         // force current page to 5
-        Paginator::currentPageResolver(function() use ($page) {
+        Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
 
-        $users = $this->userRepo->search($input['params'], $pageSize);
+        // get current user
+        $currentUser = Auth::user();
+        $role = $this->userRoleRepo->getRoleByUserId($currentUser->id);
+
+        $users = $this->userRepo->search($input['params'], $pageSize, $role);
         $total = $users->total();
 
         $list = [];
         foreach ($users as $index => $item) {
             $list[] = array(
-                "id"                => $item->id,
-                "username"          => $item->username,
-                "full_name"         => $item->full_name,
-                "email"             => $item->email,
-                "phone_number"      => $item->phone_number,
-                "status"            => $item->status,
-                "user_type"         => $item->user_type,
-                "create_at"         => date('d/m/Y H:i', strtotime($item->created_at))
+                "id" => $item->id,
+                "username" => $item->username,
+                "full_name" => $item->full_name,
+                "email" => $item->email,
+                "phone_number" => $item->phone_number,
+                "status" => $item->status,
+                "user_type" => $item->user_type,
+                "create_at" => date('d/m/Y H:i', strtotime($item->created_at))
             );
         }
 

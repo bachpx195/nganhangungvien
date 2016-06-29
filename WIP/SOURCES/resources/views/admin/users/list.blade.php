@@ -25,7 +25,7 @@
                         @include('admin.users.form_search')
                     </div>
                     <div class="row">
-                        Kết quả: <span id="countResult">0</span> giao dịch
+                        Kết quả: <span id="countResult">0</span> người dùng
                     </div>
                     <div class="row">
                         <div id="grid"></div>

@@ -1,5 +1,6 @@
 <?php namespace App\Repositories;
 
+use App\Libs\Constants;
 use App\Model\User;
 
 class UserRepo implements IUserRepo {
@@ -41,9 +42,10 @@ class UserRepo implements IUserRepo {
 	/**
 	 * {@inheritDoc}
 	 */
-	function search($params, $pageSize)
+	function search($params, $pageSize, $role)
 	{
-		$query = User::select();
+		$query = User::leftJoin('user_role', 'user.id', '=', 'user_role.user_id')
+			->select('user.*');
 
 		if (isset($params['user_info']) && $params['user_info']) {
 			$query = $query->where(function ($query) use ($params) {
@@ -52,6 +54,14 @@ class UserRepo implements IUserRepo {
 					->orWhere('user.email', 'like', '%' . $params['user_info'] . '%')
 					->orWhere('user.phone_number', 'like', '%' . $params['user_info'] . '%');
 			});
+		}
+
+		if (isset($params['user_type']) && $params['user_type']) {
+			$query = $query->where('user.user_type', '=', $params['user_type']);
+		}
+		
+		if (!(isset($role) && $role) || (isset($role) && $role->code == Constants::ROLE_ADMIN)) {
+			$query = $query->where('user_role.role_id', '=', $role->role_id);
 		}
 
 		$query = $query->orderBy('username', 'ASC');

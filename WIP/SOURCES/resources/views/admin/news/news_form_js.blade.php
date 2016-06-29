@@ -58,12 +58,8 @@ $(document).ready(function() {
                 contentType: false,
                 processData: false,
                 success: function(url) {
-
                 	console.log('success');
-
-console.log(url);
-
-
+					console.log(url);
                     $('#noi_dung').summernote('editor.insertImage', url);
                 },
                 faild: function(response) {

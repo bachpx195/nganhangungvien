@@ -15,11 +15,13 @@ use App\Repositories\ICandidateRepo;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IProvinceRepo;
 use Illuminate\Support\Facades\Auth;
+use App\Libs\Constants;
 
 class BaseController extends Controller
 {
 
     protected $candidateRepo, $provinceRepo, $configRepo;
+    public $linkYouTubeChanel;
 
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -29,6 +31,7 @@ class BaseController extends Controller
         $this->candidateRepo = $candidateRepo;
         $this->provinceRepo = $provinceRepo;
         $this->configRepo = $configRepo;
+        $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
     }
 
     /**
