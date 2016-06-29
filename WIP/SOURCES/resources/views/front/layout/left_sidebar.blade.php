@@ -41,7 +41,7 @@
 
                                 <li class="pb_6 pos_relative">
                                     <span class="icon_24 icon-24 icon-quan-ly-tin-tuyen-dung pos_absolute"></span>
-                                    <a href="#" class="txt-ghi pl12 w232 ablock_menu ">HD xem thông tin ứng viên</a>
+                                    <a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" class="txt-ghi pl12 w232 ablock_menu " target="_blank" style="text-decoration: none; color: #363636;">HD xem thông tin ứng viên</a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>

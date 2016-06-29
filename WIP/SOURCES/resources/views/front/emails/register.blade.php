@@ -19,7 +19,7 @@
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
                 <p>Kính chào <span style="font-weight:bold">{{$fullname}}</span>!<br>
                     <br>
-                    Ngân Hàng Ứng Viên xin Trân trọng Thông báo Quý khách đã đã đăng ký tài khoản Nhà Tuyển dụng Thành Công tại  Website:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mai{{$email}}.</p>
+                    Ngân Hàng Ứng Viên xin Trân trọng Thông báo Quý khách đã đã đăng ký tài khoản Nhà Tuyển dụng Thành Công tại  Website:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mail <span>{{ $email }}</span>.</p>
 
                 <p>Thông tin tài khoản của bạn như sau:<br>
                     - Tài khoản đăng nhập: <span style="font-weight:bold; text-decoration: none; color: black;">{{ $email }}</span><br>
@@ -61,7 +61,7 @@
 
                 <p><em><strong>Mọi ý kiến thắc mắc</strong></em> <strong><em>vui lòng liên hệ:</em></strong></p>
 
-                <p>- Hotline: </p>
+                <p>- Hotline: 04 6684 7421</p>
 
                 <p>- Email: <a href="mailto:hotro@nganhangungvien.com" target="_blank">hotro@nganhangungvien.com</a></p>
 

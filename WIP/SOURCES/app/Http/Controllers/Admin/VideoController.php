@@ -19,27 +19,42 @@ class VideoController extends Controller {
 
     public function manageVideo(Request $request){
         $videoLink = '';
+        $videoLinkChanel = '';
 
         if($request->method() == 'GET'){
             $videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
+            $videoChanelConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL);
+            // dd($videoChanelConfig);
             if($videoConfig){
                 $videoLink = $videoConfig->value;
             }
+            if($videoChanelConfig){
+                $videoLinkChanel = $videoChanelConfig->value;
+            }
         }else{
             $videoLink = $request->input('videoLink');
+            $videoLinkChanel = $request->input('videoLinkChanel');
             $videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
+            $videoChanelConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL);
             if(!$videoConfig) {
                 $videoConfig = new Config();
                 $videoConfig->code = Constants::CONFIG_YOUTUBE;
             }
+            if(!$videoChanelConfig) {
+                $videoChanelConfig = new Config();
+                $videoChanelConfig->code = Constants::CONFIG_YOUTUBE_CHANEL;
+            }
             $videoConfig->value = $videoLink;
             $videoConfig->save();
+            $videoChanelConfig->value = $videoLinkChanel;
+            $videoChanelConfig->save();
         }
 
 
         return view('admin.video.list')
             ->with('activeMenu', Constants::VIDEO)
             ->with('pageTitle', trans("messages.admin.title.video"))
+            ->with('videoLinkChanel', $videoLinkChanel)
             ->with('videoLink', $videoLink);
     }
 }

@@ -78,6 +78,8 @@ class CandidateProfileController extends BaseController {
 				->with('candidate', $candidate)
 				->with('dropdownData', $dropdownData)
 				->with('candidatesData', $candidatesData)
+				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+				->with('sameData', $sameData)
 				->with('sameData', $sameData)
 				->with('showContact', $showContact);
 	}

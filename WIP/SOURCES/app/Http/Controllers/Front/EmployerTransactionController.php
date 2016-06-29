@@ -42,6 +42,7 @@ class EmployerTransactionController extends BaseController
             }
             $start = $start + $limit;
             return view('front.account.employer_transaction')
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('transactions', $transactions)
                 ->with('start', $start)
                 ->with('limit', $limit);
