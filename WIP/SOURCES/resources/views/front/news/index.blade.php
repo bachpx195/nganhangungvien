@@ -21,9 +21,18 @@
                               Xem chi tiết
                               </a>
                            </p>
-
-                           <p>Download: <a href="{{ $new->link? $new->link : ''}}" target="_blank" title="{{ $new->link }}" rel="nofollow">{{ $new->link? substr($new->link, 0, 50) : ''}}...</a>&nbsp;</p>
-                           <p>Mật khẩu: <i> {{ $new->password? $new->password : ''}} </i>&nbsp;</p>
+                           @if(!empty($new->link))
+                              <p>Download: <a href="{{ $new->link? $new->link : ''}}" target="_blank" title="{{ $new->link }}" rel="nofollow">{{ $new->link? substr($new->link, 0, 50) : ''}}...</a>&nbsp;</p>
+                           @else
+                              <br>
+                              <br>
+                           @endif
+                           @if(!empty($new->password))
+                              <p>Mật khẩu: <i> {{ $new->password? $new->password : ''}} </i>&nbsp;</p>
+                           @else
+                              <br>
+                              <br>
+                           @endif
                         </li>
                         @endforeach
                      </ul>

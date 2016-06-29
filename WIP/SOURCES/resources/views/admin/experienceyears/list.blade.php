@@ -13,11 +13,11 @@
                     </div>
                     <div class="actions">
                         <div class="btn-group">
-                            <button class="btn sbold green">
+ <!--                            <button class="btn sbold green">
                                 <a href="{{route('admin.experienceyears.form')}}" target="_blank" class="add-more-btn">
                                     THÊM KINH NGHIỆM <i class="fa fa-plus"></i>
                                 </a>
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px;">STT</th>
-                                <th style="width: 80%;" class="text-center">Số năm kinh nghiệm</th>
+                                <th style="width: 85%;" class="text-center">Số năm kinh nghiệm</th>
                                 <th style="width: 61px;"></th>
                             </tr>
                         </thead>

@@ -46,6 +46,7 @@ class EmployerSavedCvController extends BaseController
             $saveCvs = $this->getSaveCvs($start, $limit);
             $start = $start + $limit;
             return view('front.account.employer_saved_cv')
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('saveCvs', $saveCvs)
                 ->with('start', $start)
                 ->with('limit', $limit);
