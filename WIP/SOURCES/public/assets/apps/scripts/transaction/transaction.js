@@ -77,9 +77,18 @@ $(document).ready(function () {
             title: "Thời gian",
             width: "15%"
         }, {
-            field: "amount",
             title: "Số tiền",
-            width: "10%"
+            width: "15%",
+            template: function (item) {
+                console.log('type=' + item.transaction_type + ', amount=' + item.amount);
+                if (item.transaction_type === 1) {
+                    return '<span class="transaction_type_add">[+]</span> ' + item.amount;
+                } else if (item.transaction_type === 2) {
+                    return '<span class="transaction_type_subtract">[-]</span> ' + item.amount;
+                } else {
+                    return item.amount;
+                }
+            }
         }, {
             field: "balance",
             title: "Còn lại",

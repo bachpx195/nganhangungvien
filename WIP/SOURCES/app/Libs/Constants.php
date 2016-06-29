@@ -2,16 +2,17 @@
 
 namespace App\Libs;
 
-class Constants {
+class Constants
+{
     //Active sidebar menu
     const DASHBOARD = 'dashboard';
     const CANDIDATE = 'candidate';
-    const EMPLOYER  = 'employer';
-    const NEWS      = 'news';
-    const USER      = 'user';
-    const CONFIG    = 'config';
-    const DATASYSTEM    = 'datasystem';
-    const VIDEO     = 'video';
+    const EMPLOYER = 'employer';
+    const NEWS = 'news';
+    const USER = 'user';
+    const CONFIG = 'config';
+    const DATASYSTEM = 'datasystem';
+    const VIDEO = 'video';
 
     const ROLE_ADMIN = "ADMIN";
     const ROLE_SUPER = "SUPER_ADMIN";
@@ -83,6 +84,9 @@ class Constants {
     const ROLE_FORM_ADD = "Thêm mới quyền";
     const ROLE_FORM_UPDATE = "Cập nhật thông tin quyền";
 
+    const PERMISSION_LIST = "Danh sách phân quyền";
+    const PERMISSION_UPDATE = "Phân quyền cho người dùng";
+
     // define payment type
     const PAYMENT_TYPE_CARD = 1;
     const PAYMENT_TYPE_ATM = 2;
@@ -92,6 +96,14 @@ class Constants {
         Constants::PAYMENT_TYPE_CARD => 'Nạp tiền qua thẻ',
         Constants::PAYMENT_TYPE_ATM => 'Nạp tiền qua ATM',
         Constants::PAYMENT_TYPE_VIEW_CANDIDATE => 'Trừ tiền khi xem ứng viên'
+    );
+
+    /*
+     * Type of transaction
+     */
+    public static $TRANSACTION_TYPES = array(
+        'RECHARGE' => 1,
+        'WITHDRAWAL' => 2
     );
 
     /*

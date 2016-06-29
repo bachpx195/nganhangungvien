@@ -27,7 +27,12 @@
     vertical-align: middle;
     text-align: center;
 }
-
+.transaction_type_add {
+    color: #26c281;
+}
+.transaction_type_subtract {
+    color: red;
+}
 .list_nganhnghe_all2{
     height: 350px;
 }

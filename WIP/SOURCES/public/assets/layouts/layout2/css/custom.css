@@ -23,3 +23,10 @@ a.add-more-btn:hover{
     width: 200px;
     height: 150px;
 }
+
+.transaction_type_add {
+    color: #26c281;
+}
+.transaction_type_subtract {
+    color: red;
+}

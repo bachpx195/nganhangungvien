@@ -48,7 +48,13 @@
                                                 {{ date('d/m/Y H:i', strtotime($item->created_at)) }}
                                             </td>
                                             <td style="width: 15%;" class="number">
-                                                {{ number_format($item->amount, 0) }} VNĐ
+                                                @if ($item->type == \App\Libs\Constants::$TRANSACTION_TYPES['RECHARGE'])
+                                                    <span class="transaction_type_add">[+]</span> {{ number_format($item->amount, 0) }} VNĐ
+                                                @elseif($item->type == \App\Libs\Constants::$TRANSACTION_TYPES['WITHDRAWAL'])
+                                                    <span class="transaction_type_subtract">[-]</span> {{ number_format($item->amount, 0) }} VNĐ
+                                                @else
+                                                    {{ number_format($item->amount, 0) }} VNĐ
+                                                @endif
                                             </td>
                                             <td style="width: 15%;" class="number">
                                                 {{ number_format($item->balance, 0) }} VNĐ
