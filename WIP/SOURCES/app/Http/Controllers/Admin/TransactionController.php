@@ -58,6 +58,7 @@ class TransactionController extends Controller
                 "username"          => $item->username,
                 "company_name"      => $item->company_name,
                 "candidate_path"    => route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->candidateId]),
+                "payment_type"      => $item->payment_type,
                 "cv_title"          => $item->cv_title,
                 "candidateName"     => $item->candidateName,
                 "created_at"        => date('d/m/Y H:i', strtotime($item->created_at)),

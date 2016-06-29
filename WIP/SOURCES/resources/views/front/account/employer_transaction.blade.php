@@ -20,7 +20,7 @@
                                 <thead>
                                 <tr style="background: rgb(245, 245, 245);">
                                     <th style="width: 40px;">STT</th>
-                                    <th>Tên hồ sơ ứng viên</th>
+                                    <th>Nội dung</th>
                                     <th style="width: 20%;">Thời gian</th>
                                     <th style="width: 15%;">Số tiền</th>
                                     <th style="width: 15%;">Số tiền còn lại</th>
@@ -34,16 +34,24 @@
                                                 {{ $index + 1 }}
                                             </td>
                                             <td>
-                                                <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->candidateId])}}">{{ $item->candidateName }}</a> ({{ $item->cv_title }})
+                                                @if($item->payment_type == \App\Libs\Constants::PAYMENT_TYPE_VIEW_CANDIDATE)
+                                                    Xem hồ sơ <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->candidateId])}}">{{ $item->candidateName }}</a> ({{ $item->cv_title }})
+                                                @elseif($item->payment_type == \App\Libs\Constants::PAYMENT_TYPE_CARD)
+                                                    {{ \App\Libs\Constants::$PAYMENT_TYPE[\App\Libs\Constants::PAYMENT_TYPE_CARD] }}
+                                                @elseif($item->payment_type == \App\Libs\Constants::PAYMENT_TYPE_ATM)
+                                                    {{ \App\Libs\Constants::$PAYMENT_TYPE[\App\Libs\Constants::PAYMENT_TYPE_ATM] }}
+                                                @else
+                                                    Lý do khác
+                                                @endif
                                             </td>
                                             <td style="width: 20%;">
-                                                {{ $item->created_at }}
-                                            </td>
-                                            <td style="width: 15%;" class="number">
-                                                {{ number_format($item->balance, 0) }} VNĐ
+                                                {{ date('d/m/Y H:i', strtotime($item->created_at)) }}
                                             </td>
                                             <td style="width: 15%;" class="number">
                                                 {{ number_format($item->amount, 0) }} VNĐ
+                                            </td>
+                                            <td style="width: 15%;" class="number">
+                                                {{ number_format($item->balance, 0) }} VNĐ
                                             </td>
                                         </tr>
                                     @endforeach

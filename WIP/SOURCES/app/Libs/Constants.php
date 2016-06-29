@@ -83,6 +83,17 @@ class Constants {
     const ROLE_FORM_ADD = "Thêm mới quyền";
     const ROLE_FORM_UPDATE = "Cập nhật thông tin quyền";
 
+    // define payment type
+    const PAYMENT_TYPE_CARD = 1;
+    const PAYMENT_TYPE_ATM = 2;
+    const PAYMENT_TYPE_VIEW_CANDIDATE = 3;
+
+    public static $PAYMENT_TYPE = array(
+        Constants::PAYMENT_TYPE_CARD => 'Nạp tiền qua thẻ',
+        Constants::PAYMENT_TYPE_ATM => 'Nạp tiền qua ATM',
+        Constants::PAYMENT_TYPE_VIEW_CANDIDATE => 'Trừ tiền khi xem ứng viên'
+    );
+
     /*
      * Config of BAOKIM gateway
      */

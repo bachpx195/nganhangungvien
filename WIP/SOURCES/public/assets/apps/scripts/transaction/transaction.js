@@ -59,21 +59,29 @@ $(document).ready(function () {
             field: "company_name",
             title: "Tên công ty"
         }, {
-            title: "Hồ sơ ứng viên",
+            title: "Nội dung",
             width: "25%",
             template: function (item) {
-                return '<a target="_blank" href="' + item.candidate_path + '">' + item.candidateName + '</a> (' + item.cv_title + ')';
+                if (item.payment_type === 3) {
+                    return 'Xem hồ sơ <a target="_blank" href="' + item.candidate_path + '">' + item.candidateName + '</a> (' + item.cv_title + ')';
+                } else if (item.payment_type === 2) {
+                    return 'Nạp tiền qua ATM';
+                } else if (item.payment_type === 1) {
+                    return 'Nạp tiền qua thẻ';
+                } else {
+                    return 'Lý do khác';
+                }
             }
         }, {
             field: "created_at",
             title: "Thời gian",
             width: "15%"
         }, {
-            field: "balance",
+            field: "amount",
             title: "Số tiền",
             width: "10%"
         }, {
-            field: "amount",
+            field: "balance",
             title: "Còn lại",
             width: "10%"
         }]
