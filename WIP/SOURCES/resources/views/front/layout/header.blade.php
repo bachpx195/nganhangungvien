@@ -33,7 +33,11 @@
 														</div>
 														<div class="pull-left ml_12 lh_20 w171">
 															@if (Auth::user()->user_type == 'employer')
-															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
+																@if(!UserHelper::isVip($currentEmployer))
+																	<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
+																@else
+																	<p><span class="bg_tk_vip font12 account_vip">Tài khoản vip</span></p>
+																@endif
 															@elseif (Auth::user()->user_type == 'admin')
 															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản quản trị</span></p>
 															@endif

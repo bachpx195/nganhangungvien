@@ -1,4 +1,4 @@
-function popupPayment_open() {
+function popupPayment_open(paymentType) {
     $('.loggedin.popup_down').hide();
     $("body").find(".boxAddMoney").remove();
     var e = ($(window).width() - 800) / 2 - 50 + "px",
@@ -14,7 +14,10 @@ function popupPayment_open() {
             $("#loading-excel").remove()
         },
         success: function(t) {
-            $(".boxAddMoney").css("left", e).append(t)
+            $(".boxAddMoney").css("left", e).append(t);
+            if(paymentType){
+                showForm_addMoney($('a[data-rel=' + paymentType + ']'));
+            }
         }
     })
 }

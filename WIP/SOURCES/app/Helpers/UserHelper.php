@@ -4,7 +4,6 @@
 namespace App\Helpers;
 
 use Lang;
-use StringHelper;
 
 class UserHelper {
 
@@ -47,5 +46,18 @@ class UserHelper {
 			case 99:
 				return 25000;
 		}
+	}
+
+	public static function getCurrentEmployer(){
+		$user = Auth::user();
+		if($user){
+			$employer = Employer::select()
+				->where('user_id', '=', $user->id)
+				->first();
+
+			return $employer;
+		}
+
+		return null;
 	}
 }

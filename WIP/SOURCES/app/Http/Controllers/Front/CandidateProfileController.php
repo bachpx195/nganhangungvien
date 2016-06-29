@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Model\Transaction;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
@@ -65,12 +66,16 @@ class CandidateProfileController extends BaseController {
 			}else{
 				$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
 				if($countTransactions > 0){
-					$showContact == true;
+					$showContact = true;
 				}else{
 					$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
 				}
 			}
 		}
+
+		//update count
+		$candidate->view_total ++;
+		$candidate->save();
 		
 		$sameData=[];
 		$sameData['exp'] = $this->candidateRepo->sameExpStatistic($id);
@@ -89,7 +94,43 @@ class CandidateProfileController extends BaseController {
 	}
 
 	public function viewContact(Request $request){
-		
+		$input = $request->all();
+		$candiateId = $input['candidateId'];
+
+		$candidate = Candidate::find($candiateId);
+		$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+
+		$user = $this->getCurrentUser();
+		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+		if($employer->balance >= $transactionCost){
+			$employer->balance = $employer->balance - $transactionCost;
+			$employer->save();
+
+			//save transaction
+			$trans = new Transaction();
+			$trans->employer_id = $employer->id;
+			$trans->candidate_id = $candidate->id;
+			$trans->amount = $transactionCost;
+			$trans->balance = $employer->balance;
+			$trans->type = 1;
+			$trans->payment_type = 3; //3-  Trừ tiền khi xem ứng viên
+			$trans->save();
+
+			return response()->json([
+				"data" => [
+					"email"	=> $candidate->email,
+					"phone_number"	=> $candidate->phone_number,
+					"address"	=> $candidate->address
+				],
+				"error" => 0
+			]);
+		}else{
+			return response()->json([
+				"data" => [],
+				"error" => 1
+			]);
+		}
 	}
 	
 }

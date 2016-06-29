@@ -46,8 +46,16 @@
                 candidateId: candidateId
             },
             cache: false,
-            success: function (result) {
+            success: function (res) {
+                if(res.error == 0){
+                    var html = "<span><strong>Số địa thoại :</strong></span> " + res.data.phone_number
+                            + "<br/><span><strong>Địa chỉ :</strong></span> " + res.data.address
+                            + "<br/><span><strong>Email :</strong></span> <a>" + res.data.email + "</a>"
 
+                    $('#candidateContact').html(html);
+                }else{
+                    swal("Thông báo!", "Tài khoản của bạn không đủ. Hãy đăng ký tài khoản VIP hoặc nạp tiền để sử dụng dịch vụ!")
+                }
             },
             error: function (jqXHR, status, errorThrown) {
                 if (jqXHR.status == 401) {
