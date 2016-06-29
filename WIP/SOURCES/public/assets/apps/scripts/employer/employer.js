@@ -1,6 +1,6 @@
 $(document).ready(function () {
     function triggerActions() {
-        $('.set-vip').on('change', function (event) {
+        $(document).on('click', '.set-vip', function (e) {
             var _this = $(this);
             var id = _this.data('id');
             var vip = 1 - _this.data('vip');
@@ -25,12 +25,19 @@ $(document).ready(function () {
                     showCancelButton: true,
                     closeOnConfirm: false,
                     animation: "slide-from-top",
-                    inputPlaceholder: "Write something"
+                    inputPlaceholder: "Nhập ngày hết hạn VIP"
                 }, function (inputValue) {
-                    if (inputValue === false) return false;
+                    if (inputValue === false) {
+                        return false;
+                    }
                     if (inputValue === "") {
-                        swal.showInputError("Bạn hãy nhập ngày hết hạn VIP");
-                        return false
+                        alert('Bạn hãy nhập ngày hết hạn VIP');
+                        return false;
+                    }
+                    var dateRegex = /^\d{4}[-]([1-9]|1[0-2])[-]([1-9]|1[0-9]|2[0-9]|3[0-1])[ ](00|[0-9]|1[0-9]|2[0-3])[:](00|[0-9]|[1-5][0-9])[:](00|[0-9]|[1-5][0-9])$/
+                    if (dateRegex.test(inputValue) == false) {
+                        alert('Ngày hết hạn VIP không hợp lệ');
+                        return false;
                     }
 
                     $.ajax({
@@ -43,7 +50,12 @@ $(document).ready(function () {
                         complete: function (reponse) {
                             if (reponse.success) {
                                 swal("Thành công!", 'Đã chuyển thành tài khoản VIP!');
+                                datasource.read();
                             }
+                        },
+                        error: function (response) {
+                            swal("Có lỗi xảy ra", response.message);
+                            datasource.read();
                         }
                     });
                 });
@@ -69,7 +81,12 @@ $(document).ready(function () {
                                 complete: function (reponse) {
                                     if (reponse.success) {
                                         swal("Thành công!", 'Đã bỏ trạng thái VIP!');
+                                        datasource.read();
                                     }
+                                },
+                                error: function (response) {
+                                    swal("Có lỗi xảy ra", response.message);
+                                    datasource.read();
                                 }
                             });
                         }
@@ -191,10 +208,14 @@ $(document).ready(function () {
             title: "VIP",
             width: "30px",
             template: function (item) {
-                return '<input type="checkbox" class="icheck set-vip" '
+                return '<a class="icheck set-vip"'
+                    + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
+                    + 'data-url="/admin/employer/set-vip/' + item.id + '">'
+                    + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                /*return '<input type="checkbox" class="icheck set-vip" '
                     + (item.vip !== undefined && item.vip == 1 ? 'checked ' : ' ')
                     + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
-                    + 'data-url="/admin/employer/set-vip/' + item.id + '">';
+                    + 'data-url="/admin/employer/set-vip/' + item.id + '">';*/
             }
         }, {
             field: "expire_vip",

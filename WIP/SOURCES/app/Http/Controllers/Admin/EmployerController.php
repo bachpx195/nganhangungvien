@@ -109,22 +109,16 @@ class EmployerController extends Controller
     public function setVip(Request $request, $id)
     {
         $result = [];
-
         if ($request->ajax()) {
             if (!$request->has('vip')) {
                 $result = ['success' => false, 'message' => 'Not found vip'];
             } else {
                 $vip = $request->input('vip');
                 $expire_vip = $request->input('expire_vip');
-//                $intervalTime = $this->configRepo->findByCode(Constants::CONFIG_EXPIRE_VIP);
-//                if (!(isset($intervalTime) && $intervalTime)) {
-//                    $intervalTime = Constants::CONFIG_EXPIRE_VIP_DEFAULT;
-//                }
                 $success = $this->employerRepo->setVip($id, $vip, $expire_vip);
                 $result = ['success' => $success, 'message' => ''];
             }
         }
-
         return $result;
     }
 
