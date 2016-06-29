@@ -155,6 +155,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\RepositoryServiceProvider',
+		'App\Providers\ComposerServiceProvider'
 
 	],
 
