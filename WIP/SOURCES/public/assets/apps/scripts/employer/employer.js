@@ -43,7 +43,12 @@ $(document).ready(function () {
                         complete: function (reponse) {
                             if (reponse.success) {
                                 swal("Thành công!", 'Đã chuyển thành tài khoản VIP!');
+                                datasource.read();
                             }
+                        },
+                        error: function (response) {
+                            swal("Có lỗi xảy ra", response.message);
+                            datasource.read();
                         }
                     });
                 });
@@ -69,7 +74,12 @@ $(document).ready(function () {
                                 complete: function (reponse) {
                                     if (reponse.success) {
                                         swal("Thành công!", 'Đã bỏ trạng thái VIP!');
+                                        datasource.read();
                                     }
+                                },
+                                error: function (response) {
+                                    swal("Có lỗi xảy ra", response.message);
+                                    datasource.read();
                                 }
                             });
                         }
