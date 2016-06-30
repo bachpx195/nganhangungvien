@@ -3,10 +3,10 @@
 
 use App\Http\Controllers\Controller;
 use App\Libs\Constants;
-use App\Model\UserRole;
 use App\Repositories\IRoleRepo;
 use App\Repositories\IUserRoleRepo;
 use App\Services\Registrar;
+use Auth;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -29,6 +29,9 @@ class PermissionController extends Controller
     public function userRoleList(Request $request)
     {
         $activeMenu = Constants::PERMISSION_LIST;
+        if (!$this->isSuperAdmin($this->userRoleRepo)) {
+            return redirect(route('admin.user.list'));
+        }
 
         $userRoles = $this->userRoleRepo->getUserRolesByUserType(Constants::USER_TYPE_ADMIN);
         $roles = $this->roleRepo->all();
@@ -48,6 +51,9 @@ class PermissionController extends Controller
     public function userRoleUpdate(Request $request)
     {
         $data = [];
+        if (!$this->isSuperAdmin($this->userRoleRepo)) {
+            return ['status' => false, 'message' => 'Bạn không được phép gán quyền'];
+        }
 
         if ($request->ajax()) {
             if (!$request->has('userId') || !$request->has('roleId')) {

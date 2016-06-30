@@ -46,8 +46,6 @@
 	<link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" type="text/css" />
 
 	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('/assets/default/css/chosen.min.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('/assets/default/css/sweetalert2.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
@@ -119,8 +117,6 @@
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/default/js/chosen.jquery.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/default/js/sweetalert2.js') }}" type="text/javascript"></script>
 	<script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>

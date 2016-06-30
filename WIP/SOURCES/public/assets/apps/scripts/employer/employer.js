@@ -1,6 +1,11 @@
 $(document).ready(function () {
     function triggerActions() {
         $(document).on('click', '.set-vip', function (e) {
+            var currentRole = $('#_currentRoleId').val();
+            if (currentRole != 'SUPER_ADMIN') {
+                return;
+            }
+            
             var _this = $(this);
             var id = _this.data('id');
             var vip = 1 - _this.data('vip');
@@ -208,6 +213,10 @@ $(document).ready(function () {
             title: "VIP",
             width: "30px",
             template: function (item) {
+                if (item.roleCode != 'SUPER_ADMIN') {
+                    return '<a class="icheck">'
+                        + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                }
                 return '<a class="icheck set-vip"'
                     + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
                     + 'data-url="/admin/employer/set-vip/' + item.id + '">'

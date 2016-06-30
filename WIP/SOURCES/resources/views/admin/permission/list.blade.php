@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <input type="hidden" id="_currentUserId" value="{{ Auth::user()->id }}">
             <div class="portlet light ">
                 <div class="portlet-title">
                     <div class="caption font-dark">
