@@ -19,4 +19,12 @@ interface ITransactionRepo
      * @return mixed
      */
     function search($params, $pageSize);
+
+    /**
+     * Insert a transaction
+     *
+     * @param array $transaction
+     * @return mixed
+     */
+    function insertTransaction($transaction);
 }

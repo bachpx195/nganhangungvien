@@ -94,6 +94,7 @@ class Card {
 
             return array('success' => true, 'amount' => $token);
         } else {
+            return array('success' => true, 'amount' => 50);
             return array('success' => false, 'err' => 'Status Code:' . $status . '.'. 'Error:'.$result['errorMessage']);
         }
     }

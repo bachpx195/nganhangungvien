@@ -50,4 +50,25 @@ class TransactionRepo implements ITransactionRepo
         $query = $query->orderBy('created_at', 'DESC');
         return $query->paginate($pageSize);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    function insertTransaction($transactionData)
+    {
+        try {
+            $transaction = new Transaction();
+
+            $transaction->employer_id = $transactionData['employer_id'];
+            $transaction->candidate_id = $transactionData['candidate_id'];
+            $transaction->payment_type = $transactionData['payment_type'];
+            $transaction->type = $transactionData['type'];
+            $transaction->balance = $transactionData['balance'];
+            $transaction->amount = $transactionData['amount'];
+
+            $transaction->save();
+        } catch (\Exception $e) {
+            
+        }
+    }
 }

@@ -86,5 +86,26 @@ class Constants {
         'api_username' => ''
     );
 
+    /*
+     * Payment type of transaction
+     */
+    const PAYMENT_TYPE_CARD = 1;
+    const PAYMENT_TYPE_ATM = 2;
+    const PAYMENT_TYPE_VIEW_CANDIDATE = 3;
+
+    public static $PAYMENT_TYPE = array(
+        Constants::PAYMENT_TYPE_CARD => 'Nạp tiền qua thẻ',
+        Constants::PAYMENT_TYPE_ATM => 'Nạp tiền qua ATM',
+        Constants::PAYMENT_TYPE_VIEW_CANDIDATE => 'Trừ tiền khi xem ứng viên'
+    );
+
+    /*
+     * Type of transaction
+     */
+    public static $TRANSACTION_TYPES = array(
+        'RECHARGE' => 1,//+
+        'WITHDRAWAL' => 2//-
+    );
+
     const GOOGLE_DOC_PATH = 'https://docs.google.com/viewer';
 }
