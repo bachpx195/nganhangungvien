@@ -2,19 +2,28 @@
 
 namespace App\Libs;
 
-class Constants {
+class Constants
+{
     //Active sidebar menu
     const DASHBOARD = 'dashboard';
     const CANDIDATE = 'candidate';
-    const EMPLOYER  = 'employer';
-    const NEWS      = 'news';
-    const USER      = 'user';
-    const CONFIG    = 'config';
-    const DATASYSTEM    = 'datasystem';
-    const VIDEO     = 'video';
+    const EMPLOYER = 'employer';
+    const NEWS = 'news';
+    const USER = 'user';
+    const CONFIG = 'config';
+    const DATASYSTEM = 'datasystem';
+    const VIDEO = 'video';
+
+    const ROLE_ADMIN = "ADMIN";
+    const ROLE_SUPER = "SUPER_ADMIN";
+
+    const USER_TYPE_ADMIN = "admin";
 
     // Configuration
     const CONFIG_YOUTUBE = 'LINK_YOUTUBE';
+
+    const CONFIG_YOUTUBE_CHANEL = 'LINK_YOUTUBE_CHANEL';
+
     // config expire vip interval month, default = 2 month
     const CONFIG_EXPIRE_VIP = 'EXPIRE_VIP';
     const CONFIG_EXPIRE_VIP_DEFAULT = 2;
@@ -75,20 +84,10 @@ class Constants {
     const ROLE_FORM_ADD = "Thêm mới quyền";
     const ROLE_FORM_UPDATE = "Cập nhật thông tin quyền";
 
-    /*
-     * Config of BAOKIM gateway
-     */
-    public static $BAO_KIM = array(
-        'gateway' => 'BaoKim',
-        'merchant_id' => '',
-        'secure_pass' => '',
-        'api_password' => '',
-        'api_username' => ''
-    );
+    const PERMISSION_LIST = "Danh sách phân quyền";
+    const PERMISSION_UPDATE = "Phân quyền cho người dùng";
 
-    /*
-     * Payment type of transaction
-     */
+    // define payment type
     const PAYMENT_TYPE_CARD = 1;
     const PAYMENT_TYPE_ATM = 2;
     const PAYMENT_TYPE_VIEW_CANDIDATE = 3;
@@ -103,8 +102,19 @@ class Constants {
      * Type of transaction
      */
     public static $TRANSACTION_TYPES = array(
-        'RECHARGE' => 1,//+
-        'WITHDRAWAL' => 2//-
+        'RECHARGE' => 1,
+        'WITHDRAWAL' => 2
+    );
+
+    /*
+     * Config of BAOKIM gateway
+     */
+    public static $BAO_KIM = array(
+        'gateway' => 'BaoKim',
+        'merchant_id' => '',
+        'secure_pass' => '',
+        'api_password' => '',
+        'api_username' => ''
     );
 
     const GOOGLE_DOC_PATH = 'https://docs.google.com/viewer';

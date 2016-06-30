@@ -69,14 +69,12 @@ class NewsController extends Controller {
                 $news = $this->getGeneralInfoByInput($news, $input, $request,'1');                        
                 $news->save();
             } else {             
-                // $validator = $this->validatorNews($request->all());
+                $validator = $this->validatorNews($request->all());
                 
-                // if ($validator->fails()) {
-                        
-                //     $this->throwValidationException(
-                //             $request, $validator
-                //     );
-                // }
+                if ($validator->fails()) {
+                     return Redirect::back()->withErrors($validator)->withInput();
+
+                }
                 $news = new News;             
                 $news = $this->getGeneralInfoByInput($news, $input, $request,'1');
                 $news->save();
@@ -136,6 +134,15 @@ class NewsController extends Controller {
             echo 'Oh No! Uploading your image has failed.';
         }
     }
+    private function validatorNews($data)
+    {
+        $messages = [
+            'news_image_.image' => 'Vui lòng chọn file hình ảnh!',
+            'news_image_.max' => 'Vui lòng chọn file có kích thước nhỏ hơn 2MB! '
+        ];
 
-
+        return Validator::make($data, [
+            'news_image_' => 'image|max:2000',
+        ], $messages);
+    }
 }

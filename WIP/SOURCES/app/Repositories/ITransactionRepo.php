@@ -21,6 +21,15 @@ interface ITransactionRepo
     function search($params, $pageSize);
 
     /**
+     * Count number of transactions of employer for candidate
+     *
+     * @param $employerId
+     * @param $candidateId
+     * @return mixed
+     */
+    function countTrans($employerId, $candidateId);
+
+    /**
      * Insert a transaction
      *
      * @param array $transaction

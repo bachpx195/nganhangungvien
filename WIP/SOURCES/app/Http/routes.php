@@ -121,14 +121,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
 	]);
 
-	/************** ROLE **************/
-	Route::match(['get'], '/quyen/danh-sach', [
-		'as' => 'admin.role.list', 'uses' => 'Admin\RoleController@roleList'
-	]);
-	Route::match(['get', 'post'], '/quyen/cap-nhat', [
-		'as' => 'admin.role.update', 'uses' => 'Admin\RoleController@updateRole'
-	]);
-
 	Route::match(['get', 'post'], '/province/list', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
@@ -264,6 +256,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	Route::match(['get', 'post'], '/video', [
 		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
 	]);
+
+	Route::match(['get', 'post'], '/account/change-password', [
+		'as' => 'admin.account.changepassword', 'uses' => 'Admin\AccountProfileController@changeAccountPassword'
+	]);
 });
 
 /**
@@ -344,7 +340,12 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tai-khoan/kiem-tra-xac-nhan/{id}-{confirmation_code}', [
 		'as' => 'user.actived', 'uses' => 'Front\EmployerRegisterController@confirmed'
 	]);
-
+	Route::match(['post'],'/quen-mat-khau', [
+		'as' => 'user.reset.password', 'uses' => 'Front\ResetPasswordController@resetPassword'
+	]);
+	Route::match(['get', 'post'], '/tao-moi-mat-khau/{id}-{code}', [
+		'as' => 'user.reset.form', 'uses' => 'Front\ResetPasswordController@confirm'
+	]);
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -380,6 +381,9 @@ Route::group(['middleware' => ['auth']], function() {
 	]);
 	Route::match(['get', 'post'], '/user/top-up', [
 		'as' => 'user.top_up', 'uses' => 'UserController@userTopUp'
+	]);
+	Route::match(['get', 'post'], '/user/viewprofile', [
+		'as' => 'user.view.profile', 'uses' => 'Front\CandidateProfileController@viewContact'
 	]);
 	Route::match(['post'], '/user/pay-atm', [
 		'as' => 'user.pay_atm', 'uses' => 'UserController@userPayByAtm'

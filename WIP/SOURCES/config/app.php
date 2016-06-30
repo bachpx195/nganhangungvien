@@ -155,6 +155,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\RepositoryServiceProvider',
+		'App\Providers\ComposerServiceProvider'
 
 	],
 
@@ -213,7 +214,8 @@ return [
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 		
 		//Bussiness
-		'CandidateHelper'   => 'App\Helpers\CandidateHelper'
+		'CandidateHelper'   => 'App\Helpers\CandidateHelper',
+		'UserHelper'   => 'App\Helpers\UserHelper'
 	],
 
 ];

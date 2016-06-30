@@ -42,17 +42,22 @@ class HomeController extends BaseController {
 		$countData['new'] = $this->candidateRepo->countNewStatistic();
 
 		$linkYouTube = '';
+		// $linkYouTubeChanel = '';
 		$videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
+		// $videoChanelConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL);
 		if($videoConfig){
 			$linkYouTube = $videoConfig->value;
 			$linkYouTube = str_replace('watch?v=', 'embed/', $linkYouTube);
 		}
-
+		// if($videoChanelConfig){
+		// 	$linkYouTubeChanel = $videoChanelConfig->value;
+		// }
 		return view('front/home/index')
 				->with('dropdownData', $dropdownData)
 				->with('tabsData', $tabsData)
 				->with('candidatesData', $candidatesData)
 				->with('countData',$countData)
+				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 				->with('linkYouTube', $linkYouTube);
 	}
 	

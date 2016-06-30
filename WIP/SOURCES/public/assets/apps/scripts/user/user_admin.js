@@ -42,7 +42,8 @@ $(document).ready(function () {
         transport: {
             read: function (options) {
                 var params = {
-                    user_info: $('#user_info').val()
+                    user_info: $('#user_info').val(),
+                    user_type: $('#user_type').val()
                 };
 
                 $.post('/admin/user/getList', {

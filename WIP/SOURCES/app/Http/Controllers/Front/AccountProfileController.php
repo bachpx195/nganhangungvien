@@ -14,7 +14,9 @@ use App\Repositories\IUserRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
+use App\Libs\Constants;
 use Validator;
+use Auth;
 
 class AccountProfileController extends BaseController
 {
@@ -35,6 +37,7 @@ class AccountProfileController extends BaseController
         $this->employerRepo = $employerRepo;
         $this->userRepo = $userRepo;
         $this->companySizeRepo = $companySizeRepo;
+        $this->middleware('auth');
     }
 
     /**
@@ -44,22 +47,23 @@ class AccountProfileController extends BaseController
      */
     public function manageAccountProfile(Request $request)
     {
-
         if ($request->isMethod('get')) {
             $user = $this->getCurrentUser();
             $employer = $this->employerRepo->findByUserId($user->id);
             if (!$employer) {
                 return $this->errorView();
             }
+
             $provinces = $this->provinceRepo->getSortedList();
             $companySizes = $this->companySizeRepo->all();
             return view('front.account.employer_profile')
                 ->with('employer', $employer)
                 ->with('provinces', $provinces)
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('companySizes', $companySizes);
         }
 
-        return view('front/account/employer_profile');
+        return view('front/account/employer_profile')->with('linkYouTubeChanel', $this->linkYouTubeChanel);
     }
 
     /**
@@ -67,6 +71,14 @@ class AccountProfileController extends BaseController
      * @param Request $request
      * @throws Exception
      */
+
+    /**
+     * Change company information
+     * @param Request $request
+     * @return mixed
+     * @throws Exception
+     */
+
     public function changeAccountPassword(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -80,13 +92,14 @@ class AccountProfileController extends BaseController
             } catch (\Exception $e) {
                 throw new Exception($e);
             }
-            $userId = $input['userId'];
+            $userId = Auth::user()->id;
+
             $user = $this->userRepo->findById($userId);
             if (!$user) {
                 return response()->json(['status' => false, 'message' => 'Không tìm thấy thông tin đăng nhập']);
             }
-            $hashOldPassword = Hash::make($input['oldPassword']);
-            if (strcmp($user->password, $hashOldPassword) != 0) {
+            $oldPassword = $input['oldPassword'];
+            if (!Hash::check("$oldPassword",  "$user->password")) {
                 return response()->json(['status' => false, 'message' => 'Mật khẩu cũ không đúng']);
             }
             // save password
@@ -96,13 +109,6 @@ class AccountProfileController extends BaseController
             return response()->json(['status' => true, 'message' => 'Đổi mật khẩu thành công']);
         }
     }
-
-    /**
-     * Change company information
-     * @param Request $request
-     * @return mixed
-     * @throws Exception
-     */
     public function changeCompanyInformation(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -195,7 +201,6 @@ class AccountProfileController extends BaseController
     private function validateChangePassword($data)
     {
         return Validator::make($data, [
-            'userId' => 'required',
             'oldPassword' => 'required',
             'newPassword' => 'required'
         ]);

@@ -32,6 +32,7 @@
 	<link href="{{ asset('/assets/global/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/pages/css/profile-2.min.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL STYLES -->
 	<link href="{{ asset('/assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
@@ -150,6 +151,7 @@
 	</script>
 	<!-- END THEME LAYOUT SCRIPTS -->
 	<!-- THANHLV END ADD 2016/05/11 -->
+	
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">

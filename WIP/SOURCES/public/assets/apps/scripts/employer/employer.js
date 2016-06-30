@@ -1,28 +1,98 @@
 $(document).ready(function () {
-    function triggerActions(){
-        $('.set-vip').on('change', function(event){
+    function triggerActions() {
+        $(document).on('click', '.set-vip', function (e) {
             var _this = $(this);
             var id = _this.data('id');
             var vip = 1 - _this.data('vip');
             var url = _this.data('url');
 
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {'vip': vip},
-                complete: function(reponse) {
-                    if (reponse.success) {
-                        _this.data('vip', vip);
-                        if (vip) {
-                            var text = "Đã chuyển thành tài khoản VIP!";
-                        } else {
-                            var text = "Đã bỏ trạng thái VIP!";
-                        }
+            var d = new Date();
+            var curr_day = d.getDate();
+            var curr_month = d.getMonth() + 3;
+            var curr_year = d.getFullYear();
 
-                        swal("Thành công!", text);
+            var curr_hour = d.getHours();
+            var curr_min = d.getMinutes();
+
+            var dateFormat = curr_year + '-' + curr_month + '-' + curr_day + ' ' + curr_hour + ':' + curr_min + ':00';
+
+            if (vip == 1) {
+                swal({
+                    title: "Xác nhận gán VIP",
+                    text: "Nhập ngày hết hạn VIP",
+                    type: "input",
+                    inputValue: dateFormat,
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    animation: "slide-from-top",
+                    inputPlaceholder: "Nhập ngày hết hạn VIP"
+                }, function (inputValue) {
+                    if (inputValue === false) {
+                        return false;
                     }
-                }
-            });
+                    if (inputValue === "") {
+                        alert('Bạn hãy nhập ngày hết hạn VIP');
+                        return false;
+                    }
+                    var dateRegex = /^\d{4}[-]([1-9]|1[0-2])[-]([1-9]|1[0-9]|2[0-9]|3[0-1])[ ](00|[0-9]|1[0-9]|2[0-3])[:](00|[0-9]|[1-5][0-9])[:](00|[0-9]|[1-5][0-9])$/
+                    if (dateRegex.test(inputValue) == false) {
+                        alert('Ngày hết hạn VIP không hợp lệ');
+                        return false;
+                    }
+
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            'vip': vip,
+                            'expire_vip': dateFormat
+                        },
+                        complete: function (reponse) {
+                            if (reponse.success) {
+                                swal("Thành công!", 'Đã chuyển thành tài khoản VIP!');
+                                datasource.read();
+                            }
+                        },
+                        error: function (response) {
+                            swal("Có lỗi xảy ra", response.message);
+                            datasource.read();
+                        }
+                    });
+                });
+            } else {
+                swal({
+                        title: 'Bạn có muốn hủy VIP?',
+                        type: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d9534f",
+                        confirmButtonText: "Đồng ý!",
+                        cancelButtonText: "Hủy!",
+                        closeOnConfirm: false,
+                        closeOnCancel: true
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                url: url,
+                                type: 'POST',
+                                data: {
+                                    'vip': vip,
+                                    'expire_vip': dateFormat
+                                },
+                                complete: function (reponse) {
+                                    if (reponse.success) {
+                                        swal("Thành công!", 'Đã bỏ trạng thái VIP!');
+                                        datasource.read();
+                                    }
+                                },
+                                error: function (response) {
+                                    swal("Có lỗi xảy ra", response.message);
+                                    datasource.read();
+                                }
+                            });
+                        }
+                    }
+                );
+            }
         });
 
         $(document).on('click', '.change-status', function (e) {
@@ -44,7 +114,7 @@ $(document).ready(function () {
                             url: url,
                             type: 'POST',
                             data: {'status': status},
-                            complete: function(data) {
+                            complete: function (data) {
                                 if (data.status) {
                                     if (status == 1) {
                                         var text = "Đã kích hoạt tài khoản thành công!";
@@ -123,7 +193,7 @@ $(document).ready(function () {
         },
         columns: [{
             title: "",
-            width: "60px",
+            width: "65px",
             template: function (item) {
                 return '<a href="/admin/employer/detail?id=' + item.id + '" >'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
@@ -136,13 +206,21 @@ $(document).ready(function () {
         }, {
             field: "vip",
             title: "VIP",
-            width: "50px",
+            width: "30px",
             template: function (item) {
-                return '<input type="checkbox" class="icheck set-vip" '
+                return '<a class="icheck set-vip"'
+                    + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
+                    + 'data-url="/admin/employer/set-vip/' + item.id + '">'
+                    + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                /*return '<input type="checkbox" class="icheck set-vip" '
                     + (item.vip !== undefined && item.vip == 1 ? 'checked ' : ' ')
                     + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
-                    + 'data-url="/admin/employer/set-vip/' + item.id + '">';
+                    + 'data-url="/admin/employer/set-vip/' + item.id + '">';*/
             }
+        }, {
+            field: "expire_vip",
+            title: "Hết hạn VIP",
+            width: "80px"
         }, {
             field: "company_name",
             title: "Công ty",
@@ -166,7 +244,7 @@ $(document).ready(function () {
         }, {
             field: "status",
             title: "Kích hoạt",
-            width: "80px",
+            width: "70px",
             template: function (item) {
                 return item.status == 1 ? "Kích hoạt" : "Chưa"
             }

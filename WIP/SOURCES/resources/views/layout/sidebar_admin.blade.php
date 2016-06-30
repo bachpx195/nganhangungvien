@@ -205,8 +205,8 @@
 							<span class="title">THÊM NGƯỜI DÙNG</span>
 						</a>
 					</li>
-					<li class="nav-item  ">
-						<a href="{{ route('admin.role.list') }}" class="nav-link ">
+					<!--<li class="nav-item  ">
+						<a href="#" class="nav-link ">
 							<i class="icon-user-following"></i>
 							<span class="title">QUYỀN NGƯỜI DÙNG</span>
 						</a>
@@ -216,7 +216,7 @@
 							<i class="icon-users"></i>
 							<span class="title">PHÂN QUYỀN</span>
 						</a>
-					</li>
+					</li>-->
 				</ul>
 			</li>
 			{{--<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">--}}

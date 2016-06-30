@@ -15,6 +15,13 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="id" name="id" value="{{ $news->id }}" />
             <div class="form-body">
+                @if($errors->has())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-dange" style="display: block;background-color: #fbe1e3;border-color: #fbe1e3;color: #e73d4a;text-align: center;">
+                        <button class="close" data-close="alert"></button>{{ $error }} 
+                    </div>
+                    @endforeach
+                @endif
                 <div class="form-group">
                     <label class="control-label col-md-2">Tiêu đề <span class="colorRed" style="color: red;">*</span></label>
                     <div class="col-md-10">
@@ -67,7 +74,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Mật khẩu </label>
                     <div class="col-md-5">
-                        <input type="password" class="form-control input-lg2 color-input" id="password" name="mat_khau" value="{{ old('mat_khau') != null ? old('mat_khau') : $news->password }}"/>
+                        <input type="text" class="form-control input-lg2 color-input" id="password" name="mat_khau" value="{{ old('mat_khau') != null ? old('mat_khau') : $news->password }}"/>
                     </div>
                 </div>
             </div>

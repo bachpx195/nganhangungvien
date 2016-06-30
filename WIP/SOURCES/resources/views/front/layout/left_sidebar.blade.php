@@ -8,15 +8,22 @@
                             <div class="statistic font16 txc">
                                 Công ty CP Ngân hàng ứng viên
                                 <br/><i>(Chủ tài khoản: {{Auth::user()->full_name}})</i>
+                                @if(!UserHelper::isVip($currentEmployer))
+                                    <p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
+                                @else
+                                    <p><span class="bg_tk_vip font12 account_vip">Tài khoản vip</span></p>
+                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="mb8"><div class="line-break02 w232"></div></div>
+                        @if(!UserHelper::isVip($currentEmployer))
                         <div class="block-content  ml12 mr14">
-                            <a href="#"class="btn btn-pink btn-lg btn-creat-hs font16">
-                                <i class="icon_24 icn_creat_hs"></i> TÀI KHOẢN VIP
+                            <a href="#"class="btn btn-pink btn-lg btn-creat-hs font16" onclick="popupPayment_open('online')">
+                                <i class="icon_24 icn_creat_hs"></i> ĐĂNG KÝ VIP
                             </a>
                         </div>
+                        @endif
                         <div class="w232">
                             <ul class="request-line mb_8">
                                 <li class="pb_6 pos_relative">
@@ -41,7 +48,7 @@
 
                                 <li class="pb_6 pos_relative">
                                     <span class="icon_24 icon-24 icon-quan-ly-tin-tuyen-dung pos_absolute"></span>
-                                    <a href="#" class="txt-ghi pl12 w232 ablock_menu ">HD xem thông tin ứng viên</a>
+                                    <a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" class="txt-ghi pl12 w232 ablock_menu " target="_blank" style="text-decoration: none; color: #363636;">HD xem thông tin ứng viên</a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
