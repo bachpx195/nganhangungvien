@@ -114,6 +114,8 @@
         if (isOk == false) {
             return false;
         } else {
+            $(".sent").addClass('display_none');
+            $(".senting").removeClass('display_none');
             var dataPost = new FormData($("#resetPassword")[0]);
             var rs = false;
             $.ajax({
@@ -135,8 +137,6 @@
                         $("#mess-defaut").addClass('display_none');
 
                         $("#sent").addClass('display_none');
-                        $(".sent").addClass('display_none');
-                        $(".senting").removeClass('display_none');
                         // dong popup sau 3 giay
                         console.log('true');
                     } else {

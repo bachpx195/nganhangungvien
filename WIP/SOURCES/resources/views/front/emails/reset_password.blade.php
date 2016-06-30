@@ -7,7 +7,7 @@
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
                 <p>Kính chào <span style="font-weight:bold">{{$emailUsername}}</span>!<br>
                     <br>
-                    Đây là email giúp tạo lại mật khẩu mới trên Việc làm 24h theo yêu cầu của bạn. Vui lòng <a href="{{ URL::to('tao-moi-mat-khau/'.$id.'-'.$code) }}" title="reset mật khẩu" target="_blank">nhấp vào đây</a> để tạo mật khẩu mới.</p>
+                    Đây là email giúp tạo lại mật khẩu mới trên Ngân Hàng Ứng Viên theo yêu cầu của bạn. Vui lòng <a href="{{ URL::to('tao-moi-mat-khau/'.$id.'-'.$code) }}" title="tạo mới mật khẩu" target="_blank">nhấp vào đây</a> để tạo mật khẩu mới.</p>
 
                 <p><span style="FONT-STYLE:italic">Lưu ý: Xin thứ lỗi nếu bạn nhận được email này do nhầm lẫn; hoặc nếu bạn không muốn thay đổi mật khẩu, xin vui lòng xóa email này và tiếp tục sử dụng mật khẩu hiện tại.</span></p>
 
