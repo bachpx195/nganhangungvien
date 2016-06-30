@@ -123,7 +123,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 
 
 	Route::match(['get', 'post'], '/quan-ly-tinh/danh-sach', [
-
+		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
+	]);
 
 	Route::match(['get'], '/phan-quyen/danh-sach', [
 		'as' => 'admin.permission.list', 'uses' => 'Admin\PermissionController@userRoleList'
@@ -134,7 +135,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 
 
 	Route::match(['get', 'post'], '/province/list', [
-
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 
