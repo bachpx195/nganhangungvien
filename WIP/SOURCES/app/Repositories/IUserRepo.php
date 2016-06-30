@@ -17,10 +17,9 @@ interface IUserRepo
 	 * Search user by keyword
 	 * @param $params param want to search
 	 * @param $pageSize page size
-	 * @param $role role of current user
 	 * @return mixed
 	 */
-	function search($params, $pageSize, $role);
+	function search($params, $pageSize);
 
 	/**
 	 * Update user status
