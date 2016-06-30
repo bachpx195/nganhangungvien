@@ -21,7 +21,7 @@
 	<!--End phan loai ho theo --->
 
 	<!-- ho so moi nhat -->
-   @include('front/home/candidate_new_view', ['candidatesData' => $candidatesData])
+   @include('front/home/candidate_new_view', ['candidatesData' => $candidatesData, 'countData' => $countData])
    <!-- END ho so moi nhat -->
 
 	<!-- Thong tin lien he -->

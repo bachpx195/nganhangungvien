@@ -121,11 +121,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
 	]);
 
-	Route::match(['get', 'post'], '/province/list', [
+	Route::match(['get', 'post'], '/quan-ly-tinh/danh-sach', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 
-	Route::match(['get', 'post'], 'province/form', [
+	Route::match(['get', 'post'], 'quan-ly-tinh/form', [
 		'as' => 'admin.province.form', 'uses' => 'Admin\ProvinceController@tinhForm'
 	]);
 
@@ -133,11 +133,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.province.delete', 'uses' => 'Admin\ProvinceController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/level/list', [
+	Route::match(['get', 'post'], '/quan-ly-trinh-do-hoc-van/danh-sach', [
 		'as' => 'admin.level.list', 'uses' => 'Admin\LevelController@levelList'
 	]);
 
-	Route::match(['get', 'post'], 'level/form', [
+	Route::match(['get', 'post'], 'quan-ly-trinh-do-hoc-van/form', [
 		'as' => 'admin.level.form', 'uses' => 'Admin\LevelController@levelForm'
 	]);
 

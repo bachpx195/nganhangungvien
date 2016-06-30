@@ -352,18 +352,19 @@
 
 	@include('front/home/candidate_new_view', ['candidatesData' => $candidatesData])
 
-	@if((count($sameData['exp']) > 0) && (count($sameData['lvl']) > 0) && $candidate->experienceYears )
+	@if(count($sameData['exp']) > 0 || count($sameData['lvl']) > 0)
 	<div class="box_tab pt_22">
 	   <div role="tabpanel">
 		  <!-- Nav tabs -->
 		  <ul class="nav nav-tabs w_100" role="tablist">
-			 <li role="presentation" class="active ml1"><span class="left_tab"></span><a href="#hosocungkinhnghiem" aria-controls="hosocungkinhnghiem" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng 1-2 năm kinh nghiệm</a><span class="right_tab"></span></li>
-			 <li role="presentation" class="ml_20"><span class="left_tab"></span><a href="#hosocungcapbac" aria-controls="hosocungcapbac" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng cấp bậc</a><span class="right_tab"></span></li>
+			 <li role="presentation" class="{{count($sameData['exp']) > 0? 'active': ''}} ml1"><span class="left_tab"></span><a href="#hosocungkinhnghiem" aria-controls="hosocungkinhnghiem" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}} năm kinh nghiệm</a><span class="right_tab"></span></li>
+			 <li role="presentation" class="{{count($sameData['exp']) == 0? 'active': ''}} ml_20"><span class="left_tab"></span><a href="#hosocungcapbac" aria-controls="hosocungcapbac" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng cấp bậc  <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span></a><span class="right_tab"></span></li>
 		  </ul>
 		  <!-- Tab panes -->
 		  <div class="tab-content w_100">
-			 <div role="tabpanel" class="tab-pane active" id="hosocungkinhnghiem">
-			<div class="list_item_two bg_white">
+			 <div role="tabpanel" class="tab-pane {{count($sameData['exp']) > 0? 'active': ''}}" id="hosocungkinhnghiem">
+			 @if(count($sameData['exp']) > 0)
+				<div class="list_item_two bg_white" style="border-bottom: 0px solid">
 					@foreach($sameData['exp'] as $index => $key)
 					<div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
 						<div class="list-items item_link">
@@ -413,9 +414,18 @@
 					  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}
 				   </h3>
 				</a>
+			@else
+			<center>
+				<br>
+				<div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
+				</br>
+			</center>
+			@endif
 			 </div>
-			 <div role="tabpanel" class="tab-pane" id="hosocungcapbac">
-				<div class="list_item_two bg_white">
+
+			 <div role="tabpanel" class="{{count($sameData['exp']) == 0? 'active': ''}} tab-pane" id="hosocungcapbac">
+			 @if(count($sameData['lvl']) > 0)
+				<div class="list_item_two bg_white" style="border-bottom: 0px solid">
 					@foreach($sameData['lvl'] as $index => $key)
 					<div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
 						<div class="list-items item_link">
@@ -462,9 +472,16 @@
 				<a href="#">
 				   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
 					  <i class="icon_load_more icon_24 icon-24"></i>
-					  Xem thêm Hồ sơ tìm việc cùng cấp bậc
+					  Xem thêm Hồ sơ tìm việc cùng cấp bậc <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span>
 				   </h3>
 				</a>
+			@else
+			<center>
+				<br>
+				<div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
+				</br>
+			</center>
+			@endif
 			 </div>
 		  </div>
 	   </div>

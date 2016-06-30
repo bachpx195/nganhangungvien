@@ -111,7 +111,7 @@
                         type: 'post',
                         dataType: 'json',
                         async: false,
-                        url: '{{ route('user.reset.form',[$user->id, $user->confirmation_code]) }}',
+                        url: '{{ route('user.reset.form',[$user->id, $code]) }}',
                         data: dataPost,
                         mimeType: "multipart/form-data",
                         processData: false,

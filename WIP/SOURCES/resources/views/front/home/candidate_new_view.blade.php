@@ -9,7 +9,7 @@
          <!-- Tab panes -->
          <div class="tab-content w_100">
             <div role="tabpanel" class="tab-pane active" id="viecmoi">
-               <div class="list_item_two bg_white">
+               <div class="list_item_two bg_white" style="border-bottom: 0px solid">
                   @foreach($candidatesData['candidate'] as $index => $key)
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
@@ -48,7 +48,9 @@
                               </div>
                            </div>
                         </div>
+                        @if($index != ($countData['all'] -1) && $index != ($countData['all'] -2))
                         <div class="line_list"></div>
+                        @endif
                      </div>
                   </div>
                   @endforeach
@@ -61,7 +63,7 @@
                </a>
             </div>
             <div role="tabpanel" class="tab-pane" id="viecmoi2">
-               <div class="list_item_two bg_white">
+               <div class="list_item_two bg_white" style="border-bottom: 0px solid">
                   @foreach($candidatesData['bestView'] as $index => $key)
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
@@ -100,7 +102,9 @@
                               </div>
                            </div>
                         </div>
+                        @if($index != ($countData['all'] -1) && $index != ($countData['all'] -2))
                         <div class="line_list"></div>
+                        @endif
                      </div>
                   </div>
                   @endforeach

@@ -124,7 +124,6 @@ class CandidateRepo implements ICandidateRepo {
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','candidate.updated_at as updated')
                 ->orderBy('updated','decs')
-                ->where('full_name','<>',' ')
                 ->take(20)
                 ->get();
         return $results;
@@ -154,7 +153,6 @@ class CandidateRepo implements ICandidateRepo {
         $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
         $results = DB::table('candidate')
                 ->Where('updated_at', '>=', $prev_date.' 00:00:00')
-                ->Where('full_name','<>',' ')
                 ->count();
         return $results;
     }
@@ -164,7 +162,6 @@ class CandidateRepo implements ICandidateRepo {
         $prev_month = date('Y-m-d', strtotime($date .' -1 month'));
         $results = DB::table('candidate')
                 ->Where('updated_at', '>=', $prev_month.' 00:00:00')
-                ->Where('full_name','<>',' ')
                 ->count();
         return $results;
     }
@@ -176,8 +173,9 @@ class CandidateRepo implements ICandidateRepo {
             return NULL;
         }
         $results = Candidate::Where('experience_years','=',"$candidate->experience_years")
-        ->take(20)
-        ->get();
+                ->Where('candidate.id','<>',$id)
+                ->take(20)
+                ->get();
 
         return $results;
     }
@@ -185,12 +183,13 @@ class CandidateRepo implements ICandidateRepo {
     public function sameLvlStatistic($id)
     {
         $candidate = Candidate::find($id);
-        if(!$candidate->level){
+        if(!$candidate->current_rank){
             return NULL;
         }
-        $results = Candidate::Where('level','=',"$candidate->level")
-        ->take(20)
-        ->get();
+        $results = Candidate::Where('current_rank','=',"$candidate->current_rank")
+                ->Where('candidate.id','<>',$id)
+                ->take(20)
+                ->get();
         return $results;
     }
 }

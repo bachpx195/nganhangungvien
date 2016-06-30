@@ -56,12 +56,12 @@ class ResetPasswordController extends BaseController {
             if ($user->status == '0') {
                 return response()->json(['status' => false, 'message' => 'Tài khoản chưa được kích hoạt!']);
             }
-            if(!$user->confirmation_code){
-	            $confirmation_code = str_random(30);
-	            $user->confirmation_code = $confirmation_code;
-	            $user->save();
-	        }
-            $input['code'] = $user->confirmation_code;
+
+            $confirmation_code = str_random(30);
+            $user->resetPass_code = $confirmation_code;
+            $user->save();
+
+            $input['code'] = $user->resetPass_code;
             $input['id'] = $user->id;
             $this->sendEmail($input);
             return response()->json(['status' => true, 'message' => '']);
@@ -86,6 +86,7 @@ class ResetPasswordController extends BaseController {
 	        $countData['new'] = $this->candidateRepo->countNewStatistic();
             return view('front.account.employer_reset_password')
             			->with('countData',$countData)
+                        ->with('code', $code)
                         ->with('user', $user);
         }else {
 
@@ -94,14 +95,15 @@ class ResetPasswordController extends BaseController {
 
             $user = User::find($id);
             if (!$user) {
-                return response()->json(['status' => false, 'message' => 'Email của bạn không tồn tại!']);
+                return response()->json(['status' => false, 'message' => 'Vui lòng kiểm tra lại đường link liên kết trong email của bạn!']);
             }
-            if( strcmp($user->confirmation_code, $code) == '0'){
+            // $a= $user->resetPass_code.'/'.$code;
+            if( $user->resetPass_code == $code){
 	            $user->password = Hash::make($input['txt_password']);
 	            $user->save();
 	            return response()->json(['status' => true, 'message' => 'Bạn đã tạo mới mật khẩu thành công!']);
             }else{
-	            return response()->json(['status' => false, 'message' => 'Vui lòng kiểm tra lại đường link liên kết trong email của bạn!']);           	
+	            return response()->json(['status' => false, 'message' => 'Vui lòng kiểm tra lại đường link liên kết trong email của bạn']);           	
             }
 
         }

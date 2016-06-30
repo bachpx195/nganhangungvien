@@ -81,6 +81,9 @@ class CandidateProfileController extends BaseController {
 		$sameData['exp'] = $this->candidateRepo->sameExpStatistic($id);
 		$sameData['lvl'] = $this->candidateRepo->sameLvlStatistic($id);
 		$sameData['savedCv'] = $countSavedCv;
+
+		$countData=[];
+		$countData['all'] = $this->candidateRepo->countAllStatistic();
 		
 		return view('front/profile/candidate')
 				->with('candidate', $candidate)
@@ -88,9 +91,9 @@ class CandidateProfileController extends BaseController {
 				->with('candidatesData', $candidatesData)
 				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 				->with('sameData', $sameData)
-				->with('sameData', $sameData)
 				->with('showContact', $showContact)
-				->with('transactionCost', $transactionCost);
+				->with('transactionCost', $transactionCost)
+				->with('countData', $countData);
 	}
 
 	public function viewContact(Request $request){
