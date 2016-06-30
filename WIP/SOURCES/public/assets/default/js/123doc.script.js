@@ -100,19 +100,17 @@ function pay_atm(e) {
     if (!running_paymentAtm) {
         var t = $('input[name="pm_atm"]:checked');
         var u = $('#pay-money-atm');
-        var o = $("#emal_atm");
         var n = $("#phone_atm");
 
         return void 0 === t.val() ? void alert("Xin vui lòng chọn ngân hàng thanh toán!") : "" === u.val() ? void alert("Xin vui lòng nhập vào số tiền!") : "" === n.val() ? (alert("Xin vui lòng nhập vào số điện thoại!"),
             void n.focus()) : (running_paymentAtm = !0, $("#pay-loading-atm").show(), $.ajax({
-            url: "/users/ajax/aja_payment_atm.php",
+            url: "/user/pay-atm",
             type: "POST",
             dataType: "json",
             data: {
-                phone: n.val(),
-                email: o.val(),
-                bank: t.val(),
-                money: u.val(),
+                payer_phone_no: n.val(),
+                bank_payment_method_id: t.val(),
+                total_amount: u.val(),
             },
             beforeSend: function() {
                 $(".btn_submit").css({
@@ -127,88 +125,18 @@ function pay_atm(e) {
                 })
             },
             success: function(e) {
-                running_paymentAtm = !1, $("#pay-loading-atm").hide(), "" !== e.error && (alert(e.error), changeSecurity(), a.val("")), "" != e.url && (window.top.location.href = e.url)
+                running_paymentAtm = !1;
+                if (e.success) {
+                    $("#pay-loading-atm").hide();
+                    window.top.location.href = e.baokimUrl
+                } else {
+                    alert(e.error);
+                }
+            },
+            error: function(e) {
+                running_paymentAtm = !1;
+                alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
             }
         }), void 0)
     }
-}
-
-function pay_bk(e) {
-    if (!running_paymentBk) {
-        if (void 0 !== e) return void alert("Báº¡n khÃ´ng thá»ƒ sá»­ dá»¥ng hÃ¬nh thá»©c nÃ y!");
-        var t = $("#captcha_popup_bk"),
-            u = $('input[name="pay_money_bk"]:checked');
-        return void 0 === u.val() ? void alert("Xin vui lÃ²ng chá»n gÃ³i thuÃª bao!") : "" === t.val() ? (alert("Xin vui lÃ²ng nháº­p mÃ£ xÃ¡c nháº­n!"), void t.focus()) : (running_paymentBk = !0, $("#pay-loading-bk").show(), $.ajax({
-            url: "/users/ajax/aja_payment_baokim.php",
-            type: "POST",
-            dataType: "json",
-            data: {
-                money: u.val(),
-                capcha: t.val()
-            },
-            beforeSend: function() {
-                $(".btn_submit").css({
-                    "background-color": "#00a888",
-                    cursor: "text"
-                }), $("<span class='loading_mn' /></span>").prependTo("a.btn_submit")
-            },
-            complete: function() {
-                $(".loading_mn").remove(), $(".btn_submit").css({
-                    "background-color": "#fa0",
-                    cursor: "pointer"
-                })
-            },
-            success: function(e) {
-                running_paymentBk = !1, $("#pay-loading-bk").hide(), "" !== e.error && (alert(e.error), changeSecurity(), t.val("")), "" !== e.url && (window.top.location.href = e.url)
-            }
-        }), void 0)
-    }
-}
-
-function pay_visa(e) {
-    if (!running_paymentVisa) {
-        if (void 0 !== e) return void alert("Báº¡n khÃ´ng thá»ƒ sá»­ dá»¥ng hÃ¬nh thá»©c nÃ y!");
-        var t = $('input[name="pm_visa"]:checked'),
-            u = $('input[name="pay_money_visa"]:checked'),
-            a = $("#captcha_popup_visa"),
-            o = $("#phone_visa"),
-            n = $("#visa_fn"),
-            r = $("#visa_ln");
-        return void 0 === u.val() ? void alert("Xin vui lÃ²ng chá»n gÃ³i náº¡p tiá»n!") : void 0 === t.val() ? void alert("Xin vui lÃ²ng chá»n ngÃ¢n hÃ ng thanh toÃ¡n!") : "" === r.val() ? (alert("Xin vui lÃ²ng nháº­p há», tÃªn Ä‘á»‡m cá»§a báº¡n!"), void r.focus()) : "" === n.val() ? (alert("Xin vui lÃ²ng nháº­p tÃªn cá»§a báº¡n!"), void n.focus()) : "" === o.val() ? (alert("Xin vui lÃ²ng nháº­p sá»‘ Ä‘iá»‡n thoáº¡i!"), void o.focus()) : "" === a.val() ? (alert("Xin vui lÃ²ng nháº­p mÃ£ xÃ¡c nháº­n!"), void a.focus()) : (running_paymentVisa = !0, $("#pay-loading-visa").show(), $.ajax({
-            url: "/users/ajax/aja_payment_visa.php",
-            type: "POST",
-            dataType: "json",
-            data: {
-                phone: o.val(),
-                bank: t.val(),
-                money: u.val(),
-                capcha: a.val(),
-                visa_fn: n.val(),
-                visa_ln: r.val()
-            },
-            beforeSend: function() {
-                $(".btn_submit").css({
-                    "background-color": "#00a888",
-                    cursor: "text"
-                }), $("<span class='loading_mn' /></span>").prependTo("a.btn_submit")
-            },
-            complete: function() {
-                $(".loading_mn").remove(), $(".btn_submit").css({
-                    "background-color": "#fa0",
-                    cursor: "pointer"
-                })
-            },
-            success: function(e) {
-                running_paymentVisa = !1, $(".pu_error").html(e.error).show(), $("#pay-loading-visa").hide(), "" != e.error && (alert(e.error), changeSecurity(), a.val("")), "" !== e.url && (window.top.location.href = e.url)
-            }
-        }), void 0)
-    }
-}
-
-function changeSecurity() {
-    $(".security-code").attr("src", "/common/ajax/securitycode.php?securitycode=" + Math.random())
-}
-
-function downloadNotLogin(e) {
-    colorbox(2, "/documents/popup/pop_download_not_login.php?docId=" + e, "Táº£i tÃ i liá»‡u", 725, 490, void 0, void 0)
 }

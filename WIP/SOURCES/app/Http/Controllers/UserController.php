@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Libs\BaoKim\Atm\BaoKimPaymentPro;
+use App\Libs\Constants;
 use App\Repositories\EmployerRepo;
+use App\Repositories\TransactionRepo;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Registrar;
 
@@ -11,7 +14,9 @@ use App\Repositories\IRoleRepo;
 use App\Libs\BaoKim\Card;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 
@@ -22,6 +27,7 @@ class UserController extends Controller {
 	protected $registrar;
 	protected $card;
 	protected $employerRepo;
+	protected $transactionRepo;
 
 	/**
 	 * UserController constructor.
@@ -30,13 +36,15 @@ class UserController extends Controller {
 	 * @param Registrar $registrar
 	 * @param EmployerRepo $employerRepo
 	 * @param Card $card
+	 * @param TransactionRepo $transactionRepo
 	 */
 	public function __construct(
 		IUserRepo $userRepo,
 		IRoleRepo $roleRepo,
 		Registrar $registrar,
 		EmployerRepo $employerRepo,
-		Card $card
+		Card $card,
+		TransactionRepo $transactionRepo
 	) {
 		
 		$this->userRepo = $userRepo;
@@ -44,6 +52,7 @@ class UserController extends Controller {
 		$this->registrar = $registrar;
 		$this->card = $card;
 		$this->employerRepo = $employerRepo;
+		$this->transactionRepo = $transactionRepo;
 	}
 	
 	public function userList(Request $request) {
@@ -170,7 +179,30 @@ class UserController extends Controller {
 
 			if ($r['success'])
 			{
-				$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+				try {
+					DB::beginTransaction();
+
+					$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+
+					$transactionData = array(
+						'employer_id' => $employer->id,
+						'candidate_id' => null,
+						'payment_type' => Constants::PAYMENT_TYPE_CARD,
+						'type' => Constants::$TRANSACTION_TYPES['RECHARGE'],
+						'balance' => $employer->balance,
+						'amount' => $r['amount'],
+						'email' => $user['email'],
+						'full_name' => $user['full_name']
+					);
+					$this->transactionRepo->insertTransaction($transactionData);
+
+					DB::commit();
+
+					$this->sendEmailAfterPaymentByCard($transactionData);
+				} catch (\Exception $e) {
+					DB::rollBack();
+				}
+
 				$paymentStatus = true;
 			} else {
 				$paymentStatus = false;
@@ -197,5 +229,45 @@ class UserController extends Controller {
 		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
 
 		return view('user/top_up', ['employer' => $employer]);
+	}
+
+	/**
+	 * Payment by Atm
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userPayByAtm(Request $request)
+	{
+		if ($request->isMethod('post')) {
+			$user = Auth::user();
+
+			$userData = Input::except(array('_token', '_method'));
+			$userData['payer_name'] = $user['full_name'];
+			$userData['payer_email'] = $user['email'];
+			$userData['address'] = '';
+			$baokim = new BaoKimPaymentPro();
+
+			$result = $baokim->pay_by_card($userData);
+			if(!empty($result['error'])){
+				return array('success' => false, 'error' => $result['error']);
+			} else {
+				$baokimUrl = $result['redirect_url'] ? $result['redirect_url'] : $result['guide_url'];
+				return array('success' => true, 'baokimUrl' => $baokimUrl);
+			}
+		}
+	}
+
+	/**
+	 * Send mail to employer after payment by card
+	 *
+	 * @param $data
+	 */
+	private function sendEmailAfterPaymentByCard($data)
+	{
+		Mail::send('emails.payment_by_card', $data, function ($message) use ($data) {
+			$message->subject('Nạp thẻ cào thành công!')
+				->to($data['email']);
+		});
 	}
 }

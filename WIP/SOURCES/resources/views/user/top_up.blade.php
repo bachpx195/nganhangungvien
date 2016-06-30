@@ -279,7 +279,7 @@
                 </div>
 
                 <p><input id="pay-money-atm" type="text" name="pay_money_atm" placeholder="Nhập vào số tiền"/></p>
-                <p style="margin-top: 10px;"><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn"/></p>
+                <p style="margin-top: 10px;"><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn" name="payer_phone_no"/></p>
                 <p>Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_atm();" class="btn btn_submit">Nạp tiền</a></p>
             </div>

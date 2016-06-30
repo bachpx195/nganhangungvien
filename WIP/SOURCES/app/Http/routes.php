@@ -385,5 +385,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/viewprofile', [
 		'as' => 'user.view.profile', 'uses' => 'Front\CandidateProfileController@viewContact'
 	]);
+	Route::match(['post'], '/user/pay-atm', [
+		'as' => 'user.pay_atm', 'uses' => 'UserController@userPayByAtm'
+	]);
 });
 

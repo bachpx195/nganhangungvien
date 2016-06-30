@@ -7,11 +7,10 @@
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
                 <p>Chào <span style="font-weight:bold">{{$full_name}}</span>!<br>
                     <br>
-                    Bạn đã tạo Hồ sơ Trực Tuyến Thành Công tại  Website:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mail {{$email}}.</p>
-                    
-                <p>Hồ sơ của bạn sẽ được Kiểm duyệt & Hiển thị tại Ngân Hàng Ứng Viên trong vòng 24h!</p>
-                
-                <p>Chúc bạn sớm tìm được công việc phù hợp!</p>
+                    Cảm ơn bạn đã thanh toán tại:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mail {{$email}}.</p>
+
+                <p>Mệnh giá thẻ nạp của bạn: {{$amount}}000 VNĐ!</p>
+                <p>Số tiền trong tài khoản của bạn hiện tại là {{$balance}}000 VNĐ!!</p>
 
                 <p>Nếu bạn có bất kỳ thắc mắc nào, hãy liên hệ với chúng tôi để nhận được sự hỗ trợ nhanh nhất.</p>
 
