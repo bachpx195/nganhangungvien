@@ -97,29 +97,6 @@
                                                                        value="{{@$user['email']}}">
                                                             </div>
                                                         </div>
-                                                        <!-- Quyền -->
-                                                        @if($user->user_type == \App\Libs\Constants::USER_TYPE_ADMIN)
-                                                        <div class="clearfix"></div>
-                                                        <div class="form-group">
-                                                            <label for="role" class="col-sm-2 control-label">
-                                                                Quyền <span class="has-error">*</span>
-                                                            </label>
-                                                            <div class="col-sm-10">
-                                                                <select name="role" class="form-control cSelect" id="role">
-                                                                    <option value="">Chọn quyền</option>
-                                                                    @foreach($roles as $role)
-                                                                        @if ($role->id == $user['role_id'])
-                                                                            <option value="{{ $role->id }}"
-                                                                                    selected="selected">{{ $role->name }}</option>
-                                                                        @else
-                                                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                                                        @endif
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="clearfix error_reg_mess_cus fs14 invalid-msg-role display_none"></div>
-                                                        </div>
-                                                        @endif
                                                         <!-- Số điện thoại -->
                                                         <div class="clearfix"></div>
                                                         <div class="form-group">

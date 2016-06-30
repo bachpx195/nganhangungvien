@@ -121,7 +121,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.user.status', 'uses' => 'Admin\UserController@userStatus'
 	]);
 
+
 	Route::match(['get', 'post'], '/quan-ly-tinh/danh-sach', [
+
+
+	Route::match(['get'], '/phan-quyen/danh-sach', [
+		'as' => 'admin.permission.list', 'uses' => 'Admin\PermissionController@userRoleList'
+	]);
+	Route::match(['post'], '/phan-quyen/cap-nhat', [
+		'as' => 'admin.permission.update', 'uses' => 'Admin\PermissionController@userRoleUpdate'
+	]);
+
+
+	Route::match(['get', 'post'], '/province/list', [
+
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 

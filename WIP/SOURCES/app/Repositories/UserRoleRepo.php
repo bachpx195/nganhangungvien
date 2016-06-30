@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Model\Role;
+use App\Model\User;
 use App\Model\UserRole;
 
 class UserRoleRepo implements IUserRoleRepo
@@ -53,5 +54,50 @@ class UserRoleRepo implements IUserRoleRepo
     {
         return UserRole::where('user_id', '=', $userId)
             ->first();
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    function getUserRolesByUserType($user_type)
+    {
+        $query = User::leftJoin('user_role', 'user.id', '=', 'user_role.user_id')
+            ->leftJoin('role', 'user_role.role_id', '=', 'role.id')
+            ->select('user_role.id', 'user_role.updated_at',
+                'user.id as userId', 'user.username', 'user.full_name', 'user.email',
+                'role.id as roleId', 'role.name as roleName')
+            ->where('user.user_type', '=', $user_type)
+            ->get();
+        return $query;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function getUserRolesById($id)
+    {
+        $query = User::leftJoin('user_role', 'user.id', '=', 'user_role.user_id')
+            ->leftJoin('role', 'user_role.role_id', '=', 'role.id')
+            ->select('user_role.id', 'user_role.updated_at',
+                'user.id as userId', 'user.username', 'user.full_name', 'user.email',
+                'role.id as roleId', 'role.name as roleName')
+            ->where('user_role.id', '=', $id)
+            ->first();
+        return $query;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function updateUserRole($userId, $roleId)
+    {
+        $userRole = UserRole::where('user_id', '=', $userId)->first();
+        if (!(isset($userRole) && $userRole)) {
+            $userRole = new UserRole();
+            $userRole->user_id = $userId;
+        }
+        $userRole->role_id = $roleId;
+        $userRole->save();
     }
 }
