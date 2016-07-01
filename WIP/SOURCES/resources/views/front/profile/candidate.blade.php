@@ -364,7 +364,7 @@
 	      <div class="tab-content w_100">
 	         <div role="tabpanel" class="tab-pane {{count($sameData['exp']) > 0? 'active': ''}}" id="hosocungkinhnghiem">
 	            @if(count($sameData['exp']) > 0)
-	            <div class="list_item_two bg_white" style="border-bottom: 0px solid">
+	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;">
 	               @foreach($sameData['exp'] as $index => $key)
 	               <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
 	                  <div class="list-items item_link">
@@ -426,7 +426,7 @@
 	         </div>
 	         <div role="tabpanel" class="{{count($sameData['exp']) == 0? 'active': ''}} tab-pane" id="hosocungcapbac">
 	            @if(count($sameData['lvl']) > 0)
-	            <div class="list_item_two bg_white" style="border-bottom: 0px solid">
+	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;"">
 	               @foreach($sameData['lvl'] as $index => $key)
 	               <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
 	                  <div class="list-items item_link">
