@@ -1,7 +1,7 @@
 <div class="popup_login" hidden="hidden" id="popup_login">
     <div id="popup_component_register_choice" style="display: block;">
         <div id="pos_popup_register_choice" style="top: 125px; left: 0px;">
-            <div id="popup_content_register_choice" class="w630 h_393">
+            <div id="popup_content_register_choice" class="w580 h_315">
                 <div class="pb12 btn_close">
                     <div class="block-img-close" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Đóng"></div>
                 </div>
@@ -20,7 +20,7 @@
                                             <div id="block-thong-tin-dang-nhap" class="mb_22 pt_2">
                                                 <!-- input email -->
                                                 <div class="form-group clearfix mb_12">
-                                                    <label for="inputEmail" class="control-label-info bold txt-color-363636 fs14 w180">
+                                                    <label for="inputEmail" class="control-label-info bold txt-color-363636 fs14 w150">
                                                         Email <span class="colorRed">*</span>
                                                     </label>
                                                     <div class="fr-input-wd389">
@@ -30,21 +30,21 @@
                                                 </div>
                                                 <!-- input repassword -->
                                                 <div class="form-group mb_4">
-                                                    <label for="inputPassword" class="control-label-info bold txt-color-363636 fs14 w180">Mật khẩu <span class="colorRed">*</span></label>
+                                                    <label for="inputPassword" class="control-label-info bold txt-color-363636 fs14 w150">Mật khẩu <span class="colorRed">*</span></label>
                                                     <div class="fr-input-wd389">
                                                         <input type="password" class="form-control input-lg2 color-input" id="inputPassword" name="password" />
                                                     </div>
                                                     <div class="error_reg_mess clearfix err_password display_none"></div>
                                                 </div>
-                                                <div class="mb_16 mt2 pl_185"><a href="javascript:;" class="show_s006_lay_lai_mat_khau fs14 txt-color-757575 underline">Quên mật khẩu?</a></div>
+                                                <div class="mb_16 mt2 pl_155"><a href="javascript:;" class="show_s006_lay_lai_mat_khau fs14 txt-color-757575 underline">Quên mật khẩu?</a></div>
 
                                                 <div class="form-group mb_12">
-                                                    <label class="control-label-info w180"></label>
+                                                    <label class="control-label-info w150"></label>
                                                     <div class="fr-input-wd389 floatLeft">
-                                                        <button id="btnLogin" class="btn bold btnLogin w151 fwb uppercase">Đăng nhập</button>
+                                                        <button id="btnLogin" class="btn bold btnLogin w130 fwb uppercase">Đăng nhập</button>
+                                                        Bạn chưa có tài khoản? <a href="{{route('employer.register')}}" class="member_register txt_color_63248a underline">Đăng ký?</a>
                                                     </div>
                                                 </div>
-                                                <div class="mb_2 pl_185 fs14 txt-color-363636">Bạn chưa có tài khoản? <a href="{{route('employer.register')}}" class="member_register txt_color_63248a underline">Đăng ký?</a></div>
                                             </div>
                                         </form>
                                     </div>
