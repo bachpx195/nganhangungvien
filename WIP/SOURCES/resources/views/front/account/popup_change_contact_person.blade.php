@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="regis_content_1 scrollbar_cus w563 pr0"
-                     style="width: 563px; padding-right: 10px; outline: medium none; overflow: hidden; height: 444px;"
+                     style="width: 563px; padding-right: 10px; outline: medium none; overflow: hidden; height: 400px;"
                      tabindex="0">
                     <div class="pr_16 pl_16 mb_6 s31_4">
                         <div id="msg_success_contact"
