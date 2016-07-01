@@ -787,6 +787,7 @@ select.select-style {
     padding-top: 4px;
     border-bottom: 1px solid #ebebeb;
     padding-bottom: 0;
+    min-height: 373px;
 }
 .list_item_one{
     padding: 16px;
@@ -1427,7 +1428,7 @@ select.select-style {
 }
 .modal-drop-mucluong {
     width:256px!important;
-    height: 296px!important;
+    height: 260px!important;
 }
 .user-info .select2-chosen {
     margin:0!important;
@@ -9530,16 +9531,16 @@ max-width:400px;
     padding: 20px 0px 40px 0px;
 }
 .icon_thoi_gian{
-    background-position: -73px -215px;
+    /*background-position: -73px -215px;*/
 }
 .icon_ngoai_ngu{
-    background-position: -49px -215px;
+    /*background-position: -49px -215px;*/
 }
 .icon_gioi_tinh{
-    background-position: -25px -215px;
+    /*background-position: -25px -215px;*/
 }
 .icon_trinh_do{
-    background-position: 0 -215px;
+    /*background-position: 0 -215px;*/
 }
 /* css email */
 .header_email_nav{

@@ -4,12 +4,12 @@
 		<div class="box_filter_search">
 			<div class="filter_content_line1 pos_relative">
 				<div class="col-xs-12 pr_2 border_bt">
-					<input type="search" class="input_search_all noboder pl_10 w_100 pr_10 font14" id="inputsearchall_ntd" name="title" placeholder="Nhập từ khóa">
+					<input type="search" class="input_search_all noboder pl_10 w_100 pr_10" id="inputsearchall_ntd" name="title" placeholder="Nhập từ khóa">
 				</div>
 				<div class="col-xs-12 pr_2 border_bt">
-					<div id="sl-nganhnghe4" class="filter_box font14 style-flat w_100 box_nganhnghe_s">
+					<div id="sl-nganhnghe4" class="filter_box style-flat w_100">
 						<i class="icon_select_box icon_listbox icon_24 icon-24"></i>
-						<select name="occupation" class="selectpicker box_select_filter pos_relative select-style font14" tabindex="-1">
+						<select name="occupation" class="selectpicker box_select_filter pos_relative select-style font14 mt5" tabindex="-1">
 							<option value="">Tất cả Ngành nghề</option>
 							@foreach($dropdownData['occupations'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -18,9 +18,9 @@
 					</div>
 				</div>
 				<div class="col-xs-12 pr_2 border_bt">
-					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
+					<div class="filter_box style-flat w_100">
 						<i class="icon_select_box icon_locabox icon_24 icon-24"></i>
-						<select name="province" class="selectpicker box_select_filter pos_relative select-style" tabindex="-1" data-select-class="tinh_thanh_ntd">
+						<select name="province" class="selectpicker box_select_filter pos_relative select-style mt5" tabindex="-1" data-select-class="tinh_thanh_ntd">
 							<option value="">Tất cả Tỉnh thành</option>
 							@foreach($dropdownData['provinces'] as $item)
 								<option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -29,10 +29,10 @@
 					</div>
 				</div>
 				<div class="col-xs-12 pr_2 border_bt">
-					<div class="filter_box font14 style-flat w_100 box_mucluong">
+					<div class="filter_box style-flat w_100">
 						<i class="icon_select_box icon_moneybox icon_24 icon-24"></i>
 						<div class="cd-dropdown-wrapper w_100 pt_12">
-							<span class="drop_filter_top" data-jq-dropdown="#filter_mucluong2">Tất cả Mức lương</span>
+							<span class="drop_filter_top mt2" data-jq-dropdown="#filter_mucluong2">Tất cả Mức lương</span>
 							<div id="filter_mucluong2" class="jq-dropdown dropdown_box">
 								<ul class="box_drop_mucluong_ntd nomargin">
 									<li>
@@ -60,7 +60,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_trinh_do icon_24 icon-24"></i>
-						<select name="degree" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1">
+						<select name="degree" class="selectpicker box_select_filter pos_relative select-style mt5" data-diss="-1" tabindex="-1">
 							<option value="">Tất cả Trình độ</option>
 							@foreach($dropdownData['degrees'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -72,7 +72,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_kinh_nghiem icon_24 icon-24"></i>
-						<select name="yearOfexp[]" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
+						<select name="yearOfexp[]" class="selectpicker box_select_filter pos_relative select-style mt5" data-diss="-1" tabindex="-1" data-select-class="kinh_nghiem_ntd">
 							<option value="">Tất cả Kinh nghiệm</option>
 							@foreach($dropdownData['yearOfexps'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -83,7 +83,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i>
-						<select name="sex" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1">
+						<select name="sex" class="selectpicker box_select_filter pos_relative select-style mt5" data-diss="-1" tabindex="-1">
 							<option value="">Tất cả Giới tính</option>
 							<option value="0">Nữ</option>
 							<option value="1">Nam</option>
@@ -93,7 +93,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_ngoai_ngu icon_24 icon-24"></i>
-						<select name="language" class="selectpicker box_select_filter pos_relative select-style" tabindex="-1">
+						<select name="language" class="selectpicker box_select_filter pos_relative select-style mt5" tabindex="-1">
 							<option value="">Tất cả Ngoại ngữ</option>
 							@foreach($dropdownData['languages'] as $item)
 								<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
@@ -104,7 +104,7 @@
 				<div class="col-xs-12 pr_2 border_bt">
 					<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 						<i class="icon_select_box icon_thoi_gian icon_24 icon-24"></i>
-						<select name="timeUpdate" class="selectpicker box_select_filter pos_relative select-style" data-diss="-1" tabindex="-1">
+						<select name="timeUpdate" class="selectpicker box_select_filter pos_relative select-style mt5" data-diss="-1" tabindex="-1">
 							<option value="">Thời gian cập nhật</option>
 							<option value="1">Trong vòng 1 Ngày</option>
 							<option value="2">1 Tuần gần đây</option>
@@ -205,7 +205,7 @@
 
 
 		@if ($linkYouTube)
-		<div class="statistic font16">
+		<div class="font16 mb_8">
 			HƯỚNG DẪN ĐĂNG KÝ<br/>TÀI KHOẢN NHÀ TUYỂN DỤNG
 		</div>
 		<iframe id="youtube-video-frame" src="{{$linkYouTube}}" frameborder="0" allowfullscreen=""></iframe>
@@ -213,20 +213,21 @@
 		@endif
 		<div>
 			<div class="row">
-				<div class="statistic font16">
+				<div class="font16">
+					<br/>
 					LIÊN HỆ ĐỂ ĐƯỢC HỖ TRỢ
 				</div>
 				<div>
 					<span class="bg-white bold font14 text_blue">Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
 					<span class="bg-white bold font14 text_blue">Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span>
-					<span class="bg-white bold font14 text_blue">Skype: </span><span class="bg-white text_pink font14 bold">CSKH.NGANHANGUNGVIEN</span>
+					<span class="bg-white bold font14 text_blue">Skype: </span><span class="bg-white text_pink font14 bold">CSKH.NGANHANGUNGVIEN.COM</span>
 				</div>
 			</div>
 		</div>
 		<br/>
 		<div>
 			<div class="row">
-				<div class="statistic font16">
+				<div class="font16">
 					HOẶC SỬ DỤNG DỊCH VỤ
 				</div>
 				<div>

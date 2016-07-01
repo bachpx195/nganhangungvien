@@ -108,20 +108,20 @@
                         <div class="form-group">
                             <label for="birthday" class="control-label-info bold txt-color-363636 fs14 col-md-3">
                                 Ngày sinh <span class="colorRed">*</span></label>
-                            <div class="col-md-8 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                            <div class="col-md-8 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
                                     <select name="birthday_day" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Ngày sinh">
                                         @include('front.common.day_options', array('selected' => $candidate['birthday_day']))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
                                     <select name="birthday_month" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Tháng sinh">
                                         @include('front.common.month_options', array('selected' => $candidate['birthday_month']))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
                                     <select name="birthday_year" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Năm sinh">
                                         @include('front.common.year_options', array('selected' => $candidate['birthday_year']))
@@ -135,8 +135,8 @@
                             <label for="c_chuc_vu"
                                    class="control-label-info bold txt-ghi fs14 col-md-3">Cấp
                                 bậc hiện tại <span class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="current_rank"
                                             class="select-style"
                                             required data-required-msg="Vui lòng chọn Cấp bậc hiện tại">
@@ -155,8 +155,8 @@
                             <label for="c_chuc_vu"
                                    class="control-label-info bold txt-ghi fs14 col-md-3">Cấp
                                 bậc mong muốn <span class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="expect_rank" class="select-style"
                                             required data-required-msg="Vui lòng chọn Cấp bậc mong muốn">
                                         @include('front.common.options',
@@ -175,8 +175,8 @@
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
                                 Ngành nghề mong muốn <span class="colorRed">*</span>
                             </label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="job"
                                             class="select-style job-change"
                                             required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
@@ -213,8 +213,8 @@
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
                                 Tỉnh thành mong muốn <span class="colorRed">*</span>
                             </label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="province_id"
                                             class="select-style address-change"
                                             required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
@@ -250,8 +250,8 @@
                         <div class="form-group">
                             <label for="level" class="control-label-info bold txt-ghi fs14 col-md-3">Trình độ học vấn cao nhất<span
                                         class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="level"
                                             class="select-style"
                                             required data-required-msg="Vui lòng chọn Trình độ học vấn">
@@ -269,8 +269,8 @@
                         <div class="form-group">
                             <label for="experience_years" class="control-label-info bold txt-ghi fs14 col-md-3">Tổng số năm kinh nghiệm <span
                                         class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="experience_years"
                                             class="select-style">
                                         @include('front.common.options',
@@ -289,8 +289,8 @@
                                 Hình thức làm việc <span class="colorRed">*</span>
                             </label>
 
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="employment_status"
                                             class="select-style"
                                             required data-required-msg="Vui lòng chọn Hình thức làm việc">
@@ -312,8 +312,8 @@
                                 Mức lương mong muốn <span class="colorRed">*</span>
                             </label>
 
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="expect_salary"
                                             class="select-style"
                                             required data-required-msg="Vui lòng chọn Số lương mong muốn">
@@ -331,9 +331,9 @@
                         <div class="form-group">
                             <label for="exigency"
                                    class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">Nhu cầu công việc <span class="colorRed">*</span><span
-                                        class="note_title_form italic font12 text_grey3 mt_a6 pt_4"></span></label>
-                            <div class="fr-input-wd333 select_style31 city_select">
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                                        class="note_title_form italic text_grey3 mt_a6 pt_4"></span></label>
+                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="exigency"
                                             class="select-style"
                                             required data-required-msg="Vui lòng chọn Nhu cầu công việc.">
