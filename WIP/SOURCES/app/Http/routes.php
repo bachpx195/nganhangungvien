@@ -303,7 +303,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
  */
 Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
-	Route::get('/', 'Front\HomeController@index');
+	Route::get('/', ['as' => 'home', 'uses' => 'Front\HomeController@index']);
 
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
@@ -323,6 +323,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	
 	Route::match(['get', 'post'], '/ho-so/{slug}_{id}', [
 		'as' => 'candidate.profile', 'uses' => 'Front\CandidateProfileController@index'
+	]);
+
+	Route::match(['get', 'post'], '/danh-sach-ung-vien-nhieu-nguoi-xem', [
+		'as' => 'candidate.view', 'uses' => 'Front\SearchController@listByView'
 	]);
 	
 	//Đăng ký tài khoản
@@ -359,6 +363,7 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tao-moi-mat-khau/{id}-{code}', [
 		'as' => 'user.reset.form', 'uses' => 'Front\ResetPasswordController@confirm'
 	]);
+	Route::any('{all?}','Front\HomeController@error')->where('all','(.*)');
 });
 
 Route::group(['middleware' => ['auth']], function() {

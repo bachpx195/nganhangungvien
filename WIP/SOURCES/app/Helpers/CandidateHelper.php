@@ -9,8 +9,9 @@ use App\Model\Job;
 use App\Model\Level;
 use App\Model\Province;
 use App\Model\Salary;
+use App\Model\Rank;
 use Lang;
-use StringHelper;
+// use StringHelper;
 
 class CandidateHelper {
 	public static function uri($candidate) {
@@ -124,6 +125,9 @@ class CandidateHelper {
 				case 'd': //degree
 					$params['degree'] = $id;
 					break;
+				case 'r': //degree
+					$params['rank'] = $id;
+					break;
 				case 's': //salary
 					$params['salaryGrade'] = [$id];
 					break;
@@ -156,6 +160,10 @@ class CandidateHelper {
 				case 'd': //degree
 					$category = Level::find($id);
 					return "Trình độ " . $category->name;
+					break;
+				case 'r': //rank
+					$category = Rank::find($id);
+					return "Cấp bậc " . $category->name;
 					break;
 				case 's': //salary
 					$category = Salary::find($id);

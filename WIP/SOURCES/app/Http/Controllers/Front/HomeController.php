@@ -60,5 +60,9 @@ class HomeController extends BaseController {
 				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 				->with('linkYouTube', $linkYouTube);
 	}
+    public function error()
+    {
+        return view('errors.404');
+    }
 	
 }
