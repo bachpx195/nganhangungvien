@@ -363,7 +363,7 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tao-moi-mat-khau/{id}-{code}', [
 		'as' => 'user.reset.form', 'uses' => 'Front\ResetPasswordController@confirm'
 	]);
-	Route::any('{all?}','Front\HomeController@error')->where('all','(.*)');
+	
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -408,3 +408,4 @@ Route::group(['middleware' => ['auth']], function() {
 	]);
 });
 
+Route::any('{all?}','Front\HomeController@error')->where('all','(.*)');
