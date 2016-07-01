@@ -33,7 +33,7 @@
 
                                 <li class="pb_6 pos_relative">
                                     <span class="icon_24 icon-24 icon-vl-nganh-nghe pos_absolute"></span>
-                                    <a href="#" class="txt-ghi pl12 w232 ablock_menu ">Hồ sơ đã lưu</a>
+                                    <a href="{{route('user.saved.profile')}}" class="txt-ghi pl12 w232 ablock_menu ">Hồ sơ đã lưu</a>
                                 </li>
 
                                 <li class="pb_6 pos_relative">

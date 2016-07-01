@@ -21,7 +21,7 @@
                                             @include('front.common.options',
                                                 array(
                                                     'options' => $foreignLanguages,
-                                                    'defaultName' => 'Chọn ngoại ngữ'
+                                                    'defaultName' => '-- Chọn ngoại ngữ --'
                                                     ))
                                         </select>
                                     </div>

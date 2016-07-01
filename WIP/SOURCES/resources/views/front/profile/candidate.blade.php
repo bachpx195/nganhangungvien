@@ -10,12 +10,12 @@
 	@include('front.common.form_search', ['dropdownData' => $dropdownData])
 
 	<div class="spacer-50"></div>
-	<h1 class="title_text_line mt6 ml_12 mr_12">
+	<h1 class="title_text_line mt6">
 		<span class="text-tim-nhat uppercase">Chi tiết hồ sơ {{$candidate->cv_title}}</span>
 	</h1>
 
 	<div
-		class="box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16 ml_12 mr_12 mt_16">
+		class="box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16 mt_16">
 		<div class="w_100 mb10">
 			<div class="box_info">
 				<div class="pull-left w120 mr_14">
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div class="box_button_action mt_16 row mrg button_s22">
+	<div class="box_button_action mt_16 row button_s22">
 		@if($sameData['savedCv'] > 0)
 			<button class="btn btn-white mr_8 pull-left btn-save-job no-shadow active"
 				onclick="javascript:luuhoso(this)" data-candidateId="{{ $candidate->id }}"
@@ -98,7 +98,7 @@
 	</div>
 
 	<div
-		class="job_detail box_tab bg_white box_shadow pt_16 pl_14 pr_14 pb_16 text_grey2 ml_12 mr_12 mt_16">
+		class="job_detail box_tab bg_white box_shadow pt_16 pl_14 pr_14 pb_16 text_grey2 mt_16">
 		<div class="box-ho-so pb_12">
 			<div class="row">
 				<div class="col-xs-12 pl_0 pr_0">

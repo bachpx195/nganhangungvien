@@ -90,8 +90,8 @@
                     <select name="graduation_type_@{{index}}"
                             class="required"
                             data-disS="1">
-                        <option value="0" selected>Chọn loại
-                            tốt nghiệp
+                        <option value="0" selected>-- Chọn loại
+                            tốt nghiệp --
                         </option>
                         <option value="1">Xuất sắc</option>
                         <option value="2">Giỏi</option>

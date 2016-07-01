@@ -146,6 +146,20 @@
                 }
             });
 
+            // check size of upload file
+            var file = document.getElementById("logo").files[0];
+            var sFileName = file.name;
+            var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+            if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
+                alert('Vui lòng chọn file có định dạng .jpg, .gif, .png');
+                isOk = false;
+            }
+            var iFileSize = file.size;
+            if (iFileSize > 307200) {
+                alert('Vui lòng chọn file có dung lượng <= 300KB');
+                isOk = false;
+            }
+
             if (isOk == false) {
                 console.log('Error can post data');
                 return false;
@@ -285,7 +299,16 @@
     }
 
     function fileOnchange(objFile) {
-        fileName = objFile.value.replace(/C:\\fakepath\\/i, '');
+        var file = document.getElementById("logo").files[0];
+        var iFileSize = file.size;
+        if (iFileSize > 307200) {
+            alert('Hệ thống chỉ hỗ trợ các file có dung lượng <= 300KB');
+        }
+        var fileName = objFile.value.replace(/C:\\fakepath\\/i, '');
+        var sFileExtension = fileName.split('.')[fileName.split('.').length - 1].toLowerCase();
+        if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
+            alert('Hệ thống chỉ hỗ trợ các định dạng .jpg, .gif, .png');
+        }
         $("#note_select_file_"+objFile.name).html(fileName);
     }
 </script>

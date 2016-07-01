@@ -83,7 +83,7 @@
                             @include('front.common.options',
                                 array(
                                     'options' => $salaries,
-                                    'defaultName' => 'Chọn Mức lương'
+                                    'defaultName' => '-- Chọn Mức lương --'
                                     ))
                         </select>
                     </div>

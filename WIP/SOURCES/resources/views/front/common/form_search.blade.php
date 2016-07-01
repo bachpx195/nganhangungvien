@@ -7,7 +7,7 @@
 					class="filter_box font14 style-flat w_100 box_nganhnghe_s">
 					<i class="icon_select_box icon_listbox icon_24 icon-24"></i> <select
 						name="occupation"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1" data-select-class="nganh_nghe">
 						<option value="">Tất cả Ngành nghề</option>
 						@foreach($dropdownData['occupations'] as $item)
@@ -20,7 +20,7 @@
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i class="icon_select_box icon_locabox icon_24 icon-24"></i> <select
 						name="province"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1">
 						<option value="">Tất cả tỉnh thành</option>
 						@foreach($dropdownData['provinces'] as $item)
@@ -103,7 +103,7 @@
 						style="background-image: url(/assets/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
 						class="icon_select_box icon_24 icon-24"></i> <select
 						name="degree"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						data-diss="-1" tabindex="-1" data-select-class="degree">
 						<option value="">Tất cả Trình độ</option>
 						@foreach($dropdownData['degrees'] as $item)
@@ -119,7 +119,7 @@
 						style="background-image: url(/assets/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
 						class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i> <select
 						name="sex"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
 						<option value="0" @if (isset($params['sex']) && $params['sex'] === '0') selected @endif>Nữ</option>
@@ -134,7 +134,7 @@
 						style="background-image: url(/assets/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
 						class="icon_select_box icon_ngoai_ngu icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="language"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1" data-select-class="ngoai_ngu_ntd2">
 						<option value="">Tất cả Ngoại ngữ</option>
 						@foreach($dropdownData['languages'] as $item)
@@ -149,7 +149,7 @@
 						style="background-image: url(/assets/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
 						class="icon_select_box icon_thoi_gian icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="timeUpdate"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						data-diss="-1" tabindex="-1" data-select-class="thoi_gian_ntd2">
 						<option value="">Thời gian cập nhật</option>
 						<option value="1" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 1) selected @endif>Trong vòng 1 Ngày</option>
