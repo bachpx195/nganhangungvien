@@ -91,11 +91,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	]);
 
 	// BEGIN NEWS
-	Route::match(['get', 'post'], '/news/list', [
+	Route::match(['get', 'post'], '/tin-tuc/danh-sach', [
 		'as' => 'admin.news.list', 'uses' => 'Admin\NewsController@newsList'
 	]);
 
-	Route::match(['get', 'post'], 'news/form', [
+	Route::match(['get', 'post'], 'tin-tuc/form', [
 		'as' => 'admin.news.form', 'uses' => 'Admin\NewsController@newsForm'
 	]);
 
@@ -134,7 +134,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 	]);
 
 
-	Route::match(['get', 'post'], '/province/list', [
+	Route::match(['get', 'post'], '/quan-ly-tinh/danh-sach', [
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 
@@ -158,11 +158,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.level.delete', 'uses' => 'Admin\LevelController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/rank/list', [
+	Route::match(['get', 'post'], '/quan-ly-cap-bac/danh-sach', [
 		'as' => 'admin.rank.list', 'uses' => 'Admin\RankController@rankList'
 	]);
 
-	Route::match(['get', 'post'], 'rank/form', [
+	Route::match(['get', 'post'], 'quan-ly-cap-bac/form', [
 		'as' => 'admin.rank.form', 'uses' => 'Admin\RankController@rankForm'
 	]);
 
@@ -170,11 +170,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.rank.delete', 'uses' => 'Admin\RankController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/salary/list', [
+	Route::match(['get', 'post'], '/quan-ly-luong/danh-sach', [
 		'as' => 'admin.salary.list', 'uses' => 'Admin\SalaryController@salaryList'
 	]);
 
-	Route::match(['get', 'post'], 'salary/form', [
+	Route::match(['get', 'post'], 'quan-ly-luong/form', [
 		'as' => 'admin.salary.form', 'uses' => 'Admin\SalaryController@salaryForm'
 	]);
 
@@ -182,11 +182,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.salary.delete', 'uses' => 'Admin\SalaryController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/job/list', [
+	Route::match(['get', 'post'], '/quan-ly-nghe-nghiep/danh-sach', [
 		'as' => 'admin.job.list', 'uses' => 'Admin\JobController@jobList'
 	]);
 
-	Route::match(['get', 'post'], 'job/form', [
+	Route::match(['get', 'post'], 'quan-ly-nghe-nghiep/form', [
 		'as' => 'admin.job.form', 'uses' => 'Admin\JobController@jobForm'
 	]);
 
@@ -194,11 +194,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.job.delete', 'uses' => 'Admin\JobController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/exigency/list', [
+	Route::match(['get', 'post'], '/quan-ly-nhu-cau-cong-viec/danh-sach', [
 		'as' => 'admin.exigency.list', 'uses' => 'Admin\ExigencyController@exigencyList'
 	]);
 
-	Route::match(['get', 'post'], 'exigency/form', [
+	Route::match(['get', 'post'], 'quan-ly-nhu-cau-cong-viec/form', [
 		'as' => 'admin.exigency.form', 'uses' => 'Admin\ExigencyController@exigencyForm'
 	]);
 
@@ -206,11 +206,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.exigency.delete', 'uses' => 'Admin\ExigencyController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/company-size/list', [
+	Route::match(['get', 'post'], '/quan-ly-quy-mo-cong-ty/danh-sach', [
 		'as' => 'admin.companysize.list', 'uses' => 'Admin\CompanySizeController@companySizeList'
 	]);
 
-	Route::match(['get', 'post'], 'company-size/form', [
+	Route::match(['get', 'post'], 'quan-ly-quy-mo-cong-ty/form', [
 		'as' => 'admin.companysize.form', 'uses' => 'Admin\CompanySizeController@companySizeForm'
 	]);
 
@@ -218,13 +218,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.companysize.delete', 'uses' => 'Admin\CompanySizeController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/experience-years/list', [
+	Route::match(['get', 'post'], '/quan-ly-nam-kinh-nghiem/danh-sach', [
 		'as' => 'admin.experienceyears.list', 'uses' => 'Admin\ExperienceYearsController@experienceYearsList'
 	]);
 
-	Route::match(['get', 'post'], 'experience-years/form', [
-		'as' => 'admin.experienceyears.form', 'uses' => 'Admin\ExperienceYearsController@experienceYearsForm'
-	]);
+	// Route::match(['get', 'post'], 'quan-ly-nam-kinh-nghiem/form', [
+	// 	'as' => 'admin.experienceyears.form', 'uses' => 'Admin\ExperienceYearsController@experienceYearsForm'
+	// ]);
 
 	Route::post('/experience-years/delete/{id}', [
 		'as' => 'admin.experienceyears.delete', 'uses' => 'Admin\ExperienceYearsController@delete'
@@ -242,11 +242,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.config.delete', 'uses' => 'Admin\ConfigController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/employment-status/list', [
+	Route::match(['get', 'post'], '/quan-ly-hinh-thuc-cong-viec/danh-sach', [
 		'as' => 'admin.employmentstatus.list', 'uses' => 'Admin\EmploymentStatusController@employmentStatusList'
 	]);
 
-	Route::match(['get', 'post'], 'employment-status/form', [
+	Route::match(['get', 'post'], 'quan-ly-hinh-thuc-cong-viec/form', [
 		'as' => 'admin.employmentstatus.form', 'uses' => 'Admin\EmploymentStatusController@employmentStatusForm'
 	]);
 
@@ -254,11 +254,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.employmentstatus.delete', 'uses' => 'Admin\EmploymentStatusController@delete'
 	]);
 
-	Route::match(['get', 'post'], '/foreign-language/list', [
+	Route::match(['get', 'post'], '/quan-ly-ngoai-ngu/danh-sach', [
 		'as' => 'admin.foreignlanguage.list', 'uses' => 'Admin\ForeignLanguageController@foreignlanguageList'
 	]);
 
-	Route::match(['get', 'post'], 'foreign-language/form', [
+	Route::match(['get', 'post'], 'quan-ly-ngoai-ngu/form', [
 		'as' => 'admin.foreignlanguage.form', 'uses' => 'Admin\ForeignLanguageController@foreignLanguageForm'
 	]);
 
@@ -270,7 +270,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.video', 'uses' => 'Admin\VideoController@manageVideo'
 	]);
 
-	Route::match(['get', 'post'], '/account/change-password', [
+	Route::match(['get', 'post'], '/tai-khoan/thay-doi-mat-khau', [
 		'as' => 'admin.account.changepassword', 'uses' => 'Admin\AccountProfileController@changeAccountPassword'
 	]);
 });

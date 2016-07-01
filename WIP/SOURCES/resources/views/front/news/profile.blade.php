@@ -9,7 +9,13 @@
             <div class="content-write">
                <strong><?php echo "$news->description" ?></strong>
                <?php echo "$news->content" ?>
-               <p>---<br />Download: <a href="{{ $news->link? $news->link : ''}}" target="_blank" title="{{ $news->link }}" rel="nofollow">{{ $news->link? substr($news->link, 0, 50) : ''}}...</a>&nbsp;<br>Mật khẩu: <i> {{ $news->password? $news->password : ''}} </i>&nbsp;</p></p>
+               <p>---<br />  
+                  @if(!empty($new->link))
+                     <p>Download: <a href="{{ $new->link? $new->link : ''}}" target="_blank" title="{{ $new->link }}" rel="nofollow">{{ $new->link? substr($new->link, 0, 50) : ''}}...</a>&nbsp;</p>
+                  @endif
+                  @if(!empty($new->password))
+                     <p>Mật khẩu: <i> {{ $new->password? $new->password : ''}} </i>&nbsp;</p>
+                  @endif
             </div>
             <p>&nbsp;</p>
                   <h3 class="title-right"><span>Bài viết liên quan</span></h3>
