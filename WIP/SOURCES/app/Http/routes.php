@@ -306,6 +306,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
 	Route::get('/', ['as' => 'home', 'uses' => 'Front\HomeController@index']);
 
+	Route::match(['get', 'post'], '/tuyen-dung-thue-ngoai', [
+		'as' => 'pages.outsourcing_package', 'uses' => 'Front\PagesController@outsourcingPackage'
+	]);
+
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);

@@ -34,7 +34,7 @@
 	</div>
 	<div class=" pb_14 pr_14 pl_14">
 		<div>
-			<a class="show_s09_ntv_register btn btn-ntv-dky-tuvan btn-lg w340 fs18 pl_8">
+			<a class="show_s09_ntv_register btn btn-ntv-dky-tuvan btn-lg w340 fs18 pl_8" href="{{route('pages.outsourcing_package')}}" target="_blank">
 				DỊCH VỤ THUÊ NGOÀI TRỌN GÓI
 			</a>
 		</div>
