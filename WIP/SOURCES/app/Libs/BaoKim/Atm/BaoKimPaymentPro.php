@@ -47,7 +47,7 @@ class BaoKimPaymentPro{
 		require_once('constants.php');
 		
 		$base_url = "http://" . $_SERVER['SERVER_NAME'];
-		$url_success = $base_url.'/success';
+		$url_success = $base_url.'/user/atm-success';
 		$url_cancel = $base_url.'/cancel';
 		$order_id = time();
 		$total_amount = str_replace('.','',$data['total_amount']);
