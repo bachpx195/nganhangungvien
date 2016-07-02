@@ -57,21 +57,11 @@
                                 <div class="statistic font16">
                                     LIÊN HỆ ĐỂ ĐƯỢC HỖ TRỢ
                                 </div>
-                                <div>
-                                    <span class="bg-white bold font12 text_blue">Hotline: </span><span class="bg-white text_pink font12 bold">04 6684 7421 - 0943 24 9699</span><br>
-                                    <span class="bg-white bold font12 text_blue">Email: </span><span class="bg-white text_pink font12 bold">nganhangungvienvn@gmail.com</span>
-
-                                    <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-                                    <div id="SkypeButton_Call_thanhlv8888_1">
-                                        <script type="text/javascript">
-                                            Skype.ui({
-                                                "name": "chat",
-                                                "element": "SkypeButton_Call_thanhlv8888_1",
-                                                "participants": ["thanhlv8888"],
-                                                "imageSize": 32
-                                            });
-                                        </script>
-                                    </div>
+                                <div style="margin-bottom: 10px;">
+                                    <span class="bg-white bold font11 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font11 bold">04 6684 7421 - 0943 24 9699</span><br>
+                                    <span class="bg-white bold font11 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </span><span class="bg-white text_pink font11 bold">nganhangungvienvn@gmail.com</span>
+                                    <span class="bg-white bold font11 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype:</span> <span class="bg-white text_pink font11 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
+                                    <br/>
                                 </div>
                             </div>
                             <div class="clearfix"></div>

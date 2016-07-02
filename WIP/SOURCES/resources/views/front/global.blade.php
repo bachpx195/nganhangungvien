@@ -52,6 +52,9 @@
     <link href="{{ asset('/assets/default/css/123doc.top-up.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
 
+    <link rel="stylesheet" href="{{ asset('/assets/default/css/font-awesome.min.css') }}" property='stylesheet'
+          type='text/css' media='all'>
+
     <!-- news css -->
 
     <!-- end news css -->
