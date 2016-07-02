@@ -14,6 +14,9 @@ abstract class Controller extends BaseController {
 	protected function isSuperAdmin(IUserRoleRepo $userRoleRepo) {
 		$currentUser = Auth::user();
 		$role = $userRoleRepo->getRoleByUserId($currentUser->id);
+		if (!isset($role) || !$role) {
+			return false;
+		}
 		if (strcmp($role->code, Constants::ROLE_SUPER) == 0) {
 			return true;
 		}

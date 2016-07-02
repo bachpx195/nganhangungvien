@@ -1,10 +1,12 @@
 <?php namespace App\Model;
 
+use App\Libs\Constants;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\App;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -30,6 +32,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	public function userRole() {
+		return $this->belongsTo('App\Model\UserRole', 'user_id', 'id');
+	}
 	
 	/**
 	 * role
@@ -37,6 +43,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function role() {
 		
 		return $this->belongsTo('App\Role', 'role_id', 'id');
+	}
+
+	public function roles()
+	{
+		return $this->belongsToMany('App\Model\Role', 'user_role', 'user_id', 'role_id');
 	}
 	
 	public function hasRole($roles) {
@@ -72,4 +83,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return false;
 	}
 
+	public function isSuperAdmin()
+	{
+		return $this->roles()->where('code', 'SUPER_ADMIN')->first();
+	}
 }

@@ -42,10 +42,11 @@ class UserRepo implements IUserRepo {
 	/**
 	 * {@inheritDoc}
 	 */
-	function search($params, $pageSize)
+	function search($params, $pageSize, $roleCode)
 	{
 		$query = User::leftJoin('user_role', 'user.id', '=', 'user_role.user_id')
-			->select('user.*');
+			->leftJoin('role', 'user_role.role_id', '=', 'role.id')
+			->select('user.*', 'role.code');
 
 		if (isset($params['user_info']) && $params['user_info']) {
 			$query = $query->where(function ($query) use ($params) {
@@ -58,6 +59,13 @@ class UserRepo implements IUserRepo {
 
 		if (isset($params['user_type']) && $params['user_type']) {
 			$query = $query->where('user.user_type', '=', $params['user_type']);
+		}
+
+		if ($roleCode == Constants::ROLE_ADMIN) {
+			$query = $query->where(function ($query) {
+				$query->whereNull('role.code')
+					->orWhere('role.code', '<>', Constants::ROLE_SUPER);
+			});
 		}
 
 		$query = $query->orderBy('username', 'ASC');

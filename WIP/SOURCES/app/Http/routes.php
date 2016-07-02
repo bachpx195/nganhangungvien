@@ -126,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 
+	/***************** PERMISSION ****************/
 	Route::match(['get'], '/phan-quyen/danh-sach', [
 		'as' => 'admin.permission.list', 'uses' => 'Admin\PermissionController@userRoleList'
 	]);
