@@ -259,6 +259,18 @@ class UserController extends Controller {
 	}
 
 	/**
+	 * Payment by Atm success
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userAtmSuccess(Request $request)
+	{
+		die('Thanh toán thành công');
+		//TODO: increase employer's balance and send mail to employer
+	}
+
+	/**
 	 * Send mail to employer after payment by card
 	 *
 	 * @param $data

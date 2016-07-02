@@ -401,5 +401,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['post'], '/user/pay-atm', [
 		'as' => 'user.pay_atm', 'uses' => 'UserController@userPayByAtm'
 	]);
+	Route::match(['get', 'post'], '/user/atm-success', [
+		'as' => 'user.atm_success', 'uses' => 'UserController@userAtmSuccess'
+	]);
 });
 
