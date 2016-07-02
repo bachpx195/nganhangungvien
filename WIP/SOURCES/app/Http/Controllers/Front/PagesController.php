@@ -24,8 +24,12 @@ class PagesController extends BaseController {
 	 */
 	public function outsourcingPackage()
 	{
-
 		return view('front/pages/outsourcing_package');
+	}
+
+	public function registVip()
+	{
+		return view('front/pages/regist_vip');
 	}
     public function error()
     {

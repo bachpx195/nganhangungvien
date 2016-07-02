@@ -14,7 +14,7 @@ function popupPayment_open(paymentType) {
             $("#loading-excel").remove()
         },
         success: function(t) {
-            $(".boxAddMoney").css("left", e).append(t);
+            $(".boxAddMoney").append(t);
             if(paymentType){
                 showForm_addMoney($('a[data-rel=' + paymentType + ']'));
             }

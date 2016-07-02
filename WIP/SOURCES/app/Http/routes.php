@@ -310,6 +310,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'pages.outsourcing_package', 'uses' => 'Front\PagesController@outsourcingPackage'
 	]);
 
+	Route::match(['get', 'post'], '/dang-ky-tai-khoan-vip', [
+		'as' => 'pages.regist_vip', 'uses' => 'Front\PagesController@registVip'
+	]);
+
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);

@@ -19,7 +19,7 @@
                         <div class="mb8"><div class="line-break02 w232"></div></div>
                         @if(!UserHelper::isVip($currentEmployer))
                         <div class="block-content  ml12 mr14">
-                            <a href="#"class="btn btn-pink btn-lg btn-creat-hs font16" onclick="popupPayment_open('online')">
+                            <a href="{{ route('pages.regist_vip') }}"class="btn btn-pink btn-lg btn-creat-hs font16" {{--onclick="popupPayment_open('online')"--}} target="_blank">
                                 <i class="icon_24 icn_creat_hs"></i> ĐĂNG KÝ VIP
                             </a>
                         </div>

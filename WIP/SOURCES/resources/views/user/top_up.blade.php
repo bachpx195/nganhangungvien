@@ -1,27 +1,13 @@
 <div class="box_AddMoney">
     <h3>Nạp tiền vào tài khoản</h3>
     <a href="javascript:;" onclick="closeBox()">×</a>
-    <!--
-    <div class="boxAddMoney_user">
-        
-        <a target="_blank" href="{{route('user.account')}}">
-            <img src="http://media.store123doc.com:8080/images/default/user_small.png"
-                 alt="{{$employer->username}}" onerror="this.src='{{URL::to('/' . 'assets/default/images/user_small.png')}}'"/></a>
-        <div>
-            <p>{{$employer->username}}</p>
-            <p>{{$employer->email}}</p>
-            <p><a target="_blank" href="{{route('user.transaction')}}">Lịch sử giao dịch</a></p>
-        </div>
-        <p><span>{{$employer->balance}}.000 VNĐ</span></p>
-        <p class="line_space"></p> 
-    </div>
-    -->
+
     <ul class="listOpt">
         @if($employer->vip != 1)
-        <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="icon i_m_mb"></i><span>Thẻ điện thoại</span></a></li>
+        <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
         @endif
-        <li><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="icon i_m_atm"></i><span>Thẻ ATM online</span></a></li>
-        <li><a onclick="showForm_addMoney(this)" data-rel="online" href="javascript:;"><i class="icon i_m_bk"></i><span>Tài khoản VIP</span></a></li>
+        <li><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
+        <li><a data-rel="online" href="{{ route('pages.regist_vip') }}"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
     </ul>
     @if($employer->vip != 1)
     <div class="boxAddMoney_content" id="mobile">
@@ -259,14 +245,14 @@
                                     <span>BACABank - Ngân hàng Bắc Á</span>
                                 </a>
                             </li>
-                            <li  data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="<b>Saigonbank - Ngân hàng Sài Gòn Công Thương</b>.<br>Phí tiện ích thanh toán : 1.760 ₫ +1,1%. <br>Thời gian thanh toán : Ngay lập tức" data-value="97">
+                            <li  data-toggle="tooltip" data-placement="top" data-html="true" data-value="97">
                                 <a href="javascript:;">
                                     <img height="38" width="68" src="https://www.baokim.vn/application/uploads/banks/saigonbank.png" alt="Saigonbank - Ngân hàng Sài Gòn Công Thương"/>
                                     <input type="radio" name="pm_atm" value="97" />
                                     <span>Saigonbank - Ngân hàng Sài Gòn Công Thương</span>
                                 </a>
                             </li>
-                            <li  data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="<b>NaviBank - Ngân hàng Nam Việt</b>.<br>Phí tiện ích thanh toán : 1.760 ₫ +1,1%. <br>Thời gian thanh toán : Ngay lập tức" data-value="106">
+                            <li  data-toggle="tooltip" data-placement="top" data-html="true"  data-value="106">
                                 <a href="javascript:;">
                                     <img height="38" width="68" src="https://www.baokim.vn/application/uploads/banks/navibank.png" alt="NaviBank - Ngân hàng Nam Việt"/>
                                     <input type="radio" name="pm_atm" value="106" />
@@ -278,20 +264,29 @@
                     </div>
                 </div>
 
-                <p><input id="pay-money-atm" type="text" name="pay_money_atm" placeholder="Nhập vào số tiền"/></p>
-                <p style="margin-top: 10px;"><input id="phone_atm" type="text" placeholder="Số điện thoại của bạn" name="payer_phone_no"/></p>
-                <p>Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
-                <p class="appendPay"><a href="javascript:;" onclick="pay_atm();" class="btn btn_submit">Nạp tiền</a></p>
+                <p class="ml_40">
+                    <input id="pay-money-atm" type="text" name="pay_money_atm" placeholder="Nhập vào số tiền"/>
+                    <input id="phone_atm" type="text" placeholder="Số điện thoại của bạn" name="payer_phone_no"/>
+                    <span class="appendPay" style="margin-top: -5px;"><a href="javascript:;" onclick="pay_atm();" class="btn btn_submit">Nạp tiền</a></span>
+                </p>
+                <p class="ml_40">(*) Nạp sai 3 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
+
+                <div>
+                    <div class="row pl_14 pr_14">
+                        <div class="txc">
+                            ------------------------------------
+                            <div class="title">
+                                <span class="bg-white bold text_blue">HÃY LIÊN HỆ ĐỂ ĐƯỢC TRỢ GIÚP</span>
+                            </div>
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421 - 0943 24 9699</span><br />
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold">nganhangungvienvn@gmail.com</span><br/>
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="boxAddMoney_content hidden" id="online">
-        <h3><span>Thông tin tài khoản Vietcombank</span></h3>
-        <p> Chủ tài khoản: NganHangUngVien.</p>
-        <p> Số tài khoản: XXXXXXXXXXXXXXX</p>
-        <p> Ngân hàng: Vietcombank (Ngân hàng ngoại thương Việt nam)</p>
-        <p> Chi nhánh: Hà nội</p>
-        <p> Sau khi thực hiện chuyển khoản vui lòng liên hệ theo email: nganhangungvienvn@gmail.com hoặc HOTLINE: 04 6684 7421 - 0943 24 9699 để được chuyển thành tài khoản VIPs</p>
     </div>
 </div>
 <script type="text/javascript">
