@@ -93,17 +93,18 @@
 				<?php $activeHeaderMenu = isset($activeHeaderMenu) ? $activeHeaderMenu : 'employer'?>
 
 					<div class="main-menu bt_head_cong floatLeft">
+						@if (!Auth::check())
 						<ul class="nopadding nomargin">
 							<li class="pos_relative dang_nhap" style="list-style: none">
 								<a href="javascript:;" data-toggle="tooltip"
 								   data-placement="bottom">
 									<div class="icn_cong_head_ntd mt_20"></div>
-									<div class="title_cong_menu w150">NHÀ TUYỂN DỤNG</div>
+									<div class="title_cong_menu w140">NHÀ TUYỂN DỤNG</div>
 								</a>
 
 								<div class="dang_nhap popup_down">
 									<div class="header-user-info"></div>
-									<div class="user-info w150 bg_white box_shadow">
+									<div class="user-info w140 bg_white box_shadow">
 										<div class="pl_16 pr_16 pt_16 pb_14 bg_white user_box">
 											<a href="javascript:;"
 											   class="member_login btn font16 btn-blue btn-block btn-lg mb_16 pb_9">Đăng
@@ -116,6 +117,13 @@
 								</div>
 							</li>
 						</ul>
+						@else
+							<a href="{{route('user.account')}}" data-toggle="tooltip"
+							   data-placement="bottom">
+								<div class="icn_cong_head_ntd mt_20"></div>
+								<div class="title_cong_menu w140">NHÀ TUYỂN DỤNG</div>
+							</a>
+						@endif
 					</div>
 
 				{{--<a class="bt_head_cong floatLeft {{($activeHeaderMenu == 'employer') ? 'active' : ''}}" href="{{route('employer.register')}}"
@@ -129,11 +137,11 @@
 				   	href="{{route('candidate.form')}}"
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_quanly mt_20"></div>
-					<div class="title_cong_menu w_100">ỨNG VIÊN</div>
+					<div class="title_cong_menu w100">ỨNG VIÊN</div>
 				</a> <a class="bt_head_cong floatLeft {{($activeHeaderMenu == 'news') ? 'active' : ''}} " href="{{ route('news.show') }}"
 					data-toggle="tooltip" data-placement="bottom" title="">
 					<div class="icn_cong_head_chuyenmon mt_20"></div>
-					<div class="title_cong_menu w_100">TÀI LIỆU QUẢN TRỊ</div>
+					<div class="title_cong_menu w140">TÀI LIỆU QUẢN TRỊ</div>
 				</a>
 				@if (!Auth::check())
 				<a href="javascript:;"
