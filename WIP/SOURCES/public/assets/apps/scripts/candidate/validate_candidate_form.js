@@ -34,7 +34,17 @@ $( document ).ready(function() {
         if (validator.validate()) {
             $("#candidate-form").submit();
         }else{
-            $('input.k-invalid:first').focus();
+            $invalidItem = $('.k-invalid:first');
+
+            if ($invalidItem.hasClass('select-style')) {
+                $invalidItem.select2('focus');
+            } else {
+                $invalidItem.focus();
+            }
+
+            $('html, body').animate({
+                scrollTop: $invalidItem.offset().top - 100
+            }, 1000);
         }
     });
 });
