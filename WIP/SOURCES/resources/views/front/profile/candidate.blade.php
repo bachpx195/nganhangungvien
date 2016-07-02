@@ -93,7 +93,7 @@
 		<span class="text_grey2 font12 mt8 mb12"> <span><span class="fwb">Lượt
 					xem:</span> {{$candidate->view_total}}</span> | <span> <span class="fwb">Mã:</span>
 				{{$candidate->candidate_code}}
-		</span> | <span><span class="fwb">Ngày làm mới:</span> {{DateTimeHelper::formatDate($candidate->updated_at)}}</span>
+		</span> | <span><span class="fwb">Ngày làm mới:</span> {{ $candidate->updated_at? date('d/m/Y', strtotime($candidate->updated_at)) : '' }}</span>
 		</span>
 	</div>
 
@@ -355,135 +355,138 @@
 	@if(count($sameData['exp']) > 0 || count($sameData['lvl']) > 0)
 	<div class="box_tab pt_22">
 	   <div role="tabpanel">
-		  <!-- Nav tabs -->
-		  <ul class="nav nav-tabs w_100" role="tablist">
-			 <li role="presentation" class="{{count($sameData['exp']) > 0? 'active': ''}} ml1"><span class="left_tab"></span><a href="#hosocungkinhnghiem" aria-controls="hosocungkinhnghiem" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}} năm kinh nghiệm</a><span class="right_tab"></span></li>
-			 <li role="presentation" class="{{count($sameData['exp']) == 0? 'active': ''}} ml_20"><span class="left_tab"></span><a href="#hosocungcapbac" aria-controls="hosocungcapbac" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng cấp bậc  <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span></a><span class="right_tab"></span></li>
-		  </ul>
-		  <!-- Tab panes -->
-		  <div class="tab-content w_100">
-			 <div role="tabpanel" class="tab-pane {{count($sameData['exp']) > 0? 'active': ''}}" id="hosocungkinhnghiem">
-			 @if(count($sameData['exp']) > 0)
-				<div class="list_item_two bg_white" style="border-bottom: 0px solid">
-					@foreach($sameData['exp'] as $index => $key)
-					<div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
-						<div class="list-items item_link">
-							<span class="title-blockjob-main truncate-ellipsis font14">
-							<a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
-							{{ $key->cv_title }}                     </a>
-							</span>
-							<span class="title-blockjob-sub truncate-ellipsis font14">
-							<a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
-							{{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated_at? DateTimeHelper::formatDate($key->updated_at) : ""}})</span>
-							</a>
-							</span>
-							<div class="s22_list_note_icon">
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
-									<i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-									{{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}
-								</div>
-								</div>
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
-									<i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-									{{ $key->experienceYears ? $key->experienceYears->name: '&nbsp;' }}
-									</div>
-								</div>
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
-									<i class="icon_select_box icon_local_list icon_24 icon-24"></i>
-									@if(count($key->expectAddresses) > 0)
-									@foreach($key->expectAddresses as $index=>$item)
-										{{$item->name}}<span
-										class="text_pink">@if($index < count($key->expectAddresses) - 1),
-										@endif
-									@endforeach
-									@endif
-								</div>
-							</div>
-							</div>
-							<div class="line_list"></div>
-							</div>
-						</div>
-				  @endforeach
-			   </div>
-				<a href="#">
-				   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
-					  <i class="icon_load_more icon_24 icon-24"></i>
-					  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}
-				   </h3>
-				</a>
-			@else
-			<center>
-				<br>
-				<div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
-				</br>
-			</center>
-			@endif
-			 </div>
-
-			 <div role="tabpanel" class="{{count($sameData['exp']) == 0? 'active': ''}} tab-pane" id="hosocungcapbac">
-			 @if(count($sameData['lvl']) > 0)
-				<div class="list_item_two bg_white" style="border-bottom: 0px solid">
-					@foreach($sameData['lvl'] as $index => $key)
-					<div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
-						<div class="list-items item_link">
-							<span class="title-blockjob-main truncate-ellipsis font14">
-							<a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
-							{{ $key->cv_title }}                     </a>
-							</span>
-							<span class="title-blockjob-sub truncate-ellipsis font14">
-							<a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
-							{{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated_at ? DateTimeHelper::formatDate($key->updated_at) :""}})</span>
-							</a>
-							</span>
-							<div class="s22_list_note_icon">
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
-									<i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-									{{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}
-								</div>
-								</div>
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
-									<i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-									{{ $key->experienceYears ? $key->experienceYears->name:'&nbsp;'}}
-									</div>
-								</div>
-								<div class="w_33 floatLeft">
-									<div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
-									<i class="icon_select_box icon_local_list icon_24 icon-24"></i>
-									@if(count($key->expectAddresses) > 0)
-									@foreach($key->expectAddresses as $index=>$item)
-										{{$item->name}}<span
-										class="text_pink">@if($index < count($key->expectAddresses) - 1),
-										@endif
-									@endforeach
-									@endif
-								</div>
-							</div>
-							</div>
-							<div class="line_list"></div>
-							</div>
-						</div>
-				  @endforeach
-			   </div>
-				<a href="#">
-				   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
-					  <i class="icon_load_more icon_24 icon-24"></i>
-					  Xem thêm Hồ sơ tìm việc cùng cấp bậc <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span>
-				   </h3>
-				</a>
-			@else
-			<center>
-				<br>
-				<div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
-				</br>
-			</center>
-			@endif
-			 </div>
-		  </div>
+	      <!-- Nav tabs -->
+	      <ul class="nav nav-tabs w_100" role="tablist">
+	         <li role="presentation" class="{{count($sameData['exp']) > 0? 'active': ''}} ml1"><span class="left_tab"></span><a href="#hosocungkinhnghiem" aria-controls="hosocungkinhnghiem" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}} năm kinh nghiệm</a><span class="right_tab"></span></li>
+	         <li role="presentation" class="{{count($sameData['exp']) == 0? 'active': ''}} ml_20"><span class="left_tab"></span><a href="#hosocungcapbac" aria-controls="hosocungcapbac" role="tab" data-toggle="tab" class="bold font16 uppercase m0">Hồ sơ cùng cấp bậc  <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span></a><span class="right_tab"></span></li>
+	      </ul>
+	      <!-- Tab panes -->
+	      <div class="tab-content w_100">
+	         <div role="tabpanel" class="tab-pane {{count($sameData['exp']) > 0? 'active': ''}}" id="hosocungkinhnghiem">
+	            @if(count($sameData['exp']) > 0)
+	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;">
+	               @foreach($sameData['exp'] as $index => $key)
+	               <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
+	                  <div class="list-items item_link">
+	                     <span class="title-blockjob-main truncate-ellipsis font14">
+	                     <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
+	                     {{ $key->cv_title }}                     </a>
+	                     </span>
+	                     <span class="title-blockjob-sub truncate-ellipsis font14">
+	                     <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
+	                     {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated_at? date('d/m/Y', strtotime($key->updated_at)) : ""}})</span>
+	                     </a>
+	                     </span>
+	                     <div class="s22_list_note_icon">
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
+	                              {{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}
+	                           </div>
+	                        </div>
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_time_list icon_24 icon-24" ></i>
+	                              {{ $key->experienceYears ? $key->experienceYears->name: '&nbsp;' }}
+	                           </div>
+	                        </div>
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
+	                              @if(count($key->expectAddresses) > 0)
+	                              @foreach($key->expectAddresses as $index=>$item)
+	                              {{$item->name}}<span
+	                                 class="text_pink">@if($index < count($key->expectAddresses) - 1),
+	                              @endif
+	                              @endforeach
+	                              @endif
+	                           </div>
+	                        </div>
+	                     </div>
+	                     @if($index != (count($sameData['exp']) -1) && $index != (count($sameData['exp']) -2) && count($sameData['exp']) != 1 )
+	                     <div class="line_list"></div>
+	                     @endif
+	                  </div>
+	               </div>
+	               @endforeach
+	            </div>
+	            <a href="{{CandidateHelper::uriByCate($candidate->experienceYears->id, $candidate->experienceYears->name, 'e')}}">
+	               <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
+	                  <i class="icon_load_more icon_24 icon-24"></i>
+	                  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}
+	               </h3>
+	            </a>
+	            @else
+	            <center>
+	               <br>
+	               <div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
+	               </br>
+	            </center>
+	            @endif
+	         </div>
+	         <div role="tabpanel" class="{{count($sameData['exp']) == 0? 'active': ''}} tab-pane" id="hosocungcapbac">
+	            @if(count($sameData['lvl']) > 0)
+	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;"">
+	               @foreach($sameData['lvl'] as $index => $key)
+	               <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
+	                  <div class="list-items item_link">
+	                     <span class="title-blockjob-main truncate-ellipsis font14">
+	                     <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel1 text_grey2 ">
+	                     {{ $key->cv_title }}                     </a>
+	                     </span>
+	                     <span class="title-blockjob-sub truncate-ellipsis font14">
+	                     <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
+	                     {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated_at? date('d/m/Y', strtotime($key->updated_at)) : ""}})</span>
+	                     </a>
+	                     </span>
+	                     <div class="s22_list_note_icon">
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
+	                              {{ $key->expectSalary ? $key->expectSalary->name : '&nbsp;' }}
+	                           </div>
+	                        </div>
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_time_list icon_24 icon-24"></i>
+	                              {{ $key->experienceYears ? $key->experienceYears->name:'&nbsp;'}}
+	                           </div>
+	                        </div>
+	                        <div class="w_33 floatLeft">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                              <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
+	                              @if(count($key->expectAddresses) > 0)
+	                              @foreach($key->expectAddresses as $index=>$item)
+	                              {{$item->name}}<span
+	                                 class="text_pink">@if($index < count($key->expectAddresses) - 1),
+	                              @endif
+	                              @endforeach
+	                              @endif
+	                           </div>
+	                        </div>
+	                     </div>
+	                     @if($index != (count($sameData['lvl']) -1) && $index != (count($sameData['lvl']) -2) && count($sameData['lvl']) != 1 )
+	                     <div class="line_list"></div>
+	                     @endif
+	                  </div>
+	               </div>
+	               @endforeach
+	            </div>
+	            <a href="{{CandidateHelper::uriByCate($candidate->currentRank->id, $candidate->currentRank->name, 'r')}}">
+	               <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
+	                  <i class="icon_load_more icon_24 icon-24"></i>
+	                  Xem thêm Hồ sơ tìm việc cùng cấp bậc <span>{{$candidate->current_rank ? $candidate->currentRank->name : ''}}</span>
+	               </h3>
+	            </a>
+	            @else
+	            <center>
+	               <br>
+	               <div class="link_box_panel2 text_grey">Không tìm thấy hồ sơ phù hợp.</div>
+	               </br>
+	            </center>
+	            @endif
+	         </div>
+	      </div>
 	   </div>
 	</div>
 	@endif

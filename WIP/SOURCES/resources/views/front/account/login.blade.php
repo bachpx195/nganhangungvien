@@ -137,12 +137,15 @@
                         $("#mess-defaut").addClass('display_none');
 
                         $("#sent").addClass('display_none');
+                        $("#msg_success").addClass('display_none');
                         // dong popup sau 3 giay
                         console.log('true');
                     } else {
                         $('[id^="error_"]').text('');
                         $('#msg_success').text(data.message);
                         $("#msg_success").removeClass('display_none');
+                        $(".senting").addClass('display_none');
+                        $(".sent").removeClass('display_none');
                         console.log('false');
 
                     }

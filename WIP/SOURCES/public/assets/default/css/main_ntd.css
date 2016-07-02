@@ -1628,7 +1628,7 @@ select.select-style {
     font-size: 14px !important;
     color: #757575 !important;
     padding-left: 0px!important;
-    padding-top: 0px !important;
+    /*padding-top: 0px !important;*/
 }
 .city_select .filter_box .select2-container .select2-choice .select2-arrow b {
     background: url(../images/sprites_24_NTD.png) no-repeat scroll left center transparent;
