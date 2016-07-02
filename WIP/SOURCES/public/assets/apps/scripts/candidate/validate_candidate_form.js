@@ -33,6 +33,8 @@ $( document ).ready(function() {
     $("#register-candidate-btn").click(function () {
         if (validator.validate()) {
             $("#candidate-form").submit();
+        }else{
+            $('input.k-invalid:first').focus();
         }
     });
 });
