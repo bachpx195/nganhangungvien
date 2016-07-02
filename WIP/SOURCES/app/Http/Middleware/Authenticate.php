@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate {
 
@@ -42,6 +43,11 @@ class Authenticate {
 			{
 				return redirect()->guest('admin/login');
 			}
+		}
+
+		$user = Auth::user();
+		if($user->user_type != 'admin'){
+			return redirect('');
 		}
 
 		return $next($request);
