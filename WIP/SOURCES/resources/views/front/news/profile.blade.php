@@ -1,7 +1,11 @@
 @extends('front/global')
 @section('content')
-    <div class="content_dangky bg_white mt16 box_shadow">
-        <div class="sub-content">
+    @if (Auth::check() && Auth::user()->user_type == 'employer')
+        <div style="padding-left:232px;" class="content_dangky mt16" >
+            @else
+                <div class="content_dangky  mt16" >
+                    @endif
+        <div class="sub-content bg_white">
             <div class="container">
 
                 <div class="wrapper-content">
