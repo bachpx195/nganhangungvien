@@ -65,7 +65,7 @@
             @endif
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn green uppercase">Login</button>
+            <button type="submit" class="btn green uppercase">Đăng nhập</button>
         </div>
     </form>
     <!-- END LOGIN FORM -->

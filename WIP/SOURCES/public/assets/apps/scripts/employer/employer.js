@@ -197,8 +197,8 @@ $(document).ready(function () {
             triggerActions();
         },
         columns: [{
-            title: "",
-            width: "65px",
+            title: "Thao tác",
+            width: "130px",
             template: function (item) {
                 return '<a href="/admin/employer/detail?id=' + item.id + '" >'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
@@ -206,21 +206,23 @@ $(document).ready(function () {
                     + ' <a class="change-status" data-id="' + item.id + '" '
                     + 'data-status="' + item.status + '" '
                     + 'data-url="/admin/employer/status/' + item.id + '">'
-                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i> Khóa' : '<i class="fa fa-check-circle-o"></i> Kích hoạt') + '</button></a>';
             }
         }, {
             field: "vip",
             title: "VIP",
-            width: "30px",
+            width: "100px",
             template: function (item) {
                 if (item.roleCode != 'SUPER_ADMIN') {
                     return '<a class="icheck">'
-                        + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                        + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-level-up font-red"></i>' : '<i class="fa fa-level-down"></i>') + '</button></a> '
+                        + (item.vip == 0 ? 'Thường' : '<span class="font-red-mint">VIP</span>');
                 }
                 return '<a class="icheck set-vip"'
                     + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
                     + 'data-url="/admin/employer/set-vip/' + item.id + '">'
-                    + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                    + '<button type="button" class="btn btn-icon-toggle">' + (item.vip == 0 ? '<i class="fa fa-level-up font-red"></i>' : '<i class="fa fa-level-down"></i>') + '</button></a> '
+                    + (item.vip == 0 ? 'Thường' : '<span class="font-red-mint">VIP</span>');
                 /*return '<input type="checkbox" class="icheck set-vip" '
                     + (item.vip !== undefined && item.vip == 1 ? 'checked ' : ' ')
                     + 'data-id="' + item.id + '" data-vip="' + (item.vip || 0) + '" '
@@ -229,7 +231,10 @@ $(document).ready(function () {
         }, {
             field: "expire_vip",
             title: "Hết hạn VIP",
-            width: "80px"
+            width: "80px",
+            template: function (item) {
+                return item.expire_vip ? kendo.toString(new Date(item.expire_vip), "dd/MM/yyyy") : '';
+            }
         }, {
             field: "company_name",
             title: "Công ty",
@@ -255,7 +260,7 @@ $(document).ready(function () {
             title: "Kích hoạt",
             width: "70px",
             template: function (item) {
-                return item.status == 1 ? "Kích hoạt" : "Chưa"
+                return item.status == 1 ? "Kích hoạt" : "Chưa";
             }
         }]
     });
