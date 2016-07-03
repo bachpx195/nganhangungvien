@@ -1,4 +1,4 @@
-<div id="experience-template" style="display: none;">
+<script id="experience-template" type="x-tmpl-mustache">
     <div class="experience-skill-item">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -70,12 +70,12 @@
 
             <div class="clearfix"></div>
             <div class="form-group mt_16">
-                <label for="expect_salary"
+                <label for="experience_salary_@{{index}}"
                        class="control-label-info bold txt-ghi fs14 w180">
                     Mức lương <span class="colorRed">*</span>
                 </label>
 
-                <div class="fr-input-wd333 select_style31 city_select">
+                <div class="fr_ip_vtmm col-xs-8 city_select">
                     <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                         <select id="experience_salary" name="experience_salary_@{{index}}"
                                 data-disS="1"
@@ -94,7 +94,7 @@
             <div class="clearfix"></div>
 
             <div class="form-group mt_16">
-                <label class="control-label-checkbox bold txt-ghi fs14 w180">
+                <label for="experience_description_@{{index}}" class="control-label-checkbox bold txt-ghi fs14 w180">
                     Mô tả công việc <span class="colorRed">*</span>
                 </label>
                 <div class="fr_ip_vtmm col-xs-8">
@@ -116,4 +116,4 @@
             </div>
         </div>
     </div>
-</div>
+</script>

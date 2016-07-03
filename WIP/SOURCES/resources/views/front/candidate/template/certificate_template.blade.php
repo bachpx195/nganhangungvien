@@ -1,4 +1,4 @@
-<div id="certificate-template" style="display: none;">
+<script id="certificate-template" type="x-tmpl-mustache">
     <div class="certificate-item">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -138,4 +138,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-</div>
+</script>

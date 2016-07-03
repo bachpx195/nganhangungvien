@@ -105,7 +105,7 @@
             var divIndex = $(this).data('index');
             var countId = $(this).data('countId');
             var count = $('.' + formClass).length;
-            if (count == 2) {
+            if (count == 1) {
                 resetForm(formClass);
                 $('#' + countId).val(count);
             } else {

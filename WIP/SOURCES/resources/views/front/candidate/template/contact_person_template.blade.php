@@ -1,4 +1,4 @@
-<div id="contact-person-template" style="display: none;">
+<script id="contact-person-template" type="x-tmpl-mustache">
     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -56,4 +56,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-</div>
+</script>
