@@ -39,6 +39,10 @@
                                                title="{{ $new->title? $new->title : ''}}"
                                                target="_blank">{{ $new->title? $new->title : ''}}</a>
                                         </div>
+
+                                         @if (count($otherNews)-1 == $index)
+                                             </div>
+                                         @endif
                                     @else
                                         <div class="col-md-6">
                                             <a class="mr_10" href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}"
