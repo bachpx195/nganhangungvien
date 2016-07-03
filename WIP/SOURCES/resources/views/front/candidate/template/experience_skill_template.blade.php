@@ -94,11 +94,11 @@
             <div class="clearfix"></div>
 
             <div class="form-group mt_16">
-                <label for="experience_description_@{{index}}" class="control-label-checkbox bold txt-ghi fs14 w180">
+                <label for="experience_description" class="control-label-checkbox bold txt-ghi fs14 w180">
                     Mô tả công việc <span class="colorRed">*</span>
                 </label>
                 <div class="fr_ip_vtmm col-xs-8">
-                <textarea name="experience_description"
+                <textarea name="experience_description_@{{index}}"
                           class="form-control pt4 pb4 pl_10 pr_10 inputTextAreaKNEdit required"
                           id="experience_description_@{{index}}" rows="5"></textarea>
                 </div>
@@ -111,7 +111,7 @@
             <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
             {{--<div class="fr_ip_vtmm col-xs-8">--}}
             <div class="remove-addition-info-form"
-                 data-class="experience-skill-item" data-index="1" data-countId="experience-count">
+                 data-class="experience-skill-item" data-index="1" data-count-id="experience-count">
                 <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
             </div>
         </div>

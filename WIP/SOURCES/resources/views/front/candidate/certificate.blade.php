@@ -137,7 +137,7 @@
                                     <div class="form-group">
                                         <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
                                         <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
-                                             data-class="certificate-item" data-index="1" data-countId="certificate-count">
+                                             data-class="certificate-item" data-index="1" data-count-id="certificate-count">
                                             <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
                                         </div>
                                     </div>

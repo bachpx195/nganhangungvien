@@ -531,12 +531,16 @@ class CandidateController extends Controller
                 $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
 
                 $dayIns = explode("-", $experiences[$i]->day_in);
-                $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
-                $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+                if (count($dayIns) >= 2) {
+                    $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
+                    $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+                }
 
                 $dayOuts = explode("-", $experiences[$i]->day_out);
-                $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
-                $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+                if (count($dayOuts) >= 2) {
+                    $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
+                    $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+                }
             }
 
             $candidate['experience_count'] = count($experiences);
