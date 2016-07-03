@@ -8,9 +8,11 @@ class CandidateSeeder extends Seeder {
 	public function run() 
 	{
 		DB::table('candidate')->delete();
-		
+
+		//Chỉ xóa, ko insert vì dữ liệu ko đủ
+
 		// Manager
-		Candidate::insert([
+		/*Candidate::insert([
 			'Full_name' => 'Liêu Anh Khoa',
 			'updated_at' => '11/05/2016',
 			'Expect_salary' => '1',
@@ -143,7 +145,7 @@ class CandidateSeeder extends Seeder {
 			'Expect_salary' => '4',
 			'email' => '19@mail.com',
 			'Experience_years' => '2',
-		]);
+		]);*/
 	}
 	
 }
