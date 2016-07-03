@@ -47,4 +47,11 @@ $( document ).ready(function() {
             }, 1000);
         }
     });
+
+    $('.select-style').on('change', function(){
+        var val = $(this).val();
+        if (val) {
+            $(this).closest('div').find('.k-invalid-msg').hide();
+        }
+    });
 });

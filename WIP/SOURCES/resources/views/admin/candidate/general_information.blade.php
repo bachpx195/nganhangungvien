@@ -172,6 +172,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Ngành nghề <span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 3 ngành nghề)</span>
                             </label>
                             <div class="col-md-10">
                                 <div class="">
@@ -208,6 +209,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Tỉnh thành mong muốn<span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
                             <div class="col-sm-10">
                                 <div class="">
