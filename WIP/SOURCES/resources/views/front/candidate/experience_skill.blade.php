@@ -27,6 +27,7 @@
                 <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
 
                 @for ($i = 1; $i <= $experienceCount; $i++)
+                    <input type="hidden" name="experience_num" id="experience_num" value="{{$i}}">
                     <div class="experience-skill-item">
                         <!-- tên company_name -->
                         <div class="form-group">
@@ -81,18 +82,26 @@
                                     </select>
                                 </div>
                                 <span class="txt-color-757575 fs14 italic pl_16 pr12 floatLeft lbl_from_bangcap">đến</span>
-                                <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
+                                <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none" id="current_job_{{$i}}">
                                     Hiện tại</p>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10" id="date_out1_{{$i}}" style="margin-bottom: 10px;">
                                     <select name="experience_day_out_month_{{$i}}" class="select-style w60" data-disS="1">
                                         @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" id ="date_out2_{{$i}}"" style="margin-bottom: 10px;">
                                     <select name="experience_day_out_year_{{$i}}" class="select-style w60" data-disS="1">
                                         @include('front.common.year_options',
                                         array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                                     </select>
+                                </div>
+                                <div class="form-group clearfix mt_8">
+                                    <div class="box-cvht" style="margin-left: 250px;">
+                                        <div class="demo-list">
+                                            <input tabindex="1" type="checkbox" name="experience_is_current_job_{{$i}}" id="experience_is_current_job"  value="1" >
+                                            <label for="cvht_{{$i}}" class="font14 fwn">Công việc hiện tại</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="error_c_thoigian"
                                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>

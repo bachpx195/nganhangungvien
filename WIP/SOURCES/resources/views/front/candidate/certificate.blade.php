@@ -74,8 +74,8 @@
                                                 </select>
                                             </div>
                                             <span class="txt-color-757575 fs14 italic pl_16 pr12 floatLeft lbl_from_bangcap">đến</span>
-                                            <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
-                                                Hiện tại</p>
+<!--                                             <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
+                                                Hiện tại</p> -->
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
                                                 <select name="ended_at_month_{{$i}}" class="select-style w60" data-disS="1">
                                                     @include('front.common.month_options',

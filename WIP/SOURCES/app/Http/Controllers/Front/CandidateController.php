@@ -600,11 +600,15 @@ class CandidateController extends Controller {
             $experience->day_in = $dayIn;
         }
 
+
         if (!empty($input['experience_day_out_month_' . $index]) && !empty($input['experience_day_out_year_' . $index])) {
             $dayOutMonth = $input['experience_day_out_month_' . $index];
             $dayOutYear = $input['experience_day_out_year_' . $index];
             $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
             $experience->day_out = $dayOut;
+            $experience->isCurrentJob = '0';
+        }else{
+            $experience->isCurrentJob = '1';
         }
 
         $experience->description = $input['experience_description_' . $index];

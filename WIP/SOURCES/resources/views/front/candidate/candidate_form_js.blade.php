@@ -99,5 +99,28 @@
                 $('#address-error').not('.display_none').html('').addClass('display_none');
             }
         });
+
+        $(document).on('ifChecked ifUnchecked', '#experience_is_current_job', function (event) {
+            console.log('experience_is_current_job');
+            var i = document.getElementById('experience_num').value;
+            var current_job = '#current_job_' + i;
+            var date_out1 = '#date_out1_' + i;
+            var date_out2 = '#date_out2_' +i;
+            console.log(current_job);
+            console.log(date_out1);
+            console.log(date_out2);
+           if (event.type == 'ifChecked') {
+               console.log('check');
+                $(current_job).removeClass('display_none');
+                $(date_out1).addClass('display_none');
+                $(date_out2).addClass('display_none');
+
+            }  else {
+                console.log('uncheck');
+                $(current_job).addClass('display_none');
+                $(date_out1).removeClass('display_none');
+                $(date_out2).removeClass('display_none');
+            }
+        });
     });
 </script>

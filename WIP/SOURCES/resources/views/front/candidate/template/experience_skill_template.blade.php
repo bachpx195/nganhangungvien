@@ -4,7 +4,7 @@
             <div class="ln_hr_head"></div>
         </div>
         <!-- tên company_name -->
-        <div class="form-group mt16">
+        <div class="form-group">
             <label for="experience_company_name"
                    class="control-label-info bold txt-ghi fs14 w180">Tên
                 Công ty/Tổ chức <span
@@ -34,7 +34,7 @@
         <div class="clearfix"></div>
 
         <!-- input birthday -->
-        <div class="form-group mt_16">
+        <div class="form-group">
             <label for="address"
                    class="control-label-info bold txt-ghi fs14 w180">Thời
                 gian làm việc <span
@@ -52,17 +52,25 @@
                     </select>
                 </div>
                 <span class="txt-color-757575 fs14 italic pl_16 pr12 floatLeft lbl_from_bangcap">đến</span>
-                <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
+                <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none" id="current_job_@{{index}}">
                     Hiện tại</p>
-                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10" id="date_out1_@{{index}}" style="margin-bottom: 10px;">
                     <select name="day_out_month_@{{index}}" class="w128">
                         @include('front.common.month_options'))
                     </select>
                 </div>
-                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" style="margin-bottom: 10px;" id="date_out2_@{{index}}">
                     <select name="day_out_year_@{{index}}" class="w128">
                         @include('front.common.year_options'))
                     </select>
+                </div>
+                <div class="form-group clearfix mt_8">
+                    <div class="box-cvht" style="margin-left: 390px;">
+                        <div class="demo-list">
+                            <input tabindex="1" type="checkbox" name="experience_is_current_job_@{{index}}" id="experience_is_current_job_@{{index}}"  value="1" >
+                            <label for="cvht_@{{index}}" class="font14 fwn">Công việc hiện tại</label>
+                        </div>
+                    </div>
                 </div>
                 <div id="error_c_thoigian"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
