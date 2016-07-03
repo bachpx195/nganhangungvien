@@ -102,6 +102,19 @@
                             <p><i class="fa fa-phone"></i> {{ $employer->contact_phone }} </p>
                         </div>
                     </div>
+                    <div class="portlet box purple">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>Thông tin tài khoản </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <p><b>Tài khoản: </b> {{ number_format($employer->balance) }} VNĐ</p>
+                            <p><b>Loại tài khoản: </b> {{ $employer->vipState == 1 ? 'Tài khoản VIP' : 'Tài khoản thường' }} </p>
+                        </div>
+                    </div>
                 </div>
                 <!--end col-md-4-->
             </div>

@@ -75,8 +75,10 @@ class EmployerController extends Controller
             if (!$employer) {
                 abort(404, 'Not found employer');
             }
+            $vipState = $this->getVipState($employer);
             return view('admin.employer.employer_detail')
                 ->with('employer', $employer)
+                ->with('vipState', $vipState)
                 ->with('activeMenu', $activeMenu)
                 ->with('pageTitle', Constants::EMPLOYER_DETAIL);
         }
