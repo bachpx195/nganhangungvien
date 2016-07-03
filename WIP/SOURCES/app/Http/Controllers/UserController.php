@@ -215,7 +215,7 @@ class UserController extends Controller {
 			Session::put('paymentStatus', $paymentStatus);
 
 			if($request->ajax()){
-				return array('success' => $paymentStatus, 'employer' => $employer);
+				return array('success' => $paymentStatus, 'employer' => $employer, 'error' => $r['err']);
 			} else {
 				return redirect(route('user.pay'));
 			}
