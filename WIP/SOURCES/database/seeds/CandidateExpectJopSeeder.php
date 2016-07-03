@@ -7,9 +7,9 @@ class CandidateExpectJopSeeder extends Seeder {
 	
 	public function run() 
 	{
-		DB::table('candidate_expect_job')->delete();
+		DB::table('candidate_expect_job')->truncate();
 		
-		// Manager
+		/*// Manager
 		CandidateExpectJob::insert([
 			'candidate_id' => '3',
 			'job_id' => '391',
@@ -94,7 +94,7 @@ class CandidateExpectJopSeeder extends Seeder {
 		CandidateExpectJob::insert([
 			'candidate_id' => '22',
 			'job_id' => '411',
-		]);
+		]);*/
 	}
 	
 }

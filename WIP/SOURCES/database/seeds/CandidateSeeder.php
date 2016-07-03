@@ -7,7 +7,7 @@ class CandidateSeeder extends Seeder {
 	
 	public function run() 
 	{
-		DB::table('candidate')->delete();
+		DB::table('candidate')->truncate();
 
 		//Chỉ xóa, ko insert vì dữ liệu ko đủ
 

@@ -9,7 +9,7 @@ class TransactionSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('transaction')->delete();
+        DB::table('transaction')->truncate();
 
         $candidates = Candidate::all();
 
