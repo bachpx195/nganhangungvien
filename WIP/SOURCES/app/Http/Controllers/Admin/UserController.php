@@ -143,7 +143,7 @@ class UserController extends Controller
                 $user = User::find($id);
                 $updateRole = $this->userRoleRepo->getRoleByUserId($user->id);
                 if (isset($updateRole) && $updateRole &&
-                    $currentRole->code == Constants::ROLE_ADMIN &&
+                    $currentRole == Constants::ROLE_ADMIN &&
                     ($updateRole->code == Constants::ROLE_ADMIN || $updateRole->code == Constants::ROLE_SUPER)
                 ) {
                     return;
