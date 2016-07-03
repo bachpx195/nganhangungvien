@@ -1,4 +1,4 @@
-<div id="experience-template" style="display: none;">
+<script id="experience-template" type="x-tmpl-mustache">
     <div class="experience-skill-item">
         <div class="form-group ">
             <div class="ln_hr_head"></div>
@@ -95,8 +95,15 @@
                           id="experience_description" rows="5"></textarea>
             </div>
             <div id="error_c_mo_ta_cong_viec"
-                 class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                 class="clearfix error_reg_mess fs14 italic invalid-msg display_none"></div>
         </div>
-        <div class="clearfix"></div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> &nbsp; </label>
+            <div class="remove-addition-info-form col-sm-10"
+                 data-class="experience-skill-item" data-index="1" data-count-id="experience-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
+            </div>
+        </div>
     </div>
-</div>
+</script>

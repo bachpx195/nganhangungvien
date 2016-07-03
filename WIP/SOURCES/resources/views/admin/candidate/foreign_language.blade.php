@@ -19,7 +19,7 @@
         @for ($i = 1; $i <= $languageCount; $i++)
             <input type="hidden" name="foreign_language_id_{{$i}}"
                    value="{{isset($candidate['foreign_language_id_' . $i]) ? $candidate['foreign_language_id_' . $i] : ''}}">
-            <div class="form-horizontal">
+            <div class="language-item">
                 <!-- input Ngoại ngữ -->
                 <div class="form-group" id="div_slt_ngoaingu">
                     <label for="language_id_{{$i}}"
@@ -101,6 +101,13 @@
                                     'radioName' => 'write_' . $i
                                     ))
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> &nbsp; </label>
+                    <div class="col-sm-10 remove-addition-info-form"
+                         data-class="language-item" data-index="1" data-count-id="language-count">
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGOẠI NGỮ</a>
                     </div>
                 </div>
             </div>

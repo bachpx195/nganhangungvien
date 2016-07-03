@@ -18,7 +18,7 @@
                 <?php $contactPersonCount = isset($candidate['contact_person_count']) ? $candidate['contact_person_count'] : 1;?>
                 <input type="hidden" name="contact_person_count" id="contact-person-count" value="{{$contactPersonCount}}">
                 @for ($i = 1; $i <= $contactPersonCount; $i++)
-                    <input type="hidden" name="contact_person_id_{{$i}}" value="{{isset($candidate['contact_person_id_' . $i]) ? $candidate['contact_person_id_' . $i] : ''}}">
+                        <input type="hidden" name="contact_person_id_{{$i}}" value="{{isset($candidate['contact_person_id_' . $i]) ? $candidate['contact_person_id_' . $i] : ''}}">
                     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
                         <div class="form-group">
                             <label for="contact_person_full_name_{{$i}}" class="col-sm-2 control-label">
@@ -45,7 +45,6 @@
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                         </div>
 
-
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Số điện thoại <span class="colorRed">*</span>
@@ -68,6 +67,13 @@
                                       value="{{isset($candidate['contact_person_office_' . $i]) ? $candidate['contact_person_office_' . $i] : ''}}"/>
                             </div>
                             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> &nbsp; </label>
+                            <div class="col-sm-10 remove-addition-info-form"
+                                 data-class="addformthamkhao" data-index="1" data-count-id="contact-person-count">
+                                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGƯỜI THAM KHẢO</a>
+                            </div>
                         </div>
                     </div>
                 @endfor

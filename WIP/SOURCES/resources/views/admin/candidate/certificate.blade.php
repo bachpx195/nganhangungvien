@@ -14,13 +14,14 @@
     </div>
 
     <div id="certificate-list" class="row">
-        <div class="form-group "> </div>
+        <div class="form-group "></div>
         <?php $certificateCount = isset($candidate['certificate_count']) ? $candidate['certificate_count'] : 1;?>
         <input type="hidden" name="certificate_count" id="certificate-count" value="{{$certificateCount}}">
         @for ($i = 1; $i <= $certificateCount; $i++)
-                <!-- input Tên Bằng cấp/Chứng chỉ -->
+            <input type="hidden" name="certificate_id_{{$i}}"
+                   value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
+        <!-- input Tên Bằng cấp/Chứng chỉ -->
             <div class="certificate-item">
-                <input type="hidden" name="certificate_id_{{$i}}" value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
                 <div class="form-group ">
                     <label for="certificate_name_{{$i}}"
                            class="col-sm-2 control-label">
@@ -121,28 +122,14 @@
                     </div>
                     <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                 </div>
-                <!-- input logo_company -->
-                <!-- TODO:
-                <div class="form-group ">
-                    <label class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <div class="display_block btn-big plr6 pos_relactive w208 floatLeft">
-                            <input type="file" name="certificate_image_{{$i}}"
-                                   id="dinhkembangcap"
-                                   class="bt_input pos_absolute"
-                                   onchange="fileOnchange2(this)">
-                            <span class='icon_upload_file'></span>Tải
-                            ảnh bằng cấp (nếu có)
-                        </div>
-                        <span id="note_select_file_certificate_image_{{$i}}" class="select_file_note floatLeft txt-color-363636">(Bạn chưa chọn file nào)</span>
-                        <div class="note_size_photo clearfix font12 italic">
-                            (Dạng file ảnh .jpg, .gif, .png, dung
-                            lượng <=300KB)
-                        </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> &nbsp; </label>
+                    <div class="col-sm-10 remove-addition-info-form"
+                         data-class="certificate-item" data-index="1" data-count-id="certificate-count">
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
                     </div>
                 </div>
-                -->
-                <div class="clearfix"></div>
             </div>
         @endfor
     </div>

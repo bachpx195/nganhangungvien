@@ -1,4 +1,4 @@
-<div id="certificate-template" style="display: none;">
+<script id="certificate-template" type="x-tmpl-mustache">
     <div class="certificate-item">
         <div class="form-group ">
             <div class="ln_hr_head"></div>
@@ -96,27 +96,12 @@
             </div>
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-        <!-- input logo_company -->
-        <!-- TODO:
-        <div class="form-group ">
-            <label class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <div class="display_block btn-big plr6 pos_relactive w208 floatLeft">
-                    <input type="file" name="certificate_image_@{{index}}"
-                           id="dinhkembangcap"
-                           class="bt_input pos_absolute"
-                           onchange="fileOnchange2(this)">
-                    <span class='icon_upload_file'></span>Tải
-                    ảnh bằng cấp (nếu có)
-                </div>
-                <span id="note_select_file_certificate_image_@{{index}}" class="select_file_note floatLeft txt-color-363636">(Bạn chưa chọn file nào)</span>
-                <div class="note_size_photo clearfix font12 italic">
-                    (Dạng file ảnh .jpg, .gif, .png, dung
-                    lượng <=300KB)
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> &nbsp; </label>
+            <div class="col-sm-10 remove-addition-info-form"
+                 data-class="certificate-item" data-index="1" data-count-id="certificate-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
             </div>
         </div>
-        -->
-        <div class="clearfix"></div>
     </div>
-</div>
+</script>
