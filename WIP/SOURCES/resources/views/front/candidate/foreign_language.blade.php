@@ -4,7 +4,6 @@
            href="#coll_nn" class="accordion">
             <span class="uppercase bold text-tim-nhat">NGOẠI NGỮ</span>
             <span class="required_l_n">(không bắt buộc)</span>
-            <span class="required_r"><i class="icn-main-menu icn-arr-down"></i></span>
         </a>
     </div>
     <div class="clearfix"></div>

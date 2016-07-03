@@ -88,9 +88,9 @@
             var items = $('.address-list').find('.breaking-news').length;
 
             if (items <= 0) {
-                $('.job-list').hide();
+                $('.address-list').hide();
             } else {
-                $('.job-list').show();
+                $('.address-list').show();
             }
             if (items >= 10) {
                 $('#address-error').html('Chỉ được phép chọn tối đa 10 tỉnh thành!').removeClass('display_none');

@@ -6,8 +6,7 @@
         <div class="form-group ">
             <label for="certificate_name_@{{index}}"
                    class="col-sm-2 control-label">
-                Tên Bằng cấp/Chứng chỉ <span
-                        class="colorRed">*</span>
+                Tên Bằng cấp/Chứng chỉ
             </label>
             <div class="col-sm-10">
                 <input placeholder="Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT..."
@@ -21,8 +20,7 @@
         <div class="form-group ">
             <label for="training_unit_@{{index}}"
                    class="col-sm-2 control-label">Trường/Đơn
-                vị đào tạo <span
-                        class="colorRed">*</span></label>
+                vị đào tạo</label>
             <div class="col-sm-10">
                 <input type="text"
                        class="form-control input-lg2 color-input inputTextEdit required"
@@ -32,8 +30,7 @@
         </div>
 
         <div class="form-group ">
-            <label class="col-sm-2 control-label">Thời
-                gian <span class="colorRed">*</span></label>
+            <label class="col-sm-2 control-label">Thời gian</label>
             <div class="col-sm-10">
                 <span class="col-sm-1">từ </span>
                 <div class="col-sm-2">
@@ -80,8 +77,7 @@
         <div class="form-group ">
             <label for="graduation_type_@{{index}}"
                    class="col-sm-2 control-label">
-                Loại tốt nghiệp <span
-                        class="colorRed">*</span>
+                Loại tốt nghiệp
             </label>
             <div class="col-sm-10">
                 <div class="">
@@ -96,27 +92,6 @@
             </div>
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-        <!-- input logo_company -->
-        <!-- TODO:
-        <div class="form-group ">
-            <label class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <div class="display_block btn-big plr6 pos_relactive w208 floatLeft">
-                    <input type="file" name="certificate_image_@{{index}}"
-                           id="dinhkembangcap"
-                           class="bt_input pos_absolute"
-                           onchange="fileOnchange2(this)">
-                    <span class='icon_upload_file'></span>Tải
-                    ảnh bằng cấp (nếu có)
-                </div>
-                <span id="note_select_file_certificate_image_@{{index}}" class="select_file_note floatLeft txt-color-363636">(Bạn chưa chọn file nào)</span>
-                <div class="note_size_photo clearfix font12 italic">
-                    (Dạng file ảnh .jpg, .gif, .png, dung
-                    lượng <=300KB)
-                </div>
-            </div>
-        </div>
-        -->
         <div class="clearfix"></div>
     </div>
 </div>
