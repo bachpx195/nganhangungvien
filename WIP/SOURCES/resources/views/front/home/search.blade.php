@@ -29,18 +29,18 @@
 					</div>
 				</div>
 				<div class="col-xs-12 pr_2 border_bt">
-					<div class="filter_box style-flat w_100">
+					<div class="filter_box style-flat w_100 box_mucluong">
 						<i class="icon_select_box icon_moneybox icon_24 icon-24"></i>
 						<div class="cd-dropdown-wrapper w_100 pt_12">
-							<span class="drop_filter_top mt2" data-jq-dropdown="#filter_mucluong2">Tất cả Mức lương</span>
-							<div id="filter_mucluong2" class="jq-dropdown dropdown_box">
+							<span class="drop_filter_top mt2" data-jq-dropdown="#filter_mucluong">Tất cả Mức lương</span>
+							<div id="filter_mucluong" class="jq-dropdown dropdown_box filter_mucluong">
 								<ul class="box_drop_mucluong_ntd nomargin">
 									<li>
 										<div class="modal-drop-mucluong font14">
 											@foreach($dropdownData['salaryGrades'] as $item)
 											<div class="demo-list pb_6">
-												<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1">
-												<label for="mul_1" class="font14">{{ $item['name'] }}</label>
+												<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_{{ $item['id'] }}">
+												<label for="mul_{{ $item['id'] }}" class="font14">{{ $item['name'] }}</label>
 											</div>
 											@endforeach
 										</div>
