@@ -34,7 +34,7 @@
         <div class="clearfix"></div>
 
         <!-- input birthday -->
-        <div class="form-group mt_16">
+        <div class="form-group">
             <label for="address"
                    class="control-label-info bold txt-ghi fs14 w180">Thời
                 gian làm việc <span
@@ -93,7 +93,7 @@
             </div>
             <div class="clearfix"></div>
 
-            <div class="form-group clearfix mt_16">
+            <div class="form-group mt_16">
                 <label class="control-label-checkbox bold txt-ghi fs14 w180">
                     Mô tả công việc <span class="colorRed">*</span>
                 </label>
@@ -104,6 +104,15 @@
                 </div>
                 <div id="error_c_mo_ta_cong_viec"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+            </div>
+        </div>
+        <!-- Remove experience -->
+        <div class="form-group">
+            <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+            {{--<div class="fr_ip_vtmm col-xs-8">--}}
+            <div class="remove-addition-info-form"
+                 data-parentId="experience-list" data-class="experience-skill-item" data-index="1">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
             </div>
         </div>
     </div>

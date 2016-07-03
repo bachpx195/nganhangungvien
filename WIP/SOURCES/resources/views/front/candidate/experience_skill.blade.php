@@ -16,16 +16,15 @@
     <div class="clearfix"></div>
     <div aria-expanded="true" class="body-box-child-ths collapse in" style="">
         <div id="div-frm-kinhnghiem">
+            <div class="box-knlv mb_10">
+                <p>- Liệt kê các kinh nghiệm công việc từ thời gian gần
+                    nhất trở về trước. Kinh nghiệm có thể trong công việc hoặc các hoạt
+                    động đoàn thể. Không yêu cầu nếu chưa có kinh nghiệm</p>
+            </div>
+            <div class="clearfix"></div>
+            <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
+            <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
             <div class="box-edit form display_block" id="experience-list">
-                <div class="box-knlv mb_10">
-                    <p>- Liệt kê các kinh nghiệm công việc từ thời gian gần
-                        nhất trở về trước. Kinh nghiệm có thể trong công việc hoặc các hoạt
-                        động đoàn thể. Không yêu cầu nếu chưa có kinh nghiệm</p>
-                </div>
-                <div class="clearfix"></div>
-                <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
-                <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
-
                 @for ($i = 1; $i <= $experienceCount; $i++)
                     <div class="experience-skill-item">
                         <!-- tên company_name -->
@@ -138,6 +137,16 @@
                                 </div>
                                 <div id="error_c_mo_ta_cong_viec"
                                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- Remove experience -->
+                            <div class="form-group">
+                                <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+                                <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                                     data-parentId="experience-list" data-class="experience-skill-item" data-index="1">
+                                    <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>

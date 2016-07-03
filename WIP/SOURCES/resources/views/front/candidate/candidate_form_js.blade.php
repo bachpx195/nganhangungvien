@@ -99,5 +99,30 @@
                 $('#address-error').not('.display_none').html('').addClass('display_none');
             }
         });
+
+        $(document).on('click', '.remove-addition-info-form', function () {
+            var parentId = $(this).data('parentId');
+            var formClass = $(this).data('class');
+            console.log('formClass: ' + formClass);
+            var divIndex = $(this).data('index');
+            console.log('divIndex: ' + divIndex);
+            var countId = $(this).data('countId');
+            var count = $('.' + formClass).length;
+            console.log('count: ' + count);
+            if (count == 2) {
+                resetForm(formClass);
+                $('#' + countId).val(count);
+            } else {
+                $(this).parents('div')[divIndex].remove();
+                $('#' + countId).val(count - 1);
+            }
+        });
+
+        function resetForm(formClass) {
+            // reset input, text area
+            $('.' + formClass).find("input[type=text], textarea").val("");
+            // reset select2
+            $('.' + formClass + ' select').select2('val', '')
+        }
     });
 </script>
