@@ -126,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.province.list', 'uses' => 'Admin\ProvinceController@tinh'
 	]);
 
+	/***************** PERMISSION ****************/
 	Route::match(['get'], '/phan-quyen/danh-sach', [
 		'as' => 'admin.permission.list', 'uses' => 'Admin\PermissionController@userRoleList'
 	]);
@@ -305,6 +306,14 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 {
 	Route::get('/', ['as' => 'home', 'uses' => 'Front\HomeController@index']);
 
+	Route::match(['get', 'post'], '/tuyen-dung-thue-ngoai', [
+		'as' => 'pages.outsourcing_package', 'uses' => 'Front\PagesController@outsourcingPackage'
+	]);
+
+	Route::match(['get', 'post'], '/dang-ky-tai-khoan-vip', [
+		'as' => 'pages.regist_vip', 'uses' => 'Front\PagesController@registVip'
+	]);
+
 	Route::match(['get', 'post'], '/tim-kiem-ung-vien', [
 		'as' => 'candidate.search', 'uses' => 'Front\SearchController@index'
 	]);
@@ -405,6 +414,9 @@ Route::group(['middleware' => ['auth']], function() {
 	]);
 	Route::match(['post'], '/user/pay-atm', [
 		'as' => 'user.pay_atm', 'uses' => 'UserController@userPayByAtm'
+	]);
+	Route::match(['get', 'post'], '/user/atm-success', [
+		'as' => 'user.atm_success', 'uses' => 'UserController@userAtmSuccess'
 	]);
 });
 

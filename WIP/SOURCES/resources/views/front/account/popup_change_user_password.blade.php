@@ -12,14 +12,14 @@
                                 class="uppercase bold fs16 txt_color_blue">Đổi mật khẩu</span>
                     </div>
                 </div>
-                <div class="regis_content_1 scrollbar_cus w558">
+                <div class="regis_content scrollbar_cus w558 h320">
                     <div class="pl_16 pr_16">
                         <div id="msg_success"
                              class="error_reg_mess pl_0 clearfix fs14 bolder text-center display_none"></div>
                         <form action="" id="changePassword" name="edit_contact_ntd" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="employer_id" value="{{ $employer->id }}">
-                            <div id="regis_content_successfull" class="block_message_success pt_12  mt_6">
+                            <div id="regis_content_successfull" class="block_message_success pt_12 mt_6">
                                 <div class="require_info mb_10 italic pr_10">(<span class="colorRed">*</span>)
                                     Thông tin bắt buộc nhập
                                 </div>

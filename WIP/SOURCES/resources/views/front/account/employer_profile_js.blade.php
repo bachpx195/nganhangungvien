@@ -109,7 +109,7 @@
         var padding_h = 56;
         var height_wd = $(window).height();
         var height_w = $('#popup_content').height();
-        var page_top = 20;
+        var page_top = 75;
 
         var scroll_h = height_w - padding_h;
         $(".regis_content_s33_4").css('height', scroll_h);

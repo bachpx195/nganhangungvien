@@ -1628,7 +1628,7 @@ select.select-style {
     font-size: 14px !important;
     color: #757575 !important;
     padding-left: 0px!important;
-    padding-top: 0px !important;
+    /*padding-top: 0px !important;*/
 }
 .city_select .filter_box .select2-container .select2-choice .select2-arrow b {
     background: url(../images/sprites_24_NTD.png) no-repeat scroll left center transparent;
@@ -2138,7 +2138,7 @@ ul.request-line {
 }
 #overlay_popup, #popup_component, #popup_component_close,
     #popup_component_successfull, #popup_component_register_choice {
-    z-index: 1000;
+    z-index: 10000;
     width: 100%;
     position: absolute;
     top: 0px;
@@ -2166,6 +2166,7 @@ ul.request-line {
 #pos_popup_register_choice{
     width: 100%;
     position: absolute;
+    z-index: 10000;
 }
 
 #popup_content {
@@ -5359,6 +5360,16 @@ a, a:hover, a:active, a:focus, button, button:hover, button:active, button:focus
     width: 232px!important;
     min-width: 232px!important;
 }
+
+.user-info.w150 {
+    width: 150px!important;
+    min-width: 150px!important;
+}
+.user-info.w140 {
+    width: 140px!important;
+    min-width: 140px!important;
+}
+
 .user-info.w385 {
     width:385px!important;
     min-width: 385px!important;
@@ -9605,4 +9616,18 @@ max-width:400px;
     float: right;
     margin-top: -65px;
     margin-left: 13px;
+}
+
+#block_header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
+
+.show-content {
+    margin-top: 56px;
+}
+
+.mh_415 {
+    min-height: 460px;
 }

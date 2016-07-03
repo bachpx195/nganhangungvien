@@ -160,6 +160,12 @@
     });
     $(document).ready(function() {
         $(".member_login").click(function () {
+            $.each($('.main-menu ul li'), function() {
+                if(!$('.main-menu ul li.dang_nhap').hasClass('dang_nhap')) {
+                    $('.main-menu ul li.dang_nhap').find('.popup_down').hide();
+                    $('.hda-overlayer').addClass('hidden');
+                }
+            });
            $("#popup_login").show();
         });
 

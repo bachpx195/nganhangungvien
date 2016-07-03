@@ -211,12 +211,16 @@
 							<span class="title">QUYỀN NGƯỜI DÙNG</span>
 						</a>
 					</li>-->
-					<li class="nav-item  ">
-						<a href="{{ route('admin.permission.list') }}" class="nav-link ">
-							<i class="icon-users"></i>
-							<span class="title">PHÂN QUYỀN</span>
-						</a>
-					</li>
+					@if (auth()->check())
+						@if(auth()->user()->isSuperAdmin())
+						<li class="nav-item  ">
+							<a href="{{ route('admin.permission.list') }}" class="nav-link ">
+								<i class="icon-users"></i>
+								<span class="title">PHÂN QUYỀN</span>
+							</a>
+						</li>
+						@endif
+					@endif
 				</ul>
 			</li>
 			{{--<li class="nav-item {{($activeMenu == 'config') ? 'active open' : ''}}">--}}

@@ -91,13 +91,24 @@ $(document).ready(function () {
             title: "",
             width: "95px",
             template: function (item) {
-                return '<a href="/admin/nguoi-dung/cap-nhat/' + item.id + '" >'
-                    + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
+                if ((item.currentRole == 'ADMIN' && item.code != 'ADMIN') || item.currentRole == 'SUPER_ADMIN') {
+                    if (item.currentId != item.id) {
+                        return '<a href="/admin/nguoi-dung/cap-nhat/' + item.id + '" >'
+                            + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
 
-                    + ' <a class="change-status" data-id="' + item.id + '" '
-                    + 'data-status="' + item.status + '" '
-                    + 'data-url="/admin/user/status/' + item.id + '">'
-                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                            + '<a class="change-status" data-id="' + item.id + '" '
+                            + 'data-status="' + item.status + '" '
+                            + 'data-url="/admin/user/status/' + item.id + '">'
+                            + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                    } else {
+                        return '<a href="/admin/nguoi-dung/cap-nhat/' + item.id + '" >'
+                            + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
+
+                            + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button>';
+                    }
+                } else {
+                    return '';
+                }
             }
         }, {
             field: "username",
@@ -114,6 +125,15 @@ $(document).ready(function () {
             field: "phone_number",
             title: "Số điện thoại",
             width: "15%"
+        }, {
+            title: "Loại người dùng",
+            with: "70px",
+            template: function (item) {
+                if (item.user_type == 'admin') {
+                    return 'Admin';
+                }
+                return 'Nhà tuyển dụng';
+            }
         }, {
             field: "status",
             title: "Kích hoạt",

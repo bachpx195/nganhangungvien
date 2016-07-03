@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>NGAN HANG UNG VIEN</title>
+    <title>NGÂN HÀNG ỨNG VIÊN</title>
 
     <!-- css all -->
     <link rel="stylesheet" href="{{ asset('/assets/default/css/normalize.min.css') }}" property='stylesheet'
@@ -50,6 +50,9 @@
     <link href="{{ asset('/assets/default/css/123doc.index.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/123doc.top-up.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+
+    <link rel="stylesheet" href="{{ asset('/assets/default/css/font-awesome.min.css') }}" property='stylesheet'
           type='text/css' media='all'>
 
     <!-- news css -->

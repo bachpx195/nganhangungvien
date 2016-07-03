@@ -44,7 +44,7 @@ class UserController extends Controller
      */
     public function userList(Request $request)
     {
-        $activeMenu = Constants::TRANSACTION_LIST;
+        $activeMenu = Constants::USER_LIST;
 
         return view('admin/users/list')
             ->with('activeMenu', $activeMenu)
@@ -113,6 +113,13 @@ class UserController extends Controller
         } else {
             // get form input data
             $input = $request->all();
+            $currentUser = Auth::user();
+            $role = $this->userRoleRepo->getRoleByUserId($currentUser->id);
+            if (!isset($role) || (isset($role) && empty($role->code))) {
+                $currentRole = Constants::ROLE_ADMIN;
+            } else {
+                $currentRole = $role->code;
+            }
 
             $validator = $this->validateUserInformation($input, $id);
             if ($validator->fails()) {
@@ -134,6 +141,13 @@ class UserController extends Controller
                 $user->user_type = 'admin';
             } else {
                 $user = User::find($id);
+                $updateRole = $this->userRoleRepo->getRoleByUserId($user->id);
+                if (isset($updateRole) && $updateRole &&
+                    $currentRole == Constants::ROLE_ADMIN &&
+                    ($updateRole->code == Constants::ROLE_ADMIN || $updateRole->code == Constants::ROLE_SUPER)
+                ) {
+                    return;
+                }
             }
             $user->full_name = $input['full_name'];
             $user->phone_number = $input['phone_number'];
@@ -191,7 +205,17 @@ class UserController extends Controller
             return $page;
         });
 
-        $users = $this->userRepo->search($input['params'], $pageSize);
+        $currentUser = Auth::user();
+        $role = $this->userRoleRepo->getRoleByUserId($currentUser->id);
+        if (!isset($role) || (isset($role) && empty($role->code))) {
+            $roleCode = Constants::ROLE_ADMIN;
+            $currentRole = Constants::ROLE_ADMIN;
+        } else {
+            $roleCode = $role->code;
+            $currentRole = $role->code;
+        }
+
+        $users = $this->userRepo->search($input['params'], $pageSize, $roleCode);
         $total = $users->total();
 
         $list = [];
@@ -204,7 +228,10 @@ class UserController extends Controller
                 "phone_number" => $item->phone_number,
                 "status" => $item->status,
                 "user_type" => $item->user_type,
-                "create_at" => date('d/m/Y H:i', strtotime($item->created_at))
+                "create_at" => date('d/m/Y H:i', strtotime($item->created_at)),
+                "code" => $item->code,
+                "currentRole" => $currentRole,
+                "currentId" => $currentUser->id
             );
         }
 
@@ -228,9 +255,14 @@ class UserController extends Controller
             if (!$request->has('status')) {
                 $data = ['status' => false, 'message' => 'Not found status'];
             } else {
-                $status = $request->input('status');
-                $success = $this->userRepo->updateStatus($id, $status);
-                $data = ['status' => $success, 'message' => ''];
+                $currentUser = Auth::user();
+                if ($currentUser->id == $id) {
+                    $data = ['status' => false, 'message' => 'Can not change myself status'];
+                } else {
+                    $status = $request->input('status');
+                    $success = $this->userRepo->updateStatus($id, $status);
+                    $data = ['status' => $success, 'message' => ''];
+                }
             }
         }
 

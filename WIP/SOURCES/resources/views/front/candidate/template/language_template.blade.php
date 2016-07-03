@@ -1,4 +1,4 @@
-<div id="language-template" style="display: none;">
+<script id="language-template" type="x-tmpl-mustache">
     <div class="language-item">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -96,4 +96,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-</div>
+</script>

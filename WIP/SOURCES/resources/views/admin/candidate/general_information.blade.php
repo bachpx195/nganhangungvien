@@ -172,6 +172,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Ngành nghề <span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 3 ngành nghề)</span>
                             </label>
                             <div class="col-md-10">
                                 <div class="">
@@ -184,30 +185,30 @@
                                                 ))
                                     </select>
                                 </div>
-                                <div id="error_nganhnghe" class="has-error"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-md-10">
-                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                                @if(count($expectJobs) > 0)
-                                    @foreach($expectJobs as $expectJob)
-                                        <div class="breaking-news">
-                                            <span class="title">{{$expectJob['name']}}</span>
-                                            <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
-                                                   type="text" value="{{$expectJob['job_id']}}">
-                                            <span class="icon icon-xs icon-arrow-org"></span>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                <div id="error_nganhnghe" class="has-error k-invalid"></div>
+                                <div class="clearfix" style="margin-top: 15px"></div>
+                                <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
+                                    <div class="col-md-12">
+                                        <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                        @if(count($expectJobs) > 0)
+                                            @foreach($expectJobs as $expectJob)
+                                                <div class="breaking-news">
+                                                    <span class="title">{{$expectJob['name']}}</span>
+                                                    <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
+                                                           type="text" value="{{$expectJob['job_id']}}">
+                                                    <span class="icon icon-xs icon-arrow-org"></span>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Tỉnh thành mong muốn<span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
                             <div class="col-sm-10">
                                 <div class="">
@@ -220,24 +221,23 @@
                                                 ))
                                     </select>
                                 </div>
-                                <div id="address-error" class="has-error"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-md-10">
-                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                                @if(count($expectAddresses) > 0)
-                                    @foreach($expectAddresses as $expectAddress)
-                                        <div class="breaking-news">
-                                            <span class="title">{{$expectAddress['name']}}</span>
-                                            <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
-                                                   type="text" value="{{$expectAddress['province_id']}}">
-                                            <span class="icon icon-xs icon-arrow-org"></span>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                <div id="address-error" class="has-error k-invalid"></div>
+                                <div class="clearfix" style="margin-top: 15px"></div>
+                                <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
+                                    <div class="col-md-12">
+                                        <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                        @if(count($expectAddresses) > 0)
+                                            @foreach($expectAddresses as $expectAddress)
+                                                <div class="breaking-news">
+                                                    <span class="title">{{$expectAddress['name']}}</span>
+                                                    <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
+                                                           type="text" value="{{$expectAddress['province_id']}}">
+                                                    <span class="icon icon-xs icon-arrow-org"></span>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -356,7 +356,7 @@
                                   id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                   class="inputTxtAreaTop form-control"
-                                  required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
+                                  required data-required-msg="Vui lòng nhập Mục tiêu nghề nghiệp"
                                   rows="5">{{ $candidate['job_goal'] }}</textarea>
                             </div>
                         </div>
@@ -364,16 +364,15 @@
                         <div class="form-group mt_16">
                             <label for="job_goal"
                                    class="col-sm-2 control-label">
-                                Kỹ năng & Sở trường
+                                Kỹ năng & Sở trường <span class="has-error">*</span>
                             </label>
                             <div class="col-sm-10">
                         <textarea name="skill_forte"
                                   placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
                                   class="inputTxtAreaTop form-control"
+                                  required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
                                   rows="5">{{ $candidate['skill_forte'] }}</textarea>
                             </div>
-                            <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
-                                Vui lòng chọn mục tiêu nghề nghiệp.</div>
                         </div>
 
                         <div class="form-group">

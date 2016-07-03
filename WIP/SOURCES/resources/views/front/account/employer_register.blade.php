@@ -1,5 +1,7 @@
 @extends('front/global')
 
+<title>Đăng ký nhà tuyển dụng</title>
+
 @section('content')
     @if (Auth::check() && Auth::user()->user_type == 'employer')
         <div class="content_dangky" style="padding-left:232px;">

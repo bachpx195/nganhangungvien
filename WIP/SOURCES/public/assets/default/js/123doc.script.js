@@ -14,7 +14,7 @@ function popupPayment_open(paymentType) {
             $("#loading-excel").remove()
         },
         success: function(t) {
-            $(".boxAddMoney").css("left", e).append(t);
+            $(".boxAddMoney").append(t);
             if(paymentType){
                 showForm_addMoney($('a[data-rel=' + paymentType + ']'));
             }
@@ -81,11 +81,11 @@ function pay_mobilecard() {
                         $("#code_popup").val("");
                         $("#captcha_popup_mc").val("");
 
-                        alert("Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + ".000 VNĐ");
+                        alert("Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + " VNĐ");
                     }
                 } else {
                     running_paymentMobilecard = !1;
-                    alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
+                    alert(t.error);
                 }
             },
             error: function(e) {

@@ -7,8 +7,7 @@
         <div class="form-group">
             <label for="experience_company_name_@{{index}}"
                    class="col-sm-2 control-label">Tên
-                Công ty/Tổ chức <span
-                        class="colorRed">*</span></label>
+                Công ty/Tổ chức</label>
             <div class="col-sm-10 ">
                 <input name="experience_company_name_@{{index}}" type="text"
                        class="inputTextKNEdit form-control input-lg2 color-input required"/>
@@ -20,8 +19,7 @@
         <!-- Trường đào tạo cấp -->
         <div class="form-group">
             <label for="experience_office_@{{index}}"
-                   class="col-sm-2 control-label">Chức
-                danh <span class="colorRed">*</span></label>
+                   class="col-sm-2 control-label">Chức danh</label>
             <div class="col-sm-10 ">
                 <input name="experience_office_@{{index}}" type="text"
                        class="inputTextKNEdit form-control input-lg2 color-input required"/>
@@ -35,8 +33,7 @@
         <div class="form-group mt_16">
             <label for="address"
                    class="col-sm-2 control-label">Thời
-                gian làm việc <span
-                        class="colorRed">*</span></label>
+                gian làm việc</label>
             <div class="col-sm-10 ">
                 <span class="col-sm-1">từ </span>
                 <div class="col-sm-2">
@@ -67,8 +64,7 @@
 
         <div class="form-group mt_16">
             <label for="expect_salary"
-                   class="col-sm-2 control-label">
-                Mức lương <span class="colorRed">*</span>
+                   class="col-sm-2 control-label"> Mức lương
             </label>
 
             <div class="col-sm-10 ">
@@ -87,7 +83,7 @@
 
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Mô tả công việc <span class="colorRed">*</span>
+                Mô tả công việc
             </label>
             <div class="col-sm-10 ">
                 <textarea name="experience_description_@{{index}}"

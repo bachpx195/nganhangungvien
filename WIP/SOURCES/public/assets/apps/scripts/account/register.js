@@ -36,6 +36,8 @@ $(document).ready(function () {
     $("#btnRegister").click(function () {
         if (validator.validate()) {
             $("#form_register").submit();
+        }else{
+            $('input.k-invalid:first').focus();
         }
     });
 
