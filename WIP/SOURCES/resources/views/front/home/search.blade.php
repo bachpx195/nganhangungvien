@@ -231,7 +231,7 @@
 					HOẶC SỬ DỤNG DỊCH VỤ
 				</div>
 				<div>
-					<a class="btn btn-pink btn-lg w260 pl_16 btn_timkiem_all">
+					<a class="btn btn-pink btn-lg w260 pl_16 btn_timkiem_all" href="{{ route('pages.regist_vip') }}" target="_blank">
 						<i class="icon_arrow_orange icon_24 icon-24"></i>
 						TÀI KHOẢN VIP
 					</a>

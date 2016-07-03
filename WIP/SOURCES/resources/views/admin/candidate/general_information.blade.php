@@ -172,6 +172,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Ngành nghề <span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 3 ngành nghề)</span>
                             </label>
                             <div class="col-md-10">
                                 <div class="">
@@ -185,29 +186,29 @@
                                     </select>
                                 </div>
                                 <div id="error_nganhnghe" class="has-error"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-md-10">
-                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                                @if(count($expectJobs) > 0)
-                                    @foreach($expectJobs as $expectJob)
-                                        <div class="breaking-news">
-                                            <span class="title">{{$expectJob['name']}}</span>
-                                            <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
-                                                   type="text" value="{{$expectJob['job_id']}}">
-                                            <span class="icon icon-xs icon-arrow-org"></span>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                <div class="clearfix" style="margin-top: 15px"></div>
+                                <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
+                                    <div class="col-md-12">
+                                        <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                        @if(count($expectJobs) > 0)
+                                            @foreach($expectJobs as $expectJob)
+                                                <div class="breaking-news">
+                                                    <span class="title">{{$expectJob['name']}}</span>
+                                                    <input class="job_input_{{$expectJob['job_id']}} display_none" name="expect_jobs[]"
+                                                           type="text" value="{{$expectJob['job_id']}}">
+                                                    <span class="icon icon-xs icon-arrow-org"></span>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 Tỉnh thành mong muốn<span class="has-error">*</span>
+                                <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
                             <div class="col-sm-10">
                                 <div class="">
@@ -221,23 +222,22 @@
                                     </select>
                                 </div>
                                 <div id="address-error" class="has-error"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-md-10">
-                                <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
-                                @if(count($expectAddresses) > 0)
-                                    @foreach($expectAddresses as $expectAddress)
-                                        <div class="breaking-news">
-                                            <span class="title">{{$expectAddress['name']}}</span>
-                                            <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
-                                                   type="text" value="{{$expectAddress['province_id']}}">
-                                            <span class="icon icon-xs icon-arrow-org"></span>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                <div class="clearfix" style="margin-top: 15px"></div>
+                                <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
+                                    <div class="col-md-12">
+                                        <span class="dangchon-diadiem-lv floatLeft">Đang chọn: </span>
+                                        @if(count($expectAddresses) > 0)
+                                            @foreach($expectAddresses as $expectAddress)
+                                                <div class="breaking-news">
+                                                    <span class="title">{{$expectAddress['name']}}</span>
+                                                    <input class="job_input_{{$expectAddress['province_id']}} display_none" name="expect_addresses[]"
+                                                           type="text" value="{{$expectAddress['province_id']}}">
+                                                    <span class="icon icon-xs icon-arrow-org"></span>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>

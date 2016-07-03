@@ -325,7 +325,7 @@ div.icon-logo a {
 }
 
 .searchBox .selectOption ul li:hover {
-    background-color: #00a888
+    background-color: #00549F
 }
 
 .searchBox .selectOption ul li:hover a {
@@ -374,7 +374,7 @@ div.icon-logo a {
 
 .autocomplete-selected,
 .autocomplete-suggestion:hover {
-    background-color: #00a888;
+    background-color: #00549F;
     color: #fff;
     border-bottom-color: transparent
 }
@@ -451,8 +451,8 @@ div.icon-logo a {
 }
 
 .headerRight .userBox>div:hover>a.btn {
-    color: #00a888;
-    border-color: #00a888
+    color: #00549F;
+    border-color: #00549F
 }
 
 .headerRight .userBox .userLoginBox {
@@ -514,7 +514,7 @@ div.icon-logo a {
 .headerRight .userBox .userNotifi span i {
     position: absolute;
     border: 3px solid transparent;
-    border-right-color: #00a888;
+    border-right-color: #00549F;
     top: 6px;
     left: -6px;
     z-index: 9
@@ -574,7 +574,7 @@ div.icon-logo a {
 }
 
 .headerRight .userBox .box_login>div>p button {
-    background-color: #00a888;
+    background-color: #00549F;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -592,7 +592,7 @@ div.icon-logo a {
 
 .headerRight .userBox .box_login>div>p a.forget_pas {
     text-align: center;
-    color: #00a888
+    color: #00549F
 }
 
 .headerRight .userBox .box_login>div>p a.logSocial span {
@@ -703,14 +703,14 @@ div.icon-logo a {
 }
 
 .userLoginBox>div ul li a span {
-    color: #00a888;
+    color: #00549F;
     font-weight: 700;
     margin-left: 3px
 }
 
 .userLoginBox>div ul li:hover a,
 .userLoginBox>div ul li:hover span {
-    color: #00a888
+    color: #00549F
 }
 
 .userLoginBox>div ul li:nth-child(1) a:after,
@@ -785,12 +785,12 @@ div.icon-logo a {
 }
 
 .userNotifi>div>p a {
-    color: #00a888;
+    color: #00549F;
     font-size: 14px
 }
 
 .userNotifi>div>p:last-child:hover {
-    background-color: #00a888
+    background-color: #00549F
 }
 
 .userNotifi>div>p:last-child:hover a {
@@ -837,7 +837,7 @@ div.icon-logo a {
 }
 
 .userNotifi>div ul li a span.highlightGreen {
-    color: #00a888;
+    color: #00549F;
     font-weight: 700
 }
 
@@ -856,7 +856,7 @@ div.icon-logo a {
 }
 
 .userNotifi>div ul li:hover {
-    background-color: #00a888;
+    background-color: #00549F;
     color: #fff
 }
 
@@ -940,7 +940,7 @@ div.icon-logo a {
 
 .barFixRight>a.active,
 .barFixRight>a:hover {
-    color: #00a888
+    color: #00549F
 }
 
 .barFixRight>a.add_money:hover i {
@@ -986,7 +986,7 @@ div.icon-logo a {
 
 .barFixRight>a.box_RFD,
 .barFixRight>a.box_top {
-    background-color: #00a888;
+    background-color: #00549F;
     border-radius: 2px;
     box-sizing: border-box
 }
@@ -1104,8 +1104,8 @@ div.icon-logo a {
 }
 
 .boxFillData>div>p a:hover {
-    border: 1px solid #00a888;
-    color: #00a888
+    border: 1px solid #00549F;
+    color: #00549F
 }
 
 .boxFillData>ul>li {
@@ -1146,7 +1146,7 @@ div.icon-logo a {
 .boxFillData>ul ul li>div>a {
     margin-bottom: 10px;
     float: left;
-    color: #00a888;
+    color: #00549F;
     font-size: 13px;
     width: 140px;
     overflow: hidden;
@@ -1238,7 +1238,7 @@ div.icon-logo a {
 
 #colorbox {
     outline: 0;
-    border-top: 3px solid #00a888;
+    border-top: 3px solid #00549F;
     background-color: #fff
 }
 
@@ -1325,14 +1325,15 @@ div.icon-logo a {
 .boxAddMoney,
 .boxAddMoney_notLogin {
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
-    z-index: 999
+    z-index: 999;
+    width: 100%;
 }
 
 .boxAddMoney .box_AddMoney {
-    width: 950px;
-    min-height: 570px;
+    width: 90%;
+    height: 520px;
     background-color: #fff;
     margin: 20px auto 0;
     box-shadow: 0 0 5px #999;
@@ -1358,7 +1359,6 @@ div.icon-logo a {
 
 .box_AddMoney>ul {
     overflow: hidden;
-    padding-bottom: 15px
 }
 
 .box_AddMoney>ul li {
@@ -1373,16 +1373,18 @@ div.icon-logo a {
 
 .box_AddMoney>ul li a {
     display: block;
-    border: 1px solid #00a888;
+    border: 1px solid #00549F;
     border-radius: 3px;
     text-align: center;
-    padding: 10px 0;
+    padding: 3px 0;
     text-decoration: none;
 }
 
 .box_AddMoney>ul li a i {
-    height: 41px;
-    margin-bottom: 10px
+    /*height: 41px;
+    margin-bottom: 10px*/
+    color: #fa0;
+    font-size: 20px;
 }
 
 .box_AddMoney>ul li a i.i_m_mb {
@@ -1436,7 +1438,7 @@ div.icon-logo a {
 }
 
 .box_AddMoney>ul li a span {
-    color: #00a888;
+    color: #00549F;
     clear: both;
     display: block;
     font-size: 12px
@@ -1444,7 +1446,7 @@ div.icon-logo a {
 
 .box_AddMoney>ul li a.active,
 .box_AddMoney>ul li:hover a {
-    background-color: #00a888;
+    background-color: #00549F;
     position: relative
 }
 
@@ -1457,7 +1459,7 @@ div.icon-logo a {
     content: '';
     position: absolute;
     border: 10px solid transparent;
-    border-top-color: #00a888;
+    border-top-color: #00549F;
     left: 45px;
     bottom: -20px
 }
@@ -1474,7 +1476,7 @@ div.icon-logo a {
 }
 
 .boxAddMoney_content>h4 {
-    color: #00a888;
+    color: #00549F;
     padding: 0 0 15px;
     border-bottom: 1px solid #ddd;
     font-size: 20px;
@@ -1548,7 +1550,7 @@ div.icon-logo a {
 
 .boxAddMoney_content a.confirm {
     display: block;
-    background-color: #00a888;
+    background-color: #00549F;
     color: #fff;
     line-height: 30px;
     border-radius: 3px;
@@ -1615,14 +1617,12 @@ div.icon-logo a {
 }
 
 .boxAddMoney_content>div>div>p .btn_submit {
-    display: block;
     background-color: #fa0;
     color: #fff;
-    line-height: 35px;
+    line-height: 15px;
     border-radius: 3px;
     text-align: center;
-    width: 310px;
-    margin-bottom: 25px
+    width: 150px;
 }
 
 .boxAddMoney_content>p {
@@ -1633,13 +1633,13 @@ div.icon-logo a {
 .boxAddMoney_content>p:before {
     content: '•';
     margin-right: 5px;
-    color: #00a888;
+    color: #00549F;
     font-size: 15px
 }
 
 .boxAddMoney_content>p a {
     display: inline-block;
-    color: #00a888;
+    color: #00549F;
     font-size: 13px;
     font-weight: 700
 }
@@ -1705,7 +1705,7 @@ div.icon-logo a {
 
 .boxAddMoney_user>div p a,
 .boxAddMoney_user>p span {
-    color: #00a888
+    color: #00549F
 }
 
 .boxAddMoney_user>p {
@@ -1754,8 +1754,8 @@ div.icon-logo a {
 }
 
 .boxAddMoney_notLogin .boxAddMoney_content>h4>a.active {
-    color: #00a888;
-    border-bottom-color: #00a888
+    color: #00549F;
+    border-bottom-color: #00549F
 }
 
 .boxAddMoney_notLogin .boxAddMoney_content>h4>a:first-child:before {
@@ -1780,7 +1780,7 @@ div.icon-logo a {
 }
 
 .boxAddMoney_notLogin .boxAddMoney_content>h4>a.active:before {
-    background-color: #00a888
+    background-color: #00549F
 }
 
 .MartForm,
@@ -1822,7 +1822,7 @@ div.icon-logo a {
 }
 
 .boxAddMoney_notLogin .boxAddMoney_content>div>div h3 span {
-    color: #00a888;
+    color: #00549F;
     font-weight: 400;
     font-size: 20px
 }
@@ -1842,7 +1842,7 @@ div.icon-logo a {
 
 .boxAddMoney_notLogin .boxAddMoney_content>div>div p a:not(.btn),
 .boxAddMoney_notLogin .boxAddMoney_content>div>div span a {
-    color: #00a888;
+    color: #00549F;
     font-weight: 700;
     display: inline-block
 }
@@ -1982,7 +1982,7 @@ div.icon-logo a {
 
 .tabFormCart li a.active {
     color: #333;
-    border-bottom: 2px solid #00a888
+    border-bottom: 2px solid #00549F
 }
 
 .MartForm {
@@ -2242,7 +2242,7 @@ div.icon-logo a {
 }
 
 .boxFillData#view ul#listUserViewed>li>p>a {
-    color: #00a888;
+    color: #00549F;
     font-size: 9px
 }
 
@@ -2388,12 +2388,12 @@ div.icon-logo a {
 .frm_login form p input[type=text]:focus,
 .frm_login form p.active input[type=password],
 .frm_login form p.active input[type=text] {
-    border-color: #00a888
+    border-color: #00549F
 }
 
 .frm_login form p label.focus,
 .frm_login form p.active label {
-    color: #00a888;
+    color: #00549F;
     font-size: 11px;
     top: -11px;
     background-color: #fff;
@@ -2428,7 +2428,7 @@ input:-webkit-autofill {
 .frm_login form p input[type=submit] {
     border: none;
     width: 100%;
-    background-color: #00a888;
+    background-color: #00549F;
     line-height: 35px;
     border-radius: 3px;
     color: #fff;
@@ -2438,7 +2438,7 @@ input:-webkit-autofill {
 
 .frm_login form p:last-child>a {
     float: left;
-    color: #00a888;
+    color: #00549F;
     font-size: 12px
 }
 
@@ -2629,17 +2629,17 @@ body .paging a {
 }
 
 body .paging a:hover {
-    color: #00a888;
-    border-color: #00a888
+    color: #00549F;
+    border-color: #00549F
 }
 
 body .paging a.pagging_active {
-    background-color: #00a888;
+    background-color: #00549F;
     color: #fff
 }
 
 #submitLogin {
-    background: #00a888;
+    background: #00549F;
     color: #fff;
     text-transform: uppercase;
     text-align: center;

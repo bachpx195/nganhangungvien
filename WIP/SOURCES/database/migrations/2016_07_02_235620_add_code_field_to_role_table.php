@@ -13,7 +13,7 @@ class AddCodeFieldToRoleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('user', function($table) {
+		Schema::table('role', function($table) {
 			$table->string('code')->after('name')->nullable();
 		});
 	}
@@ -25,7 +25,7 @@ class AddCodeFieldToRoleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('user', function($table) {
+		Schema::table('role', function($table) {
 			$table->dropColumn('code');
 		});
 	}

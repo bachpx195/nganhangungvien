@@ -45,9 +45,11 @@ class Authenticate {
 			}
 		}
 
-		$user = Auth::user();
-		if($user->user_type != 'admin'){
-			return redirect('');
+		if(substr( $request->getPathInfo(), 0, 6 ) === "/admin"){
+			$user = Auth::user();
+			if($user->user_type != 'admin'){
+				return redirect('');
+			}
 		}
 
 		return $next($request);
