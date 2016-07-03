@@ -3,10 +3,7 @@
         <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion"
            href="#coll_tdbc" class="accordion">
             <span class="uppercase bold text-tim-nhat">TRÌNH ĐỘ & BẰNG CẤP</span>
-            <span class="required_l bc_bb ">(bắt buộc)</span>
-            <span class="required_l_n bc_kobb display_none">(Không bắt buộc)</span>
-                                                <span class="required_r"><i
-                                                            class="icn-main-menu icn-arr-down"></i></span>
+            <span class="required_l_n">(không bắt buộc)</span>
         </a>
     </div>
     <div class="clearfix"></div>
@@ -29,8 +26,7 @@
                                     <div class="form-group">
                                         <label for="certificate_name_{{$i}}"
                                                class="control-label-info bold txt-color-363636 fs14 w181">
-                                            Tên Bằng cấp/Chứng chỉ <span
-                                                    class="colorRed">*</span>
+                                            Tên Bằng cấp/Chứng chỉ
                                         </label>
                                         <div class="fr_ip_vtmm col-xs-8">
                                             <input placeholder="Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT..."
@@ -44,9 +40,7 @@
                                     <!-- input Trường/Đơn vị đào tạo -->
                                     <div class="form-group">
                                         <label for="training_unit_{{$i}}"
-                                               class="control-label-info bold txt-color-363636 fs14 w181">Trường/Đơn
-                                            vị đào tạo <span
-                                                    class="colorRed">*</span></label>
+                                               class="control-label-info bold txt-color-363636 fs14 w181">Trường/Đơn vị đào tạo</label>
                                         <div class="fr_ip_vtmm col-xs-8">
                                             <input type="text"
                                                    class="form-control input-lg2 color-input inputTextEdit required"
@@ -57,8 +51,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label-info bold txt-color-363636 fs14 w181">Thời
-                                            gian <span class="colorRed">*</span></label>
+                                        <label class="control-label-info bold txt-color-363636 fs14 w181">Thời gian</label>
                                         <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                                             <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
@@ -112,8 +105,7 @@
                                     <div class="form-group">
                                         <label for="graduation_type_{{$i}}"
                                                class="control-label-info bold txt-color-363636 fs14 w181">
-                                            Loại tốt nghiệp <span
-                                                    class="colorRed">*</span>
+                                            Loại tốt nghiệp
                                         </label>
                                         <div class="fr-input-wd333 select_style31 city_select">
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">

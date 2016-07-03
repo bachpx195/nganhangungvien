@@ -179,8 +179,7 @@
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="job"
-                                            class="select-style job-change"
-                                            required data-required-msg="Vui lòng chọn Ngành nghề mong muốn">
+                                            class="select-style job-change">
                                         @include('front.common.options',
                                             array(
                                                 'selected' => isset($candidate['job']) ? $candidate['job'] : '',
@@ -218,8 +217,7 @@
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="province_id"
-                                            class="select-style address-change"
-                                            required data-required-msg="Vui lòng nhập chọn Tỉnh thành">
+                                            class="select-style address-change">
                                         @include('front.common.options',
                                             array(
                                                 'selected' => $candidate['province_id'],
@@ -369,11 +367,12 @@
                         <div class="form-group">
                             <label for="job_goal"
                                    class="control-label-info bold txt-ghi fs14 col-md-3">
-                                Kỹ năng & Sở trường
+                                Kỹ năng & Sở trường <span class="colorRed">*</span>
                             </label>
                             <div class="fr_ip_vtmm col-xs-8">
                                 <textarea name="skill_forte"
                                           placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
+                                          required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
                                           class="inputTxtAreaTop form-control"
                                           rows="5"
                                           value="{{ $candidate['skill_forte'] }}"></textarea>

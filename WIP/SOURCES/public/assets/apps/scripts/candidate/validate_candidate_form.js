@@ -31,7 +31,9 @@ $( document ).ready(function() {
     }).data("kendoValidator");
 
     $("#register-candidate-btn").click(function () {
-        if (validator.validate()) {
+        var errorStatus = validateExpectJobsAdnExpectAddresses();
+
+        if (validator.validate() && !errorStatus) {
             $("#candidate-form").submit();
         }else{
             $invalidItem = $('.k-invalid:first');
@@ -54,4 +56,28 @@ $( document ).ready(function() {
             $(this).closest('div').find('.k-invalid-msg').hide();
         }
     });
+
+    var validateExpectJobsAdnExpectAddresses = function()   // Only visible inside Restaurant()
+    {
+        var errorStatus = false;
+
+        //Custom validate expect jobs and expect addresses
+        var jobCount = $('.job-list').find('.breaking-news').length;
+        if (jobCount == 0) {
+            errorStatus = true;
+            $('#error_nganhnghe').html('Vui lòng chọn ngành nghề mong muốn!').removeClass('display_none');
+        } else {
+            $('#error_nganhnghe').not('.display_none').html('').addClass('display_none');
+        }
+
+        var addressCount = $('.address-list').find('.breaking-news').length;
+        if (addressCount == 0) {
+            errorStatus = true;
+            $('#address-error').html('Vui lòng chọn tỉnh thành mong muốn!').removeClass('display_none');
+        } else {
+            $('#address-error').not('.display_none').html('').addClass('display_none');
+        }
+
+        return errorStatus;
+    }
 });
