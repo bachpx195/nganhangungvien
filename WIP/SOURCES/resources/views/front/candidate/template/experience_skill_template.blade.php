@@ -111,7 +111,7 @@
             <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
             {{--<div class="fr_ip_vtmm col-xs-8">--}}
             <div class="remove-addition-info-form"
-                 data-parentId="experience-list" data-class="experience-skill-item" data-index="1">
+                 data-class="experience-skill-item" data-index="1" data-countId="experience-count">
                 <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
             </div>
         </div>

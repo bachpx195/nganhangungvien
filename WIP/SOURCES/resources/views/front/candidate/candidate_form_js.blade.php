@@ -101,14 +101,10 @@
         });
 
         $(document).on('click', '.remove-addition-info-form', function () {
-            var parentId = $(this).data('parentId');
             var formClass = $(this).data('class');
-            console.log('formClass: ' + formClass);
             var divIndex = $(this).data('index');
-            console.log('divIndex: ' + divIndex);
             var countId = $(this).data('countId');
             var count = $('.' + formClass).length;
-            console.log('count: ' + count);
             if (count == 2) {
                 resetForm(formClass);
                 $('#' + countId).val(count);

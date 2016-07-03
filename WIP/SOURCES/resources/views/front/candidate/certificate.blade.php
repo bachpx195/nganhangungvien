@@ -10,9 +10,6 @@
         </a>
     </div>
     <div class="clearfix"></div>
-    <div class="row">
-        <div class="ln_hr_head"></div>
-    </div>
     <div class="clearfix"></div>
     <div aria-expanded="true" class="body-box-child-ths collapse in" id="coll_tdbc"
          style="">
@@ -26,6 +23,9 @@
                             @for ($i = 1; $i <= $certificateCount; $i++)
                                     <!-- input Tên Bằng cấp/Chứng chỉ -->
                                 <div class="certificate-item">
+                                    <div class="form-group">
+                                        <div class="ln_hr_head"></div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="certificate_name_{{$i}}"
                                                class="control-label-info bold txt-color-363636 fs14 w181">
@@ -130,6 +130,16 @@
                                             </div>
                                         </div>
                                         <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <!-- Remove experience -->
+                                    <div class="form-group">
+                                        <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+                                        <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                                             data-class="certificate-item" data-index="1" data-countId="certificate-count">
+                                            <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
+                                        </div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

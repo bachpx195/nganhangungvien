@@ -8,19 +8,18 @@
         </a>
     </div>
     <div class="clearfix"></div>
-    <div class="row">
-        <div class="ln_hr_head"></div>
-    </div>
     <div class="clearfix"></div>
     <?php $languageCount = isset($candidate['language_count']) ? $candidate['language_count'] : 1;?>
     <input type="hidden" name="language_count" id="language-count" value="{{$languageCount}}">
     <div id="language-list">
         @for ($i = 1; $i <= $languageCount; $i++)
             <div aria-expanded="true" class="body-box-child-ths collapse in language-item">
+                <div class="form-group">
+                    <div class="ln_hr_head"></div>
+                </div>
                 <div id="div-frm-ngoaingu" class="">
                     <div class="box-edit form display_block">
                         <div class="box-ngonngu">
-
                             <div class="form-horizontal addformngonngu mt0 noboder">
                                 <!-- input Ngoại ngữ -->
                                 <div class="form-group mb8" id="div_slt_ngoaingu">
@@ -116,6 +115,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Remove experience -->
+                <div class="form-group">
+                    <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+                    <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                         data-class="language-item" data-index="1" data-countId="language-count">
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGOẠI NGỮ</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
         @endfor
     </div>

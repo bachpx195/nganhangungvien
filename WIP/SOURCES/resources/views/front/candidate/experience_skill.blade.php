@@ -10,9 +10,6 @@
         </a>
     </div>
     <div class="clearfix"></div>
-    <div class="row">
-        <div class="ln_hr_head"></div>
-    </div>
     <div class="clearfix"></div>
     <div aria-expanded="true" class="body-box-child-ths collapse in" style="">
         <div id="div-frm-kinhnghiem">
@@ -27,6 +24,9 @@
             <div class="box-edit form display_block" id="experience-list">
                 @for ($i = 1; $i <= $experienceCount; $i++)
                     <div class="experience-skill-item">
+                        <div class="form-group">
+                            <div class="ln_hr_head"></div>
+                        </div>
                         <!-- tên company_name -->
                         <div class="form-group">
                             <label for="experience_company_name_{{$i}}"
@@ -144,7 +144,7 @@
                             <div class="form-group">
                                 <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
                                 <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
-                                     data-parentId="experience-list" data-class="experience-skill-item" data-index="1">
+                                     data-class="experience-skill-item" data-index="1" data-countId="experience-count">
                                     <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
                                 </div>
                             </div>

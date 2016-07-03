@@ -1,4 +1,4 @@
-<script id="language-template" type="x-tmpl-mustache">
+<div id="language-template" style="display: none;">
     <div class="language-item">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -95,5 +95,15 @@
             </div>
         </div>
         <div class="clearfix"></div>
+
+        <!-- Remove experience -->
+        <div class="form-group">
+            <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+            <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                 data-class="language-item" data-index="1" data-countId="language-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGOẠI NGỮ</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
     </div>
-</script>
+</div>
