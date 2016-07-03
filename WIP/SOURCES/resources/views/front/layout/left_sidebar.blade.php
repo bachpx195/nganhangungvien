@@ -11,7 +11,8 @@
                                 @if(!UserHelper::isVip($currentEmployer))
                                     <p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
                                 @else
-                                    <p><span class="bg_tk_vip font12 account_vip">Tài khoản vip</span></p>
+                                    <p><img class="vip-avatar" src="{{ URL::asset('assets/image/vip-member.jpg') }}">
+                                        <span class="bg_tk_vip font12 account_vip">Tài khoản vip</span></p>
                                 @endif
                             </div>
                         </div>
