@@ -40,12 +40,12 @@
             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="day_in_month_@{{index}}" class="w128">
+                    <select name="experience_day_in_month_@{{index}}" class="w128">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="day_in_year_@{{index}}" class="w128">
+                    <select name="experience_day_in_year_@{{index}}" class="w128">
                         @include('front.common.year_options'))
                     </select>
                 </div>
@@ -53,12 +53,12 @@
                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                     Hiện tại</p>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="day_out_month_@{{index}}" class="w128">
+                    <select name="experience_day_out_month_@{{index}}" class="w128">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="day_out_year_@{{index}}" class="w128">
+                    <select name="experience_day_out_year_@{{index}}" class="w128">
                         @include('front.common.year_options'))
                     </select>
                 </div>

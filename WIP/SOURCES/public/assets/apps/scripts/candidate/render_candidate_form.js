@@ -9,10 +9,10 @@ $( document ).ready(function() {
         $( "#experience-list" ).append($(rendered));
 
         setTimeout(function(){
-            $('.candidate-front [name="day_in_month_' + index + '"]').select2().addClass('select-style');
-            $('.candidate-front [name="day_in_year_' + index + '"]').select2().addClass('select-style');
-            $('.candidate-front [name="day_out_month_' + index + '"]').select2().addClass('select-style');
-            $('.candidate-front [name="day_out_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="experience_day_in_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="experience_day_in_year_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="experience_day_out_month_' + index + '"]').select2().addClass('select-style');
+            $('.candidate-front [name="experience_day_out_year_' + index + '"]').select2().addClass('select-style');
             $('.candidate-front [name="experience_salary_' + index + '"]').select2().addClass('select-style');
         },0);
     });
