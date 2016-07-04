@@ -103,16 +103,11 @@
         $(document).on('click', '.remove-addition-info-form', function () {
             var formClass = $(this).data('class');
             var divIndex = $(this).data('index');
-            var countId = $(this).data('count-id');
             var count = $('.' + formClass).length;
-            console.log('countId: ' + countId);
-            console.log($('#' + countId).val());
             if (count == 1) {
                 resetForm(formClass);
-                $('#' + countId).val(count);
             } else {
                 $(this).parents('div')[divIndex].remove();
-                $('#' + countId).val(count - 1);
             }
         });
 
