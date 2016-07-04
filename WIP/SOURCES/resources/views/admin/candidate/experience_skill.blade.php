@@ -27,9 +27,9 @@
         <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
         <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
         @for ($i = 1; $i <= $experienceCount; $i++)
-            <input type="hidden" name="experience_id_{{$i}}"
-                   value="{{isset($candidate['experience_id_' . $i]) ? $candidate['experience_id_' . $i] : ''}}">
             <div class="experience-skill-item">
+                <input type="hidden" name="experience_id_{{$i}}"
+                       value="{{isset($candidate['experience_id_' . $i]) ? $candidate['experience_id_' . $i] : ''}}">
                 <!-- tên company_name -->
                 <div class="form-group">
                     <label for="experience_company_name_{{$i}}"

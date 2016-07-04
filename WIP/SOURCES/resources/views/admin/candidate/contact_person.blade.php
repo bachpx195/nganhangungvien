@@ -17,8 +17,8 @@
                 <?php $contactPersonCount = isset($candidate['contact_person_count']) ? $candidate['contact_person_count'] : 1;?>
                 <input type="hidden" name="contact_person_count" id="contact-person-count" value="{{$contactPersonCount}}">
                 @for ($i = 1; $i <= $contactPersonCount; $i++)
-                        <input type="hidden" name="contact_person_id_{{$i}}" value="{{isset($candidate['contact_person_id_' . $i]) ? $candidate['contact_person_id_' . $i] : ''}}">
                     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
+                        <input type="hidden" name="contact_person_id_{{$i}}" value="{{isset($candidate['contact_person_id_' . $i]) ? $candidate['contact_person_id_' . $i] : ''}}">
                         <div class="form-group">
                             <label for="contact_person_full_name_{{$i}}" class="col-sm-2 control-label">
                                 Họ và tên

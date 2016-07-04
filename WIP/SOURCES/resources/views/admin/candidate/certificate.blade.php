@@ -15,10 +15,10 @@
         <?php $certificateCount = isset($candidate['certificate_count']) ? $candidate['certificate_count'] : 1;?>
         <input type="hidden" name="certificate_count" id="certificate-count" value="{{$certificateCount}}">
         @for ($i = 1; $i <= $certificateCount; $i++)
-            <input type="hidden" name="certificate_id_{{$i}}"
-                   value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
         <!-- input Tên Bằng cấp/Chứng chỉ -->
             <div class="certificate-item">
+                <input type="hidden" name="certificate_id_{{$i}}"
+                       value="{{isset($candidate['certificate_id_' . $i]) ? $candidate['certificate_id_' . $i] : ''}}">
                 <div class="form-group ">
                     <label for="certificate_name_{{$i}}"
                            class="col-sm-2 control-label">
