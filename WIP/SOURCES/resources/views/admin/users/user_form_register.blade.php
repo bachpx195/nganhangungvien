@@ -141,18 +141,22 @@
                                                             <label for="logo" class="col-sm-2 control-label">Ảnh đại
                                                                 diện </label>
                                                             <div class="register_fr_input_wd583">
-                                                                <div class="display_block btn-big pos_relactive w170 floatLeft">
-                                                                    <input type="file"
-                                                                           class="w182 bt_input pos_absolute" id="logo"
-                                                                           name="logo" onchange="fileOnchange(this)">
-                                                                    <span class="icon_upload_file"></span>Chọn file đính
-                                                                    kèm
+                                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                    <div class="fileinput-new thumbnail upload-image">
+                                                                        @include('admin.common.user_image',
+                                                                        array('userImage' => isset($user['image']) ? $user['image'] : URL::asset('assets/image/default.png')))
+                                                                    </div>
+                                                                    <div class="fileinput-preview fileinput-exists thumbnail upload-image"> </div>
+                                                                    <div>
+                                                                    <span class="btn red btn-outline btn-file">
+                                                                        <span class="fileinput-new"> Chọn hình ảnh </span>
+                                                                        <span class="fileinput-exists"> Thay đổi </span>
+                                                                        <input  type="file" name="image" accept="image/*" > </span>
+                                                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                                                    </div>
                                                                 </div>
-                                                                <span class="select_file_note floatLeft txt-color-363636 fs12"
-                                                                      id="note_select_file_logo">(File đang chọn: )</span>
-                                                                <div class="note_size_photo clearfix font12 italic"
-                                                                     id="error_logo">(Dạng file ảnh .jpg, .gif, .png,
-                                                                    dung lượng &lt;=300KB)
+                                                                <div class="clearfix margin-top-10">
+                                                                    <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png )
                                                                 </div>
                                                             </div>
                                                         </div>
