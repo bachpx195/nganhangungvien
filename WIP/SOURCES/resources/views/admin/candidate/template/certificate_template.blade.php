@@ -1,4 +1,4 @@
-<div id="certificate-template" style="display: none;">
+<script id="certificate-template" type="x-tmpl-mustache">
     <div class="certificate-item">
         <div class="form-group ">
             <div class="ln_hr_head"></div>
@@ -92,6 +92,12 @@
             </div>
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> &nbsp; </label>
+            <div class="col-sm-10 remove-addition-info-form"
+                 data-class="certificate-item" data-index="1" data-count-id="certificate-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
+            </div>
+        </div>
     </div>
-</div>
+</script>

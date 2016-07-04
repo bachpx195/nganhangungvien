@@ -1,4 +1,4 @@
-<div id="contact-person-template" style="display: none;">
+<script id="contact-person-template" type="x-tmpl-mustache">
     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
         <div class="form-group ">
             <div class="ln_hr_head"></div>
@@ -48,5 +48,12 @@
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> &nbsp; </label>
+            <div class="col-sm-10 remove-addition-info-form"
+                 data-class="addformthamkhao" data-index="1" data-count-id="contact-person-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGƯỜI THAM KHẢO</a>
+            </div>
+        </div>
     </div>
-</div>
+</script>

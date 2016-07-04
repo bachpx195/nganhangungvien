@@ -99,5 +99,23 @@
                 $('#address-error').not('.display_none').html('').addClass('display_none');
             }
         });
+
+        $(document).on('click', '.remove-addition-info-form', function () {
+            var formClass = $(this).data('class');
+            var divIndex = $(this).data('index');
+            var count = $('.' + formClass).length;
+            if (count == 1) {
+                resetForm(formClass);
+            } else {
+                $(this).parents('div')[divIndex].remove();
+            }
+        });
+
+        function resetForm(formClass) {
+            // reset input, text area
+            $('.' + formClass).find("input[type=text], textarea").val("");
+            // reset select2
+            $('.' + formClass + ' select').select2('val', '')
+        }
     });
 </script>

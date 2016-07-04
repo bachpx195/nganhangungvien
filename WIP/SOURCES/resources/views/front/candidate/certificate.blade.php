@@ -7,9 +7,6 @@
         </a>
     </div>
     <div class="clearfix"></div>
-    <div class="row">
-        <div class="ln_hr_head"></div>
-    </div>
     <div class="clearfix"></div>
     <div aria-expanded="true" class="body-box-child-ths collapse in" id="coll_tdbc"
          style="">
@@ -23,6 +20,9 @@
                             @for ($i = 1; $i <= $certificateCount; $i++)
                                     <!-- input Tên Bằng cấp/Chứng chỉ -->
                                 <div class="certificate-item">
+                                    <div class="form-group">
+                                        <div class="ln_hr_head"></div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="certificate_name_{{$i}}"
                                                class="control-label-info bold txt-color-363636 fs14 w181">
@@ -55,13 +55,13 @@
                                         <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                                             <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                                <select name="started_at_month_{{$i}}" class="select-style w60" data-disS="1">
+                                                <select name="started_at_month_{{$i}}" class="select-style w128">
                                                     @include('front.common.month_options',
                                                     array('selected' => isset($candidate['started_at_month_' . $i]) ? $candidate['started_at_month_' . $i] : ''))
                                                 </select>
                                             </div>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                                <select name="started_at_year_{{$i}}" class="select-style w60" data-disS="1">
+                                                <select name="started_at_year_{{$i}}" class="select-style w128">
                                                     @include('front.common.year_options',
                                                     array('selected' => isset($candidate['started_at_year_' . $i]) ? $candidate['started_at_year_' . $i] : ''))
                                                 </select>
@@ -70,22 +70,18 @@
                                             <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                                                 Hiện tại</p>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                                <select name="ended_at_month_{{$i}}" class="select-style w60" data-disS="1">
+                                                <select name="ended_at_month_{{$i}}" class="select-style w128">
                                                     @include('front.common.month_options',
                                                     array('selected' => isset($candidate['ended_at_month_' . $i]) ? $candidate['ended_at_month_' . $i] : ''))
                                                 </select>
                                             </div>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                                <select name="ended_at_year_{{$i}}" class="select-style  w60" data-disS="1">
+                                                <select name="ended_at_year_{{$i}}" class="select-style w128">
                                                     @include('front.common.year_options',
-                                                    array('selected' => isset($candidate['ended_at_month_' . $i]) ? $candidate['ended_at_month_' . $i] : ''))
+                                                    array('selected' => isset($candidate['ended_at_year_' . $i]) ? $candidate['ended_at_year_' . $i] : ''))
                                                 </select>
                                             </div>
-                                            <div id="error_c_thoigian"
-                                                 class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                                         </div>
-                                        <div id="error_c_thoigian_bc"
-                                             class="clearfix error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
 
                                     <!-- input Chuyên ngành -->
@@ -122,6 +118,16 @@
                                             </div>
                                         </div>
                                         <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <!-- Remove experience -->
+                                    <div class="form-group">
+                                        <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+                                        <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                                             data-class="certificate-item" data-index="1" data-count-id="certificate-count">
+                                            <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
+                                        </div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

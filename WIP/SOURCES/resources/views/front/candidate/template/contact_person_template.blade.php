@@ -1,4 +1,4 @@
-<div id="contact-person-template" style="display: none;">
+<script id="contact-person-template" type="x-tmpl-mustache">
     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -25,8 +25,6 @@
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
-
-
         <div class="form-group clearfix mb_16">
             <label class="control-label-info bold txt-ghi fs14 w180">
                 Số điện thoại
@@ -48,5 +46,14 @@
             </div>
             <div class="error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+            <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                 data-class="addformthamkhao" data-index="1" data-count-id="contact-person-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGƯỜI THAM KHẢO</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
     </div>
-</div>
+</script>

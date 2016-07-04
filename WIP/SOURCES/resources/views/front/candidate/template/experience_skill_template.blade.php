@@ -1,4 +1,4 @@
-<div id="experience-template" style="display: none;">
+<script id="experience-template" type="x-tmpl-mustache">
     <div class="experience-skill-item">
         <div class="row">
             <div class="ln_hr_head"></div>
@@ -33,19 +33,19 @@
         <div class="clearfix"></div>
 
         <!-- input birthday -->
-        <div class="form-group mt_16">
+        <div class="form-group">
             <label for="address"
                    class="control-label-info bold txt-ghi fs14 w180">Thời
                 gian làm việc</label>
             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="day_in_month_@{{index}}" class="w128">
+                    <select name="experience_day_in_month_@{{index}}" class="w128">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="day_in_year_@{{index}}" class="w128">
+                    <select name="experience_day_in_year_@{{index}}" class="w128">
                         @include('front.common.year_options'))
                     </select>
                 </div>
@@ -53,12 +53,12 @@
                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none">
                     Hiện tại</p>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                    <select name="day_out_month_@{{index}}" class="w128">
+                    <select name="experience_day_out_month_@{{index}}" class="w128">
                         @include('front.common.month_options'))
                     </select>
                 </div>
                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                    <select name="day_out_year_@{{index}}" class="w128">
+                    <select name="experience_day_out_year_@{{index}}" class="w128">
                         @include('front.common.year_options'))
                     </select>
                 </div>
@@ -68,12 +68,12 @@
 
             <div class="clearfix"></div>
             <div class="form-group mt_16">
-                <label for="expect_salary"
+                <label for="experience_salary_@{{index}}"
                        class="control-label-info bold txt-ghi fs14 w180">
                     Mức lương
                 </label>
 
-                <div class="fr-input-wd333 select_style31 city_select">
+                <div class="fr_ip_vtmm col-xs-8 city_select">
                     <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                         <select id="experience_salary" name="experience_salary_@{{index}}"
                                 data-disS="1"
@@ -91,12 +91,12 @@
             </div>
             <div class="clearfix"></div>
 
-            <div class="form-group clearfix mt_16">
+            <div class="form-group mt_16">
                 <label class="control-label-checkbox bold txt-ghi fs14 w180">
                     Mô tả công việc
                 </label>
                 <div class="fr_ip_vtmm col-xs-8">
-                <textarea name="experience_description"
+                <textarea name="experience_description_@{{index}}"
                           class="form-control pt4 pb4 pl_10 pr_10 inputTextAreaKNEdit required"
                           id="experience_description_@{{index}}" rows="5"></textarea>
                 </div>
@@ -104,5 +104,14 @@
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
             </div>
         </div>
+        <!-- Remove experience -->
+        <div class="form-group">
+            <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+            {{--<div class="fr_ip_vtmm col-xs-8">--}}
+            <div class="remove-addition-info-form"
+                 data-class="experience-skill-item" data-index="1" data-count-id="experience-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
+            </div>
+        </div>
     </div>
-</div>
+</script>

@@ -1,5 +1,5 @@
-<div id="language-template" style="display: none;">
-    <div class="form-horizontal">
+<script id="language-template" type="x-tmpl-mustache">
+    <div class="language-item">
         <div class="form-group ">
             <div class="ln_hr_head"></div>
         </div>
@@ -81,5 +81,12 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> &nbsp; </label>
+            <div class="col-sm-10 remove-addition-info-form"
+                 data-class="language-item" data-index="1" data-count-id="language-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA NGOẠI NGỮ</a>
+            </div>
+        </div>
     </div>
-</div>
+</script>
