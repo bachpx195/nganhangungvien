@@ -802,7 +802,7 @@ $('#btn_select_kinh_nghiem').click(function() {
 });
 
 $('.btn_search_time').click(function() {
-    var numSelected = $('#cols-right .box_mucluong .icheckbox_square-blue.checked').length;
+    var numSelected = $('.box_mucluong .icheckbox_square-blue.checked').length;
     if(numSelected > 0) {
         if(numSelected < 10) {
             numSelected = "0" + numSelected;
@@ -811,8 +811,8 @@ $('.btn_search_time').click(function() {
     } else {
         var text = 'Tất cả mức lương';
     }
-    $('#cols-right .box_mucluong .drop_filter_top').html(text);
-    $('#cols-right .box_mucluong .drop_filter_top').trigger('click');
+    $('.box_mucluong .drop_filter_top').html(text);
+    $('.box_mucluong .drop_filter_top').trigger('click');
     $('.filter_mucluong').hide();
 });
 

@@ -185,7 +185,7 @@
                                                 ))
                                     </select>
                                 </div>
-                                <div id="error_nganhnghe" class="has-error"></div>
+                                <div id="error_nganhnghe" class="has-error k-invalid"></div>
                                 <div class="clearfix" style="margin-top: 15px"></div>
                                 <div class="form-group  job-list" @if(count($expectJobs) == 0) style="display: none" @endif>
                                     <div class="col-md-12">
@@ -221,7 +221,7 @@
                                                 ))
                                     </select>
                                 </div>
-                                <div id="address-error" class="has-error"></div>
+                                <div id="address-error" class="has-error k-invalid"></div>
                                 <div class="clearfix" style="margin-top: 15px"></div>
                                 <div class="form-group  address-list" @if(count($expectAddresses) == 0) style="display: none" @endif>
                                     <div class="col-md-12">
@@ -356,7 +356,7 @@
                                   id="c_muc_tieu_nghe_nghiep"
                                   placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                   class="inputTxtAreaTop form-control"
-                                  required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
+                                  required data-required-msg="Vui lòng nhập Mục tiêu nghề nghiệp"
                                   rows="5">{{ $candidate['job_goal'] }}</textarea>
                             </div>
                         </div>
@@ -364,16 +364,15 @@
                         <div class="form-group mt_16">
                             <label for="job_goal"
                                    class="col-sm-2 control-label">
-                                Kỹ năng & Sở trường
+                                Kỹ năng & Sở trường <span class="has-error">*</span>
                             </label>
                             <div class="col-sm-10">
                         <textarea name="skill_forte"
                                   placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
                                   class="inputTxtAreaTop form-control"
+                                  required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
                                   rows="5">{{ $candidate['skill_forte'] }}</textarea>
                             </div>
-                            <div class="error_reg_mess clearfix italic validator-message display_none" data-name="skill_forte">
-                                Vui lòng chọn mục tiêu nghề nghiệp.</div>
                         </div>
 
                         <div class="form-group">

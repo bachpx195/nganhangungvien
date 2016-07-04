@@ -7,7 +7,7 @@ class ProvinceSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('province')->delete();
+        DB::table('province')->truncate();
 
         $provinces = [
             ['name' => 'Hải Phòng'],

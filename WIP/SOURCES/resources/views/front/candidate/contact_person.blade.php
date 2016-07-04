@@ -4,7 +4,6 @@
            class="accordion">
             <span class="uppercase bold text-tim-nhat">NGƯỜI THAM KHẢO</span>
             <span class="required_l_n">(không bắt buộc)</span>
-            <span class="required_r"><i class="icn-main-menu icn-arr-down"></i></span>
         </a>
     </div>
     <div class="clearfix"></div>
@@ -20,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_person_full_name_{{$i}}" class="control-label-info bold txt-ghi fs14 w180">
-                                Họ và tên <span class="colorRed">*</span>
+                                Họ và tên
                             </label>
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input type="text"
@@ -31,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_person_company_{{$i}}" class="control-label-info bold txt-ghi fs14 w180">
-                                Công ty/Tổ chức <span class="colorRed">*</span>
+                                Công ty/Tổ chức
                             </label>
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input type="text"
@@ -42,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 w180">
-                                Số điện thoại <span class="colorRed">*</span>
+                                Số điện thoại
                             </label>
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input type="text"
@@ -53,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_person_office_{{$i}}" class="control-label-info bold txt-ghi fs14 w180">
-                                Chức vụ <span class="colorRed">*</span>
+                                Chức vụ
                             </label>
                             <div class="fr_ip_vtmm col-xs-8">
                                 <input name="contact_person_office_{{$i}}" type="text"

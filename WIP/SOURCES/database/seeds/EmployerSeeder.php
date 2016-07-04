@@ -8,7 +8,7 @@ class EmployerSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('employer')->delete();
+        DB::table('employer')->truncate();
 
         $userList = User::where('user_type', 'employer')->get();
 

@@ -5,7 +5,7 @@
         </div>
         <div class="form-group">
             <label for="contact_person_full_name_@{{index}}" class="col-sm-2 control-label">
-                Họ và tên <span class="colorRed">*</span>
+                Họ và tên
             </label>
             <div class="col-sm-10">
                 <input type="text"
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="contact_person_company_@{{index}}" class="col-sm-2 control-label">
-                Công ty/Tổ chức <span class="colorRed">*</span>
+                Công ty/Tổ chức
             </label>
             <div class="col-sm-10">
                 <input type="text"
@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Số điện thoại <span class="colorRed">*</span>
+                Số điện thoại
             </label>
             <div class="col-sm-10">
                 <input type="text"
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="contact_person_office_@{{index}}" class="col-sm-2 control-label">
-                Chức vụ <span class="colorRed">*</span>
+                Chức vụ
             </label>
             <div class="col-sm-10">
                 <input name="contact_person_office_@{{index}}" type="text"

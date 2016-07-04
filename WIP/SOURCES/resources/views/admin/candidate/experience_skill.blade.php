@@ -3,10 +3,7 @@
         <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion"
            href="#div-frm-kinhnghiem" class="accordion">
             <span class="uppercase bold text-tim-nhat">KINH NGHIỆM LÀM VIỆC</span>
-            <span class="required_l kn_bb ">(bắt buộc)</span>
-            <span class="required_l_n kn_kobb display_none">(Không bắt buộc)</span>
-                                                <span class="required_r"><i
-                                                            class="icn-main-menu icn-arr-down"></i></span>
+            <span class="required_l_n">(không bắt buộc)</span>
         </a>
     </div>
     <div class="clearfix"></div>
@@ -37,8 +34,7 @@
                 <div class="form-group">
                     <label for="experience_company_name_{{$i}}"
                            class="col-sm-2 control-label">Tên
-                        Công ty/Tổ chức <span
-                                class="colorRed">*</span></label>
+                        Công ty/Tổ chức</label>
                     <div class="col-sm-10 ">
                         <input name="experience_company_name_{{$i}}" type="text"
                                class="inputTextKNEdit form-control input-lg2 color-input required"
@@ -52,8 +48,7 @@
                 <!-- Trường đào tạo cấp -->
                 <div class="form-group">
                     <label for="experience_office_{{$i}}"
-                           class="col-sm-2 control-label">Chức
-                        danh <span class="colorRed">*</span></label>
+                           class="col-sm-2 control-label">Chức danh</label>
                     <div class="col-sm-10 ">
                         <input name="experience_office_{{$i}}" type="text"
                                class="inputTextKNEdit form-control input-lg2 color-input required"
@@ -68,9 +63,7 @@
                 <!-- input birthday -->
                 <div class="form-group mt_16">
                     <label for="address"
-                           class="col-sm-2 control-label">Thời
-                        gian làm việc <span
-                                class="colorRed">*</span></label>
+                           class="col-sm-2 control-label">Thời gian làm việc</label>
                     <div class="col-sm-10 ">
                         <span class="col-sm-1">từ </span>
                         <div class="col-sm-2">
@@ -104,8 +97,7 @@
 
                 <div class="form-group mt_16">
                     <label for="expect_salary"
-                           class="col-sm-2 control-label">
-                        Mức lương <span class="colorRed">*</span>
+                           class="col-sm-2 control-label"> Mức lương
                     </label>
 
                     <div class="col-sm-10 ">
@@ -126,11 +118,11 @@
 
                 <div class="clearfix"></div>
 
-                <div class="form-group clearfix mt_16">
-                    <label class="col-sm-2 control-label">
-                        Mô tả công việc <span class="colorRed">*</span>
-                    </label>
-                    <div class="col-sm-10 ">
+                    <div class="form-group clearfix mt_16">
+                        <label class="col-sm-2 control-label">
+                            Mô tả công việc
+                        </label>
+                        <div class="col-sm-10 ">
                             <textarea name="experience_description_{{$i}}" class="form-control"
                                       id="experience_description"
                                       rows="5">{{isset($candidate['experience_description_' . $i]) ? $candidate['experience_description_' . $i] : ''}}</textarea>

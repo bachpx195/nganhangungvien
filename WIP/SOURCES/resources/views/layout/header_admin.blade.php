@@ -4,10 +4,10 @@
 	<div class="page-header-inner ">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo" style="background: #00549F;">
-			<a href="/" style="font-size: 50px; color: white; margin-left: 50px; margin-top: 25px;">
-				{{--<img src="{{ URL::asset('/assets/layouts/layout2/img/logo-default.png') }}" alt="logo" class="logo-default" />--}}
+			<a href="/">
+				<img src="{{ URL::asset('/assets/layouts/layout2/img/logo-default.png') }}" alt="logo" class="logo-default" height="50"/>
 
-				<span class="logo-default"><i class="fa fa-university" aria-hidden="true"></i></span>
+				{{--<span class="logo-default"><i class="fa fa-university" aria-hidden="true"></i></span>--}}
 			</a>
 			<div class="menu-toggler sidebar-toggler">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->

@@ -3125,3 +3125,6 @@ label[for="search_show_id"] {
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
 }
+.vip-avatar {
+    width: 50px;
+}

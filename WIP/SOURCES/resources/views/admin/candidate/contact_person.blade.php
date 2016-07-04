@@ -4,7 +4,6 @@
            class="accordion">
             <span class="uppercase bold text-tim-nhat">NGƯỜI THAM KHẢO</span>
             <span class="required_l_n">(không bắt buộc)</span>
-            <span class="required_r"><i class="icn-main-menu icn-arr-down"></i></span>
         </a>
     </div>
     <div class="clearfix"></div>
@@ -22,7 +21,7 @@
                     <div class="form-horizontal noboder addformthamkhao pt_16 pb_16">
                         <div class="form-group">
                             <label for="contact_person_full_name_{{$i}}" class="col-sm-2 control-label">
-                                Họ và tên <span class="colorRed">*</span>
+                                Họ và tên
                             </label>
                             <div class="col-sm-10">
                                 <input type="text"
@@ -34,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_person_company_{{$i}}" class="col-sm-2 control-label">
-                                Công ty/Tổ chức <span class="colorRed">*</span>
+                                Công ty/Tổ chức
                             </label>
                             <div class="col-sm-10">
                                 <input type="text"
@@ -47,7 +46,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
-                                Số điện thoại <span class="colorRed">*</span>
+                                Số điện thoại
                             </label>
                             <div class="col-sm-10">
                                 <input type="text"
@@ -59,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_person_office_{{$i}}" class="col-sm-2 control-label">
-                                Chức vụ <span class="colorRed">*</span>
+                                Chức vụ
                             </label>
                             <div class="col-sm-10">
                                 <input name="contact_person_office_{{$i}}" type="text"

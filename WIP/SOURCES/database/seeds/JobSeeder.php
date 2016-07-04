@@ -7,7 +7,7 @@ class JobSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('job')->delete();
+        DB::table('job')->truncate();
 
         $jobs = [
             ['name' => 'Kế toán-Kiểm toán'],

@@ -1,7 +1,11 @@
 @extends('front/global')
 @section('content')
-    <div class="content_dangky bg_white mt16 box_shadow">
-        <div class="sub-content">
+    @if (Auth::check() && Auth::user()->user_type == 'employer')
+        <div style="padding-left:232px;" class="content_dangky mt16" >
+            @else
+                <div class="content_dangky  mt16" >
+                    @endif
+        <div class="sub-content bg_white">
             <div class="container">
 
                 <div class="wrapper-content">
@@ -39,6 +43,10 @@
                                                title="{{ $new->title? $new->title : ''}}"
                                                target="_blank">{{ $new->title? $new->title : ''}}</a>
                                         </div>
+
+                                         @if (count($otherNews)-1 == $index)
+                                             </div>
+                                         @endif
                                     @else
                                         <div class="col-md-6">
                                             <a class="mr_10" href="{{route('news.profile', ['slug' => StringHelper::uri($new->title), 'id' => $new->id])}}"

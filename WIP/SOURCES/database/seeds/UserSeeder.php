@@ -7,7 +7,7 @@ class UserSeeder extends Seeder {
 	
 	public function run() 
 	{
-		DB::table('user')->delete();
+		DB::table('user')->truncate();
 
 		// Manager
 		User::insert([

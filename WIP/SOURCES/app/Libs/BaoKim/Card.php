@@ -60,41 +60,9 @@ class Card {
         date_default_timezone_set('Asia/Ho_Chi_Minh');
 
         if ($status == 200) {
-            $amount = $result['amount'];
-
-            switch($amount) {
-                case 10000:
-                    $token = 10;
-                    break;
-                case 20000:
-                    $token = 20;
-                    break;
-                case 30000:
-                    $token = 30;
-                    break;
-                case 50000:
-                    $token= 50;
-                    break;
-                case 100000:
-                    $token = 100;
-                    break;
-                case 200000:
-                    $token = 200;
-                    break;
-                case 300000:
-                    $token = 300;
-                    break;
-                case 500000:
-                    $token = 500;
-                    break;
-                case 1000000:
-                    $token = 1000;
-                    break;
-            }
-
-            return array('success' => true, 'amount' => $token);
+            return array('success' => true, 'amount' => $result['amount']);
         } else {
-            return array('success' => false, 'err' => 'Status Code:' . $status . '.'. 'Error:'.$result['errorMessage']);
+            return array('success' => false, 'err' => $result['errorMessage']);
         }
     }
 

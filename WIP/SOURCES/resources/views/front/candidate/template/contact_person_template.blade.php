@@ -5,7 +5,7 @@
         </div>
         <div class="form-group clearfix mb_16 mt16">
             <label for="contact_person_full_name_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
-                Họ và tên <span class="colorRed">*</span>
+                Họ và tên
             </label>
             <div class="fr_ip_vtmm col-xs-8">
                 <input type="text"
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group clearfix mb_16">
             <label for="contact_person_company_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
-                Công ty/Tổ chức <span class="colorRed">*</span>
+                Công ty/Tổ chức
             </label>
             <div class="fr_ip_vtmm col-xs-8">
                 <input type="text"
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group clearfix mb_16">
             <label class="control-label-info bold txt-ghi fs14 w180">
-                Số điện thoại <span class="colorRed">*</span>
+                Số điện thoại
             </label>
             <div class="fr_ip_vtmm col-xs-8">
                 <input type="text"
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group clearfix mb_16">
             <label for="contact_person_office_@{{index}}" class="control-label-info bold txt-ghi fs14 w180">
-                Chức vụ <span class="colorRed">*</span>
+                Chức vụ
             </label>
             <div class="fr_ip_vtmm col-xs-8">
                 <input name="contact_person_office_@{{index}}" type="text"

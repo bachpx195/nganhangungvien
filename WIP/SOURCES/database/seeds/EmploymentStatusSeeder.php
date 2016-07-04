@@ -7,7 +7,7 @@ class EmploymentStatusSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('employment_status')->delete();
+        DB::table('employment_status')->truncate();
 
         $employmentStatuses = [
             ['name' => 'Toàn thời gian cố định'],

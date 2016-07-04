@@ -6,8 +6,7 @@
         <div class="form-group ">
             <label for="certificate_name_@{{index}}"
                    class="col-sm-2 control-label">
-                Tên Bằng cấp/Chứng chỉ <span
-                        class="colorRed">*</span>
+                Tên Bằng cấp/Chứng chỉ
             </label>
             <div class="col-sm-10">
                 <input placeholder="Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT..."
@@ -21,8 +20,7 @@
         <div class="form-group ">
             <label for="training_unit_@{{index}}"
                    class="col-sm-2 control-label">Trường/Đơn
-                vị đào tạo <span
-                        class="colorRed">*</span></label>
+                vị đào tạo</label>
             <div class="col-sm-10">
                 <input type="text"
                        class="form-control input-lg2 color-input inputTextEdit required"
@@ -32,8 +30,7 @@
         </div>
 
         <div class="form-group ">
-            <label class="col-sm-2 control-label">Thời
-                gian <span class="colorRed">*</span></label>
+            <label class="col-sm-2 control-label">Thời gian</label>
             <div class="col-sm-10">
                 <span class="col-sm-1">từ </span>
                 <div class="col-sm-2">
@@ -80,8 +77,7 @@
         <div class="form-group ">
             <label for="graduation_type_@{{index}}"
                    class="col-sm-2 control-label">
-                Loại tốt nghiệp <span
-                        class="colorRed">*</span>
+                Loại tốt nghiệp
             </label>
             <div class="col-sm-10">
                 <div class="">

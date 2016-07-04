@@ -4,7 +4,6 @@
            href="#coll_nn" class="accordion">
             <span class="uppercase bold text-tim-nhat">NGOẠI NGỮ</span>
             <span class="required_l_n">(không bắt buộc)</span>
-            <span class="required_r"><i class="icn-main-menu icn-arr-down"></i></span>
         </a>
     </div>
     <div class="clearfix"></div>
@@ -71,7 +70,7 @@
                                         <div class="fr_ip_vtmm floatLeft pl_40">
                                             @include('front.common.radios',
                                                 array(
-                                                    'selected' => $candidate['listen_' . $i],
+                                                    'selected' => isset($candidate['listen_' . $i]) ? $candidate['listen_' . $i] : '',
                                                     'radios' => $scales,
                                                     'radioName' => 'listen_' . $i
                                                     ))
@@ -82,7 +81,7 @@
                                         <div class="fr_ip_vtmm floatLeft pl_40">
                                             @include('front.common.radios',
                                                 array(
-                                                    'selected' => $candidate['speak_' . $i],
+                                                    'selected' => isset($candidate['speak_' . $i]) ? $candidate['speak_' . $i] : '',
                                                     'radios' => $scales,
                                                     'radioName' => 'speak_' . $i
                                                     ))
@@ -93,7 +92,7 @@
                                         <div class="fr_ip_vtmm floatLeft pl_40">
                                             @include('front.common.radios',
                                                 array(
-                                                    'selected' => $candidate['read_' . $i],
+                                                    'selected' => isset($candidate['read_' . $i]) ? $candidate['read_' . $i] : '',
                                                     'radios' => $scales,
                                                     'radioName' => 'read_' . $i
                                                     ))
@@ -104,7 +103,7 @@
                                         <div class="fr_ip_vtmm floatLeft pl_40">
                                             @include('front.common.radios',
                                                 array(
-                                                    'selected' => $candidate['write_' . $i],
+                                                    'selected' => isset($candidate['write_' . $i]) ? $candidate['write_' . $i] : '',
                                                     'radios' => $scales,
                                                     'radioName' => 'write_' . $i
                                                     ))
