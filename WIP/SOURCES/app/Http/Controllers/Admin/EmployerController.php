@@ -165,7 +165,7 @@ class EmployerController extends Controller
                 "status"            => $item->status,
                 "vip"               => $this->getVipState($item),
                 "expire_vip"        => $this->getVipState($item) == 1 ? $item->expire_vip : '',
-                "roleCode"          => $role->code
+                "roleCode"          => $role ? $role->code : ''
             );
         }
 
