@@ -15,7 +15,7 @@
             fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));</script>
 
-      <div class="fb-page" data-href="https://www.facebook.com/dogochat/" data-tabs="timeline" data-height="350" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/dogochat/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/dogochat/">Đồ Gỗ &quot;Chất&quot; - BG</a></blockquote></div>
+      <div class="fb-page" data-href="https://www.facebook.com/CVBANKVN/" data-tabs="timeline" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/CVBANKVN/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/CVBANKVN/">NGÂN HÀNG ỨNG VIÊN</a></blockquote></div>
    </div>
 
    <div class="hr_header hr_header-new">
