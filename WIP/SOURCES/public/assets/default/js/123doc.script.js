@@ -1,4 +1,5 @@
 var runningBecomeVip = false;
+var runningOutsourcing = false;
 
 function popupPayment_open(paymentType) {
     $('.loggedin.popup_down').hide();
@@ -182,6 +183,51 @@ function become_vip(e)
             },
             error: function(e) {
                 runningBecomeVip = !1;
+                swal("Lỗi", "Có lỗi xảy ra, vui lòng nhập lại thông tin!", "error")
+            }
+        }), void 0)
+    }
+}
+
+function outsourcing(e)
+{
+    if (!runningOutsourcing) {
+        var fullName = $('#outsourcing').find('input[name="full_name"]').val();
+        var companyName = $('#outsourcing').find('input[name="company_name"]').val();
+        var email = $('#outsourcing').find('input[name="email"]').val();
+        var phoneNumber = $('#outsourcing').find('input[name="phone_number"]').val();
+        var address = $('#outsourcing').find('input[name="address"]').val();
+
+        return "" == fullName ? void swal("Lỗi", "Xin vui lòng nhập người liên hệ!", "error") : "" == companyName ? void swal("Lỗi", "Xin vui lòng tên công ty!", "error") : "" == email ? void swal("Lỗi", "Xin vui lòng nhập email!", "error")
+            : "" == phoneNumber ? swal("Lỗi", "Xin vui lòng nhập số điện thoại!", "error") : "" == address ? (swal("Lỗi", "Xin vui lòng nhập địa chỉ!", "error"),
+            void n.focus()) : (runningOutsourcing = !0, $("#pay-loading-atm").show(), $.ajax({
+            url: "/user/outsourcing",
+            type: "POST",
+            dataType: "json",
+            data: {
+                fullName: fullName,
+                companyName: companyName,
+                email: email,
+                phoneNumber: phoneNumber,
+                address: address
+            },
+            beforeSend: function() {
+                $(".become-vip-btn").css({
+                    "background-color": "#00a888",
+                    cursor: "text"
+                }), $("<span class='loading_mn' /></span>").prependTo("a.btn_submit")
+            },
+            success: function(e) {
+                runningOutsourcing = !1;
+                if (e.success) {
+                    $("#pay-loading-atm").hide();
+                    swal("Thành công!", "Thông tin của bạn đã được gửi tới nhà quản trị!", "success");
+                } else {
+                    alert(e.error);
+                }
+            },
+            error: function(e) {
+                runningOutsourcing = !1;
                 swal("Lỗi", "Có lỗi xảy ra, vui lòng nhập lại thông tin!", "error")
             }
         }), void 0)

@@ -328,6 +328,23 @@ class UserController extends Controller {
 	}
 
 	/**
+	 * Send mail when user want to outsourcing
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userOutsourcing(Request $request)
+	{
+		if ($request->isMethod('post')) {
+			$userData = Input::except(array('_token', '_method'));
+
+			$this->sendEmailOutSourcing($userData);
+
+			return array('success' => true);
+		}
+	}
+
+	/**
 	 * Send mail to employer after payment by card
 	 *
 	 * @param $data
@@ -354,7 +371,7 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Send mail to admin when user become vip
+	 * Send mail to admin when user want to become vip
 	 *
 	 * @param $data
 	 */
@@ -362,6 +379,19 @@ class UserController extends Controller {
 	{
 		Mail::send('emails.become_vip', $data, function ($message) use ($data) {
 			$message->subject('Đăng ký tài khoản VIP!')
+				->to(env('MAIL_USERNAME', 'quantricvbank@gmail.com'));
+		});
+	}
+
+	/**
+	 * Send mail to admin when user want to outsourcing
+	 *
+	 * @param $data
+	 */
+	private function sendEmailOutsourcing($data)
+	{
+		Mail::send('emails.outsourcing', $data, function ($message) use ($data) {
+			$message->subject('Đăng ký Thuê ngoài trọn gói!')
 				->to(env('MAIL_USERNAME', 'quantricvbank@gmail.com'));
 		});
 	}

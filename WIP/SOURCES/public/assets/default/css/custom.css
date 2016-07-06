@@ -76,10 +76,11 @@ label.card-deposit > input:checked + img {
 	border: 2px solid #FF9933;
 	background: #FF9933;
 }
-#become-vip {
+#become-vip, #outsourcing {
 	width: 100%;
 }
-#become-vip .form-control {
+#become-vip .form-control,
+#outsourcing .form-control{
 	display: inline-block;
 	width: auto;
 	margin-bottom: 10px;

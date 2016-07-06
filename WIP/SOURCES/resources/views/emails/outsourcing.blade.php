@@ -5,7 +5,7 @@
             </div>
 
             <div style="padding:20px;background-color:#fff;font-size:14px!important">
-                <p>Người dùng <span style="font-weight:bold">{{$fullName}}</span> muốn đăng ký tài khoản VIP với địa chỉ e-mail {{$email}}.</p>
+                <p>Người dùng <span style="font-weight:bold">{{$fullName}}</span> muốn đăng ký thuê ngoài trọn gói với địa chỉ e-mail {{$email}}.</p>
 
                 <p>Công ty: {{$companyName}}</p>
                 <p>Số điện thoại: {{$phoneNumber}}</p>
