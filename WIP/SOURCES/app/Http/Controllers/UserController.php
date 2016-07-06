@@ -311,6 +311,23 @@ class UserController extends Controller {
 	}
 
 	/**
+	 * Send mail when user want to become vip
+	 *
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function userBecomeVip(Request $request)
+	{
+		if ($request->isMethod('post')) {
+			$userData = Input::except(array('_token', '_method'));
+
+			$this->sendEmailBecomeVip($userData);
+
+			return array('success' => true);
+		}
+	}
+
+	/**
 	 * Send mail to employer after payment by card
 	 *
 	 * @param $data
@@ -333,6 +350,19 @@ class UserController extends Controller {
 		Mail::send('emails.payment_by_atm', $data, function ($message) use ($data) {
 			$message->subject('Chuyển khoản online thành công!')
 				->to($data['email']);
+		});
+	}
+
+	/**
+	 * Send mail to admin when user become vip
+	 *
+	 * @param $data
+	 */
+	private function sendEmailBecomeVip($data)
+	{
+		Mail::send('emails.become_vip', $data, function ($message) use ($data) {
+			$message->subject('Đăng ký tài khoản VIP!')
+				->to(env('MAIL_USERNAME', 'quantricvbank@gmail.com'));
 		});
 	}
 
