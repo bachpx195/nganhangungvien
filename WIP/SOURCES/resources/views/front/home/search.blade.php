@@ -205,7 +205,7 @@
 
 
 		@if ($linkYouTube)
-		<div class="font16 mb_8">
+		<div class="font16 mb_8 text-center">
 			HƯỚNG DẪN ĐĂNG KÝ<br/>TÀI KHOẢN NHÀ TUYỂN DỤNG
 		</div>
 		<iframe id="youtube-video-frame" src="{{$linkYouTube}}" frameborder="0" allowfullscreen=""></iframe>
@@ -219,8 +219,8 @@
 				</div>
 				<div>
 					<span class="bg-white bold font14 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
-					<span class="bg-white bold font14 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span><br>
-					<span class="bg-white bold font14 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype: </span><span class="bg-white text_pink font14 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
+					<span class="bg-white bold font14 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </span><span class="bg-white text_pink font14 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br>
+					<span class="bg-white bold font14 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype: </span><span class="bg-white text_pink font14 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat" class="text_pink">cskh.nganhangungvien.com</a></span>
 				</div>
 			</div>
 		</div>
