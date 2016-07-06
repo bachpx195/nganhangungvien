@@ -3,6 +3,7 @@ $(document).ready(function () {
         $(document).on('click', '.set-vip', function (e) {
             var currentRole = $('#_currentRoleId').val();
             if (currentRole != 'SUPER_ADMIN') {
+                sweetAlert("Thông báo", "Bạn không có quyền chuyển loại tài khoản của nhà tuyển dụng!", "error");
                 return;
             }
             
