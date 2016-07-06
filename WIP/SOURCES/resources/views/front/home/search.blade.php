@@ -218,9 +218,9 @@
 					LIÊN HỆ ĐỂ ĐƯỢC HỖ TRỢ
 				</div>
 				<div>
-					<span class="bg-white bold font14 text_blue">Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
-					<span class="bg-white bold font14 text_blue">Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span>
-					<span class="bg-white bold font14 text_blue">Skype: </span><span class="bg-white text_pink font14 bold">CSKH.NGANHANGUNGVIEN.COM</span>
+					<span class="bg-white bold font14 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font14 bold">04 6684 7421 - 0943 24 9699</span><br>
+					<span class="bg-white bold font14 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </span><span class="bg-white text_pink font14 bold">nganhangungvienvn@gmail.com</span><br>
+					<span class="bg-white bold font14 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype: </span><span class="bg-white text_pink font14 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
 				</div>
 			</div>
 		</div>
