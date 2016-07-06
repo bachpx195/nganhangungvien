@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>NGÂN HÀNG ỨNG VIÊN</title>
 
+    <link href="/favicon.ico" rel="NGÂN HÀNG ỨNG VIÊN" type="image/x-icon" />
+
     <!-- css all -->
     <link rel="stylesheet" href="{{ asset('/assets/default/css/normalize.min.css') }}" property='stylesheet'
           type='text/css' media='all'>

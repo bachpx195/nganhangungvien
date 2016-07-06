@@ -21,19 +21,12 @@
 		            Xin chào <strong>{{ $user->full_name }}</strong>
 		            </p>
 		            <p>
-		                Tài khoản Người tìm việc của bạn đã được xác thực thành công trên Ngân hàng ứng viên.<br>
-		                Bạn có thể tiếp tục tạo hồ sơ hoặc tìm kiếm việc làm phù hợp cho mình.
+		                Tài khoản Nhà tuyển dụng của bạn đã được xác thực thành công trên Ngân hàng ứng viên.<br>
+		                Bạn có thể tìm kiếm việc ứng viên phù hợp với tiêu chí của bạn.
 		            </p>
 		            <br>
-		                        <div class="pb_26"></div>
+		            <div class="pb_26"></div>
 		        </div>
-		    </div>
-		    <div class="block_reg_footer_common regis_footer h_96" id="regis_footer">
-		    <div class="footer_login_common fs14 txt-color-363636">
-		        <span class="bold fs14">Bạn gặp khó khăn khi tạo hồ sơ? Liên hệ Hotline hỗ trợ Người tìm việc:</span><br />
-		        Giờ hành chính:
-		        <span class="italic"> </span> <span class="txt-hong bold">(04) 6684 7421</span>,
-
 		    </div>
 		</div>
 	</div>

@@ -418,6 +418,12 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::match(['get', 'post'], '/user/atm-success', [
 		'as' => 'user.atm_success', 'uses' => 'UserController@userAtmSuccess'
 	]);
+	Route::match(['post'], '/user/become-vip', [
+		'as' => 'user.become_vip', 'uses' => 'UserController@userBecomeVip'
+	]);
+	Route::match(['post'], '/user/outsourcing', [
+		'as' => 'user.outsourcing', 'uses' => 'UserController@userOutsourcing'
+	]);
 });
 
 Route::any('{all?}','Front\HomeController@error')->where('all','(.*)');

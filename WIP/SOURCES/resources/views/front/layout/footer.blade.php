@@ -4,31 +4,35 @@
         <div class="section-inner">
             <div class="container">
                 <div class="row mt20">
-                    <div class="col-md-5">
-                        <div class=""><h2 class="">__ LIÊN HỆ __</h2>
-                            <div class="mt_24 font16">
+                    <div class="col-md-6">
+                        <div class="">
+                            <h2 class="text_pink">
+                                LIÊN HỆ
+                            </h2>
+
+                            <div class="mt_24 font14">
                                 <a href="/">
                                     <img src="{{ URL::asset('assets/default/images/logo1_new.png') }}" alt="NGÂN HÀNG ỨNG VIÊN" title="NGÂN HÀNG ỨNG VIÊN">
                                 </a>
-                                <br/>
-                                <br/>
-                                <p>NGÂN HÀNG ỨNG VIÊN - <a href="http://nganhangungvien.com" class="text_pink ">WWW.NGANHANGUNGVIEN.COM</a></p><br/>
-                                <p>Hotline: 04 6684 7421 - 0943 24 9699<br>
-                                    Email: nganhangungvienvn@gmail.com<br>
-                                    Địa chỉ: Tổ 10, Phường Yên Nghĩa, Quận Hà Đông, TP Hà Nội</p>
+                                <p>
+                                    <br><i class="fa fa-phone" aria-hidden="true"></i> &nbsp;Hotline: <span class="text_pink">04 6684 7421 - 0943 24 9699</span><br>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a><br>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;Địa chỉ: <span class="text_pink">Tổ 10, Phường Yên Nghĩa, Quận Hà Đông, TP Hà Nội</span><br>
+                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Website: <span class="text_pink">nganhangungvien.com</span> - <i class="fa fa-skype" aria-hidden="true"></i> Skype: <a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat" class="text_pink">cskh.nganhangungvien.com</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="mt_24 font16">
-                            <h2 class="">__ LIÊN KẾT __</h2>
-                            <div class="">
-                                <br/>
-                                <p><a href="{{route('employer.register')}}" style="color: #FFFFFF;">- ĐĂNG KÝ NHÀ TUYỂN DỤNG</a></p>
-                                <p><a href="{{route('candidate.form')}}" style="color: #FFFFFF;">- TẠO HỒ SƠ ỨNG VIÊN</a></p>
-                                <p><a href="{{ route('news.show') }}" style="color: #FFFFFF;">- TÀI LIỆU QUẢN TRỊ</a></p>
-                                <p><a href="{{ route('pages.regist_vip') }}" style="color: #FFFFFF;">- ĐĂNG KÝ TÀI KHOẢN VIP</a></p>
-                                <p><a href="{{route('pages.outsourcing_package')}}" style="color: #FFFFFF;">- DỊCH VỤ THUÊ NGOÀI TRỌN GÓI</a></p>
+                    <div class="col-md-3">
+                        <div class="">
+                            <h2 class="text_pink"> LIÊN KẾT</h2>
+                            <div class="mt_24 font14">
+                                <p><a href="#" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>
+                                <p><a href="{{route('employer.register')}}" style="color: #FFFFFF;">- Đăng ký nhà tuyển dụng</a></p>
+                                <p><a href="{{route('candidate.form')}}" style="color: #FFFFFF;">- Tạo hồ sơ ứng viên</a></p>
+                                <p><a href="{{ route('news.show') }}" style="color: #FFFFFF;">- Tài liệu quản trị</a></p>
+                                <p><a href="{{ route('pages.regist_vip') }}" style="color: #FFFFFF;">- Đăng ký tài khoản VIP</a></p>
+                                <p><a href="{{route('pages.outsourcing_package')}}" style="color: #FFFFFF;">- Dịch vụ thuê ngoài trọn gói</a></p>
                             </div>
                         </div>
                     </div>
@@ -42,7 +46,7 @@
                                     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }(document, 'script', 'facebook-jssdk'));</script>
-                            <div class="fb-page" data-href="https://www.facebook.com/CVBANKVN/" data-tabs="timeline" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/CVBANKVN/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/CVBANKVN/">NGÂN HÀNG ỨNG VIÊN</a></blockquote></div>
+                            <div class="fb-page" data-href="https://www.facebook.com/CVBANKVN/" data-tabs="timeline" data-height="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/CVBANKVN/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/CVBANKVN/">NGÂN HÀNG ỨNG VIÊN</a></blockquote></div>
                         </div>
                     </div>
                 </div>
@@ -51,8 +55,8 @@
     </section>
     <div id="bottom-nav">
         <div class="container">
-            <div class="row footer-content">
-                <div class="copyright col-md-6">© 2016 <a href="http://nganhangungvien.com" class="text_pink ">WWW.NGANHANGUNGVIEN.COM</a> - NGÂN HÀNG ỨNG VIÊN - Thiết kế bởi <a href="http://bloomgoo.vn" class="text_pink ">BLOOMGOO.VN</a></div>
+            <div class="row footer-content text-center">
+                <div class="copyright col-md-12">© 2016 <a href="http://nganhangungvien.com" class="text_pink ">WWW.NGANHANGUNGVIEN.COM</a> - NGÂN HÀNG ỨNG VIÊN</div>
                 
             </div><!--/row-->
         </div><!--/container-->
