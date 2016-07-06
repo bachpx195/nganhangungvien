@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
             <div class="portlet light ">
-                <input type="hidden" id="_currentRoleId" value="{{ $role->code }}">
+                <input type="hidden" id="_currentRoleId" value="{{ $role ? $role->code : ''}}">
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>

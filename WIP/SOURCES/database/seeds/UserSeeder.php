@@ -20,7 +20,7 @@ class UserSeeder extends Seeder {
 			'user_type'	=> 'admin'
 		]);
 
-		User::insert([
+		/*User::insert([
 			'username' => 'employer',
 			'full_name' => 'employer',
 			'email' => 'employer@mail.com',
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder {
 				'image' => '',
 				'user_type'	=> 'employer'
 			]);
-		}
+		}*/
 	}
 	
 }
