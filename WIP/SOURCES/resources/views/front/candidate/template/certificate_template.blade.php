@@ -1,10 +1,10 @@
-<div id="certificate-template" style="display: none;">
+<script id="certificate-template" type="x-tmpl-mustache">
     <div class="certificate-item">
         <div class="row">
             <div class="ln_hr_head"></div>
         </div>
         <div class="form-group clearfix mb_12 mt16">
-            <label for="certificate_name_@{{index}}"
+            <label for="certificate_name"
                    class="control-label-info bold txt-color-363636 fs14 w181">
                 Tên Bằng cấp/Chứng chỉ
             </label>
@@ -103,5 +103,15 @@
             <div class="error_reg_mess pl_202 clearfix fs14 italic invalid-msg display_none"></div>
         </div>
         <div class="clearfix"></div>
+
+        <!-- Remove experience -->
+        <div class="form-group">
+            <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+            <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                 data-class="certificate-item" data-index="1" data-count-id="certificate-count">
+                <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA BẰNG CẤP CHỨNG CHỈ</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
     </div>
-</div>
+</script>

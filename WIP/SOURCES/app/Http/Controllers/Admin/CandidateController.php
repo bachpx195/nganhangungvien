@@ -455,7 +455,6 @@ class CandidateController extends Controller
         return $candidate;
     }
 
-
     /**
      * Populate it foreign languages to candidate
      *
@@ -531,12 +530,16 @@ class CandidateController extends Controller
                 $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
 
                 $dayIns = explode("-", $experiences[$i]->day_in);
-                $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
-                $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+                if (count($dayIns) >= 2) {
+                    $candidate['experience_day_in_month_' . ($i + 1)] = $dayIns[1];
+                    $candidate['experience_day_in_year_' . ($i + 1)] = $dayIns[0];
+                }
 
                 $dayOuts = explode("-", $experiences[$i]->day_out);
-                $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
-                $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+                if (count($dayOuts) >= 2) {
+                    $candidate['experience_day_out_month_' . ($i + 1)] = $dayOuts[1];
+                    $candidate['experience_day_out_year_' . ($i + 1)] = $dayOuts[0];
+                }
             }
 
             $candidate['experience_count'] = count($experiences);
@@ -631,18 +634,27 @@ class CandidateController extends Controller
      */
     private function saveContactPersons($candidate, $input)
     {
+        $persons = $this->contactPersonRepo->getContactPersonsByCandidateId($candidate->id);
         $contactPersonCount = isset($input['contact_person_count']) ? $input['contact_person_count'] : 1;
+        $insertUpdateRecord = array();
         for ($i = 1; $i <= $contactPersonCount; $i++) {
             if (empty($input['contact_person_id_' . $i])) {
                 $contactPerson = new CandidateContactPerson();
             } else {
                 $contactPerson = CandidateContactPerson::find($input['contact_person_id_' . $i]);
+                array_push($insertUpdateRecord, $contactPerson->id);
             }
 
             $contactPerson->candidate_id = $candidate->id;
             if ($this->canSaveContactPerson($input, $i)) {
                 $contactPerson = $this->getContactPersonInfo($contactPerson, $input, $i);
                 $contactPerson->save();
+            }
+        }
+        // delete record
+        for ($i = 0; $i < count($persons); $i++) {
+            if (!in_array($persons[$i]->id, $insertUpdateRecord)) {
+                $persons[$i]->delete();
             }
         }
     }
@@ -741,18 +753,27 @@ class CandidateController extends Controller
      */
     private function saveForeignLanguages($candidate, $input)
     {
+        $languages = $this->foreignLanguageRepo->getByForeignLanguage($candidate->id);
         $languageCount = isset($input['language_count']) ? $input['language_count'] : 1;
+        $insertUpdateRecord = array();
         for ($i = 1; $i <= $languageCount; $i++) {
             if (empty($input['foreign_language_id_' . $i])) {
                 $language = new CandidateForeignLanguage();
             } else {
                 $language = CandidateForeignLanguage::find($input['foreign_language_id_' . $i]);
+                array_push($insertUpdateRecord, $language->id);
             }
 
             $language->candidate_id = $candidate->id;
             if ($this->canSaveLanguage($input, $i)) {
                 $language = $this->getLanguageInfo($language, $input, $i);
                 $language->save();
+            }
+        }
+        // delete record
+        for ($i = 0; $i < count($languages); $i++) {
+            if (!in_array($languages[$i]->id, $insertUpdateRecord)) {
+                $languages[$i]->delete();
             }
         }
     }
@@ -801,17 +822,26 @@ class CandidateController extends Controller
      */
     private function saveCertificate($candidate, $input, $request)
     {
+        $certificates = $this->certificateRepo->getCertificatesByCandidateId($candidate->id);
+        $insertUpdateRecord = array();
         $certificateCount = isset($input['certificate_count']) ? $input['certificate_count'] : 1;
         for ($i = 1; $i <= $certificateCount; $i++) {
             if (empty($input['certificate_id_' . $i])) {
                 $certificate = new CandidateCertificate();
             } else {
                 $certificate = CandidateCertificate::find($input['certificate_id_' . $i]);
+                array_push($insertUpdateRecord, $certificate->id);
             }
             $certificate->candidate_id = $candidate->id;
             if ($this->canSaveCertificate($input, $i)) {
                 $certificate = $this->getCertificateInfo($certificate, $input, $i, $request);
                 $certificate->save();
+            }
+        }
+        // delete record
+        for ($i = 0; $i < count($certificates); $i++) {
+            if (!in_array($certificates[$i]->id, $insertUpdateRecord)) {
+                $certificates[$i]->delete();
             }
         }
     }
@@ -839,7 +869,6 @@ class CandidateController extends Controller
             $imgExtension = $request->file('certificate_image_' . $index)->getClientOriginalExtension();
             $request->file('certificate_image_' . $index)->move($candidateImgPath, $imageName . '.' . $imgExtension);
             $certificate->image = $imageName . '.' . $imgExtension;
-
         }
 
         if (!empty($input['started_at_month_' . $index]) && !empty($input['started_at_year_' . $index])) {
@@ -883,12 +912,16 @@ class CandidateController extends Controller
      */
     private function saveExperience($candidate, $input)
     {
+        $experiences = $this->experienceRepo->getExperiencesByCandidateId($candidate->id);
         $experienceCount = isset($input['experience_count']) ? $input['experience_count'] : 1;
+        $insertUpdateRecord = array();
+        // insert/update new record
         for ($i = 1; $i <= $experienceCount; $i++) {
             if (empty($input['experience_id_' . $i])) {
                 $experience = new Experience();
             } else {
                 $experience = Experience::find($input['experience_id_' . $i]);
+                array_push($insertUpdateRecord, $experience->id);
             }
 
             $experience->candidate_id = $candidate->id;
@@ -897,8 +930,13 @@ class CandidateController extends Controller
                 $experience->save();
             }
         }
+        // delete record
+        for ($i = 0; $i < count($experiences); $i++) {
+            if (!in_array($experiences[$i]->id, $insertUpdateRecord)) {
+                $experiences[$i]->delete();
+            }
+        }
     }
-
 
     /**
      * Can save a experience

@@ -8,9 +8,9 @@ class EmployerSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('employer')->delete();
+        DB::table('employer')->truncate();
 
-        $userList = User::where('user_type', 'employer')->get();
+        /*$userList = User::where('user_type', 'employer')->get();
 
         foreach ($userList as $user) {
             Employer::insert([
@@ -27,7 +27,7 @@ class EmployerSeeder extends Seeder {
                 'contact_email' => 'Email@gmail.com',
                 'status' => 1
             ]);
-        }
+        }*/
     }
 
 }

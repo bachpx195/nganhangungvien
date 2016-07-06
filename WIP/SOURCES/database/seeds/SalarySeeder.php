@@ -7,7 +7,7 @@ class SalarySeeder extends Seeder {
 
     public function run()
     {
-        DB::table('salary')->delete();
+        DB::table('salary')->truncate();
 
         $salaries = [
             ['name' => 'Thỏa thuận'],

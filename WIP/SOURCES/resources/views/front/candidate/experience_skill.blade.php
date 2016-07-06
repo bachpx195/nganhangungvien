@@ -7,25 +7,24 @@
         </a>
     </div>
     <div class="clearfix"></div>
-    <div class="row">
-        <div class="ln_hr_head"></div>
-    </div>
     <div class="clearfix"></div>
     <div aria-expanded="true" class="body-box-child-ths collapse in" style="">
         <div id="div-frm-kinhnghiem">
+            <div class="box-knlv mb_10">
+                <p>- Liệt kê các kinh nghiệm công việc từ thời gian gần
+                    nhất trở về trước. Kinh nghiệm có thể trong công việc hoặc các hoạt
+                    động đoàn thể. Không yêu cầu nếu chưa có kinh nghiệm</p>
+            </div>
+            <div class="clearfix"></div>
+            <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
+            <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
             <div class="box-edit form display_block" id="experience-list">
-                <div class="box-knlv mb_10">
-                    <p>- Liệt kê các kinh nghiệm công việc từ thời gian gần
-                        nhất trở về trước. Kinh nghiệm có thể trong công việc hoặc các hoạt
-                        động đoàn thể. Không yêu cầu nếu chưa có kinh nghiệm</p>
-                </div>
-                <div class="clearfix"></div>
-                <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
-                <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
-
                 @for ($i = 1; $i <= $experienceCount; $i++)
                     <input type="hidden" name="experience_num" id="experience_num" value="{{$i}}">
                     <div class="experience-skill-item">
+                        <div class="form-group">
+                            <div class="ln_hr_head"></div>
+                        </div>
                         <!-- tên company_name -->
                         <div class="form-group">
                             <label for="experience_company_name_{{$i}}"
@@ -63,13 +62,13 @@
                             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                    <select name="experience_day_in_month_{{$i}}" class="select-style w60" data-disS="1">
+                                    <select name="experience_day_in_month_{{$i}}" class="select-style w128">
                                         @include('front.common.month_options',
                                         array('selected' => isset($candidate['experience_day_in_month_' . $i]) ? $candidate['experience_day_in_month_' . $i] : ''))
                                     </select>
                                 </div>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                    <select name="experience_day_in_year_{{$i}}" class="select-style w60" data-disS="1">
+                                    <select name="experience_day_in_year_{{$i}}" class="select-style w128">
                                         @include('front.common.year_options',
                                         array('selected' => isset($candidate['experience_day_in_year_' . $i]) ? $candidate['experience_day_in_year_' . $i] : ''))
                                     </select>
@@ -77,19 +76,29 @@
                                 <span class="txt-color-757575 fs14 italic pl_16 pr12 floatLeft lbl_from_bangcap">đến</span>
                                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none" id="current_job_{{$i}}">
                                     Hiện tại</p>
+
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10" id="date_out1_{{$i}}" style="margin-bottom: 10px;">
-                                    <select name="experience_day_out_month_{{$i}}" class="select-style w60" data-disS="1">
+                                    <select name="experience_day_out_month_{{$i}}" class="select-style w128" data-disS="1">
                                         @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                                     </select>
                                 </div>
                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" id ="date_out2_{{$i}}"" style="margin-bottom: 10px;">
-                                    <select name="experience_day_out_year_{{$i}}" class="select-style w60" data-disS="1">
+                                    <select name="experience_day_out_year_{{$i}}" class="select-style w128" data-disS="1">
+
+<!--                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                    <select name="experience_day_out_month_{{$i}}" class="select-style w128">
+                                        @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
+                                    </select>
+                                </div>
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                    <select name="experience_day_out_year_{{$i}}" class="select-style w128"> -->
+
                                         @include('front.common.year_options',
                                         array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                                     </select>
                                 </div>
-                                <div class="form-group clearfix mt_8">
-                                    <div class="box-cvht" style="margin-left: 250px;">
+                                <div class="form-group clearfix mt_8" style="margin-bottom: 0px;">
+                                    <div class="box-cvht" style="margin-left: 390px;">
                                         <div class="demo-list">
                                             <input tabindex="1" type="checkbox" name="experience_is_current_job_{{$i}}" id="experience_is_current_job"  value="1" >
                                             <label for="cvht_{{$i}}" class="font14 fwn">Công việc hiện tại</label>
@@ -140,6 +149,16 @@
                                 </div>
                                 <div id="error_c_mo_ta_cong_viec"
                                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- Remove experience -->
+                            <div class="form-group">
+                                <label class="control-label-checkbox bold txt-ghi fs14 w180"> &nbsp; </label>
+                                <div class="fr_ip_vtmm col-xs-8 remove-addition-info-form"
+                                     data-class="experience-skill-item" data-index="1" data-count-id="experience-count">
+                                    <a href="javascript:void(0)"><i class="fa fa-trash-o"></i> XÓA KINH NGHIỆM LÀM VIỆC</a>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>

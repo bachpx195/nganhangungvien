@@ -1,14 +1,13 @@
-<?php namespace database\seeds;
+<?php
 
-use App\Model\Role;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Model\Role;
 
 class RoleSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('role')->delete();
+        DB::table('role')->truncate();
 
         Role::insert([
             'name' => 'Super Admin',

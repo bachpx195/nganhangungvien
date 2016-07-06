@@ -58,19 +58,24 @@ class CandidateProfileController extends BaseController {
 		$transactionCost = "";
 
 		if ($user) {
-			$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
-			$countSavedCv = $this->saveCvRepo->countSavedCv($employer->id, $candidate->id);
+			if($user->user_type == 'employer'){
+				$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+				$countSavedCv = $this->saveCvRepo->countSavedCv($employer->id, $candidate->id);
 
-			if(UserHelper::isVip($employer)){
-				$showContact = true;
-			}else{
-				$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
-				if($countTransactions > 0){
+				if(UserHelper::isVip($employer)){
 					$showContact = true;
 				}else{
-					$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+					$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
+					if($countTransactions > 0){
+						$showContact = true;
+					}else{
+						$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+					}
 				}
+			}else if($user->user_type == 'admin'){
+				$showContact = true;
 			}
+
 		}
 
 		//update count

@@ -7,7 +7,7 @@ class ForeignLanguageSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('foreign_language')->delete();
+        DB::table('foreign_language')->truncate();
 
         $foreignLanguages = [
             ['name' => 'Tiếng Anh – Tiếng Đức'],

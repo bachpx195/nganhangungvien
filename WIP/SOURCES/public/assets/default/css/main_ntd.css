@@ -1535,6 +1535,9 @@ select.select-style {
     bottom: 0;
     z-index:99;
 }
+.remove-addition-info-form a {
+    color: red;
+}
 .w825 {
     width:825px!important;
 }

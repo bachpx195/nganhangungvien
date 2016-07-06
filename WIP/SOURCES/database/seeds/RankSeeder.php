@@ -7,7 +7,7 @@ class RankSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('rank')->delete();
+        DB::table('rank')->truncate();
 
         $ranks = [
             ['name' => 'Quản lý cấp cao'],

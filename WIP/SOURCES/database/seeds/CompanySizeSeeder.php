@@ -7,7 +7,7 @@ class CompanySizeSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('company_size')->delete();
+        DB::table('company_size')->truncate();
 
         $companySizes = [
             ['name' => 'Ít hơn 10 nhân viên'],

@@ -100,6 +100,7 @@
             }
         });
 
+
         $(document).on('ifChecked ifUnchecked', '#experience_is_current_job', function (event) {
             console.log('experience_is_current_job');
             var i = document.getElementById('experience_num').value;
@@ -122,5 +123,24 @@
                 $(date_out2).removeClass('display_none');
             }
         });
+
+        $(document).on('click', '.remove-addition-info-form', function () {
+            var formClass = $(this).data('class');
+            var divIndex = $(this).data('index');
+            var count = $('.' + formClass).length;
+            if (count == 1) {
+                resetForm(formClass);
+            } else {
+                $(this).parents('div')[divIndex].remove();
+            }
+        });
+
+        function resetForm(formClass) {
+            // reset input, text area
+            $('.' + formClass).find("input[type=text], textarea").val("");
+            // reset select2
+            $('.' + formClass + ' select').select2('val', '')
+        }
+
     });
 </script>

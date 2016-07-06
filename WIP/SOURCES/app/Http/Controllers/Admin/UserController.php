@@ -151,11 +151,11 @@ class UserController extends Controller
             }
             $user->full_name = $input['full_name'];
             $user->phone_number = $input['phone_number'];
-            if (!empty($request->file('logo'))) {
+            if (!empty($request->file('image'))) {
                 $companyImgPath = FileHelper::getCompanyImgPath();
                 $imageName = FileHelper::getNewFileName();
-                $imgExtension = $request->file('logo')->getClientOriginalExtension();
-                $request->file('logo')->move($companyImgPath, $imageName . '.' . $imgExtension);
+                $imgExtension = $request->file('image')->getClientOriginalExtension();
+                $request->file('image')->move($companyImgPath, $imageName . '.' . $imgExtension);
                 $user->image = FileHelper::getCompanyRelativePath() . $imageName . '.' . $imgExtension;
             }
             $user->save();

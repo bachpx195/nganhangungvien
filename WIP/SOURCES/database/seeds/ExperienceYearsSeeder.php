@@ -7,7 +7,7 @@ class ExperienceYearsSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('experience_years')->delete();
+        DB::table('experience_years')->truncate();
 
         $experienceYears = [
             ['name' => 'Chưa có kinh nghiệm', 'code' => '-1'],
