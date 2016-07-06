@@ -6,6 +6,8 @@ class EmploymentStatus extends Model {
 
     protected $table = 'employment_status';
 
+    public $timestamps = false;
+
     public function candidate()
     {
         return $this->belongsTo('App\Model\Candidate', 'candidate_id', 'id');

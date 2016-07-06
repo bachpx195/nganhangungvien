@@ -133,8 +133,8 @@ div.section{
     width:232px;
 }
 #cols-right{
-    overflow-x: hidden;
-    overflow-y: scroll;
+    /*overflow-x: hidden;
+    overflow-y: scroll;*/
     /*min-width: 728px;*/
     width: 100% !important;
 }
@@ -144,13 +144,49 @@ div.section{
 .content_cols-right{
     /*max-width: 949px;
     min-width: 732px;*/
-    padding-right: 25px;
+    /*padding-right: 25px;*/
 }
 
-.content_cols{
-    width: 960px;
-    margin-left: auto;
-    margin-right: auto;
+#youtube-video-frame {
+    width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    .content_cols {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #youtube-video {
+        width: 250px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .content_cols {
+        width: 1220px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #youtube-video {
+        width: 340px;
+        height: 420px;
+    }
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1366px) {
+    .content_cols {
+        width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #youtube-video {
+        width: 320px;
+        height: 420px;
+    }
 }
 
 .header{
@@ -242,7 +278,8 @@ div.section{
 .box_left{
     position: absolute;
     top:0;
-    left:0;
+    left:5px;
+    margin-top: 60px;
 }
 .box_right, .box_footer{
     /*padding-left: 232px;*/
@@ -503,7 +540,7 @@ select.select-style {
     border-right: 1px solid #eeeeee;
 }
 .filter_box .select2-container{
-    top: 8px;
+    /*top: 8px;*/
 }
 .filter_box .select2-container .select2-choice {
     background: 0 0;
@@ -720,7 +757,7 @@ select.select-style {
     min-width: 728px;
 }
 .box_right .tab-content{
-    min-width: 728px;
+    /*min-width: 728px;*/
     margin-left: 1px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -750,6 +787,7 @@ select.select-style {
     padding-top: 4px;
     border-bottom: 1px solid #ebebeb;
     padding-bottom: 0;
+    min-height: 373px;
 }
 .list_item_one{
     padding: 16px;
@@ -1390,7 +1428,7 @@ select.select-style {
 }
 .modal-drop-mucluong {
     width:256px!important;
-    height: 296px!important;
+    height: 260px!important;
 }
 .user-info .select2-chosen {
     margin:0!important;
@@ -1497,6 +1535,9 @@ select.select-style {
     bottom: 0;
     z-index:99;
 }
+.remove-addition-info-form a {
+    color: red;
+}
 .w825 {
     width:825px!important;
 }
@@ -1590,7 +1631,7 @@ select.select-style {
     font-size: 14px !important;
     color: #757575 !important;
     padding-left: 0px!important;
-    padding-top: 0px !important;
+    /*padding-top: 0px !important;*/
 }
 .city_select .filter_box .select2-container .select2-choice .select2-arrow b {
     background: url(../images/sprites_24_NTD.png) no-repeat scroll left center transparent;
@@ -2100,7 +2141,7 @@ ul.request-line {
 }
 #overlay_popup, #popup_component, #popup_component_close,
     #popup_component_successfull, #popup_component_register_choice {
-    z-index: 1000;
+    z-index: 10000;
     width: 100%;
     position: absolute;
     top: 0px;
@@ -2128,6 +2169,7 @@ ul.request-line {
 #pos_popup_register_choice{
     width: 100%;
     position: absolute;
+    z-index: 10000;
 }
 
 #popup_content {
@@ -2343,7 +2385,7 @@ ul.request-line {
     display: inline-block;
 }
 #frm-login-info .input-lg2 {
-    height: 40px;
+    height: 35px;
     vertical-align: middle;
 }
 #frm-login-info .form-control,.form-control:focus,textarea,textarea:hover,textarea:focus {
@@ -2375,7 +2417,7 @@ ul.request-line {
     margin-right: 6px;
     position: relative;
     line-height: 37px;
-    height: 40px;
+    height: 35px;
 }
 #frm-login-info .control-label-checkbox {
     text-align: right;
@@ -2712,6 +2754,8 @@ ul.request-line {
 }
 .breaking-news {
     overflow: hidden;
+    margin-left: 16px;
+    display: inline-block;
 }
 .breaking-news .title {
     background-color: #e0e0e0;
@@ -2736,6 +2780,7 @@ ul.request-line {
     background-image: url(../images/arrow-chonviec.png);
     background-repeat: no-repeat;
     float: left;
+    cursor: pointer;
 }
 .error_reg_mess{
     color: red;
@@ -2743,7 +2788,9 @@ ul.request-line {
     padding-left: 201px;
     font-style: italic;
 }
-.colorRegRed{
+.colorRegRed,
+.colorRed,
+.has-error{
     color: #ff0000 !important;
 }
 .display_none{
@@ -3715,7 +3762,7 @@ ul.request-line {
     color: #fff;
 }
 .user-info .box_filter_content .filter_content_line1, .filter_box.reg_box_tinhthanh {
-    height: 40px!important;
+    height: 35px!important;
 }
 .diadiem_lv .select2-chosen{
     width: 299px!important;
@@ -4038,7 +4085,7 @@ table {
     background-image:url(../images/xfull-map.png);
     background-repeat:no-repeat;
     background-position:center 15px;
-    width: 400px;
+    width: 680px;
     height: 300px;
     padding-left: 0;
     position: relative;
@@ -4101,7 +4148,7 @@ table {
 
 .map .nuoc-ngoai {
     top: 11px;
-    left: 252px;
+    left: 392px;
 }
 
 .map .nuoc-ngoai img {
@@ -4113,7 +4160,7 @@ table {
 
 .map .dong-bac-bo {
     top:78px;
-    left:201px;
+    left:341px;
 }
 
 .map .dong-bac-bo img {
@@ -4123,7 +4170,7 @@ table {
 
 .map .tay-bac-bo {
     top:69px;
-    left: -17px;
+    left: 123px;
     padding:0 6px;
 }
 
@@ -4134,7 +4181,7 @@ table {
 
 .map .bac-trung-bo {
     top:120px;
-    left:-3px;
+    left:137px;
 }
 
 .map .bac-trung-bo img {
@@ -4144,7 +4191,7 @@ table {
 
 .map .nam-trung-bo {
     top:167px;
-    left:247px;
+    left:387px;
 }
 
 .map .nam-trung-bo img {
@@ -4154,7 +4201,7 @@ table {
 
 .map .tay-nguyen {
     top: 175px;
-    left: 0px;
+    left: 140px;
 }
 
 .map .tay-nguyen img {
@@ -4164,7 +4211,7 @@ table {
 
 .map .tay-nam-bo {
     top: 225px;
-    left: -8px;
+    left: 132px;
 }
 
 .map .tay-nam-bo img {
@@ -4174,7 +4221,7 @@ table {
 
 .map .dong-nam-bo {
     top: 209px;
-    left: 248px;
+    left: 388px;
 }
 
 .map .dong-nam-bo img {
@@ -4759,7 +4806,7 @@ table {
 }
 .btn-blue2-cong {
     background:#00acc1;
-    color:#FFFFFF;`
+    color:#FFFFFF;
 }
 .btn-blue-cong:hover, .btn-blue-cong:focus {
     background: #303f9f;
@@ -5316,6 +5363,16 @@ a, a:hover, a:active, a:focus, button, button:hover, button:active, button:focus
     width: 232px!important;
     min-width: 232px!important;
 }
+
+.user-info.w150 {
+    width: 150px!important;
+    min-width: 150px!important;
+}
+.user-info.w140 {
+    width: 140px!important;
+    min-width: 140px!important;
+}
+
 .user-info.w385 {
     width:385px!important;
     min-width: 385px!important;
@@ -8264,6 +8321,11 @@ float:left;
   top: 7px;
   left: 12px;
 }
+.icon-transaction {
+    background-position: -334px -24px;
+    top: 7px;
+    left: 12px;
+}
 .icon-vl-tin-tuyen-dung {
     background-position: -334px -24px;
     top: 7px;
@@ -8435,7 +8497,7 @@ float:left;
     background: url("../images/icon-thonge4.png");
 }
 .box-filter-thongke .filter_box .select2-container {
-    top: 6px;
+    /*top: 6px;*/
 }
 .box-filter-thongke{
     min-width:686px;
@@ -9286,10 +9348,11 @@ padding-right:0 !important;
 
 .title_cong_menu{
     color:white;
-    font-size:12px;
+    font-size:14px;
     text-align:center;
     margin-top: -6px;
     text-decoration:none;
+    font-weight: bold;
 }
 .title_cong_menu:hover{
     text-decoration:none;
@@ -9482,16 +9545,16 @@ max-width:400px;
     padding: 20px 0px 40px 0px;
 }
 .icon_thoi_gian{
-    background-position: -73px -215px;
+    /*background-position: -73px -215px;*/
 }
 .icon_ngoai_ngu{
-    background-position: -49px -215px;
+    /*background-position: -49px -215px;*/
 }
 .icon_gioi_tinh{
-    background-position: -25px -215px;
+    /*background-position: -25px -215px;*/
 }
 .icon_trinh_do{
-    background-position: 0 -215px;
+    /*background-position: 0 -215px;*/
 }
 /* css email */
 .header_email_nav{
@@ -9556,4 +9619,18 @@ max-width:400px;
     float: right;
     margin-top: -65px;
     margin-left: 13px;
+}
+
+#block_header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
+
+.show-content {
+    margin-top: 56px;
+}
+
+.mh_415 {
+    min-height: 460px;
 }

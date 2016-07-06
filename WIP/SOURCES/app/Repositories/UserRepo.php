@@ -1,6 +1,7 @@
 <?php namespace App\Repositories;
 
-use App\User;
+use App\Libs\Constants;
+use App\Model\User;
 
 class UserRepo implements IUserRepo {
 	
@@ -29,5 +30,59 @@ class UserRepo implements IUserRepo {
 		
 		return User::where('email', $email)->first();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function findById($userId)
+	{
+		return User::where('id', $userId)->first();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	function search($params, $pageSize, $roleCode)
+	{
+		$query = User::leftJoin('user_role', 'user.id', '=', 'user_role.user_id')
+			->leftJoin('role', 'user_role.role_id', '=', 'role.id')
+			->select('user.*', 'role.code');
+
+		if (isset($params['user_info']) && $params['user_info']) {
+			$query = $query->where(function ($query) use ($params) {
+				$query->where('user.username', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.full_name', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.email', 'like', '%' . $params['user_info'] . '%')
+					->orWhere('user.phone_number', 'like', '%' . $params['user_info'] . '%');
+			});
+		}
+
+		if (isset($params['user_type']) && $params['user_type']) {
+			$query = $query->where('user.user_type', '=', $params['user_type']);
+		}
+
+		if ($roleCode == Constants::ROLE_ADMIN) {
+			$query = $query->where(function ($query) {
+				$query->whereNull('role.code')
+					->orWhere('role.code', '<>', Constants::ROLE_SUPER);
+			});
+		}
+
+		$query = $query->orderBy('username', 'ASC');
+		return $query->paginate($pageSize);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function updateStatus($id, $status)
+	{
+		$user = User::find($id);
+		if (!$user) {
+			return false;
+		}
+		$user->status = $status;
+		$user->save();
+		return true;
+	}
 }

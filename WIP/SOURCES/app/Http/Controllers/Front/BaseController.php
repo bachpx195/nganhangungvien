@@ -1,55 +1,79 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Model\Province;
-use App\Model\Job;
-use App\Model\Salary;
-use App\Model\Level;
+use App\Http\Requests;
+use App\Model\EmploymentStatus;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
-use App\Http\Requests;
-use Illuminate\Http\Request;
+use App\Model\Job;
+use App\Model\Level;
+use App\Model\Rank;
+use App\Model\Salary;
 use App\Repositories\ICandidateRepo;
+use App\Repositories\IConfigRepo;
+use App\Repositories\IProvinceRepo;
+use Illuminate\Support\Facades\Auth;
+use App\Libs\Constants;
 
-class BaseController extends Controller {
+class BaseController extends Controller
+{
 
-	protected $candidateRepo;
-	
-	public function __construct(ICandidateRepo $candidateRepo)
-	{
-		$this->candidateRepo = $candidateRepo;
-	}
-	
-	/**
-	 * Get dropdown data
-	 *
-	 *
-	 */
-	protected function dropdownData()
-	{
-		$dropdownData = [];
-		$dropdownData['provinces'] = Province::all();
-		$dropdownData['occupations'] = Job::all();
-		$dropdownData['salaryGrades'] = Salary::all();
-		$dropdownData['degrees'] = Level::all();
-		$dropdownData['yearOfexps'] = ExperienceYears::all();
-		$dropdownData['languages'] = ForeignLanguage::all();
-		
-		return $dropdownData;
-	}
-	
-	protected function candidatesData()
-	{
-		$candidatesData=[];
-		$candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
-		$candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+    protected $candidateRepo, $provinceRepo, $configRepo;
+    public $linkYouTubeChanel;
 
-		return $candidatesData;
-	}
+    public function __construct(
+        ICandidateRepo $candidateRepo,
+        IProvinceRepo $provinceRepo,
+        IConfigRepo $configRepo)
+    {
+        $this->candidateRepo = $candidateRepo;
+        $this->provinceRepo = $provinceRepo;
+        $this->configRepo = $configRepo;
+        $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
+    }
 
-	protected function errorView(){
-		return response()->view('front.errors.404', [], 404);
-	}
+    /**
+     * Get dropdown data
+     *
+     *
+     */
+    protected function dropdownData()
+    {
+        $dropdownData = [];
+        $dropdownData['provinces'] = $this->provinceRepo->getSortedList();
+        $dropdownData['occupations'] = Job::all();
+        $dropdownData['salaryGrades'] = Salary::all();
+        $dropdownData['degrees'] = Level::all();
+        $dropdownData['yearOfexps'] = ExperienceYears::all();
+        $dropdownData['languages'] = ForeignLanguage::all();
+        $dropdownData['employmentStatuses'] = EmploymentStatus::all();
+        $dropdownData['ranks'] = Rank::all();
+
+        return $dropdownData;
+    }
+
+    protected function candidatesData()
+    {
+        $candidatesData = [];
+        $candidatesData['candidate'] = $this->candidateRepo->candidateStatistic();
+        $candidatesData['bestView'] = $this->candidateRepo->bestViewStatistic();
+
+        return $candidatesData;
+    }
+
+    protected function errorView()
+    {
+        return response()->view('front.errors.404', [], 404);
+    }
+
+    /**
+     * Common function for get current login user
+     * @return mixed
+     */
+    protected function getCurrentUser() {
+        $user = Auth::user();
+        return $user;
+    }
 }

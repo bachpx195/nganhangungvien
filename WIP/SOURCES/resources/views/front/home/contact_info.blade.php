@@ -18,8 +18,9 @@
 				</div>
 				<div class="row  pl_14 pr_14">
 					<div class="txc">
-						<span class="bg-white bold font24 text_blue">Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421 - 0943 24 9699</span><br />
-						<span class="bg-white bold font24 text_blue">Email  : </span><span class="bg-white text_pink font24 bold">nganhangungvienvn@gmail.com</span>
+						<span class="bg-white bold font24 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421 - 0943 24 9699</span><br />
+						<span class="bg-white bold font24 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font24 bold">nganhangungvienvn@gmail.com</span><br/>
+						<span class="bg-white bold font24 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font24 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
 					</div>
 				</div>
 			</div>
@@ -33,7 +34,7 @@
 	</div>
 	<div class=" pb_14 pr_14 pl_14">
 		<div>
-			<a class="show_s09_ntv_register btn btn-ntv-dky-tuvan btn-lg w340 fs18 pl_8">
+			<a class="show_s09_ntv_register btn btn-ntv-dky-tuvan btn-lg w340 fs18 pl_8" href="{{route('pages.outsourcing_package')}}" target="_blank">
 				DỊCH VỤ THUÊ NGOÀI TRỌN GÓI
 			</a>
 		</div>

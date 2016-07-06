@@ -3,4 +3,6 @@
 interface ISalaryRepo
 {
     public function all();
+
+    public function filter($name);
 }

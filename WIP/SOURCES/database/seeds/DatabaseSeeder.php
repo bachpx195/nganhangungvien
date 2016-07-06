@@ -1,6 +1,5 @@
 <?php
 
-use App\Model\CandidateExpectJob;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,6 +25,11 @@ class DatabaseSeeder extends Seeder {
         $this->call('EmploymentStatusSeeder');
         $this->call('RankSeeder');
         $this->call('ExigencySeeder');
+        $this->call('EmployerSeeder');
+        $this->call('TransactionSeeder');
+        $this->call('CandidateSeeder');
+        $this->call('CandidateExpectJopSeeder');
+        $this->call('RoleSeeder');
     }
 
 }

@@ -2,3 +2,31 @@
 .page-sidebar .page-sidebar-menu>li>a>.title, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>.title {
     margin-top: 10px;
 }
+a.add-more-btn,
+a.add-more-btn:hover{
+    color: #FFF;
+    text-decoration: none;
+}
+
+#block-thong-tin-dang-nhap .radio-inline {
+    padding-top: 2px;
+    padding-left: 0px;
+}
+
+#block-thong-tin-dang-nhap .radio {
+    padding-top: 2px;
+    margin-right: 5px;
+    padding-left: 0px;
+}
+
+.upload-image {
+    width: 200px;
+    height: 150px;
+}
+
+.transaction_type_add {
+    color: #26c281;
+}
+.transaction_type_subtract {
+    color: red;
+}

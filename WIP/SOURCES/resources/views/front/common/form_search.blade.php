@@ -7,11 +7,11 @@
 					class="filter_box font14 style-flat w_100 box_nganhnghe_s">
 					<i class="icon_select_box icon_listbox icon_24 icon-24"></i> <select
 						name="occupation"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1" data-select-class="nganh_nghe">
 						<option value="">Tất cả Ngành nghề</option>
 						@foreach($dropdownData['occupations'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['occupation']) && $params['occupation'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -20,11 +20,11 @@
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i class="icon_select_box icon_locabox icon_24 icon-24"></i> <select
 						name="province"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1">
 						<option value="">Tất cả tỉnh thành</option>
 						@foreach($dropdownData['provinces'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['province']) && $params['province'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -42,7 +42,8 @@
 									<div class="modal-drop-mucluong font14">
 										@foreach($dropdownData['salaryGrades'] as $item)
 										<div class="demo-list pb_6">
-											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1">
+											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1"
+												   @if (isset($params['salaryGrade']) && in_array($item['id'], $params['salaryGrade'])) checked @endif>
 											<label for="mul_1" class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
@@ -74,7 +75,8 @@
 										@foreach($dropdownData['yearOfexps'] as $item)
 										<div class="demo-list pb_6">
 											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox"
-												name="yearOfexp" id="kn_8"> <label for="kn_8"
+												name="yearOfexp[]" id="kn_8"
+												   @if (isset($params['yearOfexp']) && in_array($item['id'], $params['yearOfexp'])) checked @endif> <label for="kn_8"
 												class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
@@ -100,12 +102,12 @@
 					<i
 						style="background-image: url(/assets/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
 						class="icon_select_box icon_24 icon-24"></i> <select
-						name="trinh_do_ntd"
-						class="selectpicker box_select_filter pos_relative select-style"
+						name="degree"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						data-diss="-1" tabindex="-1" data-select-class="degree">
 						<option value="">Tất cả Trình độ</option>
 						@foreach($dropdownData['degrees'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['degree']) && $params['degree'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -117,11 +119,11 @@
 						style="background-image: url(/assets/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
 						class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i> <select
 						name="sex"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
-						<option value="0">Nữ</option>
-						<option value="1">Nam</option>
+						<option value="0" @if (isset($params['sex']) && $params['sex'] === '0') selected @endif>Nữ</option>
+						<option value="1" @if (isset($params['sex']) && $params['sex'] === '1') selected @endif>Nam</option>
 					</select>
 				</div>
 			</div>
@@ -132,11 +134,11 @@
 						style="background-image: url(/assets/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
 						class="icon_select_box icon_ngoai_ngu icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="language"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1" data-select-class="ngoai_ngu_ntd2">
 						<option value="">Tất cả Ngoại ngữ</option>
 						@foreach($dropdownData['languages'] as $item)
-							<option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+							<option value="{{ $item['id'] }}" @if (isset($params['language']) && $params['language'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -147,13 +149,13 @@
 						style="background-image: url(/assets/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
 						class="icon_select_box icon_thoi_gian icon_24 icon-24"></i> <select
 						style="margin-left: 5px;" name="timeUpdate"
-						class="selectpicker box_select_filter pos_relative select-style"
+						class="selectpicker box_select_filter pos_relative select-style mt8"
 						data-diss="-1" tabindex="-1" data-select-class="thoi_gian_ntd2">
-						<option value="" selected>Thời gian cập nhật</option>
-						<option value="1">Trong vòng 1 Ngày</option>
-						<option value="2">1 Tuần gần đây</option>
-						<option value="3">1 Tháng gần đây</option>
-						<option value="4">2 Tháng gần đây</option>
+						<option value="">Thời gian cập nhật</option>
+						<option value="1" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 1) selected @endif>Trong vòng 1 Ngày</option>
+						<option value="2" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 2) selected @endif>1 Tuần gần đây</option>
+						<option value="3" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 3) selected @endif>1 Tháng gần đây</option>
+						<option value="4" @if (isset($params['timeUpdate']) && $params['timeUpdate'] == 4) selected @endif>2 Tháng gần đây</option>
 					</select>
 				</div>
 			</div>
@@ -163,9 +165,9 @@
 
 			<div class="box_search_all pt_10 pl_5 w_100"
 				style="padding: 0 !important">
-				<input type="search" style="height: 50px;" name="hdn_tu_khoa"
+				<input type="search" style="height: 50px;" name="title"
 					class="inputsearchall_full input_search_all noboder pl_10 w_100 pr_10 font14"
-					placeholder="Nhập tiêu đề hồ sơ. VD: Nhân viên kinh doanh">
+					placeholder="Nhập tiêu đề hồ sơ. VD: Nhân viên kinh doanh" value="{{isset($params['title']) ? $params['title'] : ''}}">
 			</div>
 			<div class="box_search_all_r w322 pos_absolute">
 				<div class="search_advance floatLeft mr_6 mt_12 border_l w110">
@@ -185,88 +187,37 @@
 									<div class="modal-body-searchad pt_8">
 										<div class="demo-list pb_6">
 											<input value="" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" checked id="ml_0"> <label for="ml_0"
+												name="employment_status" @if (!isset($params['employment_status']) || !$params['employment_status']) checked @endif> <label
 												class="font14">Tất cả hình thức</label>
 										</div>
-										<div class="demo-list pb_6">
-											<input value="1" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_1"> <label for="ml_1"
-												class="font14">Toàn thời gian cố định</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="2" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_2"> <label for="ml_2"
-												class="font14">Toàn thời gian tạm thời</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="3" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_3"> <label for="ml_3"
-												class="font14">Bán thời gian cố định</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="4" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_4"> <label for="ml_4"
-												class="font14">Bán thời gian tạm thời</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="5" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_5"> <label for="ml_5"
-												class="font14">Theo hợp đồng tư vấn</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="6" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_6"> <label for="ml_6"
-												class="font14">Thực tập</label>
-										</div>
-										<div class="demo-list pb_6">
-											<input value="7" tabindex="1" type="radio"
-												name="hdn_hinh_thuc" id="ml_7"> <label for="ml_7"
-												class="font14">Khác</label>
-										</div>
+										@foreach($dropdownData['employmentStatuses'] as $item)
+											<div class="demo-list pb_6">
+												<input value="{{$item->id}}" tabindex="1" type="radio" name="employment_status"
+													   @if (isset($params['employment_status']) && $params['employment_status'] == $item->id) checked @endif>
+												<label class="font14">{{$item->name}}</label>
+											</div>
+										@endforeach
 									</div>
 								</li>
 								<li class="floatLeft pt12">
 									<div class="title_filter_searchad pos_relative mb_2 ml_16 w218">
 										<i class="icon_select_box icon_capbac icon_24 icon-24"></i>Chọn
-										cấp bậcc
+										cấp bậc
 									</div>
 									<div class="modal-body-searchad ml_16">
 										<div class="modal-body-searchad pt_8">
 											<div class="demo-list pb_6">
-												<input value="" tabindex="1" type="radio" name="hdn_cap_bac"
-													checked id="mr_0"> <label for="mr_0" class="font14">Tất cả
+												<input value="" tabindex="1" type="radio" name="rank"
+													   @if (!isset($params['rank']) || !$params['rank']) checked @endif> <label class="font14">Tất cả
 													Cấp bậc</label>
 											</div>
-											<div class="demo-list pb_6">
-												<input value="3" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_3"> <label for="mr_3"
-													class="font14">Quản lý cấp cao</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="4" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_4"> <label for="mr_4"
-													class="font14">Quản lý cấp trung</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="9" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_9"> <label for="mr_9"
-													class="font14">Quản lý nhóm - giám sát</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="6" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_6"> <label for="mr_6"
-													class="font14">Chuyên gia</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="7" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_7"> <label for="mr_7"
-													class="font14">Chuyên viên - Nhân viên</label>
-											</div>
-											<div class="demo-list pb_6">
-												<input value="13" tabindex="1" type="radio"
-													name="hdn_cap_bac" id="mr_13"> <label for="mr_13"
-													class="font14">Cộng tác viên</label>
-											</div>
+											@foreach($dropdownData['ranks'] as $item)
+												<div class="demo-list pb_6">
+													<input value="{{$item->id}}" tabindex="1" type="radio" name="rank"
+														   @if (isset($params['rank']) && $params['rank'] == $item->id) checked @endif>
+													<label class="font14">{{$item->name}}</label>
+												</div>
+											@endforeach
 										</div>
 									</div>
 								</li>
@@ -298,13 +249,6 @@
                 $(this).closest('form.frm_search_box_full').submit();
              }
         });
-        setTimeout(function() {
-            $('.btn_search_time').click();
-            $('.filter_mucluong').hide();
-            $('.btn_search_time3').click();
-            $('.filter_kinhnghiem').hide();
-            }, 1000
-        );
     }
 
     if( document.addEventListener ) {

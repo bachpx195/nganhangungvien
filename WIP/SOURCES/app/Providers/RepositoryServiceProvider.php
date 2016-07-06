@@ -30,8 +30,16 @@ class RepositoryServiceProvider extends ServiceProvider {
 				'App\Repositories\RoleRepo');
 
 		$this->app->bind(
+			'App\Repositories\IUserRoleRepo',
+			'App\Repositories\UserRoleRepo');
+
+		$this->app->bind(
 			'App\Repositories\ICandidateRepo',
 			'App\Repositories\CandidateRepo');
+
+		$this->app->bind(
+			'App\Repositories\IEmployerRepo',
+			'App\Repositories\EmployerRepo');
 
 		$this->app->bind(
 			'App\Repositories\ILevelRepo',
@@ -72,6 +80,50 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repositories\IProvinceRepo',
 			'App\Repositories\ProvinceRepo');
+
+		$this->app->bind(
+			'App\Repositories\INewRepo',
+			'App\Repositories\NewRepo');
+
+		$this->app->bind(
+			'App\Repositories\IExperienceRepo',
+			'App\Repositories\ExperienceRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateCertificateRepo',
+			'App\Repositories\CandidateCertificateRepo');
+
+		$this->app->bind(
+			'App\Repositories\IITLevelRepo',
+			'App\Repositories\ITLevelRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateForeignLanguageRepo',
+			'App\Repositories\CandidateForeignLanguageRepo');
+
+		$this->app->bind(
+			'App\Repositories\IContactPersonRepo',
+			'App\Repositories\ContactPersonRepo');
+
+		$this->app->bind(
+			'App\Repositories\IConfigRepo',
+			'App\Repositories\ConfigRepo');
+
+		$this->app->bind(
+			'App\Repositories\ITransactionRepo',
+			'App\Repositories\TransactionRepo');
+
+		$this->app->bind(
+			'App\Repositories\ISaveCvRepo',
+			'App\Repositories\SaveCvRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectJobRepo',
+			'App\Repositories\CandidateExpectJobRepo');
+
+		$this->app->bind(
+			'App\Repositories\ICandidateExpectAddressRepo',
+			'App\Repositories\CandidateExpectAddressRepo');
 	}
 
 }

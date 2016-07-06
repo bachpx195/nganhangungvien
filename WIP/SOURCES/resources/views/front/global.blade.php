@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>NGAN HANG UNG VIEN</title>
+    <title>NGÂN HÀNG ỨNG VIÊN</title>
 
     <!-- css all -->
     <link rel="stylesheet" href="{{ asset('/assets/default/css/normalize.min.css') }}" property='stylesheet'
@@ -32,8 +32,35 @@
           type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+
+    <link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/kendoui/styles/kendo.material.min.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+
+    <link href="{{ asset('/assets/default/css/kendo.custom.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
     <link href="{{ asset('/assets/default/css/custom.css') }}" rel="stylesheet" property='stylesheet'
           type='text/css' media='all'>
+    <link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all' >
+    <link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/default/css/123doc.index.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+    <link href="{{ asset('/assets/default/css/123doc.top-up.css') }}" rel="stylesheet" property='stylesheet'
+          type='text/css' media='all'>
+
+    <link rel="stylesheet" href="{{ asset('/assets/default/css/font-awesome.min.css') }}" property='stylesheet'
+          type='text/css' media='all'>
+
+    <!-- news css -->
+
+    <!-- end news css -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
     <script type="text/javascript">
         function addListener(obj, eventName, listener) {
             if (obj.addEventListener) {
@@ -50,8 +77,12 @@
         @include('front.layout.header')
 
         <div class="show-content w_100 box_right">
-            <div id="cols-right" class="bg_grey">
-                <div class="content_cols pt_16 pb_24">
+            <div class="bg_grey">
+                <div class="content_cols pt_6 pb_24">
+                    @if (Auth::check() && Auth::user()->user_type == 'employer')
+                    @include('front.layout.left_sidebar')
+                    @endif
+
                     @yield('content')
                 </div>
 
@@ -59,14 +90,14 @@
             </div>
         </div>
     </div>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.min.js') }}"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.mobile.custom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mbExtruder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.menu-aim.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/sweetalert.min.js') }}"></script>
     <!-- menu aim -->
     <script type="text/javascript" src="{{ asset('/assets/default/js/modernizr.js') }}"></script>
     <!-- Modernizr -->
@@ -79,8 +110,18 @@
     <script type="text/javascript" src="{{ asset('/assets/default/js/common_ntd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main_ntd_new.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/main2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/default/js/validate.min.js') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/user/pay_validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/123doc.script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/default/js/jquery.number.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
+    <script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
 </body>
 
 </html>

@@ -25,6 +25,7 @@ class AuthController extends Controller {
 	use AuthenticatesAndRegistersUsers;
 
 	protected $redirectTo = "/admin";
+	protected $redirectAfterLogout = 'admin/login';
 	
 	/**
 	 * Create a new authentication controller instance.
@@ -38,7 +39,25 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => ['getLogout', 'getLogoutFront']]);
+	}
+
+	public function getLogin(Request $request) {
+		return view('admin.account.login');
+	}
+
+	public function getLogout()
+	{
+		$this->auth->logout();
+
+		return redirect($this->redirectAfterLogout);
+	}
+
+	public function getLogoutFront()
+	{
+		$this->auth->logout();
+
+		return redirect('');
 	}
 	
 	/**
@@ -49,24 +68,40 @@ class AuthController extends Controller {
 	 */
 	public function postLogin(Request $request) {  
 		
-		$email = $request->input('email');  
-		$password = $request->input('password');  
-        
+		$email = $request->input('username');
+		$password = $request->input('password');
+
 		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))   {
 			return redirect()->intended($this->redirectTo);
         }
         else {
-        	
+
 			if (Auth::attempt(['username' => $email, 'password' => $password, 'status' => 1]))   {
-				
 				return redirect()->intended($this->redirectTo);
         	}
-        	
-        	return redirect($this->loginPath())
+
+        	return redirect('admin/login')
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
 						'email' => trans('messages.auth.login.error'),
 					]);
         }
     }
+
+	public function postLoginFront(Request $request) {
+		$email = $request->input('username');
+		$password = $request->input('password');
+
+		if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1])
+			|| Auth::attempt(['username' => $email, 'password' => $password, 'status' => 1]))   {
+			return response()->json([
+				'error' => 0
+			]);
+		}
+		else {
+			return response()->json([
+				'error' => 1
+			]);
+		}
+	}
 }

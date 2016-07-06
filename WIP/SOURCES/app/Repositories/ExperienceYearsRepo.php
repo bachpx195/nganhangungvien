@@ -6,6 +6,6 @@ class ExperienceYearsRepo implements IExperienceYearsRepo {
     
     public function all() {
 
-        return ExperienceYears::get();
+        return ExperienceYears::orderBy('id', 'dec')->get();
     }
 }

@@ -7,7 +7,7 @@ class ExigencySeeder extends Seeder {
 
     public function run()
     {
-        DB::table('exigency')->delete();
+        DB::table('exigency')->truncate();
 
         $exigencies = [
             ['name' => 'Đang tìm việc'],

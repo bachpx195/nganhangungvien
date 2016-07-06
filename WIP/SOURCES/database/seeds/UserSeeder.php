@@ -7,8 +7,8 @@ class UserSeeder extends Seeder {
 	
 	public function run() 
 	{
-		DB::table('user')->delete();
-		
+		DB::table('user')->truncate();
+
 		// Manager
 		User::insert([
 			'username' => 'admin',
@@ -29,6 +29,19 @@ class UserSeeder extends Seeder {
 			'image' => '',
 			'user_type'	=> 'employer'
 		]);
+
+		for ($i = 1;$i <= 40;$i ++)
+		{
+			User::insert([
+				'username' => 'employer_' . $i,
+				'full_name' => 'employer_' . $i,
+				'email' => 'employer'  . $i . '@mail.com',
+				'password' => Hash::make('employer' . $i),
+				'phone_number' => '0988888777' . $i,
+				'image' => '',
+				'user_type'	=> 'employer'
+			]);
+		}
 	}
 	
 }

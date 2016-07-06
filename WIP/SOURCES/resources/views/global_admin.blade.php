@@ -30,6 +30,9 @@
 	<link href="{{ asset('/assets/global/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/global/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/pages/css/profile-2.min.css') }}" rel="stylesheet" type="text/css" />
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL STYLES -->
 	<link href="{{ asset('/assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
@@ -39,6 +42,21 @@
 	<link href="{{ asset('/assets/layouts/layout2/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('/assets/layouts/layout2/css/themes/blue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
 	<link href="{{ asset('/assets/layouts/layout2/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+	<link href="{{ asset('/assets/dist/summernote.css') }}" rel="stylesheet" type="text/css" />
+
+	<link href="{{ asset('/assets/default/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('/assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
+
+	<link href="{{ asset('/assets/default/kendoui/styles/kendo.common-material.min.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+	<link href="{{ asset('/assets/default/kendoui/styles/kendo.material.min.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+	<link href="{{ asset('/assets/default/css/kendo.custom.css') }}" rel="stylesheet" property='stylesheet'
+		  type='text/css' media='all'>
+
 	<!-- END THEME LAYOUT STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" /> </head>
 
@@ -75,13 +93,17 @@
 	<script src="{{ asset('/assets/global/plugins/flot/jquery.flot.categories.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js') }}" type="text/javascript"></script>--}}
+	{{--<script src="{{ asset('/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>--}}
+	<script src="{{ asset('/assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/global/plugins/icheck/icheck.min.js') }}" type="text/javascript"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN THEME GLOBAL SCRIPTS -->
 	<script src="{{ asset('/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
@@ -93,9 +115,43 @@
 	<script src="{{ asset('/assets/layouts/layout2/scripts/layout.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/layouts/layout2/scripts/demo.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/default/js/sweetalert.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/assets/apps/scripts/sweet_alert_delete.js') }}" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ asset('/assets/default/js/mustache.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/render_candidate_form.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/assets/apps/scripts/candidate/validate_candidate_form.js') }}"></script>
+	<script src="{{ asset('/resources/plugin/validation/jquery.validate.min.js') }}" ></script>
+	<script src="{{ asset('/resources/plugin/validation/additional-methods.min.js') }}" ></script>
+	<script src="{{ asset('/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" ></script>
+	<script src="{{ asset('/assets/pages/scripts/components-editors.min.js') }}" ></script>
+	<script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
+	<script src="{{ asset('/assets/pages/scripts/table-datatables-ajax.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/assets/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ asset('/assets/default/kendoui/js/kendo.all.min.js') }}"></script>
+	<script>
+	jQuery.extend(jQuery.validator.messages, {
+		required: '@lang('validation.required', ['attribute' => ''])',
+		remote: "Please fix this field.",
+		email: jQuery.validator.format("@lang('validation.email')"),
+		url: "Đường dẫn chưa chính xác.",
+		date: "@lang('validation.date', ['format' => 'dd/mm/YYYY'])",
+		dateISO: "Please enter a valid date (ISO).",
+		number: jQuery.validator.format("@lang('validation.numeric')"),
+		digits: jQuery.validator.format("@lang('validation.digits')"),
+		creditcard: "Please enter a valid credit card number.",
+		equalTo: '@lang('validation.equal_password')',
+		accept: "Please enter a value with a valid extension.",
+		maxlength: jQuery.validator.format("@lang('validation.max.string', ['attribute' => '', 'max' => '{0}'])"),
+		minlength: jQuery.validator.format("@lang('validation.min.string', ['attribute' => '', 'min' => '{0}'])"),
+		rangelength: jQuery.validator.format("@lang('validation.between.string', ['min' => '{0}', 'max' => '{1}'])"),
+		range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+		max: jQuery.validator.format("@lang('validation.max.numeric')"),
+		min: jQuery.validator.format("@lang('validation.min.numeric')")
+	});
+	</script>
 	<!-- END THEME LAYOUT SCRIPTS -->
-
 	<!-- THANHLV END ADD 2016/05/11 -->
+	
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
@@ -106,7 +162,7 @@
 		@include('layout.sidebar_admin')
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				@include('layout.pageheader_admin')
+				{{--@include('layout.pageheader_admin')--}}
 				@yield('content')
 			</div>
 		</div>

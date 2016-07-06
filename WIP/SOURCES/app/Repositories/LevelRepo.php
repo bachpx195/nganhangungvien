@@ -6,6 +6,18 @@ class LevelRepo implements ILevelRepo {
     
     public function all() {
 
-        return Level::get();
+        return Level::orderBy('id', 'dec')->get();
     }
+
+    public function filter($name) {
+	
+		$query = Level::select();
+		
+		if ($name != null) {
+			$query = $query->where('name', 'like', '%' . $name . '%');
+		}
+		
+		return $query->orderBy('id', 'dec')
+					->paginate();
+	}
 }

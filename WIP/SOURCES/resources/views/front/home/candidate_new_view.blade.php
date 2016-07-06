@@ -9,7 +9,7 @@
          <!-- Tab panes -->
          <div class="tab-content w_100">
             <div role="tabpanel" class="tab-pane active" id="viecmoi">
-               <div class="list_item_two bg_white">
+               <div class="list_item_two bg_white" style="border-bottom: 0px solid">
                   @foreach($candidatesData['candidate'] as $index => $key)
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
@@ -19,41 +19,43 @@
                         </span>
                         <span class="title-blockjob-sub truncate-ellipsis font14">
                         <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
-                        {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($key->updated)}})</span>
+                        {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated? date('d/m/Y', strtotime($key->updated)) : '' }})</span>
                         </a>
                         </span>
                         <div class="s22_list_note_icon">
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-                                 {{ $key->salary }}                        
+                                 {{ $key->salary? $key->salary: '&nbsp;' }}                        
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-                                 {{ $key->exp_years }}                            
+                                 {{ $key->exp_years? $key->exp_years: '&nbsp;' }}                            
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
                                  @if(count($key->expectAddresses) > 0)
                                  @foreach($key->expectAddresses as $index=>$item)
                                     {{$item->name}}<span
-                                    class="text_pink">@if($index < count($key->expectAddresses) - 1), 
+                                    class="text_black">@if($index < count($key->expectAddresses) - 1), 
                                     @endif 
                                  @endforeach 
                                  @endif                      
                               </div>
                            </div>
                         </div>
+                        @if($index != ($countData['all'] -1) && $index != ($countData['all'] -2))
                         <div class="line_list"></div>
+                        @endif
                      </div>
                   </div>
                   @endforeach
                </div>
-               <a href="#">
+               <a href="{{route("candidate.new")}}">
                   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
                      <i class="icon_load_more icon_24 icon-24"></i>
                      Xem thêm Hồ sơ mới nhất        
@@ -61,7 +63,7 @@
                </a>
             </div>
             <div role="tabpanel" class="tab-pane" id="viecmoi2">
-               <div class="list_item_two bg_white">
+               <div class="list_item_two bg_white" style="border-bottom: 0px solid">
                   @foreach($candidatesData['bestView'] as $index => $key)
                   <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
                      <div class="list-items item_link">
@@ -71,24 +73,24 @@
                         </span>
                         <span class="title-blockjob-sub truncate-ellipsis font14">
                         <a href="{{route('candidate.profile', ['slug' => StringHelper::uri($key->cv_title), 'id' => $key->id])}}" class="link_box_panel2 text_grey">
-                        {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($key->updated)}})</span>
+                        {{ $key->full_name}}                         <span class="text_pink display_inline">(Cập nhật: {{ $key->updated? date('d/m/Y', strtotime($key->updated)) : '' }})</span>
                         </a>
                         </span>
                         <div class="s22_list_note_icon">
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Mức lương" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_moneybox2 icon_24 icon-24"></i>
-                                 {{ $key->salary }}                        
+                                 {{ $key->salary? $key->salary: '&nbsp;' }}                        
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Kinh nghiệm" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_time_list icon_24 icon-24"></i>
-                                 {{ $key->exp_years }}                            
+                                 {{ $key->exp_years? $key->exp_years: '&nbsp;' }}                            
                               </div>
                            </div>
                            <div class="w_33 floatLeft">
-                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm">
+                              <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
                                  <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
                                  @if(count($key->expectAddresses) > 0)
                                  @foreach($key->expectAddresses as $index=>$item)
@@ -100,12 +102,14 @@
                               </div>
                            </div>
                         </div>
+                        @if($index != ($countData['all'] -1) && $index != ($countData['all'] -2))
                         <div class="line_list"></div>
+                        @endif
                      </div>
                   </div>
                   @endforeach
                </div>
-               <a href="#">
+               <a href="{{route("candidate.view")}}">
                   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
                      <i class="icon_load_more icon_24 icon-24"></i>
                      Xem thêm Hồ sơ được xem nhiều nhất        

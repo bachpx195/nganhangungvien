@@ -7,7 +7,7 @@ class LevelSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('level')->delete();
+        DB::table('level')->truncate();
 
         $levels = [
             ['name' => 'Trên đại học'],

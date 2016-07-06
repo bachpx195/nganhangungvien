@@ -1,55 +1,71 @@
-@extends('global')
-
-<title>@lang('messages.candidate.form')</title>
+@extends('global_admin')
 
 @section('content')
+<link href="{{ asset('/assets/default/css/main_ntd.css') }}" rel="stylesheet" property='stylesheet'
+	  type='text/css' media='all'>
+<link href="{{ asset('/assets/default/css/main2.css') }}" rel="stylesheet" property='stylesheet'
+	  type='text/css' media='all'>
 
-<h3 class="page-title">@lang('messages.candidate.form')</h3>
-
-@if (count($errors) > 0)
-	<div class="alert alert-danger">
-		@lang('messages.form.global.error')<br>
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
-
-<form id="candidate" class="form-horizontal" role="form" method="POST" action="{{ route('candidate.form') }}">
-
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" name="_init" value="1">
-	<input type="hidden" name="full_name" value="AB" />
-	<input type="hidden" name="email" value="ab@a.com" />
-
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-9">
-			<input type="submit" id="btn-save" class="btn btn-primary" value="@lang('messages.form.global.save')">
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+<div class="portlet light ">
+	<div class="portlet-title">
+		<div class="caption font-dark">
+			<i class="icon-settings font-dark"></i>
+			<span class="caption-subject bold uppercase"> {{$pageTitle}}</span>
+		</div>
+		<div class="actions">
+			<div class="btn-group">
+				<span class="required_r">(<label>*</label>)Thông tin bắt buộc nhập</span>
+			</div>
 		</div>
 	</div>
-</form>
+	<div class="portlet-body">
 
-<!-- select2 -->
-<script src="{{ asset('/resources/plugin/select2/select2.min.js') }}"></script>
+		@if (!empty($candidate['email_errors']))
+			<div class="block-note-ths">
+				<div class="pos-dang-ky-hotline">
+					{{ $candidate['email_errors'] }}
+					<div class="ln_hr"></div>
+				</div>
+			</div>
+		@endif
 
-<script>
-$(function() {
-	jQuery("body")
-	.on("click", "#btn-save", function(){
-		
-		$form = $(this).closest('form');
-		
-		var validator = $form.validate({
-			ignore		: "", 
-			errorClass	: 'help-block has-error'
-		});
-	    if(validator.form()) {
-	    	$form.submit();
-	    } else {
-	    }
-	});
-});
-</script>
+		<div class="content_dangky">
+			<div class="clearfix"></div>
+			<div class="mt8"></div>
+			<form id="candidate-form" class="form-horizontal" role="form" method="POST" action="{{$action}}"
+				  name="candidate_form"  enctype="multipart/form-data">
+				<div class="block-content div-frm-hoso">
+					<div class="mb8">
+						<div class="center-p12p24 ">
+							@include('admin.candidate.general_information')
+
+							@include('admin.candidate.experience_skill')
+							<div class="clearfix"></div>
+
+							@include('admin.candidate.certificate')
+						</div>
+					</div>
+					@include('admin.candidate.foreign_language')
+					<div class="clearfix"></div>
+				</div>
+
+				@include('admin.candidate.information_technology')
+				<div class="clearfix"></div>
+				@include('admin.candidate.contact_person')
+				@include('admin.common.display_attach_cv', array('candidateAttachCv' => isset($candidate['attach_cv']) ? $candidate['attach_cv'] : ''))
+				@include('admin.candidate.save_btn')
+			</form>
+		</div>
+
+		@include('admin.candidate.candidate_form_js')
+		@include('admin.candidate.template.experience_skill_template')
+		@include('admin.candidate.template.certificate_template')
+		@include('admin.candidate.template.language_template')
+		@include('admin.candidate.template.contact_person_template')
+	</div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->
+
+
 @endsection

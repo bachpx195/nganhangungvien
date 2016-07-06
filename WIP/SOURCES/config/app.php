@@ -144,9 +144,7 @@ return [
 		'Dimsav\Translatable\TranslatableServiceProvider',
 		'Barryvdh\Cors\CorsServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
-		'Pingpong\Modules\ModulesServiceProvider',
-		//'Pingpong\Trusty\TrustyServiceProvider',
-		'Teepluss\Component\ComponentServiceProvider',
+		'LaravelCaptcha\Providers\LaravelCaptchaServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -157,6 +155,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\RepositoryServiceProvider',
+		'App\Providers\ComposerServiceProvider'
 
 	],
 
@@ -216,8 +215,7 @@ return [
 		
 		//Bussiness
 		'CandidateHelper'   => 'App\Helpers\CandidateHelper',
-		
-		'Module' 			=> 'Pingpong\Modules\Facades\Module',
+		'UserHelper'   => 'App\Helpers\UserHelper'
 	],
 
 ];

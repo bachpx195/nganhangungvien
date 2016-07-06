@@ -33,6 +33,11 @@ return [
 		"auth.reset.title" 				=> "Quên mật khẩu",
 		"auth.reset.email" 				=> "Địa chỉ email",
 		"auth.reset.send_password" 		=> "Gửi mật khẩu mới",
+
+		"front.title.view"				=> "Hồ sơ ứng viên được xem nhiều nhất",
+		"front.title.new"				=> "Hồ sơ ứng viên mới nhiều nhất",
+
+		"admin.title.video" 			=> "Quản lý video",
 		
 		"form.button.search" 			=> "Tìm kiếm",
 		"form.button.execute" 			=> "Thực hiện",
