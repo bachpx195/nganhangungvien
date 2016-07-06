@@ -35,6 +35,18 @@
 							<div class="text-center mt_10 mb_10">
 								<img src="{{ URL::asset('assets/pages/img/outsourcing/loi-ich.png') }}" alt="Tuyển dụng thuê ngoài"/>
 							</div>
+							<span class="text_orange font18 bold ml_20">D - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
+							<br/>
+							<div class="text-center mt_20 mb_10" id="outsourcing">
+								Người liên hệ: <input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control"/>
+								Công ty: <input type="text" placeholder="Nhập Công ty" name="company_name" class="form-control"/>
+								Email: <input type="text" placeholder="Nhập Email" name="email" class="form-control"/> <br>
+								SĐT: <input type="text" placeholder="Nhập Số điện thoại" name="phone_number" class="form-control"/>
+								Địa chỉ: <input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control"/>
+								<br/>
+
+								<a id="outsourcing-btn" href="javascript:;" onclick="outsourcing();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a>
+							</div>
 
 							<div class="hr_header hr_header-new">
 								<div class="hr"></div>
