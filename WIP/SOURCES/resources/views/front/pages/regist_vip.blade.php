@@ -21,13 +21,21 @@
 					<div class="mb8">
 						<div class="center-p12p24">
 							<div class="text-center mt_10 mb_10">
-								<img src="{{ URL::asset('assets/pages/img/registvip/dang-ky-tai-khoan-vip.png') }}" alt="Đăng ký tài khoản VIP" width="860"/>
+								<img src="{{ URL::asset('assets/pages/img/registvip/dang-ky-tai-khoan-vip.png') }}" alt="Đăng ký tài khoản VIP" width="90%"/>
 							</div>
-							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" onclick="popupPayment_open()">Cách 1 - CHUYỂN KHOẢN ONLINE</a></span>
+							<div class="text-center mt_10">
+								<br>
+								<h1 class="text_pink">PHƯƠNG THỨC THANH TOÁN</h1>
+								<br>
+							</div>
+							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('online')" @endif class="text_pink">CÁCH 1 - CHUYỂN KHOẢN ONLINE</a></span>
 							<div class="text-center mt_10 mb_10">
-								<img src="{{ URL::asset('assets/pages/img/registvip/chuyen-khoan-online.jpg') }}" alt="Tuyển dụng thuê ngoài"/>
+								<a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('online')" @endif>
+									<img src="{{ URL::asset('assets/pages/img/registvip/chuyen-khoan-online.jpg') }}" alt="Tuyển dụng thuê ngoài"/>
+								</a>
 							</div>
-							<span class="text_orange font18 bold ml_20">Cách 2 - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
+							<br>
+							<span class="text_orange font18 bold ml_20">CÁCH 2 - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
 							<br/>
 							<div class="text-center mt_20 mb_10" id="become-vip">
 								Người liên hệ: <input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control"/>
@@ -53,8 +61,8 @@
 							<div class="row pl_14 pr_14">
 								<div class="txc">
 									<span class="bg-white bold font24 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421 - 0943 24 9699</span><br />
-									<span class="bg-white bold font24 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font24 bold">nganhangungvienvn@gmail.com</span><br/>
-									<span class="bg-white bold font24 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font24 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
+									<span class="bg-white bold font24 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font24 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
+									<span class="bg-white bold font24 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font24 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat" class="text_pink">cskh.nganhangungvien.com</a></span>
 								</div>
 								<br/>
 							</div>

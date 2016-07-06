@@ -7,7 +7,7 @@
         <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
         @endif
         <li><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
-        <li><a data-rel="online" href="{{ route('pages.regist_vip') }}"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
+        <li><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
     </ul>
     @if($employer->vip != 1)
     <div class="boxAddMoney_content" id="mobile">
@@ -279,8 +279,8 @@
                                 <span class="bg-white bold text_blue">HÃY LIÊN HỆ ĐỂ ĐƯỢC TRỢ GIÚP</span>
                             </div>
                             <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421 - 0943 24 9699</span><br />
-                            <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold">nganhangungvienvn@gmail.com</span><br/>
-                            <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat">cskh.nganhangungvien.com</a></span>
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat" class="text_pink">cskh.nganhangungvien.com</a></span>
                         </div>
                         <br/>
                     </div>

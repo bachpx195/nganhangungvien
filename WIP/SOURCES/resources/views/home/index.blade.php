@@ -2157,7 +2157,7 @@
 					<div class="row  pl_14 pr_14">
 						<div>
 							Hotline: 04 6684 7421 - 0943 24 9699<br />
-							Email   : nganhangungvienvn@gmail.com
+							Email   : <a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a>
 						</div>
 					</div>
 				</div>
