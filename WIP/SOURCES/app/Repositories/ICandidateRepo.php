@@ -15,8 +15,6 @@ interface ICandidateRepo
      * - Upate time
      *
      * @param $params
-     * @param $offset
-     * @param $limit
      */
     public function search($params, $pageSize = 10);
 
@@ -43,4 +41,6 @@ interface ICandidateRepo
     public function sameExpStatistic($id);
 
     public function sameLvlStatistic($id);
+
+    public function updateStatus($id, $status);
 }

@@ -1119,6 +1119,7 @@ class CandidateController extends Controller
                 "foreignLanguages"  => $this->getForeignLanguages($item),
                 "maxLevel"          => $item->maxLevel ? $item->maxLevel->name : '',
                 "sex"               => $item->sex ? 'Nam' : 'Nữ',
+                "status"            => $item->status
             );
         }
 
@@ -1126,6 +1127,29 @@ class CandidateController extends Controller
             "data" => $list,
             "total" => $total
         ]);
+    }
+
+    /**
+     * Change change status
+     * @param Request $request
+     * @param int $id
+     * @return result of update status
+     */
+    public function changeStatus(Request $request, $id)
+    {
+        $data = [];
+
+        if ($request->ajax()) {
+            if (!$request->has('status')) {
+                $data = ['status' => false, 'message' => 'Not found status'];
+            } else {
+                $status = $request->input('status');
+                $success = $this->candidateRepo->updateStatus($id, $status);
+                $data = ['status' => $success, 'message' => ''];
+            }
+        }
+
+        return $data;
     }
 
     private function getExpectJobs($candidate)

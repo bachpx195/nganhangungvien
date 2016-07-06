@@ -192,4 +192,18 @@ class CandidateRepo implements ICandidateRepo {
                 ->get();
         return $results;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function updateStatus($id, $status)
+    {
+        $candidate = Candidate::find($id);
+        if (!$candidate) {
+            return false;
+        }
+        $candidate->status = $status;
+        $candidate->save();
+        return true;
+    }
 }

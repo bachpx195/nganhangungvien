@@ -63,6 +63,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function()
 		'as' => 'admin.candidate.getList', 'uses' => 'Admin\CandidateController@getList'
 	]);
 
+	Route::post('/candidate/status/{id}', [
+		'as' => 'admin.candidate.status', 'uses' => 'Admin\CandidateController@changeStatus'
+	]);
+
 	/**************** Employer ****************/
 	Route::match(['get'], '/employer/list', [
 		'as' => 'admin.employer.list', 'uses' => 'Admin\EmployerController@employerList'
