@@ -27,6 +27,7 @@
         <?php $experienceCount = isset($candidate['experience_count']) ? $candidate['experience_count'] : 1;?>
         <input type="hidden" name="experience_count" id="experience-count" value="{{$experienceCount}}">
         @for ($i = 1; $i <= $experienceCount; $i++)
+            <input type="hidden" name="experience_num" id="experience_num" value="{{$i}}">
             <div class="experience-skill-item">
                 <input type="hidden" name="experience_id_{{$i}}"
                        value="{{isset($candidate['experience_id_' . $i]) ? $candidate['experience_id_' . $i] : ''}}">
@@ -79,17 +80,26 @@
                             </select>
                         </div>
                         <span class="col-sm-1">đến </span>
-                        <div class="col-sm-2">
-                            <select name="experience_day_out_month_{{$i}}" class="form-control">
+                        <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none" id="current_job_{{$i}}">Hiện tại</p>
+                        <div class="col-sm-2" id="date_out1_{{$i}}">
+                            <select name="experience_day_out_month_{{$i}}" class="form-control" style="margin-bottom: 15px;" >
                                 @include('admin.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                             </select>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" id="date_out2_{{$i}}">
                             <select name="experience_day_out_year_{{$i}}" class="form-control">
                                 @include('admin.common.year_options',
                                 array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                             </select>
                         </div>
+                            <div class="form-group clearfix mt_8">
+                                <div class="box-cvht" style="margin-left: 455px;">
+                                    <div class="demo-list">
+                                        <input tabindex="1" type="checkbox" name="experience_is_current_job_{{$i}}" id="is_current_job"  value="1" >
+                                        <label for="cvht_{{$i}}" class="font14 fwn">Công việc hiện tại</label>
+                                    </div>
+                                </div>
+                            </div>
                         <div id="error_c_thoigian"
                              class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>

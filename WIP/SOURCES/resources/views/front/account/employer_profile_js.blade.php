@@ -50,6 +50,10 @@
                 $("#error_oldPassword").html("Vui lòng nhập vào mật khẩu cũ!");
                 $("#error_oldPassword").removeClass('display_none');
                 isOk = false;
+            } else if (oldPassword == '') {
+                $("#error_newPassword").html("Vui lòng nhập vào mật khẩu mới!");
+                $("#error_newPassword").removeClass('display_none');
+                isOk = false;
             } else if ((newPassword != newPasswordConfirm) && (newPassword != '' && newPasswordConfirm != '')) {
                 $(".err_password").html("Mật khẩu xác nhận không trùng khớp");
                 $(".err_password").removeClass('display_none');

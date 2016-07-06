@@ -452,7 +452,7 @@
 	                              @if(count($key->expectAddresses) > 0)
 	                              @foreach($key->expectAddresses as $index=>$item)
 	                              {{$item->name}}<span
-	                                 class="text_pink">@if($index < count($key->expectAddresses) - 1),
+	                                 class="text_black">@if($index < count($key->expectAddresses) - 1),
 	                              @endif
 	                              @endforeach
 	                              @endif

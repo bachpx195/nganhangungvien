@@ -47,7 +47,7 @@
 									<a
 									href="{{route('candidate.profile', ['slug' => StringHelper::uri($item->cv_title), 'id' => $item->id])}}"
 									class="text_grey"> {{ $item->full_name }} <i
-										class="text_pink display_inline">(Cập nhật: {{DateTimeHelper::formatDate($item->updated_at)}})</i>
+										class="text_pink display_inline">(Cập nhật: {{ $item->updated_at? date('d/m/Y', strtotime($item->updated_at)) : '' }})</i>
 								</a>
 								</span>
 							</div>
