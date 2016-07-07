@@ -53,13 +53,23 @@
                             + "<br/><span><strong>Email :</strong></span> <a>" + res.data.email + "</a>"
 
                     $('#candidateContact').html(html);
+
+                    if(res.data.attach_cv){
+                        var attactFrame = '<iframe name="2" width="99%" height="800px"'
+                        + 'src="' + res.data.attach_cv +'" frameborder="0">'
+                        + '</iframe>';
+
+                        $('#candidateAttact').html(attactFrame);
+                    }
+
                 }else{
-                    swal("Thông báo!", "Tài khoản của bạn không đủ. Hãy đăng ký tài khoản VIP hoặc nạp tiền để sử dụng dịch vụ!")
+                    //swal("Thông báo!", "Tài khoản của bạn không đủ. Hãy đăng ký tài khoản VIP hoặc nạp tiền để sử dụng dịch vụ!")
+                    popupPayment_open('atm');
                 }
             },
             error: function (jqXHR, status, errorThrown) {
                 if (jqXHR.status == 401) {
-                    alert('Bạn phải đăng nhập để lưu hồ sơ');
+                    alert('Bạn phải đăng nhập để xem liên hệ');
                 } else {
                     alert('Đã có lỗi hệ thống. Vui lòng thử lại');
                 }

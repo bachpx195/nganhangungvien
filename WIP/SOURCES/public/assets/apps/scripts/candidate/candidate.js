@@ -142,6 +142,20 @@ $(document).ready(function () {
                     + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
             }
         }, {
+            field: "status",
+            title: "Trạng thái",
+            width: "150px",
+            template: function (item) {
+                var html = "";
+                if(item.status == 1){
+
+                }else {
+
+                }
+
+                return html;
+            }
+        }, {
             field: "cv_title",
             title: "Tiêu đề",
             width: "150px"

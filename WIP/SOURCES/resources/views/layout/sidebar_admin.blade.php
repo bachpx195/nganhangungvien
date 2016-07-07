@@ -100,13 +100,13 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
+                    <!--<li class="nav-item  ">
                         <a href="{{ route('admin.province.list') }}" class="nav-link nav-toggle">
                             <i class="icon-tag"></i>
                             <span class="title">TỈNH/THÀNH PHỐ</span>
                             <span class="arrow"></span>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="nav-item  ">
                         <a href="{{ route('admin.level.list') }}" class="nav-link nav-toggle">
                             <i class="icon-tag"></i>

@@ -11,12 +11,17 @@ class ProvinceRepo implements IProvinceRepo {
     }
 
     public function getSortedList(){
-		$results = Province::select('id', 'name')
+		/*$results = Province::select('id', 'name')
 			->leftJoin(DB::raw('(SELECT province_id, COUNT(*) AS num_candidates FROM candidate GROUP BY province_id) c'), function($join)
 			{
 				$join->on('province.id', '=', 'c.province_id');
 			})
 			->orderBy('c.num_candidates', 'DESC')
+			->get();*/
+
+		$results = Province::select('id', 'name')
+			->orderBy('sort_order', 'ASC')
+			->orderBy('name', 'ASC')
 			->get();
 
 		//TODO: Research how it's not working
