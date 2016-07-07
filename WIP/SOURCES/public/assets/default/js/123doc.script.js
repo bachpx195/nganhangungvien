@@ -32,7 +32,15 @@ function closeBox() {
 function showForm_addMoney(e) {
     var t = $(e).attr("data-rel"),
         u = $(e).parents("ul.listOpt");
-    $(".boxAddMoney_content").not("#" + t).addClass("hidden"), $(".boxAddMoney_content#" + t).removeClass("hidden"), u.find("li > a").not(e).removeClass("active"), $(e).addClass("active")
+
+    if (t == 'atm') {
+        $(".boxAddMoney_content").not("#" + t).addClass("hidden"), $(".boxAddMoney_content#" + t).removeClass("hidden"), u.find("li > a").not(e).removeClass("active"), $(e).addClass("active");
+        $("#li-mobile").addClass("hidden");
+        $("#li-online").addClass("hidden");
+    }
+    else {
+        $(".boxAddMoney_content").not("#" + t).addClass("hidden"), $(".boxAddMoney_content#" + t).removeClass("hidden"), u.find("li > a").not(e).removeClass("active"), $(e).addClass("active")
+    }
 }
 
 $(document).on('click', '.listOption_bankATM li a', function (e) {

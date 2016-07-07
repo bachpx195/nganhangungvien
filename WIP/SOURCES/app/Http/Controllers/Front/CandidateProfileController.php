@@ -14,9 +14,11 @@ use App\Repositories\ITransactionRepo;
 use Illuminate\Http\Request;
 use App\Model\Candidate;
 use App\Repositories\ICandidateRepo;
+use Illuminate\Support\Facades\Redirect;
 
 class CandidateProfileController extends BaseController {
 
+	const DEACTIVE_STATUS = 0;
 	private $employerRepo;
 	private $saveCvRepo;
 	private $transactionRepo;
@@ -46,6 +48,10 @@ class CandidateProfileController extends BaseController {
 		$candidate = Candidate::find($id);
 		if(!$candidate){
 			return $this->errorView();
+		}
+
+		if ($candidate->status == self::DEACTIVE_STATUS) {
+			return Redirect::route('home');
 		}
 		
 		$dropdownData = $this->dropdownData();

@@ -4,15 +4,15 @@
 
     <ul class="listOpt">
         @if($employer->vip != 1)
-        <li><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
+        <li id="li-mobile"><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
         @endif
-        <li><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
-        <li><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
+        <li id="li-atm"><a onclick="showForm_addMoney(this)" @if($employer->vip == 1) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
+        <li id="li-online"><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
     </ul>
     @if($employer->vip != 1)
     <div class="boxAddMoney_content" id="mobile">
-        <div>
-            <img src="{{ URL::asset('assets/image/hd_mobile.png') }}"/>
+        <div style="margin-left: 100px; margin-top: 30px;">
+            <img src="{{ URL::asset('assets/image/hd_mobile.png') }}" style="margin-right: 100px;"/>
             <div>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon mobifone"></i><input type="radio" name="ncc" value="MOBI"/></a>
                 <a onclick="selectOptionMobile(this)" href="javascript:;"><i class="icon vinaphone"></i><input type="radio" name="ncc" value="VINA"/></a>
@@ -22,8 +22,22 @@
                 <p><i style="color: #0aa888;font-weight: bold;">Mệnh giá tối thiểu 20.000 vnđ</i></p>
                 <p>Phí nạp thẻ <a style="color: red;">23%</a> cho nhà mạng. <i style="color: #0aa888;font-weight: bold;">(Ví dụ: Nạp thẻ 20.000 sẽ được cộng 15.000 vào tài khoản)</i></p>
                 <p>Nạp sai 5 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
-                <p>Hỗ trợ trực tuyến <a href="http://store.baokim.vn/card/multiMobileNew" rel="nofollow" target="_blank">tại đây</a></p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_mobilecard();" class="btn btn_submit">Nạp tiền</a></p>
+            </div>
+
+            <div>
+                <div class="row pl_14 pr_14">
+                    <div class="txc">
+                        ------------------------------------
+                        <div class="title">
+                            <span class="bg-white bold text_blue">HÃY LIÊN HỆ ĐỂ ĐƯỢC TRỢ GIÚP</span>
+                        </div>
+                        <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421 - 0943 24 9699</span><br />
+                        <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
+                        <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:CSKH.NGANHANGUNGVIEN.COM?chat" class="text_pink">cskh.nganhangungvien.com</a></span>
+                    </div>
+                    <br/>
+                </div>
             </div>
         </div>
     </div>
