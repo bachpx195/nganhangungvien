@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Libs\Constants;
 use App\Model\Transaction;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IEmployerRepo;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Model\Candidate;
 use App\Repositories\ICandidateRepo;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class CandidateProfileController extends BaseController {
 
@@ -119,7 +121,6 @@ class CandidateProfileController extends BaseController {
 
 		if($employer->balance >= $transactionCost){
 			$employer->balance = $employer->balance - $transactionCost;
-			$employer->save();
 
 			//save transaction
 			$trans = new Transaction();
@@ -131,11 +132,15 @@ class CandidateProfileController extends BaseController {
 			$trans->payment_type = 3; //3-  Trừ tiền khi xem ứng viên
 			$trans->save();
 
+			$employer->save();
+
 			return response()->json([
 				"data" => [
-					"email"	=> $candidate->email,
+					"email"			=> $candidate->email,
 					"phone_number"	=> $candidate->phone_number,
-					"address"	=> $candidate->address
+					"address"		=> $candidate->address,
+					"attach_cv" 	=> $candidate->attach_cv ?
+						Constants::GOOGLE_DOC_PATH . '?url=' . URL::to('/') . '/candidate/cv/' . $candidate->attach_cv . "?url=&embedded=true" : ""
 				],
 				"error" => 0
 			]);

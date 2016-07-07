@@ -28,24 +28,37 @@
 								<h1 class="text_pink">PHƯƠNG THỨC THANH TOÁN</h1>
 								<br>
 							</div>
-							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('online')" @endif class="text_pink">CÁCH 1 - CHUYỂN KHOẢN ONLINE</a></span>
+							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm')" @endif class="text_pink">CÁCH 1 - CHUYỂN KHOẢN ONLINE</a></span>
 							<div class="text-center mt_10 mb_10">
-								<a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('online')" @endif>
-									<img src="{{ URL::asset('assets/pages/img/registvip/chuyen-khoan-online.jpg') }}" alt="Tuyển dụng thuê ngoài"/>
+								<a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm')" @endif>
+									<img src="{{ URL::asset('assets/pages/img/registvip/chuyen-khoan-online.jpg') }}" alt="Chuyển khoản online"/>
 								</a>
 							</div>
 							<br>
 							<span class="text_orange font18 bold ml_20">CÁCH 2 - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
 							<br/>
 							<div class="text-center mt_20 mb_10" id="become-vip">
-								Người liên hệ: <input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control"/>
-								Công ty: <input type="text" placeholder="Nhập Công ty" name="company_name" class="form-control"/>
-								Email: <input type="text" placeholder="Nhập Email" name="email" class="form-control"/> <br>
-								SĐT: <input type="text" placeholder="Nhập Số điện thoại" name="phone_number" class="form-control"/>
-								Địa chỉ: <input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control"/>
-								<br/>
+								<table style="width: 80%; margin-left: 80px;">
+									<tr>
+										<td><span>Người liên hệ: </span></td>
+										<td><input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control mt_10" /></td>
+										<td style="text-align: right;">Công ty: </td>
+										<td style="text-align: right;"><input type="text" placeholder="Nhập Công ty" name="company_name" class="form-control mt_10"/></td>
+									</tr>
+									<tr>
+										<td>Email: </td>
+										<td><input type="text" placeholder="Nhập Email" name="email" class="form-control mt_10"/></td>
+										<td style="text-align: right;">SĐT: </td>
+										<td style="text-align: right;"><input type="text" placeholder="Nhập Số điện thoại" name="phone_number" class="form-control mt_10"/></td>
+									</tr>
+									<tr>
+										<td>Địa chỉ: </td>
+										<td><input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control mt_10"/></td>
+										<td style="text-align: right;"><a id="become-vip-btn" href="javascript:;" onclick="become_vip();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a></td>
+										<td></td>
+									</tr>
+								</table>
 
-								<a id="become-vip-btn" href="javascript:;" onclick="become_vip();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a>
 							</div>
 							<br/>
 							<div class="text-center mt_10 mb_10">

@@ -24,7 +24,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto/Roboto-Medium.woff') format('woff');
+    src: local('Roboto Medium'), local('Roboto-Medium');
     /*http://themes.googleusercontent.com/static/fonts/roboto/v9/7KXg6nyyqN8gyMoNwQ7aOQ.woff*/
 }
 @font-face {

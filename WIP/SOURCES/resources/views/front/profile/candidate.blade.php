@@ -43,11 +43,11 @@
 								<br/><span><strong>Email :</strong></span> <a>{{$candidate->email}}</a>
 							@elseif (Auth::check())
 								<div class="clearfix" id="candidateContact">
-									Nhà tuyển dụng chưa đăng ký gói tài khoản VIP để xem trực tiếp thông tin ứng viên {{$candidate->full_name}}.
-									<br>Quý khách có thể
-									<a href="javascript:void(0)" onclick="popupPayment_open('online')" class="text_blue font14 fwb">đăng ký VIP (Bấm vào đây để đăng ký)</a>
-									<br>hoặc <a href="javascript:void(0)" onclick="viewContact({{$candidate->id}})" class="show_s09b_ntd_register text_blue font14 fwb">Xem thông tin</a> ứng viên {{$candidate->full_name}}
-									(phí: {{$transactionCost}}đ)</div>
+									XEM THÔNG TIN LIÊN HỆ
+									<br>PHÍ: {{$transactionCost}}vnđ
+									<!--<a href="javascript:void(0)" onclick="popupPayment_open('atm')" class="text_blue font14 fwb">đăng ký VIP (Bấm vào đây để đăng ký)</a>-->
+									<br><a href="javascript:void(0)" onclick="viewContact({{$candidate->id}})" class="show_s09b_ntd_register text_blue font14 fwb">Click xem ngay!</a>
+								</div>
 							@else
 								<span> Đăng nhập để xem được thông tin liên hệ của ứng viên</span>
 								<a href="javascript:;"

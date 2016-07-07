@@ -66,6 +66,22 @@ function deleteCandidate(element) {
     );
 }
 
+function approveCandidate(element) {
+    var id = $(element).data('id');
+    var url = $(element).data('url');
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        complete: function(data) {
+            if (data.status) {
+                swal("Thành công!", "Chuyển trạng thái hồ sơ thành công.", "success");
+                datasource.read();
+            }
+        }
+    });
+}
+
 $(document).ready(function () {
     datasource = new kendo.data.DataSource({
         type: "json",
@@ -80,7 +96,8 @@ $(document).ready(function () {
                     salaryGrade: $('#salaryGrade').val() ? [$('#salaryGrade').val()] : null,
                     degree: $('#degree').val(),
                     yearOfExp: $('#yearOfExp').val() ? [$('#yearOfExp').val()] : null,
-                    sex: $('#sex').val(),
+                    //sex: $('#sex').val(),
+                    status: $('#status').val(),
                     language: $('#language').val(),
                 };
 
@@ -126,8 +143,8 @@ $(document).ready(function () {
         },
         resizable: true,
         columns: [{
-            title: "",
-            width: "132px",
+            title: "Thao tác",
+            width: "100px",
             template: function (item) {
                 return '<a href="/admin/candidate/update/' + item.id + '" >'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
@@ -136,10 +153,28 @@ $(document).ready(function () {
                     + 'data-url="/admin/candidate/delete/' + item.id + '">'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-trash-o"></i></button></a>'
 
-                    + '<a class="change-status" style="margin-left: 2px" data-id="' + item.id + '" '
-                    + 'data-status="' + item.status + '" '
-                    + 'data-url="/admin/candidate/status/' + item.id + '">'
-                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+                    // + '<a class="change-status" style="margin-left: 2px" data-id="' + item.id + '" '
+                    // + 'data-status="' + item.status + '" '
+                    // + 'data-url="/admin/candidate/status/' + item.id + '">'
+                    // + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button></a>';
+            }
+        }, {
+            field: "status",
+            title: "Trạng thái",
+            width: "175px",
+            template: function (item) {
+                var html = "";
+                if(item.status == 1){
+                    html = '<a class="approve-candidate" onclick="approveCandidate(this)" data-id="' + item.id + '" '
+                        + 'data-url="/admin/candidate/status/' + item.id + '?status=0">'
+                        + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-close"></i> Hủy</button></a> Đã duyệt'
+                }else {
+                    html = '<a class="approve-candidate" onclick="approveCandidate(this)" data-id="' + item.id + '" '
+                        + 'data-url="/admin/candidate/status/' + item.id + '?status=1">'
+                        + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-check"></i> Duyệt</button></a> Chưa duyệt'
+                }
+
+                return html;
             }
         }, {
             field: "cv_title",

@@ -38,3 +38,6 @@ span.k-widget.k-tooltip-validation {
     vertical-align: middle;
     text-align: center;
 }
+.k-pager-wrap .k-dropdown {
+    width: 7.2em;
+}

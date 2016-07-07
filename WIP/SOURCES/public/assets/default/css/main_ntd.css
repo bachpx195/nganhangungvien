@@ -5181,7 +5181,7 @@ a, a:hover, a:active, a:focus, button, button:hover, button:active, button:focus
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.25);
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.25);
     box-shadow: 0 1px 4px rgba(0,0,0,.25);
-    margin:0 12px;
+    /*margin:0 12px;*/
 }
 .box_trinhdo.hasBoxOpened {
     box-shadow: none;

@@ -85,7 +85,7 @@
 						<i class="icon_select_box icon_gioi_tinh icon_24 icon-24"></i>
 						<select name="sex" class="selectpicker box_select_filter pos_relative select-style mt5" data-diss="-1" tabindex="-1">
 							<option value="">Tất cả Giới tính</option>
-							<option value="0">Nữ</option>
+							<option value="2">Nữ</option>
 							<option value="1">Nam</option>
 						</select>
 					</div>
