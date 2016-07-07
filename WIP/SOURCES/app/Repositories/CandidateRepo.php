@@ -82,6 +82,12 @@ class CandidateRepo implements ICandidateRepo {
             $query = $query->where('updated_at', '>=', $date);
         }
 
+        if(isset($params['status']) && $params['status'] !== "" && $params['status'] !== null){
+            $query = $query->where('status', '=', $params['status']);
+        }
+
+        //$query = $query->where('status', '=', 1);
+
         $query = $query->orderBy($orderBy, 'desc');
         //die($query->toSql());
         return $query->paginate($pageSize);
@@ -92,30 +98,31 @@ class CandidateRepo implements ICandidateRepo {
         // Hiện tại chỉ dựa vào ngành nghề hiện tại, sau này có thể bổ sung thống kê theo ngành nghề liên quan
         $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END 
                     AS num_candidates FROM job j LEFT JOIN 
-                    (SELECT job_id, COUNT(*) AS num_candidates FROM candidate_expect_job GROUP BY job_id) 
+                    (SELECT job_id, COUNT(*) AS num_candidates FROM candidate_expect_job cej LEFT JOIN (SELECT status, id FROM candidate) ca ON cej.candidate_id = ca.id WHERE ca.status = 1 GROUP BY job_id) 
                     c ON j.id = c.job_id ORDER BY num_candidates DESC") );
         return $results;
     }
 
     public function experienceYearsStatistic() {
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM experience_years p LEFT JOIN (SELECT experience_years, COUNT(*) AS num_candidates FROM candidate GROUP BY experience_years) c ON p.id = c.experience_years ORDER BY id") );
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM experience_years p LEFT JOIN (SELECT experience_years, COUNT(*) AS num_candidates FROM candidate WHERE status = 1 GROUP BY experience_years) c ON p.id = c.experience_years ORDER BY id") );
         return $results;
     }
 
     public function levelsStatistic() {
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM level p LEFT JOIN (SELECT level, COUNT(*) AS num_candidates FROM candidate GROUP BY level) c ON p.id = c.level ORDER BY id") );
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM level p LEFT JOIN (SELECT level, COUNT(*) AS num_candidates FROM candidate WHERE status = 1 GROUP BY level) c ON p.id = c.level ORDER BY id") );
         return $results;
     }
 
     public function salariesStatistic() {
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM salary p LEFT JOIN (SELECT expect_salary, COUNT(*) AS num_candidates FROM candidate GROUP BY expect_salary) c ON p.id = c.expect_salary ORDER BY id") );
+        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM salary p LEFT JOIN (SELECT expect_salary, COUNT(*) AS num_candidates FROM candidate WHERE status = 1 GROUP BY expect_salary) c ON p.id = c.expect_salary ORDER BY id") );
         return $results;
     }
 
     public function provinceStatistic() {
         $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates 
-                                        FROM province p LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate_expect_address GROUP BY province_id) 
-                                        c ON p.id = c.province_id  ORDER BY num_candidates DESC") );
+                                        FROM province p 
+                                        LEFT JOIN (SELECT province_id, COUNT(*) AS num_candidates FROM candidate_expect_address cea LEFT JOIN (SELECT status, id FROM candidate) ca ON cea.candidate_id = ca.id WHERE ca.status = 1 GROUP BY province_id) c ON p.id = c.province_id
+                                        ORDER BY num_candidates DESC") );
         return $results;
     } 
 
@@ -123,6 +130,7 @@ class CandidateRepo implements ICandidateRepo {
         $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->select('candidate.id', 'full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary','candidate.updated_at as updated')
+                ->where('status', '=', 1)
                 ->orderBy('updated','decs')
                 ->take(20)
                 ->get();
@@ -133,6 +141,7 @@ class CandidateRepo implements ICandidateRepo {
         $results = Candidate::leftJoin('experience_years','candidate.experience_years','=','experience_years.id')
                 ->leftJoin('salary','candidate.expect_salary','=','salary.id')
                 ->select('candidate.id', 'view_total','full_name','cv_title','experience_years.name as exp_years', 'salary.name as salary', 'candidate.updated_at as updated')
+                ->where('status', '=', 1)
                 ->orderBy('view_total','decs')
                 ->take(20)
                 ->get();
@@ -143,6 +152,7 @@ class CandidateRepo implements ICandidateRepo {
     {
         $results = DB::table('candidate')
             ->where('full_name','<>',' ')
+            ->where('status','=', 1)
             ->count();
         return $results;
 
@@ -152,7 +162,8 @@ class CandidateRepo implements ICandidateRepo {
         $date = date('Y-m-d');
         $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
         $results = DB::table('candidate')
-                ->Where('updated_at', '>=', $prev_date.' 00:00:00')
+                ->where('updated_at', '>=', $prev_date.' 00:00:00')
+                ->where('status','=', 1)
                 ->count();
         return $results;
     }
@@ -161,7 +172,8 @@ class CandidateRepo implements ICandidateRepo {
         $date = date('Y-m-d');
         $prev_month = date('Y-m-d', strtotime($date .' -1 month'));
         $results = DB::table('candidate')
-                ->Where('updated_at', '>=', $prev_month.' 00:00:00')
+                ->where('updated_at', '>=', $prev_month.' 00:00:00')
+                ->where('status','=', 1)
                 ->count();
         return $results;
     }
@@ -174,6 +186,7 @@ class CandidateRepo implements ICandidateRepo {
         }
         $results = Candidate::Where('experience_years','=',"$candidate->experience_years")
                 ->Where('candidate.id','<>',$id)
+                ->where('status','=', 1)
                 ->take(20)
                 ->get();
 
@@ -188,6 +201,7 @@ class CandidateRepo implements ICandidateRepo {
         }
         $results = Candidate::Where('current_rank','=',"$candidate->current_rank")
                 ->Where('candidate.id','<>',$id)
+                ->where('status','=', 1)
                 ->take(20)
                 ->get();
         return $results;
