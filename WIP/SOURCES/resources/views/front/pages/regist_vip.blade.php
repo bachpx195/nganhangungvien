@@ -37,8 +37,8 @@
 							<br>
 							<span class="text_orange font18 bold ml_20">CÁCH 2 - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
 							<br/>
-							<div class="text-center mt_20 mb_10 ml_30" id="become-vip">
-								<table style="width: 80%; margin-left: 50px;">
+							<div class="text-center mt_20 mb_10" id="become-vip">
+								<table style="width: 80%; margin-left: 80px;">
 									<tr>
 										<td><span>Người liên hệ: </span></td>
 										<td><input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control mt_10" /></td>

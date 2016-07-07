@@ -38,14 +38,26 @@
 							<span class="text_orange font18 bold ml_20">D - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
 							<br/>
 							<div class="text-center mt_20 mb_10" id="outsourcing">
-								Người liên hệ: <input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control"/>
-								Công ty: <input type="text" placeholder="Nhập Công ty" name="company_name" class="form-control"/>
-								Email: <input type="text" placeholder="Nhập Email" name="email" class="form-control"/> <br>
-								SĐT: <input type="text" placeholder="Nhập Số điện thoại" name="phone_number" class="form-control"/>
-								Địa chỉ: <input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control"/>
-								<br/>
-
-								<a id="outsourcing-btn" href="javascript:;" onclick="outsourcing();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a>
+								<table style="width: 80%; margin-left: 80px;">
+									<tr>
+										<td><span>Người liên hệ: </span></td>
+										<td><input type="text" placeholder="Nhập Họ và tên" name="full_name" class="form-control mt_10" /></td>
+										<td style="text-align: right;">Công ty: </td>
+										<td style="text-align: right;"><input type="text" placeholder="Nhập Công ty" name="company_name" class="form-control mt_10"/></td>
+									</tr>
+									<tr>
+										<td>Email: </td>
+										<td><input type="text" placeholder="Nhập Email" name="email" class="form-control mt_10"/></td>
+										<td style="text-align: right;">SĐT: </td>
+										<td style="text-align: right;"><input type="text" placeholder="Nhập Số điện thoại" name="phone_number" class="form-control mt_10"/></td>
+									</tr>
+									<tr>
+										<td>Địa chỉ: </td>
+										<td><input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control mt_10"/></td>
+										<td style="text-align: right;"><a id="outsourcing-btn" href="javascript:;" onclick="outsourcing();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a></td>
+										<td></td>
+									</tr>
+								</table>
 							</div>
 
 							<div class="hr_header hr_header-new">
