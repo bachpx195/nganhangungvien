@@ -50,7 +50,7 @@ class EmployerController extends Controller
 //        $pageSize = config('front.pageSize');
 //        $employers = $this->employerRepo->search($keyword, $pageSize);
 
-        $provinces = Province::all();
+        $provinces = $this->provinceRepo->getSortedList();
 
         return view('admin/employer/list')
             ->with('role', $role)

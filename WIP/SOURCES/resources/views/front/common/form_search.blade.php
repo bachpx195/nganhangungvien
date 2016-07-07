@@ -1,4 +1,4 @@
-<form method="get" action="/tim-kiem-ung-vien/"
+<form method="get" action="{{route('candidate.search')}}"
 	id="search_box_full" class="frm_search_box_full">
 	<div class="box_filter_content w_100 ">
 		<div class="filter_content_line1 border_bt pos_relative">
@@ -42,9 +42,9 @@
 									<div class="modal-drop-mucluong font14">
 										@foreach($dropdownData['salaryGrades'] as $item)
 										<div class="demo-list pb_6">
-											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_1"
+											<input value="{{ $item['id'] }}" tabindex="1" type="checkbox" name="salaryGrade[]" id="mul_{{$item['id']}}"
 												   @if (isset($params['salaryGrade']) && in_array($item['id'], $params['salaryGrade'])) checked @endif>
-											<label for="mul_1" class="font14">{{ $item['name'] }}</label>
+											<label for="mul_{{$item['id']}}" class="font14">{{ $item['name'] }}</label>
 										</div>
 										@endforeach
 									</div>
@@ -122,7 +122,7 @@
 						class="selectpicker box_select_filter pos_relative select-style mt8"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
-						<option value="0" @if (isset($params['sex']) && $params['sex'] === '0') selected @endif>Nữ</option>
+						<option value="2" @if (isset($params['sex']) && $params['sex'] === '2') selected @endif>Nữ</option>
 						<option value="1" @if (isset($params['sex']) && $params['sex'] === '1') selected @endif>Nam</option>
 					</select>
 				</div>

@@ -58,7 +58,7 @@
             <label>Giới tính</label>
             <select name="sex" class="form-control" id="sex">
                 <option value="">Tất cả Giới tính</option>
-                <option value="0">Nữ</option>
+                <option value="2">Nữ</option>
                 <option value="1">Nam</option>
             </select>
         </div>
