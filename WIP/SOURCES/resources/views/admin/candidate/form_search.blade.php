@@ -55,14 +55,6 @@
             </select>
         </div>
         <div class="form-group col-md-3">
-            <label>Giới tính</label>
-            <select name="sex" class="form-control" id="sex">
-                <option value="">Tất cả Giới tính</option>
-                <option value="2">Nữ</option>
-                <option value="1">Nam</option>
-            </select>
-        </div>
-        <div class="form-group col-md-3">
             <label>Ngoại ngữ</label>
             <select name="language" class="form-control" id="language">
                 @include('admin.common.options',
@@ -70,6 +62,14 @@
                         'options' => $dropdownData['languages'],
                         'defaultName' => 'Tất cả ngoại ngữ'
                         ))
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Trạng thái</label>
+            <select name="status" class="form-control" id="status">
+                <option value="">Tất cả trạng thái</option>
+                <option value="1">Đã duyệt</option>
+                <option value="0">Chưa duyệt</option>
             </select>
         </div>
 

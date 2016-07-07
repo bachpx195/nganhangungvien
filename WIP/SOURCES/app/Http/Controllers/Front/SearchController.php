@@ -26,6 +26,7 @@ class SearchController extends BaseController {
 	public function index(Request $request)
 	{
 		$params = $request->all();
+		$params['status'] = 1;
 
 		$pageSize = config('front.pageSize');
 		$candidates = $this->candidateRepo->search($params, $pageSize);
@@ -50,6 +51,7 @@ class SearchController extends BaseController {
 		//$page = Input::get('page');
 
 		$params = CandidateHelper::getParamsBySlug($slug);
+		$params['status'] = 1;
 
 		/*if($page){
 			Paginator::currentPageResolver(function() use ($page) {
@@ -71,9 +73,11 @@ class SearchController extends BaseController {
 
 	public function listByView(Request $request)
 	{
+		$params = [];
+		$params['status'] = 1;
 
 		$pageSize = config('front.pageSize');
-		$candidates = $this->candidateRepo->search([], $pageSize, 'view_total');
+		$candidates = $this->candidateRepo->search($params, $pageSize, 'view_total');
 
 		$dropdownData = $this->dropdownData();
 		$title = trans("messages.front.title.view");
@@ -87,9 +91,11 @@ class SearchController extends BaseController {
 
 	public function listByTime(Request $request)
 	{
+		$params = [];
+		$params['status'] = 1;
 
 		$pageSize = config('front.pageSize');
-		$candidates = $this->candidateRepo->search([], $pageSize, 'updated_at');
+		$candidates = $this->candidateRepo->search($params, $pageSize, 'updated_at');
 
 		$dropdownData = $this->dropdownData();
 		$title = trans("messages.front.title.new");

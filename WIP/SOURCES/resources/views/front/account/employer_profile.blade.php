@@ -14,10 +14,6 @@
             <div class="w_100">
                 <div class="box_info font14">
                     <div class="pull-left w_100">
-                        <div class="list-items mb_0 mb_10 mt_4">
-                            <img src="/assets/default/images/not-verify.png" alt="Ngân hàng ứng viên"
-                                 title="Ngân hàng ứng viên"
-                                 width="150"/></div>
                         <div class="list-items mb_0">
                             <span class="fwb">Email: </span>{{ $employer->userEmail }}
                         </div>

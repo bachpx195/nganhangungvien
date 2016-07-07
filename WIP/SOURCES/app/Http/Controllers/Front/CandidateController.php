@@ -218,7 +218,8 @@ class CandidateController extends Controller {
                 //throw new Exception('Something wrong!!');
             }
 
-            return redirect(route('candidate.form'));
+            return view('front.candidate.candidate_create_success')
+                    ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         }
     }
 

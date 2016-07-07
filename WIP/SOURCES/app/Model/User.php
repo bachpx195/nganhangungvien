@@ -7,6 +7,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\App;
+use App\Model\Employer;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -24,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['username', 'email', 'password'];
+	protected $fillable = ['username', 'email', 'password', 'id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -86,5 +87,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function isSuperAdmin()
 	{
 		return $this->roles()->where('code', 'SUPER_ADMIN')->first();
+	}
+
+	public function employer(){
+		return $this->belongsTo('App\Model\Employer', 'user_id', 'id');
+	}
+
+	public function employerCompanyName(){
+
+		$employer = Employer::where('user_id', '=', $this->id)
+			->first();
+
+		if($employer){
+			return $employer->company_name;
+		}
+		return NULL;
 	}
 }
