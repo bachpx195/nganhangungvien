@@ -21,7 +21,7 @@
 								<ul class="nopadding nomargin">
 									<li class="pos_relative loggedin">
 										<a href="javascript:;" class="icnicon_40" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tài khoản">
-											<img src="{{ empty(Auth::user()->image) ? '/assets/default/images/avatar.png' : URL::to('/') . Auth::user()->image }}" class="header_avatar" alt="avatar" title="avatar">
+											<img src="{{ empty(Auth::user()->image) ? URL::asset('/assets/default/images/avatar.png') : URL::to('/') . Auth::user()->image }}" class="header_avatar" alt="avatar" title="avatar">
 										</a>
 										<div class="loggedin popup_down">
 											<div class="header-user-info pos_absolute"></div>
@@ -29,7 +29,7 @@
 												<div class="pl_16 pr_16 pt_16 pb_14 bg_white user_box">
 													<div class="block-content">
 														<div class="avatar pull-left">
-															<img src="{{ empty(Auth::user()->image) ? '/assets/default/images/avatar.png' : URL::to('/') . Auth::user()->image }}" width="56px" alt="user avatar" title=" user avatar">
+															<img src="{{ empty(Auth::user()->image) ? URL::asset('/assets/default/images/avatar.png'): URL::to('/') . Auth::user()->image }}" width="56px" alt="user avatar" title=" user avatar">
 														</div>
 														<div class="pull-left ml_12 lh_20 w171">
 															@if (Auth::user()->user_type == 'employer')
