@@ -1,6 +1,11 @@
 @extends('front/global')
 
 @section('content')
+    @if (Auth::check() && Auth::user()->user_type == 'employer')
+        <div style="padding-left:232px; padding-bottom: 400px;" class="content_dangky mt16" >
+    @else
+        <div class="content_dangky  mt16">
+    @endif
 
     <div class="box_tab bg_white box_shadow pt_16 pl_14 pr_14 pb_16">
         <div class="w_100">

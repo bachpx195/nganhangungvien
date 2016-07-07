@@ -376,6 +376,9 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 	Route::match(['get', 'post'], '/tao-moi-mat-khau/{id}-{code}', [
 		'as' => 'user.reset.form', 'uses' => 'Front\ResetPasswordController@confirm'
 	]);
+	// Route::get('/test', function(){
+	// 	return view('front.candidate.candidate_create_success');
+	// });
 	
 });
 
