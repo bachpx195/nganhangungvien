@@ -32,7 +32,7 @@
 						<span class="name font24 lh_12 bold">{{$candidate->full_name}}</span>
 					</div>
 					<div class="list-items mb_0">
-						<span class="bold">Giới tính:</span> <span>{{$candidate->sex ? 'Nam' : 'Nữ'}}</span> | <span
+						<span class="bold">Giới tính:</span> <span>{{$candidate->sex == 1 ? 'Nam' : 'Nữ'}}</span> | <span
 							class="bold">Ngày sinh:</span> {{DateTimeHelper::formatDate($candidate->birthday)}}
 					</div>
 					<div class="list-items mb_10">
@@ -130,7 +130,7 @@
 						</p>
 						<p class="line-icon mb_4">
 							<i class="icon-gender-24 icon-24 icon_24"></i> <span
-								class="bold">Giới tính:</span> <span class="job_value">{{$candidate->sex ? 'Nam' : 'Nữ'}}</span>
+								class="bold">Giới tính:</span> <span class="job_value">{{$candidate->sex == 1 ? 'Nam' : 'Nữ'}}</span>
 						</p>
 						<p class="line-icon mb_4">
 							<i class="icon-relationship icon-24 icon_24"></i> <span
