@@ -65,14 +65,7 @@
                         @include('front.common.year_options'))
                     </select>
                 </div>
-                <div class="form-group clearfix mt_8" style="margin-bottom: 0px;">
-                    <div class="box-cvht" style="margin-left: 390px;">
-                        <div class="demo-list">
-                            <input tabindex="1" type="checkbox" name="experience_is_current_job_@{{index}}" id="experience_is_current_job_@{{index}}"  value="1" >
-                            <label for="cvht_@{{index}}" class="font14 fwn">Công việc hiện tại</label>
-                        </div>
-                    </div>
-                </div>
+
                 <div id="error_c_thoigian"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
             </div>
@@ -126,11 +119,3 @@
         </div>
     </div>
 </script>
-<!--            <div class="form-group clearfix mt_8">
-                    <div class="box-cvht" style="margin-left: 390px;">
-                        <div class="demo-list">
-                            <input tabindex="1" type="checkbox" name="experience_is_current_job_@{{index}}" id="experience_is_current_job_@{{index}}"  value="1" >
-                            <label for="cvht_@{{index}}" class="font14 fwn">Công việc hiện tại</label>
-                        </div>
-                    </div>
-                </div> -->

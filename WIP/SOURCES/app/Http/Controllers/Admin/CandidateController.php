@@ -1118,7 +1118,7 @@ class CandidateController extends Controller
                 "expectAddresses"   => $this->getExpectAddresses($item),
                 "foreignLanguages"  => $this->getForeignLanguages($item),
                 "maxLevel"          => $item->maxLevel ? $item->maxLevel->name : '',
-                "sex"               => $item->sex ? 'Nam' : 'Nữ',
+                "sex"               => $item->sex == 1 ? 'Nam' : 'Nữ',
                 "status"            => $item->status
             );
         }

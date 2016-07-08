@@ -102,7 +102,7 @@
 
 
         $(document).on('ifChecked ifUnchecked', '#experience_is_current_job', function (event) {
-            console.log('experience_is_current_job');
+            console.log('experience_is_current_job---');
             var i = document.getElementById('experience_num').value;
             var current_job = '#current_job_' + i;
             var date_out1 = '#date_out1_' + i;

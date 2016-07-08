@@ -120,7 +120,7 @@
 						class="selectpicker box_select_filter pos_relative select-style"
 						tabindex="-1">
 						<option class="test-select" value="" selected>Tất cả Giới tính</option>
-						<option value="0">Nữ</option>
+						<option value="2">Nữ</option>
 						<option value="1">Nam</option>
 					</select>
 				</div>
