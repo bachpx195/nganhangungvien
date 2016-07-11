@@ -212,7 +212,7 @@ class CandidateController extends Controller {
                 DB::commit();
 
                 //send email
-                $this->sendEmail($input);
+                // $this->sendEmail($input);
             } catch (\Exception $e) {
                 DB::rollBack();
                 //throw new Exception('Something wrong!!');
