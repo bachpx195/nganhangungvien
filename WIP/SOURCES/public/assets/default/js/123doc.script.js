@@ -125,7 +125,7 @@ function pay_atm(e) {
         var u = $('#pay-money-atm');
         var n = $("#phone_atm");
 
-        return void 0 === t.val() ? void alert("Xin vui lòng chọn ngân hàng thanh toán!") : "" === u.val() ? void alert("Xin vui lòng nhập vào số tiền!") : "" === n.val() ? (alert("Xin vui lòng nhập vào số điện thoại!"),
+        return void 0 === t.val() ? void swal("Lỗi", "Xin vui lòng chọn ngân hàng thanh toán!", "error") : "" === u.val() ? void swal("Lỗi", "Xin vui lòng nhập vào số tiền!", "error") : "" === n.val() ? (swal("Lỗi", "Xin vui lòng nhập vào số điện thoại!", "error"),
             void n.focus()) : (running_paymentAtm = !0, $("#pay-loading-atm").show(), $.ajax({
             url: "/user/pay-atm",
             type: "POST",
@@ -136,6 +136,14 @@ function pay_atm(e) {
                 total_amount: u.val(),
             },
             beforeSend: function() {
+                swal({
+                    title: "Đang thực hiện giao dịch!",
+                    text: "Quý khách xin vui lòng đợi trong giây lát!",
+                    imageUrl: "https://site-data.optionweb.com/images/all/loading.gif",
+                    showConfirmButton: false,
+                    showLoaderOnConfirm: true
+                });
+
                 $(".btn_submit").css({
                     "background-color": "#00a888",
                     cursor: "text"
@@ -149,16 +157,20 @@ function pay_atm(e) {
             },
             success: function(e) {
                 running_paymentAtm = !1;
-                if (e.success) {
-                    $("#pay-loading-atm").hide();
-                    window.top.location.href = e.baokimUrl
-                } else {
-                    alert(e.error);
-                }
+                swal.close();
+
+                setTimeout(function(){
+                    if (e.success) {
+                        $("#pay-loading-atm").hide();
+                        window.top.location.href = e.baokimUrl
+                    } else {
+                        swal("Lỗi", e.error, "error");
+                    }
+                },100);
             },
             error: function(e) {
                 running_paymentAtm = !1;
-                alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
+                swal("Lỗi", "Có lỗi xảy ra, vui lòng thanh toán lại!", "error");
             }
         }), void 0)
     }
