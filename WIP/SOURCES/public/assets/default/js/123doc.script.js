@@ -61,7 +61,7 @@ function pay_mobilecard() {
         var u = $("#code_popup").val();
         u = u.replace(/ /g, "");
         var a = $("#captcha_popup_mc");
-        return void 0 === e.val() ? void alert("Xin vui lòng chọn nhà mạng!") : "" === u ? (alert("Xin vui lòng nhập mã số thẻ!"), void $("#code_popup").focus()) : "" === t ? (alert("Xin vui lòng nhập số seri!"), void a.focus()) : (running_paymentMobilecard = !0, t = t, u = u, $("#pay-loading-mc").show(), $.ajax({
+        return void 0 === e.val() ? void swal("Lỗi", "Xin vui lòng chọn nhà mạng!!", "error") : "" === u ? (swal("Lỗi", "Xin vui lòng nhập mã số thẻ!", "error"), void $("#code_popup").focus()) : "" === t ? (swal("Lỗi", "Xin vui lòng nhập số seri!", "error"), void a.focus()) : (running_paymentMobilecard = !0, t = t, u = u, $("#pay-loading-mc").show(), $.ajax({
             url: "/user/pay",
             type: "POST",
             dataType: "json",
@@ -71,6 +71,14 @@ function pay_mobilecard() {
                 pin_field: u
             },
             beforeSend: function() {
+                swal({
+                    title: "Đang thực hiện giao dịch!",
+                    text: "Quý khách xin vui lòng đợi trong giây lát!",
+                    imageUrl: "https://site-data.optionweb.com/images/all/loading.gif",
+                    showConfirmButton: false,
+                    showLoaderOnConfirm: true
+                });
+
                 $(".btn_submit").css({
                     "background-color": "#00a888",
                     cursor: "text"
@@ -83,25 +91,29 @@ function pay_mobilecard() {
                 })
             },
             success: function(t) {
-                if (t.success) {
-                    if (running_paymentMobilecard = !1, $("#pay-loading-mc").hide(), void 0 !== t["employer"]) {
-                        //$("#acc_main").text(t["employer"].balance);
+                swal.close();
 
-                        //Reset top up form
-                        $("#seri_popup").val("");
-                        $("#code_popup").val("");
-                        $("#captcha_popup_mc").val("");
+                setTimeout(function(){
+                    if (t.success) {
+                        if (running_paymentMobilecard = !1, $("#pay-loading-mc").hide(), void 0 !== t["employer"]) {
+                            //$("#acc_main").text(t["employer"].balance);
 
-                        alert("Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + " VNĐ");
+                            //Reset top up form
+                            $("#seri_popup").val("");
+                            $("#code_popup").val("");
+                            $("#captcha_popup_mc").val("");
+
+                            swal("Thành công!", "Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + " VNĐ", "success");
+                        }
+                    } else {
+                        running_paymentMobilecard = !1;
+                        swal("Lỗi", t.error, "error");
                     }
-                } else {
-                    running_paymentMobilecard = !1;
-                    alert(t.error);
-                }
+                },100);
             },
             error: function(e) {
                 running_paymentMobilecard = !1;
-                alert("Có lỗi xảy ra, vui lòng thanh toán lại !");
+                swal("Lỗi", "Có lỗi xảy ra, vui lòng thanh toán lại!", "error")
             }
         }), void 0)
     }
