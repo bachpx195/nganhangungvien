@@ -86,3 +86,9 @@ label.card-deposit > input:checked + img {
 	margin-bottom: 10px;
 	margin-right: 5px;
 }
+#left-sidebar.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}

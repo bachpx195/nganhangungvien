@@ -7644,6 +7644,7 @@ input:focus{
 
 .account_vip{
     padding:0px 6px!important;
+    font-size: 15px;
 }
 .account_vip:hover{
     background-color: #ffa726;
