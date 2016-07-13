@@ -118,4 +118,6 @@ class Constants
     );
 
     const GOOGLE_DOC_PATH = 'https://docs.google.com/viewer';
+
+    const CHARGE_RATE = 80;
 }

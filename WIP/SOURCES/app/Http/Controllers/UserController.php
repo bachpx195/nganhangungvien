@@ -183,10 +183,12 @@ class UserController extends Controller {
 
 			if ($r['success'])
 			{
+				$amount = Constants::CHARGE_RATE /100 * $r['amount'];
+
 				try {
 					DB::beginTransaction();
 
-					$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $r['amount']);
+					$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $amount);
 
 					$transactionData = array(
 						'employer_id' => $employer->id,
@@ -194,7 +196,7 @@ class UserController extends Controller {
 						'payment_type' => Constants::PAYMENT_TYPE_CARD,
 						'type' => Constants::$TRANSACTION_TYPES['RECHARGE'],
 						'balance' => $employer->balance,
-						'amount' => $r['amount'],
+						'amount' => $amount,
 						'email' => $user['email'],
 						'full_name' => $user['full_name']
 					);
@@ -283,6 +285,7 @@ class UserController extends Controller {
 
 		try {
 			DB::beginTransaction();
+			$amount = Constants::CHARGE_RATE / 100 * $amount;
 			$employer = $this->employerRepo->increaseBalanceAfterPayment($user->id, $amount);
 
 			$transactionData = array(

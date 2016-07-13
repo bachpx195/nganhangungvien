@@ -60,7 +60,7 @@ class Card {
         date_default_timezone_set('Asia/Ho_Chi_Minh');
 
         if ($status == 200) {
-            return array('success' => true, 'amount' => $result['amount']);
+            return array('success' => true, 'amount' => $result['amount'], 'err' => '');
         } else {
             return array('success' => false, 'err' => $result['errorMessage']);
         }

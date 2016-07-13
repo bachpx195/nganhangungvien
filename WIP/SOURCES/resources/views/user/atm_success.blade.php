@@ -25,6 +25,7 @@
                                 <p>
                                     Cảm ơn bạn đã thanh toán tại:<a href="http://nganhangungvien.com" target="_blank">http://nganhangungvien.com</a> với địa chỉ e-mail {{$transactionData['email']}}.</p>
 
+                                <p>Tài khoản của bạn bị triết khấu 20%</p>
                                 <p>Bạn đã chuyển khoản thành công: {{$transactionData['amount']}} VNĐ!</p>
                                 <p>Số tiền trong tài khoản của bạn hiện tại là {{$transactionData['balance']}} VNĐ!!</p>
 
