@@ -332,7 +332,7 @@ class CandidateController extends Controller
                 DB::commit();
 
                 //send email
-                $this->sendEmail($input);
+                // $this->sendEmail($input);
             } catch (\Exception $e) {
                 DB::rollBack();
                 //throw new Exception('Something wrong!!');
@@ -1001,6 +1001,7 @@ class CandidateController extends Controller
     {
         $candidate->full_name = $input['full_name'];
         $candidate->email = $input['email'];
+        $candidate->address = $input['address'];
 
         $birthdayYear = $input['birthday_year'];
         $birthdayMonth = $input['birthday_month'];

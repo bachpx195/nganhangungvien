@@ -77,6 +77,18 @@
                                 </label>
                             </div>
                         </div>
+                        <!-- input Địa chỉ * -->
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">
+                                Địa chỉ <span class="has-error">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="address" name="address"
+                                       placeholder="Ví dụ: Tổ 10, Phường Yên Nghĩa, Quận Hà Đông, TP Hà Nội"
+                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin địa chỉ của bạn bằng tiếng Việt có dấu."
+                                       value="{{ $candidate['address'] }}">
+                            </div>
+                        </div>
                         <!-- input Tình trạng hôn nhân -->
                         <div class="form-group">
                             <label class="col-sm-2 control-label">

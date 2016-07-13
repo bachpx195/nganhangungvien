@@ -629,6 +629,7 @@ class CandidateController extends Controller {
     {
         $candidate->full_name = $input['full_name'];
         $candidate->email = $input['email'];
+        $candidate->address = $input['address'];
 
         $birthdayYear = $input['birthday_year'];
         $birthdayMonth = $input['birthday_month'];
