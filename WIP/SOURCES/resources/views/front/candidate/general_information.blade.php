@@ -76,6 +76,18 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- input Địa chỉ của ứng viên -->
+                        <div class="form-group">
+                            <label for="address" class="control-label-info bold txt-color-363636 fs14 col-md-3">
+                                Địa chỉ <span class="colorRed">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control input-lg2 color-input" id="address" name="address"
+                                       placeholder="Ví dụ: Tổ 10, Phường Yên Nghĩa, Quận Hà Đông, TP Hà Nội"
+                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin địa chỉ của bạn bằng tiếng Việt có dấu."
+                                       value="{{ $candidate['address'] }}">
+                            </div>
+                        </div>
                         <!-- input Tình trạng hôn nhân -->
                         <div class="form-group">
                             <label class="control-label-checkbox bold txt-color-363636 fs14 col-md-3">

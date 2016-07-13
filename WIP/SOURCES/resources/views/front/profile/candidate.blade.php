@@ -21,8 +21,13 @@
 				<div class="pull-left w120 mr_14">
 					<div class="list-items">
 						<div class="change_avatar pos_relative w120">
-							<img src="/assets/default/images/small-avatar.png"
-								class="pos_absolute img_responsive" alt="" width="120">
+<!-- 							<img src="/assets/default/images/small-avatar.png"
+								class="pos_absolute img_responsive" alt="" width="120"> -->
+                                @if(empty($candidate->image))
+                                    <img src="{{ URL::asset('assets/default/images/small-avatar.png') }}" class="pos_absolute img_responsive" alt="" width="120" />
+                                @else
+                                    <img src="{{ URL::to('/candidate/image').'/'. $candidate->image }}" class="pos_absolute img_responsive" alt="" width="120" />
+                                @endif
 						</div>
 					</div>
 				</div>
