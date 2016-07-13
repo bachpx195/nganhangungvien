@@ -41,10 +41,10 @@
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							<li>
+							{{--<li>
 								<a href="#">
 									<i class="icon-user"></i> Hồ sơ </a>
-							</li>
+							</li>--}}
 							<li>
 								<a href="{{ route('admin.account.changepassword') }}">
 									<i class="icon-key"></i> Đổi mật khẩu </a>
@@ -61,7 +61,9 @@
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 					<li class="dropdown dropdown-extended quick-sidebar-toggler">
 						<span class="sr-only">Toggle Quick Sidebar</span>
-						<i class="icon-logout"></i>
+						<a href="{{ url('/admin/logout') }}" style="padding-top: 0px;">
+							<i class="icon-logout"></i>
+						</a>
 					</li>
 					<!-- END QUICK SIDEBAR TOGGLER -->
 				</ul>

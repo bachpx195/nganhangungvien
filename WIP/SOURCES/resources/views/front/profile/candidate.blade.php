@@ -345,9 +345,9 @@
 		</div>
 	</div>
 
-	@if (Auth::user())
+	{{--@if (Auth::user())--}}
 		@include('front.common.display_attach_cv', array('candidateAttachCv' => isset($candidate['attach_cv']) ? $candidate['attach_cv'] : ''))
-	@endif
+	{{--@endif--}}
 
 	@include('front/home/candidate_new_view', ['candidatesData' => $candidatesData])
 
@@ -390,12 +390,19 @@
 	                           </div>
 	                        </div>
 	                        <div class="w_33 floatLeft">
-	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="
+	                           Địa điểm mong muốn:
+                                   @if(count($key->expectAddresses) > 0)
+							   @foreach($key->expectAddresses as $index=>$item)
+							   {{$item->name}}
+							   @if($index < count($key->expectAddresses) - 1),
+                                          @endif
+							   @endforeach
+							   @endif" style="min-width: 155px;text-align: left;padding-left: 30px;">
 	                              <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
 	                              @if(count($key->expectAddresses) > 0)
 	                              @foreach($key->expectAddresses as $index=>$item)
-	                              {{$item->name}}<span
-	                                 class="text_pink">@if($index < count($key->expectAddresses) - 1),
+	                              {{$item->name}}@if($index < count($key->expectAddresses) - 1),
 	                              @endif
 	                              @endforeach
 	                              @endif
@@ -452,12 +459,18 @@
 	                           </div>
 	                        </div>
 	                        <div class="w_33 floatLeft">
-	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm" style="min-width: 155px;text-align: left;padding-left: 30px;">
+	                           <div class="note_mucluong text-center font12 text_black" data-toggle="tooltip" data-placement="bottom" title="Địa điểm mong muốn:
+                                   @if(count($key->expectAddresses) > 0)
+							   @foreach($key->expectAddresses as $index=>$item)
+							   {{$item->name}}
+							   @if($index < count($key->expectAddresses) - 1),
+                                          @endif
+							   @endforeach
+							   @endif" style="min-width: 155px;text-align: left;padding-left: 30px;">
 	                              <i class="icon_select_box icon_local_list icon_24 icon-24"></i>
 	                              @if(count($key->expectAddresses) > 0)
 	                              @foreach($key->expectAddresses as $index=>$item)
-	                              {{$item->name}}<span
-	                                 class="text_black">@if($index < count($key->expectAddresses) - 1),
+	                              {{$item->name}}@if($index < count($key->expectAddresses) - 1),
 	                              @endif
 	                              @endforeach
 	                              @endif

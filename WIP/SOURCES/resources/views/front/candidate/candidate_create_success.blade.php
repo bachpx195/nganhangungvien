@@ -8,8 +8,8 @@
     @endif
 
     <div class="box_tab bg_white box_shadow pt_16 pl_14 pr_14 pb_16">
-        <div class="w_100">
-            <div class="box_info">
+        <div class="w_100" style="height: 250px;">
+            <div class="box_info text-center">
                 <div class="list-items mb_4">
                 <span class="text_pink font16">BẠN ĐÃ TẠO HỒ SƠ TRỰC TUYẾN THÀNH CÔNG</span>
                 </div>
