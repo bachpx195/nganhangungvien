@@ -1,12 +1,16 @@
 <?php
 //CẤU HÌNH TÀI KHOẢN (Configure account)
-define('EMAIL_BUSINESS','dev.baokim@bk.vn');//Email Bảo kim
-define('MERCHANT_ID','647');                // Mã website tích hợp
+//define('EMAIL_BUSINESS','dev.baokim@bk.vn');//Email Bảo kim
+define('EMAIL_BUSINESS','ngocson.hrm@gmail.com');//Email Bảo kim
+//define('MERCHANT_ID','647');                // Mã website tích hợp
+define('MERCHANT_ID','23022');                // Mã website tích hợp
 define('SECURE_PASS','ae543c080ad91c23');   // Mật khẩu
 
 // Cấu hình tài khoản tích hợp
-define('API_USER','merchant');  //API USER
-define('API_PWD','1234');       //API PASSWORD
+//define('API_USER','merchant');  //API USER
+//define('API_PWD','1234');       //API PASSWORD
+define('API_USER','ngocson.hrm');  //API USER
+define('API_PWD','Z2GPF2mNvli9Ms68rK052waAh9T5k');       //API PASSWORD
 define('PRIVATE_KEY_BAOKIM','-----BEGIN PRIVATE KEY-----
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZZBAIQz1UZtVm
 p0Jwv0SnoIkGYdHUs7vzdfXYBs1wvznuLp/SfC/MHzHVQw7urN8qv+ZDxzTMgu2Q
