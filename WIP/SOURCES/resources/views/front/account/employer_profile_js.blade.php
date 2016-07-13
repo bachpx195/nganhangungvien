@@ -196,6 +196,7 @@
                                 $('#popup_change_company_info').hide();
                                 hideSuccessMessage();
                             }, 2000);
+                            window.location.reload();
                         } else {
                             $('[id^="error_"]').text('');
                             $('#msg_success_info').text(data.message);
