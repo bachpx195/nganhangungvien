@@ -43,7 +43,7 @@ class BaseController extends Controller
     {
         $dropdownData = [];
         $dropdownData['provinces'] = $this->provinceRepo->getSortedList();
-        $dropdownData['occupations'] = Job::all();
+        $dropdownData['occupations'] = Job::orderBy('name', 'asc')->get();
         $dropdownData['salaryGrades'] = Salary::all();
         $dropdownData['degrees'] = Level::all();
         $dropdownData['yearOfexps'] = ExperienceYears::all();
