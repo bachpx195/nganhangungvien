@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xs-12 pl_0 pr_0">
                     <div class="font16 bolder">
-                        CV của ứng viên
+                        Hồ sơ đính kèm của ứng viên
                     </div>
                 </div>
             </div>

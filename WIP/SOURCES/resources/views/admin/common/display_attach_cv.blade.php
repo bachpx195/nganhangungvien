@@ -6,7 +6,7 @@
         <div class="head-box-child-ths">
             <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" href="#coll_tdth"
                class="accordion">
-                <span class="uppercase bold text-tim-nhat">CV của ứng viên</span>
+                <span class="uppercase bold text-tim-nhat">Hồ sơ đính kèm của ứng viên</span>
                 <span class="required_l_n">
                 </span>
             </a>
