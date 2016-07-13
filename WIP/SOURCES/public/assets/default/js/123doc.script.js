@@ -109,7 +109,7 @@ function pay_mobilecard() {
                         running_paymentMobilecard = !1;
                         swal("Lỗi", t.error, "error");
                     }
-                },100);
+                },200);
             },
             error: function(e) {
                 running_paymentMobilecard = !1;
@@ -166,7 +166,7 @@ function pay_atm(e) {
                     } else {
                         swal("Lỗi", e.error, "error");
                     }
-                },100);
+                },200);
             },
             error: function(e) {
                 running_paymentAtm = !1;
