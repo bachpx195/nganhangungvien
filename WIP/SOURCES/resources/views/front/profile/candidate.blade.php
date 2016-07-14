@@ -153,9 +153,9 @@
 							@if(count($candidate->expectAddresses) > 0)
 							@foreach($candidate->expectAddresses as $index=>$item)
 								<a
-								href="#"
-								class="job_value text_pink">{{$item->name}}</a><span
-								class="text_pink">@if($index < count($candidate->expectAddresses) - 1),
+								href="{{CandidateHelper::uriByCate($item->id, $item->name, 'p')}}"
+								class="job_value text_pink">{{$item->name}}</a>
+								@if($index < count($candidate->expectAddresses) - 1),
 								@endif
 							@endforeach
 							@endif
@@ -166,9 +166,9 @@
 							@if(count($candidate->expectJobs) > 0)
 							@foreach($candidate->expectJobs as $index=>$item)
 								<a
-								href="#"
-								class="job_value text_pink">{{$item->name}}</a><span
-								class="text_pink">@if($index < count($candidate->expectJobs) - 1),
+								href="{{CandidateHelper::uriByCate($item->id, $item->name, 'c')}}"
+								class="job_value text_pink">{{$item->name}}</a>
+								@if($index < count($candidate->expectJobs) - 1),
 								@endif
 							@endforeach
 							@endif
