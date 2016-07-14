@@ -71,11 +71,10 @@
 								<div
 									class="note_mucluong text-center font12 text_black floatLeft"
 									data-toggle="tooltip" data-placement="bottom" title="Địa điểm mong muốn:
-                                   @if(count($key->expectAddresses) > 0)
-								@foreach($key->expectAddresses as $index=>$item)
-								{{$item->name}}
-								@if($index < count($key->expectAddresses) - 1),
-                                          @endif
+                                   @if(count($item->expectAddresses) > 0)
+								@foreach($item->expectAddresses as $index=>$address)
+								{{$address->name}}@if($index < count($item->expectAddresses) - 1),
+										@endif
 								@endforeach
 								@endif">
 									<i
