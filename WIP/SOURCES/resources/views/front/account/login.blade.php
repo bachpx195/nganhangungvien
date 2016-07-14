@@ -167,6 +167,7 @@
                 }
             });
            $("#popup_login").show();
+           $("body").css('overflow','hidden');
         });
 
         var height_w = $( window ).height();
@@ -176,6 +177,7 @@
             //hide popup dang ky
             $("#overlay_popup, #popup_login, #popup_reset_password").hide();
             $("#popup_ntv_register").html('');
+            $("body").css('overflow','auto');
 
         });
 

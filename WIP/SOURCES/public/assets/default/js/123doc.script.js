@@ -103,13 +103,13 @@ function pay_mobilecard() {
                             $("#code_popup").val("");
                             $("#captcha_popup_mc").val("");
 
-                            swal("Thành công!", "Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + " VNĐ", "success");
+                            swal("Thành công!", "Chúc mừng bạn đã nạp thẻ thành công! \nSố tiền trong tài khoản của bạn: " + t["employer"].balance + " VNĐ \n Số tiền bạn nạp đã bị triết khấu 20%.", "success");
                         }
                     } else {
                         running_paymentMobilecard = !1;
                         swal("Lỗi", t.error, "error");
                     }
-                },100);
+                },200);
             },
             error: function(e) {
                 running_paymentMobilecard = !1;
@@ -166,7 +166,7 @@ function pay_atm(e) {
                     } else {
                         swal("Lỗi", e.error, "error");
                     }
-                },100);
+                },200);
             },
             error: function(e) {
                 running_paymentAtm = !1;
