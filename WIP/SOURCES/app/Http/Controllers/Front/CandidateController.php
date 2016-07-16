@@ -218,7 +218,13 @@ class CandidateController extends Controller {
                 //throw new Exception('Something wrong!!');
             }
 
+            $countData=[];
+            $countData['all'] = $this->candidateRepo->countAllStatistic();
+            $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
+            $countData['new'] = $this->candidateRepo->countNewStatistic();
+
             return view('front.candidate.candidate_create_success')
+                    ->with('countData', $countData)
                     ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         }
     }

@@ -185,7 +185,7 @@
                         <!-- input Ngành nghề quan tâm -->
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Ngành nghề mong muốn <span class="colorRed">*</span>
+                                Ngành nghề mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 03 ngành nghề)</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
@@ -223,7 +223,7 @@
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Tỉnh thành mong muốn <span class="colorRed">*</span>
+                                Tỉnh thành mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
