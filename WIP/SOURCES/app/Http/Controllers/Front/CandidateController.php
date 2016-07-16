@@ -183,17 +183,8 @@ class CandidateController extends Controller {
             $input = $request->all();
 
             try {
-                $validator = $this->validateGeneralInformation($request->all());
                 //TODO: Move it in service or repository base
                 DB::beginTransaction();
-                if ($validator->fails()) {
-                    $data = Input::except(array('_token', '_method'));
-                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    return Redirect::route('candidate.form', $data);
-
-                    //TODO: Research why the validate errors not appearing laravel?
-                    //return Redirect::route('candidate.form', $data)->withErrors($validator);
-                }
 
                 $candidate = new Candidate;
                 $candidate = $this->getGeneralInfoByInput($candidate, $input, $request);
@@ -750,38 +741,5 @@ class CandidateController extends Controller {
         $candidate->status = self::DEFAULT_STATUS;
 
         return $candidate;
-    }
-
-    /**
-     * Validate for general information of the candidate
-     *
-     * @param $data
-     * @return mixed
-     */
-    private function validateGeneralInformation($data)
-    {
-        $birthdayYear = $data['birthday_year'];
-        $birthdayMonth = $data['birthday_month'];
-        $birthdayDay = $data['birthday_day'];
-        $data['birthday'] = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
-
-        return Validator::make($data, [
-            'email' => 'required|email|unique:candidate',
-            'full_name' => 'required',
-            'birthday' => 'required',
-            'sex' => 'required',
-            'phone_number' => 'required',
-            //'image' => 'required',
-            'province_id' => 'required',
-            'current_rank' => 'required',
-            'expect_rank' => 'required',
-            'job' => 'required',
-            //'address' => 'required',
-            'level' => 'required',
-            'experience_years' => 'required',
-            'employment_status' => 'required',
-            'expect_salary' => 'required',
-            'job_goal' => 'required'
-        ]);
     }
 }
