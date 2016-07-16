@@ -248,6 +248,22 @@ class CandidateController extends Controller
             $expectAddresses = $this->expectAddressRepo->getExpectAddressesByCandidateId($id);
         }
 
+        if (!empty(Input::all())) {
+            if (Input::has('expect_jobs'))
+            {
+                $expectJobIds = Input::get('expect_jobs');
+
+                $expectJobs = $this->getExpectJobsByIds($expectJobIds, $jobs);
+            }
+
+            if (Input::has('expect_addresses'))
+            {
+                $expectAddressIds = Input::get('expect_addresses');
+
+                $expectAddresses = $this->getExpectAddressesByIds($expectAddressIds, $provinces);
+            }
+        }
+
         // get method
         if ($request->isMethod('get')) {
             if (empty($id)) {
@@ -366,6 +382,56 @@ class CandidateController extends Controller
         }
 
         return $data;
+    }
+
+    /**
+     * Get expect addresses by ids
+     *
+     * @param array $expectAddressIds
+     * @param Province[] $provinces
+     *
+     * @return Province[]|null
+     */
+    private function getExpectAddressesByIds($expectAddressIds, $provinces)
+    {
+        $expectAddresses = [];
+        foreach ($provinces as $province) {
+            if (in_array($province->id, $expectAddressIds)) {
+                $expectAddress = [
+                    'province_id' => $province->id,
+                    'name' => $province->name
+                ];
+
+                $expectAddresses[] = $expectAddress;
+            }
+        }
+
+        return $expectAddresses;
+    }
+
+    /**
+     * Get expect jobs by ids
+     *
+     * @param array $expectJobIds
+     * @param Job[] $jobs
+     *
+     * @return Job[]|null
+     */
+    private function getExpectJobsByIds($expectJobIds, $jobs)
+    {
+        $expectJobs = [];
+        foreach ($jobs as $job) {
+            if (in_array($job->id, $expectJobIds)) {
+                $expectJob = [
+                    'job_id' => $job->id,
+                    'name' => $job->name
+                ];
+
+                $expectJobs[] = $expectJob;
+            }
+        }
+
+        return $expectJobs;
     }
 
     /**
