@@ -148,17 +148,23 @@
 
             // check size of upload file
             var file = document.getElementById("logo").files[0];
-            var sFileName = file.name;
-            var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
-            if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
-                alert('Vui lòng chọn file có định dạng .jpg, .gif, .png');
-                isOk = false;
+            console.log(file);
+            if (typeof file !== 'undefined') {
+                var sFileName = file.name;
+                var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+                
+                if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
+                    alert('Vui lòng chọn file có định dạng .jpg, .gif, .png');
+                    isOk = false;
+                }
+                
+                var iFileSize = file.size;
+                if (iFileSize > 307200) {
+                    alert('Vui lòng chọn file có dung lượng <= 300KB');
+                    isOk = false;
+                }
             }
-            var iFileSize = file.size;
-            if (iFileSize > 307200) {
-                alert('Vui lòng chọn file có dung lượng <= 300KB');
-                isOk = false;
-            }
+            
 
             if (isOk == false) {
                 console.log('Error can post data');
