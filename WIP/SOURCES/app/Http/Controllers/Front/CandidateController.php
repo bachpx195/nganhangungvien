@@ -12,6 +12,8 @@ use App\Model\CandidateExpectJob;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
+use App\Model\Job;
+use App\Model\Province;
 use App\Repositories\ICandidateExpectAddressRepo;
 use App\Repositories\ICandidateExpectJobRepo;
 use App\Repositories\IEmploymentStatusRepo;
@@ -141,6 +143,20 @@ class CandidateController extends Controller {
         if ($request->isMethod('get')) {
             if (!empty(Input::all())) {
                 $candidate = Input::all();
+
+                if (Input::has('expect_jobs'))
+                {
+                    $expectJobIds = Input::get('expect_jobs');
+
+                    $expectJobs = $this->getExpectJobsByIds($expectJobIds, $jobs);
+                }
+
+                if (Input::has('expect_addresses'))
+                {
+                    $expectAddressIds = Input::get('expect_addresses');
+
+                    $expectAddresses = $this->getExpectAddressesByIds($expectAddressIds, $provinces);
+                }
             } else {
                 $candidate = new Candidate;
             }
@@ -227,6 +243,56 @@ class CandidateController extends Controller {
                     ->with('countData', $countData)
                     ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         }
+    }
+
+    /**
+     * Get expect addresses by ids
+     *
+     * @param array $expectAddressIds
+     * @param Province[] $provinces
+     *
+     * @return Province[]|null
+     */
+    private function getExpectAddressesByIds($expectAddressIds, $provinces)
+    {
+        $expectAddresses = [];
+        foreach ($provinces as $province) {
+            if (in_array($province->id, $expectAddressIds)) {
+                $expectAddress = [
+                    'province_id' => $province->id,
+                    'name' => $province->name
+                ];
+
+                $expectAddresses[] = $expectAddress;
+            }
+        }
+
+        return $expectAddresses;
+    }
+
+    /**
+     * Get expect jobs by ids
+     *
+     * @param array $expectJobIds
+     * @param Job[] $jobs
+     *
+     * @return Job[]|null
+     */
+    private function getExpectJobsByIds($expectJobIds, $jobs)
+    {
+        $expectJobs = [];
+        foreach ($jobs as $job) {
+            if (in_array($job->id, $expectJobIds)) {
+                $expectJob = [
+                    'job_id' => $job->id,
+                    'name' => $job->name
+                ];
+
+                $expectJobs[] = $expectJob;
+            }
+        }
+
+        return $expectJobs;
     }
 
     /**

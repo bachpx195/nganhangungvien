@@ -372,7 +372,7 @@
                                           class="inputTxtAreaTop form-control"
                                           required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
                                           rows="5"
-                                          value="{{ $candidate['job_goal'] }}"></textarea>
+                                          value="{{ $candidate['job_goal'] }}">{{ $candidate['job_goal'] }}</textarea>
                             </div>
                         </div>
 
@@ -387,7 +387,7 @@
                                           required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
                                           class="inputTxtAreaTop form-control"
                                           rows="5"
-                                          value="{{ $candidate['skill_forte'] }}"></textarea>
+                                          value="{{ $candidate['skill_forte'] }}">{{ $candidate['skill_forte'] }}</textarea>
                             </div>
                         </div>
 
