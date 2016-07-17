@@ -52,8 +52,8 @@ class CandidateRepo implements ICandidateRepo {
             $query = $query->where('level', '=', $params['degree']);
         }
 
-        if(isset($params['yearOfExp']) && $params['yearOfExp']){
-            $query = $query->whereIn('experience_years', $params['yearOfExp']);
+        if (!empty($params['yearOfexp']) && !empty($params['yearOfexp'][0])) {
+            $query = $query->whereIn('experience_years', $params['yearOfexp']);
         }
 
         if(isset($params['sex']) && $params['sex'] !== "" && $params['sex'] !== null){

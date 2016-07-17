@@ -12,6 +12,8 @@ use App\Model\CandidateExpectJob;
 use App\Model\CandidateForeignLanguage;
 use App\Model\CandidateItLevel;
 use App\Model\Experience;
+use App\Model\Job;
+use App\Model\Province;
 use App\Repositories\ICandidateExpectAddressRepo;
 use App\Repositories\ICandidateExpectJobRepo;
 use App\Repositories\IEmploymentStatusRepo;
@@ -57,6 +59,7 @@ class CandidateController extends Controller {
     public $linkYouTubeChanel;
     protected $expectJobRepo;
     protected $expectAddressRepo;
+    protected $policy;
 
     /**
      * CandidateController constructor.
@@ -105,6 +108,8 @@ class CandidateController extends Controller {
         $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
         $this->expectJobRepo = $expectJobRepo;
         $this->expectAddressRepo = $expectAddressRepo;
+        $this->policy = !empty($configRepo->findByCode(Constants::CONFIG_POLICY)->value) ? 
+                        $configRepo->findByCode(Constants::CONFIG_POLICY)->value : '';
     }
 
     /**
@@ -141,6 +146,20 @@ class CandidateController extends Controller {
         if ($request->isMethod('get')) {
             if (!empty(Input::all())) {
                 $candidate = Input::all();
+
+                if (Input::has('expect_jobs'))
+                {
+                    $expectJobIds = Input::get('expect_jobs');
+
+                    $expectJobs = $this->getExpectJobsByIds($expectJobIds, $jobs);
+                }
+
+                if (Input::has('expect_addresses'))
+                {
+                    $expectAddressIds = Input::get('expect_addresses');
+
+                    $expectAddresses = $this->getExpectAddressesByIds($expectAddressIds, $provinces);
+                }
             } else {
                 $candidate = new Candidate;
             }
@@ -161,23 +180,15 @@ class CandidateController extends Controller {
                 ->with('expectAddresses', $expectAddresses)
                 ->with('scales', $scales)
                 ->with('activeHeaderMenu', $activeHeaderMenu)
-                ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+                ->with('policy', $this->policy);
         } else {
             // get form input data
             $input = $request->all();
 
             try {
-                $validator = $this->validateGeneralInformation($request->all());
                 //TODO: Move it in service or repository base
                 DB::beginTransaction();
-                if ($validator->fails()) {
-                    $data = Input::except(array('_token', '_method'));
-                    $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                    return Redirect::route('candidate.form', $data);
-
-                    //TODO: Research why the validate errors not appearing laravel?
-                    //return Redirect::route('candidate.form', $data)->withErrors($validator);
-                }
 
                 $candidate = new Candidate;
                 $candidate = $this->getGeneralInfoByInput($candidate, $input, $request);
@@ -218,9 +229,65 @@ class CandidateController extends Controller {
                 //throw new Exception('Something wrong!!');
             }
 
+            $countData=[];
+            $countData['all'] = $this->candidateRepo->countAllStatistic();
+            $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
+            $countData['new'] = $this->candidateRepo->countNewStatistic();
+
             return view('front.candidate.candidate_create_success')
+                    ->with('countData', $countData)
                     ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         }
+    }
+
+    /**
+     * Get expect addresses by ids
+     *
+     * @param array $expectAddressIds
+     * @param Province[] $provinces
+     *
+     * @return Province[]|null
+     */
+    private function getExpectAddressesByIds($expectAddressIds, $provinces)
+    {
+        $expectAddresses = [];
+        foreach ($provinces as $province) {
+            if (in_array($province->id, $expectAddressIds)) {
+                $expectAddress = [
+                    'province_id' => $province->id,
+                    'name' => $province->name
+                ];
+
+                $expectAddresses[] = $expectAddress;
+            }
+        }
+
+        return $expectAddresses;
+    }
+
+    /**
+     * Get expect jobs by ids
+     *
+     * @param array $expectJobIds
+     * @param Job[] $jobs
+     *
+     * @return Job[]|null
+     */
+    private function getExpectJobsByIds($expectJobIds, $jobs)
+    {
+        $expectJobs = [];
+        foreach ($jobs as $job) {
+            if (in_array($job->id, $expectJobIds)) {
+                $expectJob = [
+                    'job_id' => $job->id,
+                    'name' => $job->name
+                ];
+
+                $expectJobs[] = $expectJob;
+            }
+        }
+
+        return $expectJobs;
     }
 
     /**
@@ -678,38 +745,5 @@ class CandidateController extends Controller {
         $candidate->status = self::DEFAULT_STATUS;
 
         return $candidate;
-    }
-
-    /**
-     * Validate for general information of the candidate
-     *
-     * @param $data
-     * @return mixed
-     */
-    private function validateGeneralInformation($data)
-    {
-        $birthdayYear = $data['birthday_year'];
-        $birthdayMonth = $data['birthday_month'];
-        $birthdayDay = $data['birthday_day'];
-        $data['birthday'] = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
-
-        return Validator::make($data, [
-            'email' => 'required|email|unique:candidate',
-            'full_name' => 'required',
-            'birthday' => 'required',
-            'sex' => 'required',
-            'phone_number' => 'required',
-            //'image' => 'required',
-            'province_id' => 'required',
-            'current_rank' => 'required',
-            'expect_rank' => 'required',
-            'job' => 'required',
-            //'address' => 'required',
-            'level' => 'required',
-            'experience_years' => 'required',
-            'employment_status' => 'required',
-            'expect_salary' => 'required',
-            'job_goal' => 'required'
-        ]);
     }
 }

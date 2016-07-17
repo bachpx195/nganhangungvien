@@ -248,6 +248,22 @@ class CandidateController extends Controller
             $expectAddresses = $this->expectAddressRepo->getExpectAddressesByCandidateId($id);
         }
 
+        if (!empty(Input::all())) {
+            if (Input::has('expect_jobs'))
+            {
+                $expectJobIds = Input::get('expect_jobs');
+
+                $expectJobs = $this->getExpectJobsByIds($expectJobIds, $jobs);
+            }
+
+            if (Input::has('expect_addresses'))
+            {
+                $expectAddressIds = Input::get('expect_addresses');
+
+                $expectAddresses = $this->getExpectAddressesByIds($expectAddressIds, $provinces);
+            }
+        }
+
         // get method
         if ($request->isMethod('get')) {
             if (empty($id)) {
@@ -278,22 +294,8 @@ class CandidateController extends Controller
             $input = $request->all();
 
             try {
-                $validator = $this->validateGeneralInformation($request->all(), $id);
                 //TODO: Move it in service or repository base
                 DB::beginTransaction();
-                if ($validator->fails()) {
-                    $data = Input::except(array('_token', '_method'));
-
-                    if (empty($id)) {
-                        $data['email_errors'] = 'Email bạn nhập đã tồn tại';
-                        return Redirect::route('admin.candidate.form', $data);
-                    } else {
-                        return Redirect::route('admin.candidate.update', $data);
-                    }
-
-                    //TODO: Research why the validate errors not appearing laravel?
-                    //return Redirect::route('candidate.form', $data)->withErrors($validator);
-                }
 
                 if (empty($id)) {
                     $candidate = new Candidate();
@@ -366,6 +368,56 @@ class CandidateController extends Controller
         }
 
         return $data;
+    }
+
+    /**
+     * Get expect addresses by ids
+     *
+     * @param array $expectAddressIds
+     * @param Province[] $provinces
+     *
+     * @return Province[]|null
+     */
+    private function getExpectAddressesByIds($expectAddressIds, $provinces)
+    {
+        $expectAddresses = [];
+        foreach ($provinces as $province) {
+            if (in_array($province->id, $expectAddressIds)) {
+                $expectAddress = [
+                    'province_id' => $province->id,
+                    'name' => $province->name
+                ];
+
+                $expectAddresses[] = $expectAddress;
+            }
+        }
+
+        return $expectAddresses;
+    }
+
+    /**
+     * Get expect jobs by ids
+     *
+     * @param array $expectJobIds
+     * @param Job[] $jobs
+     *
+     * @return Job[]|null
+     */
+    private function getExpectJobsByIds($expectJobIds, $jobs)
+    {
+        $expectJobs = [];
+        foreach ($jobs as $job) {
+            if (in_array($job->id, $expectJobIds)) {
+                $expectJob = [
+                    'job_id' => $job->id,
+                    'name' => $job->name
+                ];
+
+                $expectJobs[] = $expectJob;
+            }
+        }
+
+        return $expectJobs;
     }
 
     /**
@@ -1050,43 +1102,6 @@ class CandidateController extends Controller
         $candidate->status = self::DEFAULT_STATUS;
 
         return $candidate;
-    }
-
-    /**
-     * Validate for general information of the candidate
-     *
-     * @param $data
-     * @param $id
-     * @return mixed
-     */
-    private function validateGeneralInformation($data, $id)
-    {
-        $birthdayYear = $data['birthday_year'];
-        $birthdayMonth = $data['birthday_month'];
-        $birthdayDay = $data['birthday_day'];
-        $data['birthday'] = new DateTime($birthdayYear . '-' . $birthdayMonth . '-' . $birthdayDay);
-
-        $validators = [
-            'full_name' => 'required',
-            'birthday' => 'required',
-            'sex' => 'required',
-            'phone_number' => 'required',
-            //'image' => 'required',
-            'current_rank' => 'required',
-            'expect_rank' => 'required',
-            //'address' => 'required',
-            'level' => 'required',
-            'experience_years' => 'required',
-            'employment_status' => 'required',
-            'expect_salary' => 'required',
-            'job_goal' => 'required'
-        ];
-
-        if (empty($id)) {
-            $validators['email'] = 'required|email|unique:candidate';
-        }
-
-        return Validator::make($data, $validators);
     }
 
     public function getList(Request $request)

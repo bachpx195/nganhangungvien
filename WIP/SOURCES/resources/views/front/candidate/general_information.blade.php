@@ -31,6 +31,18 @@
                             </div>
                         </div>
 
+                        <!-- input Họ và Tên * -->
+                        <div class="form-group">
+                            <label for="full_name" class="control-label-info bold txt-color-363636 fs14 col-md-3">
+                                Họ và Tên <span class="colorRed">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
+                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
+                                       value="{{ $candidate['full_name'] }}">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="email" class="control-label-info bold txt-color-363636 fs14 col-md-3">
@@ -43,19 +55,6 @@
                                        value="{{$candidate['email']}}">
                             </div>
                             @include('front.common.form_error', array('fieldName' => 'email'))
-                        </div>
-
-                        <!-- input Họ và Tên * -->
-                        <div class="form-group">
-                            <label for="full_name" class="control-label-info bold txt-color-363636 fs14 col-md-3">
-                                Họ và Tên <span class="colorRed">*</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
-                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
-                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
-                                       value="{{ $candidate['full_name'] }}">
-                            </div>
                         </div>
 
                         <!-- input Giới tính -->
@@ -185,7 +184,7 @@
                         <!-- input Ngành nghề quan tâm -->
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Ngành nghề mong muốn <span class="colorRed">*</span>
+                                Ngành nghề mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 03 ngành nghề)</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
@@ -223,7 +222,7 @@
                         <div class="clearfix"></div>
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">
-                                Tỉnh thành mong muốn <span class="colorRed">*</span>
+                                Tỉnh thành mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
                             <div class="fr-input-wd333 select_style31 city_select mb_12">
@@ -372,7 +371,7 @@
                                           class="inputTxtAreaTop form-control"
                                           required data-required-msg="Vui lòng chọn Mục tiêu nghề nghiệp"
                                           rows="5"
-                                          value="{{ $candidate['job_goal'] }}"></textarea>
+                                          value="{{ $candidate['job_goal'] }}">{{ $candidate['job_goal'] }}</textarea>
                             </div>
                         </div>
 
@@ -387,7 +386,7 @@
                                           required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
                                           class="inputTxtAreaTop form-control"
                                           rows="5"
-                                          value="{{ $candidate['skill_forte'] }}"></textarea>
+                                          value="{{ $candidate['skill_forte'] }}">{{ $candidate['skill_forte'] }}</textarea>
                             </div>
                         </div>
 

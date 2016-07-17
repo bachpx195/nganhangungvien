@@ -33,6 +33,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="sss-label col-md-2">Điều khoản sử dụng </label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control input-lg2 color-input" style="height: 280px;" name="policy" >{{$policy}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-2">Hướng dẫn</label>
                                 <div class="col-md-10">
                                     Link Youtube cần có dạng <b>https://www.youtube.com/watch?v=tOlqnMr_3Sg</b>

@@ -9,6 +9,7 @@ use App\Repositories\ICandidateRepo;
 use App\Repositories\ICompanySizeRepo;
 use App\Repositories\IConfigRepo;
 use App\Repositories\IProvinceRepo;
+use App\Libs\Constants;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,7 @@ class EmployerRegisterController extends BaseController
     const DEFAULT_STATUS = 0;
 
     private $companySizeRepo;
+    protected $policy;
 
     public function __construct(
         IProvinceRepo $provinceRepo,
@@ -36,12 +38,16 @@ class EmployerRegisterController extends BaseController
     {
         parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->companySizeRepo = $companySizeRepo;
+        $this->policy = !empty($configRepo->findByCode(Constants::CONFIG_POLICY)->value) ? 
+                        $configRepo->findByCode(Constants::CONFIG_POLICY)->value : '';
     }
 
     /**
      * Register employer
      *
+     * @param Request $request
      * @return \Illuminate\View\View
+     * @throws Exception
      */
     public function register(Request $request)
     {
@@ -49,8 +55,14 @@ class EmployerRegisterController extends BaseController
             $user = $request->session()->get('user');
             $request->session()->flush();
 
+            $countData=[];
+            $countData['all'] = $this->candidateRepo->countAllStatistic();
+            $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
+            $countData['new'] = $this->candidateRepo->countNewStatistic();
+
             return view('front.account.employer_register_success')
                 ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+                ->with('countData', $countData)
                 ->with('user', $user);
         }
 
@@ -69,7 +81,8 @@ class EmployerRegisterController extends BaseController
                 ->with('provinces', $provinces)
                 ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('companySize', $companySizes)
-                ->with('employer', $employer);
+                ->with('employer', $employer)
+                ->with('policy', $this->policy);
 
         } else if ($request->isMethod('POST')) {
             $input = $request->all();
@@ -101,10 +114,6 @@ class EmployerRegisterController extends BaseController
                 $input['code'] = $confirmation_code;
                 $input['id'] = $user->id;
 
-                // echo "<pre>";
-                // print_r($data);
-                // echo "<pre>";
-                // die();
                 //send email
                 $this->sendEmail($input);
 
@@ -112,7 +121,6 @@ class EmployerRegisterController extends BaseController
 
             } catch (\Exception $e) {
                 DB::rollBack();
-                //die('false');
                 throw new Exception($e);
             }
 
@@ -121,6 +129,11 @@ class EmployerRegisterController extends BaseController
         }
     }
 
+    /**
+     * Send mail to employer to notify register successful
+     *
+     * @param array $data
+     */
     private function sendEmail($data)
     {
 

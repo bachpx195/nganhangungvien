@@ -181,7 +181,7 @@
 			<li class="nav-item {{($activeMenu == 'video') ? 'active open' : ''}}" >
 				<a href="{{ route('admin.video') }}" class="nav-link nav-toggle">
 					<i class="icon-briefcase"></i>
-					<span class="title">VIDEO</span>
+					<span class="title">QUẢN LÝ<br/>CẤU HÌNH HỆ THỐNG</span>
 					<span class="arrow "></span>
 				</a>
 			</li>

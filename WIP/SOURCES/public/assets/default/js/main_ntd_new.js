@@ -819,7 +819,7 @@ $('.btn_search_time').click(function() {
 
 
 $('.btn_search_time3').click(function() {
-    var numSelected = $('#cols-right .box_kinhnghiem .icheckbox_square-blue.checked').length;
+    var numSelected = $('.box_kinhnghiem .icheckbox_square-blue.checked').length;
     if(numSelected > 0) {
         if(numSelected < 10) {
             numSelected = "0" + numSelected;
@@ -828,8 +828,8 @@ $('.btn_search_time3').click(function() {
     } else {
         var text = 'Tất cả Kinh nghiệm';
     }
-    $('#cols-right .box_kinhnghiem .drop_filter_top').html(text);
-    $('#cols-right .box_kinhnghiem .drop_filter_top').trigger('click');
+    $('.box_kinhnghiem .drop_filter_top').html(text);
+    $('.box_kinhnghiem .drop_filter_top').trigger('click');
     $('.filter_kinhnghiem').hide();
 });
 

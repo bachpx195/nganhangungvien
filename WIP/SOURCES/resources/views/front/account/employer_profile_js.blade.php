@@ -35,32 +35,28 @@
             var newPassword = document.getElementById("newPassword").value;
             var newPasswordConfirm = document.getElementById("newPasswordConfirm").value;
 
-            $('.inputText').each(function () {
-                if ($(this).val().trim() == '') {
-                    isOk = false;
-                    $(this).parent().next('div.invalid-msg').removeClass('display_none');
-                    $(this).parent().next('div.invalid-msg').html("Vui lòng nhập vào các trường yêu cầu!");
-                } else {
-                    $(this).parent().next('div.invalid-msg').addClass('display_none');
-                    $(this).parent().next('div.invalid-msg').html('');
-                }
-            });
+            $(".err_password").html("");
+            $(".err_password").addClass('display_none');
+            $("#error_oldPassword").addClass('display_none');
+            $("#error_newPassword").addClass('display_none');
+            $("#error_newPasswordConfirm").addClass('display_none');
 
             if (oldPassword == '') {
                 $("#error_oldPassword").html("Vui lòng nhập vào mật khẩu cũ!");
                 $("#error_oldPassword").removeClass('display_none');
                 isOk = false;
-            } else if (oldPassword == '') {
+            } else if (newPassword == '') {
                 $("#error_newPassword").html("Vui lòng nhập vào mật khẩu mới!");
                 $("#error_newPassword").removeClass('display_none');
+                isOk = false;
+            } else if (newPasswordConfirm == '') {
+                $("#error_newPasswordConfirm").html("Vui lòng nhập vào xác nhận mật khẩu!");
+                $("#error_newPasswordConfirm").removeClass('display_none');
                 isOk = false;
             } else if ((newPassword != newPasswordConfirm) && (newPassword != '' && newPasswordConfirm != '')) {
                 $(".err_password").html("Mật khẩu xác nhận không trùng khớp");
                 $(".err_password").removeClass('display_none');
                 isOk = false;
-            } else {
-                $(".err_password").html("");
-                $(".err_password").addClass('display_none');
             }
 
             if (isOk == false) {
@@ -152,17 +148,23 @@
 
             // check size of upload file
             var file = document.getElementById("logo").files[0];
-            var sFileName = file.name;
-            var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
-            if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
-                alert('Vui lòng chọn file có định dạng .jpg, .gif, .png');
-                isOk = false;
+            console.log(file);
+            if (typeof file !== 'undefined') {
+                var sFileName = file.name;
+                var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+                
+                if (!(sFileExtension === "jpg" || sFileExtension === "gif" || sFileExtension === "png")) {
+                    alert('Vui lòng chọn file có định dạng .jpg, .gif, .png');
+                    isOk = false;
+                }
+                
+                var iFileSize = file.size;
+                if (iFileSize > 307200) {
+                    alert('Vui lòng chọn file có dung lượng <= 300KB');
+                    isOk = false;
+                }
             }
-            var iFileSize = file.size;
-            if (iFileSize > 307200) {
-                alert('Vui lòng chọn file có dung lượng <= 300KB');
-                isOk = false;
-            }
+            
 
             if (isOk == false) {
                 console.log('Error can post data');
