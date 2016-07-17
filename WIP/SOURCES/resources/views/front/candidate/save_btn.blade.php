@@ -5,7 +5,7 @@
                 <div class="form-group input-phone">
                     <div class="fr-input-wd153" style="text-align: center">
                         <div class="fr-input-wd153">
-                            <button type="button" class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16 check-policy"
+                            <button type="button" class="ml_15 mr_10 btn btnluu w153 fwb uppercase fs16"
                             id="register-candidate-btn">Tải hồ sơ ngay</button>
                         </div>
                     </div>

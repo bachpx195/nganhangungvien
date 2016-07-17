@@ -125,8 +125,6 @@
     <script type="text/javascript" src="{{ asset('/assets/dist/summernote.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/apps/scripts/account/register.js') }}"></script>
     <script src="{{ asset('/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" ></script>
-
-    <script type="text/javascript" src="{{ asset('/assets/default/js/policy.js') }}"></script>
 </body>
 
 </html>

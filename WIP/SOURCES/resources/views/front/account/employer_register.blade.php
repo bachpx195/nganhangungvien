@@ -322,7 +322,7 @@
                                         <label class="control-label-info w185"></label>
                                         <div class="fr-input-wd333 floatLeft pl_10">
                                             <button type="button" id="btnRegister"
-                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16 mb_10 check-policy">Đăng
+                                                    class="btn bold btnRegisterNTD w153 fwb uppercase fs16 mb_10">Đăng
                                                 Ký
                                             </button>
                                         </div>
