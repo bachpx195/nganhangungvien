@@ -314,6 +314,10 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'pages.outsourcing_package', 'uses' => 'Front\PagesController@outsourcingPackage'
 	]);
 
+	Route::match(['get', 'post'], '/dieu-khoan-su-dung', [
+		'as' => 'pages.policy', 'uses' => 'Front\PagesController@policy'
+	]);
+
 	Route::match(['get', 'post'], '/dang-ky-tai-khoan-vip', [
 		'as' => 'pages.regist_vip', 'uses' => 'Front\PagesController@registVip'
 	]);
@@ -382,6 +386,9 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 
 	Route::match(['post'], '/user/become-vip', [
 		'as' => 'user.become_vip', 'uses' => 'UserController@userBecomeVip'
+	]);
+	Route::match(['post'], '/user/outsourcing', [
+		'as' => 'user.outsourcing', 'uses' => 'UserController@userOutsourcing'
 	]);
 	Route::match(['post'], '/user/outsourcing', [
 		'as' => 'user.outsourcing', 'uses' => 'UserController@userOutsourcing'

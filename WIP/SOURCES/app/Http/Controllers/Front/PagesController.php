@@ -13,9 +13,22 @@ use App\Model\Level;
 use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
 use App\Repositories\ICandidateRepo;
+use App\Repositories\IConfigRepo;
 use Auth;
 
 class PagesController extends BaseController {
+
+    protected $policy;
+	
+	/**
+     * PagesController constructor.
+     *
+     * @param IConfigRepo $configRepo
+     */
+    public function __construct(IConfigRepo $configRepo) {
+        $this->policy = !empty($configRepo->findByCode(Constants::CONFIG_POLICY)->value) ? 
+                        $configRepo->findByCode(Constants::CONFIG_POLICY)->value : '';
+    }
 
 	/**
 	 * Index page
@@ -31,9 +44,16 @@ class PagesController extends BaseController {
 	{
 		return view('front/pages/regist_vip');
 	}
+
     public function error()
     {
         return view('errors.404');
     }
+
+    public function policy()
+	{
+		return view('front/pages/policy')
+				->with('policy', $this->policy);
+	}
 	
 }
