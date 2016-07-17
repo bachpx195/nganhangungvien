@@ -103,4 +103,9 @@ label.card-deposit > input:checked + img {
 .policy-checkbox {
 	margin-top: 10px; 
 	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.policy-checkbox label {
+	cursor: pointer;	
 }

@@ -57,6 +57,6 @@
 
 <div class="policy-checkbox">
     <label>
-        <input type="checkbox" required data-required-msg="Vui lòng chọn đồng ý với điều khoản sử dụng"> 
+        <input type="checkbox" id="policy-checkbox"> 
         Tôi đồng ý với điều khoản sử dụng </label>
 </div>
