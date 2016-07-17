@@ -34,6 +34,18 @@
                             </div>
                         </div>
 
+                        <!-- input Họ và Tên * -->
+                        <div class="form-group">
+                            <label for="full_name" class="col-sm-2 control-label">
+                                Họ và Tên <span class="has-error">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="full_name" name="full_name"
+                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
+                                       value="{{ $candidate['full_name'] }}">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">
@@ -46,19 +58,6 @@
                                        value="{{$candidate['email']}}">
                             </div>
                             @include('admin.common.form_error', array('fieldName' => 'email'))
-                        </div>
-
-                        <!-- input Họ và Tên * -->
-                        <div class="form-group">
-                            <label for="full_name" class="col-sm-2 control-label">
-                                Họ và Tên <span class="has-error">*</span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="full_name" name="full_name"
-                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
-                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
-                                       value="{{ $candidate['full_name'] }}">
-                            </div>
                         </div>
 
                         <!-- input Giới tính -->

@@ -31,6 +31,18 @@
                             </div>
                         </div>
 
+                        <!-- input Họ và Tên * -->
+                        <div class="form-group">
+                            <label for="full_name" class="control-label-info bold txt-color-363636 fs14 col-md-3">
+                                Họ và Tên <span class="colorRed">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
+                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
+                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
+                                       value="{{ $candidate['full_name'] }}">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="email" class="control-label-info bold txt-color-363636 fs14 col-md-3">
@@ -43,19 +55,6 @@
                                        value="{{$candidate['email']}}">
                             </div>
                             @include('front.common.form_error', array('fieldName' => 'email'))
-                        </div>
-
-                        <!-- input Họ và Tên * -->
-                        <div class="form-group">
-                            <label for="full_name" class="control-label-info bold txt-color-363636 fs14 col-md-3">
-                                Họ và Tên <span class="colorRed">*</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control input-lg2 color-input" id="full_name" name="full_name"
-                                       placeholder="Ví dụ: Nguyễn Văn A , Trần Thị B."
-                                       required data-required-msg="Vui lòng nhập đầy đủ thông tin họ và tên của bạn bằng tiếng Việt có dấu."
-                                       value="{{ $candidate['full_name'] }}">
-                            </div>
                         </div>
 
                         <!-- input Giới tính -->
