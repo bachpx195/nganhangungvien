@@ -59,6 +59,7 @@ class CandidateController extends Controller {
     public $linkYouTubeChanel;
     protected $expectJobRepo;
     protected $expectAddressRepo;
+    protected $policy;
 
     /**
      * CandidateController constructor.
@@ -107,6 +108,8 @@ class CandidateController extends Controller {
         $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
         $this->expectJobRepo = $expectJobRepo;
         $this->expectAddressRepo = $expectAddressRepo;
+        $this->policy = !empty($configRepo->findByCode(Constants::CONFIG_POLICY)->value) ? 
+                        $configRepo->findByCode(Constants::CONFIG_POLICY)->value : '';
     }
 
     /**
@@ -177,7 +180,8 @@ class CandidateController extends Controller {
                 ->with('expectAddresses', $expectAddresses)
                 ->with('scales', $scales)
                 ->with('activeHeaderMenu', $activeHeaderMenu)
-                ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
+                ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
+                ->with('policy', $this->policy);
         } else {
             // get form input data
             $input = $request->all();
