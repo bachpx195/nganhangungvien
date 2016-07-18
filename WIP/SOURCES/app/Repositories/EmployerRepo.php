@@ -40,9 +40,9 @@ class EmployerRepo implements IEmployerRepo
         }
 
         if(isset($params['contact']) && $params['contact']){
-            $query = $query->where('contact_person', 'like', "%" . $params['contact_person'] . "%")
-                    ->orWhere('contact_phone', 'like', "%" . $params['contact_phone'] . "%")
-                    ->orWhere('contact_email', 'like', "%" . $params['contact_email'] . "%");
+            $query = $query->where('contact_person', 'like', "%" . $params['contact'] . "%")
+                    ->orWhere('contact_phone', 'like', "%" . $params['contact'] . "%")
+                    ->orWhere('contact_email', 'like', "%" . $params['contact'] . "%");
         }
 
         if(isset($params['status']) && $params['status'] !== "" && $params['status'] !== null){
