@@ -13,7 +13,7 @@
                 <label class="col-sm-2 control-label">
                     Tin học văn phòng
                 </label>
-                <div class="col-sm-10">
+                <div class="col-sm-9" style="margin-left: 42px;">
                     <div class="demo-list sex-lable khanang">
                         Tốt
                     </div>

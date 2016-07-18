@@ -25,7 +25,7 @@
                 <label class="col-sm-2 control-label">
                     Trình độ
                 </label>
-                <div class="col-sm-10 ">
+                <div class="col-sm-9" style="margin-left: 42px;">
                     <div class="demo-list sex-lable khanang">
                         Tốt
                     </div>
@@ -42,8 +42,8 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Nghe</label>
-                <div class="col-sm-10 ">
-                    @include('front.common.radios',
+                <div class="col-sm-9" style="margin-left: 42px">
+                    @include('admin.common.radios',
                         array(
                             'radios' => $scales,
                             'radioName' => 'listen_@{{index}}'
@@ -52,8 +52,8 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Nói</label>
-                <div class="col-sm-10 ">
-                    @include('front.common.radios',
+                <div class="col-sm-9" style="margin-left: 42px">
+                    @include('admin.common.radios',
                         array(
                             'radios' => $scales,
                             'radioName' => 'speak_@{{index}}'
@@ -62,8 +62,8 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Đọc</label>
-                <div class="col-sm-10 ">
-                    @include('front.common.radios',
+                <div class="col-sm-9" style="margin-left: 42px">
+                    @include('admin.common.radios',
                         array(
                             'radios' => $scales,
                             'radioName' => 'read_@{{index}}'
@@ -72,8 +72,8 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Viết</label>
-                <div class="col-sm-10 ">
-                    @include('front.common.radios',
+                <div class="col-sm-9" style="margin-left: 42px">
+                    @include('admin.common.radios',
                         array(
                             'radios' => $scales,
                             'radioName' => 'write_@{{index}}'

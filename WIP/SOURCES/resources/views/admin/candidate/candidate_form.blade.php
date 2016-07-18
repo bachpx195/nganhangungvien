@@ -7,7 +7,7 @@
 	  type='text/css' media='all'>
 
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-<div class="portlet light ">
+<div class="portlet light " id='candidate-admin'>
 	<div class="portlet-title">
 		<div class="caption font-dark">
 			<i class="icon-settings font-dark"></i>

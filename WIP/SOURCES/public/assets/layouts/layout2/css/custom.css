@@ -30,3 +30,11 @@ a.add-more-btn:hover{
 .transaction_type_subtract {
     color: red;
 }
+
+#candidate-admin .khanang {
+    margin-right: 30px;
+}
+
+#candidate-admin .radio-inline {
+    margin-right: 30px
+}
