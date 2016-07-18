@@ -4,7 +4,8 @@
 define('EMAIL_BUSINESS','ngocson.hrm@gmail.com');//Email Bảo kim
 //define('MERCHANT_ID','647');                // Mã website tích hợp
 define('MERCHANT_ID','23022');                // Mã website tích hợp
-define('SECURE_PASS','ae543c080ad91c23');   // Mật khẩu
+//define('SECURE_PASS','ae543c080ad91c23');   // Mật khẩu
+define('SECURE_PASS','4867f6ab0f3c7844');   // Mật khẩu
 
 // Cấu hình tài khoản tích hợp
 //define('API_USER','merchant');  //API USER
@@ -44,8 +45,8 @@ define('BAOKIM_API_SELLER_INFO','/payment/rest/payment_pro_api/get_seller_info')
 define('BAOKIM_API_PAY_BY_CARD','/payment/rest/payment_pro_api/pay_by_card');
 define('BAOKIM_API_PAYMENT','/payment/order/version11');
 
-//define('BAOKIM_URL','https://www.baokim.vn');
-define('BAOKIM_URL','http://kiemthu.baokim.vn');
+define('BAOKIM_URL','https://www.baokim.vn');
+//define('BAOKIM_URL','http://kiemthu.baokim.vn');
 
 //Phương thức thanh toán bằng thẻ nội địa
 define('PAYMENT_METHOD_TYPE_LOCAL_CARD', 1);
