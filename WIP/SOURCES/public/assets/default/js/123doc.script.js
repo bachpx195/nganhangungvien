@@ -1,7 +1,7 @@
 var runningBecomeVip = false;
 var runningOutsourcing = false;
 
-function popupPayment_open(paymentType) {
+function popupPayment_open(paymentType, pos) {
     $('.loggedin.popup_down').hide();
     $("body").find(".boxAddMoney").remove();
     var e = ($(window).width() - 800) / 2 - 50 + "px",
@@ -19,7 +19,7 @@ function popupPayment_open(paymentType) {
         success: function(t) {
             $(".boxAddMoney").append(t);
             if(paymentType){
-                showForm_addMoney($('a[data-rel=' + paymentType + ']'));
+                showForm_addMoney($('a[data-rel=' + paymentType + ']'), pos);
             }
         }
     })
@@ -29,11 +29,11 @@ function closeBox() {
     $("body").find(".boxAddMoney").remove(), $("body").find(".bg_transparent").remove()
 }
 
-function showForm_addMoney(e) {
+function showForm_addMoney(e, pos) {
     var t = $(e).attr("data-rel"),
         u = $(e).parents("ul.listOpt");
 
-    if (t == 'atm') {
+    if (t == 'atm' && pos == 'vip') {
         $(".boxAddMoney_content").not("#" + t).addClass("hidden"), $(".boxAddMoney_content#" + t).removeClass("hidden"), u.find("li > a").not(e).removeClass("active"), $(e).addClass("active");
         $("#li-mobile").addClass("hidden");
         $("#li-online").addClass("hidden");

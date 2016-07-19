@@ -28,9 +28,9 @@
 								<h1 class="text_pink">PHƯƠNG THỨC THANH TOÁN</h1>
 								<br>
 							</div>
-							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm')" @endif class="text_pink">CÁCH 1 - CHUYỂN KHOẢN ONLINE</a></span>
+							<span class="text_orange font18 bold ml_20"><a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm', 'vip')" @endif class="text_pink">CÁCH 1 - CHUYỂN KHOẢN ONLINE</a></span>
 							<div class="text-center mt_10 mb_10">
-								<a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm')" @endif>
+								<a href="javascript:;" rel="nofollow" @if (Auth::check()) onclick="popupPayment_open('atm', 'vip')" @endif>
 									<img src="{{ URL::asset('assets/pages/img/registvip/chuyen-khoan-online.jpg') }}" alt="Chuyển khoản online"/>
 								</a>
 							</div>

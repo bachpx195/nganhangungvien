@@ -22,7 +22,7 @@
                 <p style="margin-top: 10px;"><input  name="code_popup" id="code_popup" type="text" placeholder="Mã số thẻ"/></p>
                 <p><input name="seri_popup" id="seri_popup" type="text"  placeholder="Seri thẻ"name="txt_seri"/></p>
                 <p><i style="color: #0aa888;font-weight: bold;">Mệnh giá tối thiểu 20.000 vnđ</i></p>
-                <p>Phí nạp thẻ <a style="color: red;">23%</a> cho nhà mạng. <i style="color: #0aa888;font-weight: bold;">(Ví dụ: Nạp thẻ 20.000 sẽ được cộng 15.000 vào tài khoản)</i></p>
+                <p>Phí nạp thẻ <a style="color: red;">20%</a> cho nhà mạng. <i style="color: #0aa888;font-weight: bold;">(Ví dụ: Nạp thẻ 20.000 sẽ được cộng 16.000 vào tài khoản)</i></p>
                 <p>Nạp sai 5 lần liên tiếp, tài khoản của bạn không thể sử dụng hình thức nạp trong 24h.</p>
                 <p class="appendPay"><a href="javascript:;" onclick="pay_mobilecard();" class="btn btn_submit">Nạp tiền</a></p>
             </div>
