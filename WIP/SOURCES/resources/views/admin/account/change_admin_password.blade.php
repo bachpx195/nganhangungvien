@@ -15,7 +15,8 @@
         <div id="msg_success" class="error_reg_mess pl_0 clearfix fs14 bolder text-center display_none" style="color:red;"></div>
         <form id="changePassword" name="changePassword" action="" enctype="multipart/form-data" method="post">
         	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group"><label class="control-label" for="oldPassword">Mật khẩu cũ (<span
+            <div class="form-group">
+                <label class="control-label" for="oldPassword">Mật khẩu cũ (<span
       			class="colorRed" style="color:red;">*</span>)</label><br>
                 <input type="password" value="" name="oldPassword"
                   		id="oldPassword"

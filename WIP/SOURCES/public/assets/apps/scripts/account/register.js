@@ -35,7 +35,15 @@ $(document).ready(function () {
 
     $("#btnRegister").click(function () {
         if (validator.validate()) {
-            $("#form_register").submit();
+            if ($( "#policy-checkbox" ).length) {
+                if ($('#policy-checkbox').prop('checked')) {
+                    $("#form_register").submit();
+                } else {
+                    swal("Thông báo!", "Vui lòng chọn đồng ý với điều khoản sử dụng");
+                }    
+            } else {
+                $("#form_register").submit();
+            }
         }else{
             $('input.k-invalid:first').focus();
         }

@@ -20,22 +20,32 @@ class VideoController extends Controller {
     public function manageVideo(Request $request){
         $videoLink = '';
         $videoLinkChanel = '';
+        $policy = '';
 
         if($request->method() == 'GET'){
             $videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
             $videoChanelConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL);
-            // dd($videoChanelConfig);
+            $policyConfig = $this->configRepo->findByCode(Constants::CONFIG_POLICY);
+
             if($videoConfig){
                 $videoLink = $videoConfig->value;
             }
             if($videoChanelConfig){
                 $videoLinkChanel = $videoChanelConfig->value;
             }
+
+            if($policyConfig){
+                $policy = $policyConfig->value;
+            }
         }else{
             $videoLink = $request->input('videoLink');
             $videoLinkChanel = $request->input('videoLinkChanel');
+            $policy = $request->input('policy');
+
             $videoConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE);
             $videoChanelConfig = $this->configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL);
+            $policyConfig = $this->configRepo->findByCode(Constants::CONFIG_POLICY);
+
             if(!$videoConfig) {
                 $videoConfig = new Config();
                 $videoConfig->code = Constants::CONFIG_YOUTUBE;
@@ -44,10 +54,20 @@ class VideoController extends Controller {
                 $videoChanelConfig = new Config();
                 $videoChanelConfig->code = Constants::CONFIG_YOUTUBE_CHANEL;
             }
+
+            if(!$policyConfig) {
+                $policyConfig = new Config();
+                $policyConfig->code = Constants::CONFIG_POLICY;
+            }
+
             $videoConfig->value = $videoLink;
             $videoConfig->save();
+
             $videoChanelConfig->value = $videoLinkChanel;
             $videoChanelConfig->save();
+
+            $policyConfig->value = $policy;
+            $policyConfig->save();
         }
 
 
@@ -55,6 +75,7 @@ class VideoController extends Controller {
             ->with('activeMenu', Constants::VIDEO)
             ->with('pageTitle', trans("messages.admin.title.video"))
             ->with('videoLinkChanel', $videoLinkChanel)
-            ->with('videoLink', $videoLink);
+            ->with('videoLink', $videoLink)
+            ->with('policy', $policy);
     }
 }

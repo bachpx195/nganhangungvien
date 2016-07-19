@@ -27,7 +27,8 @@
                         <div class="">
                             <h2 class="text_pink"> LIÊN KẾT</h2>
                             <div class="mt_24 font14">
-                                <p><a href="#" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>
+                                <p><a href="{{ route('pages.policy') }}" style="color: #FFFFFF;">- Điều khoản sử dụng</a></p>
+                                <p><a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>
                                 <p><a href="{{route('employer.register')}}" style="color: #FFFFFF;">- Đăng ký nhà tuyển dụng</a></p>
                                 <p><a href="{{route('candidate.form')}}" style="color: #FFFFFF;">- Tạo hồ sơ ứng viên</a></p>
                                 <p><a href="{{ route('news.show') }}" style="color: #FFFFFF;">- Tài liệu quản trị</a></p>

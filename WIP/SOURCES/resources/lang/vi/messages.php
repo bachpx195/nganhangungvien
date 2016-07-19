@@ -37,7 +37,7 @@ return [
 		"front.title.view"				=> "Hồ sơ ứng viên được xem nhiều nhất",
 		"front.title.new"				=> "Hồ sơ ứng viên mới nhiều nhất",
 
-		"admin.title.video" 			=> "Quản lý video",
+		"admin.title.video" 			=> "Quản lý cấu hình hệ thống",
 		
 		"form.button.search" 			=> "Tìm kiếm",
 		"form.button.execute" 			=> "Thực hiện",

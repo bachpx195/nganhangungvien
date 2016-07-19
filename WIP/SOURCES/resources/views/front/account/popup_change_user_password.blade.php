@@ -33,9 +33,9 @@
                                                id="oldPassword"
                                                class="form-control input-lg2 color-input inputText"
                                                required data-required-msg="Vui lòng nhập mật khẩu cũ">
-                                    </div>
-                                    <div id="error_oldPassword"
+                                        <div id="error_oldPassword"
                                          class="error_reg_mess pl_0 clearfix fs14 italic invalid-msg display_none"></div>
+                                    </div>
                                 </div>
                                 <!-- input Mật khẩu mới  -->
                                 <div class="form-group clearfix mb_8 input-phone">
@@ -47,11 +47,11 @@
                                                id="newPassword"
                                                class="form-control input-lg2 color-input inputText"
                                                required data-required-msg="Vui lòng nhập mật khẩu mới">
+                                        <div id="error_tel_co_dinh"
+                                            class="clearfix pl_173 error_reg_mess fs14 italic invalid-msg display_none"></div>
+                                        <div id="error_newPassword"
+                                            class="error_reg_mess pl_0 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
-                                    <div id="error_tel_co_dinh"
-                                         class="clearfix pl_173 error_reg_mess fs14 italic invalid-msg display_none"></div>
-                                    <div id="error_newPassword"
-                                         class="error_reg_mess pl_0 clearfix fs14 italic invalid-msg display_none"></div>
                                 </div>
                                 <!-- input Nhập lại mật khẩu mới -->
                                 <div class="form-group clearfix mt_16 mb_12">
@@ -64,9 +64,9 @@
                                                class="form-control input-lg2 color-input"
                                                name="newPasswordConfirm"
                                                required data-required-msg="Vui lòng nhập xác nhận mật khẩu">
+                                        <div id="error_newPasswordConfirm"
+                                             class="error_reg_mess err_password pl_0 clearfix fs14 italic invalid-msg display_none"></div>
                                     </div>
-                                    <div id="error_newPasswordConfirm"
-                                         class="error_reg_mess err_password pl_0 clearfix fs14 italic invalid-msg display_none"></div>
                                 </div>
                                 <div class="mb_4 pt_10 clearfix floatLeft">
                                     <label class="w76 floatLeft"></label>

@@ -34,7 +34,16 @@ $( document ).ready(function() {
         var errorStatus = validateExpectJobsAdnExpectAddresses();
 
         if (validator.validate() && !errorStatus) {
-            $("#candidate-form").submit();
+            if ($( "#policy-checkbox" ).length) {
+                if ($('#policy-checkbox').prop('checked')) {
+                    $("#candidate-form").submit();
+                } else {
+                    swal("Thông báo!", "Vui lòng chọn đồng ý với điều khoản sử dụng");
+                }    
+            } else {
+                $("#candidate-form").submit();
+            }
+            
         }else{
             $invalidItem = $('.k-invalid:first');
 

@@ -45,6 +45,7 @@
 			@include('front.candidate.information_technology')
 			<div class="clearfix"></div>
 			@include('front.candidate.contact_person')
+			@include('front.common.policy')
 			@include('front.candidate.save_btn')
 		</div>
 	</form>

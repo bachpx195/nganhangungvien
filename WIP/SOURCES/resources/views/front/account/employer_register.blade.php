@@ -308,6 +308,16 @@
                                         </div>
                                     </div>
                                     -->
+                                    <div class="form-group mb_10">
+                                        <label for="contact_email"
+                                               class="control-label-info bold txt-ghi fs14 w180"> Điều khoản sử dụng
+                                        </label>
+                                        <div class="register_fr_input_wd583">
+                                            @include('front.account.policy')
+                                        </div>
+                                    </div>
+                                    
+
                                     <div class="form-group mb_12">
                                         <label class="control-label-info w185"></label>
                                         <div class="fr-input-wd333 floatLeft pl_10">
