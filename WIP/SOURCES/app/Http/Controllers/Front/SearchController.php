@@ -15,9 +15,21 @@ use Illuminate\Http\Request;
 use App\Repositories\ICandidateRepo;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Input;
+use App\Repositories\IProvinceRepo;
+use App\Repositories\IConfigRepo;
 
 class SearchController extends BaseController {
 	
+	protected $candidateRepo, $provinceRepo, $configRepo;
+    public function __construct(
+        ICandidateRepo $candidateRepo,
+        IProvinceRepo $provinceRepo,
+        IConfigRepo $configRepo
+    )
+    {
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
+    }
+
 	/**
 	 * Index page
 	 *
@@ -68,6 +80,7 @@ class SearchController extends BaseController {
 			->with('candidates', $candidates)
 			->with('dropdownData', $dropdownData)
 			->with('categoryName', $categoryName)
+			->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 			->with('params', $params);
 	}
 
@@ -86,6 +99,7 @@ class SearchController extends BaseController {
 			->with('candidates', $candidates)
 			->with('dropdownData', $dropdownData)
 			->with('categoryName', $title)
+			->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 			->with('params', []);
 	}
 
@@ -104,6 +118,7 @@ class SearchController extends BaseController {
 			->with('candidates', $candidates)
 			->with('dropdownData', $dropdownData)
 			->with('categoryName', $title)
+			->with('linkYouTubeChanel', $this->linkYouTubeChanel)
 			->with('params', []);
 	}
 	
