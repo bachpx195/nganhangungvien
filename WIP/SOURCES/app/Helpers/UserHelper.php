@@ -25,26 +25,26 @@ class UserHelper {
 
 		switch ($yearOfExp){
 			case -1:
-				return 3000;
+				return 500;
 			case 0:
-				return 5000;
+				return 500;
 			case 1:
-				return 7000;
+				return 1000;
 			case 2:
 			case 3:
-				return 9000;
+				return 3000;
 			case 4:
 			case 5:
-				return 10000;
+				return 5000;
 			case 6:
 			case 7:
-				return 15000;
+				return 7000;
 			case 8:
 			case 9:
 			case 10:
-				return 20000;
+				return 9000;
 			case 99:
-				return 25000;
+				return 15000;
 		}
 	}
 
