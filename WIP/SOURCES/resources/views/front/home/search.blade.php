@@ -136,69 +136,134 @@
 			addListener(window, "load", fun_hoso_keypress);
 		}
 	</script>
-	<div class="box_filter_map text-center" style="width: 680px;">
-		<div class="statistic font20">
-			Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
-		</div>
 
-		<div class="map-ntd">
-			<div class="col-xs-4 offset10">
-				<div class="fix-box map">
-					<h3 id="nuoc-ngoai1" class="area nuoc-ngoai">
-						<span class="fs12 txt_color_63248a fwb nuoc-ngoai1">Nước Ngoài </span><span class="fs12 txt-color-757575 fwb nuoc-ngoai2"></span>
-						<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="dong-bac-bo " class="area dong-bac-bo">
-						<span class="fs12 txt_color_63248a fwb dong-bac-bo1">Đông Bắc Bộ </span><span class="fs12 txt-color-757575 fwb dong-bac-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="tay-bac-bo" class="area tay-bac-bo">
-						<span class="fs12 txt_color_63248a fwb tay-bac-bo1">Tây Bắc bộ </span><span class="fs12 txt-color-757575 fwb tay-bac-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="bac-trung-bo" class="area bac-trung-bo">
-						<span class="fs12 txt_color_63248a fwb bac-trung-bo1">Bắc Trung Bộ </span><span class="fs12 txt-color-757575 fwb bac-trung-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="nam-trung-bo" class="area nam-trung-bo">
-						<span class="fs12 txt_color_63248a fwb nam-trung-bo1">Nam Trung Bộ </span><span class="fs12 txt-color-757575 fwb nam-trung-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="tay-nguyen" class="area tay-nguyen">
-						<span class="fs12 txt_color_63248a fwb tay-nguyen1">Tây Nguyên </span><span class="fs12 txt-color-757575 fwb tay-nguyen2"></span>
-						<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="tay-nam-bo" class="area tay-nam-bo">
-						<span class="fs12 txt_color_63248a fwb tay-nam-bo1">Tây Nam Bộ </span><span class="fs12 txt-color-757575 fwb tay-nam-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-					<h3 id="dong-nam-bo" class="area dong-nam-bo">
-						<span class="fs12 txt_color_63248a fwb dong-nam-bo1">Đông Nam Bộ </span><span class="fs12 txt-color-757575 fwb dong-nam-bo2"></span>
-						<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
-					</h3>
-				</div>
+	@if (Auth::check() && Auth::user()->user_type == 'employer')
+		<div class="box_filter_map text-center" style="width: 450px;">
+			<div class="statistic font20">
+				Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 			</div>
 
-			<div class="option-checkbox active" style="display: none">
-				<div class="group-option active">
-					<div class="icheckbox_minimal-aero active checked" style="position: relative;">
-						<input type="checkbox" value="66" id="nuoc-ngoai" name="tinh_thanh[]" class="style-checkbox khu-vuc" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-bac-bo" value="tay-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-bac-bo" value="dong-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="bac-trung-bo" value="bac-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nguyen" value="tay-nguyen" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="nam-trung-bo" value="nam-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-nam-bo" value="dong-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
-						<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nam-bo" value="tay-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+			<div class="map-ntd">
+				<div class="col-xs-4 offset10">
+					<div class="fix-box map" style="width: 450px;">
+						<h3 id="nuoc-ngoai1" class="area nuoc-ngoai" style="    top: 11px;left: 277px;">
+							<span class="fs12 txt_color_63248a fwb nuoc-ngoai1">Nước Ngoài </span><span class="fs12 txt-color-757575 fwb nuoc-ngoai2"></span>
+							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="dong-bac-bo " class="area dong-bac-bo" style="top: 78px; left: 226px;">
+							<span class="fs12 txt_color_63248a fwb dong-bac-bo1">Đông Bắc Bộ </span><span class="fs12 txt-color-757575 fwb dong-bac-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-bac-bo" class="area tay-bac-bo" style="top: 69px; left: 8px; padding: 0 6px;">
+							<span class="fs12 txt_color_63248a fwb tay-bac-bo1">Tây Bắc bộ </span><span class="fs12 txt-color-757575 fwb tay-bac-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="bac-trung-bo" class="area bac-trung-bo" style="top: 120px; left: 22px;">
+							<span class="fs12 txt_color_63248a fwb bac-trung-bo1">Bắc Trung Bộ </span><span class="fs12 txt-color-757575 fwb bac-trung-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="nam-trung-bo" class="area nam-trung-bo" style="    top: 167px;left: 272px;">
+							<span class="fs12 txt_color_63248a fwb nam-trung-bo1">Nam Trung Bộ </span><span class="fs12 txt-color-757575 fwb nam-trung-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-nguyen" class="area tay-nguyen" style="top: 175px;left: 25px;">
+							<span class="fs12 txt_color_63248a fwb tay-nguyen1">Tây Nguyên </span><span class="fs12 txt-color-757575 fwb tay-nguyen2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-nam-bo" class="area tay-nam-bo" style="top: 225px;left: 17px;">
+							<span class="fs12 txt_color_63248a fwb tay-nam-bo1">Tây Nam Bộ </span><span class="fs12 txt-color-757575 fwb tay-nam-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="dong-nam-bo" class="area dong-nam-bo" style="    top: 209px;left: 273px;">
+							<span class="fs12 txt_color_63248a fwb dong-nam-bo1">Đông Nam Bộ </span><span class="fs12 txt-color-757575 fwb dong-nam-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+					</div>
+				</div>
 
+				<div class="option-checkbox active" style="display: none">
+					<div class="group-option active">
+						<div class="icheckbox_minimal-aero active checked" style="position: relative;">
+							<input type="checkbox" value="66" id="nuoc-ngoai" name="tinh_thanh[]" class="style-checkbox khu-vuc" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-bac-bo" value="tay-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-bac-bo" value="dong-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="bac-trung-bo" value="bac-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nguyen" value="tay-nguyen" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="nam-trung-bo" value="nam-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-nam-bo" value="dong-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nam-bo" value="tay-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	@else
+		<div class="box_filter_map text-center" style="width: 680px;">
+			<div class="statistic font20">
+				Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
+			</div>
+
+			<div class="map-ntd">
+				<div class="col-xs-4 offset10">
+					<div class="fix-box map">
+						<h3 id="nuoc-ngoai1" class="area nuoc-ngoai">
+							<span class="fs12 txt_color_63248a fwb nuoc-ngoai1">Nước Ngoài </span><span class="fs12 txt-color-757575 fwb nuoc-ngoai2"></span>
+							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="dong-bac-bo " class="area dong-bac-bo">
+							<span class="fs12 txt_color_63248a fwb dong-bac-bo1">Đông Bắc Bộ </span><span class="fs12 txt-color-757575 fwb dong-bac-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-bac-bo" class="area tay-bac-bo">
+							<span class="fs12 txt_color_63248a fwb tay-bac-bo1">Tây Bắc bộ </span><span class="fs12 txt-color-757575 fwb tay-bac-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="bac-trung-bo" class="area bac-trung-bo">
+							<span class="fs12 txt_color_63248a fwb bac-trung-bo1">Bắc Trung Bộ </span><span class="fs12 txt-color-757575 fwb bac-trung-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="nam-trung-bo" class="area nam-trung-bo">
+							<span class="fs12 txt_color_63248a fwb nam-trung-bo1">Nam Trung Bộ </span><span class="fs12 txt-color-757575 fwb nam-trung-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-nguyen" class="area tay-nguyen">
+							<span class="fs12 txt_color_63248a fwb tay-nguyen1">Tây Nguyên </span><span class="fs12 txt-color-757575 fwb tay-nguyen2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="tay-nam-bo" class="area tay-nam-bo">
+							<span class="fs12 txt_color_63248a fwb tay-nam-bo1">Tây Nam Bộ </span><span class="fs12 txt-color-757575 fwb tay-nam-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+						<h3 id="dong-nam-bo" class="area dong-nam-bo">
+							<span class="fs12 txt_color_63248a fwb dong-nam-bo1">Đông Nam Bộ </span><span class="fs12 txt-color-757575 fwb dong-nam-bo2"></span>
+							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+						</h3>
+					</div>
+				</div>
+
+				<div class="option-checkbox active" style="display: none">
+					<div class="group-option active">
+						<div class="icheckbox_minimal-aero active checked" style="position: relative;">
+							<input type="checkbox" value="66" id="nuoc-ngoai" name="tinh_thanh[]" class="style-checkbox khu-vuc" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-bac-bo" value="tay-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-bac-bo" value="dong-bac-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="bac-trung-bo" value="bac-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nguyen" value="tay-nguyen" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="nam-trung-bo" value="nam-trung-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="dong-nam-bo" value="dong-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+							<input type="checkbox" class="style-checkbox khu-vuc" name="" id="tay-nam-bo" value="tay-nam-bo" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -10%; left: -10%; display: block; width: 120%; height: 120%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	@endif
+
 
 	@if (Auth::check() && Auth::user()->user_type == 'employer')
-		<div class="box_filter_map text-left" id="youtube-video" style="display: none;">
+		<div class="box_filter_map text-left" id="youtube-video">
 	@else
 		<div class="box_filter_map text-left" id="youtube-video">
 	@endif
