@@ -6,15 +6,22 @@ use App\Http\Requests;
 use App\Repositories\ITransactionRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\IProvinceRepo;
+use App\Repositories\IConfigRepo;
+use App\Repositories\ICandidateRepo;
 
 class EmployerTransactionController extends BaseController
 {
     protected $transactionRepo;
-
+    protected $candidateRepo, $provinceRepo, $configRepo;
     public function __construct(
-        ITransactionRepo $transactionRepo
+        ITransactionRepo $transactionRepo,
+        ICandidateRepo $candidateRepo,
+        IProvinceRepo $provinceRepo,
+        IConfigRepo $configRepo
     )
     {
+        parent::__construct($candidateRepo, $provinceRepo, $configRepo);
         $this->transactionRepo = $transactionRepo;
     }
 
@@ -25,6 +32,7 @@ class EmployerTransactionController extends BaseController
      */
     public function getEmployerTransaction(Request $request)
     {
+        // dd("$this->linkYouTubeChanel");
         $start = 0;
         $limit = config('constants.TRANSACTION_LIMIT');
         if ($request->isMethod('get')) {
