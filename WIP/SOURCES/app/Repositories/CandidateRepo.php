@@ -104,7 +104,7 @@ class CandidateRepo implements ICandidateRepo {
     }
 
     public function experienceYearsStatistic() {
-        $results = DB::select( DB::raw("SELECT id, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM experience_years p LEFT JOIN (SELECT experience_years, COUNT(*) AS num_candidates FROM candidate WHERE status = 1 GROUP BY experience_years) c ON p.id = c.experience_years ORDER BY id") );
+        $results = DB::select( DB::raw("SELECT code, name, CASE WHEN num_candidates IS NULL THEN 0 ELSE num_candidates END AS num_candidates FROM experience_years p LEFT JOIN (SELECT experience_years, COUNT(*) AS num_candidates FROM candidate WHERE status = 1 GROUP BY experience_years) c ON p.code = c.experience_years") );
         return $results;
     }
 

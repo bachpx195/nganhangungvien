@@ -112,7 +112,7 @@
                         </div>
                         <div class="portlet-body">
                             <p><b>Tài khoản: </b> {{ number_format($employer->balance) }} VNĐ</p>
-                            <p><b>Loại tài khoản: </b> {{ $employer->vipState == 1 ? 'Tài khoản VIP' : 'Tài khoản thường' }} </p>
+                            <p><b>Loại tài khoản: </b> {{ $employer->vipState == 1 ? 'TÀI KHOẢN VIP' : 'Tài khoản thường' }} </p>
                         </div>
                     </div>
                 </div>
