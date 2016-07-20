@@ -6,7 +6,7 @@
                 <div class="row mt20">
                     <div class="col-md-6">
                         <div class="">
-                            <h2 class="text_pink">
+                            <h2 class="text_pink font24">
                                 LIÊN HỆ
                             </h2>
 
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="">
-                            <h2 class="text_pink"> LIÊN KẾT</h2>
+                            <h2 class="text_pink font24"> LIÊN KẾT</h2>
                             <div class="mt_24 font14">
                                 <p><a href="{{ route('pages.policy') }}" style="color: #FFFFFF;">- Điều khoản sử dụng</a></p>
                                 <p><a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>

@@ -35,7 +35,7 @@
 							<div class="text-center mt_10 mb_10">
 								<img src="{{ URL::asset('assets/pages/img/outsourcing/loi-ich.png') }}" alt="Tuyển dụng thuê ngoài"/>
 							</div>
-							<span class="text_orange font18 bold ml_20">D - ĐĂNG KÝ VÀ THU PHÍ TRỰC TIẾP</span>
+							<span class="text_orange font18 bold ml_20">D - ĐĂNG KÝ TUYỂN DỤNG THUÊ NGOÀI TRỌN GÓI</span>
 							<br/>
 							<div class="text-center mt_20 mb_10" id="outsourcing">
 								<table style="width: 80%; margin-left: 80px;">
@@ -53,8 +53,22 @@
 									</tr>
 									<tr>
 										<td>Địa chỉ: </td>
-										<td><input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control mt_10"/></td>
-										<td style="text-align: right;"><a id="outsourcing-btn" href="javascript:;" onclick="outsourcing();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a></td>
+										<td colspan="3"><input type="text" placeholder="Nhập địa chỉ liên hệ" name="address" class="form-control mt_10" style="width: 100%"/></td>
+										<td></td>
+										<td></td>
+									</tr>
+
+									<tr>
+										<td>Nội dung yêu cầu: </td>
+										<td colspan="3"><textarea placeholder="Nhập nội dung yêu cầu" name="message" class="form-control mt_10" style="width: 100%" rows="6"></textarea></td>
+										<td></td>
+										<td></td>
+									</tr>
+
+									<tr>
+										<td></td>
+										<td><a id="outsourcing-btn" href="javascript:;" onclick="outsourcing();" class="btn btn_submit btn-pink" style="margin-top: 10px;">Đăng ký ngay</a></td>
+										<td></td>
 										<td></td>
 									</tr>
 								</table>

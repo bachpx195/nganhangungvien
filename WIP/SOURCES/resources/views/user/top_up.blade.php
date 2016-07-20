@@ -8,7 +8,7 @@
         @endif
         <li id="li-atm"><a onclick="showForm_addMoney(this)" @if(UserHelper::isVip($employer)) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
         @if(!UserHelper::isVip($employer))
-        <li id="li-online"><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>Tài khoản VIP</span></a></li>
+        <li id="li-online"><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>TÀI KHOẢN VIP</span></a></li>
         @endif
     </ul>
     @if(!UserHelper::isVip($employer))

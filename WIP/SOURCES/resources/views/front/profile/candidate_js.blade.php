@@ -64,7 +64,7 @@
 
                 }else{
                     //swal("Thông báo!", "Tài khoản của bạn không đủ. Hãy đăng ký tài khoản VIP hoặc nạp tiền để sử dụng dịch vụ!")
-                    popupPayment_open('atm', 'novip');
+                    popupPayment_open();
                 }
             },
             error: function (jqXHR, status, errorThrown) {

@@ -38,7 +38,7 @@
 																@else
 																	<p>
 																		<img class="vip-avatar" src="{{ URL::asset('assets/image/vip-member.jpg') }}">
-																		<span class="bg_tk_vip font12 account_vip">Tài khoản vip</span></p>
+																		<span class="bg_tk_vip font12 account_vip">TÀI KHOẢN VIP</span></p>
 																@endif
 															@elseif (Auth::user()->user_type == 'admin')
 															<p><span class="bg_tk_thuong font12 account_thuong">Tài khoản quản trị</span></p>

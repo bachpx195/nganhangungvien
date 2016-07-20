@@ -148,35 +148,35 @@
 					<div class="fix-box map" style="width: 450px;">
 						<h3 id="nuoc-ngoai1" class="area nuoc-ngoai" style="    top: 11px;left: 277px;">
 							<span class="fs12 txt_color_63248a fwb nuoc-ngoai1">Nước Ngoài </span><span class="fs12 txt-color-757575 fwb nuoc-ngoai2"></span>
-							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="dong-bac-bo " class="area dong-bac-bo" style="top: 78px; left: 226px;">
 							<span class="fs12 txt_color_63248a fwb dong-bac-bo1">Đông Bắc Bộ </span><span class="fs12 txt-color-757575 fwb dong-bac-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-bac-bo" class="area tay-bac-bo" style="top: 69px; left: 8px; padding: 0 6px;">
 							<span class="fs12 txt_color_63248a fwb tay-bac-bo1">Tây Bắc bộ </span><span class="fs12 txt-color-757575 fwb tay-bac-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="bac-trung-bo" class="area bac-trung-bo" style="top: 120px; left: 22px;">
 							<span class="fs12 txt_color_63248a fwb bac-trung-bo1">Bắc Trung Bộ </span><span class="fs12 txt-color-757575 fwb bac-trung-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="nam-trung-bo" class="area nam-trung-bo" style="    top: 167px;left: 272px;">
 							<span class="fs12 txt_color_63248a fwb nam-trung-bo1">Nam Trung Bộ </span><span class="fs12 txt-color-757575 fwb nam-trung-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-nguyen" class="area tay-nguyen" style="top: 175px;left: 25px;">
 							<span class="fs12 txt_color_63248a fwb tay-nguyen1">Tây Nguyên </span><span class="fs12 txt-color-757575 fwb tay-nguyen2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-nam-bo" class="area tay-nam-bo" style="top: 225px;left: 17px;">
 							<span class="fs12 txt_color_63248a fwb tay-nam-bo1">Tây Nam Bộ </span><span class="fs12 txt-color-757575 fwb tay-nam-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="dong-nam-bo" class="area dong-nam-bo" style="    top: 209px;left: 273px;">
 							<span class="fs12 txt_color_63248a fwb dong-nam-bo1">Đông Nam Bộ </span><span class="fs12 txt-color-757575 fwb dong-nam-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 					</div>
 				</div>
@@ -209,35 +209,35 @@
 					<div class="fix-box map">
 						<h3 id="nuoc-ngoai1" class="area nuoc-ngoai">
 							<span class="fs12 txt_color_63248a fwb nuoc-ngoai1">Nước Ngoài </span><span class="fs12 txt-color-757575 fwb nuoc-ngoai2"></span>
-							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/nn.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="dong-bac-bo " class="area dong-bac-bo">
 							<span class="fs12 txt_color_63248a fwb dong-bac-bo1">Đông Bắc Bộ </span><span class="fs12 txt-color-757575 fwb dong-bac-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/dong-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-bac-bo" class="area tay-bac-bo">
 							<span class="fs12 txt_color_63248a fwb tay-bac-bo1">Tây Bắc bộ </span><span class="fs12 txt-color-757575 fwb tay-bac-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="bac-trung-bo" class="area bac-trung-bo">
 							<span class="fs12 txt_color_63248a fwb bac-trung-bo1">Bắc Trung Bộ </span><span class="fs12 txt-color-757575 fwb bac-trung-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/trung-bac.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="nam-trung-bo" class="area nam-trung-bo">
 							<span class="fs12 txt_color_63248a fwb nam-trung-bo1">Nam Trung Bộ </span><span class="fs12 txt-color-757575 fwb nam-trung-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/nam-bo.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-nguyen" class="area tay-nguyen">
 							<span class="fs12 txt_color_63248a fwb tay-nguyen1">Tây Nguyên </span><span class="fs12 txt-color-757575 fwb tay-nguyen2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-nguyen.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="tay-nam-bo" class="area tay-nam-bo">
 							<span class="fs12 txt_color_63248a fwb tay-nam-bo1">Tây Nam Bộ </span><span class="fs12 txt-color-757575 fwb tay-nam-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/tay-nam.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 						<h3 id="dong-nam-bo" class="area dong-nam-bo">
 							<span class="fs12 txt_color_63248a fwb dong-nam-bo1">Đông Nam Bộ </span><span class="fs12 txt-color-757575 fwb dong-nam-bo2"></span>
-							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="Viec lam 24h" title="Việc làm 24h">
+							<img src="{{ URL::asset('assets/default/images/dong-nam.png') }}" alt="nganhangungvien.com" title="nganhangungvien.com">
 						</h3>
 					</div>
 				</div>

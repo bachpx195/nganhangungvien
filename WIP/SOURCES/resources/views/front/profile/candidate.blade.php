@@ -41,17 +41,16 @@
 							class="bold">Ngày sinh:</span> {{DateTimeHelper::formatDate($candidate->birthday)}}
 					</div>
 					<div class="list-items mb_10">
-						<div class="box_login_hotline">
+						<div class="box_login_hotline text_pink">
 							@if ($showContact)
 								<span><strong>Số địa thoại :</strong></span> {{$candidate->phone_number}}
 								<br/><span><strong>Địa chỉ :</strong></span> {{$candidate->address}}
 								<br/><span><strong>Email :</strong></span> <a>{{$candidate->email}}</a>
 							@elseif (Auth::check())
 								<div class="clearfix" id="candidateContact">
-									XEM THÔNG TIN LIÊN HỆ
-									<br>PHÍ: {{$transactionCost}}vnđ
+									THÔNG TIN LIÊN HỆ CHI TIẾT CỦA ỨNG VIÊN - PHÍ: {{$transactionCost}}vnđ
 									<!--<a href="javascript:void(0)" onclick="popupPayment_open('atm')" class="text_blue font14 fwb">đăng ký VIP (Bấm vào đây để đăng ký)</a>-->
-									<br><a href="javascript:void(0)" onclick="viewContact({{$candidate->id}})" class="show_s09b_ntd_register text_blue font14 fwb">Click xem ngay!</a>
+									<br><br><a href="javascript:void(0)" onclick="viewContact({{$candidate->id}})" class="show_s09b_ntd_register text_blue font14 fwb"><i class="fa fa-angle-right" aria-hidden="true"></i> CLICK XEM NGAY!</a>
 								</div>
 							@else
 								<span> Đăng nhập để xem được thông tin liên hệ của ứng viên</span>
@@ -187,7 +186,12 @@
 		</div>
 		<p class="font16 mt_10 mb_4 bold text_blue">Mục tiêu nghề nghiệp</p>
 		<div class="list-items mb_8 font14">
-			{{$candidate->job_goal}}
+			<p style="white-space: pre;">{{$candidate->job_goal}}</p>
+		</div>
+
+		<p class="font16 mt_10 mb_4 bold text_blue">Kỹ năng & Sở trường</p>
+		<div class="list-items mb_8 font14">
+			<p style="white-space: pre;">{{$candidate->skill_forte}}</p>
 		</div>
 
 	</div>

@@ -229,6 +229,7 @@ function outsourcing(e)
         var email = $('#outsourcing').find('input[name="email"]').val();
         var phoneNumber = $('#outsourcing').find('input[name="phone_number"]').val();
         var address = $('#outsourcing').find('input[name="address"]').val();
+        var message = $('#outsourcing').find('textarea[name="message"]').val();
 
         return "" == fullName ? void swal("Lỗi", "Xin vui lòng nhập người liên hệ!", "error") : "" == companyName ? void swal("Lỗi", "Xin vui lòng tên công ty!", "error") : "" == email ? void swal("Lỗi", "Xin vui lòng nhập email!", "error")
             : "" == phoneNumber ? swal("Lỗi", "Xin vui lòng nhập số điện thoại!", "error") : "" == address ? (swal("Lỗi", "Xin vui lòng nhập địa chỉ!", "error"),
@@ -241,7 +242,8 @@ function outsourcing(e)
                 companyName: companyName,
                 email: email,
                 phoneNumber: phoneNumber,
-                address: address
+                address: address,
+                message: message
             },
             beforeSend: function() {
                 $(".become-vip-btn").css({

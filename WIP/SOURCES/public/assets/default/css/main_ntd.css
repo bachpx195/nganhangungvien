@@ -7677,8 +7677,9 @@ input:focus{
 }
 
 #s22_chi_tiet_ho_so .box_login_hotline{
-    background: #fff3e2;
+    background: #ffa726;
     padding:12px 17px;
+    color: white;
 }
 
 #s22_chi_tiet_ho_so .box_info{
