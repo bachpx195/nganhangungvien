@@ -77,7 +77,9 @@ class CandidateProfileController extends BaseController {
 					if($countTransactions > 0){
 						$showContact = true;
 					}else{
-						$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+						if ($candidate->experienceYears) {
+							$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+						}
 					}
 				}
 			}else if($user->user_type == 'admin'){
@@ -114,10 +116,25 @@ class CandidateProfileController extends BaseController {
 		$candiateId = $input['candidateId'];
 
 		$candidate = Candidate::find($candiateId);
-		$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+		if ($candidate->experienceYears) {
+			$transactionCost = UserHelper::getTransactionCost($candidate->experienceYears->code);
+		}
 
 		$user = $this->getCurrentUser();
 		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+
+		if ($employer->vip == 1) {
+			return response()->json([
+				"data" => [
+					"email"			=> $candidate->email,
+					"phone_number"	=> $candidate->phone_number,
+					"address"		=> $candidate->address,
+					"attach_cv" 	=> $candidate->attach_cv ?
+						Constants::GOOGLE_DOC_PATH . '?url=' . URL::to('/') . '/candidate/cv/' . $candidate->attach_cv . "?url=&embedded=true" : ""
+				],
+				"error" => 0
+			]);
+		}
 
 		if($employer->balance >= $transactionCost){
 			$employer->balance = $employer->balance - $transactionCost;

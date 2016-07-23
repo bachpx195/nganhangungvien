@@ -82,13 +82,20 @@
             <div class="bg_grey">
                 <div class="content_cols pt_6 pb_24">
                     @if (Auth::check() && Auth::user()->user_type == 'employer')
-                    @include('front.layout.left_sidebar')
+                        @include('front.layout.left_sidebar')
                     @endif
 
                     @yield('content')
-                </div>
 
-                @include('front.layout.footer')
+                    @if (Auth::check() && Auth::user()->user_type == 'employer')
+                        <div class="pt_20" style="padding-left: 232px;">
+                            @include('front.layout.footer')
+                        </div>
+                    @endif
+                </div>
+                @if (!Auth::check())
+                    @include('front.layout.footer')
+                @endif
             </div>
         </div>
     </div>

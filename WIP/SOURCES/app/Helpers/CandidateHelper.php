@@ -120,7 +120,7 @@ class CandidateHelper {
 					$params['province'] = $id;
 					break;
 				case 'e': //experience
-					$params['yearOfExp'] = [$id];
+					$params['yearOfexp'] = [$id];
 					break;
 				case 'd': //degree
 					$params['degree'] = $id;
@@ -155,6 +155,7 @@ class CandidateHelper {
 					break;
 				case 'e': //experience
 					$category = ExperienceYears::find($id);
+					//ExperienceYears::find($id);
 					return "Kinh nghiệm " . $category->name;
 					break;
 				case 'd': //degree

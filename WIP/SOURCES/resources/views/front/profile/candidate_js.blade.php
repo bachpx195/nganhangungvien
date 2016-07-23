@@ -50,7 +50,7 @@
                 if(res.error == 0){
                     var html = "<span><strong>Số địa thoại :</strong></span> " + res.data.phone_number
                             + "<br/><span><strong>Địa chỉ :</strong></span> " + res.data.address
-                            + "<br/><span><strong>Email :</strong></span> <a>" + res.data.email + "</a>"
+                            + "<br/><span><strong>Email :</strong></span> <a style='color: white'>" + res.data.email + "</a>"
 
                     $('#candidateContact').html(html);
 

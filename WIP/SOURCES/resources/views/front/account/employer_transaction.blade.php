@@ -10,7 +10,7 @@
             <h3 class="title_text_line mt_24 mb_8 uppercase">
                 <span class="fwb txt-color-363636 fs20">Lịch sử giao dịch</span>
             </h3>
-            <div class="box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16">
+            <div class="mh_415 box_tab bg_white box_shadow pt_12 pl_14 pr_14 pb_16">
                 <div class="w_100">
                     <div class="box_info font14">
                         <div class="tablehsut">

@@ -42,23 +42,23 @@
 					</div>
 					<div class="list-items mb_10">
 						<div class="box_login_hotline text_pink">
-							@if ($showContact)
+							{{--@if ($showContact)
 								<span><strong>Số địa thoại :</strong></span> {{$candidate->phone_number}}
 								<br/><span><strong>Địa chỉ :</strong></span> {{$candidate->address}}
 								<br/><span><strong>Email :</strong></span> <a>{{$candidate->email}}</a>
-							@elseif (Auth::check())
+							@elseif--}}
+							@if (Auth::check())
 								<div class="clearfix" id="candidateContact">
-									THÔNG TIN LIÊN HỆ CHI TIẾT CỦA ỨNG VIÊN - PHÍ: {{$transactionCost}}vnđ
-									<!--<a href="javascript:void(0)" onclick="popupPayment_open('atm')" class="text_blue font14 fwb">đăng ký VIP (Bấm vào đây để đăng ký)</a>-->
+									THÔNG TIN LIÊN HỆ CHI TIẾT CỦA ỨNG VIÊN - PHÍ: {{$transactionCost}} VNĐ
 									<br><br><a href="javascript:void(0)" onclick="viewContact({{$candidate->id}})" class="show_s09b_ntd_register text_blue font14 fwb"><i class="fa fa-angle-right" aria-hidden="true"></i> CLICK XEM NGAY!</a>
 								</div>
 							@else
 								<span> Đăng nhập để xem được thông tin liên hệ của ứng viên</span>
 								<a href="javascript:;"
-								   class="member_login btn font16 btn-pink btn-lg ml_10">Đăng nhập
+								   class="member_login btn font16 btn-blue btn-lg ml_10">Đăng nhập
 								</a>
 								<a href="{{route('employer.register')}}"
-								   class="member_register btn font16 btn-pink btn-lg ml_10">Đăng ký tài khoản
+								   class="member_register btn font16 btn-blue btn-lg ml_10">Đăng ký tài khoản
 								</a>
 							@endif
 							<!--<div class="clearfix"><a href="#" class="text_blue font14 fwb">Bấm đây để tìm hiểu chi tiết dịch vụ</a></div>-->
@@ -420,12 +420,14 @@
 	               </div>
 	               @endforeach
 	            </div>
-	            <a href="{{CandidateHelper::uriByCate($candidate->experienceYears->id, $candidate->experienceYears->name, 'e')}}">
-	               <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
-	                  <i class="icon_load_more icon_24 icon-24"></i>
-	                  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}
-	               </h3>
-	            </a>
+				@if ($candidate->experienceYears)
+					<a href="{{CandidateHelper::uriByCate($candidate->experienceYears->id, $candidate->experienceYears->name, 'e')}}">
+					   <h3 class="btn btn-lg w_100 btn-nobg btn_more_list">
+						  <i class="icon_load_more icon_24 icon-24"></i>
+						  Xem thêm Hồ sơ tìm việc cùng kinh nghiệm {{$candidate->experienceYears ? $candidate->experienceYears->name : ''}}
+					   </h3>
+					</a>
+				@endif
 	            @else
 	            <center>
 	               <br>
