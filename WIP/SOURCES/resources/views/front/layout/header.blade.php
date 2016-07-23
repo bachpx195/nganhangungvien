@@ -98,7 +98,7 @@
 						@if (!Auth::check())
 						<ul class="nopadding nomargin">
 							<li class="pos_relative dang_nhap" style="list-style: none">
-								<a href="javascript:;" data-toggle="tooltip"
+								<a href="/" data-toggle="tooltip"
 								   data-placement="bottom">
 									<div class="icn_cong_head_ntd mt_20"></div>
 									<div class="title_cong_menu w140">NHÀ TUYỂN DỤNG</div>

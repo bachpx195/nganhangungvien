@@ -869,8 +869,19 @@ $('.main-menu ul li.notification').click(function(event) {
     });
 });
 
-$('.main-menu ul li.dang_nhap').click(function(event) {
+/*$('.main-menu ul li.dang_nhap').click(function(event) {
     event.stopPropagation();
+    $('.main-menu ul li.dang_nhap .dang_nhap').fadeToggle(1);
+    $.each($('.main-menu ul li'), function() {
+        if(!$(this).hasClass('dang_nhap')) {
+            $(this).find('.popup_down').hide();
+            $('.hda-overlayer').addClass('hidden');
+        }
+    });
+});*/
+
+$('.main-menu ul li.dang_nhap').hover(function() {
+
     $('.main-menu ul li.dang_nhap .dang_nhap').fadeToggle(1);
     $.each($('.main-menu ul li'), function() {
         if(!$(this).hasClass('dang_nhap')) {
