@@ -49,7 +49,6 @@
 			@include('front.candidate.save_btn')
 		</div>
 	</form>
-</div>
 
 @include('front.candidate.candidate_form_js')
 @include('front.candidate.template.experience_skill_template')

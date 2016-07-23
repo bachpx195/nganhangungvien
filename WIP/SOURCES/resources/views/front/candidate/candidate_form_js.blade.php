@@ -71,7 +71,7 @@
                 if (provinceId != undefined && provinceId != '' && provinceId != '0') {
                     $('.address-list').find('.dangchon-diadiem-lv').after(html);
 
-                    var items = $('.job-list').find('.breaking-news').length;
+                    var items = $('.address-list').find('.breaking-news').length;
                     if (items <= 0) {
                         $('.address-list').hide();
                     } else {

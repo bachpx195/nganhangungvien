@@ -3,16 +3,12 @@
     <a href="javascript:;" onclick="closeBox()">×</a>
 
     <ul class="listOpt">
-        @if(!UserHelper::isVip($employer))
-        <li id="li-mobile"><a onclick="showForm_addMoney(this)" class="active" data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
-        @endif
+        <li id="li-mobile"><a onclick="showForm_addMoney(this)" @if(!UserHelper::isVip($employer)) class="active" @endif data-rel="mobile" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span>Thẻ điện thoại</span></a></li>
         <li id="li-atm"><a onclick="showForm_addMoney(this)" @if(UserHelper::isVip($employer)) class="active" @endif data-rel="atm" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Nạp tiền trực tuyến</span></a></li>
-        @if(!UserHelper::isVip($employer))
         <li id="li-online"><a data-rel="online" href="{{ route('pages.regist_vip') }}" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i><span>TÀI KHOẢN VIP</span></a></li>
-        @endif
     </ul>
-    @if(!UserHelper::isVip($employer))
-    <div class="boxAddMoney_content" id="mobile">
+
+    <div class="boxAddMoney_content @if(UserHelper::isVip($employer)) hidden @endif" id="mobile">
         <div style="margin-left: 100px; margin-top: 30px;">
             <img src="{{ URL::asset('assets/image/hd_mobile.png') }}" style="margin-right: 100px;"/>
             <div>
@@ -43,7 +39,7 @@
             </div>
         </div>
     </div>
-    @endif
+
     <div class="boxAddMoney_content @if(!UserHelper::isVip($employer)) hidden @endif" id="atm">
         <div>
             <div>

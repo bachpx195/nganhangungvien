@@ -6,14 +6,14 @@
 	@if (Auth::check() && Auth::user()->user_type == 'employer')
 		<div class="content_dangky" style="padding-left:232px;">
 	@else
-	<div class="content_dangky">
-		@endif
+		<div class="content_dangky">
+	@endif
 		<div class="bg_white mt16 box_shadow">
 			<div class="block_ntv_dangky regis_header h_56" id="regis_header">
 
 				<div class="w_50 floatLeft">
-					<span class="title_ntd_dky "></span><span
-							class="uppercase bold fs16 color_ntd_dky">Tuyển dụng thuê ngoài trọn gói</span>
+					<span class="title_ntd_dky "></span>
+					<span class="uppercase bold fs16 color_ntd_dky">Tuyển dụng thuê ngoài trọn gói</span>
 				</div>
 			</div>
 			<div class="regis_content_1">
@@ -94,5 +94,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 @endsection

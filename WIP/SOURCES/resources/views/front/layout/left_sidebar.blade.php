@@ -6,7 +6,7 @@
                     <div class="block_1 bgWhite">
                         <div class="ml_10">
                             <div class="statistic font16 txc">
-                                Công ty <span>{{ Auth::user()->employerCompanyName() }}</span>
+                                <span>{{ Auth::user()->employerCompanyName() }}</span>
                                 <br/><i>Chủ tài khoản <br> {{Auth::user()->full_name}}</i>
                                 @if(!UserHelper::isVip($currentEmployer))
                                     <p><span class="bg_tk_thuong font12 account_thuong">Tài khoản thường</span></p>
