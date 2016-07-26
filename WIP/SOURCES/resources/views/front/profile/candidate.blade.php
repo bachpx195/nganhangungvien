@@ -138,7 +138,7 @@
 						</p>
 						<p class="line-icon mb_4">
 							<i class="icon-relationship icon-24 icon_24"></i> <span
-								class="bold"> Hôn nhân:</span> <span class="job_value">{{$candidate->is_married ? 'Kết hôn' : 'Độc thân'}}</span>
+								class="bold"> Hôn nhân:</span> <span class="job_value">{{$candidate->is_married ? 'Đã lập gia đình' : 'Độc thân'}}</span>
 						</p>
 					</div>
 					<div class="profile_item">
