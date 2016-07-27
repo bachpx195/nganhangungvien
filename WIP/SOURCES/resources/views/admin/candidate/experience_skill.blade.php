@@ -92,14 +92,14 @@
                                 array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                             </select>
                         </div>
-                            <div class="form-group clearfix mt_8">
+                            <!-- <div class="form-group clearfix mt_8">
                                 <div class="box-cvht" style="margin-left: 455px;">
                                     <div class="demo-list">
                                         <input tabindex="1" type="checkbox" name="experience_is_current_job_{{$i}}" id="is_current_job"  value="1" >
                                         <label for="cvht_{{$i}}" class="font14 fwn">Công việc hiện tại</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         <div id="error_c_thoigian"
                              class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
                     </div>

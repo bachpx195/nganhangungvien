@@ -101,7 +101,7 @@
                                 <div class="demo-list-green mr_24 sex-lable">
                                     <input tabindex="2" type="radio" name="is_married" id="tthn_1"  value="1"
                                            @if ($candidate['is_married'] == 1) checked @endif>
-                                    <label for="tthn_1" class="font14 fwn">Đã có gia đình</label>
+                                    <label for="tthn_1" class="font14 fwn">Đã lập gia đình</label>
                                 </div>
                             </div>
                         </div>

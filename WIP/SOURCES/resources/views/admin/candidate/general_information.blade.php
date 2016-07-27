@@ -100,7 +100,7 @@
                                 </label>
                                 <label class="radio-inline radio-styled">
                                     <input type="radio" name="is_married" value="1"
-                                           @if ($candidate['is_married'] == 1) checked @endif><span>Lập gia đình</span>
+                                           @if ($candidate['is_married'] == 1) checked @endif><span> Đã lập gia đình</span>
                                 </label>
                             </div>
                         </div>

@@ -12,6 +12,10 @@ use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\ISaveCvRepo;
 use App\Repositories\ITransactionRepo;
+use App\Repositories\IITLevelRepo;
+use App\Repositories\ICandidateForeignLanguageRepo;
+use App\Repositories\ICandidateCertificateRepo;
+use App\Repositories\IExperienceRepo;
 use Illuminate\Http\Request;
 use App\Model\Candidate;
 use App\Repositories\ICandidateRepo;
@@ -24,6 +28,10 @@ class CandidateProfileController extends BaseController {
 	private $employerRepo;
 	private $saveCvRepo;
 	private $transactionRepo;
+    private $candidateForeignLanguageRepo;
+    private $itLevelRepo;
+    private $certificateRepo;
+    private $exigencyRepo;
 
 	public function __construct(
 		IEmployerRepo $employerRepo,
@@ -31,13 +39,21 @@ class CandidateProfileController extends BaseController {
 		IProvinceRepo $provinceRepo,
 		ICandidateRepo $candidateRepo,
 		IConfigRepo $configRepo,
-		ITransactionRepo $transactionRepo
+		ITransactionRepo $transactionRepo,
+        IITLevelRepo $itLevelRepo,
+		ICandidateForeignLanguageRepo $candidateForeignLanguageRepo,
+        ICandidateCertificateRepo $certificateRepo,
+        IExperienceRepo $experienceRepo
 	)
 	{
 		parent::__construct($candidateRepo, $provinceRepo, $configRepo);
 		$this->employerRepo = $employerRepo;
 		$this->saveCvRepo = $saveCvRepo;
 		$this->transactionRepo = $transactionRepo;
+        $this->itLevelRepo = $itLevelRepo;
+        $this->candidateForeignLanguageRepo = $candidateForeignLanguageRepo;
+        $this->certificateRepo = $certificateRepo;
+        $this->experienceRepo = $experienceRepo;
 	}
 
 	/**
@@ -99,6 +115,10 @@ class CandidateProfileController extends BaseController {
 
 		$countData=[];
 		$countData['all'] = $this->candidateRepo->countAllStatistic();
+		$foreignLanguages = $this->candidateForeignLanguageRepo->getForeignLanguagesByCandidateId($candidate->id);
+		$itLevels = $this->itLevelRepo->getITLevelsByCandidateId($candidate->id);
+		$certificates = $this->certificateRepo->getCertificatesByCandidateId($candidate->id);
+		$experiences = $this->experienceRepo->getExperiencesByCandidateId($candidate->id);
 		
 		return view('front/profile/candidate')
 				->with('candidate', $candidate)
@@ -108,6 +128,10 @@ class CandidateProfileController extends BaseController {
 				->with('sameData', $sameData)
 				->with('showContact', $showContact)
 				->with('transactionCost', $transactionCost)
+				->with('foreignLanguages', $foreignLanguages)
+				->with('itLevels', $itLevels)
+				->with('certificates', $certificates)
+				->with('experiences', $experiences)
 				->with('countData', $countData);
 	}
 
