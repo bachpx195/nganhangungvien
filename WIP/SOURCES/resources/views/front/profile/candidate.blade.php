@@ -196,14 +196,14 @@
 
 	</div>
 
-	@if(count($candidate->certificates) > 0)
+	@if(count($certificates) > 0)
 	<div class="box_trinhdo text_grey2 mt_16  ">
 		<div class="">
 			<div class="box-heading bg_white item pt_16 pb_6 pl_16 pr_16">
 				<p class="text_blue bold">Bằng cấp - Chứng chỉ</p>
 			</div>
 			<div class="collapse-box bg_white pl_14 pr_14">
-			@foreach($candidate->certificates as $index=>$item)
+			@foreach($certificates as $index => $item)
 				<div class="bg_white item pos_relative pt_16 pb_6">
 					<p class="font18 bold">{{$item->certificate_name}}</p>
 					<p class="mb_4">
@@ -234,17 +234,17 @@
 	</div>
 	@endif
 
-	@if(count($candidate->foreignLanguages) > 0)
+	@if(count($foreignLanguages) > 0)
 	<div class="box_trinhdo text_grey2 mt_16 ">
 		<div class="">
 			<div class="box-heading bg_white item pt_16 pb_6 pl_16 pr_16">
 				<p class="text_blue bold">Ngoại ngữ</p>
 			</div>
 			<div class="collapse-box bg_white pl_14 pr_14">
-			@foreach($candidate->foreignLanguages as $index=>$item)
+			@foreach($foreignLanguages as $index => $item)
 				<div class="bg_white item pos_relative pt_16 pb_16">
 					<p class="font16 lh_12 mt_6 bold">
-						{{$item->language->name}}</span> <span class="text_grey3">
+						{{$item->name}}</span> <span class="text_grey3">
 
 					</p>
 					<p class="mb_4 font14">
@@ -261,14 +261,14 @@
 	@endif
 
 
-	@if(count($candidate->itLevels) > 0)
+	@if(count($itLevels) > 0)
 	<div class="box_trinhdo text_grey2 mt_16 ">
 		<div class="">
 			<div class="box-heading bg_white item pt_16 pb_4 pl_16 pr_16">
 				<p class="text_blue bold">Trình độ tin học</p>
 			</div>
 			<div class="collapse-box bg_white pl_14 pr_14">
-				@foreach($candidate->itLevels as $index=>$item)
+				@foreach($itLevels as $index => $item)
 				<div class="bg_white item pos_relative pt_16 pb_16">
 
 					<p class="font16 lh_12 mt_6 bold">Tin học văn phòng</p>
@@ -293,13 +293,13 @@
 	</div>
 	@endif
 
-	@if(count($candidate->experiences) > 0)
+	@if(count($experiences) > 0)
 	<div class="box_trinhdo text_grey2 mt_16  ">
 		<div class="">
 			<div class="box-heading bg_white item pt_16 pb_4 pl_16 pr_16">
 				<p class="text_blue bold">Kinh nghiệm làm việc</p>
 			</div>
-			@foreach($candidate->experiences as $index=>$item)
+			@foreach($experiences as $index=>$item)
 			<div class="collapse-box bg_white pl_14 pr_14">
 				<div class="bg_white item pos_relative pt_16 pb_16">
 					<p class="text_blue font14">Từ tháng {{DateTimeHelper::formatDate($item->day_in, 'm/Y')}} đến tháng {{DateTimeHelper::formatDate($item->day_out, 'm/Y')}}</p>
