@@ -10,6 +10,16 @@ class ForeignLanguageRepo implements IForeignLanguageRepo {
         return ForeignLanguage::orderBy('id', 'dec')->get();
     }
 
+    public function getSortedList(){
+
+        $results = ForeignLanguage::select('id', 'name')
+            ->orderBy('sort_order', 'ASC')
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        return $results;
+    }
+
     /**
      * {@inheritdoc}
      */

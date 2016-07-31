@@ -128,7 +128,7 @@ class CandidateController extends Controller {
         $jobs = $this->jobRepo->all();
         $exigencies = $this->exigencyRepo->all();
         $levels = $this->levelRepo->all();
-        $foreignLanguages = $this->foreignLanguageRepo->all();
+        $foreignLanguages = $this->foreignLanguageRepo->getSortedList();
         $provinces = $this->provinceRepo->getSortedList();
         $employmentStatuses = $this->employmentStatusRepo->all();
         $graduationTypes = CandidateHelper::getGraduationTypes();
