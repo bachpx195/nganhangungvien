@@ -186,12 +186,12 @@
 		</div>
 		<p class="font16 mt_10 mb_4 bold text_blue">Mục tiêu nghề nghiệp</p>
 		<div class="list-items mb_8 font14">
-			<p style="white-space: pre;">{{$candidate->job_goal}}</p>
+			<p style="white-space: pre-wrap;">{{$candidate->job_goal}}</p>
 		</div>
 
 		<p class="font16 mt_10 mb_4 bold text_blue">Kỹ năng & Sở trường</p>
 		<div class="list-items mb_8 font14">
-			<p style="white-space: pre;">{{$candidate->skill_forte}}</p>
+			<p style="white-space: pre-wrap;">{{$candidate->skill_forte}}</p>
 		</div>
 
 	</div>
@@ -244,7 +244,7 @@
 			@foreach($foreignLanguages as $index => $item)
 				<div class="bg_white item pos_relative pt_16 pb_16">
 					<p class="font16 lh_12 mt_6 bold">
-						{{$item->name}}</span> <span class="text_grey3">
+						{{$item->name}}
 
 					</p>
 					<p class="mb_4 font14">
@@ -319,9 +319,7 @@
 
 					<li class="ml_16"><span class="bold">Mô tả công việc:</span></li>
 					</p>
-					<p class="ml_24">
-						{{$item->description}}
-					</p>
+					<p class="ml_24" style="white-space: pre-wrap;">{{$item->description}}</p>
 				</div>
 			</div>
 			@endforeach
@@ -438,7 +436,7 @@
 	         </div>
 	         <div role="tabpanel" class="{{count($sameData['exp']) == 0? 'active': ''}} tab-pane" id="hosocungcapbac">
 	            @if(count($sameData['lvl']) > 0)
-	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;"">
+	            <div class="list_item_two bg_white" style="border-bottom: 0px solid;min-height: 0px;">
 	               @foreach($sameData['lvl'] as $index => $key)
 	               <div class="{{ $index % 2 == 0 ? 'col_list_left':'col_list_right'}} floatLeft floatLeft">
 	                  <div class="list-items item_link">
