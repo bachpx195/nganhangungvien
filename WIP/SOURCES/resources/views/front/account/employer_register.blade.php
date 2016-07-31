@@ -145,13 +145,12 @@
                                     <!-- input tel_co_dinh -->
                                     <div class="form-group mb_8">
                                         <label for="phone"
-                                               class="control-label-info bold txt-color-363636 fs14 w180">Điện
-                                            thoại cố định <span class="colorRed">*</span>
+                                               class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span>
                                         </label>
                                         <div class="fr-input-wd333">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="phone" name="phone"
-                                                   required data-required-msg="Vui lòng nhập số điện thoại cố định"
+                                                   required data-required-msg="Vui lòng nhập số điện thoại"
                                                    pattern="[0-9]{8,13}"
                                                    required
                                                    data-pattern-msg="Vui lòng nhập số điện thoại đúng định đạng (Từ 8 đến 13 chữ số)"
