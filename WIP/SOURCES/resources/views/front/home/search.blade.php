@@ -138,7 +138,7 @@
 	</script>
 
 	@if (Auth::check() && Auth::user()->user_type == 'employer')
-		<div class="box_filter_map text-center" style="width: 450px;">
+		<div class="box_filter_map text-center" id="map-login">
 			<div class="statistic font20">
 				Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 			</div>
@@ -199,7 +199,7 @@
 			</div>
 		</div>
 	@else
-		<div class="box_filter_map text-center" style="width: 680px;">
+		<div class="box_filter_map text-center" id="map-not-login">
 			<div class="statistic font20">
 				Cả nước tổng cộng có <br /><span class="text_orange font30 bold">{{ $countData['all'] }}</span> hồ sơ người đang tìm việc
 			</div>

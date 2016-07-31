@@ -170,15 +170,65 @@ div.section{
         margin-right: auto;
     }
 
+    #map-not-login {
+        width: 600px;
+    }
+
+    #map-login {
+        width: 420px;
+    }
+
     #youtube-video {
-        width: 340px;
+        width: 290px;
         height: 420px;
     }
 }
 
-@media screen and (min-width: 1281px) and (max-width: 1366px) {
+@media screen and (min-width: 1281px) and (max-width: 1559px) {
     .content_cols {
         width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #map-not-login {
+        width: 680px;
+    }
+
+    #map-login {
+        width: 450px;
+    }
+
+    #youtube-video {
+        width: 320px;
+        height: 420px;
+    }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+    .content_cols {
+        width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #map-not-login {
+        width: 1000px;
+    }
+
+    #map-login {
+        width: 450px;
+    }
+
+    #youtube-video {
+        width: 320px;
+        height: 420px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .content_cols {
+        width: 1800px;
         margin-left: auto;
         margin-right: auto;
     }
