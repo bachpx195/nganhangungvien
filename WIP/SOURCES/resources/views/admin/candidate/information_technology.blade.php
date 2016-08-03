@@ -30,6 +30,8 @@
             </div>
 
             <div class="form-group">
+                <input type="hidden" name="it_level_id"
+                       value="{{isset($candidate['it_level_id']) ? $candidate['it_level_id'] : ''}}">
                 <label class="col-sm-2 control-label">
                     MS Word </label>
                 <div class="col-sm-10">
