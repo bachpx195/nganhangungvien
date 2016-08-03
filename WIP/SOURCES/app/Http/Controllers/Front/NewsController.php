@@ -14,25 +14,35 @@ use Illuminate\Support\Facades\Response;
 use App\Helpers\FileHelper;
 use App\Http\Requests\NewsRequest;
 use Validator;
+use App\Model\Config;
+use App\Repositories\IConfigRepo;
 
 class NewsController extends Controller {
 
-	protected $newsRepo;
+    protected $newsRepo;
+	protected $configRepo;
 
 	public function __construct(
-        INewRepo $newsRepo
+        INewRepo $newsRepo,
+        IConfigRepo $configRepo
     ) {
         $this->newsRepo = $newsRepo;
+        $this->configRepo = $configRepo;
     }
 
     public function index(){
         $activeHeaderMenu = Constants::NEWS;
 
         $news = News::orderBy('updated_at','decs')->paginate(10);
-
+        $newsBannerImageConfig = $this->configRepo->findByCode(Constants::CONFIG_NEWS_BANNER);
+        // echo "<pre>";
+        // print_r($newsBannerImageConfig);
+        // echo "</pre>";
+        // die();
         return view('front/news/index')
                 ->with('activeHeaderMenu',$activeHeaderMenu)
-                ->with('news',$news);
+                ->with('news',$news)
+                ->with('newsBannerImageConfig', $newsBannerImageConfig);
 
     }
 
@@ -46,11 +56,12 @@ class NewsController extends Controller {
         if(!$news){
             return $this->errorView();
         }
-        
+        $newsBannerImageConfig = $this->configRepo->findByCode(Constants::CONFIG_NEWS_BANNER);
         return view('front/news/profile')
             ->with('otherNews',$otherNews)
             ->with('activeHeaderMenu',$activeHeaderMenu)
-            ->with('news',$news);
+            ->with('news',$news)
+            ->with('newsBannerImageConfig', $newsBannerImageConfig);
     }
 
    

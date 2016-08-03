@@ -24,6 +24,9 @@ class Constants
 
     const CONFIG_YOUTUBE_CHANEL = 'LINK_YOUTUBE_CHANEL';
     const CONFIG_POLICY = 'POLICY';
+    const CONFIG_LEFT_BANNER = 'BANNER_LEFT_IMAGE';
+    const CONFIG_RIGHT_BANNER = 'BANNER_RIGHT_IMAGE';
+    const CONFIG_NEWS_BANNER = 'NEWS_BANNER_IMAGE';
 
     // config expire vip interval month, default = 2 month
     const CONFIG_EXPIRE_VIP = 'EXPIRE_VIP';

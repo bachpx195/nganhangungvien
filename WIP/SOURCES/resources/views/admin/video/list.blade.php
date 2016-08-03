@@ -33,6 +33,75 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-2">Banner trái</label>
+                                <div class="col-md-10">
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail">
+                                                <img style="height: 91px; width: 469px;"  src="{{ isset($bannerLeftImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerLeftImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </div>
+            <!--                                     @include('admin.common.news_image',
+                                                array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                            <div>
+                                                <span class="btn red btn-outline btn-file">
+                                                    <span class="fileinput-new"> Chọn hình ảnh </span>
+                                                    <span class="fileinput-exists"> Thay đổi </span>
+                                                    <input  type="file" name="banner_left_image_"> </span>
+                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix margin-top-10">
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Banner phải</label>
+                                <div class="col-md-10">
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail">
+                                                <img style="height: 91px; width: 469px;" src="{{ isset($bannerRightImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerRightImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </div>
+            <!--                                     @include('admin.common.news_image',
+                                                array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                            <div>
+                                                <span class="btn red btn-outline btn-file">
+                                                    <span class="fileinput-new"> Chọn hình ảnh </span>
+                                                    <span class="fileinput-exists"> Thay đổi </span>
+                                                    <input  type="file" name="banner_right_image_"> </span>
+                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix margin-top-10">
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Banner tài liệu</label>
+                                <div class="col-md-10">
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail">
+                                                <img style="height: 91px; width: 469px;"  src="{{ isset($newsBannerImageConfig['value']) ? URL::to('/') . '/banner/images/' . $newsBannerImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </div>
+            <!--                                     @include('admin.common.news_image',
+                                                array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                            <div>
+                                                <span class="btn red btn-outline btn-file">
+                                                    <span class="fileinput-new"> Chọn hình ảnh </span>
+                                                    <span class="fileinput-exists"> Thay đổi </span>
+                                                    <input  type="file" name="news_banner_image_"> </span>
+                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix margin-top-10">
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="sss-label col-md-2">Điều khoản sử dụng </label>
                                 <div class="col-md-10">
                                     <textarea class="form-control input-lg2 color-input" style="height: 280px;" name="policy" >{{$policy}}</textarea>

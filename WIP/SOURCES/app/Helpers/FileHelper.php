@@ -51,4 +51,9 @@ class FileHelper {
     {
         return '/company/images/';
     }
+
+    public static function getBannerPath()
+    {
+        return public_path() . '/banner/images/';
+    }
 }

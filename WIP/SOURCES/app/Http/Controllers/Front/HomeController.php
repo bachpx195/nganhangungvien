@@ -14,6 +14,8 @@ use App\Model\ExperienceYears;
 use App\Model\ForeignLanguage;
 use App\Repositories\ICandidateRepo;
 use Auth;
+use App\Model\Config;
+
 
 class HomeController extends BaseController {
 
@@ -52,13 +54,19 @@ class HomeController extends BaseController {
 		// if($videoChanelConfig){
 		// 	$linkYouTubeChanel = $videoChanelConfig->value;
 		// }
+		$bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+        $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
+        $newsBannerImageConfig = $this->configRepo->findByCode(Constants::CONFIG_NEWS_BANNER);
 		return view('front/home/index')
 				->with('dropdownData', $dropdownData)
 				->with('tabsData', $tabsData)
 				->with('candidatesData', $candidatesData)
 				->with('countData',$countData)
 				->with('linkYouTubeChanel', $this->linkYouTubeChanel)
-				->with('linkYouTube', $linkYouTube);
+				->with('linkYouTube', $linkYouTube)
+				->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+            	->with('bannerRightImageConfig', $bannerRightImageConfig)
+            	->with('newsBannerImageConfig', $newsBannerImageConfig);
 	}
     public function error()
     {
