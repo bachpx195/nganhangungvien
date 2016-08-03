@@ -49,8 +49,10 @@
                                 Số điện thoại
                             </label>
                             <div class="col-sm-10">
-                                <input type="text"
+                                <input type="tel"
+                                        pattern="\d{10}"
                                        class="form-control"
+                                        validationMessage="Vui lòng nhập số điện thoại đúng định dạng"
                                        name="contact_person_phone_number_{{$i}}"
                                        value="{{isset($candidate['contact_person_phone_number_'. $i]) ? $candidate['contact_person_phone_number_'. $i] : ''}}"/>
                             </div>

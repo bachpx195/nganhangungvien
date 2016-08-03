@@ -49,6 +49,23 @@ class CandidateHelper {
 		}
 	}
 
+	public static function graduationTypes($point) {
+		switch ($point) {
+			case 1 :
+				return "Xuất sắc";
+			case 2 :
+				return "Giỏi";
+			case 3 :
+				return "Khá";
+			case 4 :
+				return "Trung bình khá";
+			case 5 :
+				return "Trung bình";
+			default:
+				return "";
+		}
+	}
+
 	/**
 	 * @return object
      */

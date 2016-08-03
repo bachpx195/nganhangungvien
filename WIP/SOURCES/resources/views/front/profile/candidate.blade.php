@@ -225,7 +225,7 @@
 					<p class="mb_4">
 
 
-					<li class="ml_16"><span class="bold">Loại tốt nghiệp:</span> <span>{{$item->graduation_type}}</span></li>
+					<li class="ml_16"><span class="bold">Loại tốt nghiệp:</span> <span>{{ CandidateHelper::graduationTypes($item->graduation_type) }}</span></li>
 					</p>
 				</div>
 			@endforeach
