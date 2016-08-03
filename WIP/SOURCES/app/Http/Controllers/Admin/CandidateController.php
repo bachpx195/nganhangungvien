@@ -499,6 +499,7 @@ class CandidateController extends Controller
      */
     private function populateITLevelsToCandidate($candidate, $itLevels)
     {
+        $candidate['it_level_id'] = !empty($itLevels[0]) ? $itLevels[0]->id : '';
         $candidate['word'] = !empty($itLevels[0]) ? $itLevels[0]->word : '';
         $candidate['excel'] = !empty($itLevels[0]) ? $itLevels[0]->excel : '';
         $candidate['power_point'] = !empty($itLevels[0]) ? $itLevels[0]->power_point : '';
@@ -755,7 +756,12 @@ class CandidateController extends Controller
      */
     private function saveITLevel($candidate, $input)
     {
-        $iTLevel = new CandidateItLevel();
+        if (empty($input['it_level_id'])) {
+            $iTLevel = new CandidateItLevel();
+        } else {
+            $iTLevel = CandidateItLevel::find($input['it_level_id']);
+        }
+
         $iTLevel->candidate_id = $candidate->id;
         if ($this->canSaveITLevel($input)) {
             $iTLevel = $this->getITLevelInfo($iTLevel, $input);
