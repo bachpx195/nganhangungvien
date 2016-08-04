@@ -1,7 +1,7 @@
 <div class="news-right-sidebar">
-   <div class="mt_20">
+   <div class="mt_20" style="height: 166,167px; width: 282,5px;">
       <a href="#" target="_blank">
-      <img src="https://www.kiotviet.vn/wp-content/themes/kiotviet/images/blog-340x200.jpg" width="100%">
+      <img src="{{ !empty($newsBannerImageConfig['value']) ? URL::to('/') . '/banner/images/' . $newsBannerImageConfig->value : URL::asset('/banner/images/blog-340x200.jpg') }}" width="100%">
       </a>
    </div>
    <div>

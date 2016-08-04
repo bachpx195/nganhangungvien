@@ -214,8 +214,8 @@
 					<p class="mb_4">
 
 
-					<li class="ml_16"><span class="bold">Thời gian:</span> <span>Từ
-							tháng {{DateTimeHelper::formatDate($item->started_at, 'm/Y')}} đến {{DateTimeHelper::formatDate($item->ended_at, 'm/Y')}}</span></li>
+					<li class="ml_16"><span class="bold">Thời gian:</span> <span>{{ !(empty($item->started_at)||empty($item->started_at))? 'Từ
+							tháng&nbsp;'.DateTimeHelper::formatDate($item->started_at, 'm/Y').'&nbsp;đến&nbsp;'.DateTimeHelper::formatDate($item->ended_at, 'm/Y') : '' }}</span></li>
 					</p>
 					<p class="mb_4">
 
@@ -225,7 +225,7 @@
 					<p class="mb_4">
 
 
-					<li class="ml_16"><span class="bold">Loại tốt nghiệp:</span> <span>{{$item->graduation_type}}</span></li>
+					<li class="ml_16"><span class="bold">Loại tốt nghiệp:</span> <span>{{ CandidateHelper::graduationTypes($item->graduation_type) }}</span></li>
 					</p>
 				</div>
 			@endforeach
@@ -260,6 +260,30 @@
 	</div>
 	@endif
 
+	@if(count($contactPersons) > 0)
+	<div class="job_description bg_white pl_24 pr_24 mt_16 pb_18 box_shadow">
+		<div class="item row pt_20">
+			<span class="text_blue bold font16">Thông tin liên hệ</span>
+		</div>
+		@foreach($contactPersons as $index => $item)
+			<div class="collapse-box bg_white pl_14 pr_14">
+				<div class="bg_white item pos_relative pt_16 pb_16">
+					<p class="font16 lh_12 mt_6 bold">{{$item->full_name}}</p>
+					<p class="mb_4">
+						<li class="ml_16"><span class="bold">Công ty:</span> <span>{{$item->company}}</span></li>
+					</p>
+
+					<p class="mb_4">
+						<li class="ml_16"><span class="bold">Số điện thoại:</span> <span>{{$item->phone_number}}</span></li>
+					</p>
+					<p class="mb_4">
+						<li class="ml_16"><span class="bold">Chức danh:</span> <span>{{$item->office}}</span></li>
+					</p>
+				</div>
+			</div>
+		@endforeach
+	</div>
+	@endif
 
 	@if(count($itLevels) > 0)
 	<div class="box_trinhdo text_grey2 mt_16 ">

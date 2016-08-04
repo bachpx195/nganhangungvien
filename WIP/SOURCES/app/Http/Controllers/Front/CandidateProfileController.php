@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Libs\Constants;
 use App\Model\Transaction;
 use App\Repositories\IConfigRepo;
+use App\Repositories\IContactPersonRepo;
 use App\Repositories\IEmployerRepo;
 use App\Repositories\IProvinceRepo;
 use App\Repositories\ISaveCvRepo;
@@ -32,6 +33,8 @@ class CandidateProfileController extends BaseController {
     private $itLevelRepo;
     private $certificateRepo;
     private $exigencyRepo;
+	private $experienceRepo;
+	private $contactPersonRepo;
 
 	public function __construct(
 		IEmployerRepo $employerRepo,
@@ -43,7 +46,8 @@ class CandidateProfileController extends BaseController {
         IITLevelRepo $itLevelRepo,
 		ICandidateForeignLanguageRepo $candidateForeignLanguageRepo,
         ICandidateCertificateRepo $certificateRepo,
-        IExperienceRepo $experienceRepo
+        IExperienceRepo $experienceRepo,
+        IContactPersonRepo $contactPersonRepo
 	)
 	{
 		parent::__construct($candidateRepo, $provinceRepo, $configRepo);
@@ -54,6 +58,7 @@ class CandidateProfileController extends BaseController {
         $this->candidateForeignLanguageRepo = $candidateForeignLanguageRepo;
         $this->certificateRepo = $certificateRepo;
         $this->experienceRepo = $experienceRepo;
+        $this->contactPersonRepo = $contactPersonRepo;
 	}
 
 	/**
@@ -119,6 +124,7 @@ class CandidateProfileController extends BaseController {
 		$itLevels = $this->itLevelRepo->getITLevelsByCandidateId($candidate->id);
 		$certificates = $this->certificateRepo->getCertificatesByCandidateId($candidate->id);
 		$experiences = $this->experienceRepo->getExperiencesByCandidateId($candidate->id);
+		$contactPersons = $this->contactPersonRepo->getContactPersonsByCandidateId($candidate->id);
 		
 		return view('front/profile/candidate')
 				->with('candidate', $candidate)
@@ -132,6 +138,7 @@ class CandidateProfileController extends BaseController {
 				->with('itLevels', $itLevels)
 				->with('certificates', $certificates)
 				->with('experiences', $experiences)
+				->with('contactPersons', $contactPersons)
 				->with('countData', $countData);
 	}
 
