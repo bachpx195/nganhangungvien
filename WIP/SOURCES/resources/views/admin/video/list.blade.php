@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <form action="{{ route('admin.video') }}" class="form-horizontal form-row-seperated" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.video') }}" class="form-horizontal form-row-seperated" role="form" method="POST" enctype="multipart/form-data" >
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-body">
                             <div class="form-group">
@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2">Banner trái</label>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="padding-left: 0px;">
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
@@ -51,13 +51,13 @@
                                             </div>
                                         </div>
                                         <div class="clearfix margin-top-10">
-                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png có kích thước khuyên dùng 469 x 92px ) </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2">Banner phải</label>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="padding-left: 0px;">
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
@@ -74,13 +74,13 @@
                                             </div>
                                         </div>
                                         <div class="clearfix margin-top-10">
-                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png có kích thước khuyên dùng 469 x 92px ) </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2">Banner tài liệu</label>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="padding-left: 0px;">
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                         <div class="clearfix margin-top-10">
-                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png ) </div>
+                                            <span class="label label-success">LƯU Ý!</span> (Dạng file ảnh .jpg, .gif, .png có kích thước khuyên dùng 340 x 200px ) </div>
                                     </div>
                                 </div>
                             </div>
