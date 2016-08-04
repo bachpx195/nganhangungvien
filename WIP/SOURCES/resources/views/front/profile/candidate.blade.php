@@ -214,8 +214,8 @@
 					<p class="mb_4">
 
 
-					<li class="ml_16"><span class="bold">Thời gian:</span> <span>Từ
-							tháng {{DateTimeHelper::formatDate($item->started_at, 'm/Y')}} đến {{DateTimeHelper::formatDate($item->ended_at, 'm/Y')}}</span></li>
+					<li class="ml_16"><span class="bold">Thời gian:</span> <span>{{ !(empty($item->started_at)||empty($item->started_at))? 'Từ
+							tháng&nbsp;'.DateTimeHelper::formatDate($item->started_at, 'm/Y').'&nbsp;đến&nbsp;'.DateTimeHelper::formatDate($item->ended_at, 'm/Y') : '' }}</span></li>
 					</p>
 					<p class="mb_4">
 
