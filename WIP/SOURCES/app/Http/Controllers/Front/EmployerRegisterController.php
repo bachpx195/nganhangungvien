@@ -59,10 +59,14 @@ class EmployerRegisterController extends BaseController
             $countData['all'] = $this->candidateRepo->countAllStatistic();
             $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
             $countData['new'] = $this->candidateRepo->countNewStatistic();
+            $bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+            $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
 
             return view('front.account.employer_register_success')
                 ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                 ->with('countData', $countData)
+                ->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+                ->with('bannerRightImageConfig', $bannerRightImageConfig)
                 ->with('user', $user);
         }
 
@@ -245,7 +249,11 @@ class EmployerRegisterController extends BaseController
             
             return redirect()->intended(route('user.actived',['id' => $id, 'confirmation_code' => $confirmation_code]));
         }else{
+            $bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+            $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
             return view('front.account.employer_register_success')
+            ->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+            ->with('bannerRightImageConfig', $bannerRightImageConfig)
             ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
             ->with('user', $user);
         }
@@ -256,9 +264,15 @@ class EmployerRegisterController extends BaseController
         $countData['all'] = $this->candidateRepo->countAllStatistic();
         $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
         $countData['new'] = $this->candidateRepo->countNewStatistic();
+
+        $bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+        $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
+
         return view('front.verification.success')
                     ->with('linkYouTubeChanel', $this->linkYouTubeChanel)
                     ->with('countData',$countData)
+                    ->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+                    ->with('bannerRightImageConfig', $bannerRightImageConfig)
                     ->with('user', $user);
     }
 }

@@ -21,6 +21,7 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;
 use Auth;
+use App\Libs\Constants;
 
 class ResetPasswordController extends BaseController {
 
@@ -76,6 +77,8 @@ class ResetPasswordController extends BaseController {
     }
     public function confirm($id,$code, Request $request)
     {
+        $bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+        $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
     	$this->auth->logout();
         if ($request->isMethod('get')) {
             
@@ -85,6 +88,8 @@ class ResetPasswordController extends BaseController {
 	        $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
 	        $countData['new'] = $this->candidateRepo->countNewStatistic();
             return view('front.account.employer_reset_password')
+                        ->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+                        ->with('bannerRightImageConfig', $bannerRightImageConfig)
             			->with('countData',$countData)
                         ->with('code', $code)
                         ->with('user', $user);

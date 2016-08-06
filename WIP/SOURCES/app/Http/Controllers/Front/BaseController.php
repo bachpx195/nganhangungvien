@@ -22,6 +22,8 @@ class BaseController extends Controller
 
     protected $candidateRepo, $provinceRepo, $configRepo;
     public $linkYouTubeChanel;
+    // public $bannerLeftImageConfig;
+    // public $bannerRightImageConfig;
 
     public function __construct(
         ICandidateRepo $candidateRepo,
@@ -32,6 +34,8 @@ class BaseController extends Controller
         $this->provinceRepo = $provinceRepo;
         $this->configRepo = $configRepo;
         $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
+        // $this->bannerLeftImageConfig = $configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+        // $this->bannerRightImageConfig = $configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
     }
 
     /**
