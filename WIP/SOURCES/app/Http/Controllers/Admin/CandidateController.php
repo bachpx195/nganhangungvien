@@ -551,11 +551,11 @@ class CandidateController extends Controller
                 $candidate['specialize_' . ($i + 1)] = $certificates[$i]->specialize;
 
                 $startedAts = explode("-", $certificates[$i]->started_at);
-                $candidate['started_at_month_' . ($i + 1)] = $startedAts[0];
-                $candidate['started_at_year' . ($i + 1)] = $startedAts[0];
+                $candidate['started_at_month_' . ($i + 1)] = $startedAts[1];
+                $candidate['started_at_year_' . ($i + 1)] = $startedAts[0];
 
                 $endedAts = explode("-", $certificates[$i]->ended_at);
-                $candidate['ended_at_month_' . ($i + 1)] = $endedAts[0];
+                $candidate['ended_at_month_' . ($i + 1)] = $endedAts[1];
                 $candidate['ended_at_year_' . ($i + 1)] = $endedAts[0];
             }
 

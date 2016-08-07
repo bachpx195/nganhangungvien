@@ -60,6 +60,7 @@ class CandidateController extends Controller {
     protected $expectJobRepo;
     protected $expectAddressRepo;
     protected $policy;
+    protected $configRepo;
 
     /**
      * CandidateController constructor.
@@ -108,6 +109,7 @@ class CandidateController extends Controller {
         $this->linkYouTubeChanel = $configRepo->findByCode(Constants::CONFIG_YOUTUBE_CHANEL)->value;
         $this->expectJobRepo = $expectJobRepo;
         $this->expectAddressRepo = $expectAddressRepo;
+        $this->configRepo = $configRepo;
         $this->policy = !empty($configRepo->findByCode(Constants::CONFIG_POLICY)->value) ? 
                         $configRepo->findByCode(Constants::CONFIG_POLICY)->value : '';
     }
@@ -233,8 +235,13 @@ class CandidateController extends Controller {
             $countData['all'] = $this->candidateRepo->countAllStatistic();
             $countData['rencent'] = $this->candidateRepo->countRecentStatistic();
             $countData['new'] = $this->candidateRepo->countNewStatistic();
+            $bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+            $bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
+
 
             return view('front.candidate.candidate_create_success')
+                    ->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+                    ->with('bannerRightImageConfig', $bannerRightImageConfig)
                     ->with('countData', $countData)
                     ->with('linkYouTubeChanel', $this->linkYouTubeChanel);
         }

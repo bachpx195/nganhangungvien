@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-
+use App\Model\Config;
+use App\Repositories\IConfigRepo;
 
 class UserController extends Controller {
 	
@@ -29,6 +30,8 @@ class UserController extends Controller {
 	protected $card;
 	protected $employerRepo;
 	protected $transactionRepo;
+	protected $configRepo;
+
 
 	/**
 	 * UserController constructor.
@@ -47,7 +50,8 @@ class UserController extends Controller {
 		EmployerRepo $employerRepo,
 		Card $card,
 		TransactionRepo $transactionRepo,
-		ICandidateRepo $candidateRepo
+		ICandidateRepo $candidateRepo,
+		IConfigRepo $configRepo
 	) {
 		
 		$this->userRepo = $userRepo;
@@ -57,6 +61,7 @@ class UserController extends Controller {
 		$this->employerRepo = $employerRepo;
 		$this->transactionRepo = $transactionRepo;
 		$this->candidateRepo = $candidateRepo;
+		$this->configRepo = $configRepo;
 	}
 	
 	public function userList(Request $request) {
@@ -303,8 +308,11 @@ class UserController extends Controller {
 			DB::commit();
 
 			$this->sendEmailAfterPaymentByAtm($transactionData);
-
+			$bannerLeftImageConfig = $this->configRepo->findByCode(Constants::CONFIG_LEFT_BANNER);
+       		$bannerRightImageConfig = $this->configRepo->findByCode(Constants::CONFIG_RIGHT_BANNER);
 			return view('user/atm_success')
+				->with('bannerLeftImageConfig', $bannerLeftImageConfig)
+				->with('bannerRightImageConfig', $bannerRightImageConfig)
 				->with('transactionData', $transactionData)
 				->with('countData', $countData);
 

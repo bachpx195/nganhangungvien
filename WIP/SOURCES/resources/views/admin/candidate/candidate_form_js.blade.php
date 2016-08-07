@@ -115,7 +115,7 @@
 
        function resetForm(formClass) {
            // reset input, text area
-           $('.' + formClass).find("input[type=text], textarea").val("");
+           $('.' + formClass).find("input[type=text], textarea, input[type=hidden], input[type=tel]").val("");
            // reset select2
            $('.' + formClass + ' select').val('');
        }
