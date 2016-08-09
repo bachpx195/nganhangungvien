@@ -38,7 +38,7 @@
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
-                                                <img style="height: 91px; width: 469px;"  src="{{ !empty($bannerLeftImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerLeftImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </div>
+                                                <a href="{{route('employer.register') }}"><img style="height: 91px; width: 469px;"  src="{{ !empty($bannerLeftImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerLeftImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </a></div>
             <!--                                     @include('admin.common.news_image',
                                                 array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
@@ -61,7 +61,7 @@
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
-                                                <img style="height: 91px; width: 469px;" src="{{ !empty($bannerRightImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerRightImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /> </div>
+                                                <a href="{{route('candidate/form') }}"><img style="height: 91px; width: 469px;" src="{{ !empty($bannerRightImageConfig['value']) ? URL::to('/') . '/banner/images/' . $bannerRightImageConfig->value : URL::asset('assets/default/images/banner.png') }}" alt="" /></a> </div>
             <!--                                     @include('admin.common.news_image',
                                                 array('newsImage' => isset($news['image']) ? $news['image'] : URL::asset('assets/image/default.png'))) -->
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
