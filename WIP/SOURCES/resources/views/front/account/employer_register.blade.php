@@ -113,7 +113,7 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="company_name" name="company_name"
-                                                   placeholder="Ví dụ: Công Ty Cổ Phần Giải Pháp Tuyển Dụng Thuê Ngoài Việt Nam"
+                                                   placeholder="Ví dụ: Công ty Cổ Phần Ứng Viên Việt Nam"
                                                    required
                                                    data-required-msg="Ghi tên công ty đầy đủ và rõ ràng theo Giấy phép đăng ký kinh doanh"
                                                    value="{!! old('company_name') !!}">
@@ -165,7 +165,7 @@
                                             thiệu về công ty <span class="colorRed">*</span>
                                         </label>
                                         <div class="register_fr_input_wd583">
-										<textarea
+										                <textarea
                                                 class="form-control p14 inputTextArea txt-color-757575"
                                                 id="company_description" name="company_description"
                                                 placeholder="Hãy cung cấp những thông tin cơ bản như: năm thành lập, ngành nghề hoạt động chính, thành tựu đã đạt được, đính hướng phát triển tương lai..."
@@ -183,7 +183,7 @@
                                         <div class="register_fr_input_wd583">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="company_address" name="company_address"
-                                                   placeholder="Ví dụ: Số nhà 98A, phố Ngụy Như Kon Tum, phường Nhân Chính , quận Thanh Xuân"
+                                                   placeholder="Ví dụ: Số 1/1 Hoàng Ngọc Phách, Phường Láng Hạ, Quận Đống Đa, TP. Hà Nội"
                                                    required
                                                    data-required-msg="Vui lòng nhập chi tiết địa chỉ của bạn bằng tiếng Việt có dấu."
                                                    value="{!! old('company_address') !!}"/>
@@ -196,8 +196,7 @@
                                             phố <span class="colorRed">*</span>
                                         </label>
                                         <div class="fr-input-wd333 select_style31 city_select">
-                                            <div
-                                                    class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
+                                            <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                 <select id="province_id" name="province_id"
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
                                                         tabindex="-1"
@@ -331,7 +330,7 @@
                         </div>
                     </div>
                 </div>
-</div>
+              </div>
             </div>
         </div>
     </div>

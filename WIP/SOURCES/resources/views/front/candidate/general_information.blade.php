@@ -82,7 +82,7 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control input-lg2 color-input" id="address" name="address"
-                                       placeholder="Ví dụ: Tổ 10, Phường Yên Nghĩa, Quận Hà Đông, TP Hà Nội"
+                                       placeholder="Ví dụ: Số 1/1 Hoàng Ngọc Phách, Phường Láng Hạ, Quận Đống Đa, TP. Hà Nội"
                                        required data-required-msg="Vui lòng nhập đầy đủ thông tin địa chỉ của bạn bằng tiếng Việt có dấu."
                                        value="{{ $candidate['address'] }}">
                             </div>
