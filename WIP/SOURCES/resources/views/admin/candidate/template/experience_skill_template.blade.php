@@ -57,6 +57,11 @@
                         @include('front.common.year_options')
                     </select>
                 </div>
+
+                <div class="col-sm-2">
+                    <input type="checkbox" name="experience_current_job_@{{index}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;">Hiện tại</span>
+                </div>
+
                 <div id="error_c_thoigian"
                      class="clearfix error_reg_mess clearfix fs14 italic invalid-msg display_none"></div>
             </div>

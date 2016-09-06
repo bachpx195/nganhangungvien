@@ -4,7 +4,7 @@
             <div class="ln_hr_head"></div>
         </div>
         <!-- tên company_name -->
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 10px;">
             <label for="experience_company_name"
                    class="control-label-info bold txt-ghi fs14 w180">Tên
                 Công ty/Tổ chức</label>
@@ -64,6 +64,10 @@
 
                         @include('front.common.year_options'))
                     </select>
+                </div>
+
+                <div class="filter_box font12 style-flat floatLeft" style="margin-left: 10px; margin-top: 8px;">
+                    <input type="checkbox" name="experience_current_job_@{{index}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;">Hiện tại</span>
                 </div>
 
                 <div id="error_c_thoigian"

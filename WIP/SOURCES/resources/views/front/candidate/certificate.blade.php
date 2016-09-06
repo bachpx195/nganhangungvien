@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
                                                 <select name="started_at_year_{{$i}}" class="select-style w128">
-                                                    @include('front.common.year_options',
+                                                    @include('front.common.year_options_edu',
                                                     array('selected' => isset($candidate['started_at_year_' . $i]) ? $candidate['started_at_year_' . $i] : ''))
                                                 </select>
                                             </div>
@@ -77,7 +77,7 @@
                                             </div>
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
                                                 <select name="ended_at_year_{{$i}}" class="select-style w128">
-                                                    @include('front.common.year_options',
+                                                    @include('front.common.year_options_edu',
                                                     array('selected' => isset($candidate['ended_at_year_' . $i]) ? $candidate['ended_at_year_' . $i] : ''))
                                                 </select>
                                             </div>

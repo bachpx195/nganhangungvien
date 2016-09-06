@@ -82,20 +82,15 @@
                                         @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" id ="date_out2_{{$i}}"" style="margin-bottom: 10px;">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" id ="date_out2_{{$i}}" style="margin-bottom: 10px;">
                                     <select name="experience_day_out_year_{{$i}}" class="select-style w128" data-disS="1">
-
-<!--                                 <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
-                                    <select name="experience_day_out_month_{{$i}}" class="select-style w128">
-                                        @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
+                                        @include('front.common.year_options',array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                                     </select>
+
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
-                                    <select name="experience_day_out_year_{{$i}}" class="select-style w128"> -->
 
-                                        @include('front.common.year_options',
-                                        array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
-                                    </select>
+                                <div class="filter_box font12 style-flat floatLeft" id ="current_job_{{$i}}" style="margin-left: 10px; margin-top: 8px;">
+                                    <input type="checkbox" name="experience_current_job_{{$i}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;">Hiện tại</span>
                                 </div>
                                 
                                 <div id="error_c_thoigian"

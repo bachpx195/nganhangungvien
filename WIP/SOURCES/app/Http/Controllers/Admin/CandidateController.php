@@ -581,6 +581,7 @@ class CandidateController extends Controller
                 $candidate['experience_office_' . ($i + 1)] = $experiences[$i]->office;
                 $candidate['experience_salary_' . ($i + 1)] = $experiences[$i]->salary;
                 $candidate['experience_description_' . ($i + 1)] = $experiences[$i]->description;
+                $candidate['experience_current_job_' . ($i + 1)] = $experiences[$i]->isCurrentJob;
 
                 $dayIns = explode("-", $experiences[$i]->day_in);
                 if (count($dayIns) >= 2) {
@@ -1033,13 +1034,19 @@ class CandidateController extends Controller
         }
 
 
-            if (!empty($input['experience_day_out_month_' . $index]) && !empty($input['experience_day_out_year_' . $index])) {
-                $dayOutMonth = $input['experience_day_out_month_' . $index];
-                $dayOutYear = $input['experience_day_out_year_' . $index];
-                $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
-                $experience->day_out = $dayOut;
-                // $experience->isCurrentJob = '0'
-            }
+        if (!empty($input['experience_day_out_month_' . $index]) && !empty($input['experience_day_out_year_' . $index])) {
+            $dayOutMonth = $input['experience_day_out_month_' . $index];
+            $dayOutYear = $input['experience_day_out_year_' . $index];
+            $dayOut = new DateTime($dayOutYear . '-' . $dayOutMonth . '-01');
+            $experience->day_out = $dayOut;
+        }
+
+        if (!empty($input['experience_current_job_' . $index]) && !empty($input['experience_current_job_' . $index])) {
+            $experience->isCurrentJob = '1';
+        }
+        else {
+            $experience->isCurrentJob = '0';
+        }
 
         $experience->description = isset($input['experience_description_' . $index]) ? $input['experience_description_' . $index] : '';
 

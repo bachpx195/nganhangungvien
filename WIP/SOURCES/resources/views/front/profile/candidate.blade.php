@@ -336,7 +336,7 @@
 					<p class="mb_4">
 
 
-					<li class="ml_16"><span class="bold">Thời gian:</span> <span>Từ tháng {{DateTimeHelper::formatDate($item->day_in, 'm/Y')}} đến tháng {{DateTimeHelper::formatDate($item->day_out, 'm/Y')}} </span></li>
+					<li class="ml_16"><span class="bold">Thời gian:</span> <span>Từ tháng {{DateTimeHelper::formatDate($item->day_in, 'm/Y')}} đến @if ($item->isCurrentJob == 1) nay @else tháng {{DateTimeHelper::formatDate($item->day_out, 'm/Y')}} @endif </span></li>
 					</p>
 					<p class="mb_4">
 
