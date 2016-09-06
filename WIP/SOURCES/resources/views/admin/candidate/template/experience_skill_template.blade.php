@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <input type="checkbox" name="experience_current_job_@{{index}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;">Hiện tại</span>
+                    <input type="checkbox" name="experience_current_job_@{{index}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;"> Công việc hiện tại</span>
                 </div>
 
                 <div id="error_c_thoigian"

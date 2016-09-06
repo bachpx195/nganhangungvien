@@ -90,7 +90,7 @@
                                 </div>
 
                                 <div class="filter_box font12 style-flat floatLeft" id ="current_job_{{$i}}" style="margin-left: 10px; margin-top: 8px;">
-                                    <input type="checkbox" name="experience_current_job_{{$i}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;">Hiện tại</span>
+                                    <input type="checkbox" name="experience_current_job_{{$i}}" style="vertical-align: middle;"/> <span style="vertical-align: middle;"> Công việc hiện tại</span>
                                 </div>
                                 
                                 <div id="error_c_thoigian"
