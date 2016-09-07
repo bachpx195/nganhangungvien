@@ -49,7 +49,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">
                                             Email <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             <input type="email" class="form-control input-lg2 color-input"
                                                    id="email" name="email" required
                                                    data-required-msg="Vui lòng nhập email"
@@ -64,7 +64,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">Mật
                                             khẩu <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="password"
                                                    class="form-control input-lg2 color-input" id="password"
                                                    name="password"
@@ -77,7 +77,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">Xác
                                             nhận lại mật khẩu <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="password"
                                                    class="form-control input-lg2 color-input"
                                                    id="retype_password" name="retype_password"
@@ -91,7 +91,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">
                                             Họ và tên <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="fullname" name="fullname" required
                                                    data-required-msg="Vui lòng nhập họ tên"
@@ -110,7 +110,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">
                                             Tên công ty <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="company_name" name="company_name"
                                                    placeholder="Ví dụ: Công ty Cổ Phần Ứng Viên Việt Nam"
@@ -126,7 +126,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">
                                             Quy mô công ty <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333 select_style31 city_select">
+                                        <div class="fr-input-wd333 select_style31 city_select showMobile">
                                             <div
                                                     class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                 <select id="company_size" name="company_size"
@@ -147,7 +147,7 @@
                                         <label for="phone"
                                                class="control-label-info bold txt-color-363636 fs14 w180">Số điện thoại <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="phone" name="phone"
                                                    required data-required-msg="Vui lòng nhập số điện thoại"
@@ -164,7 +164,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">Giới
                                             thiệu về công ty <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
 										                <textarea
                                                 class="form-control p14 inputTextArea txt-color-757575"
                                                 id="company_description" name="company_description"
@@ -180,7 +180,7 @@
                                                class="control-label-info bold txt-color-363636 fs14 w180">Địa
                                             chỉ công ty <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="company_address" name="company_address"
                                                    placeholder="Ví dụ: Số 1/1 Hoàng Ngọc Phách, Phường Láng Hạ, Quận Đống Đa, TP. Hà Nội"
@@ -195,7 +195,7 @@
                                                class="control-label-info bold txt-ghi fs14 w180">Tỉnh/thành
                                             phố <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333 select_style31 city_select">
+                                        <div class="fr-input-wd333 select_style31 city_select showMobile">
                                             <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                                 <select id="province_id" name="province_id"
                                                         class="tinh_thanh_reg selectpicker box_select_filter_reg pos_relative select-style"
@@ -215,7 +215,7 @@
                                     <div class="form-group mb1 input-phone">
                                         <label for="website"
                                                class="control-label-info bold txt-ghi fs14 w180">Website </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input"
                                                    id="website" name="website"
                                                    value="{!! old('website') !!}"/>
@@ -237,7 +237,7 @@
                                                class="control-label-info bold txt-ghi fs14 w180">Tên người
                                             liên hệ <span class="colorRed">*</span>
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             <input type="text" name="contact_person"
                                                    class="form-control input-lg2 color-input" id="contact_person"
                                                    required data-required-msg="Vui lòng nhập tên người liên hệ"
@@ -252,7 +252,7 @@
                                                class="control-label-info bold txt-ghi fs14 w180">Số điện
                                             thoại liên hệ <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="text" class="form-control input-lg2 color-input phone_txt"
                                                    name="contact_phone"
                                                    required data-required-msg="Vui lòng nhập số điện thoại liên hệ"
@@ -277,7 +277,7 @@
                                                class="control-label-info bold txt-ghi fs14 w180"> Email liên
                                             hệ <span class="colorRed">*</span>
                                         </label>
-                                        <div class="fr-input-wd333">
+                                        <div class="fr-input-wd333 showMobile">
                                             <input type="email" class="form-control input-lg2 color-input"
                                                    id="contact_email" name="contact_email"
                                                    required data-required-msg="Vui lòng nhập email người liên hệ"
@@ -287,30 +287,12 @@
                                     <div class="mb_16">
                                         <div class="line-break02"></div>
                                     </div>
-                                    <!-- input Nhập mã bảo mật * -->
-                                    <!--
-                                    <div class="form-group mb_20">
-                                        <label for="captcha"
-                                               class="control-label-info bold txt-ghi fs14 w185">Nhập mã bảo
-                                            mật <span class="colorRed">*</span>
-                                        </label>
-                                        <div class="register_fr_input_wd583 w390 pl_10">
-                                            <div class="img_security_code floatLeft">
 
-                                            </div>
-                                            <div class="fr-input-wd333 w263 ">
-                                                <input type="text" class="form-control input-lg2 color-input"
-                                                       id="CaptchaCode" name="CaptchaCode"
-                                                       required data-required-msg="Vui lòng nhập mã bảo mật"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
                                     <div class="form-group mb_10">
                                         <label for="contact_email"
                                                class="control-label-info bold txt-ghi fs14 w180"> Điều khoản sử dụng
                                         </label>
-                                        <div class="register_fr_input_wd583">
+                                        <div class="register_fr_input_wd583 showMobile">
                                             @include('front.account.policy')
                                         </div>
                                     </div>

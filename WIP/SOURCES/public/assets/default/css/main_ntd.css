@@ -151,15 +151,317 @@ div.section{
     width: 100%;
 }
 
-@media screen and (max-width: 1024px) {
+/*Phones*/
+@media screen and (max-width: 480px) {
+
+    .box_alert_content {
+        width: 100% !important;
+    }
+
     .content_cols {
-        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .box_tab {
+        min-width: 300px !important;
+    }
+
+    .font18 {
+        font-size: 15px !important;
+    }
+
+    .font16 {
+        font-size: 14px !important;
+    }
+
+    #map-not-login {
+        display: none !important;
+    }
+
+    .text-tim-nhat {
+        font-size: 15px !important;
+    }
+
+    .s21_home .list_nganhnghe_all, .list_nganhnghe_all2 {
+        min-width: 300px !important;
+    }
+
+    .w_33 {
+        width: 100% !important;
+
+    }
+
+    .ml_20 {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    .btn_more_list {
+        font-size: 16px !important;
+    }
+
+    .font24 {
+        font-size: 18px !important;
+    }
+
+    .box_alert_content_dangkytuvan {
+        min-width: 300px !important;
+        height: auto !important;
+    }
+
+    .fs18 {
+        font-size: 16px !important;
+    }
+
+    .ml1 {
+        width: 100% !important;
+    }
+
+    .note_mucluong {
+        margin-bottom: 5px !important;
+    }
+
+    .box_filter_content {
+        height: 430px !important;
+    }
+
+    .filter_content_line1 {
+        height: 170px !important;
+    }
+
+    #youtube-video {
+        width: 100% !important;
+        height: auto !important;
+        text-align: center !important;
+    }
+
+    .showMobile {
+        width: 100% !important;
+    }
+
+    #frm-login-info .control-label-info {
+        text-align: left !important;
+        margin-left: 20px !important;
+    }
+
+    .fileinput {
+        margin-left: 15px !important;
+    }
+
+    .top-ads img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .box_filter_search {
+        width: 100% !important;
+    }
+
+    .map-not-login {
+        display: none;
+    }
+}
+
+/*Phones to tablets*/
+@media screen and (min-width: 480px) and (max-width: 767px) {
+
+    .box_alert_content {
+        width: 100% !important;
+    }
+
+    .content_cols {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .box_tab {
+        min-width: 300px !important;
+    }
+
+    .font18 {
+        font-size: 15px !important;
+    }
+
+    .font16 {
+        font-size: 14px !important;
+    }
+
+    #map-not-login {
+        display: none !important;
+    }
+
+    .text-tim-nhat {
+        font-size: 15px !important;
+    }
+
+    .s21_home .list_nganhnghe_all, .list_nganhnghe_all2 {
+        min-width: 300px !important;
+    }
+
+    .w_33 {
+        width: 100% !important;
+
+    }
+
+    .ml_20 {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    .btn_more_list {
+        font-size: 16px !important;
+    }
+
+    .font24 {
+        font-size: 18px !important;
+    }
+
+    .box_alert_content_dangkytuvan {
+        min-width: 300px !important;
+        height: auto !important;
+    }
+
+    .fs18 {
+        font-size: 16px !important;
+    }
+
+    .ml1 {
+        width: 100% !important;
+    }
+
+    .note_mucluong {
+        margin-bottom: 5px !important;
+    }
+
+    .box_filter_content {
+        height: 430px !important;
+    }
+
+    .filter_content_line1 {
+        height: 170px !important;
+    }
+
+    #youtube-video {
+        width: 100% !important;
+        height: auto !important;
+        text-align: center !important;
+    }
+
+    .showMobile {
+        width: 100% !important;
+    }
+
+    #frm-login-info .control-label-info {
+        text-align: left !important;
+        margin-left: 20px !important;
+    }
+
+    .fileinput {
+        margin-left: 15px !important;
+    }
+
+    .top-ads img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .box_filter_search {
+        width: 100% !important;
+    }
+
+    .map-not-login {
+        display: none;
+    }
+}
+
+/*Portrait tablets*/
+@media screen and (min-width: 768px) and (max-width: 980px) {
+
+    .box_alert_content {
+        width: 100% !important;
+    }
+
+    .content_cols {
         margin-left: auto;
         margin-right: auto;
     }
 
     #youtube-video {
-        width: 250px;
+        width: 100% !important;
+        height: auto !important;
+        text-align: center !important;
+    }
+
+    .showMobile {
+        width: 100% !important;
+    }
+
+    #frm-login-info .control-label-info {
+        text-align: left !important;
+        margin-left: 20px !important;
+    }
+
+    .fileinput {
+        margin-left: 15px !important;
+    }
+
+    .top-ads img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .box_filter_search {
+        width: 100% !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 20px !important;
+    }
+}
+
+/*Default*/
+@media screen and (min-width: 980px) and (max-width: 1024px) {
+
+    .box_alert_content {
+        width: 100% !important;
+    }
+
+    .content_cols {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #youtube-video {
+        width: 100% !important;
+        height: auto !important;
+        text-align: center !important;
+    }
+
+    .showMobile {
+        width: 100% !important;
+    }
+
+    #frm-login-info .control-label-info {
+        text-align: left !important;
+        margin-left: 20px !important;
+    }
+
+    .fileinput {
+        margin-left: 15px !important;
+    }
+
+    .top-ads img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .box_filter_search {
+        width: 100% !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 20px !important;
     }
 }
 
@@ -722,7 +1024,7 @@ select.select-style {
     line-height: 12px;
 }
 .box_filter_content{
-    min-width: 728px;
+    /*min-width: 728px;*/
     height: 103px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -745,7 +1047,7 @@ select.select-style {
     background: #FFFFFF;
 }
 .box_alert_content{
-    min-width: 728px;
+    /*min-width: 728px;*/
     height: 48px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -2149,7 +2451,6 @@ ul.request-line {
     margin-right: 4px;
     margin-top: 4px;
     width: 100% !important;
-    min-width: 340px!important;
     max-width: 400px!important;
 }
 .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:hover, .box_alert_content_dangkytuvan .btn-ntv-dky-tuvan:focus {

@@ -30,7 +30,7 @@
                             <label for="experience_company_name_{{$i}}"
                                    class="control-label-info bold txt-ghi fs14 w180">Tên
                                 Công ty/Tổ chức </label>
-                            <div class="fr_ip_vtmm col-xs-8">
+                            <div class="fr_ip_vtmm col-xs-8 showMobile">
                                 <input name="experience_company_name_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
                                        id="experience_company_name"
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="experience_office_{{$i}}"
                                    class="control-label-info bold txt-ghi fs14 w180">Chức danh</label>
-                            <div class="fr_ip_vtmm col-xs-8">
+                            <div class="fr_ip_vtmm col-xs-8 showMobile">
                                 <input name="experience_office_{{$i}}" type="text"
                                        class="inputTextKNEdit form-control input-lg2 color-input required"
                                        id="experience_office"
@@ -61,13 +61,13 @@
                                    class="control-label-info bold txt-ghi fs14 w180">Thời gian làm việc </label>
                             <div class="fr_ip_vtmm pl_18 select_style31 city_select">
                                 <span class="txt-color-757575 fs14 italic pr12 floatLeft lbl_from_bangcap">từ </span>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10 showMobile">
                                     <select name="experience_day_in_month_{{$i}}" class="select-style w128">
                                         @include('front.common.month_options',
                                         array('selected' => isset($candidate['experience_day_in_month_' . $i]) ? $candidate['experience_day_in_month_' . $i] : ''))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft showMobile">
                                     <select name="experience_day_in_year_{{$i}}" class="select-style w128">
                                         @include('front.common.year_options',
                                         array('selected' => isset($candidate['experience_day_in_year_' . $i]) ? $candidate['experience_day_in_year_' . $i] : ''))
@@ -77,12 +77,12 @@
                                 <p class="kn_denhientai text-tim-nhat text-lowercase fs14  pr12 floatLeft lbl_from_bangcap display_none" id="current_job_{{$i}}">
                                     Hiện tại</p>
 
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10" id="date_out1_{{$i}}" style="margin-bottom: 10px;">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10 showMobile" id="date_out1_{{$i}}" style="margin-bottom: 10px;">
                                     <select name="experience_day_out_month_{{$i}}" class="select-style w128" data-disS="1">
                                         @include('front.common.month_options', array('selected' => isset($candidate['experience_day_out_month_' . $i]) ? $candidate['experience_day_out_month_' . $i] : ''))
                                     </select>
                                 </div>
-                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft" id ="date_out2_{{$i}}" style="margin-bottom: 10px;">
+                                <div class="filter_box font12 style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft showMobile" id ="date_out2_{{$i}}" style="margin-bottom: 10px;">
                                     <select name="experience_day_out_year_{{$i}}" class="select-style w128" data-disS="1">
                                         @include('front.common.year_options',array('selected' => isset($candidate['experience_day_out_year_' . $i]) ? $candidate['experience_day_out_year_' . $i] : ''))
                                     </select>

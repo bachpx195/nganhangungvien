@@ -120,19 +120,19 @@
                             <label for="birthday" class="control-label-info bold txt-color-363636 fs14 col-md-3">
                                 Ngày sinh <span class="colorRed">*</span></label>
                             <div class="col-md-8 select_style31 city_select mb_12">
-                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10 showMobile">
                                     <select name="birthday_day" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Ngày sinh">
                                         @include('front.common.day_options', array('selected' => $candidate['birthday_day']))
                                     </select>
                                 </div>
-                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft mr_10 showMobile">
                                     <select name="birthday_month" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Tháng sinh">
                                         @include('front.common.month_options', array('selected' => $candidate['birthday_month']))
                                     </select>
                                 </div>
-                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft">
+                                <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg floatLeft showMobile">
                                     <select name="birthday_year" class="select-style w128"
                                             required data-required-msg="Vui lòng chọn Năm sinh">
                                         @include('front.common.year_options', array('selected' => $candidate['birthday_year']))
@@ -146,7 +146,7 @@
                             <label for="c_chuc_vu"
                                    class="control-label-info bold txt-ghi fs14 col-md-3">Cấp
                                 bậc hiện tại <span class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="current_rank"
                                             class="select-style"
@@ -166,7 +166,7 @@
                             <label for="c_chuc_vu"
                                    class="control-label-info bold txt-ghi fs14 col-md-3">Cấp
                                 bậc mong muốn <span class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="expect_rank" class="select-style"
                                             required data-required-msg="Vui lòng chọn Cấp bậc mong muốn">
@@ -187,7 +187,7 @@
                                 Ngành nghề mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 03 ngành nghề)</span>
                             </label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="job"
                                             class="select-style job-change">
@@ -225,7 +225,7 @@
                                 Tỉnh thành mong muốn <span class="colorRed">*</span><br>
                                 <span class="note_title_form italic font12 text_grey3 mt_a6 pt_4">(tối đa 10 địa điểm)</span>
                             </label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="province_id"
                                             class="select-style address-change">
@@ -261,7 +261,7 @@
                         <div class="form-group">
                             <label for="level" class="control-label-info bold txt-ghi fs14 col-md-3">Trình độ học vấn cao nhất<span
                                         class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="level"
                                             class="select-style"
@@ -280,7 +280,7 @@
                         <div class="form-group">
                             <label for="experience_years" class="control-label-info bold txt-ghi fs14 col-md-3">Tổng số năm kinh nghiệm <span
                                         class="colorRed">*</span></label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="experience_years"
                                             class="select-style">
@@ -300,7 +300,7 @@
                                 Hình thức làm việc <span class="colorRed">*</span>
                             </label>
 
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="employment_status"
                                             class="select-style"
@@ -323,7 +323,7 @@
                                 Mức lương mong muốn <span class="colorRed">*</span>
                             </label>
 
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="expect_salary"
                                             class="select-style"
@@ -343,7 +343,7 @@
                             <label for="exigency"
                                    class="control-label-info bold txt-ghi fs14 col-md-3 lineheight_24">Nhu cầu công việc <span class="colorRed">*</span><span
                                         class="note_title_form italic text_grey3 mt_a6 pt_4"></span></label>
-                            <div class="fr-input-wd333 select_style31 city_select mb_12">
+                            <div class="fr-input-wd333 select_style31 city_select mb_12 showMobile">
                                 <div class="filter_box style-flat reg_box_tinhthanh box_tinhthanh_reg">
                                     <select name="exigency"
                                             class="select-style"
@@ -365,7 +365,7 @@
                                    class="control-label-info bold txt-ghi fs14 col-md-3">
                                 Mục tiêu nghề nghiệp <span class="colorRed">*</span>
                             </label>
-                            <div class="fr_ip_vtmm col-xs-8">
+                            <div class="fr_ip_vtmm col-xs-8 showMobile">
                                 <textarea name="job_goal"
                                           placeholder="Gợi ý: Mục tiêu ngắn hạn của bạn trong một vài năm tới, Mục tiêu dài hạn trong 10-15 năm tới"
                                           class="inputTxtAreaTop form-control"
@@ -380,7 +380,7 @@
                                    class="control-label-info bold txt-ghi fs14 col-md-3">
                                 Kỹ năng & Sở trường <span class="colorRed">*</span>
                             </label>
-                            <div class="fr_ip_vtmm col-xs-8">
+                            <div class="fr_ip_vtmm col-xs-8 showMobile">
                                 <textarea name="skill_forte"
                                           placeholder="Gợi ý: Kỹ năng và sở trường của mạnh nhất của bạn"
                                           required data-required-msg="Vui lòng nhập Kỹ năng và Sở trường"
@@ -392,7 +392,7 @@
 
                         <div class="form-group">
                             <label class="control-label-info bold txt-ghi fs14 col-md-3">Tải lên CV đính kèm</label>
-                            <div class="col-xs-8">
+                            <div class="col-xs-8 showMobile">
                                 <input name="attach_cv" type="file" multiple class="file-loading btn red btn-outline btn-file"
                                        accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                             </div>

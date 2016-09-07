@@ -2,7 +2,7 @@
 	id="search_box_full" class="frm_search_box_full">
 	<div class="box_filter_content w_100 ">
 		<div class="filter_content_line1 border_bt pos_relative">
-			<div class="col-xs-3 border_r pl_14 pr_2">
+			<div class="col-xs-12 col-md-3 border_r pl_14 pr_2">
 				<div id="sl-nganhnghe1"
 					class="filter_box font14 style-flat w_100 box_nganhnghe_s">
 					<i class="icon_select_box icon_listbox icon_24 icon-24"></i> <select
@@ -16,7 +16,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-3 border_r pr_2">
+			<div class="col-xs-12 col-md-3 border_r pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i class="icon_select_box icon_locabox icon_24 icon-24"></i> <select
 						name="province"
@@ -29,7 +29,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-3 border_r pr_6 pl_8">
+			<div class="col-xs-12 col-md-3 border_r pr_6 pl_8">
 				<div class="filter_box font14 style-flat w_100 box_mucluong">
 					<i class="icon_select_box icon_moneybox icon_24 icon-24"></i>
 					<div class="cd-dropdown-wrapper w_100 pt_12">
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-3 pr_8">
+			<div class="col-xs-12 col-md-3 pr_8">
 				<div class="filter_box font14 style-flat w_100 box_kinhnghiem">
 					<i class="icon_select_box icon_capbox icon_24 icon-24"></i>
 					<div class="cd-dropdown-wrapper w_100 pt_12">
@@ -97,7 +97,7 @@
 		</div>
 
 		<div class="filter_content_line1 border_bt pos_relative">
-			<div class="col-xs-3 border_r pl_14 pr_2">
+			<div class="col-xs-12 col-md-3 border_r pl_14 pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
 						style="background-image: url(/assets/default/images/icon-trinh-do.png) !important; margin-top: 15px; margin-left: -3px;"
@@ -113,7 +113,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-3 border_r pr_2">
+			<div class="col-xs-12 col-md-3 border_r pr_2">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
 						style="background-image: url(/assets/default/images/icon-gioi-tinh.png) !important; margin-top: 10px; margin-left: -4px;"
@@ -128,7 +128,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-3 border_r pr_6 pl_8">
+			<div class="col-xs-12 col-md-3 border_r pr_6 pl_8">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
 						style="background-image: url(/assets/default/images/icon-ngoai-ngu-s21.png) !important; margin-top: 15px"
@@ -143,7 +143,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-3 border_r pr_8">
+			<div class="col-xs-12 col-md-3 border_r pr_8">
 				<div class="filter_box font14 style-flat w_100 box_tinhthanh_s">
 					<i
 						style="background-image: url(/assets/default/images/icon-thoi-gian.png) !important; margin-top: 15px; margin-left: -7px;"
