@@ -234,6 +234,7 @@ div.section{
         width: 100% !important;
         height: auto !important;
         text-align: center !important;
+        background-color: white !important;
     }
 
     .showMobile {
