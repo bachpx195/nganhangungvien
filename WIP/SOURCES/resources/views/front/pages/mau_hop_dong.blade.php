@@ -24,7 +24,7 @@ use \App\Libs\Constants as Constants;
 					<div class="mb8">
 						<div class="center-p12p24">
 							<div style="width: 90%; margin-top: 30px; margin-left: 5%; padding-bottom: 30px;">
-								<iframe width="99%" height="800px" src='{{Constants::GOOGLE_DOC_PATH}}?url={{URL::to('/') . '/assets/pages/files/mau-ho-dong.doc'}}&embedded=true' frameborder='0'></iframe>
+								<iframe width="99%" height="800px" src='{{Constants::GOOGLE_DOC_PATH}}?url={{URL::to('/') . '/assets/pages/files/mau-hop-dong.doc'}}&embedded=true' frameborder='0'></iframe>
 	                        </div>
 						</div>
 					</div>
