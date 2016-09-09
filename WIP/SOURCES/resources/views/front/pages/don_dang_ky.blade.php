@@ -1,6 +1,10 @@
 @extends('front/global')
 
-<title>Đăng ký nhà tuyển dụng</title>
+<?php
+use \App\Libs\Constants as Constants;
+?>
+
+<title>ĐƠN ĐĂNG KÝ WEBSITE CUNG CẤP DỊCH VỤ THƯƠNG MẠI ĐIỆN TỬ</title>
 
 @section('content')
 	@if (Auth::check() && Auth::user()->user_type == 'employer')

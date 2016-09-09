@@ -1,6 +1,6 @@
 @extends('front/global')
 
-<title>Đăng ký nhà tuyển dụng</title>
+<title>Đăng ký tài khoản VIP</title>
 
 @section('content')
 	@if (Auth::check() && Auth::user()->user_type == 'employer')

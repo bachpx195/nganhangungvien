@@ -22,7 +22,7 @@
                                     <div class="center-p12p24">
                                         <div style="width: 90%; margin-top: 30px; margin-left: 20px; padding-bottom: 30px; min-height: 512px;">
                                             <a href="{{route('pages.chinhSachBaoMat')}}" target="_blank"> CHÍNH SÁCH BẢO MẬT THÔNG TIN</a><br/><br/>
-                                            <a href="{{route('pages.deAnWebsite')}}" target="_blank"> ĐỀ ÁN CUNG CẤP DỊCH VỤ THƢƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.VN</a><br/><br/>
+                                            <a href="{{route('pages.deAnWebsite')}}" target="_blank"> ĐỀ ÁN CUNG CẤP DỊCH VỤ THƯƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.VN</a><br/><br/>
                                             <a href="{{route('pages.donDangKy')}}" target="_blank"> ĐƠN ĐĂNG KÝ WEBSITE CUNG CẤP DỊCH VỤ THƯƠNG MẠI ĐIỆN TỬ</a><br/><br/>
                                             <a href="{{route('pages.giaiQuyTranhChap')}}" target="_blank"> CƠ CHẾ GIẢI QUYẾT TRANH CHẤP</a><br/><br/>
                                             <a href="{{route('pages.mauHopDong')}}" target="_blank"> MẪU HỢP ĐỒNG THỎA THUẬN NGANHANGUNGVIEN.VN</a><br/><br/>

@@ -1,6 +1,10 @@
 @extends('front/global')
 
-<title>Đăng ký nhà tuyển dụng</title>
+<?php
+use \App\Libs\Constants as Constants;
+?>
+
+<title>QUY CHẾ HOẠT ĐỘNG SÀN GIAO DỊCH THƯƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.COM</title>
 
 @section('content')
 	@if (Auth::check() && Auth::user()->user_type == 'employer')
@@ -13,7 +17,7 @@
 
 				<div class="w_50 floatLeft">
 					<span class="title_ntd_dky "></span><span
-							class="uppercase bold fs16 color_ntd_dky">QUY CHẾ HOẠT ĐỘNG SÀN GIAO DỊCH THƢƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.COM</span>
+							class="uppercase bold fs16 color_ntd_dky">QUY CHẾ HOẠT ĐỘNG SÀN GIAO DỊCH THƯƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.COM</span>
 				</div>
 			</div>
 			<div class="regis_content_1">
