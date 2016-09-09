@@ -314,6 +314,34 @@ Route::group(['prefix' => '', ['middleware' => 'web']], function()
 		'as' => 'pages.outsourcing_package', 'uses' => 'Front\PagesController@outsourcingPackage'
 	]);
 
+	Route::match(['get', 'post'], '/chinh-sach-bao-mat-thong-tin', [
+		'as' => 'pages.chinhSachBaoMat', 'uses' => 'Front\PagesController@privacyPolicy'
+	]);
+
+	Route::match(['get', 'post'], '/giai-quyet-tranh-chap', [
+		'as' => 'pages.giaiQuyTranhChap', 'uses' => 'Front\PagesController@giaiQuyetTranhChap'
+	]);
+
+	Route::match(['get', 'post'], '/quy-che-website-tmdt', [
+		'as' => 'pages.quyCheWebsite', 'uses' => 'Front\PagesController@quyCheWebSiteTMDT'
+	]);
+
+	Route::match(['get', 'post'], '/don-dang-ky', [
+		'as' => 'pages.donDangKy', 'uses' => 'Front\PagesController@donDangKyCCDVTMDT'
+	]);
+
+	Route::match(['get', 'post'], '/de-an-website', [
+		'as' => 'pages.deAnWebsite', 'uses' => 'Front\PagesController@deAnWebsite'
+	]);
+
+	Route::match(['get', 'post'], '/mau-hop-dong', [
+		'as' => 'pages.mauHopDong', 'uses' => 'Front\PagesController@mauHopDong'
+	]);
+
+	Route::match(['get', 'post'], '/dang-ky-bo-cong-thuong', [
+		'as' => 'pages.dangKyBoCongThuong', 'uses' => 'Front\PagesController@dangKyBoCongThuong'
+	]);
+
 	Route::match(['get', 'post'], '/dieu-khoan-su-dung', [
 		'as' => 'pages.policy', 'uses' => 'Front\PagesController@policy'
 	]);

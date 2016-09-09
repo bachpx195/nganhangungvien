@@ -45,6 +45,41 @@ class PagesController extends BaseController {
 		return view('front/pages/regist_vip');
 	}
 
+	public function mauHopDong()
+	{
+		return view('front/pages/mau_hop_dong');
+	}
+
+	public function privacyPolicy()
+	{
+		return view('front/pages/privacy_policy');
+	}
+
+	public function deAnWebsite()
+	{
+		return view('front/pages/de_an_website');
+	}
+
+	public function donDangKyCCDVTMDT()
+	{
+		return view('front/pages/don_dang_ky');
+	}
+
+	public function giaiQuyetTranhChap()
+	{
+		return view('front/pages/giai_quyet_tranh_chap');
+	}
+
+	public function quyCheWebSiteTMDT()
+	{
+		return view('front/pages/quy_che_web_site_tmdt');
+	}
+
+	public function dangKyBoCongThuong()
+	{
+		return view('front/pages/bo_cong_thuong');
+	}
+
     public function error()
     {
         return view('errors.404');

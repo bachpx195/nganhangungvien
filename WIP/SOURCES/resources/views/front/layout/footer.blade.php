@@ -27,6 +27,7 @@
                         <div class="">
                             <h2 class="text_pink font24"> LIÊN KẾT</h2>
                             <div class="mt_24 font14">
+                                <p><a href="{{ route('pages.dangKyBoCongThuong') }}" style="color: #FFFFFF;" target="_blank">- Đăng ký bộ công thương</a></p>
                                 <p><a href="{{ route('pages.policy') }}" style="color: #FFFFFF;">- Điều khoản sử dụng</a></p>
                                 <p><a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>
                                 <p><a href="{{route('employer.register')}}" style="color: #FFFFFF;">- Đăng ký nhà tuyển dụng</a></p>
