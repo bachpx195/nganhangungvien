@@ -26,7 +26,7 @@
                                             <a href="{{route('pages.donDangKy')}}" target="_blank"> ĐƠN ĐĂNG KÝ WEBSITE CUNG CẤP DỊCH VỤ THƯƠNG MẠI ĐIỆN TỬ</a><br/><br/>
                                             <a href="{{route('pages.giaiQuyTranhChap')}}" target="_blank"> CƠ CHẾ GIẢI QUYẾT TRANH CHẤP</a><br/><br/>
                                             <a href="{{route('pages.mauHopDong')}}" target="_blank"> MẪU HỢP ĐỒNG THỎA THUẬN NGANHANGUNGVIEN.VN</a><br/><br/>
-                                            <a href="{{route('pages.quyCheWebsite')}}" target="_blank"> QUY CHẾ HOẠT ĐỘNG SÀN GIAO DỊCH THƢƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.COM</a>
+                                            <a href="{{route('pages.quyCheWebsite')}}" target="_blank"> QUY CHẾ HOẠT ĐỘNG SÀN GIAO DỊCH THƯƠNG MẠI ĐIỆN TỬ NGANHANGUNGVIEN.COM</a>
                                         </div>
                                     </div>
                                 </div>
