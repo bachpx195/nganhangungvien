@@ -58,7 +58,7 @@
     <div id="bottom-nav">
         <div class="container">
             <div class="row footer-content text-center">
-                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27310"><img alt="" title="" src="http://online.gov.vn/seals/5gKPNxVa0008kOtkuQ7pjg==.jpgx" /></a>
+                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27310" target="_blank"><img alt="" title="" src="http://online.gov.vn/seals/5gKPNxVa0008kOtkuQ7pjg==.jpgx" /></a>
                 <div class="copyright col-md-12">© 2016 <a href="http://nganhangungvien.com" class="text_pink ">WWW.NGANHANGUNGVIEN.COM</a> - NGÂN HÀNG ỨNG VIÊN</div>
                 
             </div><!--/row-->
