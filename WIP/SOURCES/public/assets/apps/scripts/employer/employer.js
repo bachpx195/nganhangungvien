@@ -136,6 +136,37 @@ $(document).ready(function () {
                 }
             );
         });
+
+        $(document).on('click', '.delete-employer', function (e) {
+            var id = $(this).data('id');
+            var url = $(this).data('url');
+            swal({
+                    title: 'Bạn có muốn xóa?',
+                    text: 'Bạn sẽ không thể khôi phục lại được đối tượng này!!',
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d9534f",
+                    confirmButtonText: "Đồng ý!",
+                    cancelButtonText: "Hủy!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        console.log(url);
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            complete: function(data) {
+                                if (data.status) {
+                                    swal("Thành công!", "Dữ liệu đã được xóa.", "success");
+                                    datasource.read();
+                                }
+                            }
+                        });
+                    }
+                }
+            );
+        });
     }
 
     var datasource = new kendo.data.DataSource({
@@ -171,6 +202,7 @@ $(document).ready(function () {
         }
     });
 
+
     $("#grid").kendoGrid({
         dataSource: datasource,
         height: 420,
@@ -199,20 +231,24 @@ $(document).ready(function () {
         },
         columns: [{
             title: "Thao tác",
-            width: "130px",
+            width: "100px",
             template: function (item) {
                 return '<a href="/admin/employer/detail?id=' + item.id + '" >'
                     + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-pencil"></i></button></a>'
 
+                    + ' <a class="delete-employer" data-id="' + item.id + '" '
+                    + 'data-url="/admin/employer/delete/' + item.id + '">'
+                    + '<button type="button" class="btn btn-icon-toggle"><i class="fa fa-trash-o"></i></button></a>'
+
                     + ' <a class="change-status" data-id="' + item.id + '" '
                     + 'data-status="' + item.status + '" '
                     + 'data-url="/admin/employer/status/' + item.id + '">'
-                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i> Khóa' : '<i class="fa fa-check-circle-o"></i> Kích hoạt') + '</button></a>';
+                    + '<button type="button" class="btn btn-icon-toggle">' + (item.status == 1 ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-check-circle-o"></i>') + '</button>'+ (item.status == 1 ? ' Khóa' : ' Kích hoạt') +'</a>';
             }
         }, {
             field: "vip",
             title: "VIP",
-            width: "100px",
+            width: "55px",
             template: function (item) {
                 if (item.roleCode != 'SUPER_ADMIN') {
                     return '<a class="icheck">'
@@ -232,7 +268,7 @@ $(document).ready(function () {
         }, {
             field: "expire_vip",
             title: "Hết hạn VIP",
-            width: "80px",
+            width: "60px",
             template: function (item) {
                 return item.expire_vip ? kendo.toString(new Date(item.expire_vip), "dd/MM/yyyy") : '';
             }
@@ -251,15 +287,15 @@ $(document).ready(function () {
         }, {
             field: "contact_phone",
             title: "Phone",
-            width: "80px"
+            width: "60px"
         }, {
             field: "province",
             title: "Tỉnh thành",
-            width: "100px"
+            width: "80px"
         }, {
             field: "status",
             title: "Kích hoạt",
-            width: "70px",
+            width: "50px",
             template: function (item) {
                 return item.status == 1 ? "Kích hoạt" : "Chưa";
             }

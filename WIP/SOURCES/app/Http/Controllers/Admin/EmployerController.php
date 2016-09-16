@@ -8,6 +8,7 @@ use App\Repositories\IUserRoleRepo;
 use Illuminate\Http\Request;
 use App\Libs\Constants;
 use App\Model\Employer;
+use App\Model\User;
 use App\Repositories\IEmployerRepo;
 use App\Services\Registrar;
 use Illuminate\Pagination\Paginator;
@@ -57,6 +58,22 @@ class EmployerController extends Controller
             ->with('provinces', $provinces)
             ->with('activeMenu', $activeMenu)
             ->with('pageTitle', Constants::EMPLOYER_LIST);
+    }
+
+    public function delete(Request $request, $id)
+    {
+
+        $data = [];
+
+        if ($request->ajax()) {
+            $employer = Employer::find($id);
+            User::find($employer->user_id)->delete();
+            Employer::find($id)->delete();
+
+            $data = ['status' => false, 'message' => 'aaa'];
+        }
+
+        return $data;
     }
 
     /**
