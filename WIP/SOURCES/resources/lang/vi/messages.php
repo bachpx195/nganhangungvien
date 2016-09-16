@@ -35,7 +35,7 @@ return [
 		"auth.reset.send_password" 		=> "Gửi mật khẩu mới",
 
 		"front.title.view"				=> "Hồ sơ ứng viên được xem nhiều nhất",
-		"front.title.new"				=> "Hồ sơ ứng viên mới nhiều nhất",
+		"front.title.new"				=> "Hồ sơ ứng viên tìm việc mới nhất",
 
 		"admin.title.video" 			=> "Quản lý cấu hình hệ thống",
 		

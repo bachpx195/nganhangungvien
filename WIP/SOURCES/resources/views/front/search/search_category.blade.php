@@ -12,7 +12,7 @@
 	<br/>
 
 	<h1 class="title_text_line mt_16 fwb mt49">
-		<span class="text-tim-nhat uppercase">Hồ sơ {{$categoryName}} ({{$candidates->total()}})</span>
+		<span class="text-tim-nhat uppercase">{{$categoryName}} ({{$candidates->total()}})</span>
 	</h1>
 
 

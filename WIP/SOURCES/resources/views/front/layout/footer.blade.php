@@ -27,7 +27,7 @@
                         <div class="">
                             <h2 class="text_pink font24"> LIÊN KẾT</h2>
                             <div class="mt_24 font14">
-                                <p><a href="{{ route('pages.dangKyBoCongThuong') }}" style="color: #FFFFFF;" target="_blank">- Đăng ký bộ công thương</a></p>
+                                {{--<p><a href="{{ route('pages.dangKyBoCongThuong') }}" style="color: #FFFFFF;" target="_blank">- Đăng ký bộ công thương</a></p>--}}
                                 <p><a href="{{ route('pages.policy') }}" style="color: #FFFFFF;">- Điều khoản sử dụng</a></p>
                                 <p><a href="{{ empty($linkYouTubeChanel)? '#' : $linkYouTubeChanel }}" style="color: #FFFFFF;">- Hướng dẫn đăng ký tài khoản nhà tuyển dụng</a></p>
                                 <p><a href="{{route('employer.register')}}" style="color: #FFFFFF;">- Đăng ký nhà tuyển dụng</a></p>
@@ -58,6 +58,7 @@
     <div id="bottom-nav">
         <div class="container">
             <div class="row footer-content text-center">
+                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27310" target="_blank"><img alt="" title="" src="http://online.gov.vn/seals/5gKPNxVa0008kOtkuQ7pjg==.jpgx" /></a>
                 <div class="copyright col-md-12">© 2016 <a href="http://nganhangungvien.com" class="text_pink ">WWW.NGANHANGUNGVIEN.COM</a> - NGÂN HÀNG ỨNG VIÊN</div>
                 
             </div><!--/row-->
