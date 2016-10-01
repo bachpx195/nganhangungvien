@@ -18,9 +18,9 @@
 				</div>
 				<div class="row  pl_14 pr_14">
 					<div class="txc">
-						<span class="bg-white bold font24 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421 - 0943 24 9699</span><br />
+						<span class="bg-white bold font24 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font24 bold">04 6684 7421</span><br />
 						<span class="bg-white bold font24 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font24 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
-						<span class="bg-white bold font24 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font24 bold"><a href="skype:NGANHANGUNGVIEN.COM?chat" class="text_pink">nganhangungvien.com</a></span>
+						<span class="bg-white bold font24 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font24 bold"><a href="skype:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvien.com</a></span>
 					</div>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 
 <div class="box_alert_content_dangkytuvan w_100 mt_24 font16">
 	<div class="pt_10 txt-ghi">
-		Để tuyển dụng hoặc tìm việc hiệu quả, vui lòng chọn <span class="bold">DỊCH VỤ THUÊ NGOÀI TRỌN GÓI</span> để được hỗ trợ ngay
+		Để tuyển dụng hiệu quả, vui lòng chọn <span class="bold">DỊCH VỤ THUÊ NGOÀI TRỌN GÓI</span> để được hỗ trợ ngay
 	</div>
 	<div class=" pb_14 pr_14 pl_14">
 		<div>

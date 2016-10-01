@@ -15,10 +15,10 @@
                                     <img src="{{ URL::asset('assets/default/images/logo1_new.png') }}" alt="NGÂN HÀNG ỨNG VIÊN" title="NGÂN HÀNG ỨNG VIÊN">
                                 </a>
                                 <p>
-                                    <br><i class="fa fa-phone" aria-hidden="true"></i> &nbsp;Hotline: <span class="text_pink">04 6684 7421 - 0943 24 9699</span><br>
+                                    <br><i class="fa fa-phone" aria-hidden="true"></i> &nbsp;Hotline: <span class="text_pink">04 6684 7421</span><br>
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a><br>
                                     <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;Địa chỉ: <span class="text_pink">Số 1/1 Hoàng Ngọc Phách, Phường Láng Hạ, Quận Đống Đa, TP. Hà Nội</span><br>
-                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Website: <span class="text_pink">nganhangungvien.com</span> - <i class="fa fa-skype" aria-hidden="true"></i> Skype: <a href="skype:NGANHANGUNGVIEN.COM?chat" class="text_pink">nganhangungvien.com</a>
+                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Website: <span class="text_pink">nganhangungvien.com</span> - <i class="fa fa-skype" aria-hidden="true"></i> Skype: <a href="skype:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvien.com</a>
                                 </p>
                             </div>
                         </div>

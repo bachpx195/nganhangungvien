@@ -153,8 +153,10 @@ class CandidateProfileController extends BaseController {
 
 		$user = $this->getCurrentUser();
 		$employer = $this->employerRepo->findEmployerInfoByUserId($user->id);
+		
+		$countTransactions = $this->transactionRepo->countTrans($employer->id, $candidate->id);
 
-		if ($employer->vip == 1) {
+		if ($employer->vip == 1 || $countTransactions > 0 ) { // VIP hoac Da tra tien
 			return response()->json([
 				"data" => [
 					"email"			=> $candidate->email,

@@ -45,7 +45,7 @@
 									•	Công ty Cổ phần ứng viên Việt Nam<br/>
 									•	Địa chỉ:  Số 1/1 Hoàng Ngọc Phách, Láng Hạ, Quận Đống Đa,Hà Nội<br/>
 									•	Email:  nganhangungvienvn@gmail.com<br/>
-									•	Hotline: 04 6684 7421 - 0943 24 9699<br/>
+									•	Hotline: 04 6684 7421<br/>
 								<br/><strong>e)	Phương tiện và công cụ để người dùng tiếp cận và chỉnh sửa dữ liệu cá nhân của mình</strong><br/>
 								Thành viên có thể đăng nhập vào tài khoản đã đăng ký để cập nhật, chỉnh sửa, kiểm tra lại dữ liệu cá nhân của mình. Ngoài ra, trong trường hợp phát hiện hành vi tiết lộ thông tin cá nhân cho bên thứ 3, thành viên có quyền gửi đơn khiếu nại đến Ban quản lý Nganhangungvien.com để được xác nhận, xử lý và hướng dẫn thành viên khôi phục thông tin và bảo mật tài khoản.<br/>
 								<br/><strong>f)	Cam kết bảo mật thông tin cá nhân khách hàng</strong><br/>

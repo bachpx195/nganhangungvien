@@ -30,9 +30,9 @@
                         <div class="title">
                             <span class="bg-white bold text_blue">HÃY LIÊN HỆ ĐỂ ĐƯỢC TRỢ GIÚP</span>
                         </div>
-                        <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421 - 0943 24 9699</span><br />
+                        <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421</span><br />
                         <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
-                        <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:NGANHANGUNGVIEN.COM?chat" class="text_pink">nganhangungvien.com</a></span>
+                        <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvien.com</a></span>
                     </div>
                     <br/>
                 </div>
@@ -290,9 +290,9 @@
                             <div class="title">
                                 <span class="bg-white bold text_blue">HÃY LIÊN HỆ ĐỂ ĐƯỢC TRỢ GIÚP</span>
                             </div>
-                            <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421 - 0943 24 9699</span><br />
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> Hotline: </span><span class="bg-white text_pink font16 bold">04 6684 7421</span><br />
                             <span class="bg-white bold font16 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email  : </span><span class="bg-white text_pink font16 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br/>
-                            <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:NGANHANGUNGVIEN.COM?chat" class="text_pink">nganhangungvien.com</a></span>
+                            <span class="bg-white bold font16 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> Skype  : </span><span class="bg-white text_pink font16 bold"><a href="skype:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvien.com</a></span>
                         </div>
                         <br/>
                     </div>
