@@ -18,7 +18,7 @@
                                     <br><i class="fa fa-phone" aria-hidden="true"></i> &nbsp;Hotline: <span class="text_pink">04 6684 7421</span><br>
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a><br>
                                     <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;Địa chỉ: <span class="text_pink">Số 1/1 Hoàng Ngọc Phách, Phường Láng Hạ, Quận Đống Đa, TP. Hà Nội</span><br>
-                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Website: <span class="text_pink">nganhangungvienvn@gmail.com</span> - <i class="fa fa-skype" aria-hidden="true"></i> Skype: <a href="skype:NGANHANGUNGVIENVN@GMAIL.COM?chat" class="text_pink">nganhangungvienvn@gmail.com</a>
+                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Website: <span class="text_pink">nganhangungvienvn@gmail.com</span> - <i class="fa fa-skype" aria-hidden="true"></i> Skype: <a href="skype:live:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvienvn</a>
                                 </p>
                             </div>
                         </div>

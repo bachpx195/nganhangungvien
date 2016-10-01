@@ -61,7 +61,7 @@
                                 <div style="margin-bottom: 10px;">
                                     <span class="bg-white bold font13 text_blue"><i class="fa fa-phone" aria-hidden="true"></i> </span><span class="bg-white text_pink font13 bold">04 6684 7421</span><br>
                                     <span class="bg-white bold font13 text_blue"><i class="fa fa-envelope-o" aria-hidden="true"></i> </span><span class="bg-white text_pink font13 bold"><a href="mailto:nganhangungvienvn@gmail.com" class="text_pink">nganhangungvienvn@gmail.com</a></span><br>
-                                    <span class="bg-white bold font13 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> </span> <span class="bg-white text_pink font13 bold"><a href="skype:NGANHANGUNGVIENVN@GMAIL.COM?chat" class="text_pink">nganhangungvienvn@gmail.com</a></span>
+                                    <span class="bg-white bold font13 text_blue"><i class="fa fa-skype" aria-hidden="true"></i> </span> <span class="bg-white text_pink font13 bold"><a href="skype:live:NGANHANGUNGVIENVN?chat" class="text_pink">nganhangungvienvn</a></span>
                                     <br/>
                                 </div>
                             </div>
